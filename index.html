@@ -79,7 +79,7 @@
             }
         }
     </script>
-<style>
+    <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
@@ -88,6 +88,38 @@
         }
         .ghost-border {
             box-shadow: inset 0 0 0 1px rgba(194, 198, 211, 0.2);
+        }
+        .podcast-progress-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+        }
+        .podcast-progress-slider::-webkit-slider-runnable-track {
+            height: 0.25rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.25);
+        }
+        .podcast-progress-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            margin-top: -0.3125rem;
+            width: 0.875rem;
+            height: 0.875rem;
+            border-radius: 9999px;
+            border: 2px solid #003f7d;
+            background: #ffffff;
+        }
+        .podcast-progress-slider::-moz-range-track {
+            height: 0.25rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.25);
+        }
+        .podcast-progress-slider::-moz-range-thumb {
+            width: 0.875rem;
+            height: 0.875rem;
+            border-radius: 9999px;
+            border: 2px solid #003f7d;
+            background: #ffffff;
         }
     </style>
 </head>
@@ -282,17 +314,18 @@
 <span class="label-md font-label text-primary-fixed uppercase tracking-widest mb-4">New Editorial Feature</span>
 <h2 class="font-headline text-4xl font-bold text-on-primary mb-6">The Blue Card Explained. What Most People Don’t Know</h2>
 <p class="text-on-primary/80 text-lg mb-10 max-w-xl">Listen to our latest episode where we dive deep into the untold stories of survivors and the critical mission that drives our daily work.</p>
-<div class="bg-on-primary/10 backdrop-blur-md rounded-xl p-6 flex items-center gap-6 border border-on-primary/10">
-<button class="w-16 h-16 rounded-full bg-on-primary text-primary flex items-center justify-center hover:scale-105 transition-transform">
-<span class="material-symbols-outlined text-4xl" data-icon="play_arrow" data-weight="fill">play_arrow</span>
+<div class="bg-on-primary/10 backdrop-blur-md rounded-xl p-6 flex items-center gap-6 border border-on-primary/10" data-podcast-player="">
+<audio aria-label="Podcast audio player" class="sr-only" data-podcast-audio="" preload="metadata">
+<source src="https://www.dropbox.com/scl/fi/v5s291fv641lu5zti0gw8/The_Hidden_Poverty_of_Holocaust_Survivors.m4a?rlkey=faoyfjwa8btfyel3vh9us3foj&amp;raw=1" type="audio/mp4"/>
+</audio>
+<button aria-label="Play podcast episode" class="w-16 h-16 rounded-full bg-on-primary text-primary flex items-center justify-center hover:scale-105 transition-transform" data-podcast-play="" type="button">
+<span aria-hidden="true" class="material-symbols-outlined text-4xl" data-podcast-play-icon="">play_arrow</span>
 </button>
 <div class="flex-grow">
-<div class="h-1 w-full bg-on-primary/20 rounded-full mb-2">
-<div class="h-full bg-on-primary w-1/3 rounded-full"></div>
-</div>
+<input aria-label="Seek through episode" class="podcast-progress-slider w-full mb-2 cursor-pointer" data-podcast-progress="" max="100" min="0" step="0.1" type="range" value="0"/>
 <div class="flex justify-between text-xs text-on-primary/60 font-medium">
-<span>12:45</span>
-<span>38:12</span>
+<span data-podcast-current-time="">0:00</span>
+<span data-podcast-duration="">--:--</span>
 </div>
 </div>
 </div>
@@ -405,4 +438,99 @@
             </p>
 </div>
 </footer>
+<script>
+    (() => {
+        const player = document.querySelector('[data-podcast-player]');
+        if (!player) return;
+
+        const audio = player.querySelector('[data-podcast-audio]');
+        const playButton = player.querySelector('[data-podcast-play]');
+        const playIcon = player.querySelector('[data-podcast-play-icon]');
+        const progressInput = player.querySelector('[data-podcast-progress]');
+        const currentTimeLabel = player.querySelector('[data-podcast-current-time]');
+        const durationLabel = player.querySelector('[data-podcast-duration]');
+
+        if (!audio || !playButton || !playIcon || !progressInput || !currentTimeLabel || !durationLabel) return;
+
+        const sources = [
+            "https://www.dropbox.com/scl/fi/v5s291fv641lu5zti0gw8/The_Hidden_Poverty_of_Holocaust_Survivors.m4a?rlkey=faoyfjwa8btfyel3vh9us3foj&raw=1",
+            "https://www.dropbox.com/scl/fi/v5s291fv641lu5zti0gw8/The_Hidden_Poverty_of_Holocaust_Survivors.m4a?rlkey=faoyfjwa8btfyel3vh9us3foj&dl=1",
+            "https://dl.dropboxusercontent.com/scl/fi/v5s291fv641lu5zti0gw8/The_Hidden_Poverty_of_Holocaust_Survivors.m4a?rlkey=faoyfjwa8btfyel3vh9us3foj"
+        ];
+        let sourceIndex = 0;
+
+        const formatTime = (seconds) => {
+            if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
+            const totalSeconds = Math.floor(seconds);
+            const minutes = Math.floor(totalSeconds / 60);
+            const remainingSeconds = totalSeconds % 60;
+            return `${minutes}:${String(remainingSeconds).padStart(2, "0")}`;
+        };
+
+        const updatePlayStateUI = () => {
+            const isPaused = audio.paused;
+            playIcon.textContent = isPaused ? "play_arrow" : "pause";
+            playButton.setAttribute("aria-label", isPaused ? "Play podcast episode" : "Pause podcast episode");
+        };
+
+        const updateProgressUI = () => {
+            if (!Number.isFinite(audio.duration) || audio.duration <= 0) {
+                progressInput.value = "0";
+                progressInput.style.background = "rgba(255, 255, 255, 0.25)";
+                return;
+            }
+            const value = (audio.currentTime / audio.duration) * 100;
+            progressInput.value = String(value);
+            progressInput.style.background = `linear-gradient(to right, #ffffff 0%, #ffffff ${value}%, rgba(255, 255, 255, 0.25) ${value}%, rgba(255, 255, 255, 0.25) 100%)`;
+        };
+
+        const switchToNextSource = () => {
+            if (sourceIndex >= sources.length - 1) return;
+            const wasPlaying = !audio.paused;
+            sourceIndex += 1;
+            audio.src = sources[sourceIndex];
+            audio.load();
+            if (wasPlaying) {
+                audio.play().catch(() => {});
+            }
+        };
+
+        playButton.addEventListener("click", () => {
+            if (audio.paused) {
+                audio.play().catch(() => {});
+            } else {
+                audio.pause();
+            }
+        });
+
+        progressInput.addEventListener("input", (event) => {
+            if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+            const target = event.target;
+            const percent = Number(target.value);
+            audio.currentTime = (percent / 100) * audio.duration;
+            updateProgressUI();
+        });
+
+        audio.addEventListener("loadedmetadata", () => {
+            durationLabel.textContent = formatTime(audio.duration);
+            updateProgressUI();
+        });
+        audio.addEventListener("timeupdate", () => {
+            currentTimeLabel.textContent = formatTime(audio.currentTime);
+            updateProgressUI();
+        });
+        audio.addEventListener("play", updatePlayStateUI);
+        audio.addEventListener("pause", updatePlayStateUI);
+        audio.addEventListener("ended", () => {
+            audio.currentTime = 0;
+            updatePlayStateUI();
+            updateProgressUI();
+        });
+        audio.addEventListener("error", switchToNextSource);
+
+        audio.src = sources[sourceIndex];
+        updatePlayStateUI();
+        updateProgressUI();
+    })();
+</script>
 </body></html>
