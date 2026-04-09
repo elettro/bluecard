@@ -1,275 +1,1611 @@
-STITCH PROMPT
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Hologram | The Blue Card</title>
+  <meta
+    name="description"
+    content="The Blue Card’s Interactive Hologram Program brings Holocaust education to life through the story of survivor Sonia Warshawski."
+  />
+  <style>
+    :root{
+      --blue:#25479b;
+      --blue-deep:#17306f;
+      --blue-soft:#eaf0ff;
+      --sky:#cfe0ff;
+      --red:#9d1f1f;
+      --text:#1c2640;
+      --muted:#5d6a86;
+      --white:#ffffff;
+      --line:rgba(37,71,155,.14);
+      --shadow:0 18px 60px rgba(14,32,79,.14);
+      --shadow-soft:0 10px 30px rgba(14,32,79,.10);
+      --radius:22px;
+      --max:1240px;
+    }
 
-Redesign the Blue Card “Interactive Hologram” page into a visually elevated, emotionally respectful, high-tech landing page that presents the program as both historically important and technologically advanced.
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#f7f9fe;
+      line-height:1.6;
+    }
 
-Goal:
-Create a polished, modern page that makes visitors immediately understand this is a rare educational experience powered by an AI-driven hologram of real Holocaust survivor Sonia Warshawski. The page should feel solemn, credible, premium, and inspiring. It should also drive clicks to the primary CTA: Book Event.
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
 
-Visual direction:
-Use the style language of BlueCardFund.org so the page still feels on-brand, but raise the production value significantly. The design should feel cleaner, more immersive, more contemporary, and more premium than the current page. Blend trust, dignity, education, and advanced technology.
+    .container{
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
+    }
 
-Design mood:
-Respectful
-Human
-Historic
-High-tech
-Immersive
-Non-flashy
-Emotionally resonant
+    .site-header{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:1000;
+      padding:16px 0;
+      transition:.25s ease;
+      background:linear-gradient(to bottom, rgba(11,21,53,.72), rgba(11,21,53,.18));
+      backdrop-filter:blur(8px);
+    }
 
-Layout requirements:
+    .site-header.scrolled{
+      background:rgba(15,31,77,.92);
+      box-shadow:0 10px 35px rgba(0,0,0,.18);
+    }
 
-Fullscreen hero section with a background YouTube video using:
-https://youtu.be/bndDX76e1mI?si=Bno_q60nWz64xJ-S
+    .nav-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
 
-Make the video feel cinematic, darkened slightly with a blue overlay for text readability.
-Overlay headline should be large and powerful.
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      color:#fff;
+      min-width:0;
+    }
 
-Recommended hero copy:
-Interactive Holocaust Education. Brought to Life.
-Subheadline:
-The Blue Card’s Innovative Holocaust Education Program combines real survivor testimony, advanced hologram technology, and guided discussion to create an unforgettable learning experience.
-Primary CTA:
-Book Event
-Secondary CTA:
-Meet Sonia
+    .brand-mark{
+      width:54px;
+      height:54px;
+      border-radius:14px;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.2);
+      display:grid;
+      place-items:center;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
+      overflow:hidden;
+      flex:0 0 auto;
+    }
 
-Add a credibility strip directly under the hero with logos or styled endorsement cards for:
-Kings Bay Y
-A School Without Walls
-Temple Sholom
-Also include a short line such as:
-Trusted by schools, community organizations, and educational leaders.
-Create a section titled:
-What Makes This Experience Different
-Use 3 to 4 feature cards with iconography and premium spacing.
-Feature ideas:
-AI-powered hologram interaction
-Real Holocaust survivor testimony
-On-site program delivered to your organization
-No cost to schools and organizations
-Create a section that explains the experience in a clean step-by-step format:
-Watch Big Sonia documentary
-Interact with Sonia’s hologram
-Discuss empathy, antisemitism, and standing up to hate
-Create a “Meet Sonia” section with a strong portrait or hologram device visual.
-Use the provided Sonia content and format it into readable, elegant storytelling blocks.
-Make this section feel human and personal.
-Do not dump a wall of text.
-Break it into digestible content with headings.
-Add a visually striking “Why It Matters Now” section.
-Focus on:
-Holocaust education
-Human connection
-Empathy
-Antisemitism awareness
-Critical thinking
-Living history through technology
-Add an endorsements/testimonials section.
-Use three polished cards quoting and summarizing the supplied letters from:
-Kings Bay Y
-A School Without Walls
-Temple Sholom
-Each card should feel formal and trustworthy.
-Optionally include a “Read More” interaction style if space is tight.
-Add a section showing partnership breadth and reach.
-Use the supplied partnership collage and advocacy visuals as inspiration.
-Headline idea:
-Bringing Holocaust Education to Schools, Communities, and Institutions
-Supporting text should emphasize broad community adoption and educational relevance.
-Add a CTA section near the bottom with strong contrast.
-Headline:
-Bring This Powerful Experience to Your School or Organization
-Body:
-This program is fully delivered by The Blue Card, includes all materials, and is offered at no cost.
-Primary CTA button:
-Book Event
-Secondary contact:
-info@bluecardfund.org
-Footer area should remain brand-consistent with Blue Card styling.
+    .brand-mark span{
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-align:center;
+      line-height:1.15;
+      padding:4px;
+    }
 
-Content to integrate:
-The Blue Card’s Innovative Holocaust Education Program brings together history and modern-day technology for a one-of-a-kind interactive experience.
+    .brand-text{
+      min-width:0;
+    }
 
-With the help of an AI-powered hologram of real Holocaust survivor Sonia Warshawski, The Blue Card will bring the lessons of the Holocaust to your school, organization, community center, or place of business. Sonia’s inspiring and humbling story is like no other, and we want to bring it to life for you.
+    .brand-text strong{
+      display:block;
+      font-size:16px;
+      letter-spacing:.02em;
+    }
 
-This program is best suited for students in sixth grade and up, but is also available for adults. We provide all necessary materials and handouts, and bring everything directly to you. The best part is, there is absolutely no cost to you or your organization, so we encourage you to take advantage of this free and easy resource today.
+    .brand-text small{
+      display:block;
+      font-size:12px;
+      opacity:.86;
+    }
 
-To inquire about this amazing program, send an email to info@bluecardfund.org
-, or click the event request button on this page to begin collaborating with us.
+    .nav-actions{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
 
-Meet Sonia content:
-Sonia Warshawski, née Grynstein, was born November 10, 1925, in Miezric, Poland. She was 13 when the war broke out, and 15 when Nazis forced the Jews of her town into the Miezric Ghetto. Sonia was imprisoned in Auschwitz, Majdanek, and Bergen-Belsen, where she was later liberated by British troops at age 19. She immigrated to the United States in 1948 and settled in Kansas City, Kansas.
+    .nav-link{
+      color:#fff;
+      font-size:14px;
+      font-weight:700;
+      opacity:.95;
+    }
 
-Later in life, Sonia became known for sharing her story with people of all ages and backgrounds from her tailor shop in a small shopping mall. Her voice reached classrooms, synagogues, churches, theaters, museums, and even prisons. Her story and spirit were also featured in the documentary Big Sonia, which has educated audiences across the United States and internationally.
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:50px;
+      padding:0 22px;
+      border-radius:999px;
+      font-weight:800;
+      letter-spacing:.01em;
+      transition:.2s ease;
+      border:1px solid transparent;
+      cursor:pointer;
+    }
 
-The Blue Card is honored to continue sharing Sonia’s story through this program.
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{
+      background:linear-gradient(135deg, #d43a3a, #9d1f1f);
+      color:#fff;
+      box-shadow:0 16px 36px rgba(157,31,31,.28);
+    }
 
-Use these endorsement themes:
-Kings Bay Y letter:
-Students actively engaged with the hologram, found it educational and unique, and the portable setup made it practical for schools and community spaces.
+    .btn-secondary{
+      background:rgba(255,255,255,.10);
+      color:#fff;
+      border-color:rgba(255,255,255,.25);
+      backdrop-filter:blur(8px);
+    }
 
-A School Without Walls letter:
-The combination of Sonia’s holographic testimony and the Big Sonia documentary created meaningful classroom discussion about justice, accountability, empathy, and the lasting effects of trauma.
+    .btn-light{
+      background:#fff;
+      color:var(--blue-deep);
+      box-shadow:var(--shadow-soft);
+    }
 
-Temple Sholom letter:
-The presentation was highly engaging, easy to set up, and effective for both religious and secular students. It created strong emotional and educational impact.
+    .hero{
+      position:relative;
+      min-height:100vh;
+      color:#fff;
+      overflow:hidden;
+      background:#0d1f53;
+    }
 
-Style notes:
-Use Blue Card brand blues, white, soft neutrals, and refined contrast.
-Subtle glow, glass, or digital framing effects are welcome if tasteful.
-Avoid anything gimmicky, sci-fi, loud, or entertainment-like.
-The experience should feel advanced, not flashy.
-Typography should feel clear, elegant, and authoritative.
-Prioritize spacious layout, strong hierarchy, and excellent mobile responsiveness.
+    .hero-video{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+    }
 
-Primary success metric:
-The page should increase interest and event booking by making the program feel important, credible, modern, and easy to request.
+    .hero-video iframe{
+      position:absolute;
+      top:50%;
+      left:50%;
+      width:177.77777778vh;
+      height:56.25vw;
+      min-width:100%;
+      min-height:100%;
+      transform:translate(-50%, -50%) scale(1.1);
+      filter:saturate(.95) contrast(1.02);
+    }
 
-CODEX PROMPT
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(7,17,48,.58) 0%, rgba(12,32,86,.72) 36%, rgba(10,26,72,.86) 100%),
+        radial-gradient(circle at 70% 30%, rgba(97,165,255,.22), transparent 32%),
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 20%);
+    }
 
-Create a new standalone page at /interactive-hologram/index.html for the Blue Card website.
+    .hero-grid{
+      position:relative;
+      z-index:2;
+      min-height:100vh;
+      display:grid;
+      align-items:center;
+      padding:120px 0 60px;
+    }
 
-Goal:
-Build a polished, responsive, production-ready HTML page for The Blue Card’s Interactive Hologram program. The page must match the live BlueCardFund.org brand style while upgrading the UX to feel more premium, immersive, and high-tech. The page should present the program as a respectful but visually impressive educational experience powered by an AI-driven hologram of real Holocaust survivor Sonia Warshawski.
+    .hero-panel{
+      width:min(760px, 100%);
+      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:28px;
+      padding:34px;
+      box-shadow:0 30px 80px rgba(0,0,0,.22);
+      backdrop-filter:blur(12px);
+      position:relative;
+      overflow:hidden;
+    }
 
-Primary CTA:
-Prominently feature a “Book Event” button above the fold and repeat it throughout the page.
+    .hero-panel::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:-30%;
+      width:26%;
+      height:100%;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+      transform:skewX(-18deg);
+      animation:sweep 7s linear infinite;
+    }
 
-Page requirements:
+    @keyframes sweep{
+      0%{left:-35%}
+      100%{left:130%}
+    }
 
-Fullscreen video hero
-Use a fullscreen YouTube background embed for:
-https://youtu.be/bndDX76e1mI?si=Bno_q60nWz64xJ-S
-Include a dark blue overlay for readability.
-Center or left-align a strong hero content block.
-Hero headline:
-Interactive Holocaust Education. Brought to Life.
-Hero subheadline:
-The Blue Card’s Innovative Holocaust Education Program combines real survivor testimony, advanced hologram technology, and guided discussion to create an unforgettable learning experience.
-Add two buttons:
-Primary: Book Event
-Secondary: Meet Sonia
-Add a subtle animated cue to scroll down.
-Brand-consistent styling
-Pull visual cues from the live site BlueCardFund.org
-Use a palette based on Blue Card blues, white, off-white, and light gray
-The page should feel respectful, clean, modern, and strong
-Add tasteful elevated effects such as soft shadows, gentle gradients, glassmorphism panels, and subtle glow lines around hologram-themed sections
-Avoid anything cartoonish, flashy, or tacky
-Page sections in this order
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.18);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
 
-A. Hero
+    .hero h1{
+      margin:0 0 16px;
+      font-size:clamp(40px, 6vw, 72px);
+      line-height:.98;
+      letter-spacing:-.03em;
+      max-width:12ch;
+    }
 
-B. Trust / endorsement strip
+    .hero p{
+      margin:0;
+      max-width:60ch;
+      color:rgba(255,255,255,.92);
+      font-size:clamp(17px, 2vw, 21px);
+    }
 
-Create a horizontal section or cards highlighting:
-Kings Bay Y
-A School Without Walls
-Temple Sholom
-Add supporting text:
-Trusted by schools, community organizations, and educational leaders.
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:26px;
+    }
 
-C. Intro / program overview
+    .hero-note{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:14px;
+      margin-top:28px;
+    }
 
-Use this content, but rewrite it into clean readable paragraphs and supporting bullets:
-The Blue Card’s Innovative Holocaust Education Program brings together history and modern-day technology for a one-of-a-kind interactive experience.
-With the help of an AI-powered hologram of real Holocaust survivor Sonia Warshawski, The Blue Card will bring the lessons of the Holocaust to your school, organization, community center, or place of business.
-This program is best suited for students in sixth grade and up, but is also available for adults.
-We provide all necessary materials and handouts, and bring everything directly to you.
-There is absolutely no cost to you or your organization.
+    .hero-stat{
+      padding:14px 16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+    }
 
-D. What makes this experience different
+    .hero-stat strong{
+      display:block;
+      font-size:22px;
+      line-height:1.1;
+      margin-bottom:4px;
+    }
 
-Build 4 premium cards with icons:
-AI-powered hologram interaction
-Real survivor testimony
-Delivered on-site by The Blue Card
-Free educational program
+    .hero-stat span{
+      display:block;
+      font-size:13px;
+      color:rgba(255,255,255,.82);
+    }
 
-E. How the experience works
+    .scroll-cue{
+      position:absolute;
+      bottom:22px;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:2;
+      color:#fff;
+      text-align:center;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      opacity:.86;
+    }
 
-Create a 3-step timeline or icon row using:
-Step 1: View Big Sonia documentary
-Step 2: Interact with Sonia’s lifelike hologram
-Step 3: Discuss empathy, antisemitism, and standing up to hate
+    .scroll-cue::after{
+      content:"";
+      width:2px;
+      height:34px;
+      background:rgba(255,255,255,.6);
+      display:block;
+      margin:10px auto 0;
+      animation:down 1.8s ease-in-out infinite;
+    }
 
-F. Meet Sonia
+    @keyframes down{
+      0%,100%{transform:translateY(0);opacity:.4}
+      50%{transform:translateY(8px);opacity:1}
+    }
 
-Use the supplied biographical text and rewrite it into a compelling biography layout
-Include an image area for Sonia or the hologram frame
-Break the story into readable sections with mini-headings such as:
-Early Life
-The Holocaust
-A Life of Testimony
-Continuing Her Legacy
+    section{
+      padding:88px 0;
+      position:relative;
+    }
 
-Use this source content:
-Sonia Warshawski, née Grynstein, was born November 10, 1925, in Miezric, Poland. She was 13 when the war broke out, and just 15 when Nazis forced the Jews in her town into the Miezric Ghetto. Sonia was imprisoned at Auschwitz, Majdanek, and Bergen-Belsen, where she was liberated by British troops at age 19. She immigrated to the US in 1948 and settled in Kansas City, Kansas. Decades later she became known for telling her story from her tailor shop and in schools, synagogues, churches, museums, theaters, and prisons. Her life and voice reached many through the Big Sonia documentary. The Blue Card is honored to continue sharing Sonia’s story through this program.
+    .section-head{
+      max-width:760px;
+      margin-bottom:34px;
+    }
 
-G. Why it matters now
+    .section-kicker{
+      color:var(--blue);
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
 
-Create a compelling section with stronger visual treatment
-Focus on:
-preserving living memory
-confronting antisemitism
-building empathy
-connecting history to the present
-encouraging reflection and responsible action
+    .section-head h2{
+      margin:0 0 12px;
+      font-size:clamp(30px, 4.5vw, 52px);
+      line-height:1.02;
+      letter-spacing:-.03em;
+    }
 
-H. Endorsements / testimonials
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:18px;
+    }
 
-Build 3 clean quote cards or expandable blocks based on these letters:
-Kings Bay Y:
-Students found the experience engaging, educational, and unique. The portability of the setup made it practical for schools and community spaces.
-A School Without Walls:
-Sonia’s holographic testimony and Big Sonia helped students explore justice, accountability, empathy, and healing in meaningful ways.
-Temple Sholom:
-The presentation was highly engaging, easy to set up, and effective for both religious and secular school audiences.
-Use institution names clearly
-Optional small “Read full endorsement” links or expandable areas
+    .trust-strip{
+      padding:34px 0;
+      background:#fff;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      box-shadow:0 10px 35px rgba(18,37,88,.05);
+    }
 
-I. Reach / partnership section
+    .trust-row{
+      display:grid;
+      grid-template-columns:280px 1fr;
+      gap:28px;
+      align-items:center;
+    }
 
-Build a visual section showing the broad range of schools and organizations involved
-This can be logo-grid style, badge style, or polished collage layout
-Use messaging around partnership, educational impact, and growing reach
+    .trust-copy h3{
+      margin:0 0 10px;
+      font-size:28px;
+      line-height:1.05;
+      color:var(--blue-deep);
+    }
 
-J. CTA section
+    .trust-copy p{
+      margin:0;
+      color:var(--muted);
+    }
 
-Strong full-width section near bottom
-Headline:
-Bring This Powerful Experience to Your School or Organization
-Supporting text:
-The Blue Card delivers the full program, including materials and setup, at no cost.
-Buttons:
-Book Event
-Email Us
-Email should link to:
-mailto:info@bluecardfund.org
-Functional notes
-Make the page fully responsive
-Build with clean semantic HTML, internal CSS, and a small amount of vanilla JS only if needed
-No frameworks
-Smooth scrolling for anchor links
-Sticky header or floating CTA is a plus if tasteful
-YouTube video should degrade well on mobile
-If autoplay background video is not practical on mobile, show a strong poster-style fallback section
-Assets and placeholders
-Use clearly labeled placeholder image paths if exact assets are not yet available, such as:
-/wp-content/uploads/interactive-hologram/sonia-hologram.jpg
-/wp-content/uploads/interactive-hologram/endorsement-kingsbayy.jpg
-/wp-content/uploads/interactive-hologram/endorsement-schoolwithoutwalls.jpg
-/wp-content/uploads/interactive-hologram/endorsement-templesholom.jpg
-/wp-content/uploads/interactive-hologram/partnership-collage.jpg
-Add comments in the HTML for where final Blue Card assets should be swapped in
-Button targets
-Primary Book Event button should link to a placeholder anchor or Blue Card event request URL if available
-Secondary Meet Sonia button should scroll to the Sonia section
-Output
-Return one complete self-contained /interactive-hologram/index.html file
-Include all HTML, CSS, and JS in the same file
-Make it polished enough to drop into GitHub Pages or adapt into WordPress custom HTML
+    .trust-cards{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:16px;
+    }
 
-Optional enhancement:
-Add a subtle hologram-inspired animated light sweep or glowing frame effect around the Sonia feature image or hero panel, but keep it elegant and minimal.
+    .trust-card{
+      background:linear-gradient(180deg,#fff,#f6f8ff);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:18px;
+      min-height:130px;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .trust-card strong{
+      display:block;
+      font-size:17px;
+      color:var(--blue-deep);
+      margin-bottom:8px;
+    }
+
+    .trust-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .overview{
+      background:linear-gradient(180deg, #f7f9fe 0%, #eef4ff 100%);
+    }
+
+    .overview-grid{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:34px;
+      align-items:stretch;
+    }
+
+    .panel{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .overview-copy p{
+      margin:0 0 16px;
+      color:#394867;
+      font-size:17px;
+    }
+
+    .bullet-list{
+      display:grid;
+      gap:14px;
+      margin-top:20px;
+    }
+
+    .bullet-item{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      padding:14px 16px;
+      border-radius:18px;
+      background:var(--blue-soft);
+      border:1px solid rgba(37,71,155,.12);
+    }
+
+    .bullet-icon{
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      background:var(--blue);
+      color:#fff;
+      flex:0 0 auto;
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      font-size:15px;
+    }
+
+    .bullet-item strong{
+      display:block;
+      margin-bottom:3px;
+      color:var(--blue-deep);
+      font-size:15px;
+    }
+
+    .bullet-item span{
+      display:block;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .hologram-visual{
+      position:relative;
+      min-height:100%;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 50% 12%, rgba(111,181,255,.28), transparent 26%),
+        linear-gradient(180deg,#10286d 0%, #1b3f9b 100%);
+      color:#fff;
+    }
+
+    .hologram-visual::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, transparent, rgba(255,255,255,.06)),
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,.10) 0px,
+          rgba(255,255,255,.10) 1px,
+          transparent 3px,
+          transparent 8px
+        );
+      mix-blend-mode:screen;
+      pointer-events:none;
+      opacity:.26;
+    }
+
+    .holo-frame{
+      width:min(310px, 74%);
+      aspect-ratio: 9 / 16;
+      border-radius:28px;
+      padding:14px;
+      border:2px solid rgba(255,255,255,.6);
+      box-shadow:
+        0 0 0 8px rgba(255,255,255,.08),
+        0 0 40px rgba(132,198,255,.34),
+        inset 0 0 40px rgba(132,198,255,.18);
+      position:relative;
+      background:rgba(255,255,255,.06);
+      z-index:2;
+    }
+
+    .holo-frame img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:20px;
+      background:#dfe8ff;
+    }
+
+    .holo-tag{
+      position:absolute;
+      left:50%;
+      bottom:18px;
+      transform:translateX(-50%);
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(14,29,72,.72);
+      border:1px solid rgba(255,255,255,.22);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    .floating-note{
+      position:absolute;
+      top:24px;
+      right:24px;
+      max-width:230px;
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.16);
+      backdrop-filter:blur(10px);
+      z-index:2;
+      font-size:14px;
+      line-height:1.45;
+      color:rgba(255,255,255,.95);
+    }
+
+    .features-grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .feature-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:24px;
+      box-shadow:var(--shadow-soft);
+      transition:.2s ease;
+    }
+
+    .feature-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 42px rgba(14,32,79,.12);
+    }
+
+    .feature-icon{
+      width:58px;
+      height:58px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      font-size:24px;
+      background:linear-gradient(180deg, #edf3ff, #dbe7ff);
+      color:var(--blue);
+      margin-bottom:18px;
+      border:1px solid rgba(37,71,155,.12);
+    }
+
+    .feature-card h3{
+      margin:0 0 10px;
+      font-size:20px;
+      line-height:1.1;
+      color:var(--blue-deep);
+    }
+
+    .feature-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .steps{
+      background:linear-gradient(180deg,#11275f 0%, #224696 100%);
+      color:#fff;
+      overflow:hidden;
+    }
+
+    .steps .section-kicker{color:#b9d0ff}
+    .steps .section-head h2{color:#fff}
+    .steps .section-head p{color:rgba(255,255,255,.85)}
+
+    .steps-row{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:20px;
+      position:relative;
+    }
+
+    .step-card{
+      position:relative;
+      padding:28px;
+      border-radius:26px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);
+      backdrop-filter:blur(8px);
+    }
+
+    .step-num{
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:#fff;
+      color:var(--blue-deep);
+      font-weight:900;
+      font-size:22px;
+      margin-bottom:18px;
+      box-shadow:0 12px 24px rgba(0,0,0,.15);
+    }
+
+    .step-card h3{
+      margin:0 0 10px;
+      font-size:24px;
+      line-height:1.06;
+    }
+
+    .step-card p{
+      margin:0;
+      color:rgba(255,255,255,.86);
+      font-size:16px;
+    }
+
+    .sonia-grid{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:32px;
+      align-items:start;
+    }
+
+    .sonia-visual{
+      position:sticky;
+      top:110px;
+      background:linear-gradient(180deg,#0f245d,#2950aa);
+      border-radius:28px;
+      padding:26px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      min-height:720px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .sonia-visual::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 50% 12%, rgba(140,198,255,.22), transparent 20%),
+        repeating-linear-gradient(to bottom, rgba(255,255,255,.10) 0, rgba(255,255,255,.10) 1px, transparent 3px, transparent 8px);
+      opacity:.24;
+      pointer-events:none;
+    }
+
+    .sonia-visual .holo-frame{
+      width:min(360px, 86%);
+    }
+
+    .sonia-badge{
+      position:absolute;
+      top:24px;
+      left:24px;
+      z-index:3;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.18);
+      padding:10px 14px;
+      border-radius:999px;
+      color:#fff;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+
+    .sonia-copy{
+      display:grid;
+      gap:18px;
+    }
+
+    .story-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:24px;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .story-card h3{
+      margin:0 0 10px;
+      font-size:24px;
+      color:var(--blue-deep);
+    }
+
+    .story-card p{
+      margin:0;
+      color:#41506e;
+      font-size:16px;
+    }
+
+    .impact{
+      background:
+        linear-gradient(180deg, rgba(37,71,155,.05), rgba(37,71,155,.10)),
+        #fff;
+    }
+
+    .impact-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:28px;
+      align-items:stretch;
+    }
+
+    .impact-points{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:16px;
+      margin-top:24px;
+    }
+
+    .impact-point{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:22px;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .impact-point strong{
+      display:block;
+      font-size:17px;
+      color:var(--blue-deep);
+      margin-bottom:8px;
+    }
+
+    .impact-point p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .impact-visual{
+      position:relative;
+      border-radius:28px;
+      overflow:hidden;
+      background:linear-gradient(180deg,#d9e6ff,#bcd3ff);
+      min-height:540px;
+      border:1px solid rgba(37,71,155,.10);
+      box-shadow:var(--shadow);
+      display:grid;
+      place-items:center;
+      padding:26px;
+    }
+
+    .impact-ring{
+      width:min(420px, 90%);
+      aspect-ratio:1/1;
+      border-radius:50%;
+      border:1px solid rgba(37,71,155,.16);
+      display:grid;
+      place-items:center;
+      position:relative;
+      background:radial-gradient(circle, rgba(255,255,255,.8), rgba(255,255,255,.35));
+    }
+
+    .impact-ring::before,
+    .impact-ring::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      inset:10%;
+      border:1px dashed rgba(37,71,155,.18);
+    }
+
+    .impact-ring::after{
+      inset:24%;
+    }
+
+    .impact-core{
+      width:54%;
+      aspect-ratio:1/1;
+      border-radius:50%;
+      background:linear-gradient(180deg, #244799, #16306f);
+      color:#fff;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      padding:22px;
+      font-weight:800;
+      font-size:28px;
+      line-height:1.1;
+      box-shadow:0 20px 50px rgba(23,48,111,.28);
+    }
+
+    .impact-orbit{
+      position:absolute;
+      width:122px;
+      min-height:122px;
+      padding:16px;
+      border-radius:22px;
+      background:#fff;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow-soft);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      text-align:center;
+      font-size:13px;
+      font-weight:700;
+      color:var(--blue-deep);
+    }
+
+    .impact-orbit.one{top:7%; left:50%; transform:translateX(-50%)}
+    .impact-orbit.two{right:4%; top:48%; transform:translateY(-50%)}
+    .impact-orbit.three{bottom:7%; left:50%; transform:translateX(-50%)}
+    .impact-orbit.four{left:4%; top:48%; transform:translateY(-50%)}
+
+    .quotes-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .quote-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:24px;
+      box-shadow:var(--shadow-soft);
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .quote-mark{
+      width:54px;
+      height:54px;
+      border-radius:18px;
+      background:linear-gradient(180deg, #edf3ff, #dce8ff);
+      color:var(--blue);
+      display:grid;
+      place-items:center;
+      font-size:28px;
+      font-weight:900;
+      border:1px solid rgba(37,71,155,.12);
+    }
+
+    .quote-card p{
+      margin:0;
+      color:#44526f;
+      font-size:16px;
+    }
+
+    .quote-meta strong{
+      display:block;
+      color:var(--blue-deep);
+      font-size:17px;
+      margin-bottom:3px;
+    }
+
+    .quote-meta span{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .reach{
+      background:linear-gradient(180deg,#f6f9ff 0%, #edf3ff 100%);
+    }
+
+    .logo-grid{
+      display:grid;
+      grid-template-columns:repeat(5, minmax(0,1fr));
+      gap:16px;
+      margin-top:24px;
+    }
+
+    .logo-card{
+      min-height:118px;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:18px 14px;
+      box-shadow:var(--shadow-soft);
+      color:var(--blue-deep);
+      font-weight:800;
+      font-size:15px;
+      line-height:1.25;
+    }
+
+    .cta{
+      padding:92px 0;
+      background:linear-gradient(135deg, #17306f, #24489e 54%, #3a62bf);
+      color:#fff;
+      overflow:hidden;
+    }
+
+    .cta-wrap{
+      position:relative;
+      border-radius:30px;
+      border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      padding:42px;
+      box-shadow:0 30px 80px rgba(0,0,0,.18);
+      backdrop-filter:blur(10px);
+    }
+
+    .cta-wrap::before{
+      content:"";
+      position:absolute;
+      width:240px;
+      height:240px;
+      right:-60px;
+      top:-60px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,.24), transparent 70%);
+      pointer-events:none;
+    }
+
+    .cta-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:24px;
+      align-items:center;
+    }
+
+    .cta h2{
+      margin:0 0 14px;
+      font-size:clamp(32px, 5vw, 56px);
+      line-height:1;
+      letter-spacing:-.03em;
+    }
+
+    .cta p{
+      margin:0;
+      max-width:58ch;
+      color:rgba(255,255,255,.88);
+      font-size:18px;
+    }
+
+    .cta-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:flex-start;
+    }
+
+    .footer{
+      background:#0f214f;
+      color:rgba(255,255,255,.86);
+      padding:34px 0 42px;
+    }
+
+    .footer-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer small{
+      font-size:13px;
+      line-height:1.6;
+    }
+
+    .floating-cta{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:1001;
+      box-shadow:0 18px 40px rgba(157,31,31,.34);
+    }
+
+    @media (max-width: 1120px){
+      .features-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
+      .quotes-grid{grid-template-columns:1fr}
+      .logo-grid{grid-template-columns:repeat(3, minmax(0,1fr))}
+      .trust-row,
+      .overview-grid,
+      .impact-grid,
+      .cta-grid,
+      .sonia-grid{grid-template-columns:1fr}
+      .sonia-visual{
+        position:relative;
+        top:auto;
+        min-height:580px;
+      }
+      .trust-cards{grid-template-columns:1fr}
+    }
+
+    @media (max-width: 820px){
+      .site-header{
+        padding:12px 0;
+      }
+
+      .nav-wrap{
+        align-items:flex-start;
+      }
+
+      .nav-actions .nav-link{
+        display:none;
+      }
+
+      .hero-grid{
+        padding:112px 0 56px;
+      }
+
+      .hero-panel{
+        padding:24px;
+        border-radius:24px;
+      }
+
+      .hero-note{
+        grid-template-columns:1fr;
+      }
+
+      .steps-row,
+      .impact-points{
+        grid-template-columns:1fr;
+      }
+
+      .logo-grid{
+        grid-template-columns:repeat(2, minmax(0,1fr));
+      }
+
+      .trust-row{
+        gap:20px;
+      }
+
+      .cta-wrap{
+        padding:28px;
+      }
+
+      .floating-note{
+        position:relative;
+        top:auto;
+        right:auto;
+        margin:0 auto 20px;
+        max-width:100%;
+      }
+    }
+
+    @media (max-width: 640px){
+      section{padding:68px 0}
+      .container{width:min(var(--max), calc(100% - 20px))}
+      .btn{width:100%}
+      .hero-actions .btn{width:100%}
+      .hero h1{max-width:none}
+      .brand-text small{display:none}
+      .logo-grid{grid-template-columns:1fr}
+      .feature-card,
+      .quote-card,
+      .story-card,
+      .panel{padding:20px}
+      .impact-visual{
+        min-height:520px;
+      }
+      .impact-ring{
+        width:100%;
+      }
+      .impact-orbit{
+        width:110px;
+        min-height:110px;
+        font-size:12px;
+      }
+      .floating-cta{
+        left:12px;
+        right:12px;
+      }
+      .floating-cta .btn{
+        width:100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{
+        scroll-behavior:auto !important;
+      }
+      .hero-panel::before,
+      .scroll-cue::after{
+        animation:none !important;
+      }
+      .btn:hover,
+      .feature-card:hover{
+        transform:none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-wrap">
+      <a class="brand" href="https://bluecardfund.org/" target="_blank" rel="noopener">
+        <div class="brand-mark">
+          <span>THE<br>BLUE CARD</span>
+        </div>
+        <div class="brand-text">
+          <strong>The Blue Card</strong>
+          <small>Interactive Holocaust Education Program</small>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <a class="nav-link" href="#program">Program</a>
+        <a class="nav-link" href="#meet-sonia">Meet Sonia</a>
+        <a class="nav-link" href="#endorsements">Endorsements</a>
+        <a class="btn btn-secondary" href="#meet-sonia">Meet Sonia</a>
+        <a class="btn btn-primary" href="#book-event">Book Event</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-video" aria-hidden="true">
+        <iframe
+          src="https://www.youtube.com/embed/bndDX76e1mI?autoplay=1&mute=1&controls=0&loop=1&playlist=bndDX76e1mI&playsinline=1&rel=0&modestbranding=1&showinfo=0"
+          title="Interactive Hologram Program Video"
+          frameborder="0"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="hero-overlay"></div>
+
+      <div class="container hero-grid">
+        <div class="hero-panel">
+          <div class="eyebrow">Innovative Holocaust Education Program</div>
+          <h1>Interactive Holocaust Education. Brought to Life.</h1>
+          <p>
+            The Blue Card’s groundbreaking program combines real survivor testimony,
+            advanced hologram technology, and guided discussion to create a deeply
+            human learning experience people remember.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#book-event">Book Event</a>
+            <a class="btn btn-secondary" href="#meet-sonia">Meet Sonia</a>
+          </div>
+
+          <div class="hero-note">
+            <div class="hero-stat">
+              <strong>AI-Powered</strong>
+              <span>A lifelike hologram experience built around Sonia Warshawski’s testimony.</span>
+            </div>
+            <div class="hero-stat">
+              <strong>No Cost</strong>
+              <span>The full program, setup, and materials are provided free of charge.</span>
+            </div>
+            <div class="hero-stat">
+              <strong>Delivered On-Site</strong>
+              <span>Available for schools, organizations, community centers, and adult audiences.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="scroll-cue" href="#program">Scroll</a>
+    </section>
+
+    <section class="trust-strip">
+      <div class="container trust-row">
+        <div class="trust-copy">
+          <h3>Trusted by schools, community organizations, and educational leaders.</h3>
+          <p>
+            Endorsements reflect strong engagement, practical delivery, and lasting classroom impact.
+          </p>
+        </div>
+
+        <div class="trust-cards">
+          <div class="trust-card">
+            <strong>Kings Bay Y</strong>
+            <p>Students were engaged, curious, and impressed by the realism and portability of the experience.</p>
+          </div>
+          <div class="trust-card">
+            <strong>A School Without Walls</strong>
+            <p>The combination of hologram testimony and Big Sonia created meaningful discussion about justice and empathy.</p>
+          </div>
+          <div class="trust-card">
+            <strong>Temple Sholom</strong>
+            <p>Highly engaging, easy to set up, and effective for both religious and secular educational settings.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="overview" id="program">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Program Overview</div>
+          <h2>A one-of-a-kind educational experience where living history meets modern technology.</h2>
+          <p>
+            This program brings Sonia Warshawski’s voice, story, and presence into the room in a format designed to hold attention and deepen reflection.
+          </p>
+        </div>
+
+        <div class="overview-grid">
+          <div class="panel overview-copy">
+            <p>
+              The Blue Card’s Innovative Holocaust Education Program brings together history and modern-day technology for a unique interactive presentation.
+            </p>
+            <p>
+              Through an AI-powered hologram of real Holocaust survivor Sonia Warshawski, participants engage with survivor testimony in a format that feels immediate, personal, and unforgettable.
+            </p>
+            <p>
+              The program is best suited for students in sixth grade and up, and is also available for adult groups. The Blue Card provides all materials, brings the full setup directly to you, and offers the experience at absolutely no cost.
+            </p>
+
+            <div class="bullet-list">
+              <div class="bullet-item">
+                <div class="bullet-icon">1</div>
+                <div>
+                  <strong>Ideal for schools and organizations</strong>
+                  <span>Bring the experience to classrooms, community centers, synagogues, nonprofits, and workplaces.</span>
+                </div>
+              </div>
+              <div class="bullet-item">
+                <div class="bullet-icon">2</div>
+                <div>
+                  <strong>All materials included</strong>
+                  <span>The Blue Card handles program materials, handouts, and delivery logistics.</span>
+                </div>
+              </div>
+              <div class="bullet-item">
+                <div class="bullet-icon">3</div>
+                <div>
+                  <strong>Free and easy to host</strong>
+                  <span>No cost to your organization. High educational value with a simple event request process.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel hologram-visual">
+            <div class="floating-note">
+              Designed to feel immersive and immediate. The technology supports the testimony. It never distracts from it.
+            </div>
+
+            <div class="holo-frame">
+              <!-- Swap image below with final approved Sonia hologram asset -->
+              <img src="https://bluecardfund.org/wp-content/uploads/2026/04/sonia-hologram-placeholder.jpg" alt="Sonia Warshawski hologram program visual" onerror="this.src='https://bluecardfund.org/wp-content/uploads/2026/04/holocaust-education-hologram-2.jpg';" />
+              <div class="holo-tag">Interactive Hologram Experience</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">What Makes It Different</div>
+          <h2>Built to feel personal. Designed to stay with people.</h2>
+          <p>
+            Every part of the experience is structured to create human connection, serious reflection, and strong educational value.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-icon">◈</div>
+            <h3>AI-powered hologram interaction</h3>
+            <p>
+              Sonia’s testimony is presented through an advanced format that helps audiences feel closer to her words and presence.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">✦</div>
+            <h3>Real survivor testimony</h3>
+            <p>
+              This is rooted in the lived experience of Sonia Warshawski. Her voice remains central throughout the program.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">▣</div>
+            <h3>Delivered on-site by The Blue Card</h3>
+            <p>
+              The Blue Card brings the program directly to your location with materials and setup included.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">✓</div>
+            <h3>Free educational program</h3>
+            <p>
+              There is no cost to host. That removes barriers and makes it easier for schools and organizations to participate.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">How The Experience Works</div>
+          <h2>Three clear stages. One lasting impact.</h2>
+          <p>
+            The program combines documentary storytelling, interactive technology, and guided discussion in a format that supports both emotional and educational depth.
+          </p>
+        </div>
+
+        <div class="steps-row">
+          <article class="step-card">
+            <div class="step-num">1</div>
+            <h3>View Big Sonia</h3>
+            <p>
+              Begin with the powerful documentary that introduces Sonia’s life, voice, and enduring legacy.
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-num">2</div>
+            <h3>Interact with Sonia’s hologram</h3>
+            <p>
+              Experience a lifelike presentation that brings testimony into the room in a vivid and memorable way.
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-num">3</div>
+            <h3>Discuss empathy and antisemitism</h3>
+            <p>
+              Guided reflection helps participants engage with history, responsibility, and the need to stand up to hate.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="meet-sonia">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Meet Sonia</div>
+          <h2>The life, courage, and legacy behind the experience.</h2>
+          <p>
+            Sonia Warshawski’s story is both devastating and deeply human. Her testimony continues to educate and move audiences across generations.
+          </p>
+        </div>
+
+        <div class="sonia-grid">
+          <div class="sonia-visual">
+            <div class="sonia-badge">Sonia Warshawski</div>
+            <div class="holo-frame">
+              <!-- Swap image below with final approved portrait or hologram frame -->
+              <img src="https://bluecardfund.org/wp-content/uploads/2026/04/sonia-hologram-placeholder.jpg" alt="Portrait of Holocaust survivor Sonia Warshawski" onerror="this.src='https://bluecardfund.org/wp-content/uploads/2026/04/holocaust-education-hologram-2.jpg';" />
+              <div class="holo-tag">Preserving testimony through technology</div>
+            </div>
+          </div>
+
+          <div class="sonia-copy">
+            <article class="story-card">
+              <h3>Early Life</h3>
+              <p>
+                Sonia Warshawski, née Grynstein, was born on November 10, 1925, in Miezric, Poland. She was 13 when war began and only 15 when Nazis forced the Jews of her town into the Miezric Ghetto.
+              </p>
+            </article>
+
+            <article class="story-card">
+              <h3>The Holocaust</h3>
+              <p>
+                Sonia was imprisoned in Auschwitz, Majdanek, and Bergen-Belsen. She witnessed the murder of her mother and survived some of the most notorious death camps of the Holocaust. She was liberated by British troops at age 19.
+              </p>
+            </article>
+
+            <article class="story-card">
+              <h3>A Life of Testimony</h3>
+              <p>
+                After immigrating to the United States in 1948 and settling in Kansas City, Kansas, Sonia later became known for sharing her story with anyone willing to listen. Her tailor shop became a place of extraordinary human connection. Her voice reached schools, museums, synagogues, churches, theaters, and even prisons.
+              </p>
+            </article>
+
+            <article class="story-card">
+              <h3>Continuing Her Legacy</h3>
+              <p>
+                Sonia’s life also reached many through the documentary <em>Big Sonia</em>. The Blue Card is honored to continue sharing her testimony through this interactive hologram program so new audiences can learn directly from her story with dignity, depth, and immediacy.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="impact">
+      <div class="container">
+        <div class="impact-grid">
+          <div>
+            <div class="section-head">
+              <div class="section-kicker">Why It Matters Now</div>
+              <h2>Preserving memory. Confronting hate. Building empathy through direct encounter.</h2>
+              <p>
+                Holocaust education becomes more urgent with every passing year. This program helps audiences connect historical truth to the present in a way that feels immediate and human.
+              </p>
+            </div>
+
+            <div class="impact-points">
+              <div class="impact-point">
+                <strong>Preserve living memory</strong>
+                <p>Technology helps extend the educational reach of survivor testimony with care and clarity.</p>
+              </div>
+              <div class="impact-point">
+                <strong>Confront antisemitism</strong>
+                <p>Participants engage directly with the consequences of hate and the need to resist it.</p>
+              </div>
+              <div class="impact-point">
+                <strong>Build empathy</strong>
+                <p>The experience encourages reflection, listening, and emotional understanding across generations.</p>
+              </div>
+              <div class="impact-point">
+                <strong>Connect history to today</strong>
+                <p>Guided discussion helps audiences consider justice, accountability, healing, and responsible action.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="impact-visual">
+            <div class="impact-ring">
+              <div class="impact-core">Living History</div>
+              <div class="impact-orbit one">Holocaust Education</div>
+              <div class="impact-orbit two">Empathy & Reflection</div>
+              <div class="impact-orbit three">Technology with Purpose</div>
+              <div class="impact-orbit four">Standing Up to Hate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="endorsements">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Endorsements</div>
+          <h2>What educators and community leaders said.</h2>
+          <p>
+            Responses consistently highlight the realism of the experience, the depth of student engagement, and the practical ease of bringing the program on-site.
+          </p>
+        </div>
+
+        <div class="quotes-grid">
+          <article class="quote-card">
+            <div class="quote-mark">“</div>
+            <p>
+              Students were attentive, engaged, and intrigued by the ability to communicate with Sonia through the hologram. The portable setup made the resource practical for schools and community spaces.
+            </p>
+            <div class="quote-meta">
+              <strong>Kings Bay Y</strong>
+              <span>Community education endorsement</span>
+            </div>
+          </article>
+
+          <article class="quote-card">
+            <div class="quote-mark">“</div>
+            <p>
+              Sonia’s holographic testimony and <em>Big Sonia</em> helped students explore justice, accountability, empathy, and healing in meaningful ways. The program created conversations that stayed with them long after the lesson.
+            </p>
+            <div class="quote-meta">
+              <strong>A School Without Walls</strong>
+              <span>Classroom impact endorsement</span>
+            </div>
+          </article>
+
+          <article class="quote-card">
+            <div class="quote-mark">“</div>
+            <p>
+              The presentation was highly engaging, easy to set up, and effective for both religious and secular students. It created strong emotional and educational impact across age groups.
+            </p>
+            <div class="quote-meta">
+              <strong>Temple Sholom</strong>
+              <span>School leadership endorsement</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="reach">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Growing Reach</div>
+          <h2>Bringing Holocaust education to schools, communities, and institutions.</h2>
+          <p>
+            This program is already resonating across a wide range of educational and community settings. The format is flexible, practical, and built for real-world use.
+          </p>
+        </div>
+
+        <div class="logo-grid">
+          <div class="logo-card">New York State Senate</div>
+          <div class="logo-card">NYC Council</div>
+          <div class="logo-card">Kings Bay Y</div>
+          <div class="logo-card">A School Without Walls</div>
+          <div class="logo-card">Temple Sholom</div>
+          <div class="logo-card">John Jay College</div>
+          <div class="logo-card">Baruch College</div>
+          <div class="logo-card">City College</div>
+          <div class="logo-card">Pace University</div>
+          <div class="logo-card">Touro University</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="book-event">
+      <div class="container">
+        <div class="cta-wrap">
+          <div class="cta-grid">
+            <div>
+              <div class="section-kicker" style="color:#c9dbff;">Book The Program</div>
+              <h2>Bring this powerful experience to your school or organization.</h2>
+              <p>
+                The Blue Card delivers the full program, including materials and setup, at no cost. Reach out today to start planning an event for your students, community, or team.
+              </p>
+            </div>
+
+            <div class="cta-actions">
+              <a class="btn btn-light" href="mailto:info@bluecardfund.org?subject=Interactive%20Hologram%20Program%20Inquiry">Email Us</a>
+              <a class="btn btn-primary" href="mailto:info@bluecardfund.org?subject=Book%20Interactive%20Hologram%20Event">Book Event</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <small>
+        The Blue Card. Assisting Holocaust Survivors in Need.<br>
+        171 Madison Ave, New York, NY 10016
+      </small>
+
+      <small>
+        info@bluecardfund.org<br>
+        BlueCardFund.org
+      </small>
+    </div>
+  </footer>
+
+  <div class="floating-cta">
+    <a class="btn btn-primary" href="mailto:info@bluecardfund.org?subject=Book%20Interactive%20Hologram%20Event">Book Event</a>
+  </div>
+
+  <script>
+    const header = document.getElementById('siteHeader');
+
+    const onScroll = () => {
+      if (window.scrollY > 24) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  </script>
+</body>
+</html>
