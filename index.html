@@ -121,6 +121,9 @@
             border: 2px solid #003f7d;
             background: #ffffff;
         }
+
+        .programs-section{padding:72px 20px 90px;overflow:hidden;background:linear-gradient(180deg,#f8fbfe 0%, #eef4f9 100%);}
+        .wrap{max-width:1360px;margin:0 auto;} .section-head{text-align:center;margin-bottom:28px;} .eyebrow{display:inline-block;margin-bottom:10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#d9a441;} .section-head h2{margin:0 0 12px;font-size:clamp(32px,5vw,54px);line-height:1.04;color:#0a4a89;} .section-head p{margin:0 auto;max-width:860px;font-size:18px;line-height:1.55;color:#5f7287;} .carousel-shell{position:relative;margin-top:26px;padding:0 64px;} .nav-btn{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border:none;border-radius:999px;background:rgba(255,255,255,.96);color:#0a4a89;cursor:pointer;box-shadow:0 10px 24px rgba(10,74,137,.16);transition:transform .2s ease, background .2s ease, color .2s ease, opacity .2s ease;z-index:5;display:flex;align-items:center;justify-content:center;padding:0;} .nav-btn:hover{background:#0d5cab;color:#fff;} .nav-btn:active{transform:translateY(-50%) scale(.97);} .nav-btn svg{width:18px;height:18px;display:block;} .nav-btn.prev{left:0;} .nav-btn.next{right:0;} .carousel-viewport{width:100%;overflow:hidden;border-radius:30px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none;} .carousel-viewport.dragging{cursor:grabbing;} .carousel-track{display:flex;transition:transform .55s ease;will-change:transform;} .carousel-track.no-transition{transition:none;} .slide{flex:0 0 33.333333%;padding:12px;} .card{height:100%;min-height:540px;background:#fff;border:1px solid rgba(13,92,171,.10);border-radius:22px;overflow:hidden;box-shadow:0 14px 34px rgba(10,74,137,.14);display:flex;flex-direction:column;} .card-media{aspect-ratio:4/3;overflow:hidden;background:#dce8f3;position:relative;isolation:isolate;} .card-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,74,137,.08) 0%, rgba(10,74,137,.18) 100%);z-index:1;pointer-events:none;} .card-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .45s ease, filter .45s ease;filter:saturate(.88) contrast(1.02);} .card:hover .card-media img{transform:scale(1.04);filter:saturate(.95) contrast(1.04);} .card-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1;} .pill{display:inline-flex;align-items:center;width:max-content;margin-bottom:12px;padding:7px 11px;border-radius:999px;background:#eaf3fb;color:#0a4a89;font-size:12px;text-transform:uppercase;letter-spacing:.05em;font-weight:700;} .card h3{margin:0 0 12px;font-size:28px;line-height:1.05;color:#0a4a89;} .card p{margin:0;color:#5f7287;font-size:17px;line-height:1.55;} .meta{margin-top:16px;padding-top:16px;border-top:1px solid #d9e2ec;color:#18324a;font-size:14px;font-weight:700;} .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;margin-top:auto;padding:12px 18px;width:max-content;border-radius:12px;background:#0d5cab;color:#fff;font-weight:700;box-shadow:0 7px 18px rgba(13,92,171,.22);transition:transform .2s ease, background .2s ease;} .btn:hover{background:#0a4a89;transform:translateY(-2px);} .dots{display:flex;justify-content:center;gap:10px;margin-top:24px;flex-wrap:wrap;} .dot{width:11px;height:11px;border:none;border-radius:50%;background:#bfd1e3;cursor:pointer;transition:transform .2s ease, background .2s ease;padding:0;} .dot.active{background:#0d5cab;transform:scale(1.15);} .helper{margin-top:16px;text-align:center;color:#5f7287;font-size:14px;} @media (max-width:1100px){.slide{flex:0 0 50%;}.card{min-height:520px;}.carousel-shell{padding:0 58px;}} @media (max-width:760px){.programs-section{padding:54px 14px 70px;}.carousel-shell{padding:0 44px;}.nav-btn{width:40px;height:40px;}.nav-btn svg{width:15px;height:15px;}.slide{flex:0 0 100%;padding:8px;}.card{min-height:auto;}.card h3{font-size:24px;}.card p{font-size:16px;}.helper{font-size:13px;}}
     </style>
 </head>
 <body class="bg-background text-on-surface font-body selection:bg-primary-fixed-dim">
@@ -271,36 +274,35 @@
 </div>
 </div>
 </section>
-<!-- Section 6: Programs (Bento Cards) -->
-<section class="py-24 bg-surface-container-low" id="core-programs">
-<div class="max-w-7xl mx-auto px-6">
-<div class="mb-16">
-<h2 class="font-headline text-4xl font-bold text-on-surface">Our Core Programs</h2>
+<!-- Section 6: Programs (Carousel) -->
+<section class="programs-section" id="core-programs">
+<div class="wrap">
+<div class="section-head">
+<span class="eyebrow">How We Help</span>
+<h2>Core Programs</h2>
+<p>The Blue Card supports Holocaust survivors through essential programs focused on safety, healthcare, financial relief, education, and emergency response.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-<div class="bg-surface-container-lowest p-8 rounded-xl ghost-border group transition-all hover:bg-primary hover:text-on-primary">
-<h3 class="text-2xl font-headline font-bold mb-4">Emergency Cash Assistance</h3>
-<p class="mb-8 opacity-80">Crisis funding for immediate needs like rent, utilities, and emergency repairs.</p>
-<a class="flex items-center gap-2 font-bold group-hover:text-white text-primary uppercase text-xs tracking-widest transition-colors" href="#">
-                            Learn More <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
-</a>
-</div>
-<div class="bg-surface-container-lowest p-8 rounded-xl ghost-border group transition-all hover:bg-primary hover:text-on-primary">
-<h3 class="text-2xl font-headline font-bold mb-4">Dental and Medical Assistance</h3>
-<p class="mb-8 opacity-80">Covering out-of-pocket costs for specialized care not fully met by insurance.</p>
-<a class="flex items-center gap-2 font-bold group-hover:text-white text-primary uppercase text-xs tracking-widest transition-colors" href="#">
-                            Learn More <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
-</a>
-</div>
-<div class="bg-surface-container-lowest p-8 rounded-xl ghost-border group transition-all hover:bg-primary hover:text-on-primary">
-<img alt="Florida community impacted by a natural disaster" class="w-full h-40 object-cover rounded-lg mb-6" src="https://bluecardfund.org/wp-content/uploads/2024/10/deanpalermo_Ultra_Realistic_Florida_Community_destroyed_by_Hu_c905e110-e5a8-482f-a7cc-85d6cd3829b0_2.png"/>
-<h3 class="text-2xl font-headline font-bold mb-4">Natural Disaster Relief</h3>
-<p class="mb-8 opacity-80">Emergency support for survivors affected by hurricanes, floods, and other natural disasters.</p>
-<a class="flex items-center gap-2 font-bold group-hover:text-white text-primary uppercase text-xs tracking-widest transition-colors" href="#">
-                            Learn More <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
-</a>
+<div class="carousel-shell">
+<button aria-label="Previous programs" class="nav-btn prev" id="prevBtn">
+<svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><path d="M15.5 4.5L8.5 12L15.5 19.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path></svg>
+</button>
+<div class="carousel-viewport" id="carouselViewport">
+<div class="carousel-track" id="carouselTrack">
+<div class="slide"><article class="card"><div class="card-media"><img alt="Telephone Emergency Response Unit" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div><div class="card-body"><div class="pill">Daily Safety</div><h3>Telephone Emergency Response Unit</h3><p>Provides 24/7 medical alert systems so survivors can live safely and independently at home.</p><div class="meta">Immediate access to emergency assistance</div><a class="btn" href="https://bluecardfund.org/how-we-help/ters/" rel="noopener" target="_blank">Read More</a></div></article></div>
+<div class="slide"><article class="card"><div class="card-media"><img alt="Monthly Assistance" src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div><div class="card-body"><div class="pill">Financial Relief</div><h3>Monthly Assistance</h3><p>Delivers ongoing financial support to the most vulnerable survivors struggling with daily living expenses.</p><div class="meta">Steady support for essential needs</div><a class="btn" href="https://bluecardfund.org/how-we-help/monthly-assistance/" rel="noopener" target="_blank">Read More</a></div></article></div>
+<div class="slide"><article class="card"><div class="card-media"><img alt="Siggi B. Wilzig Fighting Cancer Together Program" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div><div class="card-body"><div class="pill">Cancer Support</div><h3>Fighting Cancer Together Program</h3><p>Provides targeted support for survivors battling cancer, including care coordination and financial aid.</p><div class="meta">Focused help during treatment</div><a class="btn" href="https://bluecardfund.org/how-we-help/siggi-b-wilzig-fighting-cancer-together-program/" rel="noopener" target="_blank">Read More</a></div></article></div>
+<div class="slide"><article class="card"><div class="card-media"><img alt="Health and Wellbeing" src="https://images.unsplash.com/photo-1516307365426-bea591f05011?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div><div class="card-body"><div class="pill">Wellbeing</div><h3>Health &amp; Wellbeing</h3><p>Supports emotional health, mental wellness, and social connection to reduce isolation.</p><div class="meta">Improves quality of life</div><a class="btn" href="https://bluecardfund.org/how-we-help/health-wellbeing/" rel="noopener" target="_blank">Read More</a></div></article></div>
+<div class="slide"><article class="card"><div class="card-media"><img alt="Education and Outreach" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div><div class="card-body"><div class="pill">Awareness</div><h3>Education &amp; Outreach</h3><p>Raises awareness and educates communities about Holocaust survivors and their ongoing needs.</p><div class="meta">Expands public understanding</div><a class="btn" href="https://bluecardfund.org/how-we-help/education-outreach/" rel="noopener" target="_blank">Read More</a></div></article></div>
+<div class="slide"><article class="card"><div class="card-media"><img alt="Emergency Cash Assistance" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div><div class="card-body"><div class="pill">Urgent Need</div><h3>Emergency Cash Assistance</h3><p>Covers urgent, one-time expenses such as medical needs, home repairs, and critical living costs.</p><div class="meta">Rapid financial relief</div><a class="btn" href="https://bluecardfund.org/how-we-help/emergency-cash-assistance/" rel="noopener" target="_blank">Read More</a></div></article></div>
+<div class="slide"><article class="card"><div class="card-media"><img alt="Dental and Medical Assistance" src="https://images.unsplash.com/photo-1580281657527-47d89f4f8f0b?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div><div class="card-body"><div class="pill">Healthcare</div><h3>Dental &amp; Medical Assistance</h3><p>Ensures access to essential healthcare, including trauma-informed medical and dental services.</p><div class="meta">Critical care access</div><a class="btn" href="https://bluecardfund.org/how-we-help/dental-and-medical-assistance/" rel="noopener" target="_blank">Read More</a></div></article></div>
+<div class="slide"><article class="card"><div class="card-media"><img alt="Natural Disaster Relief" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div><div class="card-body"><div class="pill">Crisis Relief</div><h3>Natural Disaster Relief</h3><p>Provides emergency food, medical support, and financial aid to survivors impacted by fires, hurricanes, and severe weather.</p><div class="meta">Rapid response during disasters</div><a class="btn" href="https://bluecardfund.org/natural-disaster-relief/" rel="noopener" target="_blank">Read More</a></div></article></div>
+<div class="slide"><article class="card"><div class="card-media"><img alt="Interactive Holocaust Hologram Experience" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div><div class="card-body"><div class="pill">Education Innovation</div><h3>Interactive Holocaust Hologram Experience</h3><p>An AI-powered hologram of survivor Sonia Warshawski delivers a powerful, interactive Holocaust education experience for schools and communities.</p><div class="meta">Immersive learning experience</div><a class="btn" href="https://bluecardfund.org/hologram/" rel="noopener" target="_blank">Read More</a></div></article></div>
 </div>
 </div>
+<button aria-label="Next programs" class="nav-btn next" id="nextBtn"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><path d="M8.5 4.5L15.5 12L8.5 19.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path></svg></button>
+</div>
+<div class="dots" id="dots"></div>
+<div class="helper">Use the arrows to rotate the row. On mobile, swipe left or right.</div>
 </div>
 </section>
 <!-- Section 7: Podcast Feature -->
@@ -534,4 +536,130 @@
         updateProgressUI();
     })();
 </script>
+
+<script>
+    (() => {
+        const viewport = document.getElementById("carouselViewport");
+        const track = document.getElementById("carouselTrack");
+        if (!viewport || !track) return;
+        const slides = Array.from(track.children);
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const dotsWrap = document.getElementById("dots");
+
+        let currentIndex = 0;
+        let autoRotate = null;
+        let isDragging = false;
+        let dragMoved = false;
+        let startX = 0;
+        let currentTranslate = 0;
+        let previousTranslate = 0;
+        let animationFrame = null;
+
+        const getVisibleCount = () => (window.innerWidth <= 760 ? 1 : window.innerWidth <= 1100 ? 2 : 3);
+        const getStepWidth = () => (slides[0] ? slides[0].getBoundingClientRect().width : 0);
+        const getMaxIndex = () => Math.max(0, slides.length - getVisibleCount());
+        const clampIndex = (index) => Math.max(0, Math.min(index, getMaxIndex()));
+
+        const setArrowState = () => {
+            const maxIndex = getMaxIndex();
+            prevBtn.style.opacity = currentIndex <= 0 ? "0.55" : "1";
+            nextBtn.style.opacity = currentIndex >= maxIndex ? "0.55" : "1";
+        };
+
+        const updateDots = () => Array.from(dotsWrap.children).forEach((dot, index) => dot.classList.toggle("active", index === currentIndex));
+        const applyTransform = (value) => (track.style.transform = `translateX(${value}px)`);
+
+        const goToIndex = (index, withTransition = true) => {
+            currentIndex = clampIndex(index);
+            const offset = -(currentIndex * getStepWidth());
+            track.classList.toggle("no-transition", !withTransition);
+            applyTransform(offset);
+            previousTranslate = offset;
+            updateDots();
+            setArrowState();
+        };
+
+        const nextSlide = () => (currentIndex >= getMaxIndex() ? goToIndex(0) : goToIndex(currentIndex + 1));
+        const prevSlide = () => (currentIndex <= 0 ? goToIndex(getMaxIndex()) : goToIndex(currentIndex - 1));
+        const stopAutoRotate = () => autoRotate && (clearInterval(autoRotate), (autoRotate = null));
+        const startAutoRotate = () => (stopAutoRotate(), (autoRotate = setInterval(nextSlide, 4500)));
+        const restartAutoRotate = () => startAutoRotate();
+
+        const buildDots = () => {
+            dotsWrap.innerHTML = "";
+            for (let i = 0; i < getMaxIndex() + 1; i += 1) {
+                const dot = document.createElement("button");
+                dot.className = "dot";
+                dot.type = "button";
+                dot.setAttribute("aria-label", `Go to carousel position ${i + 1}`);
+                dot.addEventListener("click", () => {
+                    goToIndex(i);
+                    restartAutoRotate();
+                });
+                dotsWrap.appendChild(dot);
+            }
+        };
+
+        const getPositionX = (event) => (event.type.includes("mouse") ? event.pageX : event.touches[0].clientX);
+        const animation = () => {
+            applyTransform(currentTranslate);
+            if (isDragging) animationFrame = requestAnimationFrame(animation);
+        };
+        const dragStart = (event) => {
+            if (event.target.closest("a") || event.target.closest("button")) return;
+            isDragging = true;
+            dragMoved = false;
+            startX = getPositionX(event);
+            viewport.classList.add("dragging");
+            track.classList.add("no-transition");
+            stopAutoRotate();
+            animationFrame = requestAnimationFrame(animation);
+        };
+        const dragMove = (event) => {
+            if (!isDragging) return;
+            const movedBy = getPositionX(event) - startX;
+            if (Math.abs(movedBy) > 6) dragMoved = true;
+            currentTranslate = previousTranslate + movedBy;
+        };
+        const preventClickOnce = (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+        };
+        const dragEnd = () => {
+            if (!isDragging) return;
+            isDragging = false;
+            viewport.classList.remove("dragging");
+            cancelAnimationFrame(animationFrame);
+            const movedBy = currentTranslate - previousTranslate;
+            const threshold = Math.min(120, getStepWidth() * 0.18);
+            if (movedBy < -threshold) nextSlide();
+            else if (movedBy > threshold) prevSlide();
+            else goToIndex(currentIndex);
+            if (dragMoved) viewport.querySelectorAll("a").forEach((link) => link.addEventListener("click", preventClickOnce, { once: true }));
+            restartAutoRotate();
+        };
+
+        prevBtn.addEventListener("click", () => (prevSlide(), restartAutoRotate()));
+        nextBtn.addEventListener("click", () => (nextSlide(), restartAutoRotate()));
+        viewport.addEventListener("touchstart", dragStart, { passive: true });
+        viewport.addEventListener("touchmove", dragMove, { passive: true });
+        viewport.addEventListener("touchend", dragEnd);
+        viewport.addEventListener("mousedown", dragStart);
+        viewport.addEventListener("mousemove", dragMove);
+        viewport.addEventListener("mouseup", dragEnd);
+        viewport.addEventListener("mouseleave", () => isDragging && dragEnd());
+        viewport.addEventListener("mouseenter", stopAutoRotate);
+        viewport.addEventListener("mouseleave", () => !isDragging && startAutoRotate());
+        window.addEventListener("resize", () => {
+            buildDots();
+            goToIndex(currentIndex, false);
+        });
+
+        buildDots();
+        goToIndex(0, false);
+        startAutoRotate();
+    })();
+</script>
+
 </body></html>
