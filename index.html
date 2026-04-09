@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Blue Card | Assisting Holocaust Survivors</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#a8c8ff",
+                        "on-secondary-fixed-variant": "#3f4752",
+                        "surface-container": "#e7eefb",
+                        "surface-variant": "#dbe3f0",
+                        "on-tertiary-fixed-variant": "#004a7a",
+                        "on-primary-fixed": "#001b3c",
+                        "secondary-container": "#dbe3f0",
+                        "outline-variant": "#c2c6d3",
+                        "tertiary-fixed": "#d0e4ff",
+                        "surface-bright": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#b2cdff",
+                        "secondary-fixed-dim": "#bfc7d3",
+                        "inverse-primary": "#a8c8ff",
+                        "tertiary-container": "#005a93",
+                        "surface-dim": "#d3dbe7",
+                        "on-surface-variant": "#424751",
+                        "surface-container-high": "#e1e9f6",
+                        "secondary-fixed": "#dbe3f0",
+                        "primary-container": "#0b56a4",
+                        "on-tertiary-fixed": "#001d35",
+                        "on-secondary-fixed": "#141c25",
+                        "outline": "#727782",
+                        "primary-fixed": "#d6e3ff",
+                        "tertiary": "#00426e",
+                        "surface-container-highest": "#dbe3f0",
+                        "inverse-on-surface": "#e9f1fe",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#29313b",
+                        "background": "#f8f9ff",
+                        "surface-tint": "#1c5eac",
+                        "surface-container-low": "#eef4ff",
+                        "on-primary-fixed-variant": "#00468a",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#141c25",
+                        "on-secondary-container": "#5d6570",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "primary": "#003f7d",
+                        "tertiary-fixed-dim": "#9bcaff",
+                        "surface": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#575f6a",
+                        "on-background": "#141c25",
+                        "on-tertiary-container": "#a7d0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .archival-gradient {
+            background: linear-gradient(135deg, #003f7d 0%, #0b56a4 100%);
+        }
+        .ghost-border {
+            box-shadow: inset 0 0 0 1px rgba(194, 198, 211, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed-dim">
+<!-- TopNavBar -->
+<header class="docked full-width top-0 sticky z-50 bg-surface/80 backdrop-blur-md">
+<nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center w-full">
+<div class="text-xl font-bold tracking-tighter text-blue-900 dark:text-blue-100 font-headline uppercase tracking-[0.1em]">
+                The Blue Card
+            </div>
+<div class="hidden md:flex items-center gap-8 font-sans text-sm tracking-wide">
+<a class="text-slate-600 hover:text-blue-800 transition-colors" href="#">About</a>
+<a class="text-slate-600 hover:text-blue-800 transition-colors" href="#">How We Help</a>
+<a class="text-slate-600 hover:text-blue-800 transition-colors" href="#">Impact Stories</a>
+<a class="text-blue-700 font-semibold border-b-2 border-blue-700 pb-1" href="#">Podcast</a>
+<a class="text-slate-600 hover:text-blue-800 transition-colors" href="#">Get Involved</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-xl text-sm font-semibold hover:bg-primary-container active:scale-95 transition-all">
+                    Donate
+                </button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Section 1: Hero -->
+<section class="relative min-h-[819px] flex items-center archival-gradient overflow-hidden">
+<div class="absolute inset-0 opacity-20 mix-blend-overlay">
+<img class="w-full h-full object-cover" data-alt="Close-up of weathered hands resting on a wooden table, warm sunlight casting soft shadows, evoke resilience and history" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1e9sN-rcxIb8484Cx-DydQVUiJWKxDiPIlZe7Tl1fy9TVRH1NwZ5oricQ7e-gtnes8f7HpfwtbKqcrB1gSBxQ0dZMt6uZh_smAmyeAm2ct350vkf9k5kyvr0iiS1taEPxiSTHucZYh68jYJVH2vdLvOWuB1zMo25TzoAxMNVoGwZFJfVsTBC3RqEUarf9z51SvkvAsCdWX02ZdvUdRjwihrCRJh9bXzmlK8NBmPN7xze1S9NV3CzsaWBbd9Iq2tJvkPSXDfR_4nHV"/>
+</div>
+<div class="max-w-7xl mx-auto px-6 py-24 relative z-10">
+<div class="max-w-3xl">
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold text-on-primary tracking-tight leading-[1.1] mb-8">
+                        Living survivors still need our help.
+                    </h1>
+<p class="text-xl md:text-2xl text-on-primary/90 leading-relaxed mb-12 max-w-2xl">
+                        The Blue Card provides direct financial assistance to Holocaust survivors in need, helping them afford essentials like food, healthcare, and daily living support.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-surface-container-lowest text-primary px-8 py-4 rounded-xl text-lg font-bold hover:bg-white active:scale-95 transition-all">
+                            Donate Now
+                        </button>
+<button class="bg-primary-container/40 backdrop-blur-sm text-on-primary border border-on-primary/20 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-container/60 active:scale-95 transition-all">
+                            Learn How We Help
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: What most people don't know -->
+<section class="py-24 bg-surface">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="max-w-2xl">
+<span class="label-md font-label text-primary uppercase tracking-[0.2em] mb-4 block">The Reality Today</span>
+<h2 class="font-headline text-4xl font-bold text-on-surface">What most people don’t know</h2>
+</div>
+<div class="h-px flex-grow bg-outline-variant/30 hidden md:block mx-8 mb-4"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-container-lowest p-10 rounded-xl ghost-border">
+<div class="mb-6 text-primary">
+<span class="material-symbols-outlined text-4xl" data-icon="house">house</span>
+</div>
+<h3 class="text-4xl font-headline font-bold text-primary mb-4">Nearly 3,000</h3>
+<p class="text-on-surface-variant leading-relaxed text-lg">Households served across the United States, providing a lifeline of direct support.</p>
+</div>
+<div class="bg-surface-container-lowest p-10 rounded-xl ghost-border">
+<div class="mb-6 text-primary">
+<span class="material-symbols-outlined text-4xl" data-icon="person">person</span>
+</div>
+<h3 class="text-4xl font-headline font-bold text-primary mb-4">Nearly 70%</h3>
+<p class="text-on-surface-variant leading-relaxed text-lg">Of survivors live alone, facing the dual challenges of isolation and poverty.</p>
+</div>
+<div class="bg-surface-container-lowest p-10 rounded-xl ghost-border">
+<div class="mb-6 text-primary">
+<span class="material-symbols-outlined text-4xl" data-icon="accessible">accessible</span>
+</div>
+<h3 class="text-4xl font-headline font-bold text-primary mb-4">67%</h3>
+<p class="text-on-surface-variant leading-relaxed text-lg">Cannot leave home without assistance, making community-based care critical.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Mission Blue Band -->
+<section class="bg-primary py-16">
+<div class="max-w-7xl mx-auto px-6 text-center">
+<h2 class="font-headline text-3xl md:text-5xl font-bold text-on-primary">
+                    Direct support. Preserved dignity.
+                </h2>
+</div>
+</section>
+<!-- Section 4: Impact Stats -->
+<section class="py-24 bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+<div>
+<div class="text-5xl md:text-6xl font-headline font-extrabold text-primary mb-4">$40,000,000</div>
+<p class="label-md font-label text-on-surface-variant uppercase tracking-widest">In grants provided</p>
+</div>
+<div>
+<div class="text-5xl md:text-6xl font-headline font-extrabold text-primary mb-4">35</div>
+<p class="label-md font-label text-on-surface-variant uppercase tracking-widest">States served</p>
+</div>
+<div>
+<div class="text-5xl md:text-6xl font-headline font-extrabold text-primary mb-4">4,200</div>
+<p class="label-md font-label text-on-surface-variant uppercase tracking-widest">Active volunteers</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Why the need is different -->
+<section class="py-24 overflow-hidden">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div>
+<span class="label-md font-label text-primary uppercase tracking-[0.2em] mb-4 block">Complex Care</span>
+<h2 class="font-headline text-4xl font-bold text-on-surface mb-8">Why the need is different</h2>
+<div class="prose prose-lg text-on-surface-variant leading-relaxed">
+<p class="mb-6">For Holocaust survivors, the experience of aging is compounded by the psychological trauma of their past. Ordinary challenges—like a hospital stay or nutritional scarcity—can trigger profound distress.</p>
+<p>Our assistance is tailored to recognize these unique vulnerabilities, ensuring that help is delivered with extreme sensitivity, cultural awareness, and profound respect for their history.</p>
+</div>
+</div>
+<div class="bg-surface-container p-12 rounded-full relative">
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/5 rounded-full"></div>
+<ul class="space-y-6 relative z-10">
+<li class="flex items-center gap-4 text-xl font-medium text-primary">
+<span class="material-symbols-outlined text-primary-container" data-icon="medical_services">medical_services</span>
+                                Medical Expenses
+                            </li>
+<li class="flex items-center gap-4 text-xl font-medium text-primary">
+<span class="material-symbols-outlined text-primary-container" data-icon="dentistry">dentistry</span>
+                                Dental Care
+                            </li>
+<li class="flex items-center gap-4 text-xl font-medium text-primary">
+<span class="material-symbols-outlined text-primary-container" data-icon="hearing">hearing</span>
+                                Hearing Aids
+                            </li>
+<li class="flex items-center gap-4 text-xl font-medium text-primary">
+<span class="material-symbols-outlined text-primary-container" data-icon="restaurant">restaurant</span>
+                                Nutritional Support
+                            </li>
+<li class="flex items-center gap-4 text-xl font-medium text-primary">
+<span class="material-symbols-outlined text-primary-container" data-icon="home_health">home_health</span>
+                                Home Care Assistance
+                            </li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 6: Programs (Bento Cards) -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-16">
+<h2 class="font-headline text-4xl font-bold text-on-surface">Our Core Programs</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-surface-container-lowest p-8 rounded-xl ghost-border group transition-all hover:bg-primary hover:text-on-primary">
+<h3 class="text-2xl font-headline font-bold mb-4">Emergency Cash Assistance</h3>
+<p class="mb-8 opacity-80">Crisis funding for immediate needs like rent, utilities, and emergency repairs.</p>
+<a class="flex items-center gap-2 font-bold group-hover:text-white text-primary uppercase text-xs tracking-widest transition-colors" href="#">
+                            Learn More <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl ghost-border group transition-all hover:bg-primary hover:text-on-primary">
+<h3 class="text-2xl font-headline font-bold mb-4">Dental and Medical Assistance</h3>
+<p class="mb-8 opacity-80">Covering out-of-pocket costs for specialized care not fully met by insurance.</p>
+<a class="flex items-center gap-2 font-bold group-hover:text-white text-primary uppercase text-xs tracking-widest transition-colors" href="#">
+                            Learn More <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl ghost-border group transition-all hover:bg-primary hover:text-on-primary">
+<h3 class="text-2xl font-headline font-bold mb-4">Holocaust Survivor Support</h3>
+<p class="mb-8 opacity-80">Vitamins, personal care items, and localized support services for daily life.</p>
+<a class="flex items-center gap-2 font-bold group-hover:text-white text-primary uppercase text-xs tracking-widest transition-colors" href="#">
+                            Learn More <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 7: Podcast Feature -->
+<section class="py-24">
+<div class="max-w-7xl mx-auto px-6">
+<div class="bg-primary rounded-full overflow-hidden flex flex-col lg:flex-row items-stretch">
+<div class="lg:w-1/3 relative min-h-[300px]">
+<img class="w-full h-full object-cover" data-alt="Vintage microphone in a professional studio setting with soft bokeh lights in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF1EGtl5qokVoCiT7XIA5ZDLB_aQmKoszSSkVrwoi8veiBRn5zbvM4gKH7M6fBnpmCMCBjmYEKsxvltM46dtjHzPskYEnoLAZqbEXNFOx2KtztnrR9a-I0H7IiCBIyKGolXbM8FItWIPbBaFVYWPmjvxR3REPuC4qowvdLkQj4Xds_bIeTidbhC0c2HGYJ0sJe9MR4DhLO6HR0GMYjuLv_H5uRNw8Yoi_fjx_ZWa4gCSnShBvDssCXUJXrJByYYk1NLMCVjbcVdZQQ"/>
+<div class="absolute inset-0 bg-primary/30"></div>
+</div>
+<div class="lg:w-2/3 p-12 lg:p-16 flex flex-col justify-center">
+<span class="label-md font-label text-primary-fixed uppercase tracking-widest mb-4">New Editorial Feature</span>
+<h2 class="font-headline text-4xl font-bold text-on-primary mb-6">The Blue Card Explained. What Most People Don’t Know</h2>
+<p class="text-on-primary/80 text-lg mb-10 max-w-xl">Listen to our latest episode where we dive deep into the untold stories of survivors and the critical mission that drives our daily work.</p>
+<div class="bg-on-primary/10 backdrop-blur-md rounded-xl p-6 flex items-center gap-6 border border-on-primary/10">
+<button class="w-16 h-16 rounded-full bg-on-primary text-primary flex items-center justify-center hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-4xl" data-icon="play_arrow" data-weight="fill">play_arrow</span>
+</button>
+<div class="flex-grow">
+<div class="h-1 w-full bg-on-primary/20 rounded-full mb-2">
+<div class="h-full bg-on-primary w-1/3 rounded-full"></div>
+</div>
+<div class="flex justify-between text-xs text-on-primary/60 font-medium">
+<span>12:45</span>
+<span>38:12</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 8: How You Can Help -->
+<section class="py-24 bg-surface">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="font-headline text-4xl font-bold text-on-surface mb-4">How You Can Help</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto text-lg">Your support translates directly into dignity for those who have suffered most.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-surface-container-lowest p-8 rounded-xl ghost-border text-center flex flex-col h-full">
+<span class="material-symbols-outlined text-primary text-4xl mb-6" data-icon="volunteer_activism">volunteer_activism</span>
+<h3 class="text-xl font-bold mb-4">Donate</h3>
+<p class="text-on-surface-variant text-sm mb-8 flex-grow">Every dollar provides essential care and peace of mind for a survivor.</p>
+<button class="text-primary font-bold uppercase text-xs tracking-widest border-b-2 border-primary/20 hover:border-primary pb-1 transition-all">Contribute Now</button>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl ghost-border text-center flex flex-col h-full">
+<span class="material-symbols-outlined text-primary text-4xl mb-6" data-icon="groups">groups</span>
+<h3 class="text-xl font-bold mb-4">Volunteer</h3>
+<p class="text-on-surface-variant text-sm mb-8 flex-grow">Join our network of 4,200 volunteers making a difference locally.</p>
+<button class="text-primary font-bold uppercase text-xs tracking-widest border-b-2 border-primary/20 hover:border-primary pb-1 transition-all">Join Us</button>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl ghost-border text-center flex flex-col h-full">
+<span class="material-symbols-outlined text-primary text-4xl mb-6" data-icon="calendar_today">calendar_today</span>
+<h3 class="text-xl font-bold mb-4">Attend Events</h3>
+<p class="text-on-surface-variant text-sm mb-8 flex-grow">Participate in our benefits and community awareness gatherings.</p>
+<button class="text-primary font-bold uppercase text-xs tracking-widest border-b-2 border-primary/20 hover:border-primary pb-1 transition-all">View Calendar</button>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl ghost-border text-center flex flex-col h-full">
+<span class="material-symbols-outlined text-primary text-4xl mb-6" data-icon="campaign">campaign</span>
+<h3 class="text-xl font-bold mb-4">Raise Awareness</h3>
+<p class="text-on-surface-variant text-sm mb-8 flex-grow">Help us tell the story of the living survivors who still need us.</p>
+<button class="text-primary font-bold uppercase text-xs tracking-widest border-b-2 border-primary/20 hover:border-primary pb-1 transition-all">Share Mission</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 9: Dignity/Human Story -->
+<section class="py-32 archival-gradient text-on-primary">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<span class="material-symbols-outlined text-6xl opacity-30 mb-8" data-icon="format_quote" data-weight="fill">format_quote</span>
+<blockquote class="text-3xl md:text-4xl font-headline font-semibold leading-snug mb-10 italic">
+                    "The Blue Card didn't just pay my medical bills; they saw me. They remembered me when I felt the world had forgotten."
+                </blockquote>
+<div class="h-1 w-20 bg-primary-fixed-dim mx-auto mb-6"></div>
+<cite class="not-italic font-label uppercase tracking-widest text-primary-fixed text-lg">— Sarah G., Holocaust Survivor</cite>
+</div>
+</section>
+<!-- Section 10: Final CTA -->
+<section class="py-24 bg-surface-container-highest">
+<div class="max-w-7xl mx-auto px-6">
+<div class="bg-white rounded-full p-12 md:p-20 text-center shadow-2xl shadow-primary/10">
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold text-primary mb-8 max-w-3xl mx-auto">
+                        These are living survivors. They still need our help.
+                    </h2>
+<div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+<button class="w-full sm:w-auto bg-primary text-on-primary px-10 py-5 rounded-xl text-xl font-bold hover:bg-primary-container active:scale-95 transition-all shadow-xl shadow-primary/20">
+                            Donate Now
+                        </button>
+<button class="w-full sm:w-auto bg-surface-container-highest text-primary px-10 py-5 rounded-xl text-xl font-bold hover:bg-surface-variant active:scale-95 transition-all">
+                            Contact Us
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="full-width py-12 bg-slate-50 dark:bg-slate-900 border-t border-slate-200/30">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="md:col-span-1">
+<div class="text-lg font-bold text-blue-900 dark:text-blue-100 mb-6 uppercase tracking-widest font-headline">The Blue Card</div>
+<p class="font-sans text-base leading-relaxed text-slate-500 dark:text-slate-400">
+                    Dedicated to providing direct financial assistance to Holocaust survivors in need since 1934.
+                </p>
+</div>
+<div>
+<h4 class="font-bold text-blue-900 dark:text-blue-100 mb-6">Organization</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-blue-700 transition-all" href="#">Mission</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-blue-700 transition-all" href="#">History</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-blue-700 transition-all" href="#">Impact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-blue-900 dark:text-blue-100 mb-6">Support</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-blue-700 transition-all" href="#">Contact Us</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-blue-700 transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-blue-700 transition-all" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-blue-900 dark:text-blue-100 mb-6">Connect</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-blue-700 transition-all" href="#">Social Media</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-blue-700 transition-all" href="#">Newsletter</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-blue-700 transition-all" href="#">Press Kit</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-12 pt-12 border-t border-slate-200/30">
+<p class="text-slate-500 dark:text-slate-400 text-sm">
+                © 2024 The Blue Card. All rights reserved. Providing assistance to Holocaust survivors.
+            </p>
+</div>
+</footer>
+</body></html>
