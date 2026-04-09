@@ -163,6 +163,14 @@
       box-shadow:var(--shadow-soft);
     }
 
+    .sound-toggle{
+      width:50px;
+      min-width:50px;
+      padding:0;
+      font-size:22px;
+      line-height:1;
+    }
+
     .hero{
       position:relative;
       min-height:100vh;
@@ -1156,6 +1164,15 @@
         <a class="nav-link" href="#program">Program</a>
         <a class="nav-link" href="#meet-sonia">Meet Sonia</a>
         <a class="nav-link" href="#endorsements">Endorsements</a>
+        <button
+          class="btn btn-secondary sound-toggle"
+          id="soundToggle"
+          type="button"
+          aria-label="Turn on video audio"
+          aria-pressed="false"
+          title="Turn sound on">
+          🔇
+        </button>
         <a class="btn btn-secondary" href="#meet-sonia">Meet Sonia</a>
         <a class="btn btn-primary" href="#book-event">Book Event</a>
       </div>
@@ -1166,7 +1183,8 @@
     <section class="hero">
       <div class="hero-video" aria-hidden="true">
         <iframe
-          src="https://www.youtube.com/embed/bndDX76e1mI?autoplay=1&mute=1&controls=0&loop=1&playlist=bndDX76e1mI&playsinline=1&rel=0&modestbranding=1&showinfo=0"
+          id="heroVideo"
+          src="https://www.youtube.com/embed/bndDX76e1mI?autoplay=1&mute=1&controls=0&loop=1&playlist=bndDX76e1mI&playsinline=1&rel=0&modestbranding=1&showinfo=0&enablejsapi=1"
           title="Interactive Hologram Program Video"
           frameborder="0"
           allow="autoplay; encrypted-media; picture-in-picture"
@@ -1595,6 +1613,9 @@
 
   <script>
     const header = document.getElementById('siteHeader');
+    const soundToggle = document.getElementById('soundToggle');
+    const heroVideo = document.getElementById('heroVideo');
+    let isMuted = true;
 
     const onScroll = () => {
       if (window.scrollY > 24) {
@@ -1603,6 +1624,37 @@
         header.classList.remove('scrolled');
       }
     };
+
+    const sendVideoCommand = (func) => {
+      if (!heroVideo || !heroVideo.contentWindow) return;
+
+      heroVideo.contentWindow.postMessage(
+        JSON.stringify({
+          event: 'command',
+          func,
+          args: []
+        }),
+        '*'
+      );
+    };
+
+    const updateSoundButton = () => {
+      if (!soundToggle) return;
+
+      soundToggle.textContent = isMuted ? '🔇' : '🔊';
+      soundToggle.setAttribute('aria-pressed', String(!isMuted));
+      soundToggle.setAttribute('aria-label', isMuted ? 'Turn on video audio' : 'Turn off video audio');
+      soundToggle.setAttribute('title', isMuted ? 'Turn sound on' : 'Turn sound off');
+    };
+
+    if (soundToggle) {
+      soundToggle.addEventListener('click', () => {
+        isMuted = !isMuted;
+        sendVideoCommand(isMuted ? 'mute' : 'unMute');
+        updateSoundButton();
+      });
+      updateSoundButton();
+    }
 
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
