@@ -171,6 +171,13 @@
       line-height:1;
     }
 
+    .hero-sound-control{
+      position:absolute;
+      top:106px;
+      right:24px;
+      z-index:3;
+    }
+
     .hero{
       position:relative;
       min-height:100vh;
@@ -1064,6 +1071,11 @@
         padding:112px 0 56px;
       }
 
+      .hero-sound-control{
+        top:88px;
+        right:16px;
+      }
+
       .hero-panel{
         padding:24px;
         border-radius:24px;
@@ -1103,6 +1115,7 @@
       section{padding:68px 0}
       .container{width:min(var(--max), calc(100% - 20px))}
       .btn{width:100%}
+      .hero-sound-control .sound-toggle{width:50px}
       .hero-actions .btn{width:100%}
       .hero h1{max-width:none}
       .brand-text small{display:none}
@@ -1164,15 +1177,6 @@
         <a class="nav-link" href="#program">Program</a>
         <a class="nav-link" href="#meet-sonia">Meet Sonia</a>
         <a class="nav-link" href="#endorsements">Endorsements</a>
-        <button
-          class="btn btn-secondary sound-toggle"
-          id="soundToggle"
-          type="button"
-          aria-label="Turn on video audio"
-          aria-pressed="false"
-          title="Turn sound on">
-          🔇
-        </button>
         <a class="btn btn-secondary" href="#meet-sonia">Meet Sonia</a>
         <a class="btn btn-primary" href="#book-event">Book Event</a>
       </div>
@@ -1193,6 +1197,18 @@
       </div>
 
       <div class="hero-overlay"></div>
+
+      <div class="hero-sound-control">
+        <button
+          class="btn btn-secondary sound-toggle"
+          id="soundToggle"
+          type="button"
+          aria-label="Turn on video audio"
+          aria-pressed="false"
+          title="Turn sound on">
+          🔇
+        </button>
+      </div>
 
       <div class="container hero-grid">
         <div class="hero-panel">
