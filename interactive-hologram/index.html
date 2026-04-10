@@ -553,6 +553,12 @@
       background:#dfe8ff;
     }
 
+    .overview-hologram-image{
+      object-fit:contain;
+      object-position:center top;
+      background:#fff;
+    }
+
     .holo-tag{
       position:absolute;
       left:50%;
@@ -1324,8 +1330,11 @@
             </div>
 
             <div class="holo-frame">
-              <!-- Swap image below with final approved Sonia hologram asset -->
-              <img src="https://bluecardfund.org/wp-content/uploads/2026/04/sonia-hologram-placeholder.jpg" alt="Sonia Warshawski hologram program visual" onerror="this.src='https://bluecardfund.org/wp-content/uploads/2026/04/holocaust-education-hologram-2.jpg';" />
+              <img
+                class="overview-hologram-image"
+                src="https://bluecardfund.org/wp-content/uploads/2026/04/holocaust-education-hologram-2.jpg"
+                alt="Sonia Warshawski hologram program visual"
+              />
               <div class="holo-tag">Interactive Hologram Experience</div>
             </div>
           </div>
