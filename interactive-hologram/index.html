@@ -708,7 +708,68 @@
 
     .sonia-visual .holo-frame{
       width:min(360px, 86%);
+      overflow:hidden;
     }
+
+    .sonia-carousel{
+      position:relative;
+      width:100%;
+      height:100%;
+      border-radius:20px;
+      overflow:hidden;
+      background:#dfe8ff;
+      touch-action:pan-y;
+    }
+
+    .sonia-slide{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:0;
+      transition:opacity .75s ease;
+      pointer-events:none;
+      user-select:none;
+      -webkit-user-drag:none;
+    }
+
+    .sonia-slide.active{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .sonia-carousel-arrow{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      z-index:3;
+      width:36px;
+      height:36px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.36);
+      background:rgba(15,36,93,.20);
+      color:rgba(255,255,255,.84);
+      display:grid;
+      place-items:center;
+      font-size:20px;
+      line-height:1;
+      cursor:pointer;
+      transition:background .2s ease, color .2s ease, border-color .2s ease;
+      backdrop-filter:blur(2px);
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    .sonia-carousel-arrow:hover,
+    .sonia-carousel-arrow:focus-visible{
+      background:rgba(15,36,93,.35);
+      color:#fff;
+      border-color:rgba(255,255,255,.56);
+      outline:none;
+    }
+
+    .sonia-carousel-arrow.prev{left:12px}
+    .sonia-carousel-arrow.next{right:12px}
 
     .sonia-badge{
       position:absolute;
@@ -1040,6 +1101,11 @@
         position:relative;
         top:auto;
         min-height:580px;
+        padding:18px;
+      }
+      .sonia-carousel-arrow{
+        width:34px;
+        height:34px;
       }
       .trust-cards{grid-template-columns:1fr}
     }
@@ -1413,8 +1479,15 @@
           <div class="sonia-visual">
             <div class="sonia-badge">Sonia Warshawski</div>
             <div class="holo-frame">
-              <!-- Swap image below with final approved portrait or hologram frame -->
-              <img src="https://bluecardfund.org/wp-content/uploads/2026/04/sonia-hologram-placeholder.jpg" alt="Portrait of Holocaust survivor Sonia Warshawski" onerror="this.src='https://bluecardfund.org/wp-content/uploads/2026/04/holocaust-education-hologram-2.jpg';" />
+              <div class="sonia-carousel" id="soniaCarousel" aria-label="Sonia image gallery">
+                <img class="sonia-slide active" src="https://bluecardfund.org/wp-content/uploads/2025/05/Jewglers-1.jpg" alt="Sonia program event photo 1" />
+                <img class="sonia-slide" src="https://bluecardfund.org/wp-content/uploads/2025/05/City-College-G.jpg" alt="Sonia program event photo 2" />
+                <img class="sonia-slide" src="https://bluecardfund.org/wp-content/uploads/2025/05/IMG_6328-scaled.jpg" alt="Sonia program event photo 3" />
+                <img class="sonia-slide" src="https://bluecardfund.org/wp-content/uploads/2025/05/HANC-4.jpg" alt="Sonia program event photo 4" />
+                <img class="sonia-slide" src="https://bluecardfund.org/wp-content/uploads/2025/05/IMG_2470-scaled.jpg" alt="Sonia program event photo 5" />
+                <button class="sonia-carousel-arrow prev" type="button" aria-label="Previous image">‹</button>
+                <button class="sonia-carousel-arrow next" type="button" aria-label="Next image">›</button>
+              </div>
               <div class="holo-tag">Preserving testimony through technology</div>
             </div>
           </div>
@@ -1656,6 +1729,71 @@
 
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+
+    const soniaCarousel = document.getElementById('soniaCarousel');
+    if (soniaCarousel) {
+      const slides = Array.from(soniaCarousel.querySelectorAll('.sonia-slide'));
+      const prevButton = soniaCarousel.querySelector('.sonia-carousel-arrow.prev');
+      const nextButton = soniaCarousel.querySelector('.sonia-carousel-arrow.next');
+      const slideCount = slides.length;
+      let currentSlide = 0;
+      let autoplayId = null;
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      const setSlide = (index) => {
+        currentSlide = (index + slideCount) % slideCount;
+        slides.forEach((slide, idx) => {
+          slide.classList.toggle('active', idx === currentSlide);
+        });
+      };
+
+      const nextSlide = () => setSlide(currentSlide + 1);
+      const prevSlide = () => setSlide(currentSlide - 1);
+
+      const startAutoplay = () => {
+        stopAutoplay();
+        autoplayId = window.setInterval(nextSlide, 4200);
+      };
+
+      const stopAutoplay = () => {
+        if (autoplayId !== null) {
+          window.clearInterval(autoplayId);
+          autoplayId = null;
+        }
+      };
+
+      prevButton?.addEventListener('click', () => {
+        prevSlide();
+        startAutoplay();
+      });
+
+      nextButton?.addEventListener('click', () => {
+        nextSlide();
+        startAutoplay();
+      });
+
+      soniaCarousel.addEventListener('touchstart', (event) => {
+        touchStartX = event.changedTouches[0].screenX;
+      }, { passive: true });
+
+      soniaCarousel.addEventListener('touchend', (event) => {
+        touchEndX = event.changedTouches[0].screenX;
+        const swipeDistance = touchEndX - touchStartX;
+        if (Math.abs(swipeDistance) < 40) return;
+        if (swipeDistance < 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+        startAutoplay();
+      }, { passive: true });
+
+      soniaCarousel.addEventListener('mouseenter', stopAutoplay);
+      soniaCarousel.addEventListener('mouseleave', startAutoplay);
+
+      startAutoplay();
+    }
   </script>
 </body>
 </html>
