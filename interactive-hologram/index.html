@@ -150,6 +150,45 @@
       box-shadow:0 16px 36px rgba(157,31,31,.28);
     }
 
+    .btn-book{
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
+    }
+
+    .btn-book::before,
+    .btn-book::after{
+      content:"";
+      position:absolute;
+      inset:-130% -40%;
+      border-radius:999px;
+      pointer-events:none;
+      transform:translateX(-125%) rotate(18deg);
+      z-index:0;
+    }
+
+    .btn-book::before{
+      background:linear-gradient(90deg, transparent 28%, rgba(255,255,255,.35) 50%, transparent 72%);
+      animation:bookButtonSweep 2.6s ease-in-out infinite;
+    }
+
+    .btn-book::after{
+      background:linear-gradient(90deg, transparent 40%, rgba(255,255,255,.18) 50%, transparent 60%);
+      animation:bookButtonSweep 2.6s ease-in-out infinite .45s;
+    }
+
+    .btn-book span{
+      position:relative;
+      z-index:1;
+    }
+
+    @keyframes bookButtonSweep{
+      0%,18%{transform:translateX(-130%) rotate(18deg); opacity:0;}
+      34%{opacity:1;}
+      62%{opacity:.82;}
+      100%{transform:translateX(130%) rotate(18deg); opacity:0;}
+    }
+
     .btn-secondary{
       background:rgba(255,255,255,.10);
       color:#fff;
@@ -1198,7 +1237,9 @@
         scroll-behavior:auto !important;
       }
       .hero-panel::before,
-      .scroll-cue::after{
+      .scroll-cue::after,
+      .btn-book::before,
+      .btn-book::after{
         animation:none !important;
       }
       .btn:hover,
@@ -1227,7 +1268,7 @@
         <a class="nav-link" href="#meet-sonia">Meet Sonia</a>
         <a class="nav-link" href="#endorsements">Endorsements</a>
         <a class="btn btn-secondary" href="#meet-sonia">Meet Sonia</a>
-        <a class="btn btn-primary" href="#book-event">Book Event</a>
+        <a class="btn btn-primary btn-book" href="#book-event"><span>Book Event</span></a>
       </div>
     </div>
   </header>
@@ -1270,7 +1311,7 @@
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#book-event">Book Event</a>
+            <a class="btn btn-primary btn-book" href="#book-event"><span>Book Event</span></a>
             <a class="btn btn-secondary" href="#meet-sonia">Meet Sonia</a>
           </div>
 
@@ -1656,7 +1697,7 @@
 
             <div class="cta-actions">
               <a class="btn btn-light" href="mailto:info@bluecardfund.org?subject=Interactive%20Hologram%20Program%20Inquiry">Email Us</a>
-              <a class="btn btn-primary" href="mailto:info@bluecardfund.org?subject=Book%20Interactive%20Hologram%20Event">Book Event</a>
+              <a class="btn btn-primary btn-book" href="mailto:info@bluecardfund.org?subject=Book%20Interactive%20Hologram%20Event"><span>Book Event</span></a>
             </div>
           </div>
         </div>
@@ -1679,7 +1720,7 @@
   </footer>
 
   <div class="floating-cta">
-    <a class="btn btn-primary" href="mailto:info@bluecardfund.org?subject=Book%20Interactive%20Hologram%20Event">Book Event</a>
+    <a class="btn btn-primary btn-book" href="mailto:info@bluecardfund.org?subject=Book%20Interactive%20Hologram%20Event"><span>Book Event</span></a>
   </div>
 
   <script>
