@@ -1,195 +1,685 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How We Help | The Blue Card</title>
-
-<style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    color: #1a1a1a;
-    line-height: 1.6;
-}
-
-.section {
-    padding: 60px 20px;
-    max-width: 1100px;
-    margin: auto;
-}
-
-.hero {
-    background: #0c3d74;
-    color: white;
-    text-align: center;
-    padding: 80px 20px;
-}
-
-.hero h1 {
-    font-size: 42px;
-    margin-bottom: 20px;
-}
-
-.intro {
-    text-align: center;
-    max-width: 800px;
-    margin: auto;
-    font-size: 18px;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-}
-
-.card {
-    border: 1px solid #e0e0e0;
-    padding: 30px;
-    border-radius: 8px;
-    background: #fff;
-    transition: 0.3s;
-}
-
-.card:hover {
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    transform: translateY(-4px);
-}
-
-.card h2 {
-    font-size: 22px;
-    color: #0c3d74;
-    margin-bottom: 15px;
-}
-
-.card ul {
-    padding-left: 18px;
-}
-
-.card a {
-    display: inline-block;
-    margin-top: 15px;
-    color: #0c3d74;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.card a:hover {
-    text-decoration: underline;
-}
-
-@media(max-width: 768px){
-    .grid {
-        grid-template-columns: 1fr;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How We Help | The Blue Card</title>
+  <meta
+    name="description"
+    content="The Blue Card provides direct financial assistance and essential support programs for poverty-stricken Holocaust survivors, helping them live with dignity, safety, and independence."
+  />
+  <style>
+    :root {
+      --blue: #0c3d74;
+      --blue-dark: #082b52;
+      --blue-soft: #eaf2fb;
+      --gold: #d6a84f;
+      --text: #1d2a36;
+      --muted: #5f6e7c;
+      --border: #dbe4ee;
+      --white: #ffffff;
+      --bg: #f7fafc;
+      --shadow: 0 14px 34px rgba(12, 61, 116, 0.10);
+      --radius: 18px;
+      --max: 1200px;
     }
-}
-</style>
-</head>
 
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      background:
+        linear-gradient(135deg, rgba(8, 43, 82, 0.95), rgba(12, 61, 116, 0.92)),
+        linear-gradient(180deg, #0c3d74, #0a335f);
+      color: var(--white);
+      padding: 84px 0 72px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #d8e7fb;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      margin: 0 0 18px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.05;
+      max-width: 900px;
+    }
+
+    .hero .lead {
+      font-size: 20px;
+      color: #edf4fc;
+      max-width: 920px;
+      margin: 0 0 22px;
+    }
+
+    .hero .sublead {
+      max-width: 980px;
+      color: #d7e6f7;
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      text-decoration: none;
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--blue-dark);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .quick-nav {
+      margin-top: -30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .quick-nav-inner {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .quick-nav-title {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .quick-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .quick-nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue-dark);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .intro-section {
+      padding: 54px 0 26px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: 0 8px 24px rgba(18, 46, 77, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 14px;
+      font-size: 30px;
+      line-height: 1.15;
+      color: var(--blue-dark);
+    }
+
+    .panel p {
+      margin: 0 0 16px;
+      color: var(--text);
+      font-size: 17px;
+    }
+
+    .panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    .mission-box {
+      background: linear-gradient(180deg, #f8fbff, #eef5fc);
+    }
+
+    .impact-box {
+      background: linear-gradient(180deg, #0c3d74, #0a335f);
+      color: var(--white);
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .impact-box h3 {
+      margin: 0 0 14px;
+      font-size: 28px;
+      line-height: 1.15;
+      color: var(--white);
+    }
+
+    .impact-box p {
+      color: #e5eef9;
+      margin: 0 0 16px;
+      font-size: 17px;
+    }
+
+    .impact-box .big {
+      font-size: 42px;
+      line-height: 1;
+      font-weight: 800;
+      margin: 12px 0 10px;
+      color: #ffffff;
+    }
+
+    .impact-box .small {
+      font-size: 15px;
+      color: #d1e2f6;
+      margin: 0;
+    }
+
+    .section-header {
+      padding: 24px 0 8px;
+    }
+
+    .section-header h2 {
+      margin: 0 0 10px;
+      font-size: 36px;
+      line-height: 1.1;
+      color: var(--blue-dark);
+    }
+
+    .section-header p {
+      margin: 0;
+      max-width: 900px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .programs {
+      padding: 18px 0 34px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 8px 26px rgba(17, 45, 74, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      scroll-margin-top: 100px;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 30px rgba(12, 61, 116, 0.10);
+      border-color: #c7d6e7;
+    }
+
+    .card .kicker {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue-dark);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      margin: 0 0 14px;
+      font-size: 28px;
+      line-height: 1.15;
+      color: var(--blue-dark);
+    }
+
+    .card p {
+      margin: 0 0 14px;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .card ul {
+      margin: 14px 0 0;
+      padding-left: 18px;
+    }
+
+    .card li {
+      margin: 0 0 8px;
+      color: var(--text);
+    }
+
+    .card .read-more {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 20px;
+      font-weight: 700;
+      color: var(--blue);
+    }
+
+    .donation-strip {
+      padding: 24px 0 70px;
+    }
+
+    .donation-panel {
+      background: linear-gradient(135deg, #f4f8fd, #ffffff);
+      border: 1px solid var(--border);
+      border-left: 6px solid var(--gold);
+      border-radius: 22px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .donation-panel h2 {
+      margin: 0 0 14px;
+      font-size: 36px;
+      line-height: 1.1;
+      color: var(--blue-dark);
+    }
+
+    .donation-panel p {
+      margin: 0 0 14px;
+      font-size: 18px;
+      color: var(--text);
+      max-width: 980px;
+    }
+
+    .donation-panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    .footer-space {
+      height: 10px;
+    }
+
+    @media (max-width: 980px) {
+      .intro-grid,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .panel,
+      .card,
+      .donation-panel {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 68px 0 58px;
+      }
+
+      .hero .lead,
+      .hero .sublead,
+      .panel p,
+      .impact-box p,
+      .section-header p,
+      .donation-panel p {
+        font-size: 16px;
+      }
+
+      .section-header h2,
+      .donation-panel h2 {
+        font-size: 30px;
+      }
+
+      .card h3 {
+        font-size: 24px;
+      }
+
+      .quick-nav-links a {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
 <body>
 
-<div class="hero">
-    <h1>How We Help Holocaust Survivors</h1>
-    <p class="intro">
-        The Blue Card provides direct financial assistance, essential services, and life-enhancing programs to Holocaust survivors in need. Our mission is simple: ensure dignity, safety, and quality of life for those who endured the unimaginable.
-    </p>
-</div>
-
-<div class="section">
-    <div class="grid">
-
-        <!-- Emergency Cash -->
-        <div class="card">
-            <h2>Emergency Cash Assistance</h2>
-            <p>One-time grants for urgent needs that directly impact a survivor’s safety and living conditions.</p>
-            <ul>
-                <li>Prevent eviction and utility shut-offs</li>
-                <li>Emergency relocation and housing repairs</li>
-                <li>Food, clothing, and essential appliances</li>
-                <li>Medical, dental, and burial expenses</li>
-            </ul>
-            <a href="https://bluecardfund.org/how-we-help/emergency-cash-assistance/">Learn More →</a>
-        </div>
-
-        <!-- Medication -->
-        <div class="card">
-            <h2>Medication Assistance Grant</h2>
-            <p>Financial support to ensure survivors never have to skip lifesaving medications due to cost.</p>
-            <p>Many survivors live on limited income and are forced to ration prescriptions. This program removes that burden and ensures consistent care.</p>
-            <a href="https://bluecardfund.org/the-blue-cards-medication-assistance-grant/">Learn More →</a>
-        </div>
-
-        <!-- Dental Medical -->
-        <div class="card">
-            <h2>Dental & Medical Assistance</h2>
-            <p>One-time support to improve physical health and address urgent medical needs.</p>
-            <ul>
-                <li>Hearing aids</li>
-                <li>Dental and denture care</li>
-                <li>Medical expenses not covered by insurance</li>
-            </ul>
-            <a href="https://bluecardfund.org/how-we-help/dental-and-medical-assistance/">Learn More →</a>
-        </div>
-
-        <!-- TERS -->
-        <div class="card">
-            <h2>Emergency Response System (TERS)</h2>
-            <p>A 24/7 emergency alert system that allows survivors to remain safely in their homes.</p>
-            <p>With the press of a button, survivors are instantly connected to care specialists who can dispatch help immediately.</p>
-            <a href="https://bluecardfund.org/how-we-help/ters/">Learn More →</a>
-        </div>
-
-        <!-- Disaster -->
-        <div class="card">
-            <h2>Natural Disaster Relief</h2>
-            <p>Rapid-response aid for survivors affected by hurricanes, fires, and extreme weather events.</p>
-            <p>Provides food, medical supplies, and emergency support during crises across the country.</p>
-            <a href="https://bluecardfund.org/natural-disaster-relief/">Learn More →</a>
-        </div>
-
-        <!-- Monthly -->
-        <div class="card">
-            <h2>Ongoing Monthly Assistance</h2>
-            <p>Recurring financial support to help survivors afford everyday essentials.</p>
-            <ul>
-                <li>Food and basic supplies</li>
-                <li>Rent assistance</li>
-            </ul>
-            <a href="https://bluecardfund.org/how-we-help/monthly-assistance/">Learn More →</a>
-        </div>
-
-        <!-- Cancer -->
-        <div class="card">
-            <h2>Fighting Cancer Together Program</h2>
-            <p>Targeted support for survivors battling cancer, who face significantly higher risk rates.</p>
-            <p>Covers medical co-pays, transportation, and dietary needs during treatment.</p>
-            <a href="https://bluecardfund.org/how-we-help/siggi-b-wilzig-fighting-cancer-together-program/">Learn More →</a>
-        </div>
-
-        <!-- Wellbeing -->
-        <div class="card">
-            <h2>Health & Wellbeing Programs</h2>
-            <p>Programs designed to improve emotional, mental, and physical wellbeing.</p>
-            <ul>
-                <li>Holiday support and birthday recognition</li>
-                <li>Light therapy for depression (SAD)</li>
-                <li>Companion pets for emotional support</li>
-                <li>Summer retreats and nutrition support</li>
-            </ul>
-            <a href="https://bluecardfund.org/how-we-help/health-wellbeing/">Learn More →</a>
-        </div>
-
-        <!-- Cost Plus -->
-        <div class="card">
-            <h2>Cost Plus Drug Company Partnership</h2>
-            <p>Access to affordable generic medications delivered directly to survivors nationwide.</p>
-            <p>Includes education on reducing prescription costs and improving access to care.</p>
-            <a href="https://bluecardfund.org/cost-plus-drug-company/">Learn More →</a>
-        </div>
-
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Direct Financial Assistance for Holocaust Survivors</div>
+      <h1>How The Blue Card Helps Holocaust Survivors Live With Dignity, Safety, and Independence</h1>
+      <p class="lead">
+        The Blue Card receives funding and donations to provide financial assistance to poverty-stricken Holocaust survivors.
+      </p>
+      <p class="sublead">
+        These funds help us achieve our mission to ensure survivors live out their golden years with respect and dignity, safe and independent in their homes, and with the feeling that there are still people who care.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#programs">Explore Our Programs</a>
+        <a class="btn btn-secondary" href="https://bluecardfund.org/donate/">Donate Now</a>
+      </div>
     </div>
-</div>
+  </header>
+
+  <section class="quick-nav">
+    <div class="wrap">
+      <div class="quick-nav-inner">
+        <div class="quick-nav-title">Quick Links</div>
+        <div class="quick-nav-links">
+          <a href="#emergency-cash-assistance">Emergency Cash Assistance</a>
+          <a href="#medication-assistance">Medication Assistance</a>
+          <a href="#dental-medical-assistance">Dental and Medical Assistance</a>
+          <a href="#ters">TERS</a>
+          <a href="#natural-disaster-relief">Natural Disaster Relief</a>
+          <a href="#monthly-assistance">Monthly Assistance</a>
+          <a href="#fighting-cancer-together">Fighting Cancer Together</a>
+          <a href="#health-wellbeing">Health and Wellbeing</a>
+          <a href="#education-outreach">Education and Outreach</a>
+          <a href="#cost-plus-drug-company">Cost Plus Drug Company</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro-section">
+    <div class="wrap">
+      <div class="intro-grid">
+        <div class="panel mission-box">
+          <h2>Why This Support Matters</h2>
+          <p>
+            Many Holocaust survivors carry deep trauma connected to being forced from their homes into ghettos, camps, hiding places, or exile. For many, the fear of losing their home is not an ordinary financial concern. It is a painful reminder of profound loss, displacement, and terror.
+          </p>
+          <p>
+            Many survivors also have no family left. They live with isolation, fragile health, and the painful feeling that they have once again been forgotten in a time of need.
+          </p>
+          <p>
+            Through funding and donations, The Blue Card gives direct financial assistance to Holocaust survivors who need it most. Our work helps survivors remain in their homes, meet urgent needs, maintain their health, and feel supported with care and compassion.
+          </p>
+        </div>
+
+        <div class="panel impact-box">
+          <h3>100% of Your Donation Helps One More Holocaust Survivor Financially</h3>
+          <div class="big">100%</div>
+          <p>
+            Every dollar donated goes directly toward helping Holocaust survivors afford essential needs such as housing, food, dental care, medical care, medication, heat, water, electricity, and more.
+          </p>
+          <p class="small">
+            Your support helps preserve dignity, stability, and peace of mind.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section-header" id="programs">
+    <h2>Programs of Assistance</h2>
+    <p>
+      The Blue Card’s programs are designed to meet both urgent and ongoing needs. Each one addresses a critical area of survivor wellbeing, from emergency aid and medical support to cancer care, emotional wellbeing, and safety at home.
+    </p>
+  </section>
+
+  <section class="programs">
+    <div class="wrap">
+      <div class="cards">
+
+        <article class="card" id="emergency-cash-assistance">
+          <div class="kicker">Urgent Need</div>
+          <h3>Emergency Cash Assistance</h3>
+          <p>
+            The Blue Card provides one-time grant assistance for urgent and emergency needs to improve the living conditions of Holocaust survivors facing immediate hardship.
+          </p>
+          <p>
+            This program helps stabilize daily life during moments of crisis and protect survivors from situations that threaten their health, safety, or housing.
+          </p>
+          <ul>
+            <li>Late payments to prevent eviction</li>
+            <li>Homelessness prevention</li>
+            <li>Shut-off prevention for utilities</li>
+            <li>Emergency relocation support</li>
+            <li>Home add-ins and repairs, including stair lifts or plumbing</li>
+            <li>Purchase and repair of essential appliances</li>
+            <li>Food purchases</li>
+            <li>Dental care</li>
+            <li>Medical care and medical equipment not covered by insurance</li>
+            <li>Essential clothing and footwear</li>
+            <li>Burial expenses</li>
+          </ul>
+          <a class="read-more" href="https://bluecardfund.org/how-we-help/emergency-cash-assistance/">Visit program page</a>
+        </article>
+
+        <article class="card" id="medication-assistance">
+          <div class="kicker">Prescription Support</div>
+          <h3>The Blue Card’s Medication Assistance Grant</h3>
+          <p>
+            This program provides financial assistance to help Holocaust survivors purchase lifesaving medication and cover prescription co-pays.
+          </p>
+          <p>
+            Survivors living on limited monthly incomes and pensions are too often forced to ration medication because of cost. The support they receive through The Blue Card relieves that burden and helps them access critical treatment without added financial distress.
+          </p>
+          <a class="read-more" href="https://bluecardfund.org/the-blue-cards-medication-assistance-grant/">Visit program page</a>
+        </article>
+
+        <article class="card" id="dental-medical-assistance">
+          <div class="kicker">Health Support</div>
+          <h3>Dental and Medical Assistance</h3>
+          <p>
+            The Blue Card provides one-time financial assistance for urgent dental and medical services to improve the physical health of Holocaust survivors.
+          </p>
+          <p>
+            This support helps fill gaps where essential care is needed but not fully covered.
+          </p>
+          <ul>
+            <li>Hearing aids</li>
+            <li>Dental and denture care</li>
+            <li>Medical expenses not otherwise covered by insurance</li>
+            <li>Medication or medical equipment support</li>
+          </ul>
+          <a class="read-more" href="https://bluecardfund.org/how-we-help/dental-and-medical-assistance/">Visit program page</a>
+        </article>
+
+        <article class="card" id="ters">
+          <div class="kicker">Safety at Home</div>
+          <h3>Telephone Emergency Response System (TERS)</h3>
+          <p>
+            The Blue Card’s goal is to help Holocaust survivors remain in their own homes and stay independent for as long as possible.
+          </p>
+          <p>
+            Because of their Holocaust experience, many survivors suffer severe anxiety at the thought of being forced to leave home and move into a nursing facility. TERS helps relieve that fear with a life-preserving emergency alert system worn around the neck, wrist, or used as a landline unit.
+          </p>
+          <p>
+            With one press of a button, the survivor is instantly connected to a care specialist who can contact help when needed, providing 24/7 support and peace of mind for both survivors and families.
+          </p>
+          <p>
+            The Blue Card provides this system to survivors who do not have the financial resources to cover installation, ongoing service, or maintenance.
+          </p>
+          <a class="read-more" href="https://bluecardfund.org/how-we-help/ters/">Visit program page</a>
+        </article>
+
+        <article class="card" id="natural-disaster-relief">
+          <div class="kicker">Crisis Relief</div>
+          <h3>Natural Disaster Relief</h3>
+          <p>
+            As fires, hurricanes, and extreme weather affect communities across the country, The Blue Card reaches out to Holocaust survivors to ensure their safety and provide emergency support.
+          </p>
+          <p>
+            This fund responds to urgent needs in areas impacted by severe events, including Southern California, Asheville, Tampa Bay, and Southern Georgia.
+          </p>
+          <ul>
+            <li>Food and basic necessities</li>
+            <li>Medical supplies and vital care</li>
+            <li>Caregiver support</li>
+            <li>Financial and emotional assistance during displacement and disaster</li>
+          </ul>
+          <p>
+            The Natural Disasters and Severe Weather Fund delivers life-saving help during moments of extreme instability and loss.
+          </p>
+          <a class="read-more" href="https://bluecardfund.org/natural-disaster-relief/">Visit program page</a>
+        </article>
+
+        <article class="card" id="monthly-assistance">
+          <div class="kicker">Recurring Support</div>
+          <h3>Ongoing Monthly Assistance</h3>
+          <p>
+            For Holocaust survivors who need extra help each month to afford basic necessities and services, The Blue Card provides recurring financial assistance.
+          </p>
+          <ul>
+            <li>Food and household supplies</li>
+            <li>Rent assistance</li>
+          </ul>
+          <p>
+            This monthly support helps reduce ongoing hardship and gives survivors greater day-to-day stability.
+          </p>
+          <a class="read-more" href="https://bluecardfund.org/how-we-help/monthly-assistance/">Visit program page</a>
+        </article>
+
+        <article class="card" id="fighting-cancer-together">
+          <div class="kicker">Cancer Care Support</div>
+          <h3>Siggi B. Wilzig Fighting Cancer Together Program</h3>
+          <p>
+            Holocaust survivors are at significantly greater risk of cancer and often face added financial pressure while undergoing treatment.
+          </p>
+          <p>
+            The Siggi B. Wilzig, OBM, Fighting Cancer Together Program helps survivors battling cancer access the aid they need by assisting with medical co-pays, transportation, and dietary costs associated with treatment.
+          </p>
+          <p>
+            This program is designed specifically to ease the burden on cancer-stricken survivors and help them receive the care they desperately need and deserve.
+          </p>
+          <a class="read-more" href="https://bluecardfund.org/how-we-help/siggi-b-wilzig-fighting-cancer-together-program/">Visit program page</a>
+        </article>
+
+        <article class="card" id="health-wellbeing">
+          <div class="kicker">Emotional and Physical Wellbeing</div>
+          <h3>Health and Wellbeing Programs</h3>
+          <p>
+            The Blue Card provides a range of programs designed to strengthen emotional wellbeing, reduce isolation, and support healthier daily living for Holocaust survivors.
+          </p>
+          <ul>
+            <li>Jewish holiday support for the High Holidays, Hanukkah, and Passover</li>
+            <li>Mazal Tov Birthday cards and birthday gifts</li>
+            <li>Mood Restore Light Box support for light therapy</li>
+            <li>Companion pets that provide comfort and connection</li>
+            <li>Summer Vacation experiences for survivors in NYC</li>
+            <li>Vitamins, minerals, liquid meals, and other nutritional support</li>
+            <li>Bring a Smile support for terminally ill survivors</li>
+          </ul>
+          <p>
+            These programs help survivors feel seen, supported, and cared for in ways that improve quality of life.
+          </p>
+          <a class="read-more" href="https://bluecardfund.org/how-we-help/health-wellbeing/">Visit program page</a>
+        </article>
+
+        <article class="card" id="education-outreach">
+          <div class="kicker">Community Awareness</div>
+          <h3>Education and Outreach</h3>
+          <p>
+            The Blue Card’s work also includes education and outreach that helps preserve Holocaust memory, build awareness, and engage schools, organizations, and communities in meaningful learning.
+          </p>
+          <p>
+            This area of work strengthens public understanding while supporting the broader mission of honoring survivors and ensuring their experiences are not forgotten.
+          </p>
+          <a class="read-more" href="https://bluecardfund.org/how-we-help/education-outreach/">Visit program page</a>
+        </article>
+
+        <article class="card" id="cost-plus-drug-company">
+          <div class="kicker">Affordability Partnership</div>
+          <h3>Cost Plus Drug Company Partnership</h3>
+          <p>
+            Through its partnership with Cost Plus Drug Company, The Blue Card helps Holocaust survivors nationwide access low-cost generic medication shipped directly to their homes.
+          </p>
+          <p>
+            The program also includes educational seminars focused on medication affordability, helping survivors better understand lower-cost options and how to access them.
+          </p>
+          <a class="read-more" href="https://bluecardfund.org/cost-plus-drug-company/">Visit program page</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="donation-strip">
+    <div class="wrap">
+      <div class="donation-panel">
+        <h2>Your Support Reaches Survivors Directly</h2>
+        <p>
+          100% of your donations go to helping one more Holocaust survivor financially.
+        </p>
+        <p>
+          Your generosity helps ensure survivors have a roof over their heads, food to eat, access to dental care and healthcare, access to heat, water, electricity, medication, and other essentials required for a safe and dignified life.
+        </p>
+        <p>
+          By giving to The Blue Card, you help remind Holocaust survivors that they are not forgotten.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-space"></div>
 
 </body>
 </html>
