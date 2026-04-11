@@ -1,0 +1,214 @@
+<section class="who-we-are-body">
+  <style>
+    .who-we-are-body {
+      background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%);
+      padding: 72px 24px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #1c1c1c;
+    }
+
+    .who-we-are-body .who-we-are-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .who-we-are-body .who-we-are-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 48px 52px;
+      box-shadow: 0 18px 50px rgba(9, 42, 86, 0.08);
+      border: 1px solid rgba(12, 73, 144, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .who-we-are-body .who-we-are-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #0d5cab 0%, #2d7fd3 100%);
+    }
+
+    .who-we-are-body .section-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(260px, 360px);
+      gap: 36px;
+      align-items: start;
+      margin-bottom: 42px;
+    }
+
+    .who-we-are-body .eyebrow {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #0d5cab;
+      margin-bottom: 14px;
+    }
+
+    .who-we-are-body h2 {
+      font-size: 46px;
+      line-height: 1.08;
+      margin: 0 0 18px;
+      color: #0b2341;
+      font-weight: 800;
+    }
+
+    .who-we-are-body .lead {
+      font-size: 19px;
+      line-height: 1.7;
+      margin: 0;
+      color: #3a4654;
+      max-width: 760px;
+    }
+
+    .who-we-are-body .highlight-box {
+      background: linear-gradient(180deg, #f2f7fd 0%, #eaf2fb 100%);
+      border: 1px solid rgba(13, 92, 171, 0.12);
+      border-radius: 18px;
+      padding: 24px 24px 22px;
+    }
+
+    .who-we-are-body .highlight-box h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.3;
+      color: #0b2341;
+      font-weight: 700;
+    }
+
+    .who-we-are-body .highlight-box p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #415062;
+    }
+
+    .who-we-are-body .content-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .who-we-are-body .content-panel {
+      background: #fbfcfe;
+      border: 1px solid rgba(11, 35, 65, 0.08);
+      border-radius: 18px;
+      padding: 30px 30px 26px;
+      height: 100%;
+    }
+
+    .who-we-are-body .content-panel h3 {
+      margin: 0 0 16px;
+      font-size: 30px;
+      line-height: 1.2;
+      color: #0b2341;
+      font-weight: 800;
+    }
+
+    .who-we-are-body .content-panel p {
+      margin: 0 0 16px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: #303b47;
+    }
+
+    .who-we-are-body .content-panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    .who-we-are-body .accent-line {
+      width: 64px;
+      height: 4px;
+      border-radius: 999px;
+      background: #0d5cab;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .who-we-are-body {
+        padding: 56px 18px;
+      }
+
+      .who-we-are-body .who-we-are-card {
+        padding: 34px 24px;
+      }
+
+      .who-we-are-body .section-intro,
+      .who-we-are-body .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .who-we-are-body h2 {
+        font-size: 36px;
+      }
+
+      .who-we-are-body .content-panel h3 {
+        font-size: 26px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .who-we-are-body h2 {
+        font-size: 30px;
+      }
+
+      .who-we-are-body .lead {
+        font-size: 17px;
+      }
+
+      .who-we-are-body .content-panel {
+        padding: 24px 20px 22px;
+      }
+    }
+  </style>
+
+  <div class="who-we-are-wrap">
+    <div class="who-we-are-card">
+      <div class="section-intro">
+        <div>
+          <span class="eyebrow">Who We Are</span>
+          <h2>Supporting Holocaust survivors with dignity, compassion, and purpose.</h2>
+          <p class="lead">
+            The Blue Card was founded to respond to urgent need. Since its earliest beginnings in Germany and its reestablishment in the United States in 1939, the organization has remained focused on helping Jewish victims of Nazi persecution rebuild their lives and access essential support.
+          </p>
+        </div>
+
+        <div class="highlight-box">
+          <h3>A mission shaped by history</h3>
+          <p>
+            Today, The Blue Card provides direct financial assistance and meaningful resources that strengthen the mental, emotional, and physical well-being of Holocaust survivors living in need across the United States.
+          </p>
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <div class="content-panel">
+          <div class="accent-line"></div>
+          <h3>Our Story</h3>
+          <p>
+            Antisemitism intensified in the years before World War II. Jewish families faced growing discrimination across daily life, including employment, commerce, and access to opportunity. In 1934, The Blue Card was established by the Jewish community in Germany to help those already suffering under Nazi restrictions, business closures, and forced loss of livelihood.
+          </p>
+          <p>
+            In 1939, the organization was reestablished in the United States to continue aiding refugees of Nazi persecution as they sought safety and a new beginning in America.
+          </p>
+        </div>
+
+        <div class="content-panel">
+          <div class="accent-line"></div>
+          <h3>How The Blue Card Got Its Name</h3>
+          <p>
+            The organization’s name comes from the original blue paper cards issued to Jewish donors who contributed funds for individuals harmed by rising antisemitism before the war. Each contribution was marked with a stamp on the card, creating a visible record of generosity and shared responsibility.
+          </p>
+          <p>
+            After the Holocaust, The Blue Card’s mission expanded to help survivors of the Shoah establish stable new lives in the United States. As the survivor population continues to age and shrink, the need for financial support grows more urgent. Since its inception, The Blue Card has remained committed to improving daily life for survivors and helping create a more secure future.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
