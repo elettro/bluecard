@@ -1829,8 +1829,6 @@
               </h3>
 
               <div class="endorsement-tools">
-                <button onclick="zoomIn()">Zoom In</button>
-                <button onclick="zoomOut()">Zoom Out</button>
                 <a id="openBtn" href="#" target="_blank">Open</a>
                 <a id="downloadBtn" href="#" target="_blank">Download</a>
               </div>
@@ -1845,7 +1843,6 @@
       </div>
 
       <script>
-        let zoom = 100;
         let currentSrc = "https://bluecardfund.org/wp-content/uploads/2026/01/L-Petlakh-Endorsement-letter.pdf";
 
         const viewer = document.getElementById("mainViewer");
@@ -1855,8 +1852,7 @@
 
         function updateViewer(src) {
           currentSrc = src;
-          zoom = 100;
-          viewer.src = src + "#page=1&zoom=" + zoom;
+          viewer.src = src + "#page=1&zoom=100";
           openBtn.href = src;
           downloadBtn.href = src;
         }
@@ -1873,17 +1869,6 @@
             updateViewer(src);
           });
         });
-
-        function zoomIn() {
-          zoom += 20;
-          viewer.src = currentSrc + "#page=1&zoom=" + zoom;
-        }
-
-        function zoomOut() {
-          zoom -= 20;
-          if (zoom < 60) zoom = 60;
-          viewer.src = currentSrc + "#page=1&zoom=" + zoom;
-        }
 
         updateViewer(currentSrc);
       </script>
