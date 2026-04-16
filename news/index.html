@@ -1,0 +1,931 @@
+<div id="bluecard-news-showcase">
+  <style>
+    #bluecard-news-showcase {
+      --bc-blue: #0d3b7a;
+      --bc-blue-dark: #082a57;
+      --bc-blue-soft: #eaf2ff;
+      --bc-gold: #d8b25a;
+      --bc-text: #17324d;
+      --bc-muted: #5d7188;
+      --bc-border: #d9e4f2;
+      --bc-white: #ffffff;
+      --bc-shadow: 0 18px 40px rgba(13, 59, 122, 0.12);
+      --bc-shadow-soft: 0 10px 24px rgba(13, 59, 122, 0.08);
+      --bc-radius-lg: 22px;
+      --bc-radius-md: 16px;
+      --bc-radius-sm: 12px;
+      color: var(--bc-text);
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #f7fbff 0%, #eef5fb 100%);
+      padding: 28px 14px 60px;
+    }
+
+    #bluecard-news-showcase * {
+      box-sizing: border-box;
+    }
+
+    #bluecard-news-showcase .bc-wrap {
+      max-width: 1380px;
+      margin: 0 auto;
+    }
+
+    #bluecard-news-showcase .bc-hero {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    #bluecard-news-showcase .bc-eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(13, 59, 122, 0.08);
+      color: var(--bc-blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    #bluecard-news-showcase .bc-hero h2 {
+      margin: 0 0 10px;
+      color: var(--bc-blue-dark);
+      font-size: clamp(30px, 4vw, 50px);
+      line-height: 1.08;
+      font-weight: 800;
+    }
+
+    #bluecard-news-showcase .bc-hero p {
+      max-width: 920px;
+      margin: 0 auto;
+      color: var(--bc-muted);
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    #bluecard-news-showcase .bc-option {
+      margin: 28px 0 42px;
+      padding: 22px;
+      border-radius: 26px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(13, 59, 122, 0.09);
+      box-shadow: var(--bc-shadow-soft);
+      backdrop-filter: blur(8px);
+    }
+
+    #bluecard-news-showcase .bc-option-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bc-blue);
+    }
+
+    #bluecard-news-showcase .bc-option-label::before {
+      content: "";
+      width: 30px;
+      height: 2px;
+      background: var(--bc-gold);
+      display: inline-block;
+    }
+
+    #bluecard-news-showcase .bc-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    #bluecard-news-showcase .bc-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--bc-radius-lg);
+      background: var(--bc-white);
+      border: 1px solid var(--bc-border);
+      box-shadow: var(--bc-shadow-soft);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    #bluecard-news-showcase .bc-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--bc-shadow);
+    }
+
+    #bluecard-news-showcase .bc-card-inner {
+      padding: 24px;
+    }
+
+    #bluecard-news-showcase .bc-source {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    #bluecard-news-showcase .bc-logo {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      flex: 0 0 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);
+    }
+
+    #bluecard-news-showcase .bc-logo svg {
+      width: 84%;
+      height: auto;
+      display: block;
+    }
+
+    #bluecard-news-showcase .bc-source-meta {
+      min-width: 0;
+    }
+
+    #bluecard-news-showcase .bc-source-name {
+      display: block;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--bc-blue-dark);
+      line-height: 1.1;
+    }
+
+    #bluecard-news-showcase .bc-source-sub {
+      display: block;
+      font-size: 13px;
+      color: var(--bc-muted);
+      margin-top: 3px;
+    }
+
+    #bluecard-news-showcase .bc-title {
+      font-size: clamp(22px, 2vw, 28px);
+      line-height: 1.2;
+      font-weight: 800;
+      color: var(--bc-blue-dark);
+      margin: 0 0 14px;
+    }
+
+    #bluecard-news-showcase .bc-summary {
+      color: var(--bc-muted);
+      font-size: 16px;
+      line-height: 1.7;
+      margin: 0 0 20px;
+    }
+
+    #bluecard-news-showcase .bc-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 20px;
+    }
+
+    #bluecard-news-showcase .bc-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f1f6fc;
+      color: var(--bc-blue);
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid #dce8f6;
+    }
+
+    #bluecard-news-showcase .bc-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--bc-blue) 0%, #2560b2 100%);
+      color: #fff !important;
+      text-decoration: none !important;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      box-shadow: 0 12px 26px rgba(13, 59, 122, 0.24);
+    }
+
+    #bluecard-news-showcase .bc-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.96;
+      color: #fff !important;
+      text-decoration: none !important;
+    }
+
+    #bluecard-news-showcase .bc-btn.bc-btn-outline {
+      background: transparent;
+      color: var(--bc-blue) !important;
+      border: 2px solid var(--bc-blue);
+      box-shadow: none;
+    }
+
+    #bluecard-news-showcase .bc-btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    #bluecard-news-showcase .bc-cbs {
+      background: linear-gradient(135deg, #0a2248 0%, #1f4f9e 100%);
+    }
+
+    #bluecard-news-showcase .bc-timeout {
+      background: linear-gradient(135deg, #111111 0%, #2d2d2d 100%);
+    }
+
+    #bluecard-news-showcase .bc-option-1 .bc-card,
+    #bluecard-news-showcase .bc-option-7 .bc-card {
+      border-top: 6px solid var(--bc-blue);
+    }
+
+    #bluecard-news-showcase .bc-option-2 .bc-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f5faff 100%);
+    }
+
+    #bluecard-news-showcase .bc-option-2 .bc-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -30px -30px auto;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(13,59,122,0.08) 0%, rgba(13,59,122,0) 72%);
+      pointer-events: none;
+    }
+
+    #bluecard-news-showcase .bc-option-3 .bc-card {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      align-items: stretch;
+    }
+
+    #bluecard-news-showcase .bc-option-3 .bc-side-brand {
+      min-height: 100%;
+      padding: 22px 16px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    #bluecard-news-showcase .bc-option-3 .bc-side-brand strong {
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+
+    #bluecard-news-showcase .bc-option-3 .bc-side-brand span {
+      font-size: 12px;
+      opacity: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    #bluecard-news-showcase .bc-option-4 .bc-card {
+      background: var(--bc-white);
+      border: none;
+      box-shadow: 0 18px 50px rgba(8, 42, 87, 0.12);
+    }
+
+    #bluecard-news-showcase .bc-option-4 .bc-card-inner {
+      position: relative;
+      padding-top: 30px;
+    }
+
+    #bluecard-news-showcase .bc-option-4 .bc-ribbon {
+      position: absolute;
+      top: 0;
+      right: 22px;
+      transform: translateY(-50%);
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--bc-gold);
+      color: #fff;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    #bluecard-news-showcase .bc-option-5 .bc-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f8fbff 55%, #eef5ff 100%);
+      border: 1px solid rgba(13,59,122,0.08);
+    }
+
+    #bluecard-news-showcase .bc-option-5 .bc-card-inner {
+      padding: 28px;
+    }
+
+    #bluecard-news-showcase .bc-option-5 .bc-title {
+      padding-left: 16px;
+      border-left: 4px solid var(--bc-gold);
+    }
+
+    #bluecard-news-showcase .bc-option-6 .bc-card {
+      overflow: hidden;
+    }
+
+    #bluecard-news-showcase .bc-option-6 .bc-header-band {
+      padding: 18px 22px;
+      color: #fff;
+    }
+
+    #bluecard-news-showcase .bc-option-6 .bc-card-inner {
+      padding-top: 20px;
+    }
+
+    #bluecard-news-showcase .bc-option-7 .bc-card {
+      background: linear-gradient(180deg, rgba(13,59,122,0.03) 0%, rgba(255,255,255,1) 22%);
+    }
+
+    #bluecard-news-showcase .bc-option-7 .bc-summary {
+      font-size: 17px;
+    }
+
+    #bluecard-news-showcase .bc-option-8 .bc-card {
+      border-radius: 28px;
+    }
+
+    #bluecard-news-showcase .bc-option-8 .bc-card-inner {
+      padding: 18px;
+    }
+
+    #bluecard-news-showcase .bc-option-8 .bc-shell {
+      border-radius: 20px;
+      border: 1px solid #e4edf7;
+      padding: 20px;
+      background: #fff;
+    }
+
+    #bluecard-news-showcase .bc-option-9 .bc-card {
+      border: 2px solid rgba(13,59,122,0.08);
+    }
+
+    #bluecard-news-showcase .bc-option-9 .bc-btn {
+      min-width: 100%;
+    }
+
+    #bluecard-news-showcase .bc-option-10 .bc-card {
+      background: linear-gradient(135deg, #0c315f 0%, #154a8a 100%);
+      color: #fff;
+      border: none;
+    }
+
+    #bluecard-news-showcase .bc-option-10 .bc-source-name,
+    #bluecard-news-showcase .bc-option-10 .bc-title {
+      color: #fff;
+    }
+
+    #bluecard-news-showcase .bc-option-10 .bc-source-sub,
+    #bluecard-news-showcase .bc-option-10 .bc-summary {
+      color: rgba(255,255,255,0.85);
+    }
+
+    #bluecard-news-showcase .bc-option-10 .bc-chip {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.12);
+      color: #fff;
+    }
+
+    #bluecard-news-showcase .bc-option-10 .bc-btn {
+      background: #fff;
+      color: var(--bc-blue) !important;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+    }
+
+    #bluecard-news-showcase .bc-footer-note {
+      margin-top: 14px;
+      text-align: center;
+      color: var(--bc-muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 1100px) {
+      #bluecard-news-showcase .bc-grid-2,
+      #bluecard-news-showcase .bc-option-3 .bc-card {
+        grid-template-columns: 1fr;
+      }
+
+      #bluecard-news-showcase .bc-option-3 .bc-side-brand {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 767px) {
+      #bluecard-news-showcase {
+        padding: 20px 10px 40px;
+      }
+
+      #bluecard-news-showcase .bc-option {
+        padding: 16px;
+        margin: 22px 0 30px;
+      }
+
+      #bluecard-news-showcase .bc-card-inner {
+        padding: 20px;
+      }
+
+      #bluecard-news-showcase .bc-title {
+        font-size: 24px;
+      }
+
+      #bluecard-news-showcase .bc-summary {
+        font-size: 15px;
+      }
+    }
+  </style>
+
+  <div class="bc-wrap">
+    <div class="bc-hero">
+      <div class="bc-eyebrow">The Blue Card In The News</div>
+      <h2>10 ways to present two major news features</h2>
+      <p>Each option below is a different design treatment for the same two article links. Pick one look and drop that section into your Elementor HTML widget.</p>
+    </div>
+
+    <!-- OPTION 1 -->
+    <section class="bc-option bc-option-1">
+      <div class="bc-option-label">Option 1. Clean editorial cards</div>
+      <div class="bc-grid-2">
+        <article class="bc-card">
+          <div class="bc-card-inner">
+            <div class="bc-source">
+              <div class="bc-logo bc-cbs">
+                <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                  <circle cx="60" cy="60" r="34" stroke="white" stroke-width="10"></circle>
+                  <circle cx="60" cy="60" r="12" fill="white"></circle>
+                </svg>
+              </div>
+              <div class="bc-source-meta">
+                <span class="bc-source-name">CBS News</span>
+                <span class="bc-source-sub">CBS New York • April 13, 2026</span>
+              </div>
+            </div>
+            <h3 class="bc-title">Holocaust Remembrance Day marked on the Upper East Side: "I think we have to be vigilant"</h3>
+            <p class="bc-summary">CBS News covered Yom HaShoah programming on the Upper East Side, featuring survivor Adrienne Petrook and citing The Blue Card’s estimate of a rapidly shrinking global survivor population.</p>
+            <div class="bc-meta">
+              <span class="bc-chip">Holocaust Remembrance Day</span>
+              <span class="bc-chip">Adrienne Petrook</span>
+              <span class="bc-chip">The Blue Card</span>
+            </div>
+            <a class="bc-btn" href="https://www.google.com/url?rct=j&sa=t&url=https://www.cbsnews.com/newyork/news/holocaust-remembrance-day-2026/&ct=ga&cd=CAEYACoTMzU4NTAxOTI5NDQ0NTQzMjcwMjIaNGU3YzQ0ZDQ3OWMxYjM3MDpjb206ZW46VVM&usg=AOvVaw2eZ2HxtQl-8YT8nCVOUqKU" target="_blank" rel="noopener">Read the CBS News article</a>
+          </div>
+        </article>
+
+        <article class="bc-card">
+          <div class="bc-card-inner">
+            <div class="bc-source">
+              <div class="bc-logo bc-timeout">
+                <svg viewBox="0 0 160 120" fill="none" aria-hidden="true">
+                  <rect x="10" y="20" width="140" height="80" rx="14" stroke="white" stroke-width="10"></rect>
+                  <line x1="50" y1="20" x2="50" y2="100" stroke="white" stroke-width="10"></line>
+                  <line x1="105" y1="20" x2="105" y2="100" stroke="white" stroke-width="10"></line>
+                </svg>
+              </div>
+              <div class="bc-source-meta">
+                <span class="bc-source-name">Time Out</span>
+                <span class="bc-source-sub">New York • April 13, 2026</span>
+              </div>
+            </div>
+            <h3 class="bc-title">NYC cafes are hosting Holocaust survivors to tell their stories this week</h3>
+            <p class="bc-summary">Time Out highlighted “Sip & Listen,” the Yad Vashem USA Foundation and Blue Card initiative that brings survivor testimony into neighborhood cafes across Manhattan.</p>
+            <div class="bc-meta">
+              <span class="bc-chip">Sip & Listen</span>
+              <span class="bc-chip">NYC Cafes</span>
+              <span class="bc-chip">Speakers Bureau</span>
+            </div>
+            <a class="bc-btn" href="https://www.timeout.com/newyork/news/nyc-cafes-are-hosting-holocaust-survivors-to-tell-their-stories-this-week-041326" target="_blank" rel="noopener">Read the Time Out article</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- OPTION 2 -->
+    <section class="bc-option bc-option-2">
+      <div class="bc-option-label">Option 2. Soft premium cards</div>
+      <div class="bc-grid-2">
+        <article class="bc-card">
+          <div class="bc-card-inner">
+            <div class="bc-source">
+              <div class="bc-logo bc-cbs">
+                <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                  <circle cx="60" cy="60" r="34" stroke="white" stroke-width="10"></circle>
+                  <circle cx="60" cy="60" r="12" fill="white"></circle>
+                </svg>
+              </div>
+              <div class="bc-source-meta">
+                <span class="bc-source-name">CBS News</span>
+                <span class="bc-source-sub">Featured regional news coverage</span>
+              </div>
+            </div>
+            <h3 class="bc-title">A moving local feature tied to Yom HaShoah</h3>
+            <p class="bc-summary">This story centers on survivor testimony, intergenerational memory, and the urgency of vigilance. It also spotlights The Blue Card’s data on the declining number of Holocaust survivors worldwide.</p>
+            <div class="bc-btn-row">
+              <a class="bc-btn" href="https://www.google.com/url?rct=j&sa=t&url=https://www.cbsnews.com/newyork/news/holocaust-remembrance-day-2026/&ct=ga&cd=CAEYACoTMzU4NTAxOTI5NDQ0NTQzMjcwMjIaNGU3YzQ0ZDQ3OWMxYjM3MDpjb206ZW46VVM&usg=AOvVaw2eZ2HxtQl-8YT8nCVOUqKU" target="_blank" rel="noopener">Open article</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="bc-card">
+          <div class="bc-card-inner">
+            <div class="bc-source">
+              <div class="bc-logo bc-timeout">
+                <svg viewBox="0 0 160 120" fill="none" aria-hidden="true">
+                  <rect x="10" y="20" width="140" height="80" rx="14" stroke="white" stroke-width="10"></rect>
+                  <line x1="50" y1="20" x2="50" y2="100" stroke="white" stroke-width="10"></line>
+                  <line x1="105" y1="20" x2="105" y2="100" stroke="white" stroke-width="10"></line>
+                </svg>
+              </div>
+              <div class="bc-source-meta">
+                <span class="bc-source-name">Time Out</span>
+                <span class="bc-source-sub">Culture and city coverage</span>
+              </div>
+            </div>
+            <h3 class="bc-title">An intimate citywide feature with strong public appeal</h3>
+            <p class="bc-summary">Time Out framed the event as a powerful public experience. A cup of coffee, a neighborhood setting, and testimony that makes Holocaust remembrance feel immediate and personal.</p>
+            <div class="bc-btn-row">
+              <a class="bc-btn" href="https://www.timeout.com/newyork/news/nyc-cafes-are-hosting-holocaust-survivors-to-tell-their-stories-this-week-041326" target="_blank" rel="noopener">Open article</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- OPTION 3 -->
+    <section class="bc-option bc-option-3">
+      <div class="bc-option-label">Option 3. Side-band brand layout</div>
+      <div class="bc-grid-2">
+        <article class="bc-card">
+          <div class="bc-side-brand bc-cbs">
+            <strong>CBS</strong>
+            <span>News Coverage</span>
+          </div>
+          <div class="bc-card-inner">
+            <h3 class="bc-title">Holocaust Remembrance Day marked on the Upper East Side</h3>
+            <p class="bc-summary">Adrienne Petrook’s testimony, community reflection, and The Blue Card’s survivor estimates drive this strong CBS New York feature tied to Yom HaShoah.</p>
+            <div class="bc-meta">
+              <span class="bc-chip">Upper East Side</span>
+              <span class="bc-chip">Yom HaShoah</span>
+            </div>
+            <a class="bc-btn" href="https://www.google.com/url?rct=j&sa=t&url=https://www.cbsnews.com/newyork/news/holocaust-remembrance-day-2026/&ct=ga&cd=CAEYACoTMzU4NTAxOTI5NDQ0NTQzMjcwMjIaNGU3YzQ0ZDQ3OWMxYjM3MDpjb206ZW46VVM&usg=AOvVaw2eZ2HxtQl-8YT8nCVOUqKU" target="_blank" rel="noopener">View CBS feature</a>
+          </div>
+        </article>
+
+        <article class="bc-card">
+          <div class="bc-side-brand bc-timeout">
+            <strong>TO</strong>
+            <span>Time Out NYC</span>
+          </div>
+          <div class="bc-card-inner">
+            <h3 class="bc-title">NYC cafes are hosting Holocaust survivors to tell their stories this week</h3>
+            <p class="bc-summary">This Time Out piece gives the “Sip & Listen” concept strong cultural visibility and positions The Blue Card’s speakers bureau in a compelling New York setting.</p>
+            <div class="bc-meta">
+              <span class="bc-chip">Sip & Listen</span>
+              <span class="bc-chip">Upper West Side</span>
+            </div>
+            <a class="bc-btn" href="https://www.timeout.com/newyork/news/nyc-cafes-are-hosting-holocaust-survivors-to-tell-their-stories-this-week-041326" target="_blank" rel="noopener">View Time Out feature</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- OPTION 4 -->
+    <section class="bc-option bc-option-4">
+      <div class="bc-option-label">Option 4. Featured press highlights</div>
+      <div class="bc-grid-2">
+        <article class="bc-card">
+          <div class="bc-card-inner">
+            <div class="bc-ribbon">Press Highlight</div>
+            <div class="bc-source">
+              <div class="bc-logo bc-cbs">
+                <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                  <circle cx="60" cy="60" r="34" stroke="white" stroke-width="10"></circle>
+                  <circle cx="60" cy="60" r="12" fill="white"></circle>
+                </svg>
+              </div>
+              <div class="bc-source-meta">
+                <span class="bc-source-name">CBS News</span>
+                <span class="bc-source-sub">Regional television and digital news</span>
+              </div>
+            </div>
+            <h3 class="bc-title">Survivor testimony and public vigilance in focus</h3>
+            <p class="bc-summary">A strong local-news piece that connects remembrance, rising urgency, and The Blue Card’s advocacy for an aging survivor population.</p>
+            <a class="bc-btn" href="https://www.google.com/url?rct=j&sa=t&url=https://www.cbsnews.com/newyork/news/holocaust-remembrance-day-2026/&ct=ga&cd=CAEYACoTMzU4NTAxOTI5NDQ0NTQzMjcwMjIaNGU3YzQ0ZDQ3OWMxYjM3MDpjb206ZW46VVM&usg=AOvVaw2eZ2HxtQl-8YT8nCVOUqKU" target="_blank" rel="noopener">Read the full story</a>
+          </div>
+        </article>
+
+        <article class="bc-card">
+          <div class="bc-card-inner">
+            <div class="bc-ribbon">Press Highlight</div>
+            <div class="bc-source">
+              <div class="bc-logo bc-timeout">
+                <svg viewBox="0 0 160 120" fill="none" aria-hidden="true">
+                  <rect x="10" y="20" width="140" height="80" rx="14" stroke="white" stroke-width="10"></rect>
+                  <line x1="50" y1="20" x2="50" y2="100" stroke="white" stroke-width="10"></line>
+                  <line x1="105" y1="20" x2="105" y2="100" stroke="white" stroke-width="10"></line>
+                </svg>
+              </div>
+              <div class="bc-source-meta">
+                <span class="bc-source-name">Time Out</span>
+                <span class="bc-source-sub">Lifestyle and events coverage</span>
+              </div>
+            </div>
+            <h3 class="bc-title">A city culture feature with broad public reach</h3>
+            <p class="bc-summary">Time Out brings this program into everyday public life and helps transform remembrance into a shared civic experience.</p>
+            <a class="bc-btn" href="https://www.timeout.com/newyork/news/nyc-cafes-are-hosting-holocaust-survivors-to-tell-their-stories-this-week-041326" target="_blank" rel="noopener">Read the full story</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- OPTION 5 -->
+    <section class="bc-option bc-option-5">
+      <div class="bc-option-label">Option 5. Story-first angle</div>
+      <div class="bc-grid-2">
+        <article class="bc-card">
+          <div class="bc-card-inner">
+            <div class="bc-source">
+              <div class="bc-logo bc-cbs">
+                <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                  <circle cx="60" cy="60" r="34" stroke="white" stroke-width="10"></circle>
+                  <circle cx="60" cy="60" r="12" fill="white"></circle>
+                </svg>
+              </div>
+              <div class="bc-source-meta">
+                <span class="bc-source-name">CBS News</span>
+                <span class="bc-source-sub">By Lisa Rozner</span>
+              </div>
+            </div>
+            <h3 class="bc-title">“I think we have to be vigilant.”</h3>
+            <p class="bc-summary">This CBS report captures the force of one survivor’s voice while reinforcing the need to preserve testimony and support those still living with the long-term effects of persecution.</p>
+            <a class="bc-btn" href="https://www.google.com/url?rct=j&sa=t&url=https://www.cbsnews.com/newyork/news/holocaust-remembrance-day-2026/&ct=ga&cd=CAEYACoTMzU4NTAxOTI5NDQ0NTQzMjcwMjIaNGU3YzQ0ZDQ3OWMxYjM3MDpjb206ZW46VVM&usg=AOvVaw2eZ2HxtQl-8YT8nCVOUqKU" target="_blank" rel="noopener">Read on CBS News</a>
+          </div>
+        </article>
+
+        <article class="bc-card">
+          <div class="bc-card-inner">
+            <div class="bc-source">
+              <div class="bc-logo bc-timeout">
+                <svg viewBox="0 0 160 120" fill="none" aria-hidden="true">
+                  <rect x="10" y="20" width="140" height="80" rx="14" stroke="white" stroke-width="10"></rect>
+                  <line x1="50" y1="20" x2="50" y2="100" stroke="white" stroke-width="10"></line>
+                  <line x1="105" y1="20" x2="105" y2="100" stroke="white" stroke-width="10"></line>
+                </svg>
+              </div>
+              <div class="bc-source-meta">
+                <span class="bc-source-name">Time Out</span>
+                <span class="bc-source-sub">By Laura Ratliff</span>
+              </div>
+            </div>
+            <h3 class="bc-title">A cafe, a cup of coffee, and a story you won’t forget</h3>
+            <p class="bc-summary">This feature presents “Sip & Listen” in a way that feels human, immediate, and accessible. It is a strong awareness piece for The Blue Card and its speakers bureau.</p>
+            <a class="bc-btn" href="https://www.timeout.com/newyork/news/nyc-cafes-are-hosting-holocaust-survivors-to-tell-their-stories-this-week-041326" target="_blank" rel="noopener">Read on Time Out</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- OPTION 6 -->
+    <section class="bc-option bc-option-6">
+      <div class="bc-option-label">Option 6. Bold top-band media cards</div>
+      <div class="bc-grid-2">
+        <article class="bc-card">
+          <div class="bc-header-band bc-cbs">
+            <strong>CBS News Coverage</strong>
+          </div>
+          <div class="bc-card-inner">
+            <h3 class="bc-title">Upper East Side remembrance story featuring The Blue Card</h3>
+            <p class="bc-summary">A powerful reminder of why survivor testimony matters and why public education remains urgent.</p>
+            <div class="bc-btn-row">
+              <a class="bc-btn" href="https://www.google.com/url?rct=j&sa=t&url=https://www.cbsnews.com/newyork/news/holocaust-remembrance-day-2026/&ct=ga&cd=CAEYACoTMzU4NTAxOTI5NDQ0NTQzMjcwMjIaNGU3YzQ0ZDQ3OWMxYjM3MDpjb206ZW46VVM&usg=AOvVaw2eZ2HxtQl-8YT8nCVOUqKU" target="_blank" rel="noopener">Read article</a>
+              <a class="bc-btn bc-btn-outline" href="https://bluecardfund.org/" target="_blank" rel="noopener">Visit The Blue Card</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="bc-card">
+          <div class="bc-header-band bc-timeout">
+            <strong>Time Out NYC Coverage</strong>
+          </div>
+          <div class="bc-card-inner">
+            <h3 class="bc-title">“Sip & Listen” gains attention through citywide culture media</h3>
+            <p class="bc-summary">Neighborhood cafes become places of testimony, connection, and remembrance in this widely appealing New York feature.</p>
+            <div class="bc-btn-row">
+              <a class="bc-btn" href="https://www.timeout.com/newyork/news/nyc-cafes-are-hosting-holocaust-survivors-to-tell-their-stories-this-week-041326" target="_blank" rel="noopener">Read article</a>
+              <a class="bc-btn bc-btn-outline" href="https://bluecardfund.org/" target="_blank" rel="noopener">Visit The Blue Card</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- OPTION 7 -->
+    <section class="bc-option bc-option-7">
+      <div class="bc-option-label">Option 7. Refined nonprofit showcase</div>
+      <div class="bc-grid-2">
+        <article class="bc-card">
+          <div class="bc-card-inner">
+            <div class="bc-source">
+              <div class="bc-logo bc-cbs">
+                <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                  <circle cx="60" cy="60" r="34" stroke="white" stroke-width="10"></circle>
+                  <circle cx="60" cy="60" r="12" fill="white"></circle>
+                </svg>
+              </div>
+              <div class="bc-source-meta">
+                <span class="bc-source-name">CBS News</span>
+                <span class="bc-source-sub">Recognition from major news media</span>
+              </div>
+            </div>
+            <h3 class="bc-title">Nationally recognized urgency. Locally told.</h3>
+            <p class="bc-summary">This piece combines personal history with present-day relevance and reinforces the importance of survivor support, remembrance, and public vigilance.</p>
+            <a class="bc-btn" href="https://www.google.com/url?rct=j&sa=t&url=https://www.cbsnews.com/newyork/news/holocaust-remembrance-day-2026/&ct=ga&cd=CAEYACoTMzU4NTAxOTI5NDQ0NTQzMjcwMjIaNGU3YzQ0ZDQ3OWMxYjM3MDpjb206ZW46VVM&usg=AOvVaw2eZ2HxtQl-8YT8nCVOUqKU" target="_blank" rel="noopener">Explore coverage</a>
+          </div>
+        </article>
+
+        <article class="bc-card">
+          <div class="bc-card-inner">
+            <div class="bc-source">
+              <div class="bc-logo bc-timeout">
+                <svg viewBox="0 0 160 120" fill="none" aria-hidden="true">
+                  <rect x="10" y="20" width="140" height="80" rx="14" stroke="white" stroke-width="10"></rect>
+                  <line x1="50" y1="20" x2="50" y2="100" stroke="white" stroke-width="10"></line>
+                  <line x1="105" y1="20" x2="105" y2="100" stroke="white" stroke-width="10"></line>
+                </svg>
+              </div>
+              <div class="bc-source-meta">
+                <span class="bc-source-name">Time Out</span>
+                <span class="bc-source-sub">Recognition from influential city media</span>
+              </div>
+            </div>
+            <h3 class="bc-title">A public-facing format that meets people where they are</h3>
+            <p class="bc-summary">Time Out frames “Sip & Listen” as a memorable civic experience. It is a smart awareness bridge between culture, community, and Holocaust education.</p>
+            <a class="bc-btn" href="https://www.timeout.com/newyork/news/nyc-cafes-are-hosting-holocaust-survivors-to-tell-their-stories-this-week-041326" target="_blank" rel="noopener">Explore coverage</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- OPTION 8 -->
+    <section class="bc-option bc-option-8">
+      <div class="bc-option-label">Option 8. Framed cards with inner shell</div>
+      <div class="bc-grid-2">
+        <article class="bc-card">
+          <div class="bc-card-inner">
+            <div class="bc-shell">
+              <div class="bc-source">
+                <div class="bc-logo bc-cbs">
+                  <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                    <circle cx="60" cy="60" r="34" stroke="white" stroke-width="10"></circle>
+                    <circle cx="60" cy="60" r="12" fill="white"></circle>
+                  </svg>
+                </div>
+                <div class="bc-source-meta">
+                  <span class="bc-source-name">CBS News</span>
+                  <span class="bc-source-sub">Upper East Side coverage</span>
+                </div>
+              </div>
+              <h3 class="bc-title">Storytelling, remembrance, and vigilance</h3>
+              <p class="bc-summary">A concise article card style for news pages, impact pages, or home page media sections.</p>
+              <a class="bc-btn" href="https://www.google.com/url?rct=j&sa=t&url=https://www.cbsnews.com/newyork/news/holocaust-remembrance-day-2026/&ct=ga&cd=CAEYACoTMzU4NTAxOTI5NDQ0NTQzMjcwMjIaNGU3YzQ0ZDQ3OWMxYjM3MDpjb206ZW46VVM&usg=AOvVaw2eZ2HxtQl-8YT8nCVOUqKU" target="_blank" rel="noopener">Read now</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="bc-card">
+          <div class="bc-card-inner">
+            <div class="bc-shell">
+              <div class="bc-source">
+                <div class="bc-logo bc-timeout">
+                  <svg viewBox="0 0 160 120" fill="none" aria-hidden="true">
+                    <rect x="10" y="20" width="140" height="80" rx="14" stroke="white" stroke-width="10"></rect>
+                    <line x1="50" y1="20" x2="50" y2="100" stroke="white" stroke-width="10"></line>
+                    <line x1="105" y1="20" x2="105" y2="100" stroke="white" stroke-width="10"></line>
+                  </svg>
+                </div>
+                <div class="bc-source-meta">
+                  <span class="bc-source-name">Time Out</span>
+                  <span class="bc-source-sub">City culture coverage</span>
+                </div>
+              </div>
+              <h3 class="bc-title">An everyday venue becomes a space for testimony</h3>
+              <p class="bc-summary">This format feels polished and contained. Good for a page with multiple modules and tighter spacing.</p>
+              <a class="bc-btn" href="https://www.timeout.com/newyork/news/nyc-cafes-are-hosting-holocaust-survivors-to-tell-their-stories-this-week-041326" target="_blank" rel="noopener">Read now</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- OPTION 9 -->
+    <section class="bc-option bc-option-9">
+      <div class="bc-option-label">Option 9. Large CTA focused cards</div>
+      <div class="bc-grid-2">
+        <article class="bc-card">
+          <div class="bc-card-inner">
+            <div class="bc-source">
+              <div class="bc-logo bc-cbs">
+                <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                  <circle cx="60" cy="60" r="34" stroke="white" stroke-width="10"></circle>
+                  <circle cx="60" cy="60" r="12" fill="white"></circle>
+                </svg>
+              </div>
+              <div class="bc-source-meta">
+                <span class="bc-source-name">CBS News</span>
+                <span class="bc-source-sub">Major media mention</span>
+              </div>
+            </div>
+            <h3 class="bc-title">See how CBS News covered The Blue Card’s impact</h3>
+            <p class="bc-summary">A clean conversion-oriented layout. Strong for driving clicks out to media coverage with less text and more action.</p>
+            <a class="bc-btn" href="https://www.google.com/url?rct=j&sa=t&url=https://www.cbsnews.com/newyork/news/holocaust-remembrance-day-2026/&ct=ga&cd=CAEYACoTMzU4NTAxOTI5NDQ0NTQzMjcwMjIaNGU3YzQ0ZDQ3OWMxYjM3MDpjb206ZW46VVM&usg=AOvVaw2eZ2HxtQl-8YT8nCVOUqKU" target="_blank" rel="noopener">Go to CBS News article</a>
+          </div>
+        </article>
+
+        <article class="bc-card">
+          <div class="bc-card-inner">
+            <div class="bc-source">
+              <div class="bc-logo bc-timeout">
+                <svg viewBox="0 0 160 120" fill="none" aria-hidden="true">
+                  <rect x="10" y="20" width="140" height="80" rx="14" stroke="white" stroke-width="10"></rect>
+                  <line x1="50" y1="20" x2="50" y2="100" stroke="white" stroke-width="10"></line>
+                  <line x1="105" y1="20" x2="105" y2="100" stroke="white" stroke-width="10"></line>
+                </svg>
+              </div>
+              <div class="bc-source-meta">
+                <span class="bc-source-name">Time Out</span>
+                <span class="bc-source-sub">Major media mention</span>
+              </div>
+            </div>
+            <h3 class="bc-title">See how Time Out featured “Sip & Listen”</h3>
+            <p class="bc-summary">This version puts the call to action front and center. Good for a homepage press strip or media recognition section.</p>
+            <a class="bc-btn" href="https://www.timeout.com/newyork/news/nyc-cafes-are-hosting-holocaust-survivors-to-tell-their-stories-this-week-041326" target="_blank" rel="noopener">Go to Time Out article</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- OPTION 10 -->
+    <section class="bc-option bc-option-10">
+      <div class="bc-option-label">Option 10. Dark premium media wall</div>
+      <div class="bc-grid-2">
+        <article class="bc-card">
+          <div class="bc-card-inner">
+            <div class="bc-source">
+              <div class="bc-logo" style="background:rgba(255,255,255,0.12);">
+                <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                  <circle cx="60" cy="60" r="34" stroke="white" stroke-width="10"></circle>
+                  <circle cx="60" cy="60" r="12" fill="white"></circle>
+                </svg>
+              </div>
+              <div class="bc-source-meta">
+                <span class="bc-source-name">CBS News</span>
+                <span class="bc-source-sub">Media recognition</span>
+              </div>
+            </div>
+            <h3 class="bc-title">A compelling remembrance story covered by CBS News</h3>
+            <p class="bc-summary">A darker, more dramatic style for pages where you want the press section to feel premium and highly intentional.</p>
+            <div class="bc-meta">
+              <span class="bc-chip">Major media</span>
+              <span class="bc-chip">Survivor story</span>
+            </div>
+            <a class="bc-btn" href="https://www.google.com/url?rct=j&sa=t&url=https://www.cbsnews.com/newyork/news/holocaust-remembrance-day-2026/&ct=ga&cd=CAEYACoTMzU4NTAxOTI5NDQ0NTQzMjcwMjIaNGU3YzQ0ZDQ3OWMxYjM3MDpjb206ZW46VVM&usg=AOvVaw2eZ2HxtQl-8YT8nCVOUqKU" target="_blank" rel="noopener">Read CBS coverage</a>
+          </div>
+        </article>
+
+        <article class="bc-card">
+          <div class="bc-card-inner">
+            <div class="bc-source">
+              <div class="bc-logo" style="background:rgba(255,255,255,0.12);">
+                <svg viewBox="0 0 160 120" fill="none" aria-hidden="true">
+                  <rect x="10" y="20" width="140" height="80" rx="14" stroke="white" stroke-width="10"></rect>
+                  <line x1="50" y1="20" x2="50" y2="100" stroke="white" stroke-width="10"></line>
+                  <line x1="105" y1="20" x2="105" y2="100" stroke="white" stroke-width="10"></line>
+                </svg>
+              </div>
+              <div class="bc-source-meta">
+                <span class="bc-source-name">Time Out</span>
+                <span class="bc-source-sub">Media recognition</span>
+              </div>
+            </div>
+            <h3 class="bc-title">Time Out highlights an intimate public remembrance series</h3>
+            <p class="bc-summary">A bold press-block design for a homepage, campaign page, or awareness section where you want the feature to stand out fast.</p>
+            <div class="bc-meta">
+              <span class="bc-chip">Culture media</span>
+              <span class="bc-chip">NYC event</span>
+            </div>
+            <a class="bc-btn" href="https://www.timeout.com/newyork/news/nyc-cafes-are-hosting-holocaust-survivors-to-tell-their-stories-this-week-041326" target="_blank" rel="noopener">Read Time Out coverage</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="bc-footer-note">Pick the option you want and I’ll strip out the other 9 and give you one clean final snippet.</div>
+  </div>
+</div>
