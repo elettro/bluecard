@@ -29,10 +29,31 @@
   text-decoration: none;
   font-weight: 600;
 }
+.bluecard-nav > .menu > li > a {
+  position: relative;
+}
+.bluecard-nav > .menu > li > a::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 9px;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 260ms ease;
+}
 .bluecard-nav .menu > li:hover > a,
-.bluecard-nav .menu > li:focus-within > a {
+.bluecard-nav .menu > li:focus-within > a,
+.bluecard-nav .menu > li > a[aria-current="page"] {
   background: #0057a8;
   color: #fff;
+}
+.bluecard-nav .menu > li:hover > a::after,
+.bluecard-nav .menu > li:focus-within > a::after,
+.bluecard-nav .menu > li > a[aria-current="page"]::after {
+  transform: scaleX(1);
 }
 .bluecard-nav .sub-menu {
   position: absolute;
@@ -84,6 +105,7 @@
 @media (max-width: 980px) {
   .bluecard-nav > .menu { display: block; }
   .bluecard-nav .menu > li > a { border-bottom: 1px solid rgba(0,0,0,0.08); }
+  .bluecard-nav .menu > li > a::after { display: none; }
   .bluecard-nav .sub-menu { position: static; border: 0; box-shadow: none; display: block; }
   .bluecard-nav .menu-item-has-children > .sub-menu { padding-left: 14px; }
 }

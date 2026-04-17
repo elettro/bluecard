@@ -16,6 +16,15 @@
     <li class="menu-item-has-children"><a href="https://bluecardfund.org/contact/">Contact</a><ul class="sub-menu"><li><a href="https://bluecardfund.org/site-map/">Site Map</a></li></ul></li>
   </ul>
 </nav>`;
+
+    var currentPath = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
+    var navLinks = navTarget.querySelectorAll('.menu > li > a');
+    navLinks.forEach(function (link) {
+      var linkPath = new URL(link.href, window.location.origin).pathname.replace(/\/+$/, '') || '/';
+      if (linkPath === currentPath) {
+        link.setAttribute('aria-current', 'page');
+      }
+    });
   }
 
   var footerTarget = document.getElementById('bc-global-footer');
