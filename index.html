@@ -157,28 +157,12 @@
         .programs-section{padding:72px 20px 90px;overflow:hidden;background:linear-gradient(180deg,#f8fbfe 0%, #eef4f9 100%);}
         .wrap{max-width:1360px;margin:0 auto;} .section-head{text-align:center;margin-bottom:28px;} .eyebrow{display:inline-block;margin-bottom:10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#d9a441;} .section-head h2{margin:0 0 12px;font-size:clamp(32px,5vw,54px);line-height:1.04;color:#0a4a89;} .section-head p{margin:0 auto;max-width:860px;font-size:18px;line-height:1.55;color:#5f7287;} .carousel-shell{position:relative;margin-top:26px;padding:0 64px;} .nav-btn{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border:none;border-radius:999px;background:rgba(255,255,255,.96);color:#0a4a89;cursor:pointer;box-shadow:0 10px 24px rgba(10,74,137,.16);transition:transform .2s ease, background .2s ease, color .2s ease, opacity .2s ease;z-index:5;display:flex;align-items:center;justify-content:center;padding:0;} .nav-btn:hover{background:#0d5cab;color:#fff;} .nav-btn:active{transform:translateY(-50%) scale(.97);} .nav-btn svg{width:18px;height:18px;display:block;} .nav-btn.prev{left:0;} .nav-btn.next{right:0;} .carousel-viewport{width:100%;overflow:hidden;border-radius:30px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none;} .carousel-viewport.dragging{cursor:grabbing;} .carousel-track{display:flex;transition:transform .55s ease;will-change:transform;} .carousel-track.no-transition{transition:none;} .slide{flex:0 0 33.333333%;padding:12px;} .card{height:100%;min-height:540px;background:#fff;border:1px solid rgba(13,92,171,.10);border-radius:22px;overflow:hidden;box-shadow:0 14px 34px rgba(10,74,137,.14);display:flex;flex-direction:column;} .card-media{aspect-ratio:4/3;overflow:hidden;background:#dce8f3;position:relative;isolation:isolate;} .card-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,74,137,.08) 0%, rgba(10,74,137,.18) 100%);z-index:1;pointer-events:none;} .card-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .45s ease, filter .45s ease;filter:saturate(.88) contrast(1.02);} .card:hover .card-media img{transform:scale(1.04);filter:saturate(.95) contrast(1.04);} .card-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1;} .pill{display:inline-flex;align-items:center;width:max-content;margin-bottom:12px;padding:7px 11px;border-radius:999px;background:#eaf3fb;color:#0a4a89;font-size:12px;text-transform:uppercase;letter-spacing:.05em;font-weight:700;} .card h3{margin:0 0 12px;font-size:28px;line-height:1.05;color:#0a4a89;} .card p{margin:0;color:#5f7287;font-size:17px;line-height:1.55;} .meta{margin-top:16px;padding-top:16px;border-top:1px solid #d9e2ec;color:#18324a;font-size:14px;font-weight:700;} .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;margin-top:auto;padding:12px 18px;width:max-content;border-radius:12px;background:#0d5cab;color:#fff;font-weight:700;box-shadow:0 7px 18px rgba(13,92,171,.22);transition:transform .2s ease, background .2s ease;} .btn:hover{background:#0a4a89;transform:translateY(-2px);} .dots{display:flex;justify-content:center;gap:10px;margin-top:24px;flex-wrap:wrap;} .dot{width:11px;height:11px;border:none;border-radius:50%;background:#bfd1e3;cursor:pointer;transition:transform .2s ease, background .2s ease;padding:0;} .dot.active{background:#0d5cab;transform:scale(1.15);} .helper{margin-top:16px;text-align:center;color:#5f7287;font-size:14px;} @media (max-width:1100px){.slide{flex:0 0 50%;}.card{min-height:520px;}.carousel-shell{padding:0 58px;}} @media (max-width:760px){.programs-section{padding:54px 14px 70px;}.carousel-shell{padding:0 44px;}.nav-btn{width:40px;height:40px;}.nav-btn svg{width:15px;height:15px;}.slide{flex:0 0 100%;padding:8px;}.card{min-height:auto;}.card h3{font-size:24px;}.card p{font-size:16px;}.helper{font-size:13px;}}
     </style>
+  <link rel="stylesheet" href="/global-layout.css"/>
 </head>
-<body class="bg-background text-on-surface font-body selection:bg-primary-fixed-dim">
-<!-- TopNavBar -->
-<header class="docked full-width top-0 sticky z-50 bg-surface/80 backdrop-blur-md">
-<nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center w-full">
-<div class="text-xl font-bold tracking-tighter text-blue-900 dark:text-blue-100 font-headline uppercase tracking-[0.1em]">
-                The Blue Card
-            </div>
-<div class="hidden md:flex items-center gap-8 font-sans text-sm tracking-wide">
-<a class="text-slate-600 hover:text-blue-800 transition-colors" href="#">About</a>
-<a class="text-slate-600 hover:text-blue-800 transition-colors" href="#">How We Help</a>
-<a class="text-slate-600 hover:text-blue-800 transition-colors" href="#">Impact Stories</a>
-<a class="text-blue-700 font-semibold border-b-2 border-blue-700 pb-1" href="#">Podcast</a>
-<a class="text-slate-600 hover:text-blue-800 transition-colors" href="#">Get Involved</a>
-</div>
-<div class="flex items-center gap-4">
-<button class="donate-rollover bg-primary text-on-primary px-6 py-2 rounded-xl text-sm font-semibold hover:bg-primary-container active:scale-95 transition-all">
-                    Donate
-                </button>
-</div>
-</nav>
-</header>
+<body
+ class="bg-background text-on-surface font-body selection:bg-primary-fixed-dim">
+<div id="bc-global-nav"></div>
+
 <main>
 <!-- Section 1: Hero -->
 <section class="relative min-h-[819px] flex items-center archival-gradient overflow-hidden">
@@ -606,45 +590,6 @@
 </section>
 </main>
 <!-- Footer -->
-<footer class="full-width py-12 bg-slate-50 dark:bg-slate-900 border-t border-slate-200/30">
-<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
-<div class="md:col-span-1">
-<div class="text-lg font-bold text-blue-900 dark:text-blue-100 mb-6 uppercase tracking-widest font-headline">The Blue Card</div>
-<p class="font-sans text-base leading-relaxed text-slate-500 dark:text-slate-400">
-                    Dedicated to providing direct financial assistance to Holocaust survivors in need since 1934.
-                </p>
-</div>
-<div>
-<h4 class="font-bold text-blue-900 dark:text-blue-100 mb-6">Organization</h4>
-<ul class="space-y-4">
-<li><a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-blue-700 transition-all" href="#">Mission</a></li>
-<li><a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-blue-700 transition-all" href="#">History</a></li>
-<li><a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-blue-700 transition-all" href="#">Impact</a></li>
-</ul>
-</div>
-<div>
-<h4 class="font-bold text-blue-900 dark:text-blue-100 mb-6">Support</h4>
-<ul class="space-y-4">
-<li><a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-blue-700 transition-all" href="https://bluecardfund.org/contact/" rel="noopener noreferrer" target="_blank">Contact Us</a></li>
-<li><a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-blue-700 transition-all" href="#">Privacy Policy</a></li>
-<li><a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-blue-700 transition-all" href="#">Terms of Service</a></li>
-</ul>
-</div>
-<div>
-<h4 class="font-bold text-blue-900 dark:text-blue-100 mb-6">Connect</h4>
-<ul class="space-y-4">
-<li><a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-blue-700 transition-all" href="#">Social Media</a></li>
-<li><a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-blue-700 transition-all" href="#">Newsletter</a></li>
-<li><a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-blue-700 transition-all" href="#">Press Kit</a></li>
-</ul>
-</div>
-</div>
-<div class="max-w-7xl mx-auto px-8 mt-12 pt-12 border-t border-slate-200/30">
-<p class="text-slate-500 dark:text-slate-400 text-sm">
-                © 2024 The Blue Card. All rights reserved. Providing assistance to Holocaust survivors.
-            </p>
-</div>
-</footer>
 <script>
     (() => {
         const player = document.querySelector('[data-podcast-player]');
@@ -866,4 +811,7 @@
     })();
 </script>
 
+
+<div id="bc-global-footer"></div>
+<script src="/global-layout.js"></script>
 </body></html>
