@@ -4,6 +4,9 @@
   var navTarget = document.getElementById('bc-global-nav');
   if (navTarget) {
     navTarget.innerHTML = `
+<div class="bc-top-donate-strip" role="region" aria-label="Donate call to action">
+  <a class="bc-top-donate-btn" href="https://bluecardfund.org/become-involved/donate/" rel="noopener noreferrer" target="_blank">DONATE</a>
+</div>
 <nav class="bluecard-nav" aria-label="Main Navigation">
   <ul class="menu">
     <li><a href="https://bluecardfund.org/">Home</a></li>
