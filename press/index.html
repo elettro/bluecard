@@ -1,0 +1,1760 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Blue Card Press Archive</title>
+<style>
+  :root {
+    --bc-blue:#064d8b;
+    --bc-deep:#073763;
+    --bc-ink:#172033;
+    --bc-muted:#5d6a7c;
+    --bc-line:#dbe6f2;
+    --bc-soft:#f5f9fd;
+    --bc-card:#ffffff;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:Arial, Helvetica, sans-serif; color:var(--bc-ink); background:#ffffff; }
+  .bc-press-page { width:100%; background:linear-gradient(180deg,#f7fbff 0%,#ffffff 240px); }
+  .bc-press-wrap { max-width:1180px; margin:0 auto; padding:56px 22px 72px; }
+  .bc-eyebrow { color:var(--bc-blue); font-size:13px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; margin:0 0 12px; }
+  .bc-hero { display:grid; grid-template-columns:1.35fr .65fr; gap:30px; align-items:end; border-bottom:1px solid var(--bc-line); padding-bottom:30px; }
+  .bc-hero h1 { margin:0; font-size:clamp(34px,5vw,62px); line-height:1.02; letter-spacing:-.04em; color:var(--bc-deep); }
+  .bc-hero p { margin:16px 0 0; max-width:760px; color:var(--bc-muted); font-size:18px; line-height:1.6; }
+  .bc-stats { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+  .bc-stat { background:var(--bc-card); border:1px solid var(--bc-line); border-radius:18px; padding:18px; box-shadow:0 12px 32px rgba(7,55,99,.07); }
+  .bc-stat strong { display:block; color:var(--bc-blue); font-size:32px; line-height:1; }
+  .bc-stat span { display:block; margin-top:8px; color:var(--bc-muted); font-size:13px; line-height:1.35; }
+  .bc-controls { position:sticky; top:0; z-index:10; background:rgba(255,255,255,.94); backdrop-filter:blur(12px); border:1px solid var(--bc-line); border-radius:22px; padding:16px; margin:28px 0 34px; box-shadow:0 18px 48px rgba(7,55,99,.08); }
+  .bc-control-row { display:grid; grid-template-columns:1fr auto; gap:14px; align-items:center; }
+  .bc-search { width:100%; border:1px solid var(--bc-line); border-radius:999px; padding:14px 18px; font-size:15px; outline:none; color:var(--bc-ink); background:#fff; }
+  .bc-search:focus { border-color:var(--bc-blue); box-shadow:0 0 0 4px rgba(6,77,139,.12); }
+  .bc-reset { border:1px solid var(--bc-blue); background:var(--bc-blue); color:#fff; padding:13px 18px; border-radius:999px; font-weight:700; cursor:pointer; }
+  .bc-year-nav { display:flex; flex-wrap:wrap; gap:9px; margin-top:14px; }
+  .bc-year-pill { display:inline-flex; align-items:center; gap:7px; text-decoration:none; color:var(--bc-deep); border:1px solid var(--bc-line); background:var(--bc-soft); border-radius:999px; padding:9px 12px; font-size:13px; font-weight:700; }
+  .bc-year-pill span { color:var(--bc-muted); font-weight:700; }
+  .bc-year-pill:hover { border-color:var(--bc-blue); color:var(--bc-blue); background:#fff; }
+  .bc-results-note { margin:12px 2px 0; color:var(--bc-muted); font-size:13px; }
+  .bc-year-section { scroll-margin-top:132px; margin:42px 0 0; }
+  .bc-year-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; border-bottom:1px solid var(--bc-line); margin-bottom:18px; padding-bottom:12px; }
+  .bc-year-heading h2 { margin:0; color:var(--bc-deep); font-size:34px; letter-spacing:-.03em; }
+  .bc-year-heading span { color:var(--bc-muted); font-weight:700; font-size:14px; }
+  .bc-card-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+  .bc-press-card { background:var(--bc-card); border:1px solid var(--bc-line); border-radius:22px; padding:20px; min-height:188px; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 14px 36px rgba(7,55,99,.06); transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+  .bc-press-card:hover { transform:translateY(-3px); box-shadow:0 22px 44px rgba(7,55,99,.12); border-color:#b9d2ec; }
+  .bc-card-topline { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:12px; }
+  .bc-date { color:var(--bc-blue); font-size:13px; font-weight:800; line-height:1.25; }
+  .bc-source { color:var(--bc-muted); background:var(--bc-soft); border:1px solid var(--bc-line); border-radius:999px; padding:5px 8px; font-size:11px; font-weight:700; white-space:nowrap; max-width:48%; overflow:hidden; text-overflow:ellipsis; }
+  .bc-press-card h3 { margin:0; font-size:18px; line-height:1.28; letter-spacing:-.015em; }
+  .bc-press-card h3 a { color:var(--bc-ink); text-decoration:none; }
+  .bc-press-card h3 a:hover { color:var(--bc-blue); text-decoration:underline; text-underline-offset:3px; }
+  .bc-card-actions { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:22px; }
+  .bc-read-link { color:#fff; background:var(--bc-blue); border:1px solid var(--bc-blue); border-radius:999px; padding:9px 13px; font-size:13px; font-weight:800; text-decoration:none; }
+  .bc-read-link:hover { color:var(--bc-blue); background:#fff; }
+  .bc-row-number { color:var(--bc-muted); font-size:12px; }
+  .bc-hidden { display:none !important; }
+  @media (max-width:980px) {
+    .bc-hero { grid-template-columns:1fr; }
+    .bc-card-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  }
+  @media (max-width:640px) {
+    .bc-press-wrap { padding:38px 16px 54px; }
+    .bc-control-row { grid-template-columns:1fr; }
+    .bc-stats { grid-template-columns:1fr 1fr; }
+    .bc-card-grid { grid-template-columns:1fr; }
+    .bc-card-topline { flex-direction:column; }
+    .bc-source { max-width:100%; }
+  }
+</style>
+</head>
+<body>
+  <main class="bc-press-page">
+    <div class="bc-press-wrap">
+      <section class="bc-hero">
+        <div>
+          <p class="bc-eyebrow">The Blue Card In The News</p>
+          <h1>Press Archive</h1>
+          <p>Browse media coverage, broadcast features, opinion pieces, interviews, and event announcements organized by publication year. Every card opens its source link in a new tab.</p>
+        </div>
+        <div class="bc-stats">
+          <div class="bc-stat"><strong>136</strong><span>Total press items</span></div>
+          <div class="bc-stat"><strong>15</strong><span>Years represented</span></div>
+        </div>
+      </section>
+
+      <section class="bc-controls" aria-label="Press archive controls">
+        <div class="bc-control-row">
+          <input class="bc-search" id="bcPressSearch" type="search" placeholder="Search by title, outlet, or date..." aria-label="Search press archive">
+          <button class="bc-reset" id="bcResetSearch" type="button">Reset</button>
+        </div>
+        <nav class="bc-year-nav" aria-label="Jump by year">
+          <a href="#year-2026" class="bc-year-pill" data-yearjump="2026">2026 <span>9</span></a><a href="#year-2025" class="bc-year-pill" data-yearjump="2025">2025 <span>10</span></a><a href="#year-2024" class="bc-year-pill" data-yearjump="2024">2024 <span>10</span></a><a href="#year-2022" class="bc-year-pill" data-yearjump="2022">2022 <span>27</span></a><a href="#year-2021" class="bc-year-pill" data-yearjump="2021">2021 <span>10</span></a><a href="#year-2020" class="bc-year-pill" data-yearjump="2020">2020 <span>11</span></a><a href="#year-2019" class="bc-year-pill" data-yearjump="2019">2019 <span>7</span></a><a href="#year-2018" class="bc-year-pill" data-yearjump="2018">2018 <span>7</span></a><a href="#year-2016" class="bc-year-pill" data-yearjump="2016">2016 <span>11</span></a><a href="#year-2015" class="bc-year-pill" data-yearjump="2015">2015 <span>9</span></a><a href="#year-2014" class="bc-year-pill" data-yearjump="2014">2014 <span>12</span></a><a href="#year-2013" class="bc-year-pill" data-yearjump="2013">2013 <span>7</span></a><a href="#year-2012" class="bc-year-pill" data-yearjump="2012">2012 <span>1</span></a><a href="#year-2011" class="bc-year-pill" data-yearjump="2011">2011 <span>3</span></a><a href="#year-2010" class="bc-year-pill" data-yearjump="2010">2010 <span>2</span></a>
+        </nav>
+        <p class="bc-results-note" id="bcResultsNote">Showing all 136 press items.</p>
+      </section>
+
+      <div id="bcPressArchive">
+        
+      <section class="bc-year-section" id="year-2026" data-year-section="2026">
+        <div class="bc-year-heading">
+          <h2>2026</h2>
+          <span>9 items</span>
+        </div>
+        <div class="bc-card-grid">
+          
+          <article class="bc-press-card" data-year="2026" data-search="holocaust survivor’s hologram offers new way to reach students jewish link april 15, 2026">
+            <div class="bc-card-topline">
+              <span class="bc-date">April 15, 2026</span>
+              <span class="bc-source">Jewish Link</span>
+            </div>
+            <h3><a href="https://jewishlink.news/holocaust-survivors-hologram-offers-new-way-to-reach-students/" target="_blank" rel="noopener noreferrer">Holocaust Survivor’s Hologram Offers New Way to Reach Students</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://jewishlink.news/holocaust-survivors-hologram-offers-new-way-to-reach-students/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#1</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2026" data-search="holocaust remembrance day marked on the upper east side cbs news april 13, 2026">
+            <div class="bc-card-topline">
+              <span class="bc-date">April 13, 2026</span>
+              <span class="bc-source">CBS News</span>
+            </div>
+            <h3><a href="https://www.cbsnews.com/newyork/news/holocaust-remembrance-day-2026/" target="_blank" rel="noopener noreferrer">Holocaust Remembrance Day marked on the Upper East Side</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.cbsnews.com/newyork/news/holocaust-remembrance-day-2026/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#2</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2026" data-search="nyc cafes are hosting holocaust survivors to tell their stories this week time out april 13, 2026">
+            <div class="bc-card-topline">
+              <span class="bc-date">April 13, 2026</span>
+              <span class="bc-source">Time Out</span>
+            </div>
+            <h3><a href="https://www.timeout.com/newyork/news/nyc-cafes-are-hosting-holocaust-survivors-to-tell-their-stories-this-week-041326" target="_blank" rel="noopener noreferrer">NYC cafes are hosting Holocaust survivors to tell their stories this week</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.timeout.com/newyork/news/nyc-cafes-are-hosting-holocaust-survivors-to-tell-their-stories-this-week-041326" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#3</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2026" data-search="tapinto.net middlesex college gets powerful virtual visit from holocaust survivor tapinto march 2026">
+            <div class="bc-card-topline">
+              <span class="bc-date">March 2026</span>
+              <span class="bc-source">TAPinto</span>
+            </div>
+            <h3><a href="https://www.tapinto.net/towns/edison/articles/middlesex-college-gets-powerful-virtual-visit-from-holocaust-survivor" target="_blank" rel="noopener noreferrer">TAPINTO.NET Middlesex College Gets Powerful Virtual Visit from Holocaust Survivor</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.tapinto.net/towns/edison/articles/middlesex-college-gets-powerful-virtual-visit-from-holocaust-survivor" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#4</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2026" data-search="forward as the last generation of holocaust survivors die, is ai the future of holocaust education? forward february 16, 2026">
+            <div class="bc-card-topline">
+              <span class="bc-date">February 16, 2026</span>
+              <span class="bc-source">Forward</span>
+            </div>
+            <h3><a href="https://forward.com/news/805093/holocaust-education-ai-sonia-warshawski-blue-card" target="_blank" rel="noopener noreferrer">FORWARD As the last generation of Holocaust survivors die, is AI the future of Holocaust education?</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://forward.com/news/805093/holocaust-education-ai-sonia-warshawski-blue-card" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#5</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2026" data-search="holocaust survivor invited to speak at brooklyn public school following initial rejection amnewyork february 5, 2026">
+            <div class="bc-card-topline">
+              <span class="bc-date">February 5, 2026</span>
+              <span class="bc-source">amNewYork</span>
+            </div>
+            <h3><a href="https://www.amny.com/news/holocaust-survivor-brooklyn-public-school/" target="_blank" rel="noopener noreferrer">Holocaust survivor invited to speak at Brooklyn public school following initial rejection</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.amny.com/news/holocaust-survivor-brooklyn-public-school/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#6</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2026" data-search="miami marathon team runs for holocaust survivors sun sentinel february 3, 2026">
+            <div class="bc-card-topline">
+              <span class="bc-date">February 3, 2026</span>
+              <span class="bc-source">Sun Sentinel</span>
+            </div>
+            <h3><a href="https://www.sun-sentinel.com/2026/02/03/miami-marathon-team-runs-for-holocaust-survivors/?share=aatfastanemrs2esoe03" target="_blank" rel="noopener noreferrer">Miami Marathon team runs for Holocaust survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.sun-sentinel.com/2026/02/03/miami-marathon-team-runs-for-holocaust-survivors/?share=aatfastanemrs2esoe03" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#7</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2026" data-search="florida jewish journal miami marathon team runs for holocaust survivors - (click image to see full page) the blue card february 2026">
+            <div class="bc-card-topline">
+              <span class="bc-date">February 2026</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/wp-content/uploads/2026/02/miamimarathonteamrusnforHolocaustSurvivors.jpg" target="_blank" rel="noopener noreferrer">Florida Jewish Journal Miami Marathon team runs for Holocaust survivors - (click image to see full page)</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/wp-content/uploads/2026/02/miamimarathonteamrusnforHolocaustSurvivors.jpg" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#8</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2026" data-search="antarctica marathon an unforgettable experience for nass member spineline january/february 2026">
+            <div class="bc-card-topline">
+              <span class="bc-date">January/February 2026</span>
+              <span class="bc-source">Spineline</span>
+            </div>
+            <h3><a href="https://spinelinemag.spine.org/janfeb26-me20626/lieberman-antarctica-marathon" target="_blank" rel="noopener noreferrer">Antarctica Marathon an Unforgettable Experience for NASS Member</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://spinelinemag.spine.org/janfeb26-me20626/lieberman-antarctica-marathon" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#9</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="bc-year-section" id="year-2025" data-year-section="2025">
+        <div class="bc-year-heading">
+          <h2>2025</h2>
+          <span>10 items</span>
+        </div>
+        <div class="bc-card-grid">
+          
+          <article class="bc-press-card" data-year="2025" data-search="this chanukah, south florida’s holocaust survivors need support, not silence miami herald december 5, 2025">
+            <div class="bc-card-topline">
+              <span class="bc-date">December 5, 2025</span>
+              <span class="bc-source">Miami Herald</span>
+            </div>
+            <h3><a href="https://www.miamiherald.com/opinion/op-ed/article313363939.html" target="_blank" rel="noopener noreferrer">This Chanukah, South Florida’s Holocaust survivors need support, not silence</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.miamiherald.com/opinion/op-ed/article313363939.html" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#10</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2025" data-search="holocaust survivors australia trauma-masha pearl/talkline with zev brenner youtube december 2025">
+            <div class="bc-card-topline">
+              <span class="bc-date">December 2025</span>
+              <span class="bc-source">YouTube</span>
+            </div>
+            <h3><a href="https://www.youtube.com/watch?v=Yafi5-e4QP4" target="_blank" rel="noopener noreferrer">Holocaust Survivors Australia trauma-Masha Pearl/Talkline With Zev Brenner</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.youtube.com/watch?v=Yafi5-e4QP4" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#11</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2025" data-search="the blue card distributes 100 turkeys to holocaust survivors in new york jns november 25, 2025">
+            <div class="bc-card-topline">
+              <span class="bc-date">November 25, 2025</span>
+              <span class="bc-source">JNS</span>
+            </div>
+            <h3><a href="https://www.jns.org/wire/the-blue-card/the-blue-card-distributes-100-turkeys-to-holocaust-survivors-in-new-york" target="_blank" rel="noopener noreferrer">The Blue Card distributes 100 turkeys to Holocaust survivors in New York</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.jns.org/wire/the-blue-card/the-blue-card-distributes-100-turkeys-to-holocaust-survivors-in-new-york" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#12</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2025" data-search="mayor adams, borough president richards announce “queens holocaust memorial” nyc mayor’s office november 25, 2025">
+            <div class="bc-card-topline">
+              <span class="bc-date">November 25, 2025</span>
+              <span class="bc-source">NYC Mayor’s Office</span>
+            </div>
+            <h3><a href="https://www.nyc.gov/mayors-office/news/2025/11/mayor-adams--borough-president-richards-announce--queens-holocau" target="_blank" rel="noopener noreferrer">Mayor Adams, Borough President Richards announce “Queens Holocaust Memorial”</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.nyc.gov/mayors-office/news/2025/11/mayor-adams--borough-president-richards-announce--queens-holocau" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#13</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2025" data-search="ny holocaust survivors retreat media - august 20th, 2025 nypost.com august 20, 2025">
+            <div class="bc-card-topline">
+              <span class="bc-date">August 20, 2025</span>
+              <span class="bc-source">Nypost.Com</span>
+            </div>
+            <h3><a href="https://nypost.com/2025/08/20/us-news/inside-upstate-retreat-for-aging-holocaust-survivors-living-in-nyc/" target="_blank" rel="noopener noreferrer">NY Holocaust Survivors Retreat Media - August 20th, 2025</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://nypost.com/2025/08/20/us-news/inside-upstate-retreat-for-aging-holocaust-survivors-living-in-nyc/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#14</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2025" data-search="blue card sponsors bonai kiddush in honor of attack victims, survivors boulderjewishnews.org june 22, 2025">
+            <div class="bc-card-topline">
+              <span class="bc-date">June 22, 2025</span>
+              <span class="bc-source">Boulderjewishnews.Org</span>
+            </div>
+            <h3><a href="https://boulderjewishnews.org/2025/blue-card-sponsor-bonai-kiddush-in-honor-of-attack-victims-survivors/" target="_blank" rel="noopener noreferrer">Blue Card Sponsors Bonai Kiddush in Honor of Attack Victims, Survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://boulderjewishnews.org/2025/blue-card-sponsor-bonai-kiddush-in-honor-of-attack-victims-survivors/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#15</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2025" data-search="hilary duff &amp; matthew koma &#x27;f*** ye&#x27; shirts help holocaust survivors ... sales, donations rolling in tmz february 13, 2025">
+            <div class="bc-card-topline">
+              <span class="bc-date">February 13, 2025</span>
+              <span class="bc-source">TMZ</span>
+            </div>
+            <h3><a href="https://www.tmz.com/2025/02/13/hilary-duff-husband-matthew-koma-anti-kanye-shirts-raises-money-holocaust-survivors/" target="_blank" rel="noopener noreferrer">Hilary Duff &amp; Matthew Koma &#x27;F*** Ye&#x27; Shirts Help Holocaust Survivors ... Sales, Donations Rolling In</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.tmz.com/2025/02/13/hilary-duff-husband-matthew-koma-anti-kanye-shirts-raises-money-holocaust-survivors/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#16</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2025" data-search="matthew koma’s kanye west t-shirts help raise more than $18k for holocaust survivors us weekly february 2025">
+            <div class="bc-card-topline">
+              <span class="bc-date">February 2025</span>
+              <span class="bc-source">Us Weekly</span>
+            </div>
+            <h3><a href="https://www.usmagazine.com/celebrity-news/news/matthew-komas-kanye-west-shirts-raise-18k-for-holocaust-survivors/" target="_blank" rel="noopener noreferrer">Matthew Koma’s Kanye West T-Shirts Help Raise More Than $18K for Holocaust Survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.usmagazine.com/celebrity-news/news/matthew-komas-kanye-west-shirts-raise-18k-for-holocaust-survivors/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#17</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2025" data-search="rita cosby: masha pearl: international holocaust remembrance day 77 wabc january 27, 2025">
+            <div class="bc-card-topline">
+              <span class="bc-date">January 27, 2025</span>
+              <span class="bc-source">77 WABC</span>
+            </div>
+            <h3><a href="https://wabcradio.com/episode/rita-cosby-masha-pearl-international-holocaust-remembrance-day-9-min/" target="_blank" rel="noopener noreferrer">Rita Cosby: Masha Pearl: International Holocaust Remembrance Day</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://wabcradio.com/episode/rita-cosby-masha-pearl-international-holocaust-remembrance-day-9-min/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#18</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2025" data-search="elon musk ignites online speculation over the meaning of a hand gesture jan 21st, 2025 the new york times january 21, 2025">
+            <div class="bc-card-topline">
+              <span class="bc-date">January 21, 2025</span>
+              <span class="bc-source">The New York Times</span>
+            </div>
+            <h3><a href="https://www.nytimes.com/2025/01/20/us/politics/elon-musk-hand-gesture-speech.html" target="_blank" rel="noopener noreferrer">Elon Musk Ignites Online Speculation Over the Meaning of a Hand Gesture Jan 21st, 2025</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.nytimes.com/2025/01/20/us/politics/elon-musk-hand-gesture-speech.html" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#19</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="bc-year-section" id="year-2024" data-year-section="2024">
+        <div class="bc-year-heading">
+          <h2>2024</h2>
+          <span>10 items</span>
+        </div>
+        <div class="bc-card-grid">
+          
+          <article class="bc-press-card" data-year="2024" data-search="wral news - the blue card helping holocaust survivors after hurricane milton issuu.com november 26, 2024">
+            <div class="bc-card-topline">
+              <span class="bc-date">November 26, 2024</span>
+              <span class="bc-source">Issuu.Com</span>
+            </div>
+            <h3><a href="https://issuu.com/jewishlinkdesigngroup/docs/sfcv-november-7-2024/20" target="_blank" rel="noopener noreferrer">WRAL News - The Blue Card Helping Holocaust Survivors after Hurricane Milton</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://issuu.com/jewishlinkdesigngroup/docs/sfcv-november-7-2024/20" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#20</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2024" data-search="news 10 - abc - holocaust survivors attend retreat to bond, celebrate jewish heritage news10.com august 2024">
+            <div class="bc-card-topline">
+              <span class="bc-date">August 2024</span>
+              <span class="bc-source">News10.Com</span>
+            </div>
+            <h3><a href="https://www.news10.com/news/special-reports/holocaust-survivors-attend-retreat-to-bond-celebrate-jewish-heritage/" target="_blank" rel="noopener noreferrer">News 10 - ABC - Holocaust survivors attend retreat to bond, celebrate Jewish heritage</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.news10.com/news/special-reports/holocaust-survivors-attend-retreat-to-bond-celebrate-jewish-heritage/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#21</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2024" data-search="wjff 90.5 fm radio catskill - summer retreat for holocaust survivors in ulster county wjff radio july 2024">
+            <div class="bc-card-topline">
+              <span class="bc-date">July 2024</span>
+              <span class="bc-source">WJFF Radio</span>
+            </div>
+            <h3><a href="https://wjffradio.org/summer-retreat-for-holocaust-survivors-in-ulster-county/" target="_blank" rel="noopener noreferrer">WJFF 90.5 FM Radio Catskill - Summer Retreat for Holocaust Survivors in Ulster County</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://wjffradio.org/summer-retreat-for-holocaust-survivors-in-ulster-county/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#22</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2024" data-search="blue card featured on vogue cover in new york times story the new york times june 2024">
+            <div class="bc-card-topline">
+              <span class="bc-date">June 2024</span>
+              <span class="bc-source">The New York Times</span>
+            </div>
+            <h3><a href="https://www.nytimes.com/2024/06/27/style/vogue-germany-margot-friedlander-holocaust.html?referringSource=articleShare&amp;sgrp=c-cb&amp;smid=nytcore-ios-share" target="_blank" rel="noopener noreferrer">Blue Card featured on Vogue Cover in New York Times Story</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.nytimes.com/2024/06/27/style/vogue-germany-margot-friedlander-holocaust.html?referringSource=articleShare&amp;sgrp=c-cb&amp;smid=nytcore-ios-share" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#23</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2024" data-search="ny jewish week - antisemitism and protests in the united states trigger ptsd in holocaust survivors jta may 2024">
+            <div class="bc-card-topline">
+              <span class="bc-date">May 2024</span>
+              <span class="bc-source">JTA</span>
+            </div>
+            <h3><a href="https://www.jta.org/2024/08/08/ny/antisemitism-and-protests-in-the-united-states-trigger-ptsd-in-holocaust-survivors" target="_blank" rel="noopener noreferrer">NY Jewish Week - Antisemitism and protests in the United States trigger PTSD in Holocaust survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.jta.org/2024/08/08/ny/antisemitism-and-protests-in-the-united-states-trigger-ptsd-in-holocaust-survivors" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#24</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2024" data-search="south florida community voice - blue card is providing life-saving support (page 20-21) issuu.com april 2024">
+            <div class="bc-card-topline">
+              <span class="bc-date">April 2024</span>
+              <span class="bc-source">Issuu.Com</span>
+            </div>
+            <h3><a href="https://issuu.com/jewishlinkdesigngroup/docs/sfcv-november-7-2024/20" target="_blank" rel="noopener noreferrer">South Florida Community Voice - Blue Card is providing Life-Saving Support (Page 20-21)</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://issuu.com/jewishlinkdesigngroup/docs/sfcv-november-7-2024/20" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#25</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2024" data-search="ap news | mayoral proclamation declares january 27th &quot;the blue card holocaust survivor day&quot; ap news january 27, 2024">
+            <div class="bc-card-topline">
+              <span class="bc-date">January 27, 2024</span>
+              <span class="bc-source">AP News</span>
+            </div>
+            <h3><a href="https://apnews.com/press-release/access-newswire/new-york-city-eric-adams-e2f47561fb45eec53dfd1f331119113a" target="_blank" rel="noopener noreferrer">AP News | Mayoral Proclamation Declares January 27th &quot;The Blue Card Holocaust Survivor Day&quot;</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://apnews.com/press-release/access-newswire/new-york-city-eric-adams-e2f47561fb45eec53dfd1f331119113a" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#26</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2024" data-search="business insider mayoral proclamation declares january 27th &quot;the blue card holocaust survivor day&quot; business insider january 27, 2024">
+            <div class="bc-card-topline">
+              <span class="bc-date">January 27, 2024</span>
+              <span class="bc-source">Business Insider</span>
+            </div>
+            <h3><a href="https://markets.businessinsider.com/news/stocks/mayoral-proclamation-declares-january-27th-the-blue-card-holocaust-survivor-day-1034273242" target="_blank" rel="noopener noreferrer">Business Insider Mayoral Proclamation Declares January 27th &quot;The Blue Card Holocaust Survivor Day&quot;</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://markets.businessinsider.com/news/stocks/mayoral-proclamation-declares-january-27th-the-blue-card-holocaust-survivor-day-1034273242" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#27</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2024" data-search="yahoo! finance mayoral proclamation declares january 27th &quot;the blue card holocaust survivor day&quot; yahoo finance january 27, 2024">
+            <div class="bc-card-topline">
+              <span class="bc-date">January 27, 2024</span>
+              <span class="bc-source">Yahoo Finance</span>
+            </div>
+            <h3><a href="https://finance.yahoo.com/news/mayoral-proclamation-declares-january-27th-130000191.html" target="_blank" rel="noopener noreferrer">Yahoo! Finance Mayoral Proclamation Declares January 27th &quot;The Blue Card Holocaust Survivor Day&quot;</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://finance.yahoo.com/news/mayoral-proclamation-declares-january-27th-130000191.html" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#28</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2024" data-search="ny1 video - supporting holocaust survivors in nyc youtube 2024">
+            <div class="bc-card-topline">
+              <span class="bc-date">2024</span>
+              <span class="bc-source">YouTube</span>
+            </div>
+            <h3><a href="https://www.youtube.com/watch?v=woZv4iF1KVM" target="_blank" rel="noopener noreferrer">NY1 Video - Supporting Holocaust survivors in NYC</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.youtube.com/watch?v=woZv4iF1KVM" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#29</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="bc-year-section" id="year-2022" data-year-section="2022">
+        <div class="bc-year-heading">
+          <h2>2022</h2>
+          <span>27 items</span>
+        </div>
+        <div class="bc-card-grid">
+          
+          <article class="bc-press-card" data-year="2022" data-search="the blue card partners with rutgers university to change the future of healthcare the blue card september 29, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">September 29, 2022</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/wp-content/uploads/2022/10/092922-BlueCard-JewishLink.pdf" target="_blank" rel="noopener noreferrer">The Blue Card Partners With Rutgers University To Change the Future of Healthcare</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/wp-content/uploads/2022/10/092922-BlueCard-JewishLink.pdf" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#30</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="ny governor signs bill on holocaust education to counter widespread ignorance times of israel august 10, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">August 10, 2022</span>
+              <span class="bc-source">Times of Israel</span>
+            </div>
+            <h3><a href="https://www.timesofisrael.com/ny-governor-signs-bill-on-holocaust-education-to-counter-widespread-ignorance/" target="_blank" rel="noopener noreferrer">NY governor signs bill on Holocaust education to counter widespread ignorance</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.timesofisrael.com/ny-governor-signs-bill-on-holocaust-education-to-counter-widespread-ignorance/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#31</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="survivors in the catskills tabletmag.com august 3, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">August 3, 2022</span>
+              <span class="bc-source">Tabletmag.Com</span>
+            </div>
+            <h3><a href="https://www.tabletmag.com/sections/news/articles/holocaust-survivors-in-the-catskills" target="_blank" rel="noopener noreferrer">Survivors in the Catskills</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.tabletmag.com/sections/news/articles/holocaust-survivors-in-the-catskills" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#32</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="july / 22, /2022 the jewish press. the blue card july 22, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">July 22, 2022</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/wp-content/uploads/2022/07/JP07600A0722.pdf" target="_blank" rel="noopener noreferrer">July / 22, /2022 The Jewish Press.</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/wp-content/uploads/2022/07/JP07600A0722.pdf" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#33</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="nyc holocaust survivors enjoy catskills retreat the blue card july 21, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">July 21, 2022</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/wp-content/uploads/2022/07/The-Blue-Card_5TJH_0721.png" target="_blank" rel="noopener noreferrer">NYC Holocaust Survivors Enjoy Catskills Retreat</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/wp-content/uploads/2022/07/The-Blue-Card_5TJH_0721.png" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#34</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="at a catskills retreat, brooklyn holocaust survivors get respite and a rap show times of israel july 20, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">July 20, 2022</span>
+              <span class="bc-source">Times of Israel</span>
+            </div>
+            <h3><a href="https://www.timesofisrael.com/at-a-at-catskills-retreat-brooklyn-holocaust-survivors-get-respite-and-a-rap-show/" target="_blank" rel="noopener noreferrer">At a Catskills retreat, Brooklyn Holocaust survivors get respite and a rap show</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.timesofisrael.com/at-a-at-catskills-retreat-brooklyn-holocaust-survivors-get-respite-and-a-rap-show/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#35</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="your daily phil: tiktok’s daf yomi star joins moishe house + losing gen-z on israel the blue card july 19, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">July 19, 2022</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/wp-content/uploads/2022/07/Your-Daily-Phil_-TikToks-Daf-Yomi-star-joins-Moishe-House-Losing-Gen-Z-on-Israel-%E2%80%93-eJewish-Philanthropy.pdf" target="_blank" rel="noopener noreferrer">Your Daily Phil: TikTok’s Daf Yomi star joins Moishe House + Losing Gen-Z on Israel</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/wp-content/uploads/2022/07/Your-Daily-Phil_-TikToks-Daf-Yomi-star-joins-Moishe-House-Losing-Gen-Z-on-Israel-%E2%80%93-eJewish-Philanthropy.pdf" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#36</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="new york city holocaust survivors go on th first vacation since 2020 the blue card july 19, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">July 19, 2022</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/wp-content/uploads/2022/07/New-York-City-Holocaust-survivors-go-on-their-first-vacation-since-2020-_-amNewYork.pdf" target="_blank" rel="noopener noreferrer">New York City Holocaust survivors go on th first vacation since 2020</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/wp-content/uploads/2022/07/New-York-City-Holocaust-survivors-go-on-their-first-vacation-since-2020-_-amNewYork.pdf" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#37</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="ny jewish week the blue card july 18, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">July 18, 2022</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/wp-content/uploads/2022/07/NY-Jewish-Week_TBC_0718.pdf" target="_blank" rel="noopener noreferrer">NY Jewish Week</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/wp-content/uploads/2022/07/NY-Jewish-Week_TBC_0718.pdf" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#38</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="nyc holocaust survivors get catskills vacation the blue card july 18, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">July 18, 2022</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/wp-content/uploads/2022/07/NYC-Holocaust-Survivors-Get-Catskills-Vacation-_-The-Jewish-Press-JewishPress.com-_-Hana-Levi-Julian-_-20-Tammuz-5782-%E2%80%93-July-18-2022-_-JewishPress.com_.pdf" target="_blank" rel="noopener noreferrer">NYC Holocaust Survivors Get Catskills Vacation</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/wp-content/uploads/2022/07/NYC-Holocaust-Survivors-Get-Catskills-Vacation-_-The-Jewish-Press-JewishPress.com-_-Hana-Levi-Julian-_-20-Tammuz-5782-%E2%80%93-July-18-2022-_-JewishPress.com_.pdf" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#39</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="new york-area holocaust survivors pack bags for much-needed summer getaway jns july 8, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">July 8, 2022</span>
+              <span class="bc-source">JNS</span>
+            </div>
+            <h3><a href="https://www.jns.org/new-york-area-holocaust-survivors-pack-bags-for-much-needed-summer-getaway/" target="_blank" rel="noopener noreferrer">New York-area Holocaust survivors pack bags for much-needed summer getaway</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.jns.org/new-york-area-holocaust-survivors-pack-bags-for-much-needed-summer-getaway/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#40</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="blue card featured on nbc youtube july 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">July 2022</span>
+              <span class="bc-source">YouTube</span>
+            </div>
+            <h3><a href="https://www.youtube.com/watch?v=cTQTncZGYNI" target="_blank" rel="noopener noreferrer">Blue Card featured on NBC</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.youtube.com/watch?v=cTQTncZGYNI" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#41</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="a muslim high school class studied the holocaust. here’s what they learned. the blue card june 8, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">June 8, 2022</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/wp-content/uploads/2022/06/eJewish-Philanthropy-Clip-6.8.22.docx" target="_blank" rel="noopener noreferrer">A Muslim high school class studied the Holocaust. Here’s what they learned.</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/wp-content/uploads/2022/06/eJewish-Philanthropy-Clip-6.8.22.docx" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#42</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="podcast press release the blue card june 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">June 2022</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/podcast-press-release-2/" target="_blank" rel="noopener noreferrer">Podcast Press Release</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/podcast-press-release-2/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#43</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="spirituality program the blue card may 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">May 2022</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/wp-content/uploads/2022/05/Spirituality-program-ad-1.jpg" target="_blank" rel="noopener noreferrer">Spirituality Program</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/wp-content/uploads/2022/05/Spirituality-program-ad-1.jpg" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#44</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="yom hashoah: remembrance and transmittance times of israel april 29, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">April 29, 2022</span>
+              <span class="bc-source">Times of Israel</span>
+            </div>
+            <h3><a href="https://blogs.timesofisrael.com/yom-hashoah-remembrance-and-transmittance/" target="_blank" rel="noopener noreferrer">Yom HaShoah: Remembrance and Transmittance</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://blogs.timesofisrael.com/yom-hashoah-remembrance-and-transmittance/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#45</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="the blue card partners with holocaust survivor and artist georgette hancock, and actor &amp; activist yuval david, to raise funds for holocaust survivors in ukraine the blue card march 31, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">March 31, 2022</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/the-blue-card-partners-with-holocaust-survivor-and-artist-georgette-hancock-and-actor-activist-yuval-david-to-raise-funds-for-holocaust-survivors-in-ukraine/" target="_blank" rel="noopener noreferrer">The Blue Card Partners with Holocaust Survivor and Artist Georgette Hancock, and Actor &amp; Activist Yuval David, to Raise Funds for Holocaust Survivors in Ukraine</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/the-blue-card-partners-with-holocaust-survivor-and-artist-georgette-hancock-and-actor-activist-yuval-david-to-raise-funds-for-holocaust-survivors-in-ukraine/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#46</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="why we run times of israel march 24, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">March 24, 2022</span>
+              <span class="bc-source">Times of Israel</span>
+            </div>
+            <h3><a href="https://blogs.timesofisrael.com/why-we-run/" target="_blank" rel="noopener noreferrer">Why We Run</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://blogs.timesofisrael.com/why-we-run/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#47</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="letter to optimum the blue card march 2, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">March 2, 2022</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/letter-to-optimum-2/" target="_blank" rel="noopener noreferrer">Letter to Optimum</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/letter-to-optimum-2/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#48</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="holocaust survivor support group asks cable giant to drop ‘russian propaganda’ from its lineup jns march 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">March 2022</span>
+              <span class="bc-source">JNS</span>
+            </div>
+            <h3><a href="https://www.jns.org/holocaust-survivor-support-group-asks-cable-giant-to-drop-russian-propaganda-from-its-lineup/" target="_blank" rel="noopener noreferrer">Holocaust survivor support group asks cable giant to drop ‘Russian propaganda’ from its lineup</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.jns.org/holocaust-survivor-support-group-asks-cable-giant-to-drop-russian-propaganda-from-its-lineup/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#49</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="holocaust survivor sami steigmann responds to whoopi goldberg&#x27;s comments about the jewish people - via newsmax&#x27;s &#x27;national report.&#x27; the blue card february 9, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">February 9, 2022</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/wp-content/uploads/2022/06/Newsmax-Clip-2.9.22.pdf" target="_blank" rel="noopener noreferrer">Holocaust Survivor Sami Steigmann responds to Whoopi Goldberg&#x27;s comments about the Jewish people - Via Newsmax&#x27;s &#x27;National Report.&#x27;</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/wp-content/uploads/2022/06/Newsmax-Clip-2.9.22.pdf" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#50</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="holocaust survivors supported by the blue card request meeting with whoopi goldberg to educate &amp; address recent damaging remarks the blue card february 4, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">February 4, 2022</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/holocaust-survivors-supported-by-the-blue-card-request-meeting-with-whoopi-goldberg-to-educate-address-recent-damaging-remarks-2/" target="_blank" rel="noopener noreferrer">Holocaust Survivors Supported by The Blue Card Request Meeting with Whoopi Goldberg to Educate &amp; Address Recent Damaging Remarks</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/holocaust-survivors-supported-by-the-blue-card-request-meeting-with-whoopi-goldberg-to-educate-address-recent-damaging-remarks-2/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#51</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="february 4th, 2022. press release the blue card february 4, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">February 4, 2022</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/press-template/" target="_blank" rel="noopener noreferrer">February 4th, 2022. Press Release</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/press-template/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#52</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="agencies strive to help columbus holocaust survivors age &#x27;independently, with dignity&#x27; the columbus dispatch january 27, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">January 27, 2022</span>
+              <span class="bc-source">The Columbus Dispatch</span>
+            </div>
+            <h3><a href="https://www.dispatch.com/story/news/2022/01/27/holocaust-survivors-blue-card-jewish-family-services-help-columbus-elderly/6578530001/" target="_blank" rel="noopener noreferrer">Agencies strive to help Columbus Holocaust survivors age &#x27;independently, with dignity&#x27;</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.dispatch.com/story/news/2022/01/27/holocaust-survivors-blue-card-jewish-family-services-help-columbus-elderly/6578530001/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#53</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="holocaust survivors in the us still struggling to survive the jerusalem post january 26, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">January 26, 2022</span>
+              <span class="bc-source">The Jerusalem Post</span>
+            </div>
+            <h3><a href="https://www.jpost.com/diaspora/article-694614" target="_blank" rel="noopener noreferrer">Holocaust survivors in the US still struggling to survive</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.jpost.com/diaspora/article-694614" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#54</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="open host daren jaime sits down with the executive director of the blue card, masha pearl who talks about how the organization is providing direct financial assistance to holocaust survivors. the blue card january 19, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">January 19, 2022</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/wp-content/uploads/2022/06/BronxNet-TV-1.19.22.pdf" target="_blank" rel="noopener noreferrer">OPEN Host Daren Jaime sits down with the Executive Director of The Blue Card, Masha Pearl who talks about how the organization is providing direct financial assistance to Holocaust survivors.</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/wp-content/uploads/2022/06/BronxNet-TV-1.19.22.pdf" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#55</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2022" data-search="a course on the holocaust designed for muslim students may soon spread to more schools the blue card january 12, 2022">
+            <div class="bc-card-topline">
+              <span class="bc-date">January 12, 2022</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/wp-content/uploads/2022/06/The-Forward-1.12.22.pdf" target="_blank" rel="noopener noreferrer">A course on the Holocaust designed for Muslim students may soon spread to more schools</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/wp-content/uploads/2022/06/The-Forward-1.12.22.pdf" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#56</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="bc-year-section" id="year-2021" data-year-section="2021">
+        <div class="bc-year-heading">
+          <h2>2021</h2>
+          <span>10 items</span>
+        </div>
+        <div class="bc-card-grid">
+          
+          <article class="bc-press-card" data-year="2021" data-search="i24news segment with elie rubinstein kristallnacht 2021 the blue card november 2021">
+            <div class="bc-card-topline">
+              <span class="bc-date">November 2021</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/wp-content/uploads/2022/06/i24news-segment-with-Elie-Rubinstein-Kristallnacht-2021.mp4" target="_blank" rel="noopener noreferrer">i24news segment with Elie Rubinstein Kristallnacht 2021</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/wp-content/uploads/2022/06/i24news-segment-with-Elie-Rubinstein-Kristallnacht-2021.mp4" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#57</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2021" data-search="this student from montreal is running the new york city marathon to honour holocaust survivors the cjn november 2021">
+            <div class="bc-card-topline">
+              <span class="bc-date">November 2021</span>
+              <span class="bc-source">The CJN</span>
+            </div>
+            <h3><a href="https://thecjn.ca/news/canada/this-student-from-montreal-is-running-the-new-york-city-marathon-to-honour-holocaust-survivors/" target="_blank" rel="noopener noreferrer">This student from Montreal is running the New York City Marathon to honour Holocaust survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://thecjn.ca/news/canada/this-student-from-montreal-is-running-the-new-york-city-marathon-to-honour-holocaust-survivors/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#58</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2021" data-search="westchester county’s only monthly jewish newspaper the blue card october 2021">
+            <div class="bc-card-topline">
+              <span class="bc-date">October 2021</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/wp-content/uploads/2022/06/Westchester-Jewish-Life-Oct.-21.pdf" target="_blank" rel="noopener noreferrer">WESTCHESTER COUNTY’S ONLY MONTHLY JEWISH NEWSPAPER</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/wp-content/uploads/2022/06/Westchester-Jewish-Life-Oct.-21.pdf" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#59</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2021" data-search="famous chef delivers meals to holocaust survivors during pandemic bronx times october 1, 2021">
+            <div class="bc-card-topline">
+              <span class="bc-date">October 1, 2021</span>
+              <span class="bc-source">Bronx Times</span>
+            </div>
+            <h3><a href="https://www.bxtimes.com/famous-chef-delivers-meals-to-holocaust-survivors-during-pandemic/" target="_blank" rel="noopener noreferrer">Famous chef delivers meals to Holocaust survivors during pandemic</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.bxtimes.com/famous-chef-delivers-meals-to-holocaust-survivors-during-pandemic/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#60</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2021" data-search="helping holocaust survivors through covid-19 360 magazine august 19, 2021">
+            <div class="bc-card-topline">
+              <span class="bc-date">August 19, 2021</span>
+              <span class="bc-source">360 Magazine</span>
+            </div>
+            <h3><a href="https://www.the360mag.com/helping-holocaust-survivors-through-covid-19/" target="_blank" rel="noopener noreferrer">Helping Holocaust Survivors Through COVID-19</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.the360mag.com/helping-holocaust-survivors-through-covid-19/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#61</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2021" data-search="holy name training program helps those caring for holocaust survivors roi-nj june 16, 2021">
+            <div class="bc-card-topline">
+              <span class="bc-date">June 16, 2021</span>
+              <span class="bc-source">ROI-NJ</span>
+            </div>
+            <h3><a href="https://www.roi-nj.com/2021/06/16/healthcare/holy-name-training-program-helps-those-caring-for-holocaust-survivors/" target="_blank" rel="noopener noreferrer">Holy Name training program helps those caring for Holocaust survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.roi-nj.com/2021/06/16/healthcare/holy-name-training-program-helps-those-caring-for-holocaust-survivors/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#62</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2021" data-search="innovative holocaust education program: the blue card, a national non-profit in need, and the turkish cultural center new york the blue card may 2021">
+            <div class="bc-card-topline">
+              <span class="bc-date">May 2021</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/innovative-holocaust-education-program-the-blue-card-a-national-non-profit-in-need-and-the-turkish-cultural-center-new-york/" target="_blank" rel="noopener noreferrer">INNOVATIVE HOLOCAUST EDUCATION PROGRAM: The Blue Card, a national non-profit in need, and the Turkish Cultural Center New York</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/innovative-holocaust-education-program-the-blue-card-a-national-non-profit-in-need-and-the-turkish-cultural-center-new-york/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#63</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2021" data-search="why not a holocaust survivors day? forward march 15, 2021">
+            <div class="bc-card-topline">
+              <span class="bc-date">March 15, 2021</span>
+              <span class="bc-source">Forward</span>
+            </div>
+            <h3><a href="https://forward.com/news/465843/why-not-a-holocaust-survivors-day/" target="_blank" rel="noopener noreferrer">Why not a Holocaust Survivors Day?</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://forward.com/news/465843/why-not-a-holocaust-survivors-day/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#64</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2021" data-search="&#x27;this is real&#x27;: holocaust survivor shares story on clubhouse to help combat hate nbcnews.com march 2021">
+            <div class="bc-card-topline">
+              <span class="bc-date">March 2021</span>
+              <span class="bc-source">Nbcnews.Com</span>
+            </div>
+            <h3><a href="https://www.nbcnews.com/tech/tech-news/-real-holocaust-survivor-shares-story-clubhouse-help-combat-hate-rcna391" target="_blank" rel="noopener noreferrer">&#x27;This is real&#x27;: Holocaust survivor shares story on Clubhouse to help combat hate</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.nbcnews.com/tech/tech-news/-real-holocaust-survivor-shares-story-clubhouse-help-combat-hate-rcna391" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#65</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2021" data-search="the blue card, with milana hazan the blue card 2021">
+            <div class="bc-card-topline">
+              <span class="bc-date">2021</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/wp-content/uploads/2022/06/The-Blue-Card_Nonprofit-Snapcast-1.docx" target="_blank" rel="noopener noreferrer">The Blue Card, with Milana Hazan</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/wp-content/uploads/2022/06/The-Blue-Card_Nonprofit-Snapcast-1.docx" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#66</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="bc-year-section" id="year-2020" data-year-section="2020">
+        <div class="bc-year-heading">
+          <h2>2020</h2>
+          <span>11 items</span>
+        </div>
+        <div class="bc-card-grid">
+          
+          <article class="bc-press-card" data-year="2020" data-search="working tirelessly and together kansas city jewish chronicle november 12, 2020">
+            <div class="bc-card-topline">
+              <span class="bc-date">November 12, 2020</span>
+              <span class="bc-source">Kansas City Jewish Chronicle</span>
+            </div>
+            <h3><a href="https://www.kcjc.com/index.php/current-news/latest-news/6409-working-tirelessly-and-together-partnerships-with-federation-national-organizations-help-jfs-provide-for-holocaust-survivors" target="_blank" rel="noopener noreferrer">Working tirelessly and together</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.kcjc.com/index.php/current-news/latest-news/6409-working-tirelessly-and-together-partnerships-with-federation-national-organizations-help-jfs-provide-for-holocaust-survivors" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#67</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2020" data-search="holocaust survivors reflect on coronavirus isolation fox news july 16, 2020">
+            <div class="bc-card-topline">
+              <span class="bc-date">July 16, 2020</span>
+              <span class="bc-source">Fox News</span>
+            </div>
+            <h3><a href="https://www.foxnews.com/us/holocaust-survivors-reflect-coronavirus-isolation" target="_blank" rel="noopener noreferrer">Holocaust survivors reflect on coronavirus isolation</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.foxnews.com/us/holocaust-survivors-reflect-coronavirus-isolation" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#68</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2020" data-search="телеконференция для русскоговорящих жертв холокоста о пандемии covid-19 the blue card june 29, 2020">
+            <div class="bc-card-topline">
+              <span class="bc-date">June 29, 2020</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/wp-content/uploads/2021/01/Blue_Card_Teleconference_Russian_6-29-2020-full-presentation-russian.pdf" target="_blank" rel="noopener noreferrer">Телеконференция для русскоговорящих жертв Холокоста о пандемии COVID-19</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/wp-content/uploads/2021/01/Blue_Card_Teleconference_Russian_6-29-2020-full-presentation-russian.pdf" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#69</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2020" data-search="a duty to our vulnerable, stalled indefinitely in covid lockdown times of israel june 25, 2020">
+            <div class="bc-card-topline">
+              <span class="bc-date">June 25, 2020</span>
+              <span class="bc-source">Times of Israel</span>
+            </div>
+            <h3><a href="https://blogs.timesofisrael.com/a-duty-to-our-vulnerable-stalled-indefinitely-in-covid-lockdown/" target="_blank" rel="noopener noreferrer">A duty to our vulnerable, stalled indefinitely in Covid lockdown</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://blogs.timesofisrael.com/a-duty-to-our-vulnerable-stalled-indefinitely-in-covid-lockdown/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#70</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2020" data-search="holocaust survivor support team helps combat isolation in dire times canarsiecourier.com june 2020">
+            <div class="bc-card-topline">
+              <span class="bc-date">June 2020</span>
+              <span class="bc-source">Canarsiecourier.Com</span>
+            </div>
+            <h3><a href="https://canarsiecourier.com/holocaust-survivor-support-team-helps-combat-isolation-in-dire-times-p5265-199.htm" target="_blank" rel="noopener noreferrer">Holocaust Survivor Support Team Helps Combat Isolation In Dire Times</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://canarsiecourier.com/holocaust-survivor-support-team-helps-combat-isolation-in-dire-times-p5265-199.htm" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#71</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2020" data-search="many holocaust survivors are struggling amid the pandemic. here’s how virtual gatherings are helping time may 29, 2020">
+            <div class="bc-card-topline">
+              <span class="bc-date">May 29, 2020</span>
+              <span class="bc-source">TIME</span>
+            </div>
+            <h3><a href="https://time.com/5842484/holocaust-survivors-coronavirus/" target="_blank" rel="noopener noreferrer">Many Holocaust Survivors Are Struggling Amid the Pandemic. Here’s How Virtual Gatherings Are Helping</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://time.com/5842484/holocaust-survivors-coronavirus/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#72</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2020" data-search="being great at doing good miamishoot.com may 26, 2020">
+            <div class="bc-card-topline">
+              <span class="bc-date">May 26, 2020</span>
+              <span class="bc-source">Miamishoot.Com</span>
+            </div>
+            <h3><a href="https://miamishoot.com/being-great-at-doing-good/" target="_blank" rel="noopener noreferrer">Being Great at Doing Good</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://miamishoot.com/being-great-at-doing-good/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#73</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2020" data-search="mental health crisis spawned by coronavirus fears and lockdown could be next pandemic fox news may 22, 2020">
+            <div class="bc-card-topline">
+              <span class="bc-date">May 22, 2020</span>
+              <span class="bc-source">Fox News</span>
+            </div>
+            <h3><a href="https://www.foxnews.com/health/next-pandemic-mental-health-crisis-spawned-coronavirus-fears-ock-down" target="_blank" rel="noopener noreferrer">Mental health crisis spawned by coronavirus fears and lockdown could be next pandemic</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.foxnews.com/health/next-pandemic-mental-health-crisis-spawned-coronavirus-fears-ock-down" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#74</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2020" data-search="‘i’m dying to be able to see people’ jta april 29, 2020">
+            <div class="bc-card-topline">
+              <span class="bc-date">April 29, 2020</span>
+              <span class="bc-source">JTA</span>
+            </div>
+            <h3><a href="https://www.jta.org/2020/04/29/ny/im-dying-to-be-able-to-see-people" target="_blank" rel="noopener noreferrer">‘I’m Dying to Be Able to See People’</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.jta.org/2020/04/29/ny/im-dying-to-be-able-to-see-people" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#75</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2020" data-search="helping holocaust survivors cope with covid the blue card april 23, 2020">
+            <div class="bc-card-topline">
+              <span class="bc-date">April 23, 2020</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://old.bluecardfund.org/images/news/news_2020/Masha_Pearl_the%20Blue_card_4-23-20.mp3" target="_blank" rel="noopener noreferrer">Helping Holocaust Survivors Cope With Covid</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://old.bluecardfund.org/images/news/news_2020/Masha_Pearl_the%20Blue_card_4-23-20.mp3" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#76</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2020" data-search="virtual holocaust remembrance day tributes dropbox april 21, 2020">
+            <div class="bc-card-topline">
+              <span class="bc-date">April 21, 2020</span>
+              <span class="bc-source">Dropbox</span>
+            </div>
+            <h3><a href="https://www.dropbox.com/scl/fi/99pgswwcf3ga58h7lggb9/NR_JACOBY_042120_V1.mp4?rlkey=1ue3mvbe3wol0ar9oaswpukyk&amp;dl=0" target="_blank" rel="noopener noreferrer">Virtual Holocaust Remembrance Day Tributes</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.dropbox.com/scl/fi/99pgswwcf3ga58h7lggb9/NR_JACOBY_042120_V1.mp4?rlkey=1ue3mvbe3wol0ar9oaswpukyk&amp;dl=0" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#77</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="bc-year-section" id="year-2019" data-year-section="2019">
+        <div class="bc-year-heading">
+          <h2>2019</h2>
+          <span>7 items</span>
+        </div>
+        <div class="bc-card-grid">
+          
+          <article class="bc-press-card" data-year="2019" data-search="game of thrones can wait after week of billionaire-studded galas bloomberg may 6, 2019">
+            <div class="bc-card-topline">
+              <span class="bc-date">May 6, 2019</span>
+              <span class="bc-source">Bloomberg</span>
+            </div>
+            <h3><a href="https://www.bloomberg.com/news/articles/2019-05-06/game-of-thrones-can-wait-after-week-of-billionaire-studded-galas" target="_blank" rel="noopener noreferrer">Game of Thrones Can Wait After Week of Billionaire-Studded Galas</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.bloomberg.com/news/articles/2019-05-06/game-of-thrones-can-wait-after-week-of-billionaire-studded-galas" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#78</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2019" data-search="andy cohen hosts 83rd blue card gala to aid holocaust survivors look to the stars april 12, 2019">
+            <div class="bc-card-topline">
+              <span class="bc-date">April 12, 2019</span>
+              <span class="bc-source">Look to the Stars</span>
+            </div>
+            <h3><a href="https://www.looktothestars.org/news/18924-andy-cohen-hosts-83rd-blue-card-gala-to-aid-holocaust-survivors" target="_blank" rel="noopener noreferrer">Andy Cohen Hosts 83rd Blue Card Gala To Aid Holocaust Survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.looktothestars.org/news/18924-andy-cohen-hosts-83rd-blue-card-gala-to-aid-holocaust-survivors" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#79</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2019" data-search="foundation helping holocaust survivors honored by the blue card patch april 9, 2019">
+            <div class="bc-card-topline">
+              <span class="bc-date">April 9, 2019</span>
+              <span class="bc-source">Patch</span>
+            </div>
+            <h3><a href="https://patch.com/new-york/gramercy-murray-hill/foundation-helping-holocaust-survivors-honored-blue-card" target="_blank" rel="noopener noreferrer">Foundation Helping Holocaust Survivors Honored By The Blue Card</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://patch.com/new-york/gramercy-murray-hill/foundation-helping-holocaust-survivors-honored-blue-card" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#80</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2019" data-search="yiddish fiddler cast will perform at blue card’s 83rd benefit gala to aid holocaust survivors playbill april 3, 2019">
+            <div class="bc-card-topline">
+              <span class="bc-date">April 3, 2019</span>
+              <span class="bc-source">Playbill</span>
+            </div>
+            <h3><a href="https://playbill.com/article/yiddish-fiddler-cast-will-perform-at-blue-cards-83rd-benefit-gala-to-aid-holocaust-survivors" target="_blank" rel="noopener noreferrer">Yiddish Fiddler Cast Will Perform at Blue Card’s 83rd Benefit Gala to Aid Holocaust Survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://playbill.com/article/yiddish-fiddler-cast-will-perform-at-blue-cards-83rd-benefit-gala-to-aid-holocaust-survivors" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#81</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2019" data-search="fiddler on the roof in yiddish to benefit holocaust survivors at blue card gala broadwayworld april 1, 2019">
+            <div class="bc-card-topline">
+              <span class="bc-date">April 1, 2019</span>
+              <span class="bc-source">BroadwayWorld</span>
+            </div>
+            <h3><a href="https://www.broadwayworld.com/off-broadway/article/FIDDLER-ON-THE-ROOF-IN-YIDDISH-to-Benefit-Holocaust-Survivors-at-Blue-Card-Gala-20190401" target="_blank" rel="noopener noreferrer">FIDDLER ON THE ROOF IN YIDDISH to Benefit Holocaust Survivors at Blue Card Gala</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.broadwayworld.com/off-broadway/article/FIDDLER-ON-THE-ROOF-IN-YIDDISH-to-Benefit-Holocaust-Survivors-at-Blue-Card-Gala-20190401" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#82</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2019" data-search="this couple’s goal is to photograph every living holocaust survivor jta march 20, 2019">
+            <div class="bc-card-topline">
+              <span class="bc-date">March 20, 2019</span>
+              <span class="bc-source">JTA</span>
+            </div>
+            <h3><a href="https://www.jta.org/2019/03/20/culture/this-couples-goal-is-to-photograph-every-living-holocaust-survivor" target="_blank" rel="noopener noreferrer">This couple’s goal is to photograph every living Holocaust survivor</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.jta.org/2019/03/20/culture/this-couples-goal-is-to-photograph-every-living-holocaust-survivor" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#83</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2019" data-search="assembly allocates funding for holocaust survivors and safety net services ny assembly march 18, 2019">
+            <div class="bc-card-topline">
+              <span class="bc-date">March 18, 2019</span>
+              <span class="bc-source">NY Assembly</span>
+            </div>
+            <h3><a href="https://nyassembly.gov/mem/Nily-Rozic/story/85950" target="_blank" rel="noopener noreferrer">Assembly Allocates Funding for Holocaust Survivors and Safety Net Services</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://nyassembly.gov/mem/Nily-Rozic/story/85950" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#84</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="bc-year-section" id="year-2018" data-year-section="2018">
+        <div class="bc-year-heading">
+          <h2>2018</h2>
+          <span>7 items</span>
+        </div>
+        <div class="bc-card-grid">
+          
+          <article class="bc-press-card" data-year="2018" data-search="jewish ledger - the blue card trains medical professionals... jewish ledger december 4, 2018">
+            <div class="bc-card-topline">
+              <span class="bc-date">December 4, 2018</span>
+              <span class="bc-source">Jewish Ledger</span>
+            </div>
+            <h3><a href="https://www.jewishledger.com/2018/12/blue-card-trains-medical-professionals-bridgeport-trauma-care-holocaust-survivors/" target="_blank" rel="noopener noreferrer">Jewish Ledger - The Blue Card trains medical professionals...</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.jewishledger.com/2018/12/blue-card-trains-medical-professionals-bridgeport-trauma-care-holocaust-survivors/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#85</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2018" data-search="the times of israel - why the trauma lives on for holocaust survivors... times of israel june 20, 2018">
+            <div class="bc-card-topline">
+              <span class="bc-date">June 20, 2018</span>
+              <span class="bc-source">Times of Israel</span>
+            </div>
+            <h3><a href="https://blogs.timesofisrael.com/why-the-trauma-lives-on-for-holocaust-survivors/" target="_blank" rel="noopener noreferrer">The Times of Israel - Why the trauma lives on for Holocaust survivors...</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://blogs.timesofisrael.com/why-the-trauma-lives-on-for-holocaust-survivors/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#86</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2018" data-search="heritage florida jewish news - urgent action needed to help remaining holocaust survivors heritage florida jewish news april 20, 2018">
+            <div class="bc-card-topline">
+              <span class="bc-date">April 20, 2018</span>
+              <span class="bc-source">Heritage Florida Jewish News</span>
+            </div>
+            <h3><a href="https://www.heritagefl.com/story/2018/04/20/news/urgent-action-needed-to-help-remaining-holocaust-survivors/9672.html" target="_blank" rel="noopener noreferrer">Heritage Florida Jewish News - Urgent action needed to help remaining Holocaust survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.heritagefl.com/story/2018/04/20/news/urgent-action-needed-to-help-remaining-holocaust-survivors/9672.html" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#87</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2018" data-search="jewishboston - the blue card’s masha pearl explains how teens can help bridge the generation gap jewishboston april 12, 2018">
+            <div class="bc-card-topline">
+              <span class="bc-date">April 12, 2018</span>
+              <span class="bc-source">JewishBoston</span>
+            </div>
+            <h3><a href="https://www.jewishboston.com/read/what-holocaust-survivors-need-now/" target="_blank" rel="noopener noreferrer">JewishBoston - The Blue Card’s Masha Pearl explains how teens can help bridge the generation gap</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.jewishboston.com/read/what-holocaust-survivors-need-now/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#88</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2018" data-search="burlington county times - mount laurel holocaust survivor shares family’s heroic story on hrd burlingtoncountytimes.com april 12, 2018">
+            <div class="bc-card-topline">
+              <span class="bc-date">April 12, 2018</span>
+              <span class="bc-source">Burlingtoncountytimes.Com</span>
+            </div>
+            <h3><a href="https://www.burlingtoncountytimes.com/news/20180412/mount-laurel-holocaust-survivor-shares-familys-heroic-story-on-holocaust-remembrance-day" target="_blank" rel="noopener noreferrer">Burlington County Times - Mount Laurel Holocaust survivor shares family’s heroic story on HRD</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.burlingtoncountytimes.com/news/20180412/mount-laurel-holocaust-survivor-shares-familys-heroic-story-on-holocaust-remembrance-day" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#89</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2018" data-search="oregon jewish life - help survivors on yom hashoah and all year long oregon jewish life april 11, 2018">
+            <div class="bc-card-topline">
+              <span class="bc-date">April 11, 2018</span>
+              <span class="bc-source">Oregon Jewish Life</span>
+            </div>
+            <h3><a href="https://orjewishlife.com/help-survivors-on-yom-hashoah-and-all-year-long/" target="_blank" rel="noopener noreferrer">Oregon Jewish Life - Help Survivors on Yom Hashoah and All Year Long</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://orjewishlife.com/help-survivors-on-yom-hashoah-and-all-year-long/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#90</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2018" data-search="1/26/18 - jewish journal - organization provides financial assistance to holocaust survivors jewishjournal.com january 26, 2018">
+            <div class="bc-card-topline">
+              <span class="bc-date">January 26, 2018</span>
+              <span class="bc-source">Jewishjournal.Com</span>
+            </div>
+            <h3><a href="https://jewishjournal.com/news/united-states/230166/organization-provides-financial-assistance-holocaust-survivors-need/" target="_blank" rel="noopener noreferrer">1/26/18 - Jewish Journal - Organization Provides Financial Assistance to Holocaust Survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://jewishjournal.com/news/united-states/230166/organization-provides-financial-assistance-holocaust-survivors-need/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#91</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="bc-year-section" id="year-2016" data-year-section="2016">
+        <div class="bc-year-heading">
+          <h2>2016</h2>
+          <span>11 items</span>
+        </div>
+        <div class="bc-card-grid">
+          
+          <article class="bc-press-card" data-year="2016" data-search="12/26/16 - newsday - an elderly holocaust survivor receives help at the start of hanukkah newsday december 26, 2016">
+            <div class="bc-card-topline">
+              <span class="bc-date">December 26, 2016</span>
+              <span class="bc-source">Newsday</span>
+            </div>
+            <h3><a href="https://www.newsday.com/long-island/nassau/an-elderly-holocaust-survivor-receives-help-at-the-start-of-hanukkah-1.12799791" target="_blank" rel="noopener noreferrer">12/26/16 - Newsday - An elderly Holocaust survivor receives help at the start of Hanukkah</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.newsday.com/long-island/nassau/an-elderly-holocaust-survivor-receives-help-at-the-start-of-hanukkah-1.12799791" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#92</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2016" data-search="11/3/16 - nbc sports - runners take on new york city marathon to help holocaust survivors nbc sports november 3, 2016">
+            <div class="bc-card-topline">
+              <span class="bc-date">November 3, 2016</span>
+              <span class="bc-source">NBC Sports</span>
+            </div>
+            <h3><a href="https://olympics.nbcsports.com/2016/11/03/runners-take-on-new-york-city-marathon-to-help-holocaust-survivors/" target="_blank" rel="noopener noreferrer">11/3/16 - NBC Sports - Runners take on New York City Marathon to help Holocaust survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://olympics.nbcsports.com/2016/11/03/runners-take-on-new-york-city-marathon-to-help-holocaust-survivors/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#93</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2016" data-search="11/2/16 - ny daily news - sarah mizrachi running nyc marathon to help irene hizme, a holocaust... ny daily news november 2, 2016">
+            <div class="bc-card-topline">
+              <span class="bc-date">November 2, 2016</span>
+              <span class="bc-source">NY Daily News</span>
+            </div>
+            <h3><a href="https://www.nydailynews.com/sports/more-sports/marathoner-hitting-nyc-pavement-support-holocaust-survivor-article-1.2855477" target="_blank" rel="noopener noreferrer">11/2/16 - NY Daily News - Sarah Mizrachi running NYC Marathon to help Irene Hizme, a Holocaust...</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.nydailynews.com/sports/more-sports/marathoner-hitting-nyc-pavement-support-holocaust-survivor-article-1.2855477" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#94</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2016" data-search="6/23/16 - blueprint - the blue card&#x27;s fifth annual social raises funds and awareness for needy holocaust... motl.org june 23, 2016">
+            <div class="bc-card-topline">
+              <span class="bc-date">June 23, 2016</span>
+              <span class="bc-source">Motl.Org</span>
+            </div>
+            <h3><a href="https://motl.org/yjps-play-ping-pong-to-help-holocaust-survivors/" target="_blank" rel="noopener noreferrer">6/23/16 - Blueprint - The Blue Card&#x27;s fifth annual social raises funds and awareness for needy Holocaust...</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://motl.org/yjps-play-ping-pong-to-help-holocaust-survivors/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#95</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2016" data-search="6/22/16 - moment - as survivors die, care costs rise moment june 22, 2016">
+            <div class="bc-card-topline">
+              <span class="bc-date">June 22, 2016</span>
+              <span class="bc-source">Moment</span>
+            </div>
+            <h3><a href="https://momentmag.com/survivors-die-care-costs-rise/" target="_blank" rel="noopener noreferrer">6/22/16 - Moment - As Survivors Die, Care Costs Rise</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://momentmag.com/survivors-die-care-costs-rise/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#96</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2016" data-search="6/1/16 - the jewish week - means testing for survivors ramps up amid shortfall jta june 1, 2016">
+            <div class="bc-card-topline">
+              <span class="bc-date">June 1, 2016</span>
+              <span class="bc-source">JTA</span>
+            </div>
+            <h3><a href="https://www.jta.org/2016/06/01/ny/means-testing-for-survivors-ramps-up-amid-shortfall" target="_blank" rel="noopener noreferrer">6/1/16 - The Jewish Week - Means Testing For Survivors Ramps Up Amid Shortfall</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.jta.org/2016/06/01/ny/means-testing-for-survivors-ramps-up-amid-shortfall" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#97</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2016" data-search="5/23/16 - the jewish week - the professional is personal jta may 23, 2016">
+            <div class="bc-card-topline">
+              <span class="bc-date">May 23, 2016</span>
+              <span class="bc-source">JTA</span>
+            </div>
+            <h3><a href="https://www.jta.org/2016/05/23/ny/masha-pearl-31" target="_blank" rel="noopener noreferrer">5/23/16 - The Jewish Week - The Professional is Personal</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.jta.org/2016/05/23/ny/masha-pearl-31" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#98</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2016" data-search="5/20/16 - the blue card: a time-limited mission the jewish press may 20, 2016">
+            <div class="bc-card-topline">
+              <span class="bc-date">May 20, 2016</span>
+              <span class="bc-source">The Jewish Press</span>
+            </div>
+            <h3><a href="https://www.jewishpress.com/indepth/front-page/the-blue-card-a-time-limited-mission/2016/05/20/" target="_blank" rel="noopener noreferrer">5/20/16 - The Blue Card: A Time-Limited Mission</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.jewishpress.com/indepth/front-page/the-blue-card-a-time-limited-mission/2016/05/20/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#99</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2016" data-search="5/4/16 - the new york times - search for family&#x27;s lost history leads to mass grave in poland the new york times may 4, 2016">
+            <div class="bc-card-topline">
+              <span class="bc-date">May 4, 2016</span>
+              <span class="bc-source">The New York Times</span>
+            </div>
+            <h3><a href="https://www.nytimes.com/2016/05/05/nyregion/search-for-familys-lost-history-leads-to-mass-grave-in-poland.html" target="_blank" rel="noopener noreferrer">5/4/16 - The New York Times - Search for Family&#x27;s Lost History Leads to Mass Grave in Poland</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.nytimes.com/2016/05/05/nyregion/search-for-familys-lost-history-leads-to-mass-grave-in-poland.html" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#100</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2016" data-search="5/3/16 - times of israel - for many holocaust survivors, effects of wartime starvation still a plague times of israel may 3, 2016">
+            <div class="bc-card-topline">
+              <span class="bc-date">May 3, 2016</span>
+              <span class="bc-source">Times of Israel</span>
+            </div>
+            <h3><a href="https://www.timesofisrael.com/for-many-holocaust-survivors-effects-of-wartime-starvation-still-a-plague/" target="_blank" rel="noopener noreferrer">5/3/16 - Times of Israel - For many Holocaust survivors, effects of wartime starvation still a plague</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.timesofisrael.com/for-many-holocaust-survivors-effects-of-wartime-starvation-still-a-plague/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#101</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2016" data-search="4/28/16 - am new york - five boro bike tour 2016: blue card team will give back to holocaust survivors amnewyork april 28, 2016">
+            <div class="bc-card-topline">
+              <span class="bc-date">April 28, 2016</span>
+              <span class="bc-source">amNewYork</span>
+            </div>
+            <h3><a href="https://www.amny.com/news/five-boro-bike-tour-2016-blue-card-team-will-give-back-to-holocaust-survivors-1.11741419" target="_blank" rel="noopener noreferrer">4/28/16 - AM New York - Five Boro Bike Tour 2016: Blue Card team will give back to Holocaust survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.amny.com/news/five-boro-bike-tour-2016-blue-card-team-will-give-back-to-holocaust-survivors-1.11741419" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#102</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="bc-year-section" id="year-2015" data-year-section="2015">
+        <div class="bc-year-heading">
+          <h2>2015</h2>
+          <span>9 items</span>
+        </div>
+        <div class="bc-card-grid">
+          
+          <article class="bc-press-card" data-year="2015" data-search="12/16/15 - kveller - share this article &amp; these 8 jewish causes will get a major donation kveller.com december 16, 2015">
+            <div class="bc-card-topline">
+              <span class="bc-date">December 16, 2015</span>
+              <span class="bc-source">Kveller.Com</span>
+            </div>
+            <h3><a href="https://www.kveller.com/just-by-sharing-this-article-you-can-help-these-8-great-causes/" target="_blank" rel="noopener noreferrer">12/16/15 - Kveller - Share This Article &amp; These 8 Jewish Causes Will Get a Major Donation</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.kveller.com/just-by-sharing-this-article-you-can-help-these-8-great-causes/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#103</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2015" data-search="12/14/15 - modern luxury - the blue card benefit gala 2015 modernluxury.com december 14, 2015">
+            <div class="bc-card-topline">
+              <span class="bc-date">December 14, 2015</span>
+              <span class="bc-source">Modernluxury.Com</span>
+            </div>
+            <h3><a href="https://www.modernluxury.com/manhattan/scene/the-blue-card-benefit-gala-2015/img203378" target="_blank" rel="noopener noreferrer">12/14/15 - Modern Luxury - The Blue Card Benefit Gala 2015</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.modernluxury.com/manhattan/scene/the-blue-card-benefit-gala-2015/img203378" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#104</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2015" data-search="11/24/15 - the jewish journal - david brooks on rabbi sacks on isis | high-tech expats in tel aviv jewishjournal.com november 24, 2015">
+            <div class="bc-card-topline">
+              <span class="bc-date">November 24, 2015</span>
+              <span class="bc-source">Jewishjournal.Com</span>
+            </div>
+            <h3><a href="https://jewishjournal.com/jewish_insider/item/daily_kickoff_david_brooks_on_rabbi_sacks_on_isis_high_tech_expats_in_tel_a" target="_blank" rel="noopener noreferrer">11/24/15 - The Jewish Journal - David Brooks on Rabbi Sacks on ISIS | High-Tech Expats in Tel Aviv</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://jewishjournal.com/jewish_insider/item/daily_kickoff_david_brooks_on_rabbi_sacks_on_isis_high_tech_expats_in_tel_a" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#105</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2015" data-search="11/18/15 - new york post page six - michael douglas honors holocaust survivor elie wiesel pagesix.com november 18, 2015">
+            <div class="bc-card-topline">
+              <span class="bc-date">November 18, 2015</span>
+              <span class="bc-source">Pagesix.Com</span>
+            </div>
+            <h3><a href="https://pagesix.com/2015/11/18/michael-douglas-honors-holocaust-survivor-elie-wiesel/" target="_blank" rel="noopener noreferrer">11/18/15 - New York Post Page Six - Michael Douglas honors holocaust survivor Elie Wiesel</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://pagesix.com/2015/11/18/michael-douglas-honors-holocaust-survivor-elie-wiesel/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#106</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2015" data-search="11/17/15 - wall street journal - laughing off the frenzy of the gala season the blue card november 17, 2015">
+            <div class="bc-card-topline">
+              <span class="bc-date">November 17, 2015</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://old.bluecardfund.org/pdfs/articles/Laughing_Off_the_Frenzy_of_the_Gala_Season.pdf" target="_blank" rel="noopener noreferrer">11/17/15 - Wall Street Journal - Laughing Off the Frenzy of the Gala Season</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://old.bluecardfund.org/pdfs/articles/Laughing_Off_the_Frenzy_of_the_Gala_Season.pdf" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#107</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2015" data-search="6/19/15 - new york times - heartfelt donations replace wedding party favors the new york times june 19, 2015">
+            <div class="bc-card-topline">
+              <span class="bc-date">June 19, 2015</span>
+              <span class="bc-source">The New York Times</span>
+            </div>
+            <h3><a href="https://www.nytimes.com/2015/06/21/fashion/weddings/heartfelt-donations-replace-wedding-party-favors.html?_r=1" target="_blank" rel="noopener noreferrer">6/19/15 - New York Times - Heartfelt Donations Replace Wedding Party Favors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.nytimes.com/2015/06/21/fashion/weddings/heartfelt-donations-replace-wedding-party-favors.html?_r=1" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#108</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2015" data-search="6/13/15 - new york times - support for holocaust survivors the new york times june 13, 2015">
+            <div class="bc-card-topline">
+              <span class="bc-date">June 13, 2015</span>
+              <span class="bc-source">The New York Times</span>
+            </div>
+            <h3><a href="https://www.nytimes.com/2015/06/14/jobs/support-for-holocaust-survivors.html?_r=3" target="_blank" rel="noopener noreferrer">6/13/15 - New York Times - Support for Holocaust Survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.nytimes.com/2015/06/14/jobs/support-for-holocaust-survivors.html?_r=3" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#109</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2015" data-search="5/26/15 - the jewish week - germany sending $2,700 to child holocaust survivors thejewishweek.com may 26, 2015">
+            <div class="bc-card-topline">
+              <span class="bc-date">May 26, 2015</span>
+              <span class="bc-source">Thejewishweek.Com</span>
+            </div>
+            <h3><a href="https://www.thejewishweek.com/news/international/germany-sending-2700-child-holocaust-survivors" target="_blank" rel="noopener noreferrer">5/26/15 - The Jewish Week - Germany Sending $2,700 To Child Holocaust Survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.thejewishweek.com/news/international/germany-sending-2700-child-holocaust-survivors" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#110</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2015" data-search="5/19/15 - wall street journal - in new york, many holocaust survivors struggle to get by wsj.com may 19, 2015">
+            <div class="bc-card-topline">
+              <span class="bc-date">May 19, 2015</span>
+              <span class="bc-source">Wsj.Com</span>
+            </div>
+            <h3><a href="https://www.wsj.com/articles/in-new-york-many-holocaust-survivors-struggle-to-get-by-1432083336" target="_blank" rel="noopener noreferrer">5/19/15 - Wall Street Journal - In New York, Many Holocaust Survivors Struggle to Get By</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.wsj.com/articles/in-new-york-many-holocaust-survivors-struggle-to-get-by-1432083336" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#111</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="bc-year-section" id="year-2014" data-year-section="2014">
+        <div class="bc-year-heading">
+          <h2>2014</h2>
+          <span>12 items</span>
+        </div>
+        <div class="bc-card-grid">
+          
+          <article class="bc-press-card" data-year="2014" data-search="11/4/14 - new york times - recalling anne frank, as icon and human being the new york times november 4, 2014">
+            <div class="bc-card-topline">
+              <span class="bc-date">November 4, 2014</span>
+              <span class="bc-source">The New York Times</span>
+            </div>
+            <h3><a href="https://www.nytimes.com/2014/11/05/nyregion/recalling-anne-frank-as-icon-and-human-being.html?_r=3" target="_blank" rel="noopener noreferrer">11/4/14 - New York Times - Recalling Anne Frank, as Icon and Human Being</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.nytimes.com/2014/11/05/nyregion/recalling-anne-frank-as-icon-and-human-being.html?_r=3" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#112</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2014" data-search="11/4/14 - times of israel - at 97, a survivor&#x27;s ny mandolin debut times of israel november 4, 2014">
+            <div class="bc-card-topline">
+              <span class="bc-date">November 4, 2014</span>
+              <span class="bc-source">Times of Israel</span>
+            </div>
+            <h3><a href="https://www.timesofisrael.com/at-97-a-survivors-ny-mandolin-debut/" target="_blank" rel="noopener noreferrer">11/4/14 - Times of Israel - At 97, a survivor&#x27;s NY mandolin debut</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.timesofisrael.com/at-97-a-survivors-ny-mandolin-debut/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#113</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2014" data-search="10/31/14 - a 97-year-old holocaust survivor is about to play her first concert at lincoln center vulture.com october 31, 2014">
+            <div class="bc-card-topline">
+              <span class="bc-date">October 31, 2014</span>
+              <span class="bc-source">Vulture.Com</span>
+            </div>
+            <h3><a href="https://www.vulture.com/2014/10/97-year-old-holocaust-survivor-lincoln-center.html" target="_blank" rel="noopener noreferrer">10/31/14 - A 97-Year-Old Holocaust Survivor Is About to Play Her First Concert at Lincoln Center</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.vulture.com/2014/10/97-year-old-holocaust-survivor-lincoln-center.html" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#114</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2014" data-search="5/8/14 - examiner.com - the blue cardraising social to help holocaust survivors chelsea piers examiner.com may 8, 2014">
+            <div class="bc-card-topline">
+              <span class="bc-date">May 8, 2014</span>
+              <span class="bc-source">Examiner.Com</span>
+            </div>
+            <h3><a href="https://www.examiner.com/article/the-blue-card-fundraising-social-to-help-holocaust-survivors-at-chelsea-piers" target="_blank" rel="noopener noreferrer">5/8/14 - Examiner.com - The Blue Cardraising Social to Help Holocaust Survivors Chelsea Piers</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.examiner.com/article/the-blue-card-fundraising-social-to-help-holocaust-survivors-at-chelsea-piers" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#115</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2014" data-search="5/5/14 - sun sentinel - emergency response devices save lives sun sentinel may 5, 2014">
+            <div class="bc-card-topline">
+              <span class="bc-date">May 5, 2014</span>
+              <span class="bc-source">Sun Sentinel</span>
+            </div>
+            <h3><a href="https://articles.sun-sentinel.com/2014-05-05/florida-jewish-journal/fl-jjbs-yombuttons-0508-20140505_1_devices-holocaust-survivor-clients-response" target="_blank" rel="noopener noreferrer">5/5/14 - Sun Sentinel - Emergency response devices save lives</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://articles.sun-sentinel.com/2014-05-05/florida-jewish-journal/fl-jjbs-yombuttons-0508-20140505_1_devices-holocaust-survivor-clients-response" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#116</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2014" data-search="5/2014 - black tie magazine - the blue card annual fundraiser blacktiemagazine.com may 2014">
+            <div class="bc-card-topline">
+              <span class="bc-date">May 2014</span>
+              <span class="bc-source">Blacktiemagazine.Com</span>
+            </div>
+            <h3><a href="https://www.blacktiemagazine.com/society_2014_may/The_Blue_Card_Annual_Fundraiser.htm" target="_blank" rel="noopener noreferrer">5/2014 - Black Tie Magazine - The Blue Card Annual Fundraiser</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.blacktiemagazine.com/society_2014_may/The_Blue_Card_Annual_Fundraiser.htm" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#117</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2014" data-search="april-14 - harrison student helps holocaust survivors westchesterjewishlife.com april 2014">
+            <div class="bc-card-topline">
+              <span class="bc-date">April 2014</span>
+              <span class="bc-source">Westchesterjewishlife.Com</span>
+            </div>
+            <h3><a href="https://www.westchesterjewishlife.com/school2.html" target="_blank" rel="noopener noreferrer">April-14 - Harrison Student Helps Holocaust Survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.westchesterjewishlife.com/school2.html" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#118</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2014" data-search="3/22/14 - times of israel - holocaust survivors to get nutrition guidance times of israel march 22, 2014">
+            <div class="bc-card-topline">
+              <span class="bc-date">March 22, 2014</span>
+              <span class="bc-source">Times of Israel</span>
+            </div>
+            <h3><a href="https://www.timesofisrael.com/holocaust-survivors-to-get-nutrition-guidance/" target="_blank" rel="noopener noreferrer">3/22/14 - Times of Israel - Holocaust survivors to get nutrition guidance</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.timesofisrael.com/holocaust-survivors-to-get-nutrition-guidance/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#119</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2014" data-search="spring-2014 - first person - blue skies ahead the blue card spring 2014">
+            <div class="bc-card-topline">
+              <span class="bc-date">Spring 2014</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://old.bluecardfund.org/pdfs/Lifestyles.pdf" target="_blank" rel="noopener noreferrer">Spring-2014 - First Person - Blue Skies Ahead</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://old.bluecardfund.org/pdfs/Lifestyles.pdf" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#120</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2014" data-search="3/17/14 - jpost.com - holocaust remembrance on purim the jerusalem post march 17, 2014">
+            <div class="bc-card-topline">
+              <span class="bc-date">March 17, 2014</span>
+              <span class="bc-source">The Jerusalem Post</span>
+            </div>
+            <h3><a href="https://www.jpost.com/opinion/columnists/holocaust-remembrance-on-purim-345580" target="_blank" rel="noopener noreferrer">3/17/14 - JPost.com - Holocaust remembrance on Purim</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.jpost.com/opinion/columnists/holocaust-remembrance-on-purim-345580" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#121</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2014" data-search="3/16/14 - forward.com - new york teens bring taste of purim to holocaust survivors forward march 16, 2014">
+            <div class="bc-card-topline">
+              <span class="bc-date">March 16, 2014</span>
+              <span class="bc-source">Forward</span>
+            </div>
+            <h3><a href="https://forward.com/news/194670/new-york-teens-bring-taste-of-purim-to-holocaust/" target="_blank" rel="noopener noreferrer">3/16/14 - Forward.com - New York Teens Bring Taste of Purim to Holocaust Survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://forward.com/news/194670/new-york-teens-bring-taste-of-purim-to-holocaust/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#122</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2014" data-search="1/30/14 - jewish journal massachusetts - true blue help for holocaust survivors forward january 30, 2014">
+            <div class="bc-card-topline">
+              <span class="bc-date">January 30, 2014</span>
+              <span class="bc-source">Forward</span>
+            </div>
+            <h3><a href="https://boston.forward.com/articles/182904/true-blue-help-for-holocaust-survivors/" target="_blank" rel="noopener noreferrer">1/30/14 - Jewish Journal Massachusetts - True Blue Help for Holocaust Survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://boston.forward.com/articles/182904/true-blue-help-for-holocaust-survivors/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#123</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="bc-year-section" id="year-2013" data-year-section="2013">
+        <div class="bc-year-heading">
+          <h2>2013</h2>
+          <span>7 items</span>
+        </div>
+        <div class="bc-card-grid">
+          
+          <article class="bc-press-card" data-year="2013" data-search="10/30/13 - jewish exponent - holocaust filmmaker wins young leadership award jewishexponent.com october 30, 2013">
+            <div class="bc-card-topline">
+              <span class="bc-date">October 30, 2013</span>
+              <span class="bc-source">Jewishexponent.Com</span>
+            </div>
+            <h3><a href="https://jewishexponent.com/holocaust-filmmaker-wins-young-leadership-award" target="_blank" rel="noopener noreferrer">10/30/13 - Jewish Exponent - Holocaust Filmmaker Wins Young Leadership Award</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://jewishexponent.com/holocaust-filmmaker-wins-young-leadership-award" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#124</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2013" data-search="10/25/13 - jewish daily forward - mia and ronan farrow get blue card&#x27;s holbrooke award forward october 25, 2013">
+            <div class="bc-card-topline">
+              <span class="bc-date">October 25, 2013</span>
+              <span class="bc-source">Forward</span>
+            </div>
+            <h3><a href="https://blogs.forward.com/the-shmooze/186153/mia-and-ronan-farrow-get-blue-cards-holbrooke-award/" target="_blank" rel="noopener noreferrer">10/25/13 - Jewish Daily Forward - Mia and Ronan Farrow Get Blue Card&#x27;s Holbrooke Award</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://blogs.forward.com/the-shmooze/186153/mia-and-ronan-farrow-get-blue-cards-holbrooke-award/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#125</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2013" data-search="10/25/13 - new york times - ronan farrow: the youngest old guy in the room the new york times october 25, 2013">
+            <div class="bc-card-topline">
+              <span class="bc-date">October 25, 2013</span>
+              <span class="bc-source">The New York Times</span>
+            </div>
+            <h3><a href="https://www.nytimes.com/2013/10/27/fashion/Ronan-Farrow-the-Youngest-Old-Guy-in-the-Room.html" target="_blank" rel="noopener noreferrer">10/25/13 - New York Times - Ronan Farrow: The Youngest Old Guy in the Room</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.nytimes.com/2013/10/27/fashion/Ronan-Farrow-the-Youngest-Old-Guy-in-the-Room.html" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#126</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2013" data-search="10/25/13 - silive.com - blue card continues to aid holocaust survivors silive.com october 25, 2013">
+            <div class="bc-card-topline">
+              <span class="bc-date">October 25, 2013</span>
+              <span class="bc-source">Silive.Com</span>
+            </div>
+            <h3><a href="https://www.silive.com/news/2013/10/blue_card_continues_to_aid_hol.html" target="_blank" rel="noopener noreferrer">10/25/13 - SILive.com - Blue Card continues to aid Holocaust survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.silive.com/news/2013/10/blue_card_continues_to_aid_hol.html" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#127</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2013" data-search="09/01/13 - new york post - surviving nazis&#x27; angel of death auschwitz experiments nypost.com september 1, 2013">
+            <div class="bc-card-topline">
+              <span class="bc-date">September 1, 2013</span>
+              <span class="bc-source">Nypost.Com</span>
+            </div>
+            <h3><a href="https://nypost.com/2013/09/01/surviving-nazis-angel-of-death-auschwitz-experiments/" target="_blank" rel="noopener noreferrer">09/01/13 - New York Post - Surviving Nazis&#x27; Angel of Death Auschwitz experiments</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://nypost.com/2013/09/01/surviving-nazis-angel-of-death-auschwitz-experiments/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#128</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2013" data-search="09/01/13 - sunsentinel - program to assist needy holocaust survivors battling cancer sun sentinel september 1, 2013">
+            <div class="bc-card-topline">
+              <span class="bc-date">September 1, 2013</span>
+              <span class="bc-source">Sun Sentinel</span>
+            </div>
+            <h3><a href="https://articles.sun-sentinel.com/2013-06-25/health/fl-jjps-bluecard-0626-20130625_1_survivors-siggi-b-ellis-island-medal" target="_blank" rel="noopener noreferrer">09/01/13 - SunSentinel - Program to assist needy Holocaust survivors battling cancer</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://articles.sun-sentinel.com/2013-06-25/health/fl-jjps-bluecard-0626-20130625_1_survivors-siggi-b-ellis-island-medal" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#129</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2013" data-search="03/03/13 - new york post - stayin&#x27; alive and well: holocaust survivors&#x27; disco therapy nypost.com march 3, 2013">
+            <div class="bc-card-topline">
+              <span class="bc-date">March 3, 2013</span>
+              <span class="bc-source">Nypost.Com</span>
+            </div>
+            <h3><a href="https://nypost.com/2013/03/03/stayin-alive-and-well-holocaust-survivors-disco-therapy/" target="_blank" rel="noopener noreferrer">03/03/13 - New York Post - Stayin&#x27; alive and well: Holocaust survivors&#x27; disco therapy</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://nypost.com/2013/03/03/stayin-alive-and-well-holocaust-survivors-disco-therapy/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#130</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="bc-year-section" id="year-2012" data-year-section="2012">
+        <div class="bc-year-heading">
+          <h2>2012</h2>
+          <span>1 item</span>
+        </div>
+        <div class="bc-card-grid">
+          
+          <article class="bc-press-card" data-year="2012" data-search="12/18/12 - more.com - 11 trusted charities worth your donation more.com december 18, 2012">
+            <div class="bc-card-topline">
+              <span class="bc-date">December 18, 2012</span>
+              <span class="bc-source">More.Com</span>
+            </div>
+            <h3><a href="https://www.more.com/lifestyle/giving-back/11-trusted-charities-worth-your-donation/" target="_blank" rel="noopener noreferrer">12/18/12 - More.com - 11 Trusted Charities Worth Your Donation</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.more.com/lifestyle/giving-back/11-trusted-charities-worth-your-donation/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#131</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="bc-year-section" id="year-2011" data-year-section="2011">
+        <div class="bc-year-heading">
+          <h2>2011</h2>
+          <span>3 items</span>
+        </div>
+        <div class="bc-card-grid">
+          
+          <article class="bc-press-card" data-year="2011" data-search="11/26/11 - new york times - charities gain traction in marathons the new york times november 26, 2011">
+            <div class="bc-card-topline">
+              <span class="bc-date">November 26, 2011</span>
+              <span class="bc-source">The New York Times</span>
+            </div>
+            <h3><a href="https://www.nytimes.com/2011/11/27/nyregion/charities-gain-traction-in-marathons.html" target="_blank" rel="noopener noreferrer">11/26/11 - New York Times - Charities Gain Traction in Marathons</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.nytimes.com/2011/11/27/nyregion/charities-gain-traction-in-marathons.html" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#132</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2011" data-search="11/26/11 - news day - foundation helps holocaust survivors newsday november 26, 2011">
+            <div class="bc-card-topline">
+              <span class="bc-date">November 26, 2011</span>
+              <span class="bc-source">Newsday</span>
+            </div>
+            <h3><a href="https://www.newsday.com/long-island/li-life/foundation-helps-holocaust-survivors-1.3338881" target="_blank" rel="noopener noreferrer">11/26/11 - News Day - Foundation Helps Holocaust Survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.newsday.com/long-island/li-life/foundation-helps-holocaust-survivors-1.3338881" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#133</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2011" data-search="11/08/11 - the jewish week - sinking his teeth into volunteering thejewishweek.com november 8, 2011">
+            <div class="bc-card-topline">
+              <span class="bc-date">November 8, 2011</span>
+              <span class="bc-source">Thejewishweek.Com</span>
+            </div>
+            <h3><a href="https://www.thejewishweek.com/news/new_york/sinking_his_teeth_volunteering" target="_blank" rel="noopener noreferrer">11/08/11 - The Jewish Week - Sinking His Teeth Into Volunteering</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://www.thejewishweek.com/news/new_york/sinking_his_teeth_volunteering" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#134</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="bc-year-section" id="year-2010" data-year-section="2010">
+        <div class="bc-year-heading">
+          <h2>2010</h2>
+          <span>2 items</span>
+        </div>
+        <div class="bc-card-grid">
+          
+          <article class="bc-press-card" data-year="2010" data-search="11/01/10 - nj jewish news - runner goes the distance for shoa survivors times of israel november 1, 2010">
+            <div class="bc-card-topline">
+              <span class="bc-date">November 1, 2010</span>
+              <span class="bc-source">Times of Israel</span>
+            </div>
+            <h3><a href="https://njjewishnews.timesofisrael.com/runner-goes-the-distance-for-shoa-survivors/" target="_blank" rel="noopener noreferrer">11/01/10 - NJ Jewish News - Runner goes the distance for Shoa survivors</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://njjewishnews.timesofisrael.com/runner-goes-the-distance-for-shoa-survivors/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#135</span>
+            </div>
+          </article>
+          <article class="bc-press-card" data-year="2010" data-search="10/21/2010 - charities gain traction in marathons the blue card october 21, 2010">
+            <div class="bc-card-topline">
+              <span class="bc-date">October 21, 2010</span>
+              <span class="bc-source">The Blue Card</span>
+            </div>
+            <h3><a href="https://bluecardfund.org/charities-gain-traction-in-marathons/" target="_blank" rel="noopener noreferrer">10/21/2010 - Charities Gain Traction in Marathons</a></h3>
+            <div class="bc-card-actions">
+              <a class="bc-read-link" href="https://bluecardfund.org/charities-gain-traction-in-marathons/" target="_blank" rel="noopener noreferrer">Open Link</a>
+              <span class="bc-row-number">#136</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      </div>
+    </div>
+  </main>
+<script>
+(function(){
+  const search = document.getElementById('bcPressSearch');
+  const reset = document.getElementById('bcResetSearch');
+  const note = document.getElementById('bcResultsNote');
+  const cards = Array.from(document.querySelectorAll('.bc-press-card'));
+  const sections = Array.from(document.querySelectorAll('.bc-year-section'));
+  function runFilter(){
+    const q = search.value.trim().toLowerCase();
+    let shown = 0;
+    cards.forEach(card => {
+      const haystack = card.getAttribute('data-search') || '';
+      const match = !q || haystack.includes(q);
+      card.classList.toggle('bc-hidden', !match);
+      if (match) shown++;
+    });
+    sections.forEach(section => {
+      const visible = section.querySelectorAll('.bc-press-card:not(.bc-hidden)').length;
+      section.classList.toggle('bc-hidden', visible === 0);
+    });
+    note.textContent = q ? `Showing ${shown} matching press item${shown === 1 ? '' : 's'}.` : `Showing all 136 press items.`;
+  }
+  search.addEventListener('input', runFilter);
+  reset.addEventListener('click', function(){ search.value = ''; runFilter(); search.focus(); });
+})();
+</script>
+</body>
+</html>
