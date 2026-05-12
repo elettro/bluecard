@@ -8,6 +8,10 @@
   <link rel="stylesheet" href="../global-layout.css" />
 </head>
 <body class="bg-background text-on-surface font-body selection:bg-primary-fixed-dim">
+  <style>
+    #tribute-modal-panel { max-height: calc(100vh - 3rem); }
+    #tribute-modal-bio { max-height: 38vh; overflow-y: auto; }
+  </style>
   <header id="bc-global-nav" aria-label="Global site navigation"></header>
 
   <main>
@@ -46,10 +50,10 @@
 
   <div id="tribute-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true">
     <div class="absolute inset-0 bg-black/70" data-modal-close></div>
-    <div class="relative mx-auto my-6 sm:my-10 w-[92%] max-w-3xl max-h-[calc(100vh-3rem)] overflow-y-auto rounded-xl bg-white shadow-2xl">
+    <div class="relative mx-auto my-6 sm:my-10 w-[92%] max-w-3xl overflow-hidden rounded-xl bg-white shadow-2xl">
       <button type="button" id="tribute-modal-close" class="absolute right-3 top-3 z-10 rounded-full bg-white/90 p-2 text-slate-700 hover:bg-slate-100" aria-label="Close tribute modal">✕</button>
       <img id="tribute-modal-image" src="" alt="" class="w-full h-64 sm:h-80 object-cover rounded-t-xl" />
-      <div class="p-6 sm:p-8">
+      <div id="tribute-modal-panel" class="p-6 sm:p-8 overflow-y-auto">
         <h2 id="tribute-modal-title" class="text-3xl font-bold tracking-tight"></h2>
         <p id="tribute-modal-dates" class="mt-2 text-slate-600 font-medium"></p>
         <div id="tribute-modal-bio" class="mt-5 space-y-4 leading-7 text-slate-700"></div>
@@ -60,211 +64,70 @@
   <footer id="bc-global-footer"></footer>
   <script src="../global-layout.js"></script>
   <script>
-    const tributeData = [
-      [
-            "Dr. Edith Eva Eger",
-            "Sept. 29, 1927 - April 27, 2026",
-            "We are deeply saddened by the passing of Dr. Edith Eva Eger, a Holocaust survivor, psychologist, author, speaker, mother, and extraordinary voice of courage and healing.\"&CHAR(10)&CHAR(10)&\"Dr. Eger survived Auschwitz and went on to dedicate her life to helping others confront pain, find strength, and choose hope. Through her books, her speaking, and her work as a psychologist, she reached countless people with a message that was both deeply personal and profoundly universal.\"&CHAR(10)&CHAR(10)&\"The Blue Card had the great honor of speaking with Dr. Eger in 2022 for our podcast, together with her daughter. It was a conversation we will never forget. She spoke with honesty, grace, and strength about her survival, her memories, and the responsibility we all share to remember.\"&CHAR(10)&CHAR(10)&\"Her memoir, The Choice, helped bring the lessons of her life to readers around the world. But Dr. Eger was more than her remarkable story. She was a woman of warmth, wisdom, resilience, and light. She reminded us that even after unimaginable darkness, the human spirit can still choose dignity, love, and life.\"&CHAR(10)&CHAR(10)&\"At The Blue Card, we are privileged every day to serve Holocaust survivors who, like Dr. Eger, carry histories that must never be forgotten. Her passing is a painful reminder of how urgent this work remains. We must continue to listen, care, support, and honor survivors while they are still with us.\"&CHAR(10)&CHAR(10)&\"As we remember Dr. Eger’s life and legacy, we are reminded of the responsibility we have to care for the Holocaust survivors still with us today. In her memory, please consider making a gift to The Blue Card to help provide survivors in need with food, emergency assistance, medical support, home care, and the dignity they deserve.\"&CHAR(10)&CHAR(10)&\"May Dr. Edith Eva Eger’s memory be a blessing. May her family be comforted, and may her legacy continue to inspire all of us."
-      ],
-      [
-            "Eugene Joseph Lutzkendorf",
-            "September 4, 1928 - January 6, 2022",
-            "Eugene (Aryeh Leib) Lebovitz was born on September 5, 1928, in the town of Uzhorod, Czechoslovakia, into a large family where he was one of ten children. Soon after the outbreak of World War II, the Hungarian Nazis seized his town and put them in a ghetto. Residents were later crammed into cattle cars, and shipped off to Birkenau-Auschwitz. Upon exiting the train, he was separated from his mother and sisters, whom he never saw again. He was able to stay, at least temporarily, with his father and brother.\"&CHAR(10)&CHAR(10)&\"Eugene and his brother managed to stay alive by working in Jaworzno, later embarking on the infamous Death March in January 1945. After multiple escape attempts, he found himself in the Czech town of Landshut in March 1945 which was later taken by the Russians. Eugene acted as their army’s translator, which eventually led him to acquire documentation that facilitated his transportation to Prague.\"&CHAR(10)&CHAR(10)&\"Once in Prague, Eugene discovered that his two brothers were still alive, and that they were trying to emigrate to Israel. A few months later, they were able to reconnect with their sister, who had been liberated from the Bergen-Belsen concentration camp.\"&CHAR(10)&CHAR(10)&\"Reunited, the brothers participated in a covert mission, smuggling Jewish refugees through Europe into then-Palestine, bringing 742 Holocaust survivors to Israel. After finishing his education, he fought in the 1948 War of Independence, leading a troop in the Haganah, the pre-State Israel Defense Forces.\"&CHAR(10)&CHAR(10)&\"In 1951, Eugene journeyed to Chicago, where he met his future spouse, Natalie Greenberg, at a soccer game. They wed in 1953 and were blessed with two daughters, Linda and Michelle. In 1960, the family moved to San Juan, Puerto Rico in 1960, marking a new chapter in their lives. Eugene founded Alfa Romero Shoes, establishing himself as a successful entrepreneur. In 1962, he moved his family to Florida, where he continued to reside for the remainder of his life. He loved to travel, making regular trips to Israel, Los Angeles to visit family, Las Vegas to run a “Celebration of the Generations” program, and Poland to participate in March of the Living.\"&CHAR(10)&CHAR(10)&\"Eugene Lebovitz’s life narrative is woven with stories of unimaginable hardship, uncompromising courage, and impactful contribution. We remember him fondly and honor him for the remarkable impression he made on everyone he met, and his beautiful legacy."
-      ],
-      [
-            "Sol Urbach",
-            "October 29, 1925 - December 14, 2021",
-            "Home builder, Holocaust survivor, Flemington civic leader. After living 96 years in five countries, Sol Urbach peacefully passed away December 14, 2021, surrounded by his loving family in Cresskill, New Jersey. Sol will be remembered by his friends and family for his quick wit and boundless generosity. He was a problem solver, and a man of conviction who maintained a steadfast optimism and an entrepreneurial spirit. Sol was born on October 25, 1925 in Kalvaria, Poland. His father, a tailor, along with his mother, three brothers and two sisters, moved to Romania in 1928 and returned to Poland in 1933, settling in a small village on the outskirts of Krakw. There, Sol attended both Jewish and secular schools, and he apprenticed in the shop of a cabinetmaker. His family was last together in the Krakw Ghetto in 1943. Sol was rounded up at random from the ghetto and put to work in a factory owned by Oskar Schindler. Upon hearing rumors of an impending massacre at the ghetto, Schindler kept his Jewish laborers at the factory until the liquidation bloodbath was over. Sol’s family members did not survive, either killed in the ghetto or later in concentration camps. Sol survived stays in multiple concentration camps, first at Krakw-Plasców, then at the Gross Rosen camp before finally being liberated from Oskar Schindler’s Brnnlitz camp in Czechoslovakia. He returned to Poland but, upon finding no living family members, Sol made his way to the American Zone in Germany where a friend introduced him to his future wife, Ada (also a survivor) in 1945. There, Sol became a radio mechanic and completed the equivalent of a high school education. Sol immigrated to the United States in 1949 to live with relatives in Passaic, New Jersey. He began to learn English and worked for a time in a furniture factory. He married Ada in New York City in 1950 and they moved to Flemington, New Jersey in 1952. With a few tools and $130 in his pocket, Sol began a construction business and went on to build homes and apartments throughout central New Jersey. Throughout his life, he built more with his heart and his conscience than he did with his hands and his tools. Sol led fundraising efforts for the Hunterdon Medical Center and was a civic-minded member of the Lions Club and Chamber of Commerce. He was an avid golfer and card player and member of Copper Hill Country Club. Sol was a leader in the Jewish community, serving as President of the Flemington Jewish Community Center and later co-founding the Bet Tikvah Congregation. Sol chaired the area State of Israel Bonds Committee, which became one of the top per capita Israel Bond communities in the nation. He also founded and served on the Board of Directors of Town and Country Bank. Sol and Ada lived in South Florida for more than a decade before returning to New Jersey in 2015. During his retirement years, Sol delivered lectures on his war experiences and contributed to documentary films and books about Schindler; he was passionate about teaching the dangers of hate to young people. He is survived by his wife Ada, his son Dr. David Urbach, his daughter Barbara Urbach Lissner, his daughter-in-law Zipora Urbach, his sons-in-law Michael Lissner and Stephen Hartman, his grandchildren Rebecca Waltuch, Simone Urbach, Dr. Jonathan Urbach, Samuel Lissner, and Eliese Lissner, and his great grandchildren Clara Waltuch, Milo Waltuch, Caroline Urbach, Teddy Urbach, Noah Lissner, and Annelie Lissner. He was sadly preceded in death by his son Henry Urbach."
-      ],
-      [
-            "David Mermelstein",
-            "December 27, 1928 - July 6, 2021",
-            "David Mermelstein was born in Kevjazd, Czechoslovakia, on December 21, 1928, to Martin and Helen (Herskowitz) Mermelstein. He died peacefully, surrounded by his loving family, at the age of 92, on July 6, 2021. He is survived by his wife and love of 70 years, Irene (Markovic), daughter Helene (Joe) Davis, son Michael (Lisa) Mermelstein, daughter Debbi Mermelstein, grandchildren Jenna (Mike) Fox, Lindsay Davis, Brian Davis, and his great grandson, Eli Fox.\"&CHAR(10)&CHAR(10)&\"David was the only member of his family to have survived the Holocaust. He devoted his life to serving the South Florida Jewish Community, assuming leadership roles in many organizations, too numerous to name, some of which included the Holocaust Survivors of Miami-Dade, the Holocaust Survivors Foundation, U.S.A., Jewish Community Services, Jewish Family Services, the Holocaust Documentation and Education Center, The Holocaust Memorial Miami Beach, as well as the Friends of the March of the Living and Greater Miami Jewish Federation. David was passionate about educating our children about the Holocaust. He regularly spoke to students at many elementary, middle, and high schools, as well as private schools throughout Miami-Dade County. He participated in special/mentor programs at Miami-Dade College and the University of Miami as well.\"&CHAR(10)&CHAR(10)&\"David was beloved by all who knew him, was an inspiration to all who heard his story, and will be greatly missed by all who love him. Donations in his memory may be made to the Israeli Defense Fund. Services will be held at 2:00 p.m. on Thursday, July 8, 2021 at Riverside Gordon Memorial Chapels at Mount Nebo Kendall (5900 SW 77th Avenue). Mount Nebo requires masks and social distancing. You may also attend using Zoom: Meeting ID: 968 3734 4322 Passcode: 905510.www.cressfuneralservice.com\"&CHAR(10)&CHAR(10)&\"To plant trees in memory, please visit our Sympathy Store.\"&CHAR(10)&\"Published by the Miami Herald on Jul. 7, 2021."
-      ],
-      [
-            "George Wolf",
-            "November 16, 1927 - June 28, 2020",
-            "The Blue Card Board of Directors and staff mourns the passing of George Wolf, a retired garment manufacturer who was active in the Blue Card, a charity that aids Holocaust survivors. He died at the Dawn Greene Hospice in Manhattan on June 28. He was 92.
-
-When the Germans marched into the remaining Czech lands in March 1939, my father, mother and I, forewarned the night before, drove to Prague, and by sheer luck got an exit visa from the Gestapo. We said tearful goodbyes to our extensive family, never to see any of them again. We first went to France but were across the lake in Switzerland when war broke out and France closed its borders. We didn’t know it then, but we had escaped the trap that Vichy France would become for its Jews, and found refuge in Switzerland.
-
-Most of our family were herded into Theresienstadt (Terezin), and one by one, were shipped to Auschwitz. By the end of the war, I worked for the American Consulate in Zurich. In the summer of 1946, I had the chance to visit the Nurnberg War Crimes Trials, with the remaining Nazi leadership in the dock. I met Czech government representatives, got a nasty feeling of their Communist politics and antisemitism, and decided not to go back. My father had died in Switzerland, mother remarried and stayed there. At age 19, I got on the first civilian ship to America, landed in NY in late 1946, and rebuilt my life. I became a fashion designer, consultant and eventually manufacturer. By 2005, as the industry migrated to China, I had to close my business, and at my age, had become unemployable. Instead, I found a new career and a much more fulfilling life of volunteer work with The Blue Card, aiding Holocaust survivors far less fortunate than me. At age 85, I expect to retire in about fifteen years.
-
-See obituary, courtesy of The New York Times
-
-Photo courtesy – New York Times"
-      ],
-      [
-            "Fred Rosenberg",
-            "March 19, 1932 - October 19, 2020",
-            "The Blue Card Board of Directors and staff mourn the untimely death of Fred Rosenberg, beloved father, grandfather, friend, professor, sheriff’s department volunteer, world traveler and punster. Fred was born March 19, 1932 in Berlin, Germany. He emigrated to New York City with his parents 7 years later. He grew up in Manhattan, ran track and was valedictorian of his high school class. Fred went on to study history and philosophy at NYU. After spending a summer at U Wisconsin, he fell in love with microbiology and went on to receive his Master’s degree and PhD from Univ of Florida and Rutgers University, respectively. During this time, he also served in the US Armed Forces in Camp Zama, Japan. Fred began teaching Microbiology at Northeastern University in Boston, MA in 1960. He had a special interest in the microbiology of water and served on the House Subcommittee on Bottled Water. After retiring for about 20 minutes in 1999, Fred and his wife Liane moved to Westlake Village, CA where he continued to teach Medical Microbiology at California Lutheran University until his death last week. Fred also served as a volunteer for the past 20 years at the Malibu/Lost Hills Sheriff’s Station. He was a voracious reader, adored classical music, travel, crossword puzzles, his cats, and puns. A true Renaissance man and a gentleman through and through, he valued honesty and wisdom. His legacy of making lives better for others and his spirit of gratitude will carry on through his daughter Alysa, son-in-law Bruce, and grandchildren Gabi and Jonah.
-
-See obituary, courtesy of Legacy.com"
-      ],
-      [
-            "Sir James D. Wolfensohn",
-            "December 1, 1933 - November 25, 2020",
-            "Sir James Wolfensohn (1933-2020) was Chairman of Wolfensohn & Company, LLC, a firm which he started in 1982 to advise the senior managements of major international corporations on acquisition strategy and implementation. In the firm, he was joined by Paul Volcker and Frank Petito, former Chair of Morgan Stanley. Each acted as Chair of the firm. He left the firm in 1995 to become President of the World Bank Group (1995-2005), during which he travelled to more than 120 countries, and thereafter held the post of Special Envoy for Gaza disengagement representing the Quartet: the USA, Russia, the United Nations, and the European Union (2005-06). During his absence, the firm was sold ultimately to the Deutsche Bank, which allowed him to reconstitute his firm in 2007. Earlier in his professional life, he worked in the Schroder group from 1962, starting at Darling and Company in Australia and thereafter in other leading positions, finishing as Executive Deputy Chairman and Group Chief Executive of Schroders Limited in London. In 1977, he retired and became a member of the Executive Committee of Salomon Brothers in New York, responsible for Corporate Finance, until he created his own firm in 1982. Wolfensohn also served as Chairman of the Citigroup International Advisory Board (2006-2014). While pursuing his business career he built a life working in public service, the Arts and philanthropy. He became Chair of the Customs House and worked with David Rockefeller, Senator Moynihan and a distinguished board, to save that historic building in lower New York City. Subsequently, he joined the Board of Carnegie Hall in 1972 and helped save it from destruction. He restored the Hall while serving as Chairman from 1980 to 1991 when, at the request of President Bush, he became Chair of the John F. Kennedy Center for the Performing Arts in Washington until 1995. Sir James was appointed as a Fellow of the American Academy of Arts and Sciences (1994) and as a Member of the American Philosophical Society (1997), and served as Chairman Emeritus for both the Board of Trustees of Carnegie Hall and the Kennedy Center. Wolfensohn was Chairman of the board of the Institute for Advanced Study at Princeton (1986-2007). During these years he joined the Boards and chaired the Finance Committee of the Rockefeller Foundation and related entities. He served during this time on the Boards of the Kennedy Family Trust, the Carnegie Foundation, the Howard Hughes Medical Center and Yad Hanadiv, a Foundation of the Rothschild Family. Wolfensohn earned degrees of B.A. and LL.B. at the University of Sydney and qualified as a lawyer (1957). He became an officer in the Royal Australian Air force and a member of the Australian Olympic Team in 1956. He received an M.B.A. from the Harvard Graduate School of Business in 1959. He has received national recognition from fifteen countries, including the Knighthood from the UK and the highest orders from Germany, Japan, Brazil, Australia, Morocco, France, Holland, and others. He has received honorary degrees, awards and medals from many institutions throughout the world in recognition of his public service and his support for the arts; most recently, the Carnegie Medal of Philanthropy and the Institute for Advanced Study’s Bamberger Medal.
-
-See obituary, courtesy of The New York Times
-Photo courtesy – Wikipedia
- "
-      ],
-      [
-            "Edda Servi Machlin",
-            "Feb. 22, 1926 - August 16, 2019",
-            "The Blue Card Board of Directors and staff mourns the passing of Edda Servi Machlin, Champion of Italian Jewish Cuisine, a Holocaust survivor and beloved mother of Blue Card Board President, Gia Machlin.
-
-See obituary, courtesy of The New York Times
-
-Photo courtesy – New York Times"
-      ],
-      [
-            "Irene Hime",
-            "Dec. 21, 1937 - May 29, 2019",
-            "The Blue Card family mourns the loss of one of our brightest lights. Irene Hizme was a devoted wife, mother, and grandmother, and a steadfast supporter of The Blue Card’s mission. She faced life’s challenges with irrepressible wit and generosity, in spite of enduring a horrific childhood as the subject of experimentation by Josef Mengele at Auschwitz.
-
-Irene firmly believed and often stated that “the road to Auschwitz is paved with silence.” She therefore spoke publicly about her experiences during the Holocaust and the need to stand against all forms of genocide. Together with her twin brother René Slotkin, she was the subject of the 2005 documentary film René and I.
-
-Despite serious health struggles, Irene created magnificent calligraphic art embellished with handmade dried flowers. Her cards and scrolls are cherished by all who received them. Our hearts go out to her husband Sam, daughter and son-in-law Lori and Jonathan, daughter Robin, and her grandchildren, Perrin, Rami, Lilah, and Chaim.
-
-by Zeva Oelbaum"
-      ],
-      [
-            "Frank Harris",
-            "December 7, 1922 - February 22, 2017",
-            "Frank Harris was a German Jewish survivor and Blue Card Board Member. He had an unparalleled dedication to his heritage and the struggles of his generation to transcend the horrors of Nazi Germany. He was a kind and sensitive man with a passion for life, regardless of the obstacles. Frank was a tireless fighter of children’s nutrition. He was instrumental in the creation of the school lunch program in this country. Never satisfied to just supply food, his mission was to create a consciousness around the importance of providing children with healthy food, and its impact on learning. He embraced the past while zealously advocating for the future, starting a multigenerational newsletter for survivors of the Holocaust, their children and their children’s children. He exhorted that survivor guilt is real and that confronting the pain of the past was the best way to moved forward. In our world today – our current American dilemma – he was the epitome of who we should want to be. He is gone but his message is clear: Never forget, and act as if you have never forgotten.
-
-by Joannie Bachenheimer
-Blue Card Fund Video Tribute to Frank Harris  https://vimeo.com/191406548?turnstile=0.zpbCRUZnP99enaWjnKSm_yb-3Vf2fG5FwoQp9NMyBryADRgCQxVsQF5eA6-O5td9rMpWK-gJHjLXOFYCIKpwKWoqdNQyF2DaIOUTZ6sNUSMJirMTiv6XulGbusy_eG-eXi2MsKAO4S7Q7jQRMvfEJms-jZHoqFuDIT0HFZRfxPr7CFrNMEykWOAcW_kCCzfqQSM35RFNAXs_ut-k9_dEUgvMqUrNsU0ICqmylLm_lWhuZkilBDigpE8eK7TLYIt3v-xYtA_bA2-tmxF-JDD5oKPobWJ5shAlViwQBZcWYPwCRDwvLctGJgHx9DYu_h4W0lAmc9IGwixffxt5gLqhjm_NCoo7ihjX1jNCI7-KY70Lm7nLb-ssz4Tm-ZkRuFX6Sx-eIKVB4Y8xBsHILPWE-j3A176Z-fHu81Ah2sqIakvjqz6IyMwsNVItl6ROjvFQsaVycr3vXMlLUAvC8WTljVDHH1GfncChHZ8fSZNge2iK11e-pZhnK360v3pTmrr_OZrRbECepFmlMGBsToMnUr_5DM_Draz8KD3rZh9dMjSk5ImuW_cahq-daCIRbKLvO-8WyHaLYLCYD0vgZioEidnhAE0sSHWDUbd36stgfNZePL29ms7LzLGJ9D5aVt9UaStt5C6Zh-GhBuOCJ6iejEv766Xlv8JZ2UndCksMhAX0ogYpxmhw1IA3Imco2zMmb08PPfXo1b1vyJKl76XYtHXq5uVRIvzb6XdzZYn_eql1xQquiKSnVJCh4SwmWVk26y9rxFNeglcIU9ka1wxjL3bMYi3gTWXRgJTxxsWcCK-r9X-VlqXVku0Qleuj4NfSKJzI9CIdzPCDQ2UCa89NGunaM0zCTUE691Th4gDalnW4VeFtDtIZejeEMPXCvIXDx6BiDdORZcx2DgOb7XTGZ4w9eOcvaPpdgph8FH1hAQKd3KovrPBTPhSSf7RatVLiIFVemOn9PPHL0JqxvIHqYg.CiIGTrVcZZE2KeRhhB75kQ.ea1728fd3d41ec1efc82bd04428770c95dac456eb2c54b759656915ee2c2b8f1"
-      ],
-      [
-            "Elie Wiesel",
-            "September 30, 1928 - July 2, 2016",
-            "On behalf of The Blue Card which serves Holocaust survivors in the United States, we mourn the passing of Holocaust survivor and Nobel Laureate, Professor Elie Wiesel, who has made an incredible impact on our world in his fight for freedom, justice and the memory of the Holocaust and its victims.
-
-The Blue Card presented the Richard C. Holbrooke Award for Social Justice to Professor Wiesel on November 16, 2015 at the New York Public Library. It was a great honor to have known him.
-
-May his words guide us all for generations to come. He continues to be an inspiration to us and we will carry on his work for Holocaust survivors knowing the difference he made for The Blue Card, Holocaust education and support.
-
-Sincerely,
-
-Masha Pearl
-Executive Director"
-      ],
-      [
-            "Max L. Heine",
-            "1911 - 1988",
-            "Max Heine was a giver. He gave because he felt it was the right thing to do; because he cared deeply about other people; and because not giving was not an option for him. Max was born in 1911 in Berlin. His father was a doctor and his mother’s family owned a large factory that manufactured automobiles, motorcycles and munitions. As a teenager, he rode the company motorcycles, and when he wrecked one, he simply got a new one. He wasn’t much of a student. The comments on his report card ranged from “nicht genügend” (not sufficient) to “mangelhaft”(unsatisfactory) to “genügend” (sufficient). Max was considered the black sheep of the family,and not only because of his grades. He was distressed by the social inequities of the day. While studying law-not very successfully-at the University of Heidelberg in the late 1920’s, he became seriously involved in leftwing politics. A family rumor alleged that he tried to organize the workforce at the family factory. True or not, it suggests where his sympathies lay. In the early 1930’s he was arrested for his activities with anti-Nazi organizations, which turned out to be a stroke of good fortune. He saw the writing on the wall and in 1933 abandoned his law< studies and emigrated to the U.S. Many of his relatives were not so lucky.
-
-In America, Max had to start at the bottom. His first job was as a salesman for women’s haberdashery and men’s neckties. He wasn’t much of a salesman, and if he knew anything about fashion, he kept it well concealed. Soon he moved on to a job as a runner in a Wall Street brokerage firm. He had no idea that within a few decades he’d be known as “The Dean of Wall Street.”
-
-It was around this time that he fell in love with Lotte Hirsch, another German émigré. They married in 1938 and remained inseparable until her death almost 50 years later. They had three daughters, Doris, Karin and Peggy, and lived in the same house in Roslyn for 40 years.
-
-Max flourished on Wall Street, first by helping many of his fellow émigrés invest their savings, then by spotting value in the bonds of bankrupt companies. In 1949 he took over the leadership of Mutual Shares, a pioneering mutual fund. He later became chairman of Herzog, Heine, Geduld, and chairman of Heine Securities. No matter how brilliantly he maneuvered in the world of capitalism, Max never cared all that much about money. He cared about people. He always thought of the stock market as a game; he enjoyed the game immensely, but it didn’t make him feel bigger or smarter or worthier than anyone else, and it was never the most important thing in his life. He was an incredibly loyal friend, a loving husband and father, a doting grandfather. He considered himself a very lucky man, and he wanted to help others. He never thought of it as a sacrifice; he just thought of it as the thing to do, as natural as getting up in the morning. And Blue Card was the perfect fit-helping people like him, but less fortunate."
-      ],
-      [
-            "Mark Warren Bobyatsky, M.D.",
-            "June 29, 1959 - August 25, 2014",
-            "The untimely passing of my brother, Dr. Mark Babyatsky will remain one of his family’s greatest personal losses. To us, his family, he was warm, caring, playful, and gifted in so many different ways. Mark was well read in all genres, the arts, theatre, and politics. He enjoyed debating with anyone fool enough to start an argument about the next election or Hollywood’s Academy Awards in almost every category and year. Mark was well rounded in all his varied interests.
-
-Education was a priority in our Bronx working class family. It was virtually predetermined at a young age that Mark was going to excel in all his studies, and ultimately become a doctor. Mark attended Bronx HS of Science, Columbia College, received his MD degree from Albert Einstein College of Medicine in 1984 and completed his internal medicine residency and chief residency at Mount Sinai School of Medicine. Mark was recruited to Mass General Hospital for a GI fellowship program. Later on, Mark returned to Mount Sinai for Gastroenterology, rising in 2010 to become Chair of the Samuel Bronfman Department of Medicine. In this capacity, Mark ‘s expertise in the health care reforms allowed him to make major strides in the educational , research missions of the Department, and patient relationships. In 2014, he assumed new challenges as the Chair of Medicine at Monmouth Medical Center, St. Barnabas Medical Group.
-
-Throughout his career, Mark was a distinguished physician, well recognized for his work nationally, receiving many honors and scholarship awards. He exhibited strong leadership skills, developing several research initiatives as a Director of the Education Research Consortium of Program Directors, working with the American College of Physicians. He published a defining textbook in the Genomics field, intended to educate physicians and trainees on how to apply genetics-era medicine to real world medicine. He was particularly concerned about passing on the ethical nature of medicine.
-
-Mark’s love of learning was equally matched with his unique gift of teaching and mentoring, recognized in awards at the Medical School. Many of residents, now physicians in their own right have filled pages in tributes to Mark for his teaching and mentoring prowess always conducted with a gentle and kind touch. Mark had a caring and compassionate personality. He respected his patients, his residents, his colleagues and all he came in contact with. As a son of a Holocaust survivor, Mark developed programs to educate medical students and physicians about the atrocities of that era. Since 2004, he served on the Board of Directors of The Blue Card, an organization whose mission is to provide funds to Holocaust survivors in need. Paralleling his move in this direction, Mark met a holocaust survivor (Irene Hizme) who had had performed medical experiments on her and her twin brother, Rene by Josef Mengele. Irene needed a medical procedure but given the trauma she experienced during the holocaust, she was refusing treatment. Mark was able to gain Irene’s trust which ultimately saved her life. Mark and Irene remained close friends until Mark’s passing.
-
-Mark had more challenges he was looking forward to solving in the future. Mark leaves a truly impressive legacy to his family, his friends, his colleagues, his patients, and future physicians. He was successful as a physician, an educator, a mentor, an innovator, and as a leader."
-      ],
-      [
-            "Margo Urich",
-            "April 4, 1938 - June 23, 2014",
-            "The family of Margit Ulrich is deeply honored that The Blue Card is renaming its joint Simcha Bar/Bat Mitzvah Program with the Anne Frank Center, in her memory.
-
-Born in Stuttgart, Germany in 1928, Margit immigrated to the United States in 1938. She and her sister Rita were first welcomed to Chicago by a foster family while their father found work and a place for them to live in New York; the three were reunited a few months later. Margit tended to recall few of the hardships she faced in having to flee her native land, but rather focused on the kindnesses she received as a young German Jewish immigrant in the United States. Despite the hardships of her childhood she was deeply conscious of what she considered her good fortune and actively reached out to children, elderly and infirm people, through teaching, family dinners and charitable contributions. As the Trinity School’s Transportation Coordinator for many years, Margit also took a personal extra step each year with fourth grade students, by sharing her own Holocaust survival story, as well as the story of her second cousin, Anne Frank. Children were always greatly moved by Margit’s history and she would answer every question with honesty and respect. In February 2007, the New York Times profiled her efforts as part of their ongoing chronicle of ordinary New Yorkers doing heroic work.
-
-As part of her 15-year role on the Board of The Blue Card, Margit carefully considered applications from Holocaust survivors for emergency funding of health and living needs. She was a life-long, passionate advocate for the less fortunate, and believed in the mission of The Blue Card, to honor and give back to Holocaust survivors, and to educate the next generation in a mission of charity and respect."
-      ],
-      [
-            "Leo Rechter",
-            "1927 - February 22, 2021",
-            "Leo was a long-time President of the National Association of Jewish Holocaust Survivors (NAHOS), and author of the NAHOS Newsletter. His thorough and professional journalistic devotion to informing the survivor community, public officials and other dignitaries about survivors’ affairs, made the NAHOS Newsletter the authoritative voice of grass roots Holocaust survivors in the United States. Along with his passion to inform, protect, and assist Holocaust survivors, Leo approached every issue deliberately, and with intelligence and wisdom. So, when Leo took a stand to protect and advance survivors’ rights, interests, and needs, those on the other side were invariably outmatched, and knew it.
-
-Just one year after The Blue Card Foundation honored Elie Wiesel, in 2016 Leo was awarded the same honors for his extraordinary contributions to support impoverished survivors, and his support of the Blue Card’s important mission of providing direct financial assistance to needy Holocaust survivors.
-
-Leo was born to Jossel and Jyte Rechter, in Vienna, Austria, in 1927. Following Kristallnacht, and after a brutal beating of his father by local authorities, Leo and his family fled their home in Vienna, escaping to Brussels, Belgium, leaving all their worldly possessions behind.
-
-Following the Nazi invasion of Belgium, his father was captured and ultimately transferred to the Auschwitz death camp, where he was killed. After the loss of his father at age 12, Leo spent the rest of the War in Brussels in hiding, as the sole support for his family. There they remained, running from secret place to secret place. Always just ahead of the Gestapo and local authorities, they were almost apprehended a number of times, but for Leo’s cunning and in some cases blind fortune. Because of his light complexion, blond hair and blue-eyes, Leo avoided capture by the Nazis when out, by effectively hiding in plain sight. Leo always put his mother and 2 younger siblings first, doing everything he could to provide for them and keep them safe. Among other things, to try and support the family he sold black market bread, old clothing that his mother and sister refurbished at home, and peddled cigarettes made from discarded butts. After the war, Leo went to Israel, where he met the love of his life, Fortunee (Toni), who had previously fled to Israel from Iraq. In 1958, Leo and Fortunee decided to seek out a new life in the United States, and moved to New York, were married, and started a new life together.
-
-Leo’s final decades of hard work, focusing solely on those in need who could not ably represent themselves, epitomized all that is still good with humanity. Those who knew him, share his family’s everlasting respect, pride and deep appreciation for all that he has selflessly given to help others."
-      ],
-      [
-            "Erika Teutsch",
-            "September 8, 1923 - December 23, 2020",
-            "Erika passed away at 97 in New York. The daughter of Hans and Anna (Hessdoerfer) Teutsch.
-Erika emigrated from Nuremberg, Germany in 1938 and obtained a degree in Economics from Swarthmore College. Erika served as the Washington D.C. chief of staff for Congressman Bill Ryan, as director of Governor Hugh Carey’s New York City office, and as Senior Services director at Goddard Riverside Community Center until her retirement at age 85.
-
-She was predeceased by her younger sisters Liselotte “Lilo” Strauss and Traude Pins and she is survived by her cherished family and lifelong friends."
-      ],
-      [
-            "Gerda Weissmann",
-            "March 10, 1924 - April 30, 2020",
-            "That we announce the passing of Gerda Wassermann (nee Kraemer) who was born in Beuthen Oberschlesien, Germany, on March 10, 1922 and died in Madison, Wisconsin, on April 30, 2020.
-
-Despite tremendous adversity, including the Holocaust, Gerda escaped Germany in 1939 and emigrated to La Paz, Bolivia. In 1944, while living in La Paz, Gerda married her childhood friend, Wolfgang Wassermann who had also fled Germany. Together, they worked in Bolivia and then emigrated to New York in 1946 through the generosity of the Bolivian Embassy in La Paz.
-
-Gerda and Wolfgang left behind family in Chile, Uruguay and Argentina when they moved to the United States. Through Wolfgang’s work, they traveled and lived in various countries, including Luxembourg and Mexico. Subsequently, they moved to Florida where Wolfgang passed away in October 1996.
-
-After living for many years in Florida, Gerda moved to Madison, Wisconsin (Capitol Lakes Retirement Community) to be near her youngest daughter, Judy, and her husband Ken.
-
-Gerda leaves behind her two daughters, Evelyn (New York), Judy (husband Ken); grandchildren, Carrie (husband Jacob), Danny and Seth (wife Sara); her great-grandchildren include Orly, Zemira, Cole and Hazel. Gerda leaves behind family who remain in Bolivia.
-
-Gerda embraced life, learning, religion, painting, yoga and reading. She will be forever remembered for her unconditional love, generosity and philanthropy. Gerda was especially grateful to her caretakers at Agrace Hospice and Palliative Care as well as at Capitol Lakes for making her last few years as comfortable as possible.
-
-Baruch Dayan Ha’Emet (Blessed is the True Judge)"
-      ]
-];
-
-    const normalize = (value) => value.toLowerCase().replace(/\.[a-z]+$/i, "").replace(/[^a-z0-9\s_-]/g, "").replace(/[_-]+/g, " ").replace(/\s+/g, " ").trim();
-    const cleanBio = (bio) => bio.replace(/"?\s*&CHAR\(10\)&CHAR\(10\)&\s*"?/gi, "\n\n").replace(/"&|&"/g, "").replace(/^"+|"+$/g, "").trim();
-    const personToImage = new Map(
-      Array.from(document.querySelectorAll(".tribute-card")).map((card) => {
-        const img = card.querySelector("img");
-        const fileName = img ? img.getAttribute("src").split("/").pop() : "";
-        return [normalize(card.dataset.person || ""), fileName];
-      })
-    );
-
-    const tributeByName = new Map(
-      tributeData.map(([name, dates, bio]) => [
-        name,
-        { name, dates, bio: cleanBio(bio), image: personToImage.get(normalize(name)) || "" }
-      ])
-    );
-
     const modal = document.getElementById("tribute-modal");
     const modalTitle = document.getElementById("tribute-modal-title");
     const modalDates = document.getElementById("tribute-modal-dates");
     const modalBio = document.getElementById("tribute-modal-bio");
     const modalImage = document.getElementById("tribute-modal-image");
     const closeButton = document.getElementById("tribute-modal-close");
+    const cards = Array.from(document.querySelectorAll(".tribute-card"));
+    let tributeByName = new Map();
+    const cardImageByName = new Map(cards.map((card) => [card.dataset.person, card.querySelector("img")?.getAttribute("src") || ""]));
     let lastTrigger = null;
+
+    function extractFirstJsonArray(text) {
+      let start = -1;
+      let depth = 0;
+      let inString = false;
+      let escaped = false;
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        if (start === -1) {
+          if (char === "[") {
+            start = i;
+            depth = 1;
+          }
+          continue;
+        }
+        if (inString) {
+          if (escaped) escaped = false;
+          else if (char === "\\") escaped = true;
+          else if (char === '"') inString = false;
+          continue;
+        }
+        if (char === '"') inString = true;
+        if (char === "[") depth++;
+        if (char === "]") {
+          depth--;
+          if (depth === 0) return text.slice(start, i + 1);
+        }
+      }
+      return null;
+    }
+
+    async function loadTributes() {
+      const response = await fetch("./special-tribute-modal.json");
+      const text = await response.text();
+      const jsonText = extractFirstJsonArray(text);
+      if (!jsonText) throw new Error("Tribute JSON array not found.");
+      const data = JSON.parse(jsonText);
+      tributeByName = new Map(data.map((person) => [person.name, person]));
+    }
 
     function openModal(name, trigger) {
       const person = tributeByName.get(name);
-      if (!person || !person.image) return;
+      if (!person) return;
       lastTrigger = trigger;
       modalTitle.textContent = `A Tribute to ${person.name}`;
       modalDates.textContent = person.dates;
-      modalImage.src = `../images/special-tribute/${person.image}`;
+      modalImage.src = cardImageByName.get(person.name) || person.image;
       modalImage.alt = `Portrait of ${person.name}`;
       modalBio.innerHTML = "";
-      person.bio.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean).forEach((paragraph) => {
+      (person.bio || []).forEach((paragraph) => {
         const p = document.createElement("p");
         p.textContent = paragraph;
         modalBio.appendChild(p);
       });
-
       modal.classList.remove("hidden");
       modal.setAttribute("role", "dialog");
       modal.setAttribute("aria-modal", "true");
@@ -281,7 +144,7 @@ Baruch Dayan Ha’Emet (Blessed is the True Judge)"
       if (lastTrigger) lastTrigger.focus();
     }
 
-    document.querySelectorAll(".tribute-card").forEach((card) => {
+    cards.forEach((card) => {
       card.addEventListener("click", () => openModal(card.dataset.person, card));
       card.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
@@ -295,6 +158,10 @@ Baruch Dayan Ha’Emet (Blessed is the True Judge)"
     modal.querySelector("[data-modal-close]").addEventListener("click", closeModal);
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
+    });
+
+    loadTributes().catch((error) => {
+      console.error("Failed to load tribute data:", error);
     });
   </script>
 </body>
