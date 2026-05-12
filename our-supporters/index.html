@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Supporters | The Blue Card</title>
+  <meta name="description" content="Meet the supporters and partners who help The Blue Card provide essential assistance to Holocaust survivors in need." />
+  <link rel="stylesheet" href="../global-layout.css" />
+  <style>
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #1c1c1c; background: #fff; }
+    .hero { position: relative; min-height: 300px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero::after { content:""; position:absolute; inset:0; background: rgba(8, 37, 69, 0.42); }
+    .hero h1 { position: relative; z-index: 1; margin: 0; padding: 24px; color: #fff; font-size: clamp(40px, 5vw, 56px); font-weight: 800; }
+
+    .page-section { padding: 64px 22px; background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%); }
+    .wrap { max-width: 1140px; margin: 0 auto; }
+    .content-card { background: #fff; border: 1px solid rgba(12, 73, 144, 0.08); border-radius: 20px; padding: 38px 32px; box-shadow: 0 14px 34px rgba(9, 42, 86, 0.08); }
+    h2 { margin: 0 0 18px; color: #0b2341; font-size: clamp(28px, 4vw, 40px); }
+    .intro { margin: 0 0 16px; font-size: 18px; color: #2f3b4a; line-height: 1.7; }
+
+    .video-grid { margin-top: 34px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .video-frame { border-radius: 12px; overflow: hidden; border: 1px solid #d9e2ec; background: #000; aspect-ratio: 16 / 9; }
+    .video-frame iframe { width: 100%; height: 100%; border: 0; }
+
+    .supporters-title { margin-top: 44px; }
+    .partner-list { margin: 14px 0 0; padding-left: 20px; }
+    .partner-list li { margin: 10px 0; line-height: 1.6; color: #243140; }
+    .partner-list a { color: #0d5cab; text-decoration: none; }
+    .partner-list a:hover, .partner-list a:focus-visible { text-decoration: underline; }
+
+    @media (max-width: 860px) {
+      .video-grid { grid-template-columns: 1fr; }
+      .content-card { padding: 28px 20px; }
+      .page-section { padding: 46px 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header id="bc-global-nav" aria-label="Global site navigation"></header>
+
+  <section class="hero" aria-label="Who We Are banner">
+    <img src="../images/who-we-are-header.svg" alt="Historic Blue Card archival record" />
+    <h1>Who We Are</h1>
+  </section>
+
+  <section class="page-section">
+    <div class="wrap">
+      <div class="content-card">
+        <h2>Our Supporters</h2>
+        <p class="intro">The Blue Card is deeply grateful to the individuals, foundations, community organizations, and public agencies whose support helps us provide dignity, care, and essential assistance to Holocaust survivors in need.</p>
+
+        <div class="video-grid" aria-label="Featured Blue Card supporter videos">
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/lgzURWbwITU" title="Featured Blue Card Supporter Video 1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/uR6cYnMt8RM" title="Featured Blue Card Supporter Video 2" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/57wTKRNjxKo" title="Featured Blue Card Supporter Video 3" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/tKg8nXaBxoY" title="Featured Blue Card Supporter Video 4" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        </div>
+
+        <h2 class="supporters-title">List of Featured Blue Card Supporters</h2>
+        <ul class="partner-list">
+          <li><a href="http://www.claimscon.org/" target="_blank" rel="noopener noreferrer">Claims Conference – The Conference on Jewish Material Claims Against Germany</a></li>
+          <li><a href="https://www.schusterman.org/" target="_blank" rel="noopener noreferrer">Charles and Lynn Schusterman Family Foundation</a></li>
+          <li><a href="https://www.ujafedny.org/" target="_blank" rel="noopener noreferrer">UJA Federation of New York</a></li>
+          <li><a href="https://www.righteouspersons.org/" target="_blank" rel="noopener noreferrer">Righteous Persons Foundation</a></li>
+          <li>Wilzig Family Foundation</li>
+          <li><a href="https://bluecardfund.org/the-hildegard-lash-foundation/" target="_blank" rel="noopener noreferrer">Hildegard Lash Foundation</a></li>
+          <li><a href="https://www.nyfe.org/" target="_blank" rel="noopener noreferrer">New York Foundation for Eldercare</a></li>
+          <li><a href="https://www.jewishfederations.org/" target="_blank" rel="noopener noreferrer">Jewish Federations of North American</a></li>
+          <li><a href="https://www.bike.nyc/" target="_blank" rel="noopener noreferrer">Bike New York</a></li>
+          <li><a href="https://www.bpjcc.org/" target="_blank" rel="noopener noreferrer">Boro Park Jewish Community Council</a></li>
+          <li><a href="https://aging.ny.gov/" target="_blank" rel="noopener noreferrer">New York State Department for the Aging (NYSOFA)</a></li>
+          <li><a href="https://www1.nyc.gov/site/dfta/index.page" target="_blank" rel="noopener noreferrer">Department for the Aging</a></li>
+          <li><a href="https://www1.nyc.gov/site/dfta/index.page" target="_blank" rel="noopener noreferrer">Department of Youth &amp; Community Development (DYCD)</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div id="bc-global-footer"></div>
+  <script src="../global-layout.js"></script>
+</body>
+</html>
