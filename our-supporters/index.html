@@ -44,6 +44,59 @@
     <h1>Who We Are</h1>
   </section>
 
+
+  <section class="bluecard-supporters-page">
+    <style>
+      .bluecard-supporters-page {
+        --blue: #153e7a;
+        --blue-deep: #0b2a52;
+        --blue-soft: #eaf2fb;
+        --gold: #d4a84f;
+        --text: #1a1f2b;
+        --muted: #5f6b7a;
+        --line: #dbe4ef;
+        --white: #ffffff;
+        --shadow: 0 18px 45px rgba(12, 34, 66, 0.10);
+        --radius: 22px;
+        --max: 1280px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(21, 62, 122, 0.07), transparent 28%),
+          linear-gradient(180deg, #f8fbff 0%, #ffffff 42%, #f6f9fc 100%);
+        line-height: 1.6;
+        overflow: hidden;
+      }
+      .bluecard-supporters-page * { box-sizing: border-box; }
+      .bluecard-supporters-page img { max-width: 100%; display: block; }
+      .bluecard-supporters-page a { color: inherit; text-decoration: none; }
+      .bluecard-supporters-page .container { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+      .bluecard-supporters-page .hero { position: relative; padding: 88px 0 56px; }
+      .bluecard-supporters-page .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(21, 62, 122, 0.96), rgba(11, 42, 82, 0.92)), url('https://bluecardfund.org/wp-content/uploads/2020/07/TBC-ASSISTING_HOLOCAUST_SURVIVORS-e1609083996951-210x300.png') center/cover no-repeat; opacity: 0.12; pointer-events: none; }
+      .bluecard-supporters-page .hero-shell { position: relative; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 34px; align-items: center; background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(255,255,255,0.88)); border: 1px solid rgba(255,255,255,0.75); border-radius: 32px; box-shadow: var(--shadow); padding: 42px; backdrop-filter: blur(12px); }
+      .bluecard-supporters-page .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--blue); background: var(--blue-soft); border: 1px solid rgba(21, 62, 122, 0.10); border-radius: 999px; padding: 10px 16px; margin-bottom: 18px; }
+      .bluecard-supporters-page .eyebrow::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 6px rgba(212, 168, 79, 0.12); flex: 0 0 auto; }
+      .bluecard-supporters-page .hero h1 { margin: 0 0 18px; font-size: clamp(2.3rem, 5vw, 4.2rem); line-height: 1.02; letter-spacing: -0.03em; color: var(--blue-deep); }
+      .bluecard-supporters-page .hero p.lead { margin: 0 0 24px; font-size: 1.1rem; color: var(--muted); max-width: 760px; }
+      .bluecard-supporters-page .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 22px; }
+      .bluecard-supporters-page .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 22px; border-radius: 999px; font-weight: 700; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; cursor: pointer; }
+      .bluecard-supporters-page .btn-primary { background: var(--blue); color: var(--white); box-shadow: 0 14px 28px rgba(21, 62, 122, 0.22); }
+      .bluecard-supporters-page .btn-secondary { background: var(--white); color: var(--blue-deep); border: 1px solid var(--line); }
+      .bluecard-supporters-page .gratitude-card { background: linear-gradient(180deg, #ffffff, #f8fbff); border: 1px solid var(--line); border-radius: 28px; padding: 26px; box-shadow: 0 18px 35px rgba(12, 34, 66, 0.08); }
+      .bluecard-supporters-page .impact-section { padding: 16px 0 18px; }
+      .bluecard-supporters-page .impact-panel { display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: center; background: var(--white); border: 1px solid var(--line); border-radius: 30px; box-shadow: var(--shadow); padding: 30px; }
+      .bluecard-supporters-page .logo-wall { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+      .bluecard-supporters-page .logo-card { background: rgba(255,255,255,0.92); border: 1px solid var(--line); border-radius: 24px; min-height: 170px; padding: 22px; display: flex; align-items: center; justify-content: center; }
+      .bluecard-supporters-page .partners-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+      .bluecard-supporters-page .partner-card { background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%); border: 1px solid var(--line); border-radius: 24px; box-shadow: 0 14px 32px rgba(12, 34, 66, 0.07); padding: 24px; display: flex; flex-direction: column; gap: 18px; min-height: 220px; }
+      .bluecard-supporters-page .closing { padding: 0 0 90px; }
+      .bluecard-supporters-page .closing-panel { background: linear-gradient(135deg, var(--blue-deep), var(--blue)); color: var(--white); border-radius: 30px; padding: 36px; }
+      @media (max-width: 1100px) { .bluecard-supporters-page .hero-shell, .bluecard-supporters-page .impact-panel { grid-template-columns: 1fr; } .bluecard-supporters-page .logo-wall { grid-template-columns: repeat(3, minmax(0, 1fr)); } .bluecard-supporters-page .partners-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+      @media (max-width: 760px) { .bluecard-supporters-page .hero { padding-top: 56px; } .bluecard-supporters-page .hero-shell, .bluecard-supporters-page .impact-panel, .bluecard-supporters-page .closing-panel { padding: 24px; } .bluecard-supporters-page .logo-wall, .bluecard-supporters-page .partners-grid { grid-template-columns: 1fr; } }
+    </style>
+    <section class="hero"><div class="container"><div class="hero-shell"><div class="hero-copy"><div class="eyebrow">Our Supporters</div><h1>Partners who help The Blue Card serve Holocaust survivors with dignity.</h1><p class="lead">The Blue Card is deeply grateful to all of our partners, sponsors, and grantors. Their support strengthens our mission and helps deliver vital assistance, compassionate care, and meaningful outreach to Holocaust survivors in need.</p><div class="hero-actions"><a class="btn btn-primary" href="#bluecard-partners-list">View Our Supporters</a><a class="btn btn-secondary" href="https://bluecardfund.org/" target="_blank" rel="noopener noreferrer">Visit The Blue Card</a></div></div></div></div></section>
+  </section>
+
   <section class="page-section">
     <div class="wrap">
       <div class="content-card">
