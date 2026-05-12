@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 520" role="img" aria-labelledby="title desc">
+  <title id="title">Historic Blue Card background</title>
+  <desc id="desc">Blue archival card inspired background with left-side fade and document details on the right.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#6f95a3"/>
+      <stop offset="38%" stop-color="#688f9d"/>
+      <stop offset="56%" stop-color="#729eae"/>
+      <stop offset="100%" stop-color="#7aa8b9"/>
+    </linearGradient>
+    <linearGradient id="leftFade" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#5f8795" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#5f8795" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1400" height="520" fill="url(#paper)"/>
+  <rect x="0" y="0" width="560" height="520" fill="url(#leftFade)"/>
+
+  <rect x="565" y="0" width="8" height="520" fill="#5f8795" opacity="0.35"/>
+  <rect x="573" y="0" width="14" height="520" fill="#8cb8c6" opacity="0.22"/>
+
+  <g opacity="0.88" stroke="#122638" stroke-width="2.4" fill="none">
+    <line x1="640" y1="64" x2="1290" y2="64"/>
+    <line x1="640" y1="104" x2="1218" y2="104"/>
+    <line x1="640" y1="146" x2="1244" y2="146"/>
+    <line x1="640" y1="188" x2="1200" y2="188"/>
+    <line x1="640" y1="272" x2="1300" y2="272"/>
+    <line x1="640" y1="312" x2="1264" y2="312"/>
+    <line x1="640" y1="352" x2="1320" y2="352"/>
+    <line x1="640" y1="392" x2="1228" y2="392"/>
+  </g>
+
+  <g fill="#0d1d2f" font-family="'Arial', sans-serif" opacity="0.82">
+    <text x="742" y="40" font-size="42" letter-spacing="7">FUR HILFE UND AUFBAU</text>
+    <text x="768" y="85" font-size="22" letter-spacing="4">BEITRAGSKARTE NR ✽ 080010</text>
+    <text x="642" y="146" font-size="26" letter-spacing="2">AUSGESTELLT VON</text>
+    <text x="642" y="192" font-size="34" letter-spacing="5">FOR HERRN / FRAU / FRL.</text>
+    <text x="640" y="276" font-size="46" letter-spacing="10">UBER EINEN MONATLICHEN BEITRAG VON</text>
+  </g>
+
+  <g transform="translate(1002 236)" stroke="#245f9e" stroke-width="3" fill="none" opacity="0.6">
+    <polygon points="0,-186 170,104 -170,104"/>
+    <polygon points="0,-166 152,92 -152,92"/>
+    <polygon points="0,-146 134,80 -134,80"/>
+    <polygon points="0,-126 116,68 -116,68"/>
+  </g>
+
+  <path d="M804 198 C860 148, 928 230, 988 182" stroke="#1d3d84" stroke-width="6" fill="none" opacity="0.68"/>
+  <path d="M850 205 C896 170, 960 240, 1018 206" stroke="#1d3d84" stroke-width="4.5" fill="none" opacity="0.6"/>
+
+  <rect x="565" y="0" width="835" height="520" fill="#0d2c44" opacity="0.1"/>
+</svg>
