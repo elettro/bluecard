@@ -17,7 +17,9 @@
       --gap: 16px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -50,11 +52,15 @@
     }
 
     @media (max-width: 1024px) {
-      .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .video-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 640px) {
-      .video-grid { grid-template-columns: 1fr; }
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .video-card {
@@ -236,8 +242,21 @@
     let lastTrigger = null;
 
     function getYoutubeId(url) {
-      const parsed = new URL(url);
-      return parsed.searchParams.get('v');
+      try {
+        const parsed = new URL(url);
+
+        if (parsed.hostname.includes('youtu.be')) {
+          return parsed.pathname.replace('/', '');
+        }
+
+        if (parsed.hostname.includes('youtube.com')) {
+          return parsed.searchParams.get('v');
+        }
+
+        return null;
+      } catch (error) {
+        return null;
+      }
     }
 
     function getVideoData(video) {
@@ -252,6 +271,7 @@
       }
 
       const id = getYoutubeId(video.url);
+
       return {
         type: 'youtube',
         id,
@@ -283,7 +303,10 @@
       document.body.style.overflow = '';
       iframeShell.innerHTML = '';
       document.removeEventListener('keydown', onModalKeydown);
-      if (lastTrigger) lastTrigger.focus();
+
+      if (lastTrigger) {
+        lastTrigger.focus();
+      }
     }
 
     function onModalKeydown(event) {
@@ -296,6 +319,7 @@
         const focusable = [modalClose];
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
+
         if (event.shiftKey && document.activeElement === first) {
           event.preventDefault();
           last.focus();
@@ -311,12 +335,15 @@
       .sort((a, b) => a.order - b.order)
       .forEach((video) => {
         const videoData = getVideoData(video);
+
         const button = document.createElement('button');
         button.type = 'button';
         button.className = 'video-card';
+
         const providedTitle = video.title && video.title.trim();
         const fallbackTitle = `Video ${video.order}`;
         const accessibleTitle = providedTitle || fallbackTitle;
+
         button.setAttribute('aria-label', `Play ${accessibleTitle}`);
 
         button.innerHTML = `
@@ -329,23 +356,30 @@
 
         if (!providedTitle && videoData.type === 'youtube') {
           const titleEl = button.querySelector('.video-title');
+
           fetch(`https://www.youtube.com/oembed?url=${encodeURIComponent(video.url)}&format=json`)
             .then((response) => response.ok ? response.json() : null)
             .then((data) => {
               if (!data || !data.title) return;
+
               const fetchedTitle = data.title.trim();
               if (!fetchedTitle) return;
+
               titleEl.textContent = fetchedTitle;
               button.setAttribute('aria-label', `Play ${fetchedTitle}`);
+
               const image = button.querySelector('img');
-              if (image) image.alt = fetchedTitle;
+              if (image) {
+                image.alt = fetchedTitle;
+              }
             })
             .catch(() => {
-              // Keep fallback title if metadata fetch fails.
+              titleEl.textContent = fallbackTitle;
             });
         }
 
         button.addEventListener('click', () => openModal(videoData, button));
+
         button.addEventListener('keydown', (event) => {
           if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
@@ -357,8 +391,11 @@
       });
 
     modalClose.addEventListener('click', closeModal);
+
     modal.addEventListener('click', (event) => {
-      if (event.target === modal) closeModal();
+      if (event.target === modal) {
+        closeModal();
+      }
     });
   </script>
 </body>
