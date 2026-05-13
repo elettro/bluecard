@@ -19,14 +19,16 @@
       line-height: 1.5;
     }
     .hero {
-      background: linear-gradient(135deg, #0f5db2, #0b4a8c);
+      background:
+        linear-gradient(135deg, rgba(15, 93, 178, 0.92), rgba(11, 74, 140, 0.9)),
+        url("/bluecard/images/podcast/blue-card-podcast-poster.jpg") center / cover no-repeat;
       color: #fff;
       padding: 48px 20px;
     }
     .wrap { max-width: 1080px; margin: 0 auto; }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns: 1fr;
       gap: 24px;
       align-items: center;
     }
@@ -44,12 +46,6 @@
       box-shadow: 0 8px 20px rgba(0,0,0,.25);
     }
     .cta.anchor { background: #7c3aed; }
-    .hero img {
-      width: 100%;
-      border-radius: 14px;
-      display: block;
-      box-shadow: 0 10px 26px rgba(0,0,0,.3);
-    }
     main { padding: 30px 20px 56px; }
     .logo-card {
       max-width: 420px;
@@ -69,8 +65,11 @@
     iframe { width: 100%; max-width: 100%; border: 0; border-radius: 12px; }
     @media (max-width: 860px){ .hero-grid { grid-template-columns: 1fr; } }
   </style>
+  <link rel="stylesheet" href="../global-layout.css"/>
 </head>
 <body>
+  <div id="bc-global-nav"></div>
+
   <header class="hero">
     <div class="wrap hero-grid">
       <div>
@@ -82,7 +81,6 @@
           <a class="cta anchor" href="https://anchor.fm/blue-card" target="_blank" rel="noopener noreferrer">Listen on Anchor.fm</a>
         </div>
       </div>
-      <img src="/images/podcast/blue-card-podcast-poster.jpg" alt="The Blue Card podcast promotional poster" />
     </div>
   </header>
 
@@ -104,5 +102,8 @@
       </section>
     </div>
   </main>
+
+  <div id="bc-global-footer"></div>
+  <script src="../global-layout.js"></script>
 </body>
 </html>
