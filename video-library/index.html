@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Video Library</title>
+  <link rel="stylesheet" href="../global-layout.css" />
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+      --shadow-hover: 0 10px 24px rgba(15, 23, 42, 0.14);
+      --radius: 12px;
+      --gap: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 20px 40px;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 0 0 28px;
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      letter-spacing: 0.2px;
+    }
+
+    .video-grid {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--gap);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    @media (max-width: 1024px) {
+      .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .video-grid { grid-template-columns: 1fr; }
+    }
+
+    .video-card {
+      width: 100%;
+      border: 0;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      text-align: left;
+      color: inherit;
+      cursor: pointer;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+      padding: 0;
+    }
+
+    .video-card:hover,
+    .video-card:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      outline: none;
+    }
+
+    .thumb-wrap {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #d1d5db;
+    }
+
+    .thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .play-icon {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+    }
+
+    .play-icon::before {
+      content: "";
+      width: 62px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.72);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+    }
+
+    .play-icon::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 16px solid #ffffff;
+      margin-left: 3px;
+    }
+
+    .video-title {
+      display: block;
+      padding: 12px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      min-height: 64px;
+    }
+
+    .video-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+
+    .video-modal[aria-hidden="false"] {
+      display: flex;
+    }
+
+    .video-modal-content {
+      width: min(90vw, 1280px);
+      max-height: 90vh;
+      position: relative;
+      outline: none;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: -42px;
+      right: 0;
+      border: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .iframe-shell {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      max-width: 90vw;
+      max-height: 90vh;
+      background: #000;
+    }
+
+    .iframe-shell iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header id="bc-global-nav" aria-label="Global site navigation"></header>
+
+  <main>
+    <h1>Video Library</h1>
+    <div id="video-grid" class="video-grid"></div>
+  </main>
+
+  <footer id="bc-global-footer" aria-label="Global site footer"></footer>
+
+  <div id="video-modal" class="video-modal" aria-hidden="true">
+    <div class="video-modal-content" role="dialog" aria-modal="true" aria-label="Video player" tabindex="-1">
+      <button type="button" class="modal-close" aria-label="Close video">×</button>
+      <div class="iframe-shell" id="iframe-shell"></div>
+    </div>
+  </div>
+
+  <script src="../global-layout.js"></script>
+  <script>
+    const videos = [
+      { "order": 1, "title": "The Blue Card Featured on The View", "url": "https://www.youtube.com/watch?v=n1vvaY96AJA" },
+      { "order": 2, "title": "The Blue Card", "url": "https://www.youtube.com/watch?v=VE45zOKudwg" },
+      { "order": 3, "title": "A message from Gene Simmons", "url": "https://www.youtube.com/watch?v=4wTtm6eThTQ" },
+      { "order": 4, "title": "The Blue Card", "url": "https://www.youtube.com/watch?v=3Bw7NPzGr5s" },
+      { "order": 5, "title": "The Blue Card", "url": "https://www.youtube.com/watch?v=fCL9YLaKo6I" },
+      { "order": 6, "title": "The Blue Card Today", "url": "https://www.youtube.com/watch?v=_tPfzI61mYo" },
+      { "order": 7, "title": "Conversation with the Blue Card - Hosted by NJHSA", "url": "https://www.youtube.com/watch?v=StknbTlPfEY" },
+      { "order": 8, "title": "The Blue Card's International Holocaust Rememberence Day Virtual Concert", "url": "https://www.youtube.com/watch?v=TzSGURUGK20" },
+      { "order": 9, "title": "The Blue Card's 2019 Gala", "url": "https://www.youtube.com/watch?v=TzSGURUGK20" },
+      { "order": 10, "title": "Hear Goldie's Holocaust Story", "url": "https://www.youtube.com/watch?v=yoOR0zp7arg" },
+      { "order": 11, "title": "VP Joe Biden Addresses Elie Wiesel at the Blue Card Gala", "url": "https://www.youtube.com/watch?v=a-qxnikLhks" },
+      { "order": 12, "title": "Holocaust survivor Goldie J.'s guest appearance for the International Holocaust Rememberence Day event", "url": "https://www.youtube.com/watch?v=QiNQIPl25j4" },
+      { "order": 13, "title": "Joe Biden delivers message at The Blue Card benefit dinner to aid Holocaust Survivors, 2019", "url": "https://www.youtube.com/watch?v=Riln63WqR1M" },
+      { "order": 14, "title": "Tribute video for Homebound and isolated Holocaust survivors", "url": "https://www.youtube.com/watch?v=NXnpCFG70W8" },
+      { "order": 15, "title": "The Blue Card's 2019 Gala and awards dinner to aid Holocaust survivors, highlight video", "url": "https://www.youtube.com/watch?v=dF2hRiFE1os" },
+      { "order": 16, "title": "Clearcut | Paying tribute on Holocaust Remeberence Day | Monday, April 24th 2017", "url": "https://dai.ly/x6ff9qu" },
+      { "order": 17, "title": "Training webinar for dental professionals - Trauma care - The Blue Card 7-31-17", "url": "https://www.youtube.com/watch?v=z1zll9W2GWg" },
+      { "order": 18, "title": "CNN Holocaust survivor stories", "url": "https://www.youtube.com/watch?v=WuHDG7XyeBA" },
+      { "order": 19, "title": "TJC's Jewish News Week in Review: June 12, 2015", "url": "https://www.youtube.com/watch?v=RTwGSuXNJMA" },
+      { "order": 20, "title": "Retooling dental health for the Holocaust survivors - The Blue Card 4-6-17", "url": "https://www.youtube.com/watch?v=j597XcDhIDY" },
+      { "order": 21, "title": "Tribute to Le Chambon", "url": "https://www.youtube.com/watch?v=jD04lA-ohok" },
+      { "order": 22, "title": "Charity Run Story", "url": "https://www.youtube.com/watch?v=4srUS7mH_A4" },
+      { "order": 23, "title": "Professor Elie Wiesel - The Blue Card", "url": "https://www.youtube.com/watch?v=4srUS7mH_A4" },
+      { "order": 24, "title": "The Blue Card", "url": "https://www.youtube.com/watch?v=4srUS7mH_A4" }
+    ];
+
+    const videoGrid = document.getElementById('video-grid');
+    const modal = document.getElementById('video-modal');
+    const modalContent = modal.querySelector('.video-modal-content');
+    const modalClose = modal.querySelector('.modal-close');
+    const iframeShell = document.getElementById('iframe-shell');
+    let lastTrigger = null;
+
+    function getYoutubeId(url) {
+      const parsed = new URL(url);
+      return parsed.searchParams.get('v');
+    }
+
+    function getVideoData(video) {
+      if (video.url.includes('dai.ly/x6ff9qu')) {
+        return {
+          type: 'dailymotion',
+          id: 'x6ff9qu',
+          thumbnail: 'https://www.dailymotion.com/thumbnail/video/x6ff9qu',
+          embed: 'https://www.dailymotion.com/embed/video/x6ff9qu?autoplay=1',
+          allow: 'autoplay'
+        };
+      }
+
+      const id = getYoutubeId(video.url);
+      return {
+        type: 'youtube',
+        id,
+        thumbnail: `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
+        embed: `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`,
+        allow: 'autoplay; encrypted-media'
+      };
+    }
+
+    function openModal(videoData, triggerEl) {
+      lastTrigger = triggerEl;
+      iframeShell.innerHTML = '';
+
+      const iframe = document.createElement('iframe');
+      iframe.src = videoData.embed;
+      iframe.allow = videoData.allow;
+      iframe.allowFullscreen = true;
+      iframe.title = 'Video player';
+      iframeShell.appendChild(iframe);
+
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      modalClose.focus();
+      document.addEventListener('keydown', onModalKeydown);
+    }
+
+    function closeModal() {
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      iframeShell.innerHTML = '';
+      document.removeEventListener('keydown', onModalKeydown);
+      if (lastTrigger) lastTrigger.focus();
+    }
+
+    function onModalKeydown(event) {
+      if (event.key === 'Escape') {
+        closeModal();
+        return;
+      }
+
+      if (event.key === 'Tab') {
+        const focusable = [modalClose];
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    }
+
+    videos
+      .slice()
+      .sort((a, b) => a.order - b.order)
+      .forEach((video) => {
+        const videoData = getVideoData(video);
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'video-card';
+        button.setAttribute('aria-label', `Play ${video.title}`);
+
+        button.innerHTML = `
+          <span class="thumb-wrap">
+            <img src="${videoData.thumbnail}" alt="${video.title}" loading="lazy" />
+            <span class="play-icon" aria-hidden="true"></span>
+          </span>
+          <span class="video-title">${video.title}</span>
+        `;
+
+        button.addEventListener('click', () => openModal(videoData, button));
+        button.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openModal(videoData, button);
+          }
+        });
+
+        videoGrid.appendChild(button);
+      });
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeModal();
+    });
+  </script>
+</body>
+</html>
