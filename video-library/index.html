@@ -310,15 +310,15 @@
         button.type = 'button';
         button.className = 'video-card';
         const title = video.title && video.title.trim();
-        const displayTitle = title || `Video ${video.order}`;
-        button.setAttribute('aria-label', `Play ${displayTitle}`);
+        const accessibleTitle = title || `Video ${video.order}`;
+        button.setAttribute('aria-label', `Play ${accessibleTitle}`);
 
         button.innerHTML = `
           <span class="thumb-wrap">
-            <img src="${videoData.thumbnail}" alt="${displayTitle}" loading="lazy" />
+            <img src="${videoData.thumbnail}" alt="${accessibleTitle}" loading="lazy" />
             <span class="play-icon" aria-hidden="true"></span>
           </span>
-          <span class="video-title">${displayTitle}</span>
+          ${title ? `<span class="video-title">${title}</span>` : ""}
         `;
 
         button.addEventListener('click', () => openModal(videoData, button));
