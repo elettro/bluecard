@@ -58,6 +58,8 @@
     }
 
     .video-card {
+      display: flex;
+      flex-direction: column;
       width: 100%;
       border: 0;
       background: var(--card-bg);
@@ -121,10 +123,13 @@
 
     .video-title {
       display: block;
+      width: 100%;
       padding: 12px;
       font-size: 0.95rem;
+      line-height: 1.35;
       color: var(--muted);
       min-height: 64px;
+      white-space: normal;
     }
 
     .video-modal {
