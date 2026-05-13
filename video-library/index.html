@@ -309,8 +309,9 @@
         const button = document.createElement('button');
         button.type = 'button';
         button.className = 'video-card';
-        const title = video.title && video.title.trim();
-        const accessibleTitle = title || `Video ${video.order}`;
+        const providedTitle = video.title && video.title.trim();
+        const fallbackTitle = `Video ${video.order}`;
+        const accessibleTitle = providedTitle || fallbackTitle;
         button.setAttribute('aria-label', `Play ${accessibleTitle}`);
 
         button.innerHTML = `
@@ -318,8 +319,26 @@
             <img src="${videoData.thumbnail}" alt="${accessibleTitle}" loading="lazy" />
             <span class="play-icon" aria-hidden="true"></span>
           </span>
-          ${title ? `<span class="video-title">${title}</span>` : ""}
+          <span class="video-title">${accessibleTitle}</span>
         `;
+
+        if (!providedTitle && videoData.type === 'youtube') {
+          const titleEl = button.querySelector('.video-title');
+          fetch(`https://www.youtube.com/oembed?url=${encodeURIComponent(video.url)}&format=json`)
+            .then((response) => response.ok ? response.json() : null)
+            .then((data) => {
+              if (!data || !data.title) return;
+              const fetchedTitle = data.title.trim();
+              if (!fetchedTitle) return;
+              titleEl.textContent = fetchedTitle;
+              button.setAttribute('aria-label', `Play ${fetchedTitle}`);
+              const image = button.querySelector('img');
+              if (image) image.alt = fetchedTitle;
+            })
+            .catch(() => {
+              // Keep fallback title if metadata fetch fails.
+            });
+        }
 
         button.addEventListener('click', () => openModal(videoData, button));
         button.addEventListener('keydown', (event) => {
