@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Past Events</title>
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+      --shadow-hover: 0 10px 24px rgba(15, 23, 42, 0.14);
+      --radius: 12px;
+      --gap: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 20px 40px;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 0 0 28px;
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      letter-spacing: 0.2px;
+    }
+
+    .events-grid {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--gap);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    @media (max-width: 1024px) {
+      .events-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .events-grid { grid-template-columns: 1fr; }
+    }
+
+    .event-card {
+      display: block;
+      width: 100%;
+      border: 0;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      text-align: left;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+      padding: 0;
+    }
+
+    .event-card:hover,
+    .event-card:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      outline: none;
+    }
+
+    .event-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      background: #e5e7eb;
+    }
+
+    .event-title {
+      display: block;
+      padding: 12px 12px 14px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      min-height: 62px;
+    }
+
+    .modal {
+      border: 0;
+      padding: 0;
+      width: min(92vw, 1400px);
+      max-height: 92vh;
+      background: transparent;
+    }
+
+    .modal::backdrop {
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-image {
+      max-width: 90vw;
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
+      background: #fff;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 40px;
+      height: 40px;
+      border: 0;
+      border-radius: 999px;
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      color: #111827;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    }
+
+    .modal-close:focus-visible {
+      outline: 3px solid #2563eb;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Past Events</h1>
+    <ul id="eventsGrid" class="events-grid" aria-label="Past events gallery"></ul>
+  </main>
+
+  <dialog id="imageModal" class="modal" aria-labelledby="modalTitle" aria-modal="true">
+    <div class="modal-content">
+      <button id="modalClose" class="modal-close" type="button" aria-label="Close image">×</button>
+      <img id="modalImage" class="modal-image" src="" alt="" />
+      <p id="modalTitle" style="position:absolute;left:-9999px;"></p>
+    </div>
+  </dialog>
+
+  <script>
+    const events = [
+      { "event_id": 37, "title": "NYC Half Marathon - March 15th, 2026", "image": "images/past-events/37-nyc-halfmarathon-march-15th-2026.webp", "modal": true },
+      { "event_id": 36, "title": "TCS New York City Marathon - November 2, 2025", "image": "images/past-events/36-TCS New York City Marathon - November 2 2025.webp", "modal": true },
+      { "event_id": 35, "title": "Chanukah Party - Dec 17, 2025", "image": "images/past-events/35-Chanukah Party - Dec 17 2025.webp", "modal": true },
+      { "event_id": 34, "title": "Summer Retreat 2025", "image": "images/past-events/34-Summer Retreat 2025.webp", "modal": true },
+      { "event_id": 33, "title": "Ride for Holocaust Survivors May 4, 2025", "image": "images/past-events/33-Ride for Holocaust Survivors May 4 2025.webp", "modal": true },
+      { "event_id": 32, "title": "Coffee and Connections - NYC Feb 26, 2025", "image": "images/past-events/32-Coffee and Connections - NYC Feb 26 2025.webp", "modal": true },
+      { "event_id": 31, "title": "United Airlines NYC Half Marathon 2025", "image": "images/past-events/31-United Airlines NYC Half Marathon 2025.webp", "modal": true },
+      { "event_id": 30, "title": "2024 SOMOS Inc Puerto Rico Conference", "image": "images/past-events/30-2024 SOMOS Inc Puerto Rico Conference.webp", "modal": true },
+      { "event_id": 29, "title": "Honoring Holocaust Survivors Webinar", "image": "images/past-events/29-Honoring Holocaust Survivors Webinar.webp", "modal": true },
+      { "event_id": 28, "title": "2024 TCS New York City Marathon", "image": "images/past-events/28-2024 TCS New York City Marathon.webp", "modal": true },
+      { "event_id": 27, "title": "TD Five Boro Bike Tour May 5, 2024", "image": "images/past-events/27-TD Five Boro Bike Tour May 5, 2024.webp", "modal": true },
+      { "event_id": 26, "title": "2024 NYC Half Marathon", "image": "images/past-events/26-2024 NYC Half Marathon.webp", "modal": true },
+      { "event_id": 25, "title": "2023 TCS New York City Marathon", "image": "images/past-events/25-2023 TCS New York City Marathon.webp", "modal": true },
+      { "event_id": 24, "title": "85th Anniversary of Kristallnacht November 1938-2023", "image": "images/past-events/24-85th Anniversary of Kristallnacht November 1938-2023.webp", "link": "https://bluecardfund.org/young-leadership-summer-cocktail-reception-event-photos-from-june-29th-2023/", "target": "_blank" },
+      { "event_id": 23, "title": "Young Leadership Summer Cocktail Reception - See Photo Gallery", "image": "images/past-events/23-Young Leadership Summer Cocktail Reception.webp", "link": "https://bluecardfund.org/young-leadership-summer-cocktail-reception-event-photos-from-june-29th-2023/", "target": "_blank" },
+      { "event_id": 22, "title": "TD Five Boro Bike Tour May 7, 2023", "image": "images/past-events/22-TD Five Boro Bike Tour May 7, 2023.webp", "modal": true },
+      { "event_id": 21, "title": "2023 Miami Marathon", "image": "images/past-events/21-2023 Miami Marathon.webp", "modal": true },
+      { "event_id": 20, "title": "2022 TCS New York City Marathon", "image": "images/past-events/20-2022 TCS New York City Marathon.webp", "modal": true },
+      { "event_id": 19, "title": "2022 Miami Marathon", "image": "images/past-events/19-2022 Miami Marathon.webp", "modal": true },
+      { "event_id": 18, "title": "2021 Team Blue Card TCS New York City Marathon", "image": "images/past-events/18-2021 Team Blue Card TCS New York City Marathon.webp", "modal": true },
+      { "event_id": 17, "title": "Bike For The Blue Card", "image": "images/past-events/17-Bike For The Blue Card.webp", "modal": true },
+      { "event_id": 16, "title": "The Blue Card Bike Tour", "image": "images/past-events/16-The Blue Card Bike Tour.webp", "modal": true },
+      { "event_id": 15, "title": "The Blue Card 2021 Miami Marathon", "image": "images/past-events/15-The Blue Card 2021 Miami Marathon.webp", "link": "https://jcsfl.org/events/virtual-runwalkforthesix/", "target": "_blank" },
+      { "event_id": 14, "title": "2020 Team Blue Card TCS New York City Marathon", "image": "images/past-events/14-2020 Team Blue Card TCS New York City Marathon.jpg", "modal": true },
+      { "event_id": 13, "title": "Holocaust Survivors During COVID-19 Teleconference in Russian", "image": "images/past-events/13-Holocaust Survivors During COVID-19 Teleconference in Russian.webp", "link": "images/past-events/13-Blue_Card_Teleconference_Russian_6-29-2020-full-presentation-russian.pdf", "target": "_blank" },
+      { "event_id": 12, "title": "Wine Testing Even with Israeli Wine Direct", "image": "images/past-events/12-Wine Testing Even with Israeli Wine Direct.webp", "link": "https://www.dropbox.com/sh/4jj8jluy4ngcdz5/AAAyI0L3kjMoBk6xrVPBivXKa?dl=0", "target": "_blank" },
+      { "event_id": 11, "title": "The 2019 Annual Gala, Awards Dinner and Reception Image Gallery 1", "image": "images/past-events/11-The 2019 Annual Gala, Awards Dinner and Reception Image Gallery 1.webp", "link": "https://www.dropbox.com/sh/oi5yq1rope74nvk/AADBvzAjmFgAcuFXNYeffx7oa?dl=0", "target": "_blank" },
+      { "event_id": 10, "title": "Holocaust Survivors During COVID-19 May 21st 2020 Teleconference in English", "image": "images/past-events/10-Holocaust Survivors During COVID-19 May 21st 2020 Teleconference in English.jpg", "link": "https://youtu.be/5NSbl_TXLyI", "target": "_blank" },
+      { "event_id": 9, "title": "The 2019 Annual Gala, Awards Dinner and Reception Image Gallery 2", "image": "images/past-events/09-The 2019 Annual Gala, Awards Dinner and Reception Image Gallery 2.webp", "link": "https://www.dropbox.com/sh/emqfa3tj77w3alp/AAAwovA7bjYaNBEWxznPWHPfa?dl=0", "target": "_blank" },
+      { "event_id": 8, "title": "The 2019 Annual Gala, Awards Dinner and Reception Image Gallery 3", "image": "images/past-events/08-Young Leadership Summer Cocktail Reception.webp", "link": "https://www.dropbox.com/sh/56k1uo0097zr2zd/AACFX1dMPWUhyavgMQyZUlfNa?dl=0", "target": "_blank" },
+      { "event_id": 7, "title": "The 2019 Annual Gala, Awards Dinner and Reception Video Montage", "image": "images/past-events/07-The 2019 Annual Gala, Awards Dinner and Reception Video Montage.webp", "link": "https://www.dropbox.com/s/ov1e1ko7e10ossq/Blue%20Card%2083rd%20Anniversary%20Gala.mp4?dl=0", "target": "_blank" },
+      { "event_id": 6, "title": "The 2017 Cocktail Reception Image Gallery", "image": "images/past-events/06-The 2017 Cocktail Reception Image Gallery.webp", "link": "https://www.dropbox.com/sh/9ahbj1eju612n18/AAAJx3a1_yv2jANdh-V63NE6a?dl=0", "target": "_blank" },
+      { "event_id": 5, "title": "The 2016 Annual Benefit Tribute Journal", "image": "images/past-events/05-The 2016 Annual Benefit Dinner Image Gallery.webp", "link": "images/past-events/05-2016-Annula-Benefit-Dinner-Journal.pdf", "target": "_blank" },
+      { "event_id": 4, "title": "The 2016 Annual Benefit Dinner Image Gallery", "image": "images/past-events/04-The 2016 Annual Benefit Dinner Image Gallery.webp", "link": "https://www.dropbox.com/sh/lcw51acx2alvnvt/AAB_xDz24Q30bExetVuCJePna?dl=0", "target": "_blank" },
+      { "event_id": 3, "title": "The 2015 Annual Benefit Dinner Image Gallery", "image": "images/past-events/03-The 2015 Annual Benefit Dinner Image Gallery.webp", "link": "https://www.dropbox.com/sh/sqnfcu7euoh8z2a/AACI-OFf-47_yzdscEj4MXp3a?dl=0", "target": "_blank" },
+      { "event_id": 2, "title": "The 2015 Annual Benefit Dinner Image Gallery", "image": "images/past-events/02-The 2015 Annual Benefit Dinner Image Gallery.webp", "link": "https://www.dropbox.com/sh/sqnfcu7euoh8z2a/AACI-OFf-47_yzdscEj4MXp3a?dl=0", "target": "_blank" },
+      { "event_id": 1, "title": "The 2015 Annual Benefit Dinner Image Gallery", "image": "images/past-events/01-the2015-annual-benefit-dinner-image-gallery-link.webp", "link": "https://www.dropbox.com/sh/sqnfcu7euoh8z2a/AACI-OFf-47_yzdscEj4MXp3a?dl=0", "target": "_blank" }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('eventsGrid');
+      const modal = document.getElementById('imageModal');
+      const modalImage = document.getElementById('modalImage');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalClose = document.getElementById('modalClose');
+      let lastTrigger = null;
+
+      const ensureOrder = [...events].sort((a, b) => b.event_id - a.event_id);
+
+      ensureOrder.forEach((event) => {
+        const li = document.createElement('li');
+        let card;
+
+        if (event.link) {
+          card = document.createElement('a');
+          card.href = event.link;
+          card.target = event.target || '_blank';
+          card.rel = 'noopener noreferrer';
+        } else {
+          card = document.createElement('button');
+          card.type = 'button';
+          card.dataset.modalImage = event.image;
+          card.dataset.modalTitle = event.title;
+          card.addEventListener('click', () => openModal(card));
+        }
+
+        card.className = 'event-card';
+
+        const img = document.createElement('img');
+        img.src = event.image;
+        img.alt = event.title;
+        img.loading = 'lazy';
+
+        const title = document.createElement('span');
+        title.className = 'event-title';
+        title.textContent = event.title;
+
+        card.appendChild(img);
+        card.appendChild(title);
+        li.appendChild(card);
+        grid.appendChild(li);
+      });
+
+      function getFocusable(container) {
+        return Array.from(container.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        )).filter((el) => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden'));
+      }
+
+      function trapFocus(e) {
+        if (e.key !== 'Tab' || !modal.open) return;
+        const focusable = getFocusable(modal);
+        if (!focusable.length) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+
+      function openModal(triggerEl) {
+        lastTrigger = triggerEl;
+        modalImage.src = triggerEl.dataset.modalImage;
+        modalImage.alt = triggerEl.dataset.modalTitle;
+        modalTitle.textContent = triggerEl.dataset.modalTitle;
+        modal.showModal();
+        modalClose.focus();
+      }
+
+      function closeModal() {
+        if (!modal.open) return;
+        modal.close();
+        modalImage.src = '';
+        modalImage.alt = '';
+        if (lastTrigger) {
+          lastTrigger.focus();
+        }
+      }
+
+      modalClose.addEventListener('click', closeModal);
+
+      modal.addEventListener('click', (e) => {
+        const rect = modal.getBoundingClientRect();
+        const inDialog = (
+          e.clientX >= rect.left &&
+          e.clientX <= rect.right &&
+          e.clientY >= rect.top &&
+          e.clientY <= rect.bottom
+        );
+        if (!inDialog) closeModal();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.open) {
+          e.preventDefault();
+          closeModal();
+        }
+      });
+
+      modal.addEventListener('keydown', trapFocus);
+      modal.addEventListener('close', () => {
+        if (lastTrigger) lastTrigger.focus();
+      });
+    });
+  </script>
+</body>
+</html>
