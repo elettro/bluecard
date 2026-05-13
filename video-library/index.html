@@ -201,10 +201,10 @@
   <script>
     const videos = [
       { "order": 1, "title": "The Blue Card Featured on The View", "url": "https://www.youtube.com/watch?v=n1vvaY96AJA" },
-      { "order": 2, "title": "Bergen County Holocaust Remembrance Commission Event", "url": "https://www.youtube.com/watch?v=VE45zOKudwg" },
+      { "order": 2, "url": "https://www.youtube.com/watch?v=VE45zOKudwg" },
       { "order": 3, "title": "A message from Gene Simmons", "url": "https://www.youtube.com/watch?v=4wTtm6eThTQ" },
-      { "order": 4, "title": "A Message from Dr. Ruth Westheimer", "url": "https://www.youtube.com/watch?v=3Bw7NPzGr5s" },
-      { "order": 5, "title": "Honoring Holocaust Survivors", "url": "https://www.youtube.com/watch?v=fCL9YLaKo6I" },
+      { "order": 4, "url": "https://www.youtube.com/watch?v=3Bw7NPzGr5s" },
+      { "order": 5, "url": "https://www.youtube.com/watch?v=fCL9YLaKo6I" },
       { "order": 6, "title": "The Blue Card Today", "url": "https://www.youtube.com/watch?v=_tPfzI61mYo" },
       { "order": 7, "title": "Conversation with the Blue Card - Hosted by NJHSA", "url": "https://www.youtube.com/watch?v=StknbTlPfEY" },
       { "order": 8, "title": "The Blue Card's 2019 Gala", "url": "https://www.youtube.com/watch?v=TzSGURUGK20" },
@@ -309,15 +309,16 @@
         const button = document.createElement('button');
         button.type = 'button';
         button.className = 'video-card';
-        const title = (video.title && video.title.trim()) || `Video ${video.order}`;
-        button.setAttribute('aria-label', `Play ${title}`);
+        const title = video.title && video.title.trim();
+        const accessibleTitle = title || `Video ${video.order}`;
+        button.setAttribute('aria-label', `Play ${accessibleTitle}`);
 
         button.innerHTML = `
           <span class="thumb-wrap">
-            <img src="${videoData.thumbnail}" alt="${title}" loading="lazy" />
+            <img src="${videoData.thumbnail}" alt="${accessibleTitle}" loading="lazy" />
             <span class="play-icon" aria-hidden="true"></span>
           </span>
-          <span class="video-title">${title}</span>
+          ${title ? `<span class="video-title">${title}</span>` : ""}
         `;
 
         button.addEventListener('click', () => openModal(videoData, button));
