@@ -8,7 +8,15 @@
   <a class="bc-top-donate-btn" href="https://bluecardfund.org/become-involved/donate/" rel="noopener noreferrer" target="_blank">DONATE</a>
 </div>
 <nav class="bluecard-nav" aria-label="Main Navigation">
-  <ul class="menu">
+  <div class="bluecard-nav-mobile-bar">
+    <a class="bluecard-nav-logo" href="https://bluecardfund.org/" aria-label="The Blue Card Home">
+      <img src="https://bluecardfund.org/wp-content/uploads/2023/11/Blue-Card-Logo.png" alt="The Blue Card">
+    </a>
+    <button class="bluecard-nav-toggle" type="button" aria-expanded="false" aria-controls="bluecard-main-menu" aria-label="Toggle navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <ul class="menu" id="bluecard-main-menu">
     <li><a href="https://bluecardfund.org/">Home</a></li>
     <li class="menu-item-has-children"><a href="/bluecard/who-we-are/index.html">Who We Are</a><ul class="sub-menu"><li><a href="/bluecard/our-mission/index.html">Our Mission</a></li><li><a href="/bluecard/our-supporters/">Our Supporters</a></li><li><a href="/bluecard/calendars/">Calendars</a></li><li><a href="/bluecard/past-events/index.html">Past Events</a></li><li><a href="/bluecard/special-tribute/index.html">Special Tribute</a></li><li><a href="/bluecard/podcast/index.html">Podcast</a></li><li><a href="/bluecard/video-library/index.html">Video Library</a></li><li><a href="https://bluecardfund.org/blog/">Blog</a></li></ul></li>
     <li class="menu-item-has-children"><a href="https://bluecardfund.org/how-we-help/">How We Help</a><ul class="sub-menu"><li><a href="https://bluecardfund.org/how-we-help/emergency-cash-assistance/">Emergency Cash Assistance</a></li><li><a href="https://bluecardfund.org/how-we-help/dental-and-medical-assistance/">Dental and Medical Assistance</a></li><li><a href="https://bluecardfund.org/how-we-help/telephone-response-system/">Telephone Response System</a></li><li><a href="https://bluecardfund.org/how-we-help/ongoing-assistance/">Ongoing Assistance</a></li><li><a href="https://bluecardfund.org/the-blue-cards-medication-assistance-grant/">Medication Assistance Grant</a></li><li><a href="https://bluecardfund.org/cost-plus-drug-company/">Cost Plus Drug Company</a></li><li><a href="https://bluecardfund.org/how-we-help/siggi-b-wilzig-fighting-cancer-together-program/">Siggi B. Wilzig Fighting Cancer Together Program</a></li><li><a href="https://bluecardfund.org/how-we-help/health-wellbeing/">Health &amp; Wellbeing</a></li><li><a href="https://bluecardfund.org/how-we-help/natural-disaster-relief/">Natural Disaster Relief</a></li></ul></li>
@@ -28,6 +36,16 @@
         link.setAttribute('aria-current', 'page');
       }
     });
+
+    var nav = navTarget.querySelector('.bluecard-nav');
+    var navToggle = navTarget.querySelector('.bluecard-nav-toggle');
+    if (nav && navToggle) {
+      navToggle.addEventListener('click', function () {
+        var expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('is-open', !expanded);
+      });
+    }
   }
 
   var footerTarget = document.getElementById('bc-global-footer');

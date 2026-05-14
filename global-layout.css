@@ -55,6 +55,9 @@
   top: 0;
   z-index: 1000;
 }
+.bluecard-nav-mobile-bar {
+  display: none;
+}
 .bluecard-nav .menu,
 .bluecard-nav .sub-menu {
   list-style: none;
@@ -151,7 +154,60 @@
   .bc-footer-social { justify-content: flex-start; }
 }
 @media (max-width: 980px) {
-  .bluecard-nav > .menu { display: block; }
+  .bluecard-nav-mobile-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    background: #efefef;
+  }
+  .bluecard-nav-logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  .bluecard-nav-logo img {
+    height: clamp(34px, 6vw, 46px);
+    width: auto;
+    display: block;
+  }
+  .bluecard-nav-toggle {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+    border-radius: 8px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+  }
+  .bluecard-nav-toggle span {
+    width: 22px;
+    height: 2px;
+    background: #0057a8;
+    border-radius: 99px;
+    transition: transform 220ms ease, opacity 220ms ease;
+  }
+  .bluecard-nav.is-open .bluecard-nav-toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .bluecard-nav.is-open .bluecard-nav-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  .bluecard-nav.is-open .bluecard-nav-toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  .bluecard-nav > .menu {
+    display: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .bluecard-nav.is-open > .menu {
+    display: block;
+  }
   .bluecard-nav .menu > li > a { border-bottom: 1px solid rgba(0,0,0,0.08); }
   .bluecard-nav .menu > li > a::after { display: none; }
   .bluecard-nav .sub-menu { position: static; border: 0; box-shadow: none; display: block; }
