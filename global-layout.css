@@ -289,3 +289,19 @@ font-size: 1rem;
 line-height: 1.55;
 }
 }
+
+/* Assistance program simple pages */
+.page-main.assistance-page { background: #f8f9ff; min-height: 40vh; }
+.container { width: min(1200px, calc(100% - 40px)); margin: 0 auto; }
+.container.narrow { width: min(840px, calc(100% - 40px)); }
+.page-hero.simple-page-hero {
+  background: linear-gradient(135deg, #003f7d 0%, #0b56a4 100%);
+  color: #fff;
+  padding: 72px 0 60px;
+}
+.page-hero .eyebrow { margin: 0 0 12px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: #d6e3ff; font-weight: 700; }
+.page-hero h1 { margin: 0 0 12px; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; }
+.page-hero .lead { margin: 0; font-size: 1.125rem; color: #e9f1fe; }
+.section.assistance-content-placeholder { padding: 48px 0 72px; }
+.content-card { background: #fff; border: 1px solid #dbe3f0; border-radius: 12px; padding: 28px; box-shadow: 0 8px 22px rgba(0, 63, 125, 0.08); }
+.content-card p { margin: 0; color: #424751; font-size: 1.06rem; line-height: 1.7; }
