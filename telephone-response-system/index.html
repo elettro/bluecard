@@ -3,27 +3,209 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Telephone Response System | The Blue Card</title>
+  <title>TERS – Telephone Emergency Response Unit | The Blue Card</title>
   <link rel="stylesheet" href="../global-layout.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    .ters-page {
+      margin: 0;
+      font-family: 'Barlow', sans-serif;
+      background: #f5f7fb;
+      color: #1a1a1a;
+    }
+
+    .hero {
+      position: relative;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(rgba(0, 40, 90, 0.85), rgba(0, 40, 90, 0.9)),
+        url('https://bluecardfund.org/wp-content/uploads/2026/04/ters-pressing-medical-alert-button.png');
+      background-size: cover;
+      background-position: center;
+      animation: zoom 25s ease-in-out infinite alternate;
+    }
+
+    @keyframes zoom {
+      from { background-size: 100%; }
+      to { background-size: 108%; }
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 56px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+    }
+
+    .aurora-btn {
+      display: inline-block;
+      padding: 16px 30px;
+      margin-top: 25px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 16px;
+      color: #ffffff;
+      text-decoration: none;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .aurora-btn:hover {
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .feature {
+      background: #00285a;
+      color: #fff;
+      padding: 25px;
+      border-radius: 12px;
+    }
+
+    .cta {
+      background: #00285a;
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+      border-radius: 12px;
+      margin-top: 60px;
+    }
+
+    .cta a {
+      display: inline-block;
+      background: #0a66ff;
+      color: #ffffff;
+      padding: 16px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .cta a:hover {
+      color: #ffffff;
+    }
+
+    .outline-btn {
+      display: inline-block;
+      padding: 16px 30px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      text-decoration: none;
+      margin-top: 15px;
+    }
+
+    .outline-btn:hover {
+      color: #ffffff;
+    }
+  </style>
 </head>
 <body>
   <header id="bc-global-nav" aria-label="Global site navigation"></header>
 
-  <main class="page-main assistance-page">
-    <section class="page-hero simple-page-hero">
-      <div class="container">
-        <p class="eyebrow">Assistance Programs</p>
-        <h1>Telephone Response System</h1>
-        <p class="lead">Program details will be added here shortly.</p>
+  <main class="ters-page">
+    <section class="hero">
+      <div class="hero-content">
+        <h1>TERS – Telephone Emergency Response Unit</h1>
+        <p>One button. Immediate help. 24/7 protection for Holocaust survivors living independently.</p>
+        <a href="https://bluecardfund.org/donate/" class="aurora-btn" target="_blank" style="color:#ffffff;">Support This Program</a>
       </div>
     </section>
-    <section class="section assistance-content-placeholder">
-      <div class="container narrow">
-        <div class="content-card">
-          <p>This page is being prepared with updated program information.</p>
+
+    <div class="container">
+      <div class="card">
+        <p>
+          The Blue Card’s goal is to keep Holocaust survivors in their homes and independent for as long as possible.
+          Many survivors experience severe anxiety when faced with leaving their homes for institutional care.
+        </p>
+        <p>
+          The Telephone Emergency Response System (TERS) provides a life-saving solution that restores confidence, safety, and dignity.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="feature">
+          <h3>Wearable Alert</h3>
+          <p>Necklace, wrist, or home unit for immediate access to help.</p>
+        </div>
+        <div class="feature">
+          <h3>One-Button Emergency</h3>
+          <p>Instant connection to a trained care specialist.</p>
+        </div>
+        <div class="feature">
+          <h3>24/7 Protection</h3>
+          <p>Round-the-clock monitoring and response.</p>
+        </div>
+        <div class="feature">
+          <h3>Family Confidence</h3>
+          <p>Peace of mind for loved ones and caregivers.</p>
         </div>
       </div>
-    </section>
+
+      <div class="card">
+        <h2>Financial Support</h2>
+        <p>
+          The Blue Card provides TERS systems at no cost to survivors who cannot afford installation, service, or maintenance.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>11 Years of Impact</h2>
+        <p>
+          This program has supported Holocaust survivors for over a decade, partnering with trusted emergency alert providers.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>COVID-19 Response</h2>
+        <p>
+          During the pandemic, TERS enabled real-time wellness checks and rapid response for essential needs such as food, hygiene supplies, and protective equipment.
+        </p>
+      </div>
+
+      <div class="cta">
+        <h2>Help Keep Survivors Safe</h2>
+        <p>Your support ensures lifesaving access to emergency care.</p>
+        <a href="https://bluecardfund.org/donate/" target="_blank">Donate Now</a>
+        <br />
+        <a href="https://bluecardfund.org/" class="outline-btn" target="_blank">Learn More About The Blue Card</a>
+      </div>
+    </div>
   </main>
 
   <footer id="bc-global-footer" aria-label="Global site footer"></footer>
