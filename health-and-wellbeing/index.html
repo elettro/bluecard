@@ -3,30 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Health __TITLE__ Wellbeing | The Blue Card</title>
-  <link rel="stylesheet" href="../global-layout.css" />
+  <title>Health and Wellbeing Programs | The Blue Card</title>
+  <meta name="description" content="The Blue Card’s Health and Wellbeing Programs support Holocaust survivors through holiday assistance, birthday recognition, light therapy, companion pets, summer retreats, vitamins, and end-of-life comfort support." />
+  <style>
+    :root {
+      --blue:#0B56A4; --blue-deep:#062E5A; --blue-soft:#EAF3FC; --blue-soft-2:#DCEBFA;
+      --text:#1F2C38; --muted:#5F7080; --border:#D7E4F1; --bg:#F6FAFE; --white:#FFFFFF;
+      --radius:20px; --shadow:0 18px 40px rgba(11,86,164,0.10); --max:1180px;
+    }
+    *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.68} a{text-decoration:none}
+    .wrap{width:min(var(--max),calc(100% - 32px));margin:0 auto}.hero{background:linear-gradient(135deg, rgba(6,46,90,.96), rgba(11,86,164,.92));color:#fff;padding:82px 0 70px}
+    .eyebrow{display:inline-block;margin-bottom:14px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.14);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px}
+    .hero h1{margin:0 0 16px;font-size:clamp(36px,5vw,58px);line-height:1.05}.hero p{max-width:900px;margin:0;color:#E7F1FB;font-size:18px}
+    .hero-actions{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 22px;border-radius:999px;font-weight:700;transition:background-color .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease,transform .2s ease}.btn:hover{transform:translateY(-2px)}
+    .btn-primary,.btn-primary:link,.btn-primary:visited{background:#fff;color:var(--blue-deep);border:1px solid #fff;box-shadow:0 12px 24px rgba(0,0,0,.12)}
+    .btn-primary:hover,.btn-primary:focus{background:var(--blue-soft);color:var(--blue-deep);border-color:var(--blue-soft)}
+    .btn-secondary,.btn-secondary:link,.btn-secondary:visited{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.72);box-shadow:inset 0 0 0 1px rgba(255,255,255,.03)}
+    .btn-secondary:hover,.btn-secondary:focus,.btn-secondary:active{background:#fff;color:var(--blue);border-color:#fff;box-shadow:0 12px 24px rgba(0,0,0,.12)}
+    .content{padding:40px 0 80px}.breadcrumb{margin:0 0 22px;color:var(--muted);font-size:14px}
+    .panel{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow)}
+    .panel h2{margin:0 0 14px;font-size:32px;color:var(--blue-deep)} .panel p{margin:0 0 16px;font-size:17px}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:24px}
+    .card{background:var(--blue-soft);border:1px solid var(--border);border-radius:20px;padding:22px}
+    .icon{width:48px;height:48px;border-radius:50%;background:var(--blue-soft-2);display:flex;align-items:center;justify-content:center;margin-bottom:12px;color:var(--blue-deep);font-size:22px}
+    .card h3{margin:0 0 10px;font-size:22px;color:var(--blue-deep)}
+    .cta{margin-top:28px;background:linear-gradient(135deg,var(--blue-deep),var(--blue));padding:20px;border-radius:16px;color:#fff}.cta p{margin:0 0 12px;color:#E8F2FC}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-  <header id="bc-global-nav" aria-label="Global site navigation"></header>
-
-  <main class="page-main assistance-page">
-    <section class="page-hero simple-page-hero">
-      <div class="container">
-        <p class="eyebrow">Assistance Programs</p>
-        <h1>Health __TITLE__ Wellbeing</h1>
-        <p class="lead">Program details will be added here shortly.</p>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">How We Help</div>
+    <h1>Health and Wellbeing Programs</h1>
+    <p>A collection of programs designed to strengthen emotional wellbeing, reduce isolation, and support healthier daily living for Holocaust survivors.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://bluecardfund.org/donate/">Donate Now</a>
+      <a class="btn btn-secondary" href="https://bluecardfund.org/how-we-help/">View All Programs</a>
+    </div>
+  </div>
+</header>
+<main class="content">
+  <div class="wrap">
+    <div class="breadcrumb">The Blue Card / How We Help / Health and Wellbeing Programs</div>
+    <section class="panel">
+      <h2>Supporting the whole person</h2>
+      <p>The Blue Card’s Health and Wellbeing Programs are designed to improve emotional, mental, and physical wellbeing for Holocaust survivors. These programs address isolation, seasonal hardship, nutrition, recognition, and quality of life.</p>
+      <div class="grid">
+        <div class="card"><div class="icon">🕎</div><h3>Jewish Holiday Support</h3><p>Financial support for the High Holidays, Hanukkah, and Passover to help survivors afford extra items for the holidays.</p></div>
+        <div class="card"><div class="icon">🎂</div><h3>Mazal Tov Birthday</h3><p>Birthday cards and birthday money for survivors who often lost their entire families during the war.</p></div>
+        <div class="card"><div class="icon">☀️</div><h3>Mood Restore Light Box</h3><p>A compact, portable, UV-free light therapy unit that supports seasonal wellbeing and daily balance.</p></div>
+        <div class="card"><div class="icon">🐾</div><h3>Companion Pets</h3><p>Interactive companion cats and dogs that provide comfort, connection, and emotional support.</p></div>
+        <div class="card"><div class="icon">🌳</div><h3>Summer Vacation</h3><p>A few days away from the city with accessible accommodations, transportation, meals, and activities.</p></div>
+        <div class="card"><div class="icon">💊</div><h3>Vitamins</h3><p>Multivitamins, minerals, supplements, liquid meals, and other items that help support daily health.</p></div>
+        <div class="card"><div class="icon">🙂</div><h3>Bring a Smile</h3><p>Additional support for terminally ill Holocaust survivors, helping grant a survivor’s final wish.</p></div>
+        <div class="card"><div class="icon">💙</div><h3>Responsive support</h3><p>During difficult periods such as the pandemic, these programs helped lift spirits and reduce isolation.</p></div>
+      </div>
+      <div class="cta">
+        <p>These programs help improve quality of life in meaningful ways, both large and small.</p>
+        <a class="btn btn-primary" href="https://bluecardfund.org/donate/">Support This Work</a>
       </div>
     </section>
-    <section class="section assistance-content-placeholder">
-      <div class="container narrow">
-        <div class="content-card">
-          <p>This page is being prepared with updated program information.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer id="bc-global-footer" aria-label="Global site footer"></footer>
-  <script src="../global-layout.js"></script>
+  </div>
+</main>
 </body>
 </html>
