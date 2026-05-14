@@ -221,9 +221,9 @@
 /* Blog pages */
 .blog-container{max-width:1200px;margin:0 auto;padding:0 20px;box-sizing:border-box}
 .blog-page{background:#f7fbff;padding-bottom:56px}
-.blog-hero{padding:48px 0 24px;text-align:center}
-.blog-hero h1{margin:0 0 8px;color:#0d2f57;font-size:44px}
-.blog-hero p{margin:0;color:#5d7188;font-size:18px}
+.blog-hero{padding:28px 0;background:linear-gradient(90deg,#2e73ba 0%,#1f5da0 100%);text-align:center}
+.blog-hero h1{margin:0 0 8px;color:#fff;font-size:44px}
+.blog-hero p{margin:0;color:#e6f0fb;font-size:18px}
 .blog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 .blog-card{display:block;background:#fff;border:1px solid #d9e4f2;border-radius:12px;overflow:hidden;color:#0d2f57;text-decoration:none;box-shadow:0 8px 20px rgba(13,59,122,.08)}
 .blog-card-image-wrap{aspect-ratio:16/10;background:#eef4fb}
