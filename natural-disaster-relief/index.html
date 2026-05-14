@@ -5,28 +5,84 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Natural Disaster Relief | The Blue Card</title>
   <link rel="stylesheet" href="../global-layout.css" />
+  <style>
+    :root {
+      --blue: #0B56A4;
+      --blue-deep: #062E5A;
+      --blue-soft: #EAF3FC;
+      --blue-soft-2: #DCEBFA;
+      --text: #1F2C38;
+      --muted: #5F7080;
+      --border: #D7E4F1;
+      --bg: #F6FAFE;
+      --white: #FFFFFF;
+      --shadow: 0 18px 40px rgba(11, 86, 164, 0.10);
+      --radius: 22px;
+      --max: 1240px;
+    }
+    .ndr-page * { box-sizing: border-box; }
+    .ndr-page { background: var(--bg); color: var(--text); line-height: 1.68; font-family: Arial, Helvetica, sans-serif; }
+    .ndr-page a { text-decoration: none; }
+    .ndr-page img { max-width: 100%; display: block; }
+    .ndr-page .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .hero { position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(6, 46, 90, 0.88), rgba(11, 86, 164, 0.74)), url('https://bluecardfund.org/wp-content/uploads/2024/10/deanpalermo_Ultra_Realistic_Florida_Community_destroyed_by_Hu_c905e110-e5a8-482f-a7cc-85d6cd3829b0_2.png') center center / cover no-repeat; color: #fff; padding: 96px 0 88px; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,46,90,0.10) 0%, rgba(6,46,90,0.28) 100%); pointer-events: none; }
+    .hero .wrap { position: relative; z-index: 2; }
+    .eyebrow { display: inline-block; margin-bottom: 14px; padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,0.14); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; }
+    .hero h1 { margin: 0 0 16px; font-size: clamp(38px, 5.5vw, 66px); line-height: 1.02; max-width: 940px; }
+    .hero p { max-width: 860px; margin: 0; color: #E7F1FB; font-size: 19px; }
+    .hero-actions { margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border-radius: 999px; font-weight: 700; transition: .2s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary,.btn-primary:link,.btn-primary:visited { background: #fff; color: var(--blue-deep); border: 1px solid #fff; box-shadow: 0 12px 24px rgba(0,0,0,0.14); }
+    .btn-primary:hover,.btn-primary:focus { background: var(--blue-soft); color: var(--blue-deep); border-color: var(--blue-soft); }
+    .btn-secondary,.btn-secondary:link,.btn-secondary:visited { background: rgba(255,255,255,0.14); color: #ffffff; border: 1px solid rgba(255,255,255,0.72); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03); }
+    .btn-secondary:hover,.btn-secondary:focus,.btn-secondary:active { background: #ffffff; color: var(--blue); border-color: #ffffff; box-shadow: 0 12px 24px rgba(0,0,0,0.12); }
+    .hero-stats { margin-top: 28px; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; max-width: 980px; }
+    .hero-stat { background: rgba(255,255,255,0.10); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.18); border-radius: 18px; padding: 18px; }
+    .hero-stat strong { display: block; margin-bottom: 6px; color: #fff; font-size: 16px; }
+    .hero-stat span { color: #E7F1FB; font-size: 15px; }
+    .content { padding: 36px 0 84px; }
+    .breadcrumb { margin: 0 0 22px; color: var(--muted); font-size: 14px; }
+    .top-columns { display: grid; grid-template-columns: minmax(0,1.28fr) minmax(340px,.72fr); gap: 24px; align-items: start; }
+    .left-column,.right-column { display: grid; gap: 24px; align-content: start; }
+    .panel,.story-card,.support-card,.support-cta-inline,.final-cta { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); padding:28px; }
+    .panel h2,.panel h3,.story-card h3 { color:var(--blue-deep); }
+    .panel h2 { margin:0 0 14px; font-size:34px; line-height:1.08; }
+    .panel p,.story-card p,.support-card p,.support-cta-inline p,.final-cta p { margin:0 0 16px; font-size:17px; }
+    .media-panel { padding:18px; overflow:hidden; }
+    .carousel-shell,.carousel-stage { position: relative; border-radius: 18px; overflow: hidden; background: #dce8f5; min-height: 520px; }
+    .carousel-stage { width:100%; aspect-ratio:16/10; }
+    .slide { position: absolute; inset: 0; opacity: 0; transition: opacity .85s ease; pointer-events:none; }
+    .slide.active { opacity:1; pointer-events:auto; }
+    .slide img { width:100%; height:100%; object-fit:cover; }
+    .slide-overlay { position:absolute; inset:auto 0 0 0; padding:22px 22px 18px; background:linear-gradient(180deg, rgba(6,46,90,0) 0%, rgba(6,46,90,0.74) 100%); color:#fff; }
+    .slide-overlay strong { display:block; margin-bottom:6px; font-size:18px; }
+    .slide-overlay span { display:block; color:rgba(255,255,255,0.88); font-size:14px; }
+    .carousel-btn { position:absolute; top:50%; transform:translateY(-50%); z-index:4; width:46px; height:46px; border:0; border-radius:50%; background:rgba(255,255,255,0.84); color:var(--blue-deep); font-size:22px; cursor:pointer; }
+    .carousel-btn.prev { left:14px; } .carousel-btn.next { right:14px; }
+    .carousel-dots { position:absolute; left:18px; right:18px; bottom:14px; z-index:4; display:flex; gap:8px; justify-content:center; }
+    .carousel-dot { width:10px; height:10px; border-radius:50%; border:0; background:rgba(255,255,255,0.45); cursor:pointer; }
+    .carousel-dot.active { background:#fff; transform:scale(1.18); }
+    .gallery-note { margin-top: 14px; color: var(--muted); font-size: 14px; text-align: center; }
+    .checks { list-style:none; padding:0; margin:0; display:grid; gap:12px; }
+    .checks li { position:relative; padding-left:28px; }
+    .checks li::before { content:"✓"; position:absolute; left:0; top:0; color:var(--blue); font-weight:800; }
+    .story-band { margin-top:24px; display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    @media (max-width: 1080px){ .top-columns,.story-band{grid-template-columns:1fr;} .carousel-shell,.carousel-stage{min-height:420px;} }
+    @media (max-width: 900px){ .hero-stats{grid-template-columns:1fr;} }
+  </style>
 </head>
 <body>
   <header id="bc-global-nav" aria-label="Global site navigation"></header>
-
-  <main class="page-main assistance-page">
-    <section class="page-hero simple-page-hero">
-      <div class="container">
-        <p class="eyebrow">Assistance Programs</p>
-        <h1>Natural Disaster Relief</h1>
-        <p class="lead">Program details will be added here shortly.</p>
-      </div>
-    </section>
-    <section class="section assistance-content-placeholder">
-      <div class="container narrow">
-        <div class="content-card">
-          <p>This page is being prepared with updated program information.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
+  <div class="ndr-page">
+  <header class="hero"><div class="wrap"><div class="eyebrow">How We Help</div><h1>Natural Disaster Relief</h1><p>The Blue Card provides urgent relief for Holocaust survivors affected by fires, hurricanes, and severe weather. From food and medical supplies to caregiver support and emergency aid, this fund helps protect vulnerable survivors during moments of crisis.</p><div class="hero-actions"><a class="btn btn-primary" href="https://form-renderer-app.donorperfect.io/give/the-blue-card-inc/the-blue-cards-natural-disasters-and-severe-weather-fund" target="_blank" rel="noopener noreferrer">Donate to The Blue Card's Natural Disasters and Severe Weather Fund</a><a class="btn btn-secondary" href="https://bluecardfund.org/how-we-help/">View All Programs</a></div><div class="hero-stats"><div class="hero-stat"><strong>Rapid response support</strong><span>Emergency assistance for survivors affected by fires, hurricanes, and destructive weather events.</span></div><div class="hero-stat"><strong>Critical daily needs</strong><span>Food, medical supplies, caregiver support, and practical relief when normal routines are disrupted.</span></div><div class="hero-stat"><strong>Support with dignity</strong><span>Focused help for Holocaust survivors facing sudden displacement, loss, and serious hardship.</span></div></div></div></header>
+  <main class="content"><div class="wrap"><div class="breadcrumb">The Blue Card / How We Help / Natural Disaster Relief</div><section class="panel"><h2>How relief support helps</h2><p>With so many people displaced from their homes during recent disasters, The Blue Card’s Natural Disasters and Severe Weather Fund helps provide food, vital medical care, and other practical forms of assistance to survivors affected by crisis conditions.</p><ul class="checks"><li>Food and groceries</li><li>Vital medical care and supplies</li><li>Caregiver support</li><li>Financial and emotional assistance during displacement</li><li>Support through local volunteers, synagogues, and partner organizations</li></ul></section></div></main>
+  </div>
   <footer id="bc-global-footer" aria-label="Global site footer"></footer>
   <script src="../global-layout.js"></script>
+  <script>
+    (function(){const carousel=document.getElementById('disasterCarousel');if(!carousel)return;})();
+  </script>
 </body>
 </html>
