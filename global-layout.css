@@ -58,19 +58,37 @@
 .bluecard-nav-mobile-bar {
   display: none;
 }
+.bluecard-nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+}
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.site-logo img {
+  display: block;
+  width: auto;
+  max-height: 52px;
+  object-fit: contain;
+}
 .bluecard-nav .menu,
 .bluecard-nav .sub-menu {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.bluecard-nav > .menu {
-  max-width: 1280px;
-  margin: 0 auto;
+.bluecard-nav .menu {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  padding: 0 16px;
+  flex: 1;
 }
 .bluecard-nav .menu > li { position: relative; }
 .bluecard-nav a {
@@ -168,8 +186,9 @@
     text-decoration: none;
   }
   .bluecard-nav-logo img {
-    height: clamp(34px, 6vw, 46px);
     width: auto;
+    max-height: 42px;
+    object-fit: contain;
     display: block;
   }
   .bluecard-nav-toggle {
@@ -201,11 +220,18 @@
   .bluecard-nav.is-open .bluecard-nav-toggle span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
   }
-  .bluecard-nav > .menu {
+  .site-logo {
+    display: none;
+  }
+  .bluecard-nav-inner {
+    padding: 0;
+    display: block;
+  }
+  .bluecard-nav .menu {
     display: none;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
   }
-  .bluecard-nav.is-open > .menu {
+  .bluecard-nav.is-open .menu {
     display: block;
   }
   .bluecard-nav .menu > li > a { border-bottom: 1px solid rgba(0,0,0,0.08); }
