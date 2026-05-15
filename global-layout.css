@@ -149,10 +149,8 @@
 .bc-footer-top { display: grid; grid-template-columns: 220px repeat(4, 1fr); gap: 36px; align-items: start; }
 .bc-footer-brand { text-align: center; }
 .bc-footer-logo-link { display: inline-block; }
-.bc-footer-brand img.bc-footer-logo { width: 150px; max-width: 100%; display: block; margin: 0 auto 12px; }
-.bc-footer-brand img.bc-footer-verified { max-width: 180px; width: 100%; height: auto; display: block; margin: 0 auto 12px; }
-.bc-footer-brand p { margin: 0 0 18px; font-size: 17px; line-height: 1.35; color: #dcecff; }
-.bc-footer-brand img.bc-security { max-width: 120px; height: auto; display: inline-block; }
+.bc-footer-brand img.bc-footer-logo { width: 150px; max-width: 100%; display: block; margin: 0 auto 10px; }
+.bc-footer-brand img.bc-security { max-width: 120px; height: auto; display: block; margin: 0 auto; }
 .bc-footer-col h4 { margin: 0 0 20px; color: #fff; font-size: 20px; line-height: 1.2; }
 .bc-footer-col ul { list-style: none; margin: 0; padding: 0; }
 .bc-footer-col li { margin: 0 0 14px; }
@@ -168,7 +166,7 @@
 @media (max-width: 1100px) {
   .bc-footer-top { grid-template-columns: 1fr 1fr; }
   .bc-footer-brand { grid-column: 1 / -1; text-align: left; }
-  .bc-footer-brand img.bc-footer-logo { margin: 0 0 12px; }
+  .bc-footer-brand img.bc-footer-logo { margin: 0 0 10px; }
   .bc-badges { grid-template-columns: repeat(2, 1fr); }
   .bc-footer-bottom { grid-template-columns: 1fr; }
   .bc-footer-social { justify-content: flex-start; }
