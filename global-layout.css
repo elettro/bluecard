@@ -150,6 +150,7 @@
 .bc-footer-brand { text-align: center; }
 .bc-footer-logo-link { display: inline-block; }
 .bc-footer-brand img.bc-footer-logo { width: 150px; max-width: 100%; display: block; margin: 0 auto 12px; }
+.bc-footer-brand img.bc-footer-verified { max-width: 180px; width: 100%; height: auto; display: block; margin: 0 auto 12px; }
 .bc-footer-brand p { margin: 0 0 18px; font-size: 17px; line-height: 1.35; color: #dcecff; }
 .bc-footer-brand img.bc-security { max-width: 120px; height: auto; display: inline-block; }
 .bc-footer-col h4 { margin: 0 0 20px; color: #fff; font-size: 20px; line-height: 1.2; }
