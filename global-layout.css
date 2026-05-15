@@ -156,8 +156,8 @@
 .bc-footer-col li { margin: 0 0 14px; }
 .bc-footer-col a { color: #fff; font-size: 16px; line-height: 1.4; }
 .bc-footer-col a:hover { color: #cfe6ff; }
-.bc-badges { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; align-items: end; justify-items: center; padding: 40px 0 22px; }
-.bc-badges img { max-height: 150px; width: auto; max-width: 100%; display: block; }
+.bc-badges { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; align-items: center; justify-items: center; padding: 34px 0 24px; }
+.bc-badges img { max-height: 120px; height: auto; width: 100%; max-width: 220px; object-fit: contain; display: block; }
 .bc-footer-bottom { border-top: 1px solid rgba(255,255,255,0.15); padding: 16px 0 18px; display: grid; grid-template-columns: 1.5fr 1fr auto; gap: 20px; align-items: center; }
 .bc-footer-legal, .bc-footer-copy, .bc-footer-policies { font-size: 14px; line-height: 1.45; color: #e7f2ff; }
 .bc-footer-policies a { color: #7ee35e; }
@@ -166,10 +166,14 @@
 @media (max-width: 1100px) {
   .bc-footer-top { grid-template-columns: 1fr 1fr; }
   .bc-footer-brand { grid-column: 1 / -1; text-align: left; }
-  .bc-footer-brand img.bc-footer-logo { margin: 0 0 10px; }
-  .bc-badges { grid-template-columns: repeat(2, 1fr); }
+  .bc-footer-brand img.bc-footer-logo { margin: 0 0 12px; }
+  .bc-badges { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
   .bc-footer-bottom { grid-template-columns: 1fr; }
   .bc-footer-social { justify-content: flex-start; }
+}
+@media (max-width: 640px) {
+  .bc-badges { grid-template-columns: 1fr; }
+  .bc-badges img { max-width: 260px; }
 }
 @media (max-width: 980px) {
   .bluecard-nav-mobile-bar {
