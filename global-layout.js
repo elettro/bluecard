@@ -11,14 +11,18 @@
 </div>
 <nav class="bluecard-nav" aria-label="Main Navigation">
   <div class="bluecard-nav-mobile-bar">
-    <a class="bluecard-nav-logo" href="https://bluecardfund.org/" aria-label="The Blue Card Home">
-      <img src="https://bluecardfund.org/wp-content/uploads/2023/11/Blue-Card-Logo.png" alt="The Blue Card">
+    <a class="bluecard-nav-logo" href="/bluecard/" aria-label="The Blue Card home">
+      <img src="/bluecard/images/logo/blue-card-logo-fullsize-.png" alt="The Blue Card">
     </a>
     <button class="bluecard-nav-toggle" type="button" aria-expanded="false" aria-controls="bluecard-main-menu" aria-label="Toggle navigation menu">
       <span></span><span></span><span></span>
     </button>
   </div>
-  <ul class="menu" id="bluecard-main-menu">
+  <div class="bluecard-nav-inner">
+    <a class="site-logo" href="/bluecard/" aria-label="The Blue Card home">
+      <img src="/bluecard/images/logo/blue-card-logo-fullsize-.png" alt="The Blue Card">
+    </a>
+    <ul class="menu" id="bluecard-main-menu">
     <li><a href="https://bluecardfund.org/">Home</a></li>
     <li class="menu-item-has-children"><a href="/bluecard/who-we-are/index.html">Who We Are</a><ul class="sub-menu"><li><a href="/bluecard/our-mission/index.html">Our Mission</a></li><li><a href="/bluecard/our-supporters/">Our Supporters</a></li><li><a href="/bluecard/calendars/">Calendars</a></li><li><a href="/bluecard/past-events/index.html">Past Events</a></li><li><a href="/bluecard/special-tribute/index.html">Special Tribute</a></li><li><a href="/bluecard/podcast/index.html">Podcast</a></li><li><a href="/bluecard/video-library/index.html">Video Library</a></li><li><a href="/bluecard/blog/index.html">Blog</a></li></ul></li>
     <li class="menu-item-has-children"><a href="https://bluecardfund.org/how-we-help/">How We Help</a><ul class="sub-menu"><li><a href="/bluecard/emergency-cash-assistance/">Emergency Cash Assistance</a></li><li><a href="/bluecard/dental-and-medical-assistance/">Dental and Medical Assistance</a></li><li><a href="/bluecard/telephone-response-system/">Telephone Response System</a></li><li><a href="/bluecard/ongoing-assistance/">Ongoing Assistance</a></li><li><a href="/bluecard/medication-assistance-grant/">Medication Assistance Grant</a></li><li><a href="/bluecard/cost-plus-drug-company/">Cost Plus Drug Company</a></li><li><a href="/bluecard/siggi-b-wilzig-fighting-cancer-together-program/">Siggi B. Wilzig Fighting Cancer Together Program</a></li><li><a href="/bluecard/health-and-wellbeing/">Health &amp; Wellbeing</a></li><li><a href="/bluecard/natural-disaster-relief/">Natural Disaster Relief</a></li></ul></li>
@@ -27,7 +31,8 @@
     <li class="menu-item-has-children"><a href="https://bluecardfund.org/holocaust-education/">Holocaust Education</a><ul class="sub-menu"><li><a href="https://bluecardfund.org/holocaust-education/interactive-hologram/">Interactive Hologram</a></li><li><a href="https://bluecardfund.org/how-we-help/education-outreach/">Education &amp; Outreach</a></li><li class="menu-item-has-children"><a href="https://bluecardfund.org/holocaust-education/speakers-bureau/">Speakers Bureau</a><ul class="sub-menu"><li><a href="https://bluecardfund.org/holocaust-education/speakers-bureau/fred-schoenfeld/">Fred Schoenfeld</a></li><li><a href="https://bluecardfund.org/holocaust-education/speakers-bureau/tom-jacobson/">Tom Jacobson</a></li><li><a href="https://bluecardfund.org/holocaust-education/speakers-bureau/inge-auerbacher/">Inge Auerbacher</a></li><li><a href="https://bluecardfund.org/holocaust-education/speakers-bureau/robert-brajer/">Robert Brajer</a></li><li><a href="https://bluecardfund.org/holocaust-education/speakers-bureau/lillian-feintuch/">Lillian Feintuch</a></li><li><a href="https://bluecardfund.org/holocaust-education/speakers-bureau/dr-william-freund/">Dr. William Freund</a></li><li><a href="https://bluecardfund.org/holocaust-education/speakers-bureau/goldie-jacoby/">Goldie Jacoby</a></li><li><a href="https://bluecardfund.org/holocaust-education/speakers-bureau/dolly-rabinowitz/">Dolly Rabinowitz</a></li><li><a href="https://bluecardfund.org/holocaust-education/speakers-bureau/olga-spiegel/">Olga Spiegel</a></li><li><a href="https://bluecardfund.org/holocaust-education/speakers-bureau/sami-steigmann/">Sami Steigmann</a></li><li><a href="https://bluecardfund.org/holocaust-education/speakers-bureau/sonia-warshawski/">Sonia Warshawski</a></li></ul></li></ul></li>
     <li class="menu-item-has-children"><a href="https://bluecardfund.org/press/">Press</a><ul class="sub-menu"><li><a href="https://bluecardfund.org/video-links/">Video Links</a></li></ul></li>
     <li class="menu-item-has-children"><a href="https://bluecardfund.org/contact/">Contact</a><ul class="sub-menu"><li><a href="https://bluecardfund.org/site-map/">Site Map</a></li></ul></li>
-  </ul>
+    </ul>
+  </div>
 </nav>`;
 
     var currentPath = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
