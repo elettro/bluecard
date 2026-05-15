@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Upcoming Events</title>
+  <link rel="stylesheet" href="../global-layout.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f3f4f6;
+      color: #1f2937;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 40px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0 0 24px;
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+    }
+
+    .placeholder-image {
+      width: min(100%, 900px);
+      height: auto;
+      display: block;
+      margin: 0 auto 28px;
+      border-radius: 12px;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.12);
+      background: #ffffff;
+    }
+
+    .past-events-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 8px;
+      background: #1d4ed8;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .past-events-btn:hover,
+    .past-events-btn:focus-visible {
+      background: #1e40af;
+    }
+  </style>
+</head>
+<body>
+  <header id="bc-global-nav" aria-label="Global site navigation"></header>
+  <main>
+    <h1>Upcoming Events</h1>
+    <img
+      class="placeholder-image"
+      src="../images/upcoming-events/2026-upcoming-events-coming-soon-placeholder-when-no-events.png"
+      alt="Upcoming events coming soon"
+    />
+    <a class="past-events-btn" href="https://elettro.github.io/bluecard/past-events/index.html">View Past Events</a>
+  </main>
+  <footer id="bc-global-footer" aria-label="Global site footer"></footer>
+
+  <script src="../global-layout.js"></script>
+</body>
+</html>

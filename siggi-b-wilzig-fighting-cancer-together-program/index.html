@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Siggi B. Wilzig Fighting Cancer Together Program | The Blue Card</title>
+  <meta
+    name="description"
+    content="The Blue Card’s Siggi B. Wilzig Fighting Cancer Together Program helps Holocaust survivors battling cancer with medical co-pays, transportation, dietary support, and meaningful compassionate relief."
+  />
+  <style>
+    :root {
+      --blue: #0b56a4;
+      --blue-deep: #062e5a;
+      --blue-soft: #eaf3fc;
+      --blue-soft-2: #dcebfa;
+      --text: #1f2c38;
+      --muted: #5f7080;
+      --border: #d7e4f1;
+      --bg: #f6fafe;
+      --white: #ffffff;
+      --gold: #d9b562;
+      --radius: 20px;
+      --shadow: 0 18px 40px rgba(11, 86, 164, 0.10);
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.68;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(6, 46, 90, 0.96), rgba(11, 86, 164, 0.92));
+      color: #fff;
+      padding: 82px 0 70px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: clamp(34px, 4.6vw, 54px);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      max-width: 900px;
+      margin: 0;
+      color: #e7f1fb;
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      margin-top: 28px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary,
+    .btn-primary:link,
+    .btn-primary:visited {
+      background: #fff;
+      color: var(--blue-deep);
+      border: 1px solid #fff;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background: var(--blue-soft);
+      color: var(--blue-deep);
+      border-color: var(--blue-soft);
+    }
+
+    .btn-secondary,
+    .btn-secondary:link,
+    .btn-secondary:visited {
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus,
+    .btn-secondary:active {
+      background: #fff;
+      color: var(--blue);
+      border-color: #fff;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .btn-gold,
+    .btn-gold:link,
+    .btn-gold:visited {
+      background: var(--gold);
+      color: var(--blue-deep);
+      border: 1px solid var(--gold);
+      box-shadow: 0 12px 24px rgba(6, 46, 90, 0.12);
+    }
+
+    .btn-gold:hover,
+    .btn-gold:focus {
+      background: #e7c97c;
+      color: var(--blue-deep);
+      border-color: #e7c97c;
+    }
+
+    .content {
+      padding: 40px 0 80px;
+    }
+
+    .breadcrumb {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .top-layout {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .top-main {
+      flex: 1 1 66%;
+      min-width: 0;
+    }
+
+    .top-side {
+      flex: 0 0 34%;
+      min-width: 300px;
+    }
+
+    .panel {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel h2,
+    .panel h3 {
+      color: var(--blue-deep);
+    }
+
+    .panel h2 {
+      margin: 0 0 14px;
+      font-size: 32px;
+      line-height: 1.15;
+    }
+
+    .panel h3 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .panel p {
+      margin: 0 0 16px;
+      font-size: 17px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .card,
+    .mini-item,
+    .stat,
+    .resource-item {
+      background: var(--blue-soft);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--blue-soft-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      color: var(--blue-deep);
+      font-size: 20px;
+    }
+
+    .mini {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .cta {
+      margin-top: 20px;
+      background: linear-gradient(135deg, var(--blue-deep), var(--blue));
+      padding: 20px;
+      border-radius: 16px;
+      color: #fff;
+    }
+
+    .cta p {
+      margin: 0 0 12px;
+      color: #e8f2fc;
+    }
+
+    .stack {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .book-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .book-cover {
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(6, 46, 90, 0.18);
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .book-badge {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #fff4d6;
+      color: #735400;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      border: 1px solid #f0dfaa;
+    }
+
+    .book-actions {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .muted-note {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 12px;
+    }
+
+    .research-top {
+      margin-bottom: 18px;
+    }
+
+    .research-top p {
+      max-width: 760px;
+      margin-bottom: 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--blue-deep);
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .resource-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .resource-item a {
+      color: var(--blue-deep);
+      font-weight: 700;
+      word-break: break-word;
+    }
+
+    .resource-item small {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 980px) {
+      .top-layout {
+        flex-direction: column;
+      }
+
+      .top-side {
+        flex: 1 1 auto;
+        min-width: 0;
+        width: 100%;
+      }
+
+      .cards,
+      .book-layout,
+      .stats-grid,
+      .resource-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 68px 0 56px;
+      }
+
+      .panel {
+        padding: 22px;
+      }
+
+      .panel h2 {
+        font-size: 28px;
+      }
+
+      .hero-actions,
+      .book-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">How We Help</div>
+      <h1>Siggi B. Wilzig Fighting Cancer Together Program</h1>
+      <p>
+        Targeted support for Holocaust survivors battling cancer, helping cover treatment-related
+        costs that add to an already difficult burden.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/bluecard/donate/">Donate Now</a>
+        <a class="btn btn-secondary" href="https://bluecardfund.org/how-we-help/">View All Programs</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+    <div class="wrap">
+      <div class="breadcrumb">
+        The Blue Card / How We Help / Siggi B. Wilzig Fighting Cancer Together Program
+      </div>
+
+      <div class="top-layout">
+        <div class="top-main">
+          <section class="panel">
+            <h2>Help for survivors facing cancer</h2>
+            <p>
+              Studies have shown that Holocaust survivors are not only more likely to face serious chronic
+              health challenges, including cancer, but often carry a lifetime of physical and emotional
+              burden tied to profound trauma.
+            </p>
+            <p>
+              The Siggi B. Wilzig, OBM, Fighting Cancer Together Program seeks to ensure survivors suffering
+              from cancer have access to the aid they need in order to battle this disease with greater
+              support and less financial strain.
+            </p>
+
+            <div class="cards">
+              <div class="card">
+                <div class="icon">💳</div>
+                <strong>Medical co-pays</strong>
+                <div>Help with treatment-related out-of-pocket costs.</div>
+              </div>
+              <div class="card">
+                <div class="icon">🚗</div>
+                <strong>Transportation</strong>
+                <div>Support for travel expenses related to cancer care.</div>
+              </div>
+              <div class="card">
+                <div class="icon">🥗</div>
+                <strong>Dietary costs</strong>
+                <div>Help with nutrition-related expenses that arise during treatment.</div>
+              </div>
+            </div>
+          </section>
+
+          <div class="stack">
+            <section class="panel">
+              <div class="book-layout">
+                <div class="book-cover">
+                  <img
+                    src="https://bluecardfund.org/wp-content/uploads/2021/12/Unstoppable.jpeg"
+                    alt="Unstoppable book cover by Siggi B. Wilzig"
+                  />
+                </div>
+
+                <div class="book-copy">
+                  <div class="book-badge">Featured Book</div>
+                  <h2>Unstoppable</h2>
+                  <p>
+                    <strong>Unstoppable</strong>, winner of the Best of Los Angeles Award’s
+                    <strong>“Best Holocaust Book – 2021”</strong>, depicts the incredible account of
+                    Siggi B. Wilzig’s astonishing journey from Auschwitz survivor and penniless immigrant
+                    to Wall Street legend.
+                  </p>
+                  <p>
+                    This powerful book honors a life defined by endurance, ambition, and generosity. It also
+                    deepens the story behind the program that bears Siggi’s name and helps spotlight the urgent
+                    needs of Holocaust survivors facing cancer today.
+                  </p>
+                  <p>
+                    <strong>Unstoppable</strong> is a must read and can be purchased on Amazon, and a portion
+                    of the proceeds will benefit Holocaust survivors serviced by The Blue Card.
+                  </p>
+
+                  <div class="book-actions">
+                    <a
+                      class="btn btn-gold"
+                      href="https://amzn.to/4tz93cm"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Buy the Book on Amazon
+                    </a>
+                    <a class="btn btn-secondary" href="/bluecard/donate/">
+                      Support Holocaust Survivors
+                    </a>
+                  </div>
+
+                  <div class="muted-note">Opens Amazon in a new tab.</div>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="research-top">
+                <h2>Research underscores the need</h2>
+                <p>
+                  Published research has highlighted a difficult reality. Holocaust survivors often face
+                  higher rates of chronic illness, including cancer, while also showing unusual resilience
+                  across long-term health outcomes. This makes direct, practical support especially important
+                  when survivors are navigating cancer treatment.
+                </p>
+              </div>
+
+              <div class="stats-grid">
+                <div class="stat">
+                  <strong>Higher health burden</strong>
+                  Survivors in the cited research showed higher rates of several major comorbidities,
+                  including cancer.
+                </div>
+                <div class="stat">
+                  <strong>Complex survivorship</strong>
+                  The findings point to a population carrying deep medical and historical vulnerability.
+                </div>
+                <div class="stat">
+                  <strong>Why Blue Card matters</strong>
+                  Targeted financial help reduces barriers to care during one of life’s hardest moments.
+                </div>
+              </div>
+
+              <div class="resource-list">
+                <div class="resource-item">
+                  <a
+                    href="https://www.usnews.com/news/best-countries/articles/2019-01-04/holocaust-survivors-are-sicker-but-live-longer-study-says"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    U.S. News article
+                  </a>
+                  <small>
+                    Reporting on research about chronic illness burden and longevity patterns among Holocaust survivors.
+                  </small>
+                </div>
+
+                <div class="resource-item">
+                  <a
+                    href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2720067"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    JAMA Network Open study
+                  </a>
+                  <small>
+                    Peer-reviewed study comparing mortality and comorbidity rates in Holocaust survivors and a control group.
+                  </small>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <aside class="top-side">
+          <section class="panel">
+            <h2>Why this support matters</h2>
+            <p>
+              Serious illness can affect every part of daily life. For survivors facing cancer, financial
+              assistance helps reduce practical barriers during an already exhausting and emotional time.
+            </p>
+
+            <div class="mini">
+              <div class="mini-item">
+                <strong>Reduces added burden</strong><br />
+                Helps with the financial impact of treatment-related costs.
+              </div>
+              <div class="mini-item">
+                <strong>Supports treatment access</strong><br />
+                Helps survivors manage practical needs around ongoing care.
+              </div>
+              <div class="mini-item">
+                <strong>Offers compassionate relief</strong><br />
+                Provides targeted support during one of the hardest health challenges a person can face.
+              </div>
+            </div>
+
+            <div class="cta">
+              <p>
+                Your support helps Holocaust survivors battling cancer receive critical financial assistance.
+              </p>
+              <a class="btn btn-primary" href="/bluecard/donate/">Support This Work</a>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
