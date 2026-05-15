@@ -4,26 +4,119 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Emergency Cash Assistance | The Blue Card</title>
+  <meta name="description" content="The Blue Card provides one-time emergency cash assistance to help Holocaust survivors with urgent housing, utility, food, medical, repair, and essential living needs." />
   <link rel="stylesheet" href="../global-layout.css" />
+  <style>
+    :root {
+      --blue:#0B56A4;
+      --blue-deep:#062E5A;
+      --blue-soft:#EAF3FC;
+      --blue-soft-2:#DCEBFA;
+      --text:#1F2C38;
+      --muted:#5F7080;
+      --border:#D7E4F1;
+      --bg:#F6FAFE;
+      --white:#FFFFFF;
+      --radius:20px;
+      --shadow:0 18px 40px rgba(11,86,164,0.10);
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.68}
+    a{text-decoration:none}
+    .wrap{width:min(var(--max),calc(100% - 32px));margin:0 auto}
+    .hero{background:linear-gradient(135deg, rgba(6,46,90,0.96), rgba(11,86,164,0.92));color:#fff;padding:82px 0 70px}
+    .eyebrow{display:inline-block;margin-bottom:14px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.14);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px}
+    .hero h1{margin:0 0 16px;font-size:clamp(36px,5vw,58px);line-height:1.05}
+    .hero p{max-width:840px;margin:0;color:#E7F1FB;font-size:18px}
+    .hero-actions{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 22px;border-radius:999px;font-weight:700;transition:background-color .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease,transform .2s ease}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary,.btn-primary:link,.btn-primary:visited{background:#fff;color:var(--blue-deep);border:1px solid #fff;box-shadow:0 12px 24px rgba(0,0,0,0.12)}
+    .btn-primary:hover,.btn-primary:focus{background:var(--blue-soft);color:var(--blue-deep);border-color:var(--blue-soft)}
+    .btn-secondary,.btn-secondary:link,.btn-secondary:visited{background:rgba(255,255,255,0.14);color:#ffffff;border:1px solid rgba(255,255,255,0.72);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.03)}
+    .btn-secondary:hover,.btn-secondary:focus,.btn-secondary:active{background:#ffffff;color:var(--blue);border-color:#ffffff;box-shadow:0 12px 24px rgba(0,0,0,0.12)}
+    .content{padding:40px 0 80px}
+    .breadcrumb{margin:0 0 22px;color:var(--muted);font-size:14px}
+    .grid{display:grid;grid-template-columns:1.35fr .85fr;gap:24px}
+    .panel{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow)}
+    .panel h2,.panel h3{color:var(--blue-deep)}
+    .panel h2{margin:0 0 14px;font-size:32px}
+    .panel h3{margin:24px 0 12px;font-size:24px}
+    .panel p{margin:0 0 16px;font-size:17px}
+    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px}
+    .card,.mini-item{background:var(--blue-soft);border:1px solid var(--border);border-radius:18px;padding:18px}
+    .icon{width:46px;height:46px;border-radius:50%;background:var(--blue-soft-2);display:flex;align-items:center;justify-content:center;margin-bottom:10px;color:var(--blue-deep);font-size:20px}
+    .checks{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}
+    .checks li{position:relative;padding-left:28px}
+    .checks li::before{content:"✓";position:absolute;left:0;top:0;color:var(--blue);font-weight:800}
+    .mini{display:grid;gap:12px;margin-top:18px}
+    .dot{width:42px;height:42px;border-radius:50%;background:var(--blue-soft-2);color:var(--blue-deep);display:flex;align-items:center;justify-content:center;font-weight:700;flex:0 0 42px}
+    .mini-item{display:flex;gap:12px}
+    .cta{margin-top:20px;background:linear-gradient(135deg,var(--blue-deep),var(--blue));padding:20px;border-radius:16px;color:#fff}
+    .cta p{margin:0 0 12px;color:#E8F2FC}
+    @media (max-width:900px){.grid,.cards{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
   <header id="bc-global-nav" aria-label="Global site navigation"></header>
 
-  <main class="page-main assistance-page">
-    <section class="page-hero simple-page-hero">
-      <div class="container">
-        <p class="eyebrow">Assistance Programs</p>
-        <h1>Emergency Cash Assistance</h1>
-        <p class="lead">Program details will be added here shortly.</p>
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">How We Help</div>
+      <h1>Emergency Cash Assistance</h1>
+      <p>One-time grant assistance for urgent needs that affect a Holocaust survivor’s safety, stability, health, and daily living conditions.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/bluecard/donate/">Donate Now</a>
+        <a class="btn btn-secondary" href="https://bluecardfund.org/how-we-help/">View All Programs</a>
       </div>
-    </section>
-    <section class="section assistance-content-placeholder">
-      <div class="container narrow">
-        <div class="content-card">
-          <p>This page is being prepared with updated program information.</p>
-        </div>
+    </div>
+  </header>
+
+  <main class="content">
+    <div class="wrap">
+      <div class="breadcrumb">The Blue Card / How We Help / Emergency Cash Assistance</div>
+      <div class="grid">
+        <section class="panel">
+          <h2>Immediate support during urgent moments</h2>
+          <p>The Blue Card provides one-time emergency grant assistance to help improve the living conditions of Holocaust survivors facing urgent hardship.</p>
+          <p>For survivors living on limited income, one unexpected expense can create a serious crisis. This assistance helps address essential needs quickly so survivors can remain safer, healthier, and more stable in their homes.</p>
+          <div class="cards">
+            <div class="card"><div class="icon">🏠</div><strong>Housing stability</strong><div>Support for urgent housing-related needs that threaten safety or shelter.</div></div>
+            <div class="card"><div class="icon">⚕️</div><strong>Health protection</strong><div>Help with medical and dental needs that cannot wait.</div></div>
+            <div class="card"><div class="icon">🍽️</div><strong>Basic necessities</strong><div>Support for food, clothing, and essential daily living items.</div></div>
+            <div class="card"><div class="icon">🔧</div><strong>Critical repairs</strong><div>Help with urgent home or appliance issues that affect daily life.</div></div>
+          </div>
+          <h3>Emergency needs may include</h3>
+          <ul class="checks">
+            <li>Late payments to help prevent eviction</li>
+            <li>Homelessness prevention</li>
+            <li>Shut-off prevention for utilities</li>
+            <li>Emergency relocation</li>
+            <li>Home add-ins and repairs such as stair lifts or plumbing</li>
+            <li>Purchase and repair of essential appliances</li>
+            <li>Food purchases</li>
+            <li>Dental care</li>
+            <li>Medical care and medical equipment not covered by insurance</li>
+            <li>Essential clothing and footwear</li>
+            <li>Burial expenses</li>
+          </ul>
+        </section>
+        <aside class="panel">
+          <h2>Why this support matters</h2>
+          <p>Many Holocaust survivors continue to live with the emotional weight of displacement, loss, and insecurity. A threat to housing, health, or basic necessities can carry a deep emotional impact in addition to a financial one.</p>
+          <div class="mini">
+            <div class="mini-item"><div class="dot">1</div><div><strong>Protects daily life</strong><br>Helps address urgent disruptions before they become larger crises.</div></div>
+            <div class="mini-item"><div class="dot">2</div><div><strong>Supports independence</strong><br>Helps survivors remain in their homes with greater safety and stability.</div></div>
+            <div class="mini-item"><div class="dot">3</div><div><strong>Preserves dignity</strong><br>Provides practical help during difficult moments with respect and care.</div></div>
+          </div>
+          <div class="cta">
+            <p>100% of your donation helps one more Holocaust survivor financially.</p>
+            <a class="btn btn-primary" href="/bluecard/donate/">Support This Work</a>
+          </div>
+        </aside>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer id="bc-global-footer" aria-label="Global site footer"></footer>

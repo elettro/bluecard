@@ -58,19 +58,37 @@
 .bluecard-nav-mobile-bar {
   display: none;
 }
+.bluecard-nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+}
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.site-logo img {
+  display: block;
+  width: auto;
+  max-height: 64px;
+  object-fit: contain;
+}
 .bluecard-nav .menu,
 .bluecard-nav .sub-menu {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.bluecard-nav > .menu {
-  max-width: 1280px;
-  margin: 0 auto;
+.bluecard-nav .menu {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  padding: 0 16px;
+  flex: 1;
 }
 .bluecard-nav .menu > li { position: relative; }
 .bluecard-nav a {
@@ -130,7 +148,9 @@
 .bc-footer-inner { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
 .bc-footer-top { display: grid; grid-template-columns: 220px repeat(4, 1fr); gap: 36px; align-items: start; }
 .bc-footer-brand { text-align: center; }
+.bc-footer-logo-link { display: inline-block; }
 .bc-footer-brand img.bc-footer-logo { width: 150px; max-width: 100%; display: block; margin: 0 auto 12px; }
+.bc-footer-brand img.bc-footer-verified { max-width: 180px; width: 100%; height: auto; display: block; margin: 0 auto 12px; }
 .bc-footer-brand p { margin: 0 0 18px; font-size: 17px; line-height: 1.35; color: #dcecff; }
 .bc-footer-brand img.bc-security { max-width: 120px; height: auto; display: inline-block; }
 .bc-footer-col h4 { margin: 0 0 20px; color: #fff; font-size: 20px; line-height: 1.2; }
@@ -138,8 +158,8 @@
 .bc-footer-col li { margin: 0 0 14px; }
 .bc-footer-col a { color: #fff; font-size: 16px; line-height: 1.4; }
 .bc-footer-col a:hover { color: #cfe6ff; }
-.bc-badges { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; align-items: end; justify-items: center; padding: 40px 0 22px; }
-.bc-badges img { max-height: 150px; width: auto; max-width: 100%; display: block; }
+.bc-badges { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; align-items: center; justify-items: center; padding: 34px 0 24px; }
+.bc-badges img { max-height: 120px; height: auto; width: 100%; max-width: 220px; object-fit: contain; display: block; }
 .bc-footer-bottom { border-top: 1px solid rgba(255,255,255,0.15); padding: 16px 0 18px; display: grid; grid-template-columns: 1.5fr 1fr auto; gap: 20px; align-items: center; }
 .bc-footer-legal, .bc-footer-copy, .bc-footer-policies { font-size: 14px; line-height: 1.45; color: #e7f2ff; }
 .bc-footer-policies a { color: #7ee35e; }
@@ -149,9 +169,13 @@
   .bc-footer-top { grid-template-columns: 1fr 1fr; }
   .bc-footer-brand { grid-column: 1 / -1; text-align: left; }
   .bc-footer-brand img.bc-footer-logo { margin: 0 0 12px; }
-  .bc-badges { grid-template-columns: repeat(2, 1fr); }
+  .bc-badges { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
   .bc-footer-bottom { grid-template-columns: 1fr; }
   .bc-footer-social { justify-content: flex-start; }
+}
+@media (max-width: 640px) {
+  .bc-badges { grid-template-columns: 1fr; }
+  .bc-badges img { max-width: 260px; }
 }
 @media (max-width: 980px) {
   .bluecard-nav-mobile-bar {
@@ -168,8 +192,9 @@
     text-decoration: none;
   }
   .bluecard-nav-logo img {
-    height: clamp(34px, 6vw, 46px);
     width: auto;
+    max-height: 50px;
+    object-fit: contain;
     display: block;
   }
   .bluecard-nav-toggle {
@@ -201,11 +226,18 @@
   .bluecard-nav.is-open .bluecard-nav-toggle span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
   }
-  .bluecard-nav > .menu {
+  .site-logo {
+    display: none;
+  }
+  .bluecard-nav-inner {
+    padding: 0;
+    display: block;
+  }
+  .bluecard-nav .menu {
     display: none;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
   }
-  .bluecard-nav.is-open > .menu {
+  .bluecard-nav.is-open .menu {
     display: block;
   }
   .bluecard-nav .menu > li > a { border-bottom: 1px solid rgba(0,0,0,0.08); }
