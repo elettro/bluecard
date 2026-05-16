@@ -154,8 +154,8 @@
       .map((paragraph) => paragraph.trim())
       .filter(Boolean);
     const mid = Math.max(1, Math.floor(paragraphs.length / 2));
-    if (speaker.image2) paragraphs.splice(Math.min(mid, paragraphs.length), 0, `<img class="speaker-modal-inline-image" src="${speaker.image2}" alt="${speaker.name}">`);
-    modalContent.innerHTML = `<h2 id="speakerModalTitle">${escapeHtml(speaker.name)}</h2>${speaker.title ? `<div class="speaker-modal-title">${escapeHtml(speaker.title)}</div>` : ''}${speaker.image1 ? `<img class="speaker-modal-hero" src="${speaker.image1}" alt="${escapeHtml(speaker.name)}">` : ''}${paragraphs.map(p => p.startsWith('<img') ? p : `<p>${escapeHtml(p)}</p>`).join('')}${speaker.topics ? `<p><strong>Topics:</strong> ${escapeHtml(Array.isArray(speaker.topics) ? speaker.topics.join(', ') : speaker.topics)}</p>` : ''}${speaker.quote ? `<blockquote>“${escapeHtml(speaker.quote)}”</blockquote>` : ''}${speaker.links ? `<p><strong>Links:</strong> ${(Array.isArray(speaker.links)?speaker.links:[speaker.links]).map(l => typeof l === 'string' ? `<a href="${l}" target="_blank" rel="noopener">${escapeHtml(l)}</a>` : `<a href="${l.url}" target="_blank" rel="noopener">${escapeHtml(l.label || l.url)}</a>`).join(' · ')}</p>` : ''}<button class="speaker-share-button" type="button" id="shareSpeakerBtn">Share Profile</button>`;
+    if (speaker.image2) paragraphs.splice(Math.min(mid, paragraphs.length), 0, `<img class="speaker-modal-inline-image" src="${speaker.image2}" alt="${escapeHtml(speaker.name)}">`);
+    modalContent.innerHTML = `<h2 id="speakerModalTitle">${escapeHtml(speaker.name)}</h2>${speaker.image1 ? `<img class="speaker-modal-hero" src="${speaker.image1}" alt="${escapeHtml(speaker.name)}">` : ''}${paragraphs.map(p => p.startsWith('<img') ? p : `<p>${escapeHtml(p)}</p>`).join('')}<button class="speaker-share-button" type="button" id="shareSpeakerBtn">Share Profile</button>`;
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
     closeBtn.focus();
