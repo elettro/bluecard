@@ -10,31 +10,32 @@
   <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
   <link rel="stylesheet" href="../global-layout.css">
   <style>
-    .sb-page{max-width:1280px;margin:0 auto;padding:56px 20px 84px}
+    .sb-page{max-width:1280px;margin:0 auto;padding:56px 20px 40px}
     .sb-hero h1{font:800 clamp(2rem,4vw,3.3rem)/1.1 "Plus Jakarta Sans",sans-serif;color:#003f7d}
     .sb-subtitle{font-size:1.2rem;color:#0b56a4;font-weight:600;margin-top:10px}
     .sb-intro{max-width:900px;color:#3f4752;line-height:1.7;margin-top:16px}
     .sb-cta{display:inline-block;margin-top:24px;background:#0b56a4;color:#fff;padding:12px 20px;border-radius:10px;font-weight:700}
-    .sb-grid{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:20px;margin-top:38px}
-    @media (min-width:760px){.sb-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
-    @media (min-width:1120px){.sb-grid{grid-template-columns:repeat(4,minmax(0,1fr));}}
-    .sb-card{display:block;background:#fff;border-radius:14px;box-shadow:0 10px 26px rgba(11,86,164,.12);overflow:hidden;text-decoration:none}
-    .sb-card:focus-visible{outline:3px solid #0b56a4;outline-offset:2px}
-    .sb-card-image{width:100%;aspect-ratio:1/1;object-fit:cover;background:#e7eefb}
-    .sb-card-body{padding:14px 14px 18px}
-    .sb-card-name{font-weight:700;color:#1f2a37;min-height:48px}
-    .sb-card-btn{margin-top:10px;display:inline-block;background:#0b56a4;color:white;padding:9px 14px;border-radius:8px;font-weight:700;font-size:.95rem}
-    .sb-modal{position:fixed;inset:0;background:rgba(20,28,37,.68);display:none;align-items:center;justify-content:center;z-index:1000;padding:16px}
-    .sb-modal.is-open{display:flex}
-    .sb-modal-panel{position:relative;background:#fff;max-width:900px;width:100%;max-height:92vh;overflow:auto;border-radius:16px;padding:24px}
-    .sb-close{position:absolute;right:14px;top:14px;border:0;background:transparent;font-size:32px;line-height:1;color:#2f3e50}
-    .sb-modal h2{font:800 2rem/1.2 "Plus Jakarta Sans",sans-serif;color:#003f7d;padding-right:40px}
-    .sb-modal-main{margin-top:16px;color:#3f4752;line-height:1.7}
-    .sb-modal-main img{border-radius:10px}
-    .sb-share{margin-top:20px;background:#0b56a4;color:#fff;border:0;padding:10px 14px;border-radius:8px;font-weight:700}
-    .sb-details{margin-top:16px;padding-top:12px;border-top:1px solid #dbe3f0}
-    .sb-details li{margin-top:6px}
-    .sb-share-fallback{margin-top:10px;width:100%;display:none}
+    .speakers-directory{max-width:1180px;margin:36px auto 70px;padding:0 24px}
+    .speakers-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+    .speaker-card{background:#fff;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.09);overflow:hidden;cursor:pointer;border:1px solid rgba(0,75,150,.08);transition:transform .2s ease,box-shadow .2s ease;text-align:left}
+    .speaker-card:hover,.speaker-card:focus-within{transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,.14)}
+    .speaker-card-image{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#eef2f7}
+    .speaker-card-body{padding:16px}.speaker-card h3{margin:0 0 10px;color:#0055a5;font-size:1.05rem}
+    .speaker-card p{margin:0 0 14px;color:#4b5563;font-size:.95rem}
+    .speaker-card button{width:100%;background:#005eb8;color:#fff;border:0;border-radius:7px;padding:10px 14px;font-weight:700;cursor:pointer}
+    .speaker-modal{position:fixed;inset:0;z-index:9999;display:none}.speaker-modal[aria-hidden="false"]{display:block}
+    .speaker-modal-backdrop{position:absolute;inset:0;background:rgba(0,28,60,.72)}
+    .speaker-modal-panel{position:relative;width:min(920px,calc(100% - 32px));max-height:calc(100vh - 48px);margin:24px auto;overflow-y:auto;background:#fff;border-radius:18px;box-shadow:0 24px 80px rgba(0,0,0,.35)}
+    .speaker-modal-close{position:sticky;top:14px;float:right;z-index:2;width:42px;height:42px;margin:14px;border-radius:999px;border:0;background:#005eb8;color:#fff;font-size:30px;line-height:1;cursor:pointer}
+    .speaker-modal-content{padding:38px}.speaker-modal-content h2{color:#0055a5;font-size:clamp(2rem,4vw,3rem);margin:0 0 8px}
+    .speaker-modal-title{color:#374151;font-weight:700;margin-bottom:22px}
+    .speaker-modal-hero{width:100%;max-height:420px;object-fit:cover;border-radius:14px;margin:0 0 26px}
+    .speaker-modal-inline-image{width:min(320px,45%);float:right;margin:6px 0 18px 24px;border-radius:14px;box-shadow:0 10px 26px rgba(0,0,0,.16)}
+    .speaker-share-button{display:inline-flex;align-items:center;justify-content:center;background:#005eb8;color:#fff;border:0;border-radius:999px;padding:12px 18px;font-weight:800;cursor:pointer;margin-top:18px}
+    body.modal-open{overflow:hidden}
+    @media (max-width:1050px){.speakers-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+    @media (max-width:780px){.speakers-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.speaker-modal-content{padding:28px 20px}.speaker-modal-inline-image{float:none;width:100%;margin:12px 0 20px;}}
+    @media (max-width:520px){.speakers-grid{grid-template-columns:1fr;}}
   </style>
 </head>
 <body class="bg-background text-on-surface font-body">
@@ -48,149 +49,101 @@
       <p class="sb-intro">Speakers are available for interviews, school programs, events, panels, and media appearances. Speaker fees are available and travel expenses are fully covered when required.</p>
       <a class="sb-cta" href="https://bluecardfund.org/contact/">Contact Speakers Bureau</a>
     </div>
-    <div id="speakers-grid" class="sb-grid" aria-live="polite"></div>
   </section>
+  <section class="speakers-directory" id="speakers-directory"><div class="speakers-grid" id="speakersGrid" aria-live="polite"></div></section>
 </main>
-<div class="sb-modal" id="speaker-modal" aria-hidden="true">
-  <div class="sb-modal-panel" role="dialog" aria-modal="true" aria-labelledby="speaker-modal-title">
-    <button type="button" class="sb-close" id="speaker-modal-close" aria-label="Close profile">×</button>
-    <h2 id="speaker-modal-title"></h2>
-    <img id="speaker-modal-image1" alt="" class="w-full max-h-[380px] object-cover mt-4 rounded-lg">
-    <div id="speaker-modal-main" class="sb-modal-main"></div>
-    <ul id="speaker-modal-details" class="sb-details"></ul>
-    <button id="speaker-share" type="button" class="sb-share">Share</button>
-    <input id="speaker-share-fallback" class="sb-share-fallback" readonly>
-  </div>
-</div>
+<div class="speaker-modal" id="speakerModal" aria-hidden="true"><div class="speaker-modal-backdrop" data-close-modal></div><article class="speaker-modal-panel" role="dialog" aria-modal="true" aria-labelledby="speakerModalTitle"><button class="speaker-modal-close" type="button" aria-label="Close speaker profile" data-close-modal>×</button><div class="speaker-modal-content" id="speakerModalContent"></div></article></div>
 <footer id="bc-global-footer" aria-label="Global site footer"></footer>
 <script src="../global-layout.js" defer></script>
 <script>
 (() => {
-  const JSON_URL = '/bluecard/images/speakers-bureau/speakers-bureau-modal.json';
-  const IMG_BASE = '/bluecard/images/speakers-bureau/';
-  const grid = document.getElementById('speakers-grid');
-  const modal = document.getElementById('speaker-modal');
-  const panel = modal.querySelector('.sb-modal-panel');
-  const closeBtn = document.getElementById('speaker-modal-close');
-  const titleEl = document.getElementById('speaker-modal-title');
-  const image1El = document.getElementById('speaker-modal-image1');
-  const mainEl = document.getElementById('speaker-modal-main');
-  const detailsEl = document.getElementById('speaker-modal-details');
-  const shareBtn = document.getElementById('speaker-share');
-  const fallbackEl = document.getElementById('speaker-share-fallback');
+  const paths = ['../images/speakers-bureau/speakers-bureau-modal.json','../../images/speakers-bureau/speakers-bureau-modal.json'];
+  const fallbackNames = ['Inge Auerbacher','Dr. William Freund','Olga Spiegel','Tom Jacobson','Robert Brazir','Goldie Jacoby','Sami Steigmann','Fred Schendell','Lillian Fintich','Dolly Rabinowitz','Sonia Warshawski'];
+  const grid = document.getElementById('speakersGrid');
+  const modal = document.getElementById('speakerModal');
+  const modalContent = document.getElementById('speakerModalContent');
+  const closeBtn = modal.querySelector('.speaker-modal-close');
   let speakers = [];
-  let activeSlug = null;
-  let lastFocus = null;
 
-  const slugify = (value = '') => value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
-  const resolveImage = (value) => {
-    if (!value) return '';
-    if (/^(https?:)?\/\//.test(value) || value.startsWith('/bluecard/')) return value;
-    if (value.startsWith('images/speakers-bureau/')) return '/bluecard/' + value;
-    return IMG_BASE + value.replace(/^\.\//, '');
+  const slugify = (v='') => v.toLowerCase().trim().replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-');
+  const resolveSpeakerImage = (src) => {
+    if (!src) return '';
+    if (/^https?:\/\//.test(src)) return src;
+    if (src.startsWith('/bluecard/')) return src;
+    if (src.startsWith('/images/')) return '/bluecard' + src;
+    return '/bluecard/images/speakers-bureau/' + src.replace(/^images\/speakers-bureau\//,'').replace(/^\.\//,'');
   };
 
-  const parseJsonPayload = (text) => {
-    try { return JSON.parse(text); } catch (_) {}
-    try { return JSON.parse(JSON.parse(text)); } catch (_) {}
-    return [];
+  const parseSpeakers = (payload) => Array.isArray(payload) ? payload : Array.isArray(payload?.speakers) ? payload.speakers : Array.isArray(payload?.data) ? payload.data : [];
+
+  const createCard = (speaker) => {
+    const button = document.createElement('button');
+    button.className = 'speaker-card';
+    button.type = 'button';
+    button.dataset.slug = speaker.slug;
+    button.innerHTML = `${speaker.image1 ? `<img class="speaker-card-image" src="${speaker.image1}" alt="${speaker.name}">` : ''}<div class="speaker-card-body"><h3>${speaker.name || 'Speaker'}</h3>${speaker.title ? `<p>${speaker.title}</p>` : ''}<button type="button">View Profile</button></div>`;
+    button.addEventListener('click', () => openModal(speaker.slug, true));
+    return button;
   };
 
-  const renderCards = () => {
-    grid.innerHTML = '';
-    speakers.forEach((speaker) => {
-      if (!speaker.image1) return;
-      const card = document.createElement('a');
-      card.href = `#${speaker.slug}`;
-      card.className = 'sb-card';
-      card.dataset.slug = speaker.slug;
-      card.innerHTML = `<img class="sb-card-image" src="${speaker.image1}" alt="${speaker.name}"><div class="sb-card-body"><div class="sb-card-name">${speaker.name}</div><span class="sb-card-btn">View Profile</span></div>`;
-      card.addEventListener('click', (e) => { e.preventDefault(); openModal(speaker.slug, true); });
-      grid.appendChild(card);
-    });
-  };
-
-  const detailsRows = (speaker) => {
-    const rows = [];
-    if (speaker.title) rows.push(`<li><strong>Title:</strong> ${speaker.title}</li>`);
-    if (speaker.quote) rows.push(`<li><strong>Quote:</strong> ${speaker.quote}</li>`);
-    if (speaker.topics) rows.push(`<li><strong>Topics:</strong> ${Array.isArray(speaker.topics) ? speaker.topics.join(', ') : speaker.topics}</li>`);
-    if (speaker.email) rows.push(`<li><strong>Email:</strong> <a href="mailto:${speaker.email}">${speaker.email}</a></li>`);
-    if (speaker.phone) rows.push(`<li><strong>Phone:</strong> <a href="tel:${speaker.phone}">${speaker.phone}</a></li>`);
-    if (speaker.links) {
-      const links = Array.isArray(speaker.links) ? speaker.links : [speaker.links];
-      rows.push(`<li><strong>Links:</strong> ${links.map((l) => typeof l === 'string' ? `<a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a>` : `<a href="${l.url}" target="_blank" rel="noopener noreferrer">${l.label || l.url}</a>`).join(' · ')}</li>`);
-    }
-    return rows.join('');
-  };
-
-  function openModal(slug, updateHash) {
+  const openModal = (slug, updateHash) => {
     const speaker = speakers.find((s) => s.slug === slug);
     if (!speaker) return;
-    activeSlug = slug;
-    lastFocus = document.activeElement;
-    titleEl.textContent = speaker.name;
-    image1El.src = speaker.image1 || '';
-    image1El.alt = speaker.name;
-    const body = speaker.bio || speaker.description || speaker.profile || speaker.text || '';
-    const image2Html = speaker.image2 ? `<figure class="my-4"><img src="${speaker.image2}" alt="${speaker.name}" class="w-full max-h-[300px] object-cover"><figcaption class="text-sm mt-1 text-slate-500">Additional speaker image</figcaption></figure>` : '';
-    mainEl.innerHTML = `${image2Html}${body.split('\n\n').map((p) => `<p>${p}</p>`).join('')}`;
-    detailsEl.innerHTML = detailsRows(speaker);
-    modal.classList.add('is-open');
+    const body = speaker.bio || speaker.profile || speaker.description || speaker.content || speaker.text || '';
+    const paragraphs = String(body).split(/\n\n+/).filter(Boolean);
+    const mid = Math.max(1, Math.floor(paragraphs.length / 2));
+    if (speaker.image2) paragraphs.splice(Math.min(mid, paragraphs.length), 0, `<img class="speaker-modal-inline-image" src="${speaker.image2}" alt="${speaker.name}">`);
+    modalContent.innerHTML = `<h2 id="speakerModalTitle">${speaker.name}</h2>${speaker.title ? `<div class="speaker-modal-title">${speaker.title}</div>` : ''}${speaker.image1 ? `<img class="speaker-modal-hero" src="${speaker.image1}" alt="${speaker.name}">` : ''}${paragraphs.map(p => p.startsWith('<img') ? p : `<p>${p}</p>`).join('')}${speaker.topics ? `<p><strong>Topics:</strong> ${Array.isArray(speaker.topics) ? speaker.topics.join(', ') : speaker.topics}</p>` : ''}${speaker.quote ? `<blockquote>“${speaker.quote}”</blockquote>` : ''}${speaker.links ? `<p><strong>Links:</strong> ${(Array.isArray(speaker.links)?speaker.links:[speaker.links]).map(l => typeof l === 'string' ? `<a href="${l}" target="_blank" rel="noopener">${l}</a>` : `<a href="${l.url}" target="_blank" rel="noopener">${l.label || l.url}</a>`).join(' · ')}</p>` : ''}<button class="speaker-share-button" type="button" id="shareSpeakerBtn">Share Profile</button>`;
     modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
     closeBtn.focus();
-    fallbackEl.style.display = 'none';
-    if (updateHash) history.replaceState(null, '', `#${slug}`);
-  }
-
-  function closeModal(clearHash = true) {
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    if (clearHash) history.replaceState(null, '', window.location.pathname);
-    if (lastFocus) lastFocus.focus();
-    activeSlug = null;
-  }
-
-  closeBtn.addEventListener('click', () => closeModal());
-  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal(); });
-
-  shareBtn.addEventListener('click', async () => {
-    const url = window.location.href;
-    const oldLabel = shareBtn.textContent;
-    try {
+    if (updateHash) history.replaceState(null, '', `#${speaker.slug}`);
+    modalContent.querySelector('#shareSpeakerBtn').addEventListener('click', async (e) => {
+      const btn = e.currentTarget;
+      const url = `${window.location.origin}/bluecard/speakers-bureau/#${speaker.slug}`;
       await navigator.clipboard.writeText(url);
-      shareBtn.textContent = 'Link Copied';
-      setTimeout(() => { shareBtn.textContent = oldLabel; }, 1400);
-    } catch (_) {
-      fallbackEl.style.display = 'block';
-      fallbackEl.value = url;
-      fallbackEl.focus();
-      fallbackEl.select();
-      window.prompt('Copy this speaker link:', url);
-    }
-  });
-
-  fetch(JSON_URL)
-    .then((res) => res.text())
-    .then((text) => parseJsonPayload(text))
-    .then((payload) => {
-      speakers = (Array.isArray(payload) ? payload : []).map((item) => {
-        const slug = item.slug ? slugify(item.slug) : slugify(item.name || 'speaker');
-        return { ...item, slug, image1: resolveImage(item.image1), image2: resolveImage(item.image2) };
-      });
-      renderCards();
-      const initial = window.location.hash.replace(/^#/, '');
-      if (initial) openModal(initial, false);
-      window.dispatchEvent(new CustomEvent('bluecard:speakers-loaded', { detail: speakers.map((s) => ({ name: s.name, slug: s.slug })) }));
+      btn.textContent = 'Link Copied';
+      setTimeout(() => btn.textContent = 'Share Profile', 1400);
     });
+  };
+
+  const closeModal = () => {
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    history.pushState('', document.title, window.location.pathname);
+  };
+
+  modal.addEventListener('click', (e) => { if (e.target.matches('[data-close-modal]')) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal(); });
+
+  const render = () => {
+    grid.innerHTML = '';
+    speakers.forEach((speaker) => grid.appendChild(createCard(speaker)));
+    window.dispatchEvent(new CustomEvent('bluecard:speakers-loaded', { detail: speakers.map(s => ({ name: s.name, slug: s.slug })) }));
+  };
+
+  (async () => {
+    let payload;
+    for (const path of paths) {
+      try { const r = await fetch(path); if (r.ok) { payload = JSON.parse(await r.text()); break; } } catch (_) {}
+    }
+    let source = parseSpeakers(payload);
+    if (!source.length && typeof payload === 'string') {
+      try { source = parseSpeakers(JSON.parse(payload)); } catch (_) {}
+    }
+    speakers = source.map((s) => ({ ...s, slug: s.slug ? slugify(s.slug) : slugify(s.name || ''), image1: resolveSpeakerImage(s.image1), image2: resolveSpeakerImage(s.image2) })).filter(s => s.name).slice(0, 11);
+    if (!speakers.length) {
+      speakers = fallbackNames.map((name) => ({ name, slug: slugify(name), title: '', image1: '' }));
+    }
+    render();
+    const hash = window.location.hash.replace('#', '');
+    if (hash) openModal(hash, false);
+  })();
 
   window.addEventListener('hashchange', () => {
-    const hash = window.location.hash.replace(/^#/, '');
-    if (!hash) return closeModal(false);
-    if (hash !== activeSlug) openModal(hash, false);
+    const hash = window.location.hash.replace('#', '');
+    if (!hash) return closeModal();
+    openModal(hash, false);
   });
 })();
 </script>
