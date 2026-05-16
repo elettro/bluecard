@@ -261,6 +261,9 @@
       top: 24px;
       right: 24px;
       z-index: 4;
+      display: flex;
+      gap: 10px;
+      align-items: center;
     }
 
     .bc-sound-toggle {
@@ -268,6 +271,19 @@
       min-width: 52px;
       padding: 0;
       font-size: 22px;
+    }
+
+    .bc-hide-text-toggle {
+      min-height: 52px;
+      padding: 0 18px;
+      font-size: 14px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .bc-hero.is-clean .bc-hero-overlay,
+    .bc-hero.is-clean .bc-hero-content {
+      display: none;
     }
 
     .bc-hero-stats {
@@ -966,6 +982,13 @@
           aria-label="Turn on video audio"
           aria-pressed="false"
           title="Turn sound on">🔇</button>
+
+        <button
+          class="bc-btn bc-btn-secondary bc-hide-text-toggle"
+          id="bcHideTextToggle"
+          type="button"
+          aria-pressed="false"
+          title="Hide text overlays">Hide Text</button>
       </div>
 
       <div class="bc-container bc-hero-content">
@@ -1339,8 +1362,11 @@
   <script>
     (function () {
       const soundToggle = document.querySelector('#bcSoundToggle');
+      const hideTextToggle = document.querySelector('#bcHideTextToggle');
       const heroVideo = document.querySelector('#bcHeroVideo');
+      const heroSection = document.querySelector('.bc-hero');
       let isMuted = true;
+      let isTextHidden = false;
 
       function sendVideoCommand(func) {
         if (!heroVideo || !heroVideo.contentWindow) return;
@@ -1364,6 +1390,14 @@
         soundToggle.setAttribute('title', isMuted ? 'Turn sound on' : 'Turn sound off');
       }
 
+      function updateHideTextButton() {
+        if (!hideTextToggle) return;
+
+        hideTextToggle.textContent = isTextHidden ? "Show Text" : "Hide Text";
+        hideTextToggle.setAttribute('aria-pressed', String(isTextHidden));
+        hideTextToggle.setAttribute('title', isTextHidden ? "Show text overlays" : "Hide text overlays");
+      }
+
       if (soundToggle) {
         soundToggle.addEventListener('click', function () {
           isMuted = !isMuted;
@@ -1372,6 +1406,20 @@
         });
 
         updateSoundButton();
+      }
+
+      if (hideTextToggle) {
+        hideTextToggle.addEventListener('click', function () {
+          isTextHidden = !isTextHidden;
+
+          if (heroSection) {
+            heroSection.classList.toggle('is-clean', isTextHidden);
+          }
+
+          updateHideTextButton();
+        });
+
+        updateHideTextButton();
       }
 
       let currentSrc = "https://bluecardfund.org/wp-content/uploads/2026/01/L-Petlakh-Endorsement-letter.pdf";
