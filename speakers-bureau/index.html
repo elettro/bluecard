@@ -29,12 +29,14 @@
     .speaker-modal-close{position:sticky;top:14px;float:right;z-index:2;width:42px;height:42px;margin:14px;border-radius:999px;border:0;background:#005eb8;color:#fff;font-size:30px;line-height:1;cursor:pointer}
     .speaker-modal-content{padding:38px}.speaker-modal-content h2{color:#0055a5;font-size:clamp(2rem,4vw,3rem);margin:0 0 8px}
     .speaker-modal-title{color:#374151;font-weight:700;margin-bottom:22px}
-    .speaker-modal-hero{width:100%;max-height:420px;object-fit:cover;border-radius:14px;margin:0 0 26px}
-    .speaker-modal-inline-image{width:min(320px,45%);float:right;margin:6px 0 18px 24px;border-radius:14px;box-shadow:0 10px 26px rgba(0,0,0,.16)}
-    .speaker-share-button{display:inline-flex;align-items:center;justify-content:center;background:#005eb8;color:#fff;border:0;border-radius:999px;padding:12px 18px;font-weight:800;cursor:pointer;margin-top:18px}
+    .speaker-modal-hero{width:100%;max-height:420px;object-fit:cover;border-radius:14px;margin:18px 0 28px}
+    .speaker-modal-body-image{display:block;width:min(520px,100%);max-height:360px;object-fit:cover;border-radius:14px;margin:28px auto;box-shadow:0 10px 26px rgba(0,0,0,.14)}
+    .speaker-modal-bio{color:#243447;font-size:1rem;line-height:1.75;margin-top:24px}
+    .speaker-modal-bio p{margin:0 0 18px}
+    .speaker-share-button{display:inline-flex;align-items:center;justify-content:center;background:#005eb8;color:#fff;border:0;border-radius:999px;padding:12px 18px;font-weight:800;cursor:pointer;margin-top:24px}
     body.modal-open{overflow:hidden}
     @media (max-width:1050px){.speakers-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
-    @media (max-width:780px){.speakers-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.speaker-modal-content{padding:28px 20px}.speaker-modal-inline-image{float:none;width:100%;margin:12px 0 20px;}}
+    @media (max-width:780px){.speakers-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.speaker-modal-content{padding:28px 20px}}
     @media (max-width:520px){.speakers-grid{grid-template-columns:1fr;}}
   </style>
 </head>
@@ -154,6 +156,34 @@
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 
+  const splitBioWithImage = (bodyHtml, image2, speakerName) => {
+    const cleanBody = String(bodyHtml || '').trim();
+    if (!image2) return `<div class="speaker-modal-bio">${cleanBody}</div>`;
+
+    const imageMarkup = `<img class="speaker-modal-body-image" src="${image2}" alt="${escapeHtml(speakerName)}">`;
+    if (cleanBody.includes('</p>')) {
+      return `<div class="speaker-modal-bio">${cleanBody.replace('</p>', `</p>${imageMarkup}`)}</div>`;
+    }
+
+    const paragraphs = cleanBody
+      .split(/\n\s*\n/)
+      .map((paragraph) => paragraph.trim())
+      .filter(Boolean);
+
+    if (paragraphs.length > 1) {
+      const midpoint = Math.ceil(paragraphs.length / 2);
+      const firstHalf = paragraphs.slice(0, midpoint).map((p) => `<p>${escapeHtml(p)}</p>`).join('');
+      const secondHalf = paragraphs.slice(midpoint).map((p) => `<p>${escapeHtml(p)}</p>`).join('');
+      return `<div class="speaker-modal-bio">${firstHalf}${imageMarkup}${secondHalf}</div>`;
+    }
+
+    if (cleanBody.includes('<p') || cleanBody.includes('<br') || cleanBody.includes('<div')) {
+      return `<div class="speaker-modal-bio">${cleanBody}${imageMarkup}</div>`;
+    }
+
+    return `<div class="speaker-modal-bio"><p>${escapeHtml(cleanBody)}</p>${imageMarkup}</div>`;
+  };
+
   const createCard = (speaker) => {
     const card = document.createElement('article');
     card.className = 'speaker-card';
@@ -181,25 +211,38 @@
     const speaker = speakers.find((s) => s.slug === slug);
     if (!speaker) return;
     const body = getSpeakerBody(speaker);
-    const paragraphs = String(body)
-      .split(/\n{2,}|\r\n{2,}|\r{2,}/)
-      .flatMap((chunk) => chunk.split(/\n|\r\n|\r/))
-      .map((paragraph) => paragraph.trim())
-      .filter(Boolean);
-    const mid = Math.max(1, Math.floor(paragraphs.length / 2));
-    if (speaker.image2) paragraphs.splice(Math.min(mid, paragraphs.length), 0, `<img class="speaker-modal-inline-image" src="${speaker.image2}" alt="${escapeHtml(speaker.name)}">`);
-    modalContent.innerHTML = `<h2 id="speakerModalTitle">${escapeHtml(speaker.name)}</h2>${speaker.image1 ? `<img class="speaker-modal-hero" src="${speaker.image1}" alt="${escapeHtml(speaker.name)}">` : ''}${paragraphs.map(p => p.startsWith('<img') ? p : `<p>${escapeHtml(p)}</p>`).join('')}<button class="speaker-share-button" type="button" id="shareSpeakerBtn">Share Profile</button>`;
+    const image1 = resolveSpeakerImage(speaker.image1);
+    const image2Raw = speaker.image2 ? resolveSpeakerImage(speaker.image2) : '';
+    const image2 = image2Raw && image2Raw !== image1 ? image2Raw : '';
+
+    modalContent.innerHTML = `
+      <header class="speaker-modal-header">
+        <h2 id="speakerModalTitle">${escapeHtml(speaker.name)}</h2>
+        ${speaker.title ? `<p class="speaker-modal-title">${escapeHtml(speaker.title)}</p>` : ''}
+      </header>
+      ${image1 ? `<img class="speaker-modal-hero" src="${image1}" alt="${escapeHtml(speaker.name)}">` : ''}
+      ${splitBioWithImage(body, image2, speaker.name)}
+      <button class="speaker-share-button" type="button">Share Profile</button>
+    `;
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
     closeBtn.focus();
     if (updateHash) history.replaceState(null, '', `#${speaker.slug}`);
-    modalContent.querySelector('#shareSpeakerBtn').addEventListener('click', async (e) => {
-      const btn = e.currentTarget;
-      const url = `${window.location.origin}/bluecard/speakers-bureau/#${speaker.slug}`;
-      await navigator.clipboard.writeText(url);
-      btn.textContent = 'Link Copied';
-      setTimeout(() => btn.textContent = 'Share Profile', 1400);
-    });
+    const shareButton = modalContent.querySelector('.speaker-share-button');
+    if (shareButton) {
+      shareButton.addEventListener('click', async () => {
+        const shareUrl = `${window.location.origin}${window.location.pathname}#${speaker.slug}`;
+        try {
+          await navigator.clipboard.writeText(shareUrl);
+          shareButton.textContent = 'Link Copied';
+          setTimeout(() => {
+            shareButton.textContent = 'Share Profile';
+          }, 1800);
+        } catch (error) {
+          window.prompt('Copy this profile link:', shareUrl);
+        }
+      });
+    }
   };
 
   const closeModal = () => {
