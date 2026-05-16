@@ -114,6 +114,13 @@
 
   const getSpeakerBody = (speaker) => speaker.bio || speaker.profile || speaker.description || speaker.content || speaker.text || '';
 
+  const escapeHtml = (value = '') => String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
   const createCard = (speaker) => {
     const card = document.createElement('article');
     card.className = 'speaker-card';
