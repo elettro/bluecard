@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How To Apply | The Blue Card</title>
+  <meta name="description" content="Application pathways and forms for new applicants, current beneficiaries, and referring agencies." />
+  <link rel="stylesheet" href="../global-layout.css" />
+  <style>
+    :root { --blue:#0B56A4; --text:#1F2C38; --bg:#F6FAFE; --white:#fff; --border:#D8E5F4; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--text); background: var(--bg); line-height: 1.65; }
+    .hero-strip {
+      background: var(--blue);
+      color: var(--white);
+      padding: 48px 20px;
+      text-align: center;
+      font-size: clamp(34px, 5vw, 56px);
+      font-weight: 700;
+      letter-spacing: .4px;
+    }
+    .wrap { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .content {
+      margin: 30px auto 70px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+    p { margin: 0 0 18px; font-size: 18px; }
+    .button-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+      margin: 22px 0 28px;
+    }
+    .button-row.five-up {
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    }
+    .button-row a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 58px;
+      padding: 10px 16px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      text-align: center;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+    .button-row a:hover { transform: translateY(-2px); opacity: .92; }
+    .video-wrap { margin-top: 24px; }
+    .video-wrap iframe {
+      width: 100%;
+      min-height: 530px;
+      border: 0;
+      border-radius: 12px;
+      display: block;
+    }
+    @media (max-width: 900px) {
+      .video-wrap iframe { min-height: 380px; }
+    }
+    @media (max-width: 600px) {
+      .video-wrap iframe { min-height: 240px; }
+    }
+  </style>
+</head>
+<body>
+  <header id="bc-global-nav" aria-label="Global site navigation"></header>
+
+  <main>
+    <div class="hero-strip">How To Apply</div>
+    <div class="wrap">
+      <section class="content">
+        <div class="button-row">
+          <a href="https://elettro.github.io/bluecard/new-applicant/" target="_blank" rel="noopener noreferrer">New Applicant</a>
+          <a href="https://elettro.github.io/bluecard/current-beneficiaries/" target="_blank" rel="noopener noreferrer">Current Beneficiaries</a>
+          <a href="https://bluecardfund.org/social-workers/referring-agencies/" target="_blank" rel="noopener noreferrer">Referring Agencies</a>
+        </div>
+
+        <p>If the Holocaust survivor is new to The Blue Card, please submit the Referral application with supporting documentation and cover letter.</p>
+        <p>If the Holocaust survivor is a recent/current Blue Card recipient, please submit the Referral application with supporting documentation and cover letter.</p>
+        <p>If the Holocaust survivor is applying for our Telephone Emergency Response System program (TERS), please submit The Blue Card TERS application with supporting documentation and a cover letter.</p>
+
+        <div class="button-row five-up">
+          <a href="https://form.jotform.com/240714634595158" target="_blank" rel="noopener noreferrer">Referral Application - Online</a>
+          <a href="https://elettro.github.io/bluecard/pdfs/2026-Blue-Card-Referral-Application-March-2026.pdf" target="_blank" rel="noopener noreferrer">Referral Application - PDF</a>
+          <a href="https://form.jotform.com/210695035535152" target="_blank" rel="noopener noreferrer">Recertification Form - Online</a>
+          <a href="https://elettro.github.io/bluecard/pdfs/2025-Blue-Card-Recertification-Application-250910.pdf" target="_blank" rel="noopener noreferrer">Recertification Form - PDF</a>
+          <a href="https://elettro.github.io/bluecard/pdfs/2026-Blue-Card-TERS-Application-March-2026.pdf" target="_blank" rel="noopener noreferrer">Telephone Emergency Response System Application</a>
+        </div>
+
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/AqzPoluBSGo" title="How to Apply - The Blue Card" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="bc-global-footer"></div>
+  <script src="../global-layout.js"></script>
+</body>
+</html>
