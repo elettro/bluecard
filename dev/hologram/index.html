@@ -8,6 +8,7 @@
   <meta name="description" content="Book The Blue Card’s free Interactive Hologram Holocaust Education Program featuring survivor Sonia Warshawski, Big Sonia, guided discussion, and classroom-ready materials." />
 
   <link rel="stylesheet" href="/bluecard/css/style.css" />
+  <link rel="stylesheet" href="../../global-layout.css" />
 
   <style>
     :root {
@@ -53,7 +54,9 @@
       margin: 0 auto;
     }
 
+    /* Legacy local header/footer styles hidden in favor of global layout */
     .bc-top-donate-strip {
+      display: none;
       background: var(--bc-red);
       padding: 9px 14px;
       text-align: center;
@@ -68,6 +71,7 @@
     }
 
     .bc-global-header {
+      display: none;
       background: #fff;
       border-bottom: 1px solid var(--bc-line);
       position: sticky;
@@ -578,8 +582,9 @@
 
     .bc-photo-card img {
       width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
+      height: auto;
+      object-fit: contain;
+      background: #fff;
     }
 
     .bc-photo-card figcaption {
@@ -814,6 +819,7 @@
     }
 
     .bc-footer {
+      display: none;
       background: #0f2358;
       color: #fff;
       padding: 48px 0 30px;
@@ -935,27 +941,7 @@
 </head>
 
 <body>
-  <div class="bc-top-donate-strip">
-    <a href="/bluecard/donate/">Donate</a>
-  </div>
-
-  <header class="bc-global-header">
-    <div class="bc-global-header-inner">
-      <a class="bc-logo" href="/bluecard/" aria-label="The Blue Card home">
-        <img src="/bluecard/images/blue-card-logo.png" alt="The Blue Card" />
-      </a>
-
-      <nav class="bc-main-nav" aria-label="Primary navigation">
-        <a href="/bluecard/who-we-are/">Who We Are</a>
-        <a href="/bluecard/what-we-do/">What We Do</a>
-        <a class="is-active" href="/bluecard/interactive-hologram/">Interactive Hologram</a>
-        <a href="/bluecard/calendar/">Calendars</a>
-        <a href="/bluecard/news/">News</a>
-        <a href="/bluecard/contact/">Contact</a>
-        <a class="bc-nav-donate" href="/bluecard/donate/">Donate</a>
-      </nav>
-    </div>
-  </header>
+  <header id="bc-global-nav" aria-label="Global site navigation"></header>
 
   <main>
     <section class="bc-hero">
@@ -991,7 +977,7 @@
           </p>
 
           <div class="bc-hero-actions">
-            <a class="bc-btn bc-btn-primary" href="https://form.jotform.com/243104605792151" target="_blank" rel="noopener">Big Event Requests</a>
+            <a class="bc-btn bc-btn-primary" href="https://form.jotform.com/243104605792151" target="_blank" rel="noopener">Event Requests</a>
             <a class="bc-btn bc-btn-secondary" href="#meet-sonia">Meet Sonia</a>
           </div>
 
@@ -1339,7 +1325,7 @@
             </div>
 
             <div class="bc-cta-actions">
-              <a class="bc-btn bc-btn-light" href="https://form.jotform.com/243104605792151" target="_blank" rel="noopener">Big Event Requests</a>
+              <a class="bc-btn bc-btn-light" href="https://form.jotform.com/243104605792151" target="_blank" rel="noopener">Event Requests</a>
               <a class="bc-btn bc-btn-primary" href="mailto:info@bluecardfund.org?subject=Book%20Interactive%20Hologram%20Event">Email The Blue Card</a>
             </div>
           </div>
@@ -1348,31 +1334,7 @@
     </section>
   </main>
 
-  <footer class="bc-footer">
-    <div class="bc-container">
-      <div class="bc-footer-grid">
-        <div>
-          <h2>The Blue Card</h2>
-          <p>
-            Supporting Holocaust survivors with dignity, care, and direct assistance while helping future generations understand the lessons of history.
-          </p>
-        </div>
-
-        <nav class="bc-footer-nav" aria-label="Footer navigation">
-          <a href="/bluecard/who-we-are/">Who We Are</a>
-          <a href="/bluecard/what-we-do/">What We Do</a>
-          <a href="/bluecard/interactive-hologram/">Interactive Hologram</a>
-          <a href="/bluecard/news/">News</a>
-          <a href="/bluecard/contact/">Contact</a>
-          <a href="/bluecard/donate/">Donate</a>
-        </nav>
-      </div>
-
-      <div class="bc-footer-bottom">
-        © The Blue Card. All rights reserved.
-      </div>
-    </div>
-  </footer>
+  <footer id="bc-global-footer" aria-label="Global site footer"></footer>
 
   <script>
     (function () {
@@ -1445,5 +1407,6 @@
       updateViewer(currentSrc);
     })();
   </script>
+  <script src="../../global-layout.js"></script>
 </body>
 </html>
