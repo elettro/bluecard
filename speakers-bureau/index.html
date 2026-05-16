@@ -76,7 +76,8 @@
 
   const parseSpeakers = (payload) => Array.isArray(payload) ? payload : Array.isArray(payload?.speakers) ? payload.speakers : Array.isArray(payload?.data) ? payload.data : [];
 
-  const getSpeakerBody = (speaker) => speaker.bio || speaker.profile || speaker.description || speaker.content || speaker.text || '';
+  const getSpeakerBody = (speaker) => speaker.text || speaker.bio || speaker.profile || speaker.description || speaker.content || '';
+  const escapeHtml = (value = '') => String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
   const createCard = (speaker) => {
     const button = document.createElement('button');
@@ -93,10 +94,14 @@
     const speaker = speakers.find((s) => s.slug === slug);
     if (!speaker) return;
     const body = getSpeakerBody(speaker);
-    const paragraphs = String(body).split(/\n\n+/).filter(Boolean);
+    const paragraphs = String(body)
+      .split(/\n{2,}|\r\n{2,}|\r{2,}/)
+      .flatMap((chunk) => chunk.split(/\n|\r\n|\r/))
+      .map((paragraph) => paragraph.trim())
+      .filter(Boolean);
     const mid = Math.max(1, Math.floor(paragraphs.length / 2));
     if (speaker.image2) paragraphs.splice(Math.min(mid, paragraphs.length), 0, `<img class="speaker-modal-inline-image" src="${speaker.image2}" alt="${speaker.name}">`);
-    modalContent.innerHTML = `<h2 id="speakerModalTitle">${speaker.name}</h2>${speaker.title ? `<div class="speaker-modal-title">${speaker.title}</div>` : ''}${speaker.image1 ? `<img class="speaker-modal-hero" src="${speaker.image1}" alt="${speaker.name}">` : ''}${paragraphs.map(p => p.startsWith('<img') ? p : `<p>${p}</p>`).join('')}${speaker.topics ? `<p><strong>Topics:</strong> ${Array.isArray(speaker.topics) ? speaker.topics.join(', ') : speaker.topics}</p>` : ''}${speaker.quote ? `<blockquote>“${speaker.quote}”</blockquote>` : ''}${speaker.links ? `<p><strong>Links:</strong> ${(Array.isArray(speaker.links)?speaker.links:[speaker.links]).map(l => typeof l === 'string' ? `<a href="${l}" target="_blank" rel="noopener">${l}</a>` : `<a href="${l.url}" target="_blank" rel="noopener">${l.label || l.url}</a>`).join(' · ')}</p>` : ''}<button class="speaker-share-button" type="button" id="shareSpeakerBtn">Share Profile</button>`;
+    modalContent.innerHTML = `<h2 id="speakerModalTitle">${escapeHtml(speaker.name)}</h2>${speaker.title ? `<div class="speaker-modal-title">${escapeHtml(speaker.title)}</div>` : ''}${speaker.image1 ? `<img class="speaker-modal-hero" src="${speaker.image1}" alt="${escapeHtml(speaker.name)}">` : ''}${paragraphs.map(p => p.startsWith('<img') ? p : `<p>${escapeHtml(p)}</p>`).join('')}${speaker.topics ? `<p><strong>Topics:</strong> ${escapeHtml(Array.isArray(speaker.topics) ? speaker.topics.join(', ') : speaker.topics)}</p>` : ''}${speaker.quote ? `<blockquote>“${escapeHtml(speaker.quote)}”</blockquote>` : ''}${speaker.links ? `<p><strong>Links:</strong> ${(Array.isArray(speaker.links)?speaker.links:[speaker.links]).map(l => typeof l === 'string' ? `<a href="${l}" target="_blank" rel="noopener">${escapeHtml(l)}</a>` : `<a href="${l.url}" target="_blank" rel="noopener">${escapeHtml(l.label || l.url)}</a>`).join(' · ')}</p>` : ''}<button class="speaker-share-button" type="button" id="shareSpeakerBtn">Share Profile</button>`;
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
     closeBtn.focus();
