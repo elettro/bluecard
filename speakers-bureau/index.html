@@ -58,7 +58,19 @@
 <script>
 (() => {
   const paths = ['../images/speakers-bureau/speakers-bureau-modal.json','../../images/speakers-bureau/speakers-bureau-modal.json'];
-  const fallbackNames = ['Inge Auerbacher','Dr. William Freund','Olga Spiegel','Tom Jacobson','Robert Brajer','Goldie Jacoby','Sami Steigmann','Fred Schoenfeld','Lillian Feintuch','Dolly Rabinovich','Sonia Warshawski'];
+  const canonicalSpeakers = [
+    { name: 'Inge Auerbacher', slug: 'inge-auerbacher' },
+    { name: 'Dr. William Freund', slug: 'dr-william-freund' },
+    { name: 'Olga Spiegel', slug: 'olga-spiegel' },
+    { name: 'Tom Jacobson', slug: 'tom-jacobson' },
+    { name: 'Robert Brajer', slug: 'robert-brajer' },
+    { name: 'Goldie Jacoby', slug: 'goldie-jacoby' },
+    { name: 'Sami Steigmann', slug: 'sami-steigmann' },
+    { name: 'Fred Schoenfeld', slug: 'fred-schoenfeld' },
+    { name: 'Lillian Feintuch', slug: 'lillian-feintuch' },
+    { name: 'Dolly Rabinovich', slug: 'dolly-rabinovich' },
+    { name: 'Sonia Warshawski', slug: 'sonia-warshawski' }
+  ];
   const grid = document.getElementById('speakersGrid');
   const modal = document.getElementById('speakerModal');
   const modalContent = document.getElementById('speakerModalContent');
@@ -103,14 +115,26 @@
   const getSpeakerBody = (speaker) => speaker.bio || speaker.profile || speaker.description || speaker.content || speaker.text || '';
 
   const createCard = (speaker) => {
-    const button = document.createElement('button');
-    button.className = 'speaker-card';
-    button.type = 'button';
-    button.dataset.slug = speaker.slug;
+    const card = document.createElement('article');
+    card.className = 'speaker-card';
+    card.dataset.slug = speaker.slug;
+    card.tabIndex = 0;
     const preview = String(getSpeakerBody(speaker)).replace(/\s+/g, ' ').trim().split(' ').slice(0, 22).join(' ');
-    button.innerHTML = `${speaker.image1 ? `<img class="speaker-card-image" src="${speaker.image1}" alt="${speaker.name}">` : ''}<div class="speaker-card-body"><h3>${speaker.name || 'Speaker'}</h3>${speaker.title ? `<p>${speaker.title}</p>` : ''}${preview ? `<p>${preview}${preview.split(' ').length >= 22 ? '…' : ''}</p>` : ''}<button type="button">View Profile</button></div>`;
-    button.addEventListener('click', () => openModal(speaker.slug, true));
-    return button;
+    card.innerHTML = `${speaker.image1 ? `<img class="speaker-card-image" src="${speaker.image1}" alt="${speaker.name}">` : ''}<div class="speaker-card-body"><h3>${speaker.name || 'Speaker'}</h3>${speaker.title ? `<p>${speaker.title}</p>` : ''}${preview ? `<p>${preview}${preview.split(' ').length >= 22 ? '…' : ''}</p>` : ''}<button class="speaker-card-button" type="button">View Profile</button></div>`;
+    card.addEventListener('click', () => openModal(speaker.slug, true));
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openModal(speaker.slug, true);
+      }
+    });
+    const profileButton = card.querySelector('.speaker-card-button');
+    profileButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      openModal(speaker.slug, true);
+    });
+    return card;
   };
 
   const openModal = (slug, updateHash) => {
@@ -162,13 +186,22 @@
     if (!source.length && typeof payload === 'string') {
       try { source = parseSpeakers(JSON.parse(payload)); } catch (_) {}
     }
+    const canonicalBySlug = new Map(canonicalSpeakers.map((speaker) => [speaker.slug, speaker.name]));
     speakers = source
       .map((s) => ({ ...s, slug: s.slug ? slugify(s.slug) : slugify(s.name || '') }))
       .filter((s) => s.name)
+      .map((s) => ({ ...s, name: canonicalBySlug.get(s.slug) || s.name }))
       .slice(0, 11)
       .map(normalizeSpeakerImages);
+
     if (!speakers.length) {
-      speakers = fallbackNames.map((name) => normalizeSpeakerImages({ name, slug: slugify(name), title: '', image1: '', image2: '' }));
+      speakers = canonicalSpeakers.map((speaker) => normalizeSpeakerImages({ ...speaker, title: '', image1: '', image2: '' }));
+    } else {
+      const bySlug = new Map(speakers.map((speaker) => [speaker.slug, speaker]));
+      speakers = canonicalSpeakers.map((speaker) => {
+        const found = bySlug.get(speaker.slug);
+        return normalizeSpeakerImages(found ? { ...found, ...speaker } : { ...speaker, title: '', image1: '', image2: '' });
+      });
     }
     render();
     const hash = window.location.hash.replace('#', '');
