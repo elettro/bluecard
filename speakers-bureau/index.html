@@ -139,9 +139,13 @@
     if (!source.length && typeof payload === 'string') {
       try { source = parseSpeakers(JSON.parse(payload)); } catch (_) {}
     }
-    speakers = source.map((s) => ({ ...s, slug: s.slug ? slugify(s.slug) : slugify(s.name || ''), image1: resolveSpeakerImage(s.image1), image2: resolveSpeakerImage(s.image2) })).filter(s => s.name).slice(0, 11);
+    speakers = source
+      .map((s) => ({ ...s, slug: s.slug ? slugify(s.slug) : slugify(s.name || '') }))
+      .filter((s) => s.name)
+      .slice(0, 11)
+      .map(normalizeSpeakerImages);
     if (!speakers.length) {
-      speakers = fallbackNames.map((name) => ({ name, slug: slugify(name), title: '', image1: '' }));
+      speakers = fallbackNames.map((name) => normalizeSpeakerImages({ name, slug: slugify(name), title: '', image1: '', image2: '' }));
     }
     render();
     const hash = window.location.hash.replace('#', '');
