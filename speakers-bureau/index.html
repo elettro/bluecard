@@ -76,12 +76,15 @@
 
   const parseSpeakers = (payload) => Array.isArray(payload) ? payload : Array.isArray(payload?.speakers) ? payload.speakers : Array.isArray(payload?.data) ? payload.data : [];
 
+  const getSpeakerBody = (speaker) => speaker.bio || speaker.profile || speaker.description || speaker.content || speaker.text || '';
+
   const createCard = (speaker) => {
     const button = document.createElement('button');
     button.className = 'speaker-card';
     button.type = 'button';
     button.dataset.slug = speaker.slug;
-    button.innerHTML = `${speaker.image1 ? `<img class="speaker-card-image" src="${speaker.image1}" alt="${speaker.name}">` : ''}<div class="speaker-card-body"><h3>${speaker.name || 'Speaker'}</h3>${speaker.title ? `<p>${speaker.title}</p>` : ''}<button type="button">View Profile</button></div>`;
+    const preview = String(getSpeakerBody(speaker)).replace(/\s+/g, ' ').trim().split(' ').slice(0, 22).join(' ');
+    button.innerHTML = `${speaker.image1 ? `<img class="speaker-card-image" src="${speaker.image1}" alt="${speaker.name}">` : ''}<div class="speaker-card-body"><h3>${speaker.name || 'Speaker'}</h3>${speaker.title ? `<p>${speaker.title}</p>` : ''}${preview ? `<p>${preview}${preview.split(' ').length >= 22 ? '…' : ''}</p>` : ''}<button type="button">View Profile</button></div>`;
     button.addEventListener('click', () => openModal(speaker.slug, true));
     return button;
   };
@@ -89,7 +92,7 @@
   const openModal = (slug, updateHash) => {
     const speaker = speakers.find((s) => s.slug === slug);
     if (!speaker) return;
-    const body = speaker.bio || speaker.profile || speaker.description || speaker.content || speaker.text || '';
+    const body = getSpeakerBody(speaker);
     const paragraphs = String(body).split(/\n\n+/).filter(Boolean);
     const mid = Math.max(1, Math.floor(paragraphs.length / 2));
     if (speaker.image2) paragraphs.splice(Math.min(mid, paragraphs.length), 0, `<img class="speaker-modal-inline-image" src="${speaker.image2}" alt="${speaker.name}">`);
