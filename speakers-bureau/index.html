@@ -16,13 +16,14 @@
     .sb-intro{max-width:900px;color:#3f4752;line-height:1.7;margin-top:16px}
     .sb-cta{display:inline-block;margin-top:24px;background:#0b56a4;color:#fff;padding:12px 20px;border-radius:10px;font-weight:700}
     .speakers-directory{max-width:1180px;margin:36px auto 70px;padding:0 24px}
-    .speakers-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
-    .speaker-card{background:#fff;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.09);overflow:hidden;cursor:pointer;border:1px solid rgba(0,75,150,.08);transition:transform .2s ease,box-shadow .2s ease;text-align:left}
+    .speakers-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;align-items:stretch}
+    .speaker-card{display:flex;flex-direction:column;height:100%;background:#fff;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.09);overflow:hidden;cursor:pointer;border:1px solid rgba(0,75,150,.08);transition:transform .2s ease,box-shadow .2s ease;text-align:left}
     .speaker-card:hover,.speaker-card:focus-within{transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,.14)}
-    .speaker-card-image{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#eef2f7}
-    .speaker-card-body{padding:16px}.speaker-card h3{margin:0 0 10px;color:#0055a5;font-size:1.05rem}
+    .speaker-card-image{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;flex:0 0 auto;background:#eef2f7}
+    .speaker-card-body{display:flex;flex-direction:column;flex:1;padding:16px}.speaker-card h3{min-height:28px;margin:0 0 10px;color:#0055a5;font-size:1.05rem;line-height:1.25}
     .speaker-card p{margin:0 0 14px;color:#4b5563;font-size:.95rem}
-    .speaker-card button{width:100%;background:#005eb8;color:#fff;border:0;border-radius:7px;padding:10px 14px;font-weight:700;cursor:pointer}
+    .speaker-card-excerpt{min-height:88px;max-height:88px;overflow:hidden;margin:0 0 16px;color:#4b5563;font-size:.95rem;line-height:1.45}
+    .speaker-card button,.speaker-card-button{margin-top:auto;width:100%;background:#005eb8;color:#fff;border:0;border-radius:7px;padding:10px 14px;font-weight:700;cursor:pointer}
     .speaker-modal{position:fixed;inset:0;z-index:9999;display:none}.speaker-modal[aria-hidden="false"]{display:block}
     .speaker-modal-backdrop{position:absolute;inset:0;background:rgba(0,28,60,.72)}
     .speaker-modal-panel{position:relative;width:min(920px,calc(100% - 32px));max-height:calc(100vh - 48px);margin:24px auto;overflow-y:auto;background:#fff;border-radius:18px;box-shadow:0 24px 80px rgba(0,0,0,.35)}
@@ -37,7 +38,7 @@
     body.modal-open{overflow:hidden}
     @media (max-width:1050px){.speakers-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
     @media (max-width:780px){.speakers-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.speaker-modal-content{padding:28px 20px}}
-    @media (max-width:520px){.speakers-grid{grid-template-columns:1fr;}}
+    @media (max-width:520px){.speakers-grid{grid-template-columns:1fr;}.speaker-card-excerpt{min-height:auto;max-height:none;}}
   </style>
 </head>
 <body class="bg-background text-on-surface font-body">
@@ -210,7 +211,7 @@
     card.dataset.slug = speaker.slug;
     card.tabIndex = 0;
     const preview = String(getSpeakerBody(speaker)).replace(/\s+/g, ' ').trim().split(' ').slice(0, 22).join(' ');
-    card.innerHTML = `${speaker.image1 ? `<img class="speaker-card-image" src="${speaker.image1}" alt="${speaker.name}">` : ''}<div class="speaker-card-body"><h3>${speaker.name || 'Speaker'}</h3>${speaker.title ? `<p>${speaker.title}</p>` : ''}${preview ? `<p>${preview}${preview.split(' ').length >= 22 ? '…' : ''}</p>` : ''}<button class="speaker-card-button" type="button">View Profile</button></div>`;
+    card.innerHTML = `${speaker.image1 ? `<img class="speaker-card-image" src="${speaker.image1}" alt="${speaker.name}">` : ''}<div class="speaker-card-body"><h3>${speaker.name || 'Speaker'}</h3>${speaker.title ? `<p>${speaker.title}</p>` : ''}${preview ? `<p class="speaker-card-excerpt">${preview}${preview.split(' ').length >= 22 ? '…' : ''}</p>` : ''}<button class="speaker-card-button" type="button">View Profile</button></div>`;
     card.addEventListener('click', () => openModal(speaker.slug, true));
     card.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' || event.key === ' ') {
