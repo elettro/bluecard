@@ -114,13 +114,33 @@
     return null;
   };
 
+  const parsePseudoSpeakerObjects = (raw = "") => {
+    const objectMatches = String(raw).match(/\{[\s\S]*?\}/g) || [];
+    return objectMatches.map((chunk) => {
+      const normalized = chunk
+        .replace(/""/g, "\"")
+        .replace(/([,{]\s*)\"([a-zA-Z0-9_]+)\"\s*:/g, "$1\"$2\":")
+        .replace(/:\s*\"null\"/g, ": null");
+      try {
+        return JSON.parse(normalized);
+      } catch (_) {
+        return null;
+      }
+    }).filter(Boolean);
+  };
+
   const parseSpeakerPayload = (payload) => {
     if (Array.isArray(payload) || (payload && typeof payload === 'object')) return payload;
     if (typeof payload !== 'string') return null;
     const cleaned = payload.trim().replace(/^"+|"+$/g, '').replace(/""/g, '"');
     const firstArray = extractFirstJsonArray(cleaned);
-    if (!firstArray) return null;
-    return JSON.parse(firstArray);
+    if (firstArray) {
+      try {
+        return JSON.parse(firstArray);
+      } catch (_) {}
+    }
+    const recovered = parsePseudoSpeakerObjects(cleaned);
+    return recovered.length ? recovered : null;
   };
 
   const speakerImagesBySlug = {
