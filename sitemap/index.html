@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Site Map | The Blue Card</title>
+  <meta name="description" content="Explore every HTML page on The Blue Card website." />
+  <link rel="stylesheet" href="../global-layout.css" />
+</head>
+<body>
+  <header id="bc-global-nav" aria-label="Global site navigation"></header>
+
+  <main>
+    <div class="bc-sitemap">
+      <style>
+        .bc-sitemap {
+          --bc-blue: #0d4c92;
+          --bc-blue-dark: #0a3870;
+          --bc-border: #d8e4f1;
+          --bc-text: #18324d;
+          --bc-muted: #5d7288;
+          --bc-white: #ffffff;
+          --bc-shadow: 0 16px 40px rgba(12, 58, 110, 0.12);
+          font-family: Arial, Helvetica, sans-serif;
+          color: var(--bc-text);
+          padding: 40px 16px 60px;
+          box-sizing: border-box;
+          width: 100%;
+          max-width: 100%;
+          background: linear-gradient(180deg, #f7fbff 0%, #eef5fb 100%);
+        }
+        .bc-sitemap, .bc-sitemap * { box-sizing: border-box; }
+        .bc-sitemap__wrap { max-width: 1180px; margin: 0 auto; }
+        .bc-sitemap__hero { background: linear-gradient(135deg, var(--bc-blue-dark), var(--bc-blue)); color: var(--bc-white); border-radius: 28px; padding: 42px 34px; box-shadow: var(--bc-shadow); margin-bottom: 24px; }
+        .bc-sitemap__eyebrow { display: inline-block; padding: 9px 14px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.16); margin-bottom: 18px; color: #fff; }
+        .bc-sitemap__hero h1 { margin: 0 0 12px; font-size: 52px; line-height: 1.03; color: #fff; }
+        .bc-sitemap__hero p { margin: 0; max-width: 860px; font-size: 18px; line-height: 1.75; color: rgba(255,255,255,0.92); }
+        .bc-sitemap__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+        .bc-sitemap__card { background: #fff; border: 1px solid var(--bc-border); border-radius: 24px; padding: 26px; box-shadow: 0 10px 24px rgba(17, 51, 92, 0.05); }
+        .bc-sitemap__card--full { grid-column: 1 / -1; }
+        .bc-sitemap__card h2 { margin: 0 0 8px; font-size: 28px; line-height: 1.2; color: var(--bc-blue-dark); }
+        .bc-sitemap__card p { margin: 0 0 18px; font-size: 15px; line-height: 1.75; color: var(--bc-muted); }
+        .bc-sitemap__list { list-style: none; margin: 0; padding: 0; }
+        .bc-sitemap__list > li { margin: 0 0 11px; }
+        .bc-sitemap__list a { color: var(--bc-blue); text-decoration: none; font-weight: 700; line-height: 1.55; }
+        .bc-sitemap__list a:hover { color: var(--bc-blue-dark); text-decoration: underline; }
+        .bc-sitemap__posts { columns: 2; column-gap: 28px; }
+        .bc-sitemap__posts li { break-inside: avoid; margin: 0 0 10px; }
+        @media (max-width: 900px) { .bc-sitemap__grid { grid-template-columns: 1fr; } .bc-sitemap__card--full { grid-column: auto; } .bc-sitemap__hero h1 { font-size: 40px; } .bc-sitemap__posts { columns: 1; } }
+      </style>
+      <div class="bc-sitemap__wrap">
+        <section class="bc-sitemap__hero">
+          <div class="bc-sitemap__eyebrow">HTML Site Map</div>
+          <h1>Site Map</h1>
+          <p>Explore The Blue Card website by section. Find mission pages, support programs, application pages, volunteer opportunities, education pages, more information resources, and every HTML page published in this repository.</p>
+        </section>
+
+        <section class="bc-sitemap__grid">
+          <article class="bc-sitemap__card bc-sitemap__card--full">
+            <h2>All HTML Pages in This Website</h2>
+            <p>This section lists every HTML file found in the site so all pages are discoverable from /sitemap/.</p>
+            <ul class="bc-sitemap__list bc-sitemap__posts">
+              <li><a href="/bluecard/">Home</a></li>
+              <li><a href="/bluecard/990-financials/">990 &amp; Financials</a></li>
+              <li><a href="/bluecard/annual-report/">Annual Report</a></li>
+              <li><a href="/bluecard/apply-here/">Apply Here</a></li>
+              <li><a href="/bluecard/become-involved/">Become Involved</a></li>
+              <li><a href="/bluecard/bnei-mitzvah-simcha-project/">B’nei Mitzvah Simcha Project</a></li>
+              <li><a href="/bluecard/board-members/">Board Members</a></li>
+              <li><a href="/bluecard/calendars/">Calendars</a></li>
+              <li><a href="/bluecard/contact/">Contact</a></li>
+              <li><a href="/bluecard/cost-plus-drug-company/">Cost Plus Drug Company</a></li>
+              <li><a href="/bluecard/current-beneficiaries/">Current Beneficiaries</a></li>
+              <li><a href="/bluecard/dental-and-medical-assistance/">Dental and Medical Assistance</a></li>
+              <li><a href="/bluecard/donate/">Donate</a></li>
+              <li><a href="/bluecard/education-outreach/">Education &amp; Outreach</a></li>
+              <li><a href="/bluecard/emergency-cash-assistance/">Emergency Cash Assistance</a></li>
+              <li><a href="/bluecard/health-and-wellbeing/">Health &amp; Wellbeing</a></li>
+              <li><a href="/bluecard/how-we-help/">How We Help</a></li>
+              <li><a href="/bluecard/interactive-hologram/">Interactive Hologram</a></li>
+              <li><a href="/bluecard/medication-assistance-grant/">Medication Assistance Grant</a></li>
+              <li><a href="/bluecard/natural-disaster-relief/">Natural Disaster Relief</a></li>
+              <li><a href="/bluecard/new-applicant/">New Applicant</a></li>
+              <li><a href="/bluecard/news/">News</a></li>
+              <li><a href="/bluecard/ongoing-assistance/">Ongoing Assistance</a></li>
+              <li><a href="/bluecard/our-mission/">Our Mission</a></li>
+              <li><a href="/bluecard/our-supporters/">Our Supporters</a></li>
+              <li><a href="/bluecard/past-events/">Past Events</a></li>
+              <li><a href="/bluecard/podcast/">Podcast</a></li>
+              <li><a href="/bluecard/press/">Press</a></li>
+              <li><a href="/bluecard/privacy-policy/">Privacy Policy</a></li>
+              <li><a href="/bluecard/referring-agencies/">Referring Agencies</a></li>
+              <li><a href="/bluecard/report-to-the-community/">Report to the Community</a></li>
+              <li><a href="/bluecard/resources/">Resources</a></li>
+              <li><a href="/bluecard/siggi-b-wilzig-fighting-cancer-together-program/">Siggi B. Wilzig Fighting Cancer Together Program</a></li>
+              <li><a href="/bluecard/sitemap/">Site Map</a></li>
+              <li><a href="/bluecard/sms-opt-in-policy/">SMS Opt-In Policy</a></li>
+              <li><a href="/bluecard/speakers-bureau/">Speakers Bureau</a></li>
+              <li><a href="/bluecard/special-tribute/">Special Tribute</a></li>
+              <li><a href="/bluecard/staff/">Staff</a></li>
+              <li><a href="/bluecard/team-blue-card/">Team Blue Card</a></li>
+              <li><a href="/bluecard/telephone-response-system/">Telephone Response System</a></li>
+              <li><a href="/bluecard/terms-and-conditions/">Terms and Conditions</a></li>
+              <li><a href="/bluecard/the-blue-cards-medication-assistance-grant/">The Blue Card's Medication Assistance Grant</a></li>
+              <li><a href="/bluecard/upcoming-events/">Upcoming Events</a></li>
+              <li><a href="/bluecard/video-library/">Video Library</a></li>
+              <li><a href="/bluecard/video-links/">Video Links</a></li>
+              <li><a href="/bluecard/virtual-volunteering/">Virtual Volunteering</a></li>
+              <li><a href="/bluecard/volunteering/">Volunteering</a></li>
+              <li><a href="/bluecard/who-we-are/">Who We Are</a></li>
+              <li><a href="/bluecard/young-leadership/">Young Leadership</a></li>
+              <li><a href="/bluecard/blog/">Blog Index</a></li>
+              <li><a href="/bluecard/blog/1.html">Blog Post 1</a></li><li><a href="/bluecard/blog/2.html">Blog Post 2</a></li><li><a href="/bluecard/blog/3.html">Blog Post 3</a></li><li><a href="/bluecard/blog/4.html">Blog Post 4</a></li><li><a href="/bluecard/blog/5.html">Blog Post 5</a></li><li><a href="/bluecard/blog/6.html">Blog Post 6</a></li><li><a href="/bluecard/blog/7.html">Blog Post 7</a></li><li><a href="/bluecard/blog/8.html">Blog Post 8</a></li><li><a href="/bluecard/blog/9.html">Blog Post 9</a></li><li><a href="/bluecard/blog/10.html">Blog Post 10</a></li><li><a href="/bluecard/blog/11.html">Blog Post 11</a></li><li><a href="/bluecard/blog/12.html">Blog Post 12</a></li><li><a href="/bluecard/blog/13.html">Blog Post 13</a></li><li><a href="/bluecard/blog/14.html">Blog Post 14</a></li><li><a href="/bluecard/blog/15.html">Blog Post 15</a></li><li><a href="/bluecard/blog/16.html">Blog Post 16</a></li><li><a href="/bluecard/blog/17.html">Blog Post 17</a></li><li><a href="/bluecard/blog/18.html">Blog Post 18</a></li><li><a href="/bluecard/blog/19.html">Blog Post 19</a></li><li><a href="/bluecard/blog/20.html">Blog Post 20</a></li><li><a href="/bluecard/blog/21.html">Blog Post 21</a></li><li><a href="/bluecard/blog/22.html">Blog Post 22</a></li><li><a href="/bluecard/blog/23.html">Blog Post 23</a></li>
+            </ul>
+          </article>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="bc-global-footer"></div>
+  <script src="../global-layout.js"></script>
+</body>
+</html>
