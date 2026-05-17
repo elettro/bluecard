@@ -6,136 +6,204 @@
   <title>Contact | The Blue Card</title>
   <link rel="stylesheet" href="../global-layout.css">
   <style>
+    :root {
+      --bc-blue-900: #003f7d;
+      --bc-blue-700: #0057a8;
+      --bc-blue-100: #eaf4ff;
+      --bc-ink: #1f2933;
+      --bc-muted: #5f6c7b;
+      --bc-surface: #ffffff;
+      --bc-border: #d7dee7;
+      --bc-shadow: 0 18px 44px rgba(0, 37, 74, 0.12);
+    }
+
     .contact-page-shell {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 48px 20px 20px;
+      padding: 56px 20px 30px;
       font-family: Arial, Helvetica, sans-serif;
-      color: #222;
-      line-height: 1.6;
+      color: var(--bc-ink);
+      line-height: 1.7;
+    }
+
+    .bc-contact-hero {
+      background: linear-gradient(135deg, var(--bc-blue-100), #f8fbff);
+      border: 1px solid #d4e3f4;
+      border-radius: 20px;
+      padding: clamp(24px, 5vw, 42px);
+      box-shadow: var(--bc-shadow);
     }
 
     .contact-page-shell h1 {
       margin: 0 0 12px;
-      color: #003f7d;
+      color: var(--bc-blue-900);
       font: 700 clamp(2rem, 4vw, 3rem)/1.15 Arial, Helvetica, sans-serif;
     }
 
-    .contact-page-shell p {
-      margin: 0 0 14px;
-      font-size: 1rem;
+    .contact-page-shell .bc-intro {
+      margin: 0;
+      max-width: 70ch;
+      color: #213346;
+      font-size: 1.05rem;
     }
 
-    .contact-page-shell .bc-contact-label {
-      margin-top: 22px;
-      margin-bottom: 0;
+    .bc-contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .bc-contact-card {
+      background: var(--bc-surface);
+      border: 1px solid var(--bc-border);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .bc-contact-card h3 {
+      margin: 0 0 8px;
+      color: var(--bc-blue-900);
+      font-size: 1.05rem;
+    }
+
+    .bc-contact-card p {
+      margin: 0;
+      color: var(--bc-muted);
+      font-size: 0.97rem;
+      line-height: 1.65;
+    }
+
+    .bc-contact-card a {
+      color: var(--bc-blue-700);
       font-weight: 700;
-      color: #000;
+      text-decoration: none;
     }
 
-    .contact-page-shell .bc-contact-lines {
-      margin: 6px 0 0;
+    .bc-contact-card a:hover {
+      text-decoration: underline;
     }
 
-    /* Scoped to this section only */
     .bc-contact-section {
       font-family: Arial, Helvetica, sans-serif;
-      background: #efefef;
-      padding: 40px 20px 60px;
       max-width: 1100px;
-      margin: 0 auto;
+      margin: 0 auto 56px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .bc-panel {
+      background: #f7f9fc;
+      border: 1px solid #d9e2ec;
+      border-radius: 16px;
+      padding: clamp(20px, 4vw, 32px);
     }
 
     .bc-contact-section h2 {
-      font-size: 2rem;
-      font-weight: bold;
-      text-align: center;
-      color: #000;
-      margin: 0 0 8px;
+      font-size: clamp(1.5rem, 2.6vw, 2rem);
+      font-weight: 700;
+      color: #102a43;
+      margin: 0 0 10px;
     }
 
-    .bc-contact-section .bc-form-subtext {
-      text-align: center;
+    .bc-form-subtext {
       font-size: 1rem;
-      color: #333;
-      margin: 0 0 28px;
+      color: #334e68;
+      margin: 0 0 24px;
     }
 
-    /* Form fields */
-    .bc-contact-section .bc-form-group {
+    .bc-form-group {
       margin-bottom: 14px;
     }
 
-    .bc-contact-section .bc-form-group label {
+    .bc-form-group label {
       display: block;
       font-size: 0.95rem;
-      color: #222;
-      margin-bottom: 4px;
+      font-weight: 700;
+      color: #243b53;
+      margin-bottom: 5px;
     }
 
-    .bc-contact-section .bc-form-group input[type="text"],
-    .bc-contact-section .bc-form-group input[type="email"],
-    .bc-contact-section .bc-form-group input[type="tel"],
-    .bc-contact-section .bc-form-group textarea {
+    .bc-form-group input[type="text"],
+    .bc-form-group input[type="email"],
+    .bc-form-group input[type="tel"],
+    .bc-form-group textarea {
       width: 100%;
-      padding: 10px 14px;
+      padding: 12px 14px;
       font-size: 0.95rem;
       font-family: Arial, Helvetica, sans-serif;
-      border: 1px solid #ccc;
+      border: 1px solid #bcccdc;
+      border-radius: 10px;
       background: #fff;
-      color: #555;
+      color: #334e68;
       box-sizing: border-box;
       outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    .bc-contact-section .bc-form-group input:focus,
-    .bc-contact-section .bc-form-group textarea:focus {
-      border-color: #0057a8;
+    .bc-form-group input:focus,
+    .bc-form-group textarea:focus {
+      border-color: var(--bc-blue-700);
+      box-shadow: 0 0 0 3px rgba(0, 87, 168, 0.18);
     }
 
-    .bc-contact-section .bc-form-group textarea {
-      height: 130px;
+    .bc-form-group textarea {
+      height: 140px;
       resize: vertical;
     }
 
-    /* Submit button */
-    .bc-contact-section .bc-submit-btn {
-      display: block;
-      margin: 24px auto 0;
-      background: #111;
+    .bc-submit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 6px;
+      background: linear-gradient(120deg, var(--bc-blue-900), var(--bc-blue-700));
       color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
       font-size: 0.9rem;
-      font-weight: bold;
+      font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       border: none;
-      padding: 14px 36px;
+      border-radius: 999px;
+      padding: 14px 28px;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .bc-contact-section .bc-submit-btn:hover {
-      background: #0057a8;
+    .bc-submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(0, 57, 112, 0.3);
     }
 
-    /* Map section */
-    .bc-contact-section .bc-map-heading {
-      margin-top: 54px;
-      margin-bottom: 16px;
-    }
-
-    .bc-contact-section .bc-map-wrapper {
+    .bc-map-wrapper {
       width: 100%;
-      height: 450px;
-      border: none;
+      min-height: 460px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #bcccdc;
+      background: #fff;
     }
 
-    .bc-contact-section .bc-map-wrapper iframe {
+    .bc-map-wrapper iframe {
       width: 100%;
       height: 100%;
+      min-height: 460px;
       border: 0;
       display: block;
+    }
+
+    @media (max-width: 900px) {
+      .bc-contact-section {
+        grid-template-columns: 1fr;
+      }
+
+      .bc-map-wrapper,
+      .bc-map-wrapper iframe {
+        min-height: 360px;
+      }
     }
   </style>
 </head>
@@ -143,56 +211,74 @@
 <header id="bc-global-nav" aria-label="Global site navigation"></header>
 <main>
   <section class="contact-page-shell">
-    <h1>Contact</h1>
-    <p>Whether you are a potential supporter or client, or if you seek additional information regarding The Blue Card’s programs to help others in your family or community, we look forward to hearing from you.</p>
+    <div class="bc-contact-hero">
+      <h1>Contact</h1>
+      <p class="bc-intro">Whether you are a potential supporter or client, or if you seek additional information regarding The Blue Card’s programs to help others in your family or community, we look forward to hearing from you.</p>
 
-    <p class="bc-contact-label">Address</p>
-    <p class="bc-contact-lines">The Blue Card, Inc.<br>171 Madison Avenue, Suite # 1405<br>New York, NY 10016</p>
+      <div class="bc-contact-grid">
+        <article class="bc-contact-card">
+          <h3>Address</h3>
+          <p>The Blue Card, Inc.<br>171 Madison Avenue, Suite # 1405<br>New York, NY 10016</p>
+        </article>
 
-    <p class="bc-contact-lines">Phone: 212.239.2251<br>Fax: 212.594.6881</p>
+        <article class="bc-contact-card">
+          <h3>Call or Fax</h3>
+          <p>Phone: <a href="tel:+12122392251">212.239.2251</a><br>Fax: 212.594.6881</p>
+        </article>
 
-    <p class="bc-contact-lines">Email: info@bluecardfund.org</p>
+        <article class="bc-contact-card">
+          <h3>Email</h3>
+          <p><a href="mailto:info@bluecardfund.org">info@bluecardfund.org</a></p>
+        </article>
 
-    <p class="bc-contact-label">Press</p>
-    <p class="bc-contact-lines">Joseph Wolkin<br>Email: joseph.wolkin@noysegroup.com</p>
+        <article class="bc-contact-card">
+          <h3>Press</h3>
+          <p>Joseph Wolkin<br><a href="mailto:joseph.wolkin@noysegroup.com">joseph.wolkin@noysegroup.com</a></p>
+        </article>
+      </div>
+    </div>
   </section>
 
   <section class="bc-contact-section">
-    <h2>Contact Form</h2>
-    <p class="bc-form-subtext">Just send us all your questions by filling this contact form</p>
+    <div class="bc-panel">
+      <h2>Send Us a Message</h2>
+      <p class="bc-form-subtext">Share your questions and we’ll get back to you as soon as possible.</p>
 
-    <div class="bc-form-group">
-      <label for="bc-name">Name</label>
-      <input type="text" id="bc-name" name="name" placeholder="Your Name">
+      <div class="bc-form-group">
+        <label for="bc-name">Name</label>
+        <input type="text" id="bc-name" name="name" placeholder="Your Name">
+      </div>
+
+      <div class="bc-form-group">
+        <label for="bc-email">E-mail</label>
+        <input type="email" id="bc-email" name="email" placeholder="Your E-mail">
+      </div>
+
+      <div class="bc-form-group">
+        <label for="bc-phone">Phone</label>
+        <input type="tel" id="bc-phone" name="phone" placeholder="Your Number">
+      </div>
+
+      <div class="bc-form-group">
+        <label for="bc-message">Message</label>
+        <textarea id="bc-message" name="message" placeholder="Your Text"></textarea>
+      </div>
+
+      <button class="bc-submit-btn" type="button">Send Your Message</button>
     </div>
 
-    <div class="bc-form-group">
-      <label for="bc-email">E-mail</label>
-      <input type="email" id="bc-email" name="email" placeholder="Your E-mail">
-    </div>
-
-    <div class="bc-form-group">
-      <label for="bc-phone">Phone</label>
-      <input type="tel" id="bc-phone" name="phone" placeholder="Your Number">
-    </div>
-
-    <div class="bc-form-group">
-      <label for="bc-message">Message</label>
-      <textarea id="bc-message" name="message" placeholder="Your Text"></textarea>
-    </div>
-
-    <button class="bc-submit-btn" type="button">SEND YOUR MESSAGE</button>
-
-    <h2 class="bc-map-heading">Location on Map</h2>
-
-    <div class="bc-map-wrapper">
-      <iframe
-        src="https://maps.google.com/maps?q=Blue%20Card%20Inc%20171%20Madison%20Ave%20New%20York%20NY&t=m&z=14&output=embed&iwloc=near"
-        allowfullscreen
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Blue Card Inc – Location on Map">
-      </iframe>
+    <div class="bc-panel">
+      <h2>Location</h2>
+      <p class="bc-form-subtext">Visit us in Midtown Manhattan.</p>
+      <div class="bc-map-wrapper">
+        <iframe
+          src="https://maps.google.com/maps?q=Blue%20Card%20Inc%20171%20Madison%20Ave%20New%20York%20NY&t=m&z=14&output=embed&iwloc=near"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Blue Card Inc – Location on Map">
+        </iframe>
+      </div>
     </div>
   </section>
 </main>
