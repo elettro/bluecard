@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Staff | The Blue Card</title>
+  <meta name="description" content="Meet The Blue Card team and find key contact information." />
+  <link rel="stylesheet" href="../global-layout.css" />
+  <style>
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #1c1c1c; background: #efefef; }
+    .hero { background: #0057a8; color: #fff; padding: 56px 24px 48px; }
+    .hero-wrap { max-width: 1100px; margin: 0 auto; }
+    .hero h1 { margin: 0 0 12px; font-size: clamp(34px, 5vw, 56px); line-height: 1.1; }
+    .hero p { margin: 0; font-size: 18px; line-height: 1.6; max-width: 760px; }
+
+    .staff-section { padding: 48px 24px 64px; }
+    .staff-wrap { max-width: 1100px; margin: 0 auto; }
+    .staff-card { background: #fff; border-radius: 18px; box-shadow: 0 14px 40px rgba(0, 43, 89, 0.1); overflow: hidden; border: 1px solid rgba(0, 87, 168, 0.16); }
+
+    table { width: 100%; border-collapse: collapse; }
+    thead th { background: #0057a8; color: #fff; text-align: left; font-size: 15px; letter-spacing: 0.02em; padding: 16px 20px; }
+    tbody td { padding: 16px 20px; border-bottom: 1px solid #e7ecf2; font-size: 16px; vertical-align: top; }
+    tbody tr:nth-child(even) td { background: #f8fbff; }
+    tbody tr:last-child td { border-bottom: none; }
+
+    .title { font-weight: 700; color: #0f2e50; }
+    a { color: #0057a8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .general { margin-top: 24px; padding: 20px 22px; background: #ffffff; border-left: 5px solid #0057a8; border-radius: 12px; font-size: 17px; }
+    .general strong { color: #0f2e50; }
+
+    @media (max-width: 760px) {
+      .hero { padding: 42px 18px 36px; }
+      .hero p { font-size: 16px; }
+      .staff-section { padding: 30px 16px 48px; }
+      table, thead, tbody, th, td, tr { display: block; }
+      thead { display: none; }
+      tbody tr { border-bottom: 1px solid #d9e3ef; padding: 12px 0; }
+      tbody td { border: 0; padding: 8px 16px; background: transparent !important; }
+      tbody td::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+        color: #0057a8;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 3px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="bc-global-nav" aria-label="Global site navigation"></header>
+
+  <section class="hero" aria-label="Staff page header">
+    <div class="hero-wrap">
+      <h1>Staff Members &amp; Email Addresses</h1>
+      <p>Connect with The Blue Card team for programs, outreach, media, and organizational support.</p>
+    </div>
+  </section>
+
+  <section class="staff-section">
+    <div class="staff-wrap">
+      <div class="staff-card">
+        <table aria-label="Blue Card staff directory">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td data-label="Title" class="title">Executive Director</td><td data-label="Name">Masha Pearl</td><td data-label="Email"><a href="mailto:mpearl@bluecardfund.org">mpearl@bluecardfund.org</a></td></tr>
+            <tr><td data-label="Title" class="title">Finance Director</td><td data-label="Name">Saira Shabbir Yasir, CPA</td><td data-label="Email"><a href="mailto:saira@ssyaccounting.com">saira@ssyaccounting.com</a></td></tr>
+            <tr><td data-label="Title" class="title">Chief Operating Officer</td><td data-label="Name">Bogdana Levin</td><td data-label="Email"><a href="mailto:bogdana@bluecardfund.org">bogdana@bluecardfund.org</a></td></tr>
+            <tr><td data-label="Title" class="title">Bookkeeper</td><td data-label="Name">Nelya Payziyeva</td><td data-label="Email"><a href="mailto:nelya@bluecardfund.org">nelya@bluecardfund.org</a></td></tr>
+            <tr><td data-label="Title" class="title">Special Projects Director</td><td data-label="Name">Rechan Meshulam</td><td data-label="Email"><a href="mailto:rechan@bluecardfund.org">rechan@bluecardfund.org</a></td></tr>
+            <tr><td data-label="Title" class="title">Program Administrator</td><td data-label="Name">Kristina Gorbenko</td><td data-label="Email"><a href="mailto:kristina@bluecardfund.org">kristina@bluecardfund.org</a></td></tr>
+            <tr><td data-label="Title" class="title">Program Coordinator</td><td data-label="Name">Mariya Deuel</td><td data-label="Email"><a href="mailto:mariya@bluecardfund.org">mariya@bluecardfund.org</a></td></tr>
+            <tr><td data-label="Title" class="title">Media Contact</td><td data-label="Name">Joseph Wolkin</td><td data-label="Email"><a href="mailto:joseph.wolkin@noysegroup.com">joseph.wolkin@noysegroup.com</a></td></tr>
+            <tr><td data-label="Title" class="title">Education &amp; Outreach Director</td><td data-label="Name">Georgi Goldman</td><td data-label="Email"><a href="mailto:georgi@bluecardfund.org">georgi@bluecardfund.org</a></td></tr>
+            <tr><td data-label="Title" class="title">Education &amp; Outreach Coordinator</td><td data-label="Name">Aaron Ginns</td><td data-label="Email"><a href="mailto:aaron@bluecardfund.org">aaron@bluecardfund.org</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="general">
+        <strong>General Inquiries:</strong>
+        <a href="tel:12122392251">212-239-2251</a> |
+        <a href="mailto:info@bluecardfund.org">info@bluecardfund.org</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="bc-global-footer"></div>
+  <script src="../global-layout.js"></script>
+</body>
+</html>
