@@ -189,7 +189,7 @@ A few notes:
 Image paths use indexed slugs (01-dr-edith-eva-eger.svg, etc.) — adjust if your buddy needs a different naming scheme.
 Bios were split into paragraphs based on the &CHAR(10)&CHAR(10)& markers and \n\n breaks in the source.
 Some bios (Sol Urbach, Mark Babyatsky) had no paragraph breaks in the original — they're each a single long paragraph. Let me know if you want me to break them up further.
-MAke sure you fully understand non of those svg are teh persons iagme its all the non-svg files.
+MAke sure you fully understand non of those svg are the persons image its all the non-svg files.
 
 Working (2 steps)
 Got it — the actual person photos are non-SVG files (jpg/png), and the SVGs would be something else (placeholders, decorations, etc.). I'll regenerate the JSON pointing the image field at the real photo files. What extension are the photos? Let me know — I'll assume .jpg for now and you can swap if it's .png/.webp.
@@ -381,7 +381,7 @@ I'll save the full JSON with all bios to a downloadable file.
 
 Downloaded special-tribute.json — 17 entries, 67 bio paragraphs total, full content, correct photo filenames (.webp/.png/.jpg).
 
-whre do i get teh file ? 
+where do i get the file ? 
 
 Working
 The file (special-tribute.json) should appear as a downloadable attachment in this chat — look for it in my previous message, just above this one. It's typically shown as a file card you can click to download.
