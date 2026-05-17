@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO &amp; AI Schema Website Report | The Blue Card</title>
+  <link rel="stylesheet" href="../global-layout.css">
+  <style>
+    .report-page {
+      --report-blue-900: #0f2f5f;
+      --report-blue-800: #1f5aa8;
+      --report-blue-700: #2f6cb7;
+      --report-bg: #f4f7fb;
+      --report-panel: #ffffff;
+      --report-line: #d7e2f1;
+      --report-ink: #10233f;
+      --report-soft: #466082;
+      --report-shadow: 0 12px 28px rgba(15, 47, 95, 0.12);
+      --report-radius: 16px;
+      background: linear-gradient(180deg, #f6f9fd 0%, #eef3f9 100%);
+      padding: 1rem 0 4rem;
+      color: var(--report-ink);
+    }
+
+    .report-container {
+      width: min(1160px, 100% - 2rem);
+      margin: 0 auto;
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .report-hero,
+    .report-section {
+      background: var(--report-panel);
+      border: 1px solid var(--report-line);
+      border-radius: var(--report-radius);
+      padding: clamp(1.1rem, 2.4vw, 2rem);
+      box-shadow: var(--report-shadow);
+    }
+
+    .report-hero h1,
+    .report-section h2 { margin: 0; color: var(--report-blue-900); }
+    .report-hero h1 { font-size: clamp(1.85rem, 3.8vw, 3rem); line-height: 1.1; }
+    .report-hero p,
+    .report-section p { color: var(--report-soft); margin: 0.8rem 0 0; }
+
+    .report-pill {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: #e7f0fc;
+      color: var(--report-blue-900);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .report-score-grid,
+    .report-card-grid {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .report-score-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .report-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .report-score-card,
+    .report-card {
+      border: 1px solid var(--report-line);
+      border-radius: 14px;
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 0 8px 20px rgba(16, 35, 63, 0.08);
+    }
+
+    .report-score-card h3,
+    .report-card h3 {
+      margin: 0;
+      color: var(--report-blue-900);
+      font-size: 1rem;
+    }
+
+    .report-score-card strong {
+      display: block;
+      margin-top: 0.4rem;
+      color: var(--report-blue-800);
+      font-size: clamp(1.45rem, 3.4vw, 2rem);
+      line-height: 1;
+    }
+
+    .report-table-wrap { overflow-x: auto; margin-top: 1rem; }
+    .report-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+      background: #fff;
+      border: 1px solid var(--report-line);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .report-table th,
+    .report-table td {
+      text-align: left;
+      padding: 0.8rem;
+      border-bottom: 1px solid #e6edf7;
+      vertical-align: top;
+    }
+
+    .report-table th { background: #f1f6fd; color: var(--report-blue-900); font-size: 0.95rem; }
+    .report-table tr:last-child td { border-bottom: 0; }
+
+    .report-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .report-cta a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 0.7rem 1.05rem;
+      border-radius: 10px;
+      border: 1px solid var(--report-blue-800);
+      font-weight: 700;
+      color: #fff;
+      background: var(--report-blue-800);
+    }
+
+    .report-cta a.secondary {
+      background: #fff;
+      color: var(--report-blue-900);
+    }
+
+    .report-list {
+      margin: 0.7rem 0 0;
+      padding-left: 1.1rem;
+      color: var(--report-soft);
+    }
+
+    .report-list li { margin: 0.35rem 0; }
+
+    @media (max-width: 980px) {
+      .report-score-grid,
+      .report-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 700px) {
+      .report-container { width: min(1160px, 100% - 1rem); }
+      .report-score-grid,
+      .report-card-grid { grid-template-columns: 1fr; }
+      .report-cta a { flex: 1 1 100%; }
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body">
+<header id="bc-global-nav" aria-label="Global site navigation"></header>
+<main class="report-page">
+  <div class="report-container">
+    <section class="report-hero">
+      <span class="report-pill">Website Visibility Report</span>
+      <h1>SEO &amp; AI Schema Website Report</h1>
+      <p><strong>A technical and content visibility report for The Blue Card’s rebuilt website.</strong></p>
+      <p>This report summarizes the search visibility, AI-readiness, structured data, accessibility, content organization, and technical improvements applied across The Blue Card website.</p>
+      <div class="report-score-grid" aria-label="Top report scores">
+        <article class="report-score-card"><h3>SEO Score</h3><strong>7.4 / 10</strong></article>
+        <article class="report-score-card"><h3>AI Schema Score</h3><strong>5.8 / 10</strong></article>
+        <article class="report-score-card"><h3>Combined Visibility Score</h3><strong>6.6 / 10</strong></article>
+      </div>
+      <p><em>Important note: These are benchmark scores for the current GitHub Pages rebuild and are directional internal scores, not official Google scores.</em></p>
+    </section>
+
+    <section class="report-section">
+      <h2>Executive Summary</h2>
+      <p>The rebuilt Blue Card website has a stronger content structure than the prior site experience, with clearer program pages, better internal navigation, improved page hierarchy, cleaner calls to action, and a more consistent nonprofit presentation. The site now gives search engines and AI systems clearer signals about who The Blue Card helps, what programs it offers, how people can apply, and how supporters can contribute.</p>
+      <div class="report-card-grid">
+        <article class="report-card"><h3>Stronger program clarity</h3></article>
+        <article class="report-card"><h3>Improved internal navigation</h3></article>
+        <article class="report-card"><h3>Better donation pathways</h3></article>
+        <article class="report-card"><h3>Cleaner page hierarchy</h3></article>
+        <article class="report-card"><h3>Stronger AI-readable content</h3></article>
+        <article class="report-card"><h3>More consistent trust signals</h3></article>
+      </div>
+    </section>
+
+    <section class="report-section">
+      <h2>Overall Website Measures</h2>
+      <div class="report-table-wrap">
+        <table class="report-table"><tbody>
+          <tr><th>Site structure</th><td>Strong</td></tr><tr><th>Program coverage</th><td>Strong</td></tr><tr><th>Internal linking</th><td>Improving</td></tr><tr><th>Metadata foundation</th><td>Improving</td></tr><tr><th>Schema foundation</th><td>Needs expansion</td></tr><tr><th>Mobile usability</th><td>Strong</td></tr><tr><th>Content clarity</th><td>Strong</td></tr><tr><th>AI answer readiness</th><td>Improving</td></tr><tr><th>PDF archive crawlability</th><td>Needs expansion</td></tr><tr><th>Trust signal visibility</th><td>Strong</td></tr>
+        </tbody></table>
+      </div>
+    </section>
+
+    <section class="report-section">
+      <h2>SEO Tactics Employed</h2>
+      <div class="report-card-grid">
+        <article class="report-card"><h3>Technical SEO</h3><ul class="report-list"><li>Created clean, crawlable static HTML pages.</li><li>Rebuilt major site sections under stable /bluecard/ URLs.</li><li>Used readable folder-based URLs such as /donate/, /contact/, /newsletters/, /speakers-bureau/, /video-links/, and /education-outreach/.</li><li>Added consistent global header and footer navigation.</li><li>Improved internal page connections through footer and navigation updates.</li><li>Reduced reliance on old external bluecardfund.org paths where rebuilt internal pages exist.</li><li>Created clearer page-level structure with main sections, headings, CTAs, and program blocks.</li><li>Preserved important PDF resources through organized archive pages.</li></ul></article>
+        <article class="report-card"><h3>On-page SEO</h3><ul class="report-list"><li>Added clear H1 page titles across rebuilt pages.</li><li>Created stronger hero copy for key pages.</li><li>Used descriptive section headings.</li><li>Organized assistance programs into dedicated landing pages.</li><li>Added clearer descriptions of program purpose, audience, and support areas.</li><li>Improved donation-focused language.</li><li>Improved contact information presentation.</li><li>Added newsletter archive content in crawlable HTML.</li><li>Added video library content structure.</li><li>Added speaker directory content structure.</li><li>Added program-specific pages for medical, dental, emergency cash, health, wellbeing, telephone response, natural disaster relief, and medication assistance.</li></ul></article>
+        <article class="report-card"><h3>Internal linking</h3><ul class="report-list"><li>Updated footer links to route to rebuilt /bluecard/ pages.</li><li>Added page-specific links for program pages.</li><li>Connected trust pages such as annual reports, 990 financials, board members, staff, and contact pages.</li><li>Strengthened navigation paths for donors, applicants, supporters, and press visitors.</li><li>Improved footer organization by grouping links into logical categories.</li></ul></article>
+        <article class="report-card"><h3>Image SEO</h3><ul class="report-list"><li>Organized images into clear folders.</li><li>Added page-specific image usage for newsletters, speakers, donation, tribute, and program pages.</li><li>Recommended descriptive alt text across meaningful images.</li><li>Improved layout treatment for important image assets.</li><li>Created image-forward pages with surrounding crawlable context.</li></ul></article>
+        <article class="report-card"><h3>Content SEO</h3><ul class="report-list"><li>Expanded program content into dedicated sections.</li><li>Preserved old informational content while modernizing page structure.</li><li>Added clearer nonprofit mission language.</li><li>Added stronger survivor-support language.</li><li>Added more specific content around direct assistance, emergency aid, healthcare, dental care, wellness, education, and outreach.</li><li>Created archive pages for newsletters, calendars, press, video links, and past events.</li><li>Added clearer contact and press details.</li></ul></article>
+        <article class="report-card"><h3>PDF SEO</h3><ul class="report-list"><li>Organized PDFs into dedicated archive areas.</li><li>Linked annual reports, newsletters, calendars, 990 financials, and community reports from visible pages.</li><li>Recommended crawlable HTML summaries around PDF links.</li><li>Used descriptive button labels for downloadable documents.</li><li>Preserved PDF access while improving surrounding context.</li></ul></article>
+      </div>
+    </section>
+
+    <section class="report-section"><h2>AI Schema &amp; AI Search Tactics Employed</h2><div class="report-card-grid">
+      <article class="report-card"><h3>AI-readable structure</h3><ul class="report-list"><li>Created clear page titles and section headings.</li><li>Added direct explanatory content about The Blue Card’s mission.</li><li>Broke programs into separate pages so AI systems can identify each service area.</li><li>Added concise descriptions for key programs.</li><li>Built directories for speakers, staff, board members, newsletters, and videos.</li><li>Structured content around common user questions, such as how to apply, how to donate, and what programs exist.</li></ul></article>
+      <article class="report-card"><h3>Entity clarity</h3><ul class="report-list"><li>Positioned The Blue Card as a nonprofit serving Holocaust survivors.</li><li>Repeated key entity signals across pages: The Blue Card, Holocaust survivors, financial assistance, emergency cash assistance, dental and medical assistance, health and wellbeing, Holocaust education, survivor advocacy, charitable giving.</li><li>Added clearer New York address and contact information.</li><li>Strengthened organizational trust signals through board, staff, annual report, 990 financials, newsletters, and press pages.</li></ul></article>
+      <article class="report-card"><h3>Structured data opportunities identified</h3><ul class="report-list"><li>Organization schema</li><li>Nonprofit Organization schema</li><li>WebSite schema</li><li>WebPage schema</li><li>BreadcrumbList schema</li><li>ContactPage schema</li><li>AboutPage schema</li><li>CollectionPage schema</li><li>Article schema</li><li>NewsArticle schema</li><li>BlogPosting schema</li><li>VideoObject schema</li><li>Person schema</li><li>Service schema</li><li>FAQPage schema</li><li>Event schema</li><li>DonateAction</li><li>ContactPoint</li><li>ImageObject schema</li></ul></article>
+      <article class="report-card"><h3>AI answer readiness</h3><ul class="report-list"><li>Identified opportunity for compact answer blocks on key pages.</li><li>Recommended sections like: What this program provides, Who this helps, How to apply, Why this matters, Ways to support this program.</li><li>Recommended FAQ schema for pages with direct user questions.</li><li>Recommended stronger intro summaries on program pages.</li></ul></article>
+    </div></section>
+
+    <section class="report-section"><h2>Key Pages Improved or Created</h2><div class="report-table-wrap"><table class="report-table"><tbody>
+      <tr><th>Homepage</th><td>clearer mission, program overview, donor CTAs</td></tr><tr><th>Donate</th><td>stronger giving pathway and impact framing</td></tr><tr><th>Contact</th><td>clear address, phone, email, press contact</td></tr><tr><th>Speakers Bureau</th><td>speaker directory, individual modal profiles, shareable links</td></tr><tr><th>Video Links</th><td>video library structure and modal video viewing</td></tr><tr><th>Newsletters</th><td>modern archive with crawlable summaries and PDF links</td></tr><tr><th>Calendars</th><td>archive structure for historical calendar PDFs</td></tr><tr><th>Education &amp; Outreach</th><td>clearer program presentation</td></tr><tr><th>Interactive Hologram</th><td>dedicated program explainer</td></tr><tr><th>Assistance Program Pages</th><td>dedicated pages for core services</td></tr><tr><th>Board Members</th><td>trust and governance</td></tr><tr><th>Staff</th><td>organization transparency</td></tr><tr><th>Annual Report</th><td>trust and accountability</td></tr><tr><th>990 Financials</th><td>financial transparency</td></tr><tr><th>Press / News / Blog</th><td>media and article visibility</td></tr>
+    </tbody></table></div></section>
+
+    <section class="report-section"><h2>Recommended Next SEO Actions</h2><ul class="report-list"><li>Add complete site-wide JSON-LD schema.</li><li>Add page-specific title tags and meta descriptions across every page.</li><li>Add canonical URLs.</li><li>Add Open Graph and Twitter/X Card metadata.</li><li>Add BreadcrumbList schema across subpages.</li><li>Add Organization and Nonprofit schema globally.</li><li>Add Service schema to program pages.</li><li>Add Person schema to speakers, staff, and board pages.</li><li>Add VideoObject schema to video pages.</li><li>Add Article, BlogPosting, or NewsArticle schema to blog, news, and press pages.</li><li>Add CollectionPage schema to newsletter, calendar, video, and report archive pages.</li><li>Add FAQPage schema where questions are present.</li><li>Add HTML summaries for PDF archive pages.</li><li>Strengthen internal links between donation, apply, and program pages.</li><li>Add better alt text and image width/height attributes.</li><li>Review duplicate or overlapping pages such as /video-links/ and /video-library/.</li><li>Improve sitemap.xml and robots.txt coverage.</li><li>Add AI-friendly answer blocks to major program pages.</li></ul></section>
+
+    <section class="report-section"><h2>Interface Safety Controls</h2><p>All SEO and AI schema improvements should be implemented without changing working layouts, donation pathways, modal behavior, video players, audio players, forms, or responsive navigation.</p><ul class="report-list"><li>Do not alter global CSS unless needed for metadata-free visible content.</li><li>Do not change donation payment links.</li><li>Do not break header or footer navigation.</li><li>Do not change modal behavior.</li><li>Do not alter forms.</li><li>Do not change PDF file paths unless broken.</li><li>Test mobile layout after every visible change.</li><li>Validate schema before publishing.</li></ul></section>
+
+    <section class="report-section"><h2>Current Benchmark</h2><div class="report-score-grid"><article class="report-score-card"><h3>SEO</h3><strong>7.4 / 10</strong></article><article class="report-score-card"><h3>AI Schema</h3><strong>5.8 / 10</strong></article><article class="report-score-card"><h3>Combined Visibility</h3><strong>6.6 / 10</strong></article></div><div class="report-cta"><a href="/bluecard/">Visit Homepage</a><a class="secondary" href="/bluecard/">View Sitemap</a></div></section>
+  </div>
+</main>
+<footer id="bc-global-footer" aria-label="Global site footer"></footer>
+<script src="../global-layout.js" defer></script>
+</body>
+</html>
