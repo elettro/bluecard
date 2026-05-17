@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report to the Community | The Blue Card</title>
+  <link rel="stylesheet" href="../global-layout.css">
+  <style>
+    :root {
+      --blue-900: #0f2f5f;
+      --blue-800: #17437d;
+      --blue-700: #1f5aa8;
+      --ink: #111827;
+      --ink-soft: #374151;
+      --bg: #f4f6f8;
+      --panel: #ffffff;
+      --line: #d7dde5;
+      --shadow: 0 16px 40px rgba(16, 24, 40, 0.12);
+      --radius: 14px;
+      --max-width: 1200px;
+      --transition: 180ms ease;
+    }
+
+    * { box-sizing: border-box; }
+
+    .page-shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.1rem 4rem;
+      color: var(--ink);
+      font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    .page-shell h1,
+    .page-shell h2,
+    .page-shell h3 {
+      font-family: "Georgia", "Times New Roman", serif;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    .hero {
+      margin-top: 1.2rem;
+      padding: clamp(2rem, 5vw, 4rem) clamp(1.2rem, 4vw, 3.5rem);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after { content: ""; position: absolute; inset: auto -120px -120px auto; width: 280px; height: 280px; background: radial-gradient(circle, rgba(15, 47, 95, 0.14), rgba(15, 47, 95, 0)); pointer-events: none; }
+    .kicker { display: inline-block; color: var(--blue-800); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 0.75rem; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); color: var(--blue-900); margin-bottom: 0.8rem; }
+    .hero p { max-width: 75ch; margin: 0; color: var(--ink-soft); font-size: clamp(1rem, 2vw, 1.15rem); }
+    .hero-meta { margin-top: 1.2rem; color: #4b5563; font-size: 0.95rem; }
+
+    .sticky-actions { position: sticky; top: 0; z-index: 20; margin: 1rem 0; backdrop-filter: blur(8px); background: rgba(255, 255, 255, 0.85); border: 1px solid var(--line); border-radius: 999px; box-shadow: 0 8px 24px rgba(15, 47, 95, 0.12); padding: 0.45rem; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+    .btn { border: 1px solid var(--blue-800); background: var(--blue-800); color: #fff; text-decoration: none; font-weight: 600; border-radius: 999px; padding: 0.62rem 1rem; display: inline-flex; align-items: center; gap: 0.45rem; transition: background var(--transition), transform var(--transition), border-color var(--transition); cursor: pointer; font: inherit; }
+    .btn:hover, .btn:focus-visible { background: var(--blue-900); border-color: var(--blue-900); transform: translateY(-1px); outline: none; }
+    .btn.secondary { background: #fff; color: var(--blue-900); }
+    .btn.secondary:hover, .btn.secondary:focus-visible { background: #f2f6fc; }
+
+    .modes-wrap { margin-top: 1.8rem; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(1rem, 3vw, 1.6rem); box-shadow: var(--shadow); }
+    .modes-wrap h2 { color: var(--blue-900); font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 0.9rem; }
+    .mode-tabs { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1rem; border-bottom: 1px solid var(--line); padding-bottom: 0.9rem; }
+    .mode-tab { border: 1px solid #b8c8df; border-radius: 999px; padding: 0.55rem 0.95rem; background: #f9fbff; color: var(--blue-900); font-weight: 600; cursor: pointer; }
+    .mode-tab[aria-selected="true"] { background: var(--blue-900); color: #fff; border-color: var(--blue-900); }
+
+    .mode-panel { display: none; animation: fade 220ms ease; }
+    .mode-panel.active { display: block; }
+    @keyframes fade { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: translateY(0); } }
+
+    .viewer-card { background: #fff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+    .viewer-topbar { background: #f8fafc; border-bottom: 1px solid var(--line); padding: 0.8rem 1rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.8rem; }
+    .viewer-title { font-weight: 700; color: var(--blue-900); }
+    .viewer-area { padding: clamp(0.6rem, 2vw, 1rem); background: #eaf0f8; }
+    .pdf-frame { border: 1px solid #c9d4e4; border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 10px 24px rgba(16, 24, 40, 0.15); }
+    .pdf-embed { width: 100%; min-height: min(78vh, 980px); height: 78vh; border: 0; display: block; background: #fff; }
+
+    .split-stage { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .split-stage .pdf-embed { min-height: 68vh; height: 70vh; }
+    .mobile-stage { display: grid; gap: 1rem; }
+
+    .placeholder-cards { margin-top: 1rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .placeholder { border: 1px solid var(--line); border-radius: 12px; background: #fff; padding: 1rem; text-decoration: none; color: inherit; min-height: 120px; position: relative; overflow: hidden; }
+    .placeholder::before { content: ""; position: absolute; right: -24px; top: -24px; width: 100px; height: 100px; background: radial-gradient(circle, rgba(31, 90, 168, 0.18), rgba(31, 90, 168, 0)); }
+    .placeholder h3 { font-size: 1.1rem; margin-bottom: 0.35rem; color: var(--blue-900); }
+    .placeholder p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+
+    .cta-strip { margin-top: 1.8rem; background: var(--blue-900); color: #fff; border-radius: var(--radius); padding: clamp(1.2rem, 3vw, 1.9rem); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; box-shadow: var(--shadow); }
+    .cta-strip p { margin: 0; opacity: 0.95; max-width: 68ch; }
+
+    .local-footer { margin-top: 2rem; color: #4b5563; text-align: center; font-size: 0.9rem; }
+    .fallback-note { margin-top: 0.8rem; font-size: 0.92rem; color: #374151; background: #f8fafc; border: 1px dashed #b8c8df; border-radius: 8px; padding: 0.75rem; }
+
+    @media (max-width: 980px) {
+      .split-stage { grid-template-columns: 1fr; }
+      .sticky-actions { position: static; border-radius: 12px; }
+      .placeholder-cards { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .btn { width: 100%; justify-content: center; }
+      .viewer-topbar { flex-direction: column; align-items: flex-start; }
+      .pdf-embed { min-height: 62vh; height: 64vh; }
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body">
+<header id="bc-global-nav" aria-label="Global site navigation"></header>
+<main>
+  <section class="page-shell">
+    <section class="hero" aria-labelledby="hero-title">
+      <span class="kicker">The Blue Card &middot; Online Brochure Experience</span>
+      <h1 id="hero-title">Report to the Community</h1>
+      <p>Explore The Blue Card tri-fold community report in a refined, web-ready presentation designed for donors, partners, and supporters. The live brochure remains the centerpiece in every viewing mode below.</p>
+      <p class="hero-meta">Annual brochure presentation &mdash; view online, open full size, or download directly.</p>
+    </section>
+
+    <nav class="sticky-actions" aria-label="Quick brochure actions">
+      <a class="btn" href="https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf" target="_blank" rel="noopener noreferrer">Open in New Tab</a>
+      <a class="btn secondary" href="https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf" download>Download PDF</a>
+      <button class="btn secondary" type="button" id="fullscreen-btn">View Full Screen</button>
+      <a class="btn secondary" href="#preview-cards">Jump to Panel Previews</a>
+    </nav>
+
+    <section class="modes-wrap" aria-labelledby="modes-title">
+      <h2 id="modes-title">Choose a Viewing Mode</h2>
+      <div class="mode-tabs" role="tablist" aria-label="Brochure viewing modes">
+        <button class="mode-tab" id="tab-standard" role="tab" aria-controls="panel-standard" aria-selected="true">Standard View</button>
+        <button class="mode-tab" id="tab-presentation" role="tab" aria-controls="panel-presentation" aria-selected="false">Presentation View</button>
+        <button class="mode-tab" id="tab-mobile" role="tab" aria-controls="panel-mobile" aria-selected="false">Mobile View</button>
+      </div>
+
+      <section class="mode-panel active" id="panel-standard" role="tabpanel" aria-labelledby="tab-standard">
+        <div class="viewer-card" id="main-viewer">
+          <div class="viewer-topbar">
+            <div class="viewer-title">The Blue Card &mdash; Tri-Fold Report Brochure (Live PDF)</div>
+            <div><a class="btn secondary" href="https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf#page=1" target="_blank" rel="noopener noreferrer">Open Large Viewer</a></div>
+          </div>
+          <div class="viewer-area">
+            <div class="pdf-frame" id="fullscreen-target">
+              <iframe class="pdf-embed" title="The Blue Card Report to the Community PDF - Standard View" src="https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf#view=FitH"></iframe>
+            </div>
+            <p class="fallback-note">If your browser limits embedded PDF viewing, use the direct brochure link: <a href="https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf" target="_blank" rel="noopener noreferrer">Open / Download brochure PDF</a>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mode-panel" id="panel-presentation" role="tabpanel" aria-labelledby="tab-presentation">
+        <div class="viewer-card">
+          <div class="viewer-topbar"><div class="viewer-title">Presentation View &mdash; Side-by-Side Brochure Stage</div></div>
+          <div class="viewer-area split-stage">
+            <div class="pdf-frame"><iframe class="pdf-embed" title="The Blue Card Report PDF - Presentation Left Panel" src="https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf#page=1&amp;view=FitH"></iframe></div>
+            <div class="pdf-frame"><iframe class="pdf-embed" title="The Blue Card Report PDF - Presentation Right Panel" src="https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf#page=2&amp;view=FitH"></iframe></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mode-panel" id="panel-mobile" role="tabpanel" aria-labelledby="tab-mobile">
+        <div class="viewer-card mobile-stage">
+          <div class="viewer-topbar"><div class="viewer-title">Mobile View &mdash; Focused Reading + Fast Download</div></div>
+          <div class="viewer-area">
+            <div class="pdf-frame"><iframe class="pdf-embed" title="The Blue Card Report to the Community PDF - Mobile Friendly View" src="https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf#view=FitH"></iframe></div>
+            <div style="margin-top: 1rem; display:grid; gap:0.7rem;">
+              <a class="btn" href="https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf" target="_blank" rel="noopener noreferrer">Open Mobile-Optimized Reader</a>
+              <a class="btn secondary" href="https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf" download>Download Brochure Now</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="placeholder-cards" id="preview-cards" aria-label="Brochure panel previews">
+        <a class="placeholder" href="#main-viewer"><h3>Outside Panel</h3><p>Tri-fold exterior side preview card. Click to return to the primary brochure viewer.</p></a>
+        <a class="placeholder" href="#main-viewer"><h3>Inside Panel</h3><p>Tri-fold interior side preview card. Click to return to the primary brochure viewer.</p></a>
+      </div>
+    </section>
+
+    <section class="cta-strip" aria-label="Brochure call to action">
+      <div>
+        <h2 style="font-size: clamp(1.3rem, 3vw, 1.8rem); margin-bottom: 0.35rem;">Prefer a direct brochure link?</h2>
+        <p>Open the official PDF in a separate tab for browser-native controls, printing, and full-window reading.</p>
+      </div>
+      <a class="btn" href="https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf" target="_blank" rel="noopener noreferrer">Open Official Brochure PDF</a>
+    </section>
+
+    <div class="local-footer">
+      <p>This page is a custom web presentation wrapper for The Blue Card brochure PDF. All brochure content remains in the original source document.</p>
+    </div>
+  </section>
+</main>
+<footer id="bc-global-footer" aria-label="Global site footer"></footer>
+<script src="../global-layout.js" defer></script>
+<script>
+  (function () {
+    const tabs = Array.from(document.querySelectorAll('.mode-tab'));
+    const panels = Array.from(document.querySelectorAll('.mode-panel'));
+
+    function activateTab(tab) {
+      tabs.forEach((t) => t.setAttribute('aria-selected', String(t === tab)));
+      panels.forEach((panel) => {
+        panel.classList.toggle('active', panel.id === tab.getAttribute('aria-controls'));
+      });
+    }
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activateTab(tab));
+      tab.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+          event.preventDefault();
+          const dir = event.key === 'ArrowRight' ? 1 : -1;
+          const next = (index + dir + tabs.length) % tabs.length;
+          tabs[next].focus();
+          activateTab(tabs[next]);
+        }
+      });
+    });
+
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+    const fullscreenTarget = document.getElementById('fullscreen-target');
+
+    if (fullscreenBtn) {
+      fullscreenBtn.addEventListener('click', () => {
+        if (fullscreenTarget && fullscreenTarget.requestFullscreen) {
+          fullscreenTarget.requestFullscreen().catch(() => {
+            window.open('https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf', '_blank', 'noopener');
+          });
+        } else {
+          window.open('https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf', '_blank', 'noopener');
+        }
+      });
+    }
+  })();
+</script>
+</body>
+</html>
