@@ -265,15 +265,15 @@
   }
   .bluecard-nav-inner {
     padding: 0;
-    display: block;
+    display: none;
     min-height: 0;
   }
-  .bluecard-nav .menu {
-    display: none;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-  }
-  .bluecard-nav.is-open .menu {
+  .bluecard-nav.is-open .bluecard-nav-inner {
     display: block;
+  }
+  .bluecard-nav .menu {
+    display: block;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
   }
   .bluecard-nav .menu > li > a { border-bottom: 1px solid rgba(0,0,0,0.08); }
   .bluecard-nav .menu > li > a::after { display: none; }
