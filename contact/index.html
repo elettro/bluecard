@@ -6,9 +6,36 @@
   <title>Contact | The Blue Card</title>
   <link rel="stylesheet" href="../global-layout.css">
   <style>
-    .contact-page-shell { max-width: 1100px; margin: 0 auto; padding: 48px 20px 30px; }
-    .contact-page-shell h1 { margin: 0 0 12px; color: #003f7d; font: 700 clamp(2rem, 4vw, 3rem)/1.15 Arial, Helvetica, sans-serif; }
-    .contact-page-shell p { margin: 0; color: #3f4752; font-size: 1rem; line-height: 1.7; }
+    .contact-page-shell {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 20px 20px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    .contact-page-shell h1 {
+      margin: 0 0 12px;
+      color: #003f7d;
+      font: 700 clamp(2rem, 4vw, 3rem)/1.15 Arial, Helvetica, sans-serif;
+    }
+
+    .contact-page-shell p {
+      margin: 0 0 14px;
+      font-size: 1rem;
+    }
+
+    .contact-page-shell .bc-contact-label {
+      margin-top: 22px;
+      margin-bottom: 0;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .contact-page-shell .bc-contact-lines {
+      margin: 6px 0 0;
+    }
 
     /* Scoped to this section only */
     .bc-contact-section {
@@ -16,7 +43,7 @@
       background: #efefef;
       padding: 40px 20px 60px;
       max-width: 1100px;
-      margin: 36px auto 0;
+      margin: 0 auto;
     }
 
     .bc-contact-section h2 {
@@ -34,69 +61,127 @@
       margin: 0 0 28px;
     }
 
-    .bc-contact-section .bc-form { max-width: 760px; margin: 0 auto; }
-    .bc-contact-section .bc-form-status { text-align: center; margin-top: 16px; font-size: .95rem; min-height: 20px; }
+    /* Form fields */
+    .bc-contact-section .bc-form-group {
+      margin-bottom: 14px;
+    }
 
-    .bc-contact-section .bc-form-group { margin-bottom: 14px; }
-    .bc-contact-section .bc-form-group label { display: block; font-size: 0.95rem; color: #222; margin-bottom: 4px; }
+    .bc-contact-section .bc-form-group label {
+      display: block;
+      font-size: 0.95rem;
+      color: #222;
+      margin-bottom: 4px;
+    }
+
     .bc-contact-section .bc-form-group input[type="text"],
     .bc-contact-section .bc-form-group input[type="email"],
     .bc-contact-section .bc-form-group input[type="tel"],
     .bc-contact-section .bc-form-group textarea {
-      width: 100%; padding: 10px 14px; font-size: 0.95rem; font-family: Arial, Helvetica, sans-serif;
-      border: 1px solid #ccc; background: #fff; color: #555; box-sizing: border-box; outline: none;
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 0.95rem;
+      font-family: Arial, Helvetica, sans-serif;
+      border: 1px solid #ccc;
+      background: #fff;
+      color: #555;
+      box-sizing: border-box;
+      outline: none;
     }
-    .bc-contact-section .bc-form-group input:focus, .bc-contact-section .bc-form-group textarea:focus { border-color: #0057a8; }
-    .bc-contact-section .bc-form-group textarea { height: 130px; resize: vertical; }
 
+    .bc-contact-section .bc-form-group input:focus,
+    .bc-contact-section .bc-form-group textarea:focus {
+      border-color: #0057a8;
+    }
+
+    .bc-contact-section .bc-form-group textarea {
+      height: 130px;
+      resize: vertical;
+    }
+
+    /* Submit button */
     .bc-contact-section .bc-submit-btn {
-      display: block; margin: 24px auto 0; background: #111; color: #fff; font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.9rem; font-weight: bold; letter-spacing: 0.08em; text-transform: uppercase; border: none;
-      padding: 14px 36px; cursor: pointer; transition: background 0.2s;
+      display: block;
+      margin: 24px auto 0;
+      background: #111;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.9rem;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      padding: 14px 36px;
+      cursor: pointer;
+      transition: background 0.2s;
     }
-    .bc-contact-section .bc-submit-btn:hover { background: #0057a8; }
 
-    .bc-contact-section .bc-map-heading { margin-top: 54px; margin-bottom: 16px; }
-    .bc-contact-section .bc-map-wrapper { width: 100%; height: 450px; border: none; }
-    .bc-contact-section .bc-map-wrapper iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .bc-contact-section .bc-submit-btn:hover {
+      background: #0057a8;
+    }
+
+    /* Map section */
+    .bc-contact-section .bc-map-heading {
+      margin-top: 54px;
+      margin-bottom: 16px;
+    }
+
+    .bc-contact-section .bc-map-wrapper {
+      width: 100%;
+      height: 450px;
+      border: none;
+    }
+
+    .bc-contact-section .bc-map-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
   </style>
 </head>
 <body class="bg-background text-on-surface font-body">
 <header id="bc-global-nav" aria-label="Global site navigation"></header>
 <main>
   <section class="contact-page-shell">
-    <h1>Contact The Blue Card</h1>
-    <p>We are here to answer your questions and help you connect with the right Blue Card team member.</p>
+    <h1>Contact</h1>
+    <p>Whether you are a potential supporter or client, or if you seek additional information regarding The Blue Card’s programs to help others in your family or community, we look forward to hearing from you.</p>
+
+    <p class="bc-contact-label">Address</p>
+    <p class="bc-contact-lines">The Blue Card, Inc.<br>171 Madison Avenue, Suite # 1405<br>New York, NY 10016</p>
+
+    <p class="bc-contact-lines">Phone: 212.239.2251<br>Fax: 212.594.6881</p>
+
+    <p class="bc-contact-lines">Email: info@bluecardfund.org</p>
+
+    <p class="bc-contact-label">Press</p>
+    <p class="bc-contact-lines">Joseph Wolkin<br>Email: joseph.wolkin@noysegroup.com</p>
   </section>
 
   <section class="bc-contact-section">
     <h2>Contact Form</h2>
     <p class="bc-form-subtext">Just send us all your questions by filling this contact form</p>
 
-    <form class="bc-form" id="bc-contact-form" action="mailto:Info@BlueCardFund.org" method="post" enctype="text/plain">
-      <div class="bc-form-group">
-        <label for="bc-name">Name</label>
-        <input type="text" id="bc-name" name="name" placeholder="Your Name" required>
-      </div>
+    <div class="bc-form-group">
+      <label for="bc-name">Name</label>
+      <input type="text" id="bc-name" name="name" placeholder="Your Name">
+    </div>
 
-      <div class="bc-form-group">
-        <label for="bc-email">E-mail</label>
-        <input type="email" id="bc-email" name="email" placeholder="Your E-mail" required>
-      </div>
+    <div class="bc-form-group">
+      <label for="bc-email">E-mail</label>
+      <input type="email" id="bc-email" name="email" placeholder="Your E-mail">
+    </div>
 
-      <div class="bc-form-group">
-        <label for="bc-phone">Phone</label>
-        <input type="tel" id="bc-phone" name="phone" placeholder="Your Number" required>
-      </div>
+    <div class="bc-form-group">
+      <label for="bc-phone">Phone</label>
+      <input type="tel" id="bc-phone" name="phone" placeholder="Your Number">
+    </div>
 
-      <div class="bc-form-group">
-        <label for="bc-message">Message</label>
-        <textarea id="bc-message" name="message" placeholder="Your Text" required></textarea>
-      </div>
+    <div class="bc-form-group">
+      <label for="bc-message">Message</label>
+      <textarea id="bc-message" name="message" placeholder="Your Text"></textarea>
+    </div>
 
-      <button class="bc-submit-btn" type="submit">SEND YOUR MESSAGE</button>
-      <p class="bc-form-status" id="bc-form-status" role="status" aria-live="polite"></p>
-    </form>
+    <button class="bc-submit-btn" type="button">SEND YOUR MESSAGE</button>
 
     <h2 class="bc-map-heading">Location on Map</h2>
 
@@ -113,24 +198,5 @@
 </main>
 <footer id="bc-global-footer" aria-label="Global site footer"></footer>
 <script src="../global-layout.js" defer></script>
-<script>
-  (() => {
-    const form = document.getElementById('bc-contact-form');
-    const status = document.getElementById('bc-form-status');
-    if (!form || !status) return;
-
-    form.addEventListener('submit', (event) => {
-      if (!form.checkValidity()) {
-        event.preventDefault();
-        status.textContent = 'Please complete all required fields before sending.';
-        status.style.color = '#b00020';
-        return;
-      }
-
-      status.textContent = 'Opening your email client to send the message...';
-      status.style.color = '#0b56a4';
-    });
-  })();
-</script>
 </body>
 </html>
