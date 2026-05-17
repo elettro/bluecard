@@ -256,8 +256,8 @@
         ${speaker.title ? `<p class="speaker-modal-title">${escapeHtml(speaker.title)}</p>` : ''}
       </header>
       ${image1 ? `<img class="speaker-modal-hero" src="${image1}" alt="${escapeHtml(speaker.name)}">` : ''}
-      ${splitBioWithImage(body, image2, speaker.name)}
       <button class="speaker-share-button" type="button">Share Profile</button>
+      ${splitBioWithImage(body, image2, speaker.name)}
     `;
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
