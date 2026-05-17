@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | The Blue Card</title>
+  <link rel="stylesheet" href="../global-layout.css" />
+</head>
+<body>
+<header id="bc-global-nav" aria-label="Global site navigation"></header>
+<main>
+<div class="bc-terms-safe">
+  <style>
+    .bc-terms-safe {
+      --bc-bg: #f4f8fd;
+      --bc-card: #ffffff;
+      --bc-border: #d8e3f0;
+      --bc-text: #17324d;
+      --bc-muted: #59708a;
+      --bc-blue: #0f4c97;
+      --bc-blue-dark: #0a3870;
+      --bc-accent: #eaf2fb;
+      --bc-shadow: 0 18px 48px rgba(15, 76, 151, 0.12);
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--bc-text);
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding: 34px 16px;
+      position: relative;
+      z-index: 1;
+      box-sizing: border-box;
+      background: linear-gradient(180deg, #f7fbff 0%, #eef5fc 100%);
+    }
+    .bc-terms-safe, .bc-terms-safe * {
+      box-sizing: border-box;
+    }
+    .bc-terms-safe__outer {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+    .bc-terms-safe__hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      padding: 34px 34px 28px;
+      background:
+        linear-gradient(135deg, rgba(10,56,112,0.98), rgba(15,76,151,0.95)),
+        radial-gradient(circle at top right, rgba(255,255,255,0.18), transparent 42%);
+      box-shadow: var(--bc-shadow);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .bc-terms-safe__hero:before {
+      content: "";
+      position: absolute;
+      inset: auto -40px -40px auto;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(255,255,255,0.16), transparent 68%);
+      pointer-events: none;
+    }
+    .bc-terms-safe__eyebrow {
+      display: inline-block;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .bc-terms-safe__hero h1 {
+      margin: 0 0 10px;
+      color: #ffffff;
+      font-size: 48px;
+      line-height: 1.05;
+      font-weight: 700;
+    }
+    .bc-terms-safe__hero-sub {
+      margin: 0;
+      max-width: 760px;
+      color: rgba(255,255,255,0.92);
+      font-size: 17px;
+      line-height: 1.72;
+    }
+    .bc-terms-safe__meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .bc-terms-safe__meta-card {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      padding: 14px 16px;
+      backdrop-filter: blur(6px);
+    }
+    .bc-terms-safe__meta-label {
+      display: block;
+      color: rgba(255,255,255,0.76);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .bc-terms-safe__meta-value {
+      display: block;
+      color: #ffffff;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .bc-terms-safe__body {
+      margin-top: 22px;
+      background: var(--bc-card);
+      border: 1px solid var(--bc-border);
+      border-radius: 28px;
+      box-shadow: 0 14px 34px rgba(20, 51, 93, 0.08);
+      overflow: hidden;
+    }
+    .bc-terms-safe__overview {
+      padding: 24px 28px;
+      background: linear-gradient(180deg, #f7fbff 0%, #edf5fd 100%);
+      border-bottom: 1px solid var(--bc-border);
+    }
+    .bc-terms-safe__overview-title {
+      margin: 0 0 10px;
+      color: var(--bc-blue-dark);
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 700;
+    }
+    .bc-terms-safe__overview p {
+      margin: 0;
+      color: var(--bc-muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    .bc-terms-safe__content {
+      padding: 10px 28px 28px;
+    }
+    .bc-terms-safe__section {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--bc-border);
+    }
+    .bc-terms-safe__section:last-child {
+      border-bottom: 0;
+      padding-bottom: 8px;
+    }
+    .bc-terms-safe__section h2 {
+      margin: 0 0 12px;
+      color: var(--bc-blue-dark);
+      font-size: 28px;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+    .bc-terms-safe__section p {
+      margin: 0 0 14px;
+      color: var(--bc-text);
+      font-size: 16px;
+      line-height: 1.84;
+    }
+    .bc-terms-safe__section p:last-child {
+      margin-bottom: 0;
+    }
+    .bc-terms-safe__email {
+      color: var(--bc-blue-dark);
+      font-weight: 700;
+      word-break: break-word;
+    }
+    @media (max-width: 900px) {
+      .bc-terms-safe__meta {
+        grid-template-columns: 1fr;
+      }
+      .bc-terms-safe__hero h1 {
+        font-size: 40px;
+      }
+    }
+    @media (max-width: 767px) {
+      .bc-terms-safe {
+        padding: 22px 10px;
+      }
+      .bc-terms-safe__hero {
+        padding: 24px 20px 22px;
+        border-radius: 22px;
+      }
+      .bc-terms-safe__hero h1 {
+        font-size: 34px;
+      }
+      .bc-terms-safe__hero-sub {
+        font-size: 16px;
+      }
+      .bc-terms-safe__body {
+        border-radius: 22px;
+      }
+      .bc-terms-safe__overview {
+        padding: 20px;
+      }
+      .bc-terms-safe__content {
+        padding: 6px 20px 22px;
+      }
+      .bc-terms-safe__section h2 {
+        font-size: 24px;
+      }
+      .bc-terms-safe__section p {
+        font-size: 15px;
+      }
+    }
+  </style>
+
+  <div class="bc-terms-safe__outer">
+    <div class="bc-terms-safe__hero">
+      <div class="bc-terms-safe__eyebrow">Legal Page</div>
+      <h1>Privacy Policy</h1>
+      <p class="bc-terms-safe__hero-sub">How The Blue Card collects, uses, and protects your personal information.</p>
+      <div class="bc-terms-safe__meta">
+        <div class="bc-terms-safe__meta-card">
+          <span class="bc-terms-safe__meta-label">Organization</span>
+          <span class="bc-terms-safe__meta-value">The Blue Card Inc</span>
+        </div>
+        <div class="bc-terms-safe__meta-card">
+          <span class="bc-terms-safe__meta-label">Effective Date</span>
+          <span class="bc-terms-safe__meta-value">October 1, 2024</span>
+        </div>
+        <div class="bc-terms-safe__meta-card">
+          <span class="bc-terms-safe__meta-label">Document Type</span>
+          <span class="bc-terms-safe__meta-value">Privacy Policy</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bc-terms-safe__body">
+      <div class="bc-terms-safe__overview">
+        <div class="bc-terms-safe__overview-title">Overview</div>
+        <p>This page explains what information The Blue Card collects, how it is used, and what options and protections are available to you.</p>
+      </div>
+      <div class="bc-terms-safe__content">
+  <section class="bc-terms-safe__section">
+    <h2>Overview</h2>
+    <p>Your privacy is important to us, we recognize the need for appropriate protections and management of your personal information that is provided to us, by means of our secured website and offline.</p>
+    <p>The Blue Card has therefore established this Privacy Policy to assist you to understand what information we collect and how that information is used.</p>
+  </section>
+  <section class="bc-terms-safe__section">
+    <h2>What personally identifiable information does The Blue Card collect from you?</h2>
+    <p>The Blue Card collects information an individual provides via snail mail (such as via forms or letters); The Information that we gather may include an individual’s name, address, telephone number, email address, or other personal information.</p>
+    <p>This information is not provided to third parties.</p>
+    <p>Additionally, The Blue Card Web site is owned and controlled by The Blue Card. By accessing this Web site, you acknowledge the terms and conditions set forth herein. We reserve the right to change these policies from time to time, without notice and at our sole discretion.</p>
+    <p>In general, you can visit The Blue Card Web site without telling us who you are or revealing any personal information about yourself. We track visiting domains, internet addresses of the domains from which people visit us to track a user’s session and the user’s browser also lets us know the type of computer and operating system being used. This allows us to analyze the information as to which parts of our site users spend their time and their length of stay but does not give us any personal information about the user. Specifically, a user’s session will be tracked, but the user will be anonymous. The Blue card does not knowingly collect or maintain any personal information from children under the age of 13. In addition, no part of our sites is designed with the purpose of attracting any person under age 13.</p>
+    <p>Sometimes however, we will ask you to voluntarily provide information about yourself. Generally this information is requested when you are asked for one or more of the following: 1) signing up for a mailing list 2) filling out a contact form. Occasionally, we may use this information when we notify you about important changes to the Web site. The Blue Card does not collect any personally identifiable financial or health-related information. However, you may be asked to provide information, including but not limited to, your name, e-mail address and postal address.</p>
+  </section>
+  <section class="bc-terms-safe__section">
+    <h2>How does The Blue Card collect information and use information collected?</h2>
+    <p>The Blue Card is the owner of the information collected on this site. We will not sell, share, trade or rent this information to others in ways different from what is disclosed in this privacy policy. The aforementioned is applicable to both online and offline donors. The Blue Card collects information from several points on our website.</p>
+    <p>Unless you otherwise consent, we will use your personal information only for the purpose for which it is submitted, such as to reply to your emails, handle your complaints, and process billing and business requests related to program participation, and we will use such information to provide operational notices, in program record-keeping and to conduct research on industry marketplace practices. Our research may lead to the publication of aggregate demographical data but will not result in the reporting or publication of any personal information provided to us. At certain points where personal information is collected on our site, there may be a box where you may indicate you would like to be on a mailing list to receive information about other Blue Card programs and services and about ways to support The Blue Card.</p>
+  </section>
+  <section class="bc-terms-safe__section">
+    <h2>What is The Blue Card’s policy regarding links to other Web sites and third parties?</h2>
+    <p>The Blue Card's Web site may contain links to other sites on the Internet, which are owned and operated by The Blue Card's partners, customers, advertisers and other third parties. The Blue Card has not reviewed and will not review these Web sites, which are linked to The Blue Card Web site. The Blue Card has no control over such external sites, does not endorse any external sites and is not responsible or liable for any content, advertising, products, or other materials that may appear on or may be available on, from or through any such external site. We encourage our users to be aware that when they leave our site or click on a link to another site from our site, that they should read the privacy statements of each and every Web site that collects personally identifiable information. The Blue Card is not responsible for the privacy practices of such other sites or any other Web sites that are linked to our site that may collect personally identifiable information about you. The Blue Card's Privacy Policy does not cover the data collection practices of those Web sites.</p>
+  </section>
+  <section class="bc-terms-safe__section">
+    <h2>What options do you have regarding collection, use and distribution of your information?</h2>
+    <p>If you provide us with your e-mail or postal address, or have done so in the past, we may use it to send you information on the latest Blue Card offerings, promotions, and events. We may use information you have given to us, for example, to measure consumer interest in our various services, or to inform you about new services. These offers may be based on information you provided in your initial transaction with us or in surveys. The Blue Card provides customers with an easy means to decline to receive such e-mail offers. All e-mail offers that you receive from The Blue Card will tell you how to decline further e-mail offers.</p>
+  </section>
+  <section class="bc-terms-safe__section">
+    <h2>What security measures does The Blue Card have in place to protect personal information?</h2>
+    <p>This Web site takes every precaution to protect our users' information. All of our user’s information is restricted in our offices. Only employees who need the information to perform a specific job are granted access to personally identifiable information. The servers used to store personally identifiable information are kept in a secure environment. If you have any questions about the security at our Web site, you can contact The Blue Card at (212)239-2251.</p>
+  </section>
+  <section class="bc-terms-safe__section">
+    <h2>How can visitors to our website review, correct, and/or update their personal information?</h2>
+    <p>If a user's personally identifiable information changes (such as a zip code), or if a user no longer desires our Service, we will make our best effort to provide a way to correct, update or remove that user's personal data from our records, but this may require additional effort as Blue Card works to synchronize all customer data sources. To make changes to personal information, users can e-mail info@bluecardfund.org. Users can also reach us at (212) 239-2251.</p>
+  </section>
+</div>
+    </div>
+  </div>
+</div>
+</main>
+<footer id="bc-global-footer" aria-label="Global site footer"></footer>
+<script src="../global-layout.js"></script>
+</body>
+</html>
