@@ -266,6 +266,7 @@
   .bluecard-nav-inner {
     padding: 0;
     display: block;
+    min-height: 0;
   }
   .bluecard-nav .menu {
     display: none;
