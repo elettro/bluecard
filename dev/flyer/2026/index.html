@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 Dublin Marathon Flyer Review | The Blue Card</title>
+  <meta name="description" content="Internal review page for The Blue Card 2026 Dublin Marathon flyer options.">
+  <link rel="stylesheet" href="../../../global-layout.css">
+  <style>
+    :root {
+      --review-navy: #082b4f;
+      --review-navy-deep: #061f3a;
+      --review-blue: #0072ce;
+      --review-blue-bright: #1697e8;
+      --review-sky: #eaf6ff;
+      --review-soft: #f5f8fc;
+      --review-text: #1d3147;
+      --review-muted: #5f6f82;
+      --review-border: #d9e6f2;
+      --review-card-shadow: 0 20px 55px rgba(8, 43, 79, 0.12);
+    }
+
+    .flyer-review-page {
+      background: linear-gradient(180deg, #f6faff 0%, #ffffff 34%, #f7f9fc 100%);
+      color: var(--review-text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      padding: 42px 20px 76px;
+    }
+
+    .flyer-review-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .flyer-review-hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(22, 151, 232, 0.35), transparent 30%),
+        linear-gradient(135deg, var(--review-navy-deep), var(--review-navy) 58%, #0b5fa5);
+      color: #ffffff;
+      padding: clamp(34px, 7vw, 72px);
+      box-shadow: var(--review-card-shadow);
+    }
+
+    .flyer-review-hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -130px auto;
+      width: 320px;
+      height: 320px;
+      border: 36px solid rgba(255, 255, 255, 0.10);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .flyer-review-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 16px;
+      border: 1px solid rgba(255, 255, 255, 0.38);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.13);
+      padding: 7px 14px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .flyer-review-hero h1 {
+      max-width: 820px;
+      margin: 0;
+      font-size: clamp(2.35rem, 5vw, 4.6rem);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+    }
+
+    .flyer-review-hero p {
+      max-width: 720px;
+      margin: 20px 0 0;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: clamp(1.05rem, 2.1vw, 1.35rem);
+    }
+
+    .event-info-card {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.75fr) minmax(0, 1.25fr);
+      gap: clamp(18px, 4vw, 34px);
+      align-items: stretch;
+      margin: 28px 0 34px;
+      border: 1px solid var(--review-border);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: var(--review-card-shadow);
+      overflow: hidden;
+    }
+
+    .event-info-heading {
+      background: linear-gradient(135deg, var(--review-blue), var(--review-navy));
+      color: #ffffff;
+      padding: clamp(24px, 4vw, 34px);
+    }
+
+    .event-info-heading h2 {
+      margin: 0;
+      font-size: clamp(1.45rem, 3vw, 2.15rem);
+      line-height: 1.15;
+    }
+
+    .event-info-heading p {
+      margin: 10px 0 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 700;
+    }
+
+    .event-info-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px 22px;
+      margin: 0;
+      padding: clamp(24px, 4vw, 34px);
+    }
+
+    .event-info-list div {
+      border-left: 4px solid var(--review-blue-bright);
+      padding-left: 14px;
+    }
+
+    .event-info-list dt {
+      margin: 0 0 2px;
+      color: var(--review-muted);
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .event-info-list dd {
+      margin: 0;
+      color: var(--review-navy-deep);
+      font-size: 1.03rem;
+      font-weight: 700;
+    }
+
+    .event-info-list .event-purpose {
+      grid-column: 1 / -1;
+    }
+
+    .flyer-section-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin: 0 0 18px;
+    }
+
+    .flyer-section-heading h2,
+    .review-notes h2 {
+      margin: 0;
+      color: var(--review-navy-deep);
+      font-size: clamp(1.75rem, 3vw, 2.45rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .flyer-section-heading p {
+      max-width: 430px;
+      margin: 0;
+      color: var(--review-muted);
+      font-size: 1rem;
+    }
+
+    .flyer-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .flyer-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--review-border);
+      border-radius: 22px;
+      background: #ffffff;
+      box-shadow: 0 16px 40px rgba(8, 43, 79, 0.10);
+      overflow: hidden;
+    }
+
+    .flyer-card:nth-child(5) {
+      grid-column: 1 / -1;
+      max-width: 576px;
+      justify-self: center;
+      width: 100%;
+    }
+
+    .flyer-card h3 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0;
+      padding: 20px 22px;
+      background: var(--review-soft);
+      color: var(--review-navy-deep);
+      font-size: 1.25rem;
+    }
+
+    .flyer-card h3::after {
+      content: "Flyer concept";
+      border-radius: 999px;
+      background: var(--review-sky);
+      color: var(--review-blue);
+      padding: 5px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .flyer-preview {
+      background: linear-gradient(180deg, #eef5fb, #ffffff);
+      padding: clamp(14px, 2.6vw, 24px);
+    }
+
+    .flyer-preview img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid #dce7f0;
+      border-radius: 16px;
+      background: #ffffff;
+      box-shadow: 0 16px 34px rgba(8, 43, 79, 0.12);
+    }
+
+    .flyer-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: auto;
+      padding: 0 22px 22px;
+    }
+
+    .flyer-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+    }
+
+    .flyer-button:focus-visible {
+      outline: 3px solid rgba(22, 151, 232, 0.45);
+      outline-offset: 3px;
+    }
+
+    .flyer-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(8, 43, 79, 0.16);
+    }
+
+    .flyer-button-primary {
+      background: var(--review-blue);
+      color: #ffffff;
+    }
+
+    .flyer-button-secondary {
+      border: 2px solid var(--review-blue);
+      background: #ffffff;
+      color: var(--review-blue);
+    }
+
+    .review-notes {
+      margin-top: 34px;
+      border: 1px solid var(--review-border);
+      border-radius: 22px;
+      background: linear-gradient(135deg, #ffffff, var(--review-sky));
+      box-shadow: 0 14px 34px rgba(8, 43, 79, 0.09);
+      padding: clamp(24px, 4vw, 36px);
+    }
+
+    .review-notes p {
+      max-width: 860px;
+      margin: 12px 0 0;
+      color: var(--review-muted);
+      font-size: 1.08rem;
+    }
+
+    @media (max-width: 860px) {
+      .event-info-card,
+      .event-info-list,
+      .flyer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .flyer-card:nth-child(5) {
+        grid-column: auto;
+        max-width: none;
+      }
+
+      .flyer-section-heading {
+        display: block;
+      }
+
+      .flyer-section-heading p {
+        margin-top: 8px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .flyer-review-page {
+        padding: 24px 14px 54px;
+      }
+
+      .flyer-review-hero,
+      .event-info-card,
+      .flyer-card,
+      .review-notes {
+        border-radius: 18px;
+      }
+
+      .flyer-card h3 {
+        display: block;
+      }
+
+      .flyer-card h3::after {
+        display: inline-block;
+        margin-top: 8px;
+      }
+
+      .flyer-actions {
+        grid-template-columns: 1fr;
+        padding: 0 16px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="bc-global-nav"></header>
+  <main class="flyer-review-page">
+    <div class="flyer-review-wrap">
+      <section class="flyer-review-hero" aria-labelledby="flyer-review-title">
+        <p class="flyer-review-label">Internal Review</p>
+        <h1 id="flyer-review-title">2026 Dublin Marathon Flyer Options</h1>
+        <p>Please review the flyer concepts below for The Blue Card’s 2026 Dublin Marathon campaign.</p>
+      </section>
+
+      <section class="event-info-card" aria-labelledby="event-info-title">
+        <div class="event-info-heading">
+          <h2 id="event-info-title">2026 Dublin Marathon</h2>
+          <p>Team Blue Card campaign overview</p>
+        </div>
+        <dl class="event-info-list">
+          <div>
+            <dt>Event</dt>
+            <dd>2026 Dublin Marathon</dd>
+          </div>
+          <div>
+            <dt>Date</dt>
+            <dd>Sunday, October 25, 2026</dd>
+          </div>
+          <div>
+            <dt>Location</dt>
+            <dd>Dublin, Ireland</dd>
+          </div>
+          <div>
+            <dt>Start</dt>
+            <dd>Leeson Street Lower</dd>
+          </div>
+          <div>
+            <dt>Finish</dt>
+            <dd>Mount Street Upper</dd>
+          </div>
+          <div class="event-purpose">
+            <dt>Purpose</dt>
+            <dd>Running with Team Blue Card to support Holocaust survivors in need.</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section aria-labelledby="flyer-options-title">
+        <div class="flyer-section-heading">
+          <h2 id="flyer-options-title">Flyer Options</h2>
+          <p>Select “Open Full Size” for close review, or download any image for offline comments.</p>
+        </div>
+
+        <div class="flyer-grid">
+          <article class="flyer-card">
+            <h3>Option 1</h3>
+            <div class="flyer-preview">
+              <img src="bluecard-2026-dublin-marathon- (2).png" alt="Option 1 flyer concept for The Blue Card 2026 Dublin Marathon campaign" loading="lazy">
+            </div>
+            <div class="flyer-actions">
+              <a class="flyer-button flyer-button-primary" href="bluecard-2026-dublin-marathon- (2).png" target="_blank" rel="noopener noreferrer">Open Full Size</a>
+              <a class="flyer-button flyer-button-secondary" href="bluecard-2026-dublin-marathon- (2).png" download>Download Image</a>
+            </div>
+          </article>
+
+          <article class="flyer-card">
+            <h3>Option 2</h3>
+            <div class="flyer-preview">
+              <img src="bluecard-2026-dublin-marathon- (3).png" alt="Option 2 flyer concept for The Blue Card 2026 Dublin Marathon campaign" loading="lazy">
+            </div>
+            <div class="flyer-actions">
+              <a class="flyer-button flyer-button-primary" href="bluecard-2026-dublin-marathon- (3).png" target="_blank" rel="noopener noreferrer">Open Full Size</a>
+              <a class="flyer-button flyer-button-secondary" href="bluecard-2026-dublin-marathon- (3).png" download>Download Image</a>
+            </div>
+          </article>
+
+          <article class="flyer-card">
+            <h3>Option 3</h3>
+            <div class="flyer-preview">
+              <img src="bluecard-2026-dublin-marathon- (4).png" alt="Option 3 flyer concept for The Blue Card 2026 Dublin Marathon campaign" loading="lazy">
+            </div>
+            <div class="flyer-actions">
+              <a class="flyer-button flyer-button-primary" href="bluecard-2026-dublin-marathon- (4).png" target="_blank" rel="noopener noreferrer">Open Full Size</a>
+              <a class="flyer-button flyer-button-secondary" href="bluecard-2026-dublin-marathon- (4).png" download>Download Image</a>
+            </div>
+          </article>
+
+          <article class="flyer-card">
+            <h3>Option 4</h3>
+            <div class="flyer-preview">
+              <img src="bluecard-2026-dublin-marathon- (5).png" alt="Option 4 flyer concept for The Blue Card 2026 Dublin Marathon campaign" loading="lazy">
+            </div>
+            <div class="flyer-actions">
+              <a class="flyer-button flyer-button-primary" href="bluecard-2026-dublin-marathon- (5).png" target="_blank" rel="noopener noreferrer">Open Full Size</a>
+              <a class="flyer-button flyer-button-secondary" href="bluecard-2026-dublin-marathon- (5).png" download>Download Image</a>
+            </div>
+          </article>
+
+          <article class="flyer-card">
+            <h3>Option 5</h3>
+            <div class="flyer-preview">
+              <img src="bluecard-2026-dublin-marathon- (6).png" alt="Option 5 flyer concept for The Blue Card 2026 Dublin Marathon campaign" loading="lazy">
+            </div>
+            <div class="flyer-actions">
+              <a class="flyer-button flyer-button-primary" href="bluecard-2026-dublin-marathon- (6).png" target="_blank" rel="noopener noreferrer">Open Full Size</a>
+              <a class="flyer-button flyer-button-secondary" href="bluecard-2026-dublin-marathon- (6).png" download>Download Image</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="review-notes" aria-labelledby="review-notes-title">
+        <h2 id="review-notes-title">Review Notes</h2>
+        <p>Please compare the flyer options for clarity, readability, event accuracy, brand consistency, and overall visual impact. Once a preferred direction is selected, final text and image adjustments can be made.</p>
+      </section>
+    </div>
+  </main>
+  <footer id="bc-global-footer" aria-label="Global site footer"></footer>
+  <script src="../../../global-layout.js" defer></script>
+</body>
+</html>
