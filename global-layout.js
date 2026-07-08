@@ -39,7 +39,7 @@
     <li class="menu-item-has-children"><a href="https://elettro.github.io/bluecard/how-we-help">How We Help</a><ul class="sub-menu"><li><a href="/bluecard/emergency-cash-assistance/">Emergency Cash Assistance</a></li><li><a href="/bluecard/dental-and-medical-assistance/">Dental and Medical Assistance</a></li><li><a href="/bluecard/telephone-response-system/">Telephone Response System</a></li><li><a href="/bluecard/ongoing-assistance/">Ongoing Assistance</a></li><li><a href="/bluecard/medication-assistance-grant/">Medication Assistance Grant</a></li><li><a href="/bluecard/cost-plus-drug-company/">Cost Plus Drug Company</a></li><li><a href="/bluecard/siggi-b-wilzig-fighting-cancer-together-program/">Siggi B. Wilzig Fighting Cancer Together Program</a></li><li><a href="/bluecard/health-and-wellbeing/">Health &amp; Wellbeing</a></li><li><a href="/bluecard/natural-disaster-relief/">Natural Disaster Relief</a></li></ul></li>
     <li class="menu-item-has-children"><a href="/bluecard/apply-here/">Apply Here</a><ul class="sub-menu"><li><a href="/bluecard/new-applicant/">New Applicant</a></li><li><a href="/bluecard/current-beneficiaries/">Current Beneficiaries</a></li><li><a href="/bluecard/referring-agencies/">Referring Agencies</a></li><li><a href="/bluecard/resources/">Resources</a></li></ul></li>
     <li class="menu-item-has-children"><a href="/bluecard/become-involved/">Become Involved</a><ul class="sub-menu"><li><a href="/bluecard/donate/">Donate</a></li><li><a href="/bluecard/bnei-mitzvah-simcha-project">B’nei Mitzvah Simcha Project</a></li><li><a href="/bluecard/team-blue-card/">Team Blue Card</a></li><li><a href="/bluecard/young-leadership/">Young Leadership</a></li><li><a href="/bluecard/volunteering/">Volunteering</a></li><li><a href="/bluecard/virtual-volunteering/">Virtual Volunteering</a></li><li><a href="${UPCOMING_EVENTS_URL}">Upcoming Events</a></li><li><a href="https://bluecardcoffee.org/" target="_blank" rel="noopener noreferrer">Blue Card Coffee</a></li></ul></li>
-    <li class="menu-item-has-children"><a href="/bluecard/education-outreach/">Holocaust Education</a><ul class="sub-menu"><li><a href="/bluecard/interactive-hologram/">Interactive Hologram</a></li><li><a href="/bluecard/education-outreach/">Education &amp; Outreach</a></li><li class="menu-item-has-children"><a href="/bluecard/speakers-bureau/">Speakers Bureau</a><ul class="sub-menu"><li><a href="/bluecard/speakers-bureau/#fred-schoenfeld">Fred Schoenfeld</a></li><li><a href="/bluecard/speakers-bureau/#tom-jacobson">Tom Jacobson</a></li><li><a href="/bluecard/speakers-bureau/#inge-auerbacher">Inge Auerbacher</a></li><li><a href="/bluecard/speakers-bureau/#robert-brajer">Robert Brajer</a></li><li><a href="/bluecard/speakers-bureau/#lillian-feintuch">Lillian Feintuch</a></li><li><a href="/bluecard/speakers-bureau/#dr-william-freund">Dr. William Freund</a></li><li><a href="/bluecard/speakers-bureau/#goldie-jacoby">Goldie Jacoby</a></li><li><a href="/bluecard/speakers-bureau/#dolly-rabinovich">Dolly Rabinovich</a></li><li><a href="/bluecard/speakers-bureau/#olga-spiegel">Olga Spiegel</a></li><li><a href="/bluecard/speakers-bureau/#sami-steigmann">Sami Steigmann</a></li><li><a href="/bluecard/speakers-bureau/#sonia-warshawski">Sonia Warshawski</a></li></ul></li><li><a href="/bluecard/special-tribute/index.html">Special Tribute</a></li></ul></li>
+    <li class="menu-item-has-children"><a href="/bluecard/education-outreach/">Holocaust Education</a><ul class="sub-menu"><li><a href="/bluecard/interactive-hologram/">Interactive Hologram</a></li><li><a href="/bluecard/education-outreach/">Education &amp; Outreach</a></li><li><a href="/bluecard/speakers-bureau/">Speakers Bureau</a></li><li><a href="/bluecard/special-tribute/index.html">Special Tribute</a></li></ul></li>
     <li class="menu-item-has-children"><a class="bluecard-nav-parent" href="#" aria-haspopup="true">Media</a><ul class="sub-menu"><li><a href="/bluecard/press/">Press</a></li><li><a href="/bluecard/podcast/">Podcast</a></li><li><a href="/bluecard/video-links/">Video Library</a></li></ul></li>
     <li class="menu-item-has-children"><a href="/bluecard/contact/">Contact</a><ul class="sub-menu"><li><a href="/bluecard/sitemap/">Site Map</a></li></ul></li>
     </ul>
@@ -65,30 +65,6 @@
       });
     });
 
-
-    var updateSpeakersDropdown = function (speakers) {
-      if (!Array.isArray(speakers) || !speakers.length) return;
-      var list = navTarget.querySelector('.menu a[href="' + SPEAKERS_BUREAU_URL + '"]');
-      if (!list) return;
-      var parentLi = list.parentElement;
-      if (!parentLi) return;
-      var sub = parentLi.querySelector(':scope > .sub-menu');
-      if (!sub) {
-        sub = document.createElement('ul');
-        sub.className = 'sub-menu';
-        parentLi.appendChild(sub);
-      }
-      sub.innerHTML = speakers.map(function (speaker) {
-        return '<li><a href="' + SPEAKERS_BUREAU_URL + '#' + speaker.slug + '">' + speaker.name + '</a></li>';
-      }).join('');
-    };
-    window.addEventListener('bluecard:speakers-loaded', function (event) {
-      if (!event.detail) return;
-      updateSpeakersDropdown(event.detail);
-    });
-    if (Array.isArray(window.__bluecardSpeakers) && window.__bluecardSpeakers.length) {
-      updateSpeakersDropdown(window.__bluecardSpeakers);
-    }
 
     if (nav && navToggle) {
       navToggle.addEventListener('click', function () {
