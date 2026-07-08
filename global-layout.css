@@ -13,6 +13,7 @@
 }
 
 .bc-top-donate-btn {
+  grid-column: 2;
   display: block;
   width: min(100%, 360px);
   text-align: center;
@@ -30,6 +31,7 @@
 }
 
 .bc-top-contact {
+  grid-column: 3;
   justify-self: end;
   display: flex;
   align-items: center;
