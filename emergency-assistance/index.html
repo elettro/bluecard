@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emergency Assistance | The Blue Card</title>
+  <meta name="description" content="Emergency assistance from The Blue Card helps Holocaust survivors facing urgent hardship with housing, utilities, medical needs, food, disaster relief, and crisis support.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://elettro.github.io/bluecard/emergency-assistance/">
+  <meta property="og:title" content="Emergency Assistance | The Blue Card">
+  <meta property="og:description" content="The Blue Card provides emergency assistance for urgent needs affecting Holocaust survivors’ safety, stability, health, and daily living conditions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elettro.github.io/bluecard/emergency-assistance/">
+  <meta property="og:site_name" content="The Blue Card">
+  <meta property="og:image" content="https://elettro.github.io/bluecard/images/headers/who-we-are-header.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Emergency Assistance | The Blue Card">
+  <meta name="twitter:description" content="Emergency assistance for urgent needs affecting Holocaust survivors’ safety, stability, health, and daily living conditions.">
+  <meta name="twitter:image" content="https://elettro.github.io/bluecard/images/headers/who-we-are-header.jpg">
+  <link rel="stylesheet" href="/bluecard/global-layout.css" />
+  <style>
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #1c1c1c; background: #fff; }
+    .hero { position: relative; min-height: 420px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero::after { content:""; position:absolute; inset:0; background: rgba(8, 37, 69, 0.58); }
+    .hero-content { position: relative; z-index: 1; max-width: 980px; padding: 42px 24px; color: #fff; text-align: center; text-shadow: 0 6px 18px rgba(0,0,0,.35); }
+    .hero .eyebrow { display: inline-block; margin-bottom: 14px; color: #ffffff; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; }
+    .hero h1 { margin: 0; color: #fff; font-size: clamp(34px, 5vw, 64px); font-weight: 800; line-height: 1.02; }
+    .hero .byline { max-width: 780px; margin: 18px auto 0; color: #f2f7fd; font-size: clamp(18px, 2.2vw, 23px); line-height: 1.55; font-weight: 600; }
+
+    .assistance-body { background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%); padding: 72px 24px; color: #1c1c1c; }
+    .assistance-wrap { max-width: 1120px; margin: 0 auto; }
+    .assistance-card { background: #ffffff; border-radius: 22px; padding: 48px 52px; box-shadow: 0 18px 50px rgba(9, 42, 86, 0.08); border: 1px solid rgba(12, 73, 144, 0.08); position: relative; overflow: hidden; }
+    .assistance-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, #0d5cab 0%, #2d7fd3 100%); }
+    .section-intro { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(260px, 360px); gap: 36px; align-items: start; margin-bottom: 42px; }
+    .eyebrow { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #0d5cab; margin-bottom: 14px; }
+    h2 { font-size: 46px; line-height: 1.08; margin: 0 0 18px; color: #0b2341; font-weight: 800; }
+    .lead { font-size: 19px; line-height: 1.7; margin: 0 0 18px; color: #3a4654; max-width: 780px; }
+    .lead:last-child { margin-bottom: 0; }
+    .highlight-box { background: linear-gradient(180deg, #f2f7fd 0%, #eaf2fb 100%); border: 1px solid rgba(13, 92, 171, 0.12); border-radius: 18px; padding: 24px 24px 22px; }
+    .highlight-box h3 { margin: 0 0 10px; font-size: 18px; line-height: 1.3; color: #0b2341; font-weight: 700; }
+    .highlight-box p { margin: 0; font-size: 16px; line-height: 1.7; color: #415062; }
+    .content-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin-bottom: 28px; align-items: stretch; }
+    .content-panel, .cta-panel { background: #fbfcfe; border: 1px solid rgba(11, 35, 65, 0.08); border-radius: 18px; padding: 30px 30px 26px; height: 100%; box-sizing: border-box; }
+    .content-panel h3, .cta-panel h3 { margin: 0 0 16px; font-size: 30px; line-height: 1.2; color: #0b2341; font-weight: 800; }
+    .content-panel p, .cta-panel p { margin: 0 0 16px; font-size: 17px; line-height: 1.8; color: #303b47; }
+    .accent-line { width: 64px; height: 4px; border-radius: 999px; background: #0d5cab; margin-bottom: 20px; }
+    .checklist-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 22px 0 0; padding: 0; list-style: none; }
+    .checklist-grid li { position: relative; background: #ffffff; border: 1px solid rgba(13, 92, 171, 0.12); border-radius: 14px; padding: 14px 16px 14px 42px; color: #303b47; font-size: 16px; line-height: 1.45; box-shadow: 0 8px 18px rgba(9, 42, 86, 0.04); }
+    .checklist-grid li::before { content: ""; position: absolute; left: 16px; top: 18px; width: 12px; height: 7px; border-left: 3px solid #0d5cab; border-bottom: 3px solid #0d5cab; transform: rotate(-45deg); }
+    .content-panel .checklist-grid { grid-template-columns: 1fr; }
+    .cta-panel { background: linear-gradient(180deg, #ffffff 0%, #f4f8fd 100%); text-align: center; padding: 38px 30px; }
+    .cta-panel .accent-line { margin-left: auto; margin-right: auto; }
+    .button-row { margin-top: 24px; }
+    .blue-card-button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: 999px; background: #0d5cab; color: #fff; font-size: 16px; font-weight: 700; text-decoration: none; box-shadow: 0 10px 24px rgba(13, 92, 171, 0.24); transition: transform .18s ease, background .18s ease, box-shadow .18s ease; }
+    .blue-card-button:hover, .blue-card-button:focus { background: #0b4f94; transform: translateY(-1px); box-shadow: 0 14px 28px rgba(13, 92, 171, 0.28); }
+    .footer-space { height: 24px; }
+
+    @media (max-width: 900px) {
+      .assistance-body { padding: 56px 18px; }
+      .assistance-card { padding: 34px 24px; }
+      .section-intro, .content-grid, .checklist-grid { grid-template-columns: 1fr; }
+      h2 { font-size: 36px; }
+      .content-panel h3, .cta-panel h3 { font-size: 26px; }
+    }
+    @media (max-width: 600px) {
+      .hero { min-height: 380px; }
+      h2 { font-size: 30px; }
+      .lead { font-size: 17px; }
+      .content-panel, .cta-panel { padding: 24px 20px 22px; }
+      .blue-card-button { width: 100%; box-sizing: border-box; }
+    }
+  </style>
+  <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":["Organization","NGO"],"@id":"https://elettro.github.io/bluecard/#organization","name":"The Blue Card","alternateName":"The Blue Card, Inc.","url":"https://elettro.github.io/bluecard/","logo":"https://elettro.github.io/bluecard/images/logo/blue-card-logo-fullsize-.png"}</script>
+  <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"WebSite","@id":"https://elettro.github.io/bluecard/#website","url":"https://elettro.github.io/bluecard/","name":"The Blue Card","publisher":{"@id":"https://elettro.github.io/bluecard/#organization"}}</script>
+  <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"WebPage","@id":"https://elettro.github.io/bluecard/emergency-assistance/#webpage","url":"https://elettro.github.io/bluecard/emergency-assistance/","name":"Emergency Assistance","description":"Emergency assistance from The Blue Card helps Holocaust survivors facing urgent hardship with housing, utilities, medical needs, food, disaster relief, and crisis support.","isPartOf":{"@id":"https://elettro.github.io/bluecard/#website"},"publisher":{"@id":"https://elettro.github.io/bluecard/#organization"}}</script>
+  <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://elettro.github.io/bluecard/"},{"@type":"ListItem","position":2,"name":"How We Help","item":"https://elettro.github.io/bluecard/how-we-help/"},{"@type":"ListItem","position":3,"name":"Emergency Assistance","item":"https://elettro.github.io/bluecard/emergency-assistance/"}]}</script>
+  <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"Service","@id":"https://elettro.github.io/bluecard/emergency-assistance/#service","name":"Emergency Assistance","serviceType":"Emergency grant assistance and crisis support","provider":{"@id":"https://elettro.github.io/bluecard/#organization"},"areaServed":{"@type":"Country","name":"United States"},"audience":{"@type":"Audience","audienceType":"Holocaust survivors living in need"},"url":"https://elettro.github.io/bluecard/emergency-assistance/","description":"One-time emergency grant assistance, natural disaster relief, and crisis support for urgent needs affecting Holocaust survivors’ safety, stability, health, and daily living conditions."}</script>
+</head>
+<body>
+  <header id="bc-global-nav" aria-label="Global site navigation"></header>
+
+  <main>
+    <section class="hero" aria-label="Emergency Assistance header">
+      <!-- Replacement note: using the Who We Are hero image because no dedicated emergency assistance header image exists. -->
+      <img src="/bluecard/images/headers/who-we-are-header.jpg" alt="" />
+      <div class="hero-content">
+        <span class="eyebrow">HOW WE HELP</span>
+        <h1>EMERGENCY ASSISTANCE</h1>
+        <p class="byline">For urgent needs that affect a Holocaust survivor’s safety, stability, health, and daily living conditions.</p>
+      </div>
+    </section>
+
+    <section class="assistance-body">
+      <div class="assistance-wrap">
+        <div class="assistance-card">
+          <div class="section-intro">
+            <div>
+              <span class="eyebrow">Emergency Assistance</span>
+              <h2>Emergency Assistance</h2>
+              <p class="lead">Many Holocaust survivors continue to live with the emotional weight of displacement, loss, and insecurity. A threat to housing, health, or basic necessities can carry a deep emotional impact in addition to a financial one. Our emergency support helps survivors maintain independence with care, respect, and dignity.</p>
+              <p class="lead">For survivors living on limited income, one unexpected expense can create a serious crisis. The Blue Card provides one-time emergency grant assistance to help improve the living conditions of Holocaust survivors facing urgent hardship.</p>
+            </div>
+            <div class="highlight-box">
+              <h3>Emergency cash assistance</h3>
+              <p>One-time support helps address urgent expenses so survivors can remain safe, stable, and cared for during moments of hardship.</p>
+            </div>
+          </div>
+
+          <div class="content-grid">
+            <section class="content-panel" aria-labelledby="cash-assistance">
+              <div class="accent-line"></div>
+              <h3 id="cash-assistance">Emergency cash assistance</h3>
+              <p>Emergency financial assistance may include:</p>
+              <ul class="checklist-grid">
+                <li>Payments to help prevent eviction</li>
+                <li>Homelessness prevention</li>
+                <li>Shut-off prevention for utilities</li>
+                <li>Emergency relocation</li>
+                <li>Home add-ins and repairs such as stair lifts or plumbing</li>
+                <li>Purchase and repair of essential appliances</li>
+                <li>Food purchases</li>
+                <li>Dental care</li>
+                <li>Medical care and medical equipment not covered by insurance</li>
+                <li>Essential clothing and footwear</li>
+                <li>Burial expenses</li>
+              </ul>
+            </section>
+
+            <section class="content-panel" aria-labelledby="disaster-relief">
+              <div class="accent-line"></div>
+              <h3 id="disaster-relief">Natural disaster relief and crisis support</h3>
+              <p>The Blue Card’s Natural Disasters and Severe Weather Fund helps provide food, vital medical care, and practical urgent relief to survivors affected by fires, hurricanes, severe weather, and other crises. From food and medical supplies to caregiver support and emergency aid, this fund helps protect vulnerable survivors during moments of crisis.</p>
+              <p>It can include:</p>
+              <ul class="checklist-grid">
+                <li>Food and groceries</li>
+                <li>Vital medical care and supplies</li>
+                <li>Caregiver support</li>
+                <li>Financial and emotional assistance during displacement</li>
+                <li>Support through local volunteers, synagogues, and partner organizations</li>
+              </ul>
+              <p>Other emergency aid may include:</p>
+              <ul class="checklist-grid">
+                <li>Essential clothing, appliances, and home repairs</li>
+                <li>Aid for Holocaust survivors facing antisemitic attacks</li>
+              </ul>
+            </section>
+          </div>
+
+          <section class="cta-panel" aria-labelledby="protect-survivor">
+            <div class="accent-line"></div>
+            <h3 id="protect-survivor">Help Protect a Survivor During an Emergency</h3>
+            <div class="button-row"><a class="blue-card-button" href="/bluecard/donate/">Donate Now</a></div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="footer-space"></div>
+  <footer id="bc-global-footer" aria-label="Global site footer"></footer>
+  <script src="/bluecard/global-layout.js"></script>
+</body>
+</html>
