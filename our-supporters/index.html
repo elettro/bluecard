@@ -12,9 +12,18 @@
       padding: 72px 20px 86px; background: linear-gradient(180deg, #f8fbff 0%, #ffffff 52%, #f6f9fc 100%); color: var(--partners-text); font-family: Arial, Helvetica, sans-serif;
     }
     .partners-section *, .partners-section *::before, .partners-section *::after { box-sizing: border-box; }
-    .partners-intro { width: min(1120px, 100%); margin: 0 auto 34px; text-align: center; }
-    .partners-intro h2 { margin: 0 0 14px; color: var(--partners-deep); font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.08; letter-spacing: -0.03em; }
-    .partners-intro p { margin: 0 auto; max-width: 780px; color: var(--partners-muted); font-size: 1.08rem; line-height: 1.65; }
+    .supporters-intro-section { width: min(1120px, 100%); margin: 0 auto; padding: 0 0 30px; }
+    .supporters-intro-card { background: linear-gradient(135deg, #ffffff 0%, #f4f8fd 100%); border: 1px solid #d7dde5; border-radius: 18px; padding: clamp(1.5rem, 4vw, 3rem); box-shadow: 0 12px 30px rgba(16, 24, 40, 0.1); }
+    .supporters-eyebrow { margin: 0 0 0.6rem; color: #17437d; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .supporters-intro-card h1 { margin: 0 0 1rem; color: #0f2f5f; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.08; }
+    .supporters-lead, .supporters-transition { max-width: 900px; color: #26364d; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.7; }
+    .supporters-lead { margin: 0; }
+    .supporters-includes { margin: 1.5rem 0; padding: 1.25rem; background: #ffffff; border: 1px solid #dbe6f3; border-radius: 14px; }
+    .supporters-includes h2 { margin: 0 0 0.75rem; color: #0f2f5f; font-size: 1.1rem; }
+    .supporters-includes ul { margin: 0; padding: 0; color: #26364d; line-height: 1.7; list-style: none; }
+    .supporters-includes li { position: relative; margin: 0.45rem 0; padding-left: 1.75rem; }
+    .supporters-includes li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 0.55rem; height: 0.55rem; border-radius: 999px; background: #17437d; box-shadow: 0 0 0 4px #e8f0fb; transform: translateY(-50%); }
+    .supporters-transition { margin: 0; font-weight: 600; }
     .partners-grid { width: min(1120px, 100%); margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
     .partner-card { min-height: 430px; display: flex; flex-direction: column; overflow: hidden; background: #fff; border: 1px solid var(--partners-line); border-radius: 22px; box-shadow: 0 14px 32px rgba(12, 34, 66, 0.08); }
     .partner-logo-wrap { height: 150px; display: flex; align-items: center; justify-content: center; padding: 24px; background: #fff; border-bottom: 1px solid var(--partners-line); }
@@ -36,10 +45,28 @@
   <header id="bc-global-nav" aria-label="Global site navigation"></header>
   <main>
     <section class="partners-section" aria-labelledby="partners-heading">
-      <div class="partners-intro">
-        <h2 id="partners-heading">A trusted network of philanthropic and community support</h2>
-        <p>The following organizations represent some of the many supporters whose generosity helps advance The Blue Card’s mission.</p>
-      </div>
+      <section class="supporters-intro-section" aria-labelledby="partners-heading">
+        <div class="supporters-intro-card">
+          <p class="supporters-eyebrow">Our Supporters</p>
+          <h1 id="partners-heading">Partners, sponsors, and grantors standing with Holocaust survivors</h1>
+          <p class="supporters-lead">
+            The Blue Card is deeply grateful to all of our partners, sponsors, and grantors. Their support strengthens our mission and helps deliver vital assistance, compassionate care, and meaningful outreach to Holocaust survivors in need.
+          </p>
+
+          <div class="supporters-includes">
+            <h2>This includes:</h2>
+            <ul>
+              <li>Support for direct assistance and life-sustaining services</li>
+              <li>Investment in education, outreach, and community response</li>
+              <li>Partnerships that extend compassion to vulnerable older adults</li>
+            </ul>
+          </div>
+
+          <p class="supporters-transition">
+            We recognize the foundations, agencies, community organizations, and philanthropic leaders who form a trusted network that stand with The Blue Card in supporting Holocaust survivors:
+          </p>
+        </div>
+      </section>
       <div class="partners-grid">
         <article class="partner-card">
           <div class="partner-logo-wrap"><div class="partner-logo-fallback" aria-label="Claims Conference logo placeholder">Claims Conference</div></div>
