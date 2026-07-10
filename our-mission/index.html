@@ -4,17 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Our Mission | The Blue Card</title>
-  <meta name="description" content="Learn more about our mission at The Blue Card, including survivor assistance programs, community resources, and organization updates.">
+  <meta name="description" content="Learn how The Blue Card provides direct financial assistance to Holocaust survivors living in need across the United States.">
   <link rel="stylesheet" href="../global-layout.css" />
   <style>
     :root {
       --bc-blue: #0d3b7a;
       --bc-blue-dark: #082a57;
+      --bc-blue-soft: #eaf3ff;
       --bc-gold: #d8b25a;
       --bc-text: #1a2f46;
       --bc-muted: #536a82;
       --bc-border: #d7e2f1;
       --bc-bg: #f5f9ff;
+      --bc-card: #ffffff;
     }
 
     * { box-sizing: border-box; }
@@ -27,153 +29,310 @@
       line-height: 1.7;
     }
 
+    .mission-page {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .mission-page h1,
+    .mission-page h2,
+    .mission-page p {
+      margin-top: 0;
+    }
+
     .mission-hero {
       position: relative;
-      min-height: 270px;
       display: grid;
       place-items: center;
       text-align: center;
       color: #fff;
       background:
-        linear-gradient(180deg, rgba(8, 42, 87, 0.35), rgba(8, 42, 87, 0.7)),
+        linear-gradient(180deg, rgba(8, 42, 87, 0.42), rgba(8, 42, 87, 0.78)),
         url('../images/headers/header-our-mission-arms.webp') center/cover no-repeat;
-      padding: 80px 20px;
+      padding: clamp(82px, 11vw, 138px) 20px;
+    }
+
+    .mission-hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 7px;
+      background: linear-gradient(90deg, transparent, var(--bc-gold), transparent);
+      opacity: 0.9;
+    }
+
+    .mission-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .mission-page .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0 18px;
+      padding: 7px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: 999px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      line-height: 1;
+      text-transform: uppercase;
     }
 
     .mission-hero h1 {
-      margin: 0;
-      font-size: clamp(40px, 5vw, 64px);
+      margin: 0 auto 22px;
+      font-size: clamp(38px, 5vw, 66px);
       line-height: 1.05;
       font-weight: 800;
       letter-spacing: 0.01em;
       text-shadow: 0 4px 14px rgba(0,0,0,0.25);
     }
 
-    .mission-shell {
-      max-width: 980px;
-      margin: 40px auto 64px;
-      background: #fff;
-      border: 1px solid var(--bc-border);
-      border-radius: 18px;
-      box-shadow: 0 14px 34px rgba(13, 59, 122, 0.1);
-      padding: clamp(22px, 4vw, 42px);
+    .mission-hero p:not(.eyebrow) {
+      max-width: 780px;
+      margin: 0 auto;
+      font-size: clamp(19px, 2.2vw, 25px);
+      line-height: 1.55;
+      color: #f2f7ff;
     }
 
-    .mission-shell p {
-      margin: 0 0 20px;
+    .mission-content {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: clamp(34px, 6vw, 72px) 20px 80px;
+    }
+
+    .mission-impact,
+    .client-profile,
+    .mission-copy-section,
+    .mission-dignity,
+    .misconceptions-truths {
+      margin-bottom: clamp(28px, 5vw, 48px);
+    }
+
+    .mission-callout,
+    .client-profile,
+    .mission-copy-section,
+    .mission-dignity,
+    .misconceptions-truths {
+      background: var(--bc-card);
+      border: 1px solid var(--bc-border);
+      border-radius: 22px;
+      box-shadow: 0 16px 36px rgba(13, 59, 122, 0.09);
+    }
+
+    .mission-callout {
+      position: relative;
+      padding: clamp(24px, 4vw, 42px);
+      border-left: 8px solid var(--bc-gold);
+    }
+
+    .mission-callout p {
+      margin-bottom: 18px;
+      font-size: clamp(19px, 2vw, 24px);
+      line-height: 1.55;
+      color: var(--bc-blue-dark);
+      font-weight: 700;
+    }
+
+    .mission-callout p:last-child,
+    .mission-copy-section p:last-child,
+    .mission-dignity p:last-child,
+    .misconceptions-truths p:last-child {
+      margin-bottom: 0;
+    }
+
+    .client-profile,
+    .mission-copy-section,
+    .mission-dignity,
+    .misconceptions-truths {
+      padding: clamp(24px, 4vw, 42px);
+    }
+
+    .mission-page h2 {
+      margin-bottom: 18px;
+      color: var(--bc-blue-dark);
+      font-size: clamp(26px, 3vw, 36px);
+      line-height: 1.2;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .profile-card {
+      min-height: 190px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+      padding: 24px 20px;
+      background: linear-gradient(180deg, #ffffff 0%, var(--bc-blue-soft) 100%);
+      border: 1px solid var(--bc-border);
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: inset 0 4px 0 var(--bc-gold);
+    }
+
+    .profile-card strong {
+      display: block;
+      color: var(--bc-blue);
+      font-size: clamp(34px, 4vw, 48px);
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .profile-card span {
+      display: block;
+      color: var(--bc-text);
+      font-size: 16px;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .mission-copy-section p,
+    .mission-dignity p,
+    .misconceptions-truths p {
+      margin-bottom: 18px;
       font-size: 18px;
       color: var(--bc-text);
     }
 
-    .profile-title {
-      margin: 8px 0 8px;
-      font-size: 25px;
-      line-height: 1.2;
-      color: var(--bc-blue-dark);
+    .mission-dignity {
+      color: #fff;
+      background: linear-gradient(135deg, var(--bc-blue-dark), var(--bc-blue));
+      border-color: rgba(255,255,255,0.18);
     }
 
-    .profile-list {
-      margin: 0 0 24px 0;
-      padding-left: 22px;
+    .mission-dignity h2,
+    .mission-dignity p {
+      color: #fff;
     }
 
-    .profile-list li {
-      margin-bottom: 8px;
-      font-size: 18px;
+    .misconceptions-truths {
+      border: 2px dashed rgba(13, 59, 122, 0.25);
+      background:
+        linear-gradient(135deg, rgba(234, 243, 255, 0.94), rgba(255, 255, 255, 0.94));
+      text-align: center;
     }
 
-    .mission-image {
-      margin: 26px 0 30px;
-      border: 1px solid var(--bc-border);
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 10px 24px rgba(13, 59, 122, 0.12);
+    .misconceptions-truths p {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--bc-muted);
+      font-weight: 700;
     }
 
-    .mission-image img {
-      width: 100%;
-      height: auto;
-      display: block;
+    @media (max-width: 960px) {
+      .profile-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
-    .sources {
-      margin-top: 12px;
-      padding-top: 20px;
-      border-top: 1px solid var(--bc-border);
-    }
+    @media (max-width: 620px) {
+      .mission-content {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
 
-    .sources h3 {
-      margin: 0 0 10px;
-      font-size: 18px;
-      color: var(--bc-blue);
-      text-transform: uppercase;
-      letter-spacing: .06em;
-    }
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
 
-    .sources ul { margin: 0; padding-left: 20px; }
-    .sources a { color: var(--bc-blue); word-break: break-all; }
-
-    @media (max-width: 720px) {
-      .mission-shell p,
-      .profile-list li { font-size: 17px; }
+      .profile-card {
+        min-height: 0;
+      }
     }
   </style>
 <meta property="og:title" content="Our Mission | The Blue Card">
-<meta property="og:description" content="Learn more about our mission at The Blue Card, including survivor assistance programs, community resources, and organization updates.">
+<meta property="og:description" content="Learn how The Blue Card provides direct financial assistance to Holocaust survivors living in need across the United States.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://elettro.github.io/bluecard/our-mission/">
 <meta property="og:site_name" content="The Blue Card">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Our Mission | The Blue Card">
-<meta name="twitter:description" content="Learn more about our mission at The Blue Card, including survivor assistance programs, community resources, and organization updates.">
+<meta name="twitter:description" content="Learn how The Blue Card provides direct financial assistance to Holocaust survivors living in need across the United States.">
 <link rel="canonical" href="https://elettro.github.io/bluecard/our-mission/">
 <script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": ["Organization", "NGO"], "@id": "https://elettro.github.io/bluecard/#organization", "name": "The Blue Card", "alternateName": "The Blue Card, Inc.", "url": "https://elettro.github.io/bluecard/", "logo": "https://elettro.github.io/bluecard/images/logo/blue-card-logo-fullsize.png"}</script>
 <script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://elettro.github.io/bluecard/#website", "url": "https://elettro.github.io/bluecard/", "name": "The Blue Card", "publisher": {"@id": "https://elettro.github.io/bluecard/#organization"}}</script>
-<script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://elettro.github.io/bluecard/our-mission/#webpage", "url": "https://elettro.github.io/bluecard/our-mission/", "name": "Our Mission", "description": "Learn more about our mission at The Blue Card, including survivor assistance programs, community resources, and organization updates.", "isPartOf": {"@id": "https://elettro.github.io/bluecard/#website"}, "publisher": {"@id": "https://elettro.github.io/bluecard/#organization"}}</script>
+<script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://elettro.github.io/bluecard/our-mission/#webpage", "url": "https://elettro.github.io/bluecard/our-mission/", "name": "Our Mission", "description": "Learn how The Blue Card provides direct financial assistance to Holocaust survivors living in need across the United States.", "isPartOf": {"@id": "https://elettro.github.io/bluecard/#website"}, "publisher": {"@id": "https://elettro.github.io/bluecard/#organization"}}</script>
 <script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://elettro.github.io/bluecard/"}, {"@type": "ListItem", "position": 2, "name": "Our Mission", "item": "https://elettro.github.io/bluecard/our-mission/"}]}</script>
 </head>
 <body>
   <header id="bc-global-nav" aria-label="Global site navigation"></header>
 
-  <main>
+  <main class="mission-page">
     <section class="mission-hero" aria-label="Our Mission header">
-      <h1>Our Mission</h1>
-    </section>
-
-    <section class="mission-shell" aria-label="Mission content">
-      <p>The Mission of The Blue Card is to provide direct financial assistance to needy Holocaust survivors.</p>
-
-      <p>Of the nearly 3,000 Holocaust survivor households The Blue Card serves, all are over the age of 80 and nearly 70% live alone. Many of these survivors struggle to afford basic needs, such as adequate food and healthcare; more than half of them fall 200% below the federal poverty line, meaning their income is less than $31,300 annually.</p>
-
-      <h2 class="profile-title">The Blue Card clients profile:</h2>
-      <ul class="profile-list">
-        <li>Range in age from 80 – 110 years old</li>
-        <li>78% have difficulty performing daily activities such as dressing, washing, and cooking</li>
-        <li>77% are women</li>
-        <li>67% cannot leave their homes without assistance</li>
-      </ul>
-
-      <p>As these men and women age, they are plagued with the consequences of surviving the most devastating conditions imaginable, including poor nutrition and minimal medical care.</p>
-
-      <p>Studies have proven that Holocaust survivors have higher rates of chronic conditions and illnesses like hypertension, kidney disease, cancer and dementia, than peers in their age group who did not live through the Holocaust. Unfortunately, too many do not have the financial support to afford treatments and medications, and so they will either forgo getting treatment altogether or paying other bills like rent or heat to cover the medical costs.*</p>
-
-      <p>Many survivors came to this country after World War II and worked in menial jobs. Tiny pensions from those jobs, social security, and Medicaid simply cannot keep up with the financial needs of this most vulnerable population. They are frequently desperate for uncovered expenses such as dental care, hearing aids, and transportation to doctors.</p>
-
-      <p>Dignity was forcibly taken from them during the Holocaust, and now they are vulnerable once again. The Blue Card provides direct financial assistance to ease the financial burdens and ensures that its clients don’t lose their dignity once again, in their last years.</p>
-
-      <figure class="mission-image">
-        <img src="../images/our-mission/truths-and-lies-about-Holocaust-survivors-2024-scaled.webp" alt="Infographic on truths and lies about Holocaust survivors" />
-      </figure>
-
-      <div class="sources">
-        <h3>Sources</h3>
-        <ul>
-          <li><a href="https://www.usnews.com/news/best-countries/articles/2019-01-04/holocaust-survivors-are-sicker-but-live-longer-study-says" target="_blank" rel="noopener">https://www.usnews.com/news/best-countries/articles/2019-01-04/holocaust-survivors-are-sicker-but-live-longer-study-says</a></li>
-          <li><a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2720067" target="_blank" rel="noopener">https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2720067</a></li>
-          <li><a href="https://www.claimscon.org/demographics" target="_blank" rel="noopener">https://www.claimscon.org/demographics</a></li>
-        </ul>
+      <div class="mission-hero-inner">
+        <p class="eyebrow">Our Mission</p>
+        <h1>Providing direct financial assistance to Holocaust survivors in need</h1>
+        <p>The Mission of The Blue Card is to provide direct financial assistance to needy Holocaust survivors.</p>
       </div>
     </section>
+
+    <div class="mission-content">
+      <section class="mission-impact" aria-label="Survivor household statistics">
+        <div class="mission-callout">
+          <p>Of the nearly 3,000 Holocaust survivor households The Blue Card serves, all are over the age of 80 and nearly 70% live alone.</p>
+          <p>Many of these survivors struggle to afford basic needs, such as adequate food and healthcare; more than half of them fall 200% below the federal poverty line, meaning their income is less than $31,300 annually.</p>
+        </div>
+      </section>
+
+      <section class="client-profile" aria-label="The Blue Card clients profile">
+        <h2>The Blue Card clients profile</h2>
+        <div class="profile-grid">
+          <article class="profile-card">
+            <strong>80 – 110</strong>
+            <span>Range in age</span>
+          </article>
+          <article class="profile-card">
+            <strong>78%</strong>
+            <span>Have difficulty performing daily activities such as dressing, washing, and cooking</span>
+          </article>
+          <article class="profile-card">
+            <strong>77%</strong>
+            <span>Are women</span>
+          </article>
+          <article class="profile-card">
+            <strong>67%</strong>
+            <span>Cannot leave their homes without assistance</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="mission-copy-section" aria-label="Aging and medical burden">
+        <h2>The lasting burden of survival</h2>
+        <p>As these men and women age, they are plagued with the consequences of surviving the most devastating conditions imaginable, including poor nutrition and minimal medical care.</p>
+        <p>Studies have proven that Holocaust survivors have higher rates of chronic conditions and illnesses like hypertension, kidney disease, cancer and dementia, than peers in their age group who did not live through the Holocaust. Unfortunately, too many do not have the financial support to afford treatments and medications, and so they will either forgo getting treatment altogether or paying other bills like rent or heat to cover the medical costs.*</p>
+      </section>
+
+      <section class="mission-copy-section" aria-label="Financial vulnerability">
+        <h2>Financial needs that basic support does not cover</h2>
+        <p>Many survivors came to this country after World War II and worked in menial jobs. Tiny pensions from those jobs, social security, and Medicaid simply cannot keep up with the financial needs of this most vulnerable population. They are frequently desperate for uncovered expenses such as dental care, hearing aids, and transportation to doctors.</p>
+      </section>
+
+      <section class="mission-dignity" aria-label="Dignity and direct assistance">
+        <h2>Protecting dignity in their last years</h2>
+        <p>Dignity was forcibly taken from them during the Holocaust, and now they are vulnerable once again. The Blue Card provides direct financial assistance to ease the financial burdens and ensures that its clients don’t lose their dignity once again, in their last years.</p>
+      </section>
+
+      <section class="misconceptions-truths" aria-label="Misconceptions vs Truths infographic placeholder">
+        <h2>Misconceptions vs Truths</h2>
+        <p>Infographic content to be added.</p>
+        <!-- Dean to update this section with final Misconceptions vs Truths infographic content. -->
+      </section>
+    </div>
   </main>
 
   <div id="bc-global-footer"></div>
