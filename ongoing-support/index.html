@@ -40,16 +40,36 @@
     .support-infographics__eyebrow { margin: 0 0 10px; color: #0d5cab; font-size: 13px; line-height: 1.4; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
     .support-infographics h3 { margin: 0 0 14px; color: #0b2341; font-size: 30px; line-height: 1.2; font-weight: 800; }
     .support-infographics__intro { margin: 0 0 26px; color: #303b47; font-size: 17px; line-height: 1.7; max-width: 820px; }
-    .infographic-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
-    .infographic-card { border: 1px solid rgba(11, 35, 65, 0.1); border-radius: 20px; background: #ffffff; box-shadow: 0 12px 30px rgba(9, 42, 86, 0.08); padding: 22px; box-sizing: border-box; }
-    .infographic-card__image-link { display: block; width: 100%; }
-    .infographic-card__image { display: block; width: 100%; height: auto; max-width: 100%; margin: 0 auto; border-radius: 14px; }
-    .infographic-card__full-link:focus-visible, .infographic-card__image-link:focus-visible { outline: 3px solid rgba(13, 92, 171, 0.45); outline-offset: 3px; }
-    .infographic-card__footer { display: flex; justify-content: center; padding-top: 18px; }
-    .infographic-card__full-link { color: #0d5cab; font-size: 16px; line-height: 1.4; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .support-media-carousel { width: 100%; max-width: 940px; margin: 0 auto; overflow: visible; }
+    .support-media-carousel__frame { position: relative; background: #fff; border: 1px solid rgba(11, 35, 65, 0.14); border-radius: 22px; box-shadow: 0 18px 42px rgba(9, 42, 86, 0.14); padding: 24px; box-sizing: border-box; }
+    .support-media-carousel__viewport { overflow: hidden; border-radius: 18px; touch-action: pan-y; }
+    .support-media-carousel__track { display: flex; transform: translateX(0); transition: transform 520ms ease; will-change: transform; }
+    .support-media-carousel__slide { flex: 0 0 100%; display: flex; justify-content: center; align-items: center; }
+    .support-media-carousel__image-button { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
+    .support-media-carousel__image { display: block; width: 100%; height: auto; max-width: 100%; margin: 0 auto; border-radius: 14px; }
+    .support-media-carousel__arrow { position: absolute; top: 50%; z-index: 2; display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; min-width: 44px; min-height: 44px; padding: 0; border: 1px solid rgba(13, 92, 171, 0.22); border-radius: 999px; color: #0d5cab; background: #fff; box-shadow: 0 10px 24px rgba(9, 42, 86, 0.18); cursor: pointer; transform: translateY(-50%); transition: background-color 180ms ease, color 180ms ease, box-shadow 180ms ease; }
+    .support-media-carousel__arrow--prev { left: -26px; }
+    .support-media-carousel__arrow--next { right: -26px; }
+    .support-media-carousel__arrow:hover { background: #0d5cab; color: #fff; box-shadow: 0 14px 30px rgba(9, 42, 86, 0.24); }
+    .support-media-carousel__arrow svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .support-media-carousel__footer { display: grid; justify-items: center; gap: 12px; padding-top: 18px; }
+    .support-media-carousel__dots { display: flex; justify-content: center; gap: 10px; }
+    .support-media-carousel__dot { width: 12px; height: 12px; padding: 0; border: 0; border-radius: 999px; background: #c8d8ea; cursor: pointer; }
+    .support-media-carousel__dot[aria-current="true"] { background: #0d5cab; }
+    .support-media-carousel__status { color: #415062; font-size: 15px; line-height: 1.4; font-weight: 700; }
+    .support-media-carousel__full-link { color: #0d5cab; font-size: 16px; line-height: 1.4; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .support-media-carousel__arrow:focus-visible, .support-media-carousel__image-button:focus-visible, .support-media-carousel__dot:focus-visible, .support-media-carousel__full-link:focus-visible, .support-media-lightbox__close:focus-visible { outline: 3px solid rgba(13, 92, 171, 0.55); outline-offset: 4px; }
+    .support-media-lightbox { position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center; padding: 28px; box-sizing: border-box; }
+    .support-media-lightbox.is-open { display: flex; }
+    .support-media-lightbox__backdrop { position: absolute; inset: 0; background: rgba(3, 16, 31, 0.82); }
+    .support-media-lightbox__dialog { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; max-width: 100%; max-height: 100%; }
+    .support-media-lightbox__image { display: block; width: auto; height: auto; max-width: min(94vw, 1200px); max-height: 88vh; border-radius: 18px; background: #fff; box-shadow: 0 24px 70px rgba(0,0,0,.42); }
+    .support-media-lightbox__close { position: fixed; top: 18px; right: 18px; z-index: 2; display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; min-width: 44px; min-height: 44px; border: 1px solid rgba(255,255,255,.38); border-radius: 999px; color: #fff; background: rgba(11,35,65,.88); cursor: pointer; font-size: 28px; line-height: 1; }
+    body.support-media-lightbox-open { overflow: hidden; }
+    @media (prefers-reduced-motion: reduce) { .support-media-carousel__track { transition: none; } }
 
-    @media (max-width: 900px) { .support-body { padding: 56px 18px; } .support-card { padding: 34px 24px; } .section-intro, .support-list-grid, .infographic-grid { grid-template-columns: 1fr; } h2 { font-size: 36px; } .content-panel h3, .support-list-panel h3, .support-infographics h3 { font-size: 26px; } .support-infographics { padding: 28px 22px; } }
-    @media (max-width: 600px) { .hero { min-height: 320px; } .hero-inner { padding: 42px 18px; } h2 { font-size: 30px; } .lead { font-size: 17px; } .content-panel, .support-list-panel { padding: 24px 20px 22px; } .support-infographics { padding: 24px 14px; border-radius: 18px; } .support-infographics__intro { font-size: 16px; } .infographic-card { padding: 12px; border-radius: 16px; } .infographic-card__image { border-radius: 10px; } }
+    @media (max-width: 900px) { .support-body { padding: 56px 18px; } .support-card { padding: 34px 24px; } .section-intro, .support-list-grid { grid-template-columns: 1fr; } h2 { font-size: 36px; } .content-panel h3, .support-list-panel h3, .support-infographics h3 { font-size: 26px; } .support-infographics { padding: 28px 22px; } .support-media-carousel__frame { padding: 18px; } .support-media-carousel__arrow--prev { left: 8px; } .support-media-carousel__arrow--next { right: 8px; } }
+    @media (max-width: 600px) { html, body { max-width: 100%; overflow-x: hidden; } .hero { min-height: 320px; } .hero-inner { padding: 42px 18px; } h2 { font-size: 30px; } .lead { font-size: 17px; } .content-panel, .support-list-panel { padding: 24px 20px 22px; } .support-infographics { padding: 24px 14px; border-radius: 18px; } .support-infographics__intro { font-size: 16px; } .support-media-carousel__frame { border-radius: 18px; padding: 12px; } .support-media-carousel__viewport { border-radius: 14px; } .support-media-carousel__image { border-radius: 10px; } .support-media-carousel__arrow { width: 44px; height: 44px; } .support-media-lightbox { padding: 16px; } .support-media-lightbox__image { max-width: 94vw; max-height: 84vh; } }
   </style>
   <meta property="og:title" content="Ongoing Support | The Blue Card">
   <meta property="og:description" content="Recurring financial support for Holocaust survivors who need extra help each month to afford basic necessities and services.">
@@ -126,24 +146,45 @@
             <h3 id="support-infographics-heading">Additional Program Infographics</h3>
             <p class="support-infographics__intro">Explore related Blue Card support infographics.</p>
 
-            <div class="infographic-grid">
-              <article class="infographic-card">
-                <a class="infographic-card__image-link" href="/bluecard/infographics/A_Lifeline_for_Holocaust_Survivors.png" target="_blank" rel="noopener noreferrer">
-                  <img class="infographic-card__image" src="/bluecard/infographics/A_Lifeline_for_Holocaust_Survivors.png" alt="A lifeline for Holocaust survivors infographic" loading="lazy" decoding="async" />
-                </a>
-                <div class="infographic-card__footer">
-                  <a class="infographic-card__full-link" href="/bluecard/infographics/A_Lifeline_for_Holocaust_Survivors.png" target="_blank" rel="noopener noreferrer">View Full Infographic</a>
+            <div class="support-media-carousel" data-support-media-carousel>
+              <div class="support-media-carousel__frame">
+                <button class="support-media-carousel__arrow support-media-carousel__arrow--prev" type="button" aria-label="Previous infographic" data-carousel-prev>
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 18 9 12l6-6" /></svg>
+                </button>
+                <div class="support-media-carousel__viewport" data-carousel-viewport>
+                  <div class="support-media-carousel__track" data-carousel-track>
+                    <div class="support-media-carousel__slide">
+                      <button class="support-media-carousel__image-button" type="button" data-carousel-image-button>
+                        <img class="support-media-carousel__image" src="/bluecard/infographics/A_Lifeline_for_Holocaust_Survivors.png" alt="A lifeline for Holocaust survivors infographic" loading="lazy" decoding="async" />
+                      </button>
+                    </div>
+                    <div class="support-media-carousel__slide">
+                      <button class="support-media-carousel__image-button" type="button" data-carousel-image-button>
+                        <img class="support-media-carousel__image" src="/bluecard/infographics/Emergency_Assistance_Programs_for_Survivors.png" alt="The Blue Card emergency assistance programs for survivors infographic" loading="lazy" decoding="async" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </article>
+                <button class="support-media-carousel__arrow support-media-carousel__arrow--next" type="button" aria-label="Next infographic" data-carousel-next>
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" /></svg>
+                </button>
+              </div>
+              <div class="support-media-carousel__footer">
+                <div class="support-media-carousel__dots" aria-label="Infographic pagination">
+                  <button class="support-media-carousel__dot" type="button" aria-label="Show infographic 1" aria-current="true" data-carousel-dot="0"></button>
+                  <button class="support-media-carousel__dot" type="button" aria-label="Show infographic 2" aria-current="false" data-carousel-dot="1"></button>
+                </div>
+                <div class="support-media-carousel__status" aria-live="polite" data-carousel-status>1 of 2</div>
+                <a class="support-media-carousel__full-link" href="/bluecard/infographics/A_Lifeline_for_Holocaust_Survivors.png" target="_blank" rel="noopener noreferrer" data-carousel-full-link>View Full Infographic</a>
+              </div>
+            </div>
 
-              <article class="infographic-card">
-                <a class="infographic-card__image-link" href="/bluecard/infographics/Emergency_Assistance_Programs_for_Survivors.png" target="_blank" rel="noopener noreferrer">
-                  <img class="infographic-card__image" src="/bluecard/infographics/Emergency_Assistance_Programs_for_Survivors.png" alt="The Blue Card emergency assistance programs for survivors infographic" loading="lazy" decoding="async" />
-                </a>
-                <div class="infographic-card__footer">
-                  <a class="infographic-card__full-link" href="/bluecard/infographics/Emergency_Assistance_Programs_for_Survivors.png" target="_blank" rel="noopener noreferrer">View Full Infographic</a>
-                </div>
-              </article>
+            <div class="support-media-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged infographic viewer" data-support-media-lightbox hidden>
+              <div class="support-media-lightbox__backdrop" data-lightbox-backdrop></div>
+              <div class="support-media-lightbox__dialog">
+                <img class="support-media-lightbox__image" src="/bluecard/infographics/A_Lifeline_for_Holocaust_Survivors.png" alt="A lifeline for Holocaust survivors infographic" data-lightbox-image />
+              </div>
+              <button class="support-media-lightbox__close" type="button" aria-label="Close enlarged infographic" data-lightbox-close>&times;</button>
             </div>
           </section>
         </div>
@@ -153,6 +194,161 @@
 
   <div class="footer-space"></div>
   <footer id="bc-global-footer" aria-label="Global site footer"></footer>
+
+
+  <script>
+    (function () {
+      var carousel = document.querySelector('[data-support-media-carousel]');
+      var lightbox = document.querySelector('[data-support-media-lightbox]');
+      if (!carousel || !lightbox) return;
+
+      var slides = Array.prototype.slice.call(carousel.querySelectorAll('.support-media-carousel__slide'));
+      var track = carousel.querySelector('[data-carousel-track]');
+      var viewport = carousel.querySelector('[data-carousel-viewport]');
+      var prevButton = carousel.querySelector('[data-carousel-prev]');
+      var nextButton = carousel.querySelector('[data-carousel-next]');
+      var dots = Array.prototype.slice.call(carousel.querySelectorAll('[data-carousel-dot]'));
+      var status = carousel.querySelector('[data-carousel-status]');
+      var fullLink = carousel.querySelector('[data-carousel-full-link]');
+      var imageButtons = Array.prototype.slice.call(carousel.querySelectorAll('[data-carousel-image-button]'));
+      var lightboxImage = lightbox.querySelector('[data-lightbox-image]');
+      var lightboxClose = lightbox.querySelector('[data-lightbox-close]');
+      var lightboxBackdrop = lightbox.querySelector('[data-lightbox-backdrop]');
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var currentIndex = 0;
+      var intervalId = null;
+      var isHovering = false;
+      var hasFocus = false;
+      var lastImageButton = null;
+      var touchStartX = 0;
+      var touchStartY = 0;
+      var touchDeltaX = 0;
+      var touchDeltaY = 0;
+
+      function activeImage() {
+        return slides[currentIndex].querySelector('img');
+      }
+
+      function updateCarousel() {
+        track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+        dots.forEach(function (dot, index) {
+          dot.setAttribute('aria-current', index === currentIndex ? 'true' : 'false');
+        });
+        var image = activeImage();
+        status.textContent = (currentIndex + 1) + ' of ' + slides.length;
+        fullLink.href = image.getAttribute('src');
+      }
+
+      function goToSlide(index, restartTimer) {
+        currentIndex = (index + slides.length) % slides.length;
+        updateCarousel();
+        if (restartTimer) restartAutoRotation();
+      }
+
+      function shouldRotate() {
+        return !reduceMotion.matches && !isHovering && !hasFocus && !document.hidden && lightbox.hidden;
+      }
+
+      function stopAutoRotation() {
+        if (intervalId) {
+          window.clearInterval(intervalId);
+          intervalId = null;
+        }
+      }
+
+      function startAutoRotation() {
+        stopAutoRotation();
+        if (!shouldRotate()) return;
+        intervalId = window.setInterval(function () {
+          goToSlide(currentIndex + 1, false);
+        }, 6000);
+      }
+
+      function restartAutoRotation() {
+        stopAutoRotation();
+        startAutoRotation();
+      }
+
+      function openLightbox(button) {
+        var image = activeImage();
+        lastImageButton = button;
+        lightboxImage.src = image.src;
+        lightboxImage.alt = image.alt;
+        lightbox.hidden = false;
+        lightbox.classList.add('is-open');
+        document.body.classList.add('support-media-lightbox-open');
+        stopAutoRotation();
+        lightboxClose.focus();
+      }
+
+      function closeLightbox() {
+        if (lightbox.hidden) return;
+        lightbox.classList.remove('is-open');
+        lightbox.hidden = true;
+        document.body.classList.remove('support-media-lightbox-open');
+        if (lastImageButton) lastImageButton.focus();
+        restartAutoRotation();
+      }
+
+      prevButton.addEventListener('click', function () { goToSlide(currentIndex - 1, true); });
+      nextButton.addEventListener('click', function () { goToSlide(currentIndex + 1, true); });
+      dots.forEach(function (dot) {
+        dot.addEventListener('click', function () { goToSlide(Number(dot.getAttribute('data-carousel-dot')), true); });
+      });
+      imageButtons.forEach(function (button) {
+        button.addEventListener('click', function () { openLightbox(button); });
+      });
+
+      carousel.addEventListener('mouseenter', function () { isHovering = true; stopAutoRotation(); });
+      carousel.addEventListener('mouseleave', function () { isHovering = false; restartAutoRotation(); });
+      carousel.addEventListener('focusin', function () { hasFocus = true; stopAutoRotation(); });
+      carousel.addEventListener('focusout', function () {
+        window.setTimeout(function () {
+          hasFocus = carousel.contains(document.activeElement);
+          if (!hasFocus) restartAutoRotation();
+        }, 0);
+      });
+      carousel.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowLeft') { event.preventDefault(); goToSlide(currentIndex - 1, true); }
+        if (event.key === 'ArrowRight') { event.preventDefault(); goToSlide(currentIndex + 1, true); }
+      });
+
+      viewport.addEventListener('touchstart', function (event) {
+        if (!event.touches.length) return;
+        touchStartX = event.touches[0].clientX;
+        touchStartY = event.touches[0].clientY;
+        touchDeltaX = 0;
+        touchDeltaY = 0;
+      }, { passive: true });
+      viewport.addEventListener('touchmove', function (event) {
+        if (!event.touches.length) return;
+        touchDeltaX = event.touches[0].clientX - touchStartX;
+        touchDeltaY = event.touches[0].clientY - touchStartY;
+      }, { passive: true });
+      viewport.addEventListener('touchend', function () {
+        if (Math.abs(touchDeltaX) > 45 && Math.abs(touchDeltaX) > Math.abs(touchDeltaY) * 1.4) {
+          goToSlide(touchDeltaX < 0 ? currentIndex + 1 : currentIndex - 1, true);
+        }
+      });
+
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightboxBackdrop.addEventListener('click', closeLightbox);
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeLightbox();
+      });
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) stopAutoRotation(); else restartAutoRotation();
+      });
+      if (reduceMotion.addEventListener) {
+        reduceMotion.addEventListener('change', restartAutoRotation);
+      } else if (reduceMotion.addListener) {
+        reduceMotion.addListener(restartAutoRotation);
+      }
+
+      updateCarousel();
+      startAutoRotation();
+    }());
+  </script>
 
   <script src="/bluecard/global-layout.js"></script>
 </body>
