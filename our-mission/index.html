@@ -30,11 +30,15 @@
     .content-panel p, .cta-panel p { margin: 0 0 16px; font-size: 17px; line-height: 1.8; color: #303b47; }
     .content-panel p:last-child, .cta-panel p:last-child { margin-bottom: 0; }
     .accent-line { width: 64px; height: 4px; border-radius: 999px; background: #0d5cab; margin-bottom: 20px; }
-    .profile-panel { background: linear-gradient(180deg, #ffffff 0%, #f4f8fd 100%); }
-    .profile-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 24px; align-items: stretch; }
-    .profile-card { min-height: 188px; display: grid; grid-template-rows: minmax(58px, auto) 1fr; align-items: start; gap: 16px; padding: 28px 20px 24px; background: linear-gradient(180deg, #ffffff 0%, #f2f7fd 100%); border: 1px solid rgba(13, 92, 171, 0.14); border-radius: 18px; text-align: center; box-sizing: border-box; box-shadow: 0 12px 26px rgba(9, 42, 86, 0.06); }
-    .profile-card strong { display: flex; align-items: flex-end; justify-content: center; min-height: 58px; color: #0d5cab; font-size: clamp(38px, 4vw, 50px); line-height: 0.95; font-weight: 800; letter-spacing: -0.03em; }
-    .profile-card span { display: flex; align-items: flex-start; justify-content: center; color: #303b47; font-size: 15.5px; line-height: 1.45; font-weight: 700; max-width: 220px; margin: 0 auto; }
+    .mission-client-profile { margin-top: 28px; background: linear-gradient(180deg, #ffffff 0%, #f4f8fd 100%); border: 1px solid rgba(13, 92, 171, 0.14); border-radius: 22px; padding: 34px 30px 38px; box-shadow: 0 16px 38px rgba(9, 42, 86, 0.08); box-sizing: border-box; overflow: hidden; }
+    .mission-client-profile__accent { width: 64px; height: 4px; border-radius: 999px; background: #0d5cab; margin-bottom: 20px; }
+    .mission-client-profile h2 { margin: 0; color: #0b2341; font-size: 30px; line-height: 1.2; font-weight: 800; }
+    .mission-client-profile__rail { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; margin-top: 52px; }
+    .mission-client-profile__line { position: absolute; top: 34px; left: 12.5%; right: 12.5%; height: 3px; border-radius: 999px; background: linear-gradient(90deg, #0d5cab 0%, #66a9e6 100%); transform: translateY(-50%); z-index: 0; }
+    .mission-client-profile__metric { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0; }
+    .mission-client-profile__marker { width: 68px; height: 68px; border: 8px solid #0d5cab; border-radius: 50%; background: #ffffff; box-shadow: 0 0 0 10px rgba(13, 92, 171, 0.12), 0 10px 24px rgba(9, 42, 86, 0.12); box-sizing: border-box; }
+    .mission-client-profile__value { margin-top: 28px; color: #0d5cab; font-size: clamp(40px, 4vw, 48px); line-height: 0.95; font-weight: 800; letter-spacing: -0.03em; white-space: nowrap; }
+    .mission-client-profile__label { margin-top: 16px; color: #25384d; font-size: 16px; line-height: 1.45; font-weight: 700; max-width: 220px; }
     .footer-space { height: 24px; }
 
     .mission-infographic { margin-top: 28px; padding: 34px; background: linear-gradient(180deg, #ffffff 0%, #f3f8fe 100%); border: 1px solid rgba(13, 92, 171, 0.14); border-radius: 22px; box-shadow: 0 16px 38px rgba(9, 42, 86, 0.08); box-sizing: border-box; overflow: hidden; }
@@ -48,8 +52,8 @@
     .mission-infographic__full-link:focus-visible, .mission-infographic__image-link:focus-visible { outline: 3px solid rgba(13, 92, 171, 0.45); outline-offset: 3px; }
     .mission-infographic__footer { display: flex; flex-direction: column; align-items: center; gap: 12px; padding-top: 18px; }
     .mission-infographic__full-link { color: #0d5cab; font-size: 16px; line-height: 1.4; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
-    @media (max-width: 900px) { .mission-body { padding: 56px 18px; } .mission-card { padding: 34px 24px; } .section-intro, .content-grid { grid-template-columns: 1fr; } h2 { font-size: 36px; } .content-panel h3, .cta-panel h3 { font-size: 26px; } .profile-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .mission-infographic { padding: 28px 22px; } .mission-infographic h3 { font-size: 26px; } .mission-infographic__content { padding: 18px; } }
-    @media (max-width: 600px) { h2 { font-size: 30px; } .lead { font-size: 17px; } .content-panel, .cta-panel { padding: 24px 20px 22px; } .profile-grid { grid-template-columns: 1fr; } .profile-card { min-height: 168px; } .mission-infographic { padding: 24px 14px; border-radius: 18px; } .mission-infographic__intro { font-size: 16px; } .mission-infographic__frame { border-radius: 16px; } .mission-infographic__content { padding: 12px; } .mission-infographic__image { border-radius: 10px; } }
+    @media (max-width: 900px) { .mission-body { padding: 56px 18px; } .mission-card { padding: 34px 24px; } .section-intro, .content-grid { grid-template-columns: 1fr; } h2 { font-size: 36px; } .content-panel h3, .cta-panel h3, .mission-client-profile h2 { font-size: 26px; } .mission-client-profile { padding: 30px 24px 34px; } .mission-client-profile__rail { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 46px; column-gap: 26px; margin-top: 42px; } .mission-client-profile__line { display: none; } .mission-infographic { padding: 28px 22px; } .mission-infographic h3 { font-size: 26px; } .mission-infographic__content { padding: 18px; } }
+    @media (max-width: 600px) { h2 { font-size: 30px; } .lead { font-size: 17px; } .content-panel, .cta-panel { padding: 24px 20px 22px; } .mission-client-profile { padding: 24px 18px 30px; border-radius: 18px; } .mission-client-profile__rail { grid-template-columns: 1fr; gap: 40px; margin-top: 36px; } .mission-client-profile__marker { width: 62px; height: 62px; border-width: 7px; box-shadow: 0 0 0 8px rgba(13, 92, 171, 0.12), 0 10px 22px rgba(9, 42, 86, 0.1); } .mission-client-profile__value { margin-top: 24px; font-size: clamp(36px, 13vw, 44px); } .mission-client-profile__label { font-size: 15.5px; max-width: 280px; } .mission-infographic { padding: 24px 14px; border-radius: 18px; } .mission-infographic__intro { font-size: 16px; } .mission-infographic__frame { border-radius: 16px; } .mission-infographic__content { padding: 12px; } .mission-infographic__image { border-radius: 10px; } }
   </style>
 <meta property="og:title" content="Our Mission | The Blue Card">
 <meta property="og:description" content="Learn how The Blue Card provides direct financial assistance to Holocaust survivors living in need across the United States.">
@@ -94,14 +98,36 @@
             <p>Many of these survivors struggle to afford basic needs, such as adequate food and healthcare; more than half of them fall 200% below the federal poverty line, meaning their income is less than $31,300 annually.</p>
           </section>
 
-          <section class="cta-panel profile-panel" aria-label="The Blue Card Clients Profile" style="margin-top:28px;">
-            <div class="accent-line"></div>
-            <h3>The Blue Card Clients Profile</h3>
-            <div class="profile-grid">
-              <article class="profile-card"><strong>80 – 110</strong><span>Range in age</span></article>
-              <article class="profile-card"><strong>78%</strong><span>Have difficulty performing daily activities such as dressing, washing, and cooking</span></article>
-              <article class="profile-card"><strong>77%</strong><span>Are women</span></article>
-              <article class="profile-card"><strong>67%</strong><span>Cannot leave their homes without assistance</span></article>
+          <section class="mission-client-profile" aria-labelledby="mission-client-profile-heading">
+            <div class="mission-client-profile__accent"></div>
+            <h2 id="mission-client-profile-heading">The Blue Card Clients Profile</h2>
+
+            <div class="mission-client-profile__rail">
+              <div class="mission-client-profile__line" aria-hidden="true"></div>
+
+              <article class="mission-client-profile__metric">
+                <div class="mission-client-profile__marker" aria-hidden="true"></div>
+                <div class="mission-client-profile__value">80 – 110</div>
+                <div class="mission-client-profile__label">Range in age</div>
+              </article>
+
+              <article class="mission-client-profile__metric">
+                <div class="mission-client-profile__marker" aria-hidden="true"></div>
+                <div class="mission-client-profile__value">78%</div>
+                <div class="mission-client-profile__label">Have difficulty performing daily activities such as dressing, washing, and cooking</div>
+              </article>
+
+              <article class="mission-client-profile__metric">
+                <div class="mission-client-profile__marker" aria-hidden="true"></div>
+                <div class="mission-client-profile__value">77%</div>
+                <div class="mission-client-profile__label">Are women</div>
+              </article>
+
+              <article class="mission-client-profile__metric">
+                <div class="mission-client-profile__marker" aria-hidden="true"></div>
+                <div class="mission-client-profile__value">67%</div>
+                <div class="mission-client-profile__label">Cannot leave their homes without assistance</div>
+              </article>
             </div>
           </section>
 
