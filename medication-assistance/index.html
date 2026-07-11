@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medication Assistance | The Blue Card</title>
+  <meta name="description" content="Studies have shown that Holocaust survivors are not only more likely to face serious chronic health challenges, but often carry a lifetime of physical and emotional burden tied to profound trauma. As the Holocaust survivor population ages, health and medication needs can become more common, AND more difficult to access and afford. The Blue Card’s programs aim to relieve some of those concerns.">
+  <link rel="canonical" href="https://elettro.github.io/bluecard/medication-assistance/">
+  <link rel="stylesheet" href="/bluecard/global-layout.css" />
+  <meta property="og:title" content="Medication Assistance | The Blue Card">
+  <meta property="og:description" content="Studies have shown that Holocaust survivors are not only more likely to face serious chronic health challenges, but often carry a lifetime of physical and emotional burden tied to profound trauma. As the Holocaust survivor population ages, health and medication needs can become more common, AND more difficult to access and afford. The Blue Card’s programs aim to relieve some of those concerns.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elettro.github.io/bluecard/medication-assistance/">
+  <meta property="og:site_name" content="The Blue Card">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Medication Assistance | The Blue Card">
+  <meta name="twitter:description" content="Studies have shown that Holocaust survivors are not only more likely to face serious chronic health challenges, but often carry a lifetime of physical and emotional burden tied to profound trauma. As the Holocaust survivor population ages, health and medication needs can become more common, AND more difficult to access and afford. The Blue Card’s programs aim to relieve some of those concerns.">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #1c1c1c; background: #fff; }
+    .hero { position: relative; min-height: 360px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 48px 24px; }
+    .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero::after { content:""; position:absolute; inset:0; background: rgba(8, 37, 69, 0.58); }
+    .hero__content { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; text-align: center; color: #fff; }
+    .hero h1 { margin: 0; color: #fff; font-size: clamp(34px, 5vw, 64px); font-weight: 800; text-align: center; text-shadow: 0 6px 18px rgba(0,0,0,.35); }
+    .hero p { margin: 18px auto 0; max-width: 900px; font-size: clamp(17px, 2vw, 22px); line-height: 1.62; font-weight: 600; text-shadow: 0 4px 16px rgba(0,0,0,.35); }
+    .medication-page { background: #fff; }
+    .medication-body { background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%); padding: 72px 24px; color: #1c1c1c; }
+    .medication-wrap { max-width: 1120px; margin: 0 auto; }
+    .medication-card { background: #ffffff; border-radius: 22px; padding: 48px 52px; box-shadow: 0 18px 50px rgba(9, 42, 86, 0.08); border: 1px solid rgba(12, 73, 144, 0.08); position: relative; overflow: hidden; }
+    .medication-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, #0d5cab 0%, #2d7fd3 100%); }
+    .section-intro { margin-bottom: 34px; }
+    h2 { font-size: 46px; line-height: 1.08; margin: 0 0 18px; color: #0b2341; font-weight: 800; }
+    .lead { font-size: 19px; line-height: 1.7; margin: 0; color: #3a4654; max-width: 920px; }
+    .accent-line { width: 64px; height: 4px; border-radius: 999px; background: #0d5cab; margin-bottom: 20px; }
+    .content-panel { background: #fbfcfe; border: 1px solid rgba(11, 35, 65, 0.08); border-radius: 18px; padding: 30px 30px 26px; margin-top: 28px; }
+    .content-panel h3, .checklist-panel h3, .medication-media h3 { margin: 0 0 16px; font-size: 30px; line-height: 1.2; color: #0b2341; font-weight: 800; }
+    .content-panel p { margin: 0 0 16px; font-size: 17px; line-height: 1.8; color: #303b47; }
+    .content-panel p:last-child { margin-bottom: 0; }
+    .checklist-panel { margin-top: 28px; padding: 30px; background: linear-gradient(180deg, #f2f7fd 0%, #eaf2fb 100%); border: 1px solid rgba(13, 92, 171, 0.14); border-radius: 18px; box-shadow: 0 12px 26px rgba(9, 42, 86, 0.05); }
+    .checklist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px; list-style: none; margin: 22px 0 0; padding: 0; }
+    .checklist li { position: relative; padding-left: 34px; color: #303b47; font-size: 17px; line-height: 1.55; font-weight: 700; }
+    .checklist li::before { content: ""; position: absolute; left: 0; top: 0.2em; width: 20px; height: 20px; border-radius: 50%; background: #0d5cab; box-shadow: 0 4px 10px rgba(13, 92, 171, 0.2); }
+    .checklist li::after { content: ""; position: absolute; left: 7px; top: 0.48em; width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+    .medication-media { margin-top: 28px; padding: 34px; background: linear-gradient(180deg, #ffffff 0%, #f3f8fe 100%); border: 1px solid rgba(13, 92, 171, 0.14); border-radius: 22px; box-shadow: 0 16px 38px rgba(9, 42, 86, 0.08); overflow: hidden; }
+    .medication-media__eyebrow { margin: 0 0 10px; color: #0d5cab; font-size: 13px; line-height: 1.4; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+    .medication-media-carousel { position: relative; margin-top: 24px; touch-action: pan-y; }
+    .medication-media-carousel__frame { position: relative; border: 1px solid rgba(11, 35, 65, 0.1); border-radius: 20px; background: #ffffff; box-shadow: 0 12px 30px rgba(9, 42, 86, 0.08); padding: 22px; }
+    .medication-media-carousel__viewport { overflow: hidden; width: 100%; }
+    .medication-media-carousel__track { display: flex; transition: transform 420ms ease; will-change: transform; }
+    .medication-media-carousel__slide { flex: 0 0 100%; display: flex; justify-content: center; align-items: center; }
+    .medication-media-carousel__image-button { display: block; width: 100%; max-width: 980px; margin: 0 auto; padding: 0; border: 0; background: transparent; cursor: zoom-in; border-radius: 14px; }
+    .medication-media-carousel__image { display: block; width: 100%; height: auto; max-width: 100%; margin: 0 auto; border-radius: 14px; }
+    .medication-media-carousel__arrow { position: absolute; top: 50%; z-index: 2; width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(13, 92, 171, 0.22); background: #fff; color: #0d5cab; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 26px rgba(9, 42, 86, 0.16); transform: translateY(-50%); }
+    .medication-media-carousel__arrow--prev { left: -26px; }
+    .medication-media-carousel__arrow--next { right: -26px; }
+    .medication-media-carousel__arrow:hover { background: #0d5cab; color: #fff; }
+    .medication-media-carousel__arrow:active { transform: translateY(-50%) scale(0.96); }
+    .medication-media-carousel__footer { display: flex; flex-direction: column; align-items: center; gap: 12px; padding-top: 18px; }
+    .medication-media-carousel__dots { display: flex; justify-content: center; gap: 10px; }
+    .medication-media-carousel__dot { width: 14px; height: 14px; border-radius: 50%; border: 0; background: #c9d9ea; cursor: pointer; padding: 0; }
+    .medication-media-carousel__dot[aria-current="true"] { background: #0d5cab; }
+    .medication-media-carousel__status { color: #415062; font-size: 15px; line-height: 1.4; }
+    .medication-media-carousel__full-link { color: #0d5cab; font-size: 16px; line-height: 1.4; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .medication-media-carousel__arrow:focus-visible, .medication-media-carousel__dot:focus-visible, .medication-media-carousel__image-button:focus-visible, .medication-media-carousel__full-link:focus-visible, .medication-media-lightbox__close:focus-visible { outline: 3px solid rgba(13, 92, 171, 0.55); outline-offset: 3px; }
+    .medication-media-lightbox { position: fixed; inset: 0; z-index: 9999; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(3, 14, 27, 0.84); }
+    .medication-media-lightbox.is-open { display: flex; }
+    .medication-media-lightbox__dialog { position: relative; max-width: min(1120px, 94vw); max-height: 92vh; }
+    .medication-media-lightbox__image { display: block; max-width: 100%; max-height: 88vh; width: auto; height: auto; border-radius: 16px; background: #fff; box-shadow: 0 18px 60px rgba(0,0,0,.35); }
+    .medication-media-lightbox__close { position: absolute; top: -18px; right: -18px; width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255,255,255,.4); background: #fff; color: #0b2341; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 26px rgba(0,0,0,.25); }
+    body.medication-lightbox-open { overflow: hidden; }
+    .footer-space { height: 24px; }
+    @media (prefers-reduced-motion: reduce) { .medication-media-carousel__track { transition: none; } *, *::before, *::after { scroll-behavior: auto !important; } }
+    @media (max-width: 900px) { .medication-body { padding: 56px 18px; } .medication-card { padding: 34px 24px; } h2 { font-size: 36px; } .content-panel h3, .checklist-panel h3, .medication-media h3 { font-size: 26px; } .medication-media { padding: 28px 22px; } .medication-media-carousel__frame { padding: 18px; } .medication-media-carousel__arrow--prev { left: 8px; } .medication-media-carousel__arrow--next { right: 8px; } }
+    @media (max-width: 600px) { .hero { min-height: 420px; padding: 38px 18px; } h2 { font-size: 30px; } .lead { font-size: 17px; } .content-panel, .checklist-panel { padding: 24px 20px 22px; } .checklist { grid-template-columns: 1fr; } .medication-media { padding: 24px 14px; border-radius: 18px; } .medication-media-carousel__frame { padding: 12px; border-radius: 16px; } .medication-media-carousel__image, .medication-media-carousel__image-button { border-radius: 10px; } .medication-media-carousel__arrow { width: 46px; height: 46px; } .medication-media-lightbox { padding: 14px; } .medication-media-lightbox__close { top: 8px; right: 8px; } }
+  </style>
+  <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":["Organization","NGO"],"@id":"https://elettro.github.io/bluecard/#organization","name":"The Blue Card","alternateName":"The Blue Card, Inc.","url":"https://elettro.github.io/bluecard/","logo":"https://elettro.github.io/bluecard/images/logo/blue-card-logo-fullsize.png"}</script>
+  <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"WebSite","@id":"https://elettro.github.io/bluecard/#website","url":"https://elettro.github.io/bluecard/","name":"The Blue Card","publisher":{"@id":"https://elettro.github.io/bluecard/#organization"}}</script>
+  <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"WebPage","@id":"https://elettro.github.io/bluecard/medication-assistance/#webpage","url":"https://elettro.github.io/bluecard/medication-assistance/","name":"Medication Assistance","description":"Studies have shown that Holocaust survivors are not only more likely to face serious chronic health challenges, but often carry a lifetime of physical and emotional burden tied to profound trauma. As the Holocaust survivor population ages, health and medication needs can become more common, AND more difficult to access and afford. The Blue Card’s programs aim to relieve some of those concerns.","isPartOf":{"@id":"https://elettro.github.io/bluecard/#website"},"publisher":{"@id":"https://elettro.github.io/bluecard/#organization"}}</script>
+  <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://elettro.github.io/bluecard/"},{"@type":"ListItem","position":2,"name":"How We Help","item":"https://elettro.github.io/bluecard/#how-we-help"},{"@type":"ListItem","position":3,"name":"Medication Assistance","item":"https://elettro.github.io/bluecard/medication-assistance/"}]}</script>
+  <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"Service","@id":"https://elettro.github.io/bluecard/medication-assistance/#service","name":"Medication Assistance","description":"Studies have shown that Holocaust survivors are not only more likely to face serious chronic health challenges, but often carry a lifetime of physical and emotional burden tied to profound trauma. As the Holocaust survivor population ages, health and medication needs can become more common, AND more difficult to access and afford. The Blue Card’s programs aim to relieve some of those concerns.","provider":{"@id":"https://elettro.github.io/bluecard/#organization"},"url":"https://elettro.github.io/bluecard/medication-assistance/","areaServed":"United States"}</script>
+</head>
+<body>
+  <header id="bc-global-nav" aria-label="Global site navigation"></header>
+
+  <main class="medication-page">
+    <section class="hero" aria-label="Medication Assistance header">
+      <img src="/bluecard/images/homepage/health-welbeing.png" alt="" />
+      <div class="hero__content">
+        <h1>Medication Assistance</h1>
+        <p>Studies have shown that Holocaust survivors are not only more likely to face serious chronic health challenges, but often carry a lifetime of physical and emotional burden tied to profound trauma. As the Holocaust survivor population ages, health and medication needs can become more common, AND more difficult to access and afford. The Blue Card’s programs aim to relieve some of those concerns.</p>
+      </div>
+    </section>
+
+    <section class="medication-body" aria-labelledby="medication-assistance-heading">
+      <div class="medication-wrap">
+        <div class="medication-card">
+          <div class="section-intro">
+            <div class="accent-line"></div>
+            <h2 id="medication-assistance-heading">Medication Assistance</h2>
+            <p class="lead">Studies have shown that Holocaust survivors are not only more likely to face serious chronic health challenges, but often carry a lifetime of physical and emotional burden tied to profound trauma. As the Holocaust survivor population ages, health and medication needs can become more common, AND more difficult to access and afford. The Blue Card’s programs aim to relieve some of those concerns.</p>
+          </div>
+
+          <section class="content-panel" aria-labelledby="medical-dental-heading">
+            <div class="accent-line"></div>
+            <h3 id="medical-dental-heading">Medical and dental care not covered by insurance</h3>
+            <p>The Blue Card provides one-time financial assistance for urgent dental and medical needs that directly impact health and daily function, before those needs become larger problems.</p>
+            <p>Many Holocaust survivors live on fixed incomes and can face unexpected health needs that are difficult to afford. When important services fall outside insurance coverage or create added financial strain, survivors may delay care or go without it.</p>
+            <p>This program helps reduce that burden by supporting urgent needs that directly affect comfort, health, and daily functioning.</p>
+          </section>
+
+          <section class="checklist-panel" aria-labelledby="emergency-assistance-heading">
+            <div class="accent-line"></div>
+            <h3 id="emergency-assistance-heading">Emergency Medical and Dental Assistance may include:</h3>
+            <ul class="checklist">
+              <li>Dental care</li>
+              <li>Denture care</li>
+              <li>Hearing aids</li>
+              <li>Medical expenses not otherwise covered by insurance</li>
+              <li>Medication support</li>
+              <li>Medical equipment support</li>
+            </ul>
+          </section>
+
+          <section class="content-panel" aria-labelledby="medication-grant-heading">
+            <div class="accent-line"></div>
+            <h3 id="medication-grant-heading">The Blue Card's Medication Assistance Grant</h3>
+            <p>The Blue Card Medication Assistance Grant provides financial assistance to help Holocaust survivors afford lifesaving medication and prescription co-pays so they do not have to choose between their health and their basic daily needs.</p>
+            <p>According to a recent study, 18 million Americans were recently unable to pay for at least one prescription medication for their household due to rising costs, and 1 in 10 Americans have skipped doses to save money. Holocaust survivors are too often part of this crisis. No survivor should have to ration medication because the cost is out of reach.  The Blue Card helps remove that burden and restore stability, dignity, and peace of mind.</p>
+          </section>
+
+          <section class="content-panel" aria-labelledby="cost-plus-heading">
+            <div class="accent-line"></div>
+            <h3 id="cost-plus-heading">Cost Plus Drug Company Partnership</h3>
+            <p>This partnership helps Holocaust survivors nationwide access low-cost generic medication delivered directly to their homes, expanding access to affordable medication.</p>
+            <p>All Holocaust survivors can benefit from this program. It helps create another pathway to lower-cost medication and clearer information around access. The Blue Card also offers educational seminars on medication affordability to help survivors understand available options more clearly.</p>
+          </section>
+
+          <section class="medication-media" aria-labelledby="medication-media-heading">
+            <div class="accent-line"></div>
+            <p class="medication-media__eyebrow">MEDICATION ASSISTANCE IN FOCUS</p>
+            <h3 id="medication-media-heading">Medication Assistance Infographics</h3>
+
+            <div class="medication-media-carousel" data-medication-carousel>
+              <div class="medication-media-carousel__frame">
+                <button class="medication-media-carousel__arrow medication-media-carousel__arrow--prev" type="button" aria-label="Previous infographic">
+                  <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="medication-media-carousel__viewport">
+                  <div class="medication-media-carousel__track">
+                    <div class="medication-media-carousel__slide">
+                      <button class="medication-media-carousel__image-button" type="button" aria-label="Enlarge Medical support for Holocaust survivors infographic">
+                        <img class="medication-media-carousel__image" src="/bluecard/infographics/medication-assistance-medical_support_for_holocaust_survivors.png" alt="Medical support for Holocaust survivors infographic" loading="lazy" decoding="async" />
+                      </button>
+                    </div>
+                    <div class="medication-media-carousel__slide">
+                      <button class="medication-media-carousel__image-button" type="button" aria-label="Enlarge Restoring dignity through health support programs infographic">
+                        <img class="medication-media-carousel__image" src="/bluecard/infographics/medication-assistance-restoring_dignity_Health_support_program.png" alt="Restoring dignity through health support programs infographic" loading="lazy" decoding="async" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <button class="medication-media-carousel__arrow medication-media-carousel__arrow--next" type="button" aria-label="Next infographic">
+                  <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+              <div class="medication-media-carousel__footer">
+                <div class="medication-media-carousel__dots" aria-label="Infographic pagination">
+                  <button class="medication-media-carousel__dot" type="button" aria-label="Show infographic 1" aria-current="true"></button>
+                  <button class="medication-media-carousel__dot" type="button" aria-label="Show infographic 2"></button>
+                </div>
+                <div class="medication-media-carousel__status" aria-live="polite">1 of 2</div>
+                <a class="medication-media-carousel__full-link" href="/bluecard/infographics/medication-assistance-medical_support_for_holocaust_survivors.png" target="_blank" rel="noopener noreferrer">View Full Infographic</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="footer-space"></div>
+  <footer id="bc-global-footer" aria-label="Global site footer"></footer>
+
+  <div class="medication-media-lightbox" data-medication-lightbox role="dialog" aria-modal="true" aria-label="Expanded medication assistance infographic">
+    <div class="medication-media-lightbox__dialog">
+      <button class="medication-media-lightbox__close" type="button" aria-label="Close infographic lightbox">
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </button>
+      <img class="medication-media-lightbox__image" src="/bluecard/infographics/medication-assistance-medical_support_for_holocaust_survivors.png" alt="Medical support for Holocaust survivors infographic" />
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var carousel = document.querySelector('[data-medication-carousel]');
+      if (!carousel) return;
+      var track = carousel.querySelector('.medication-media-carousel__track');
+      var slides = Array.prototype.slice.call(carousel.querySelectorAll('.medication-media-carousel__slide'));
+      var imageButtons = Array.prototype.slice.call(carousel.querySelectorAll('.medication-media-carousel__image-button'));
+      var dots = Array.prototype.slice.call(carousel.querySelectorAll('.medication-media-carousel__dot'));
+      var status = carousel.querySelector('.medication-media-carousel__status');
+      var fullLink = carousel.querySelector('.medication-media-carousel__full-link');
+      var prevButton = carousel.querySelector('.medication-media-carousel__arrow--prev');
+      var nextButton = carousel.querySelector('.medication-media-carousel__arrow--next');
+      var lightbox = document.querySelector('[data-medication-lightbox]');
+      var lightboxImage = lightbox.querySelector('.medication-media-lightbox__image');
+      var closeButton = lightbox.querySelector('.medication-media-lightbox__close');
+      var mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var currentIndex = 0;
+      var intervalId = null;
+      var isHovering = false;
+      var hasFocus = false;
+      var isLightboxOpen = false;
+      var lastFocus = null;
+      var touchStartX = 0;
+      var touchStartY = 0;
+      var images = [
+        { src: '/bluecard/infographics/medication-assistance-medical_support_for_holocaust_survivors.png', alt: 'Medical support for Holocaust survivors infographic' },
+        { src: '/bluecard/infographics/medication-assistance-restoring_dignity_Health_support_program.png', alt: 'Restoring dignity through health support programs infographic' }
+      ];
+
+      function updateCarousel() {
+        track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+        dots.forEach(function (dot, index) {
+          if (index === currentIndex) dot.setAttribute('aria-current', 'true');
+          else dot.removeAttribute('aria-current');
+        });
+        status.textContent = (currentIndex + 1) + ' of ' + slides.length;
+        fullLink.href = images[currentIndex].src;
+      }
+
+      function shouldRotate() {
+        return !mediaQuery.matches && !isHovering && !hasFocus && !document.hidden && !isLightboxOpen;
+      }
+
+      function stopRotation() {
+        if (intervalId) window.clearInterval(intervalId);
+        intervalId = null;
+      }
+
+      function startRotation() {
+        stopRotation();
+        if (!shouldRotate()) return;
+        intervalId = window.setInterval(function () { goTo(currentIndex + 1, false); }, 6000);
+      }
+
+      function goTo(index, resetTimer) {
+        currentIndex = (index + slides.length) % slides.length;
+        updateCarousel();
+        if (resetTimer) startRotation();
+      }
+
+      function openLightbox() {
+        lastFocus = document.activeElement;
+        isLightboxOpen = true;
+        stopRotation();
+        lightboxImage.src = images[currentIndex].src;
+        lightboxImage.alt = images[currentIndex].alt;
+        lightbox.classList.add('is-open');
+        document.body.classList.add('medication-lightbox-open');
+        closeButton.focus();
+      }
+
+      function closeLightbox() {
+        if (!isLightboxOpen) return;
+        isLightboxOpen = false;
+        lightbox.classList.remove('is-open');
+        document.body.classList.remove('medication-lightbox-open');
+        if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+        else imageButtons[currentIndex].focus();
+        startRotation();
+      }
+
+      prevButton.addEventListener('click', function () { goTo(currentIndex - 1, true); });
+      nextButton.addEventListener('click', function () { goTo(currentIndex + 1, true); });
+      dots.forEach(function (dot, index) { dot.addEventListener('click', function () { goTo(index, true); }); });
+      imageButtons.forEach(function (button) { button.addEventListener('click', openLightbox); });
+      carousel.addEventListener('mouseenter', function () { isHovering = true; stopRotation(); });
+      carousel.addEventListener('mouseleave', function () { isHovering = false; startRotation(); });
+      carousel.addEventListener('focusin', function () { hasFocus = true; stopRotation(); });
+      carousel.addEventListener('focusout', function () { window.setTimeout(function () { hasFocus = carousel.contains(document.activeElement); startRotation(); }, 0); });
+      carousel.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowLeft') { event.preventDefault(); goTo(currentIndex - 1, true); }
+        if (event.key === 'ArrowRight') { event.preventDefault(); goTo(currentIndex + 1, true); }
+        if (event.key === 'Escape') closeLightbox();
+      });
+      carousel.addEventListener('touchstart', function (event) {
+        if (!event.changedTouches.length) return;
+        touchStartX = event.changedTouches[0].clientX;
+        touchStartY = event.changedTouches[0].clientY;
+      }, { passive: true });
+      carousel.addEventListener('touchend', function (event) {
+        if (!event.changedTouches.length) return;
+        var dx = event.changedTouches[0].clientX - touchStartX;
+        var dy = event.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) goTo(currentIndex + (dx < 0 ? 1 : -1), true);
+      }, { passive: true });
+      closeButton.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', function (event) { if (event.target === lightbox) closeLightbox(); });
+      document.addEventListener('keydown', function (event) { if (event.key === 'Escape') closeLightbox(); });
+      document.addEventListener('visibilitychange', function () { if (document.hidden) stopRotation(); else startRotation(); });
+      if (typeof mediaQuery.addEventListener === 'function') mediaQuery.addEventListener('change', startRotation);
+      else if (typeof mediaQuery.addListener === 'function') mediaQuery.addListener(startRotation);
+      updateCarousel();
+      startRotation();
+    })();
+  </script>
+  <script src="/bluecard/global-layout.js"></script>
+</body>
+</html>
