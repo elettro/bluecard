@@ -36,8 +36,32 @@
     .profile-card strong { display: flex; align-items: flex-end; justify-content: center; min-height: 58px; color: #0d5cab; font-size: clamp(38px, 4vw, 50px); line-height: 0.95; font-weight: 800; letter-spacing: -0.03em; }
     .profile-card span { display: flex; align-items: flex-start; justify-content: center; color: #303b47; font-size: 15.5px; line-height: 1.45; font-weight: 700; max-width: 220px; margin: 0 auto; }
     .footer-space { height: 24px; }
-    @media (max-width: 900px) { .mission-body { padding: 56px 18px; } .mission-card { padding: 34px 24px; } .section-intro, .content-grid { grid-template-columns: 1fr; } h2 { font-size: 36px; } .content-panel h3, .cta-panel h3 { font-size: 26px; } .profile-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 600px) { h2 { font-size: 30px; } .lead { font-size: 17px; } .content-panel, .cta-panel { padding: 24px 20px 22px; } .profile-grid { grid-template-columns: 1fr; } .profile-card { min-height: 168px; } }
+
+    .mission-infographic-carousel { margin-top: 28px; padding: 34px; background: linear-gradient(180deg, #ffffff 0%, #f3f8fe 100%); border: 1px solid rgba(13, 92, 171, 0.14); border-radius: 22px; box-shadow: 0 16px 38px rgba(9, 42, 86, 0.08); box-sizing: border-box; overflow: hidden; }
+    .mission-infographic-carousel__eyebrow { margin: 0 0 10px; color: #0d5cab; font-size: 13px; line-height: 1.4; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+    .mission-infographic-carousel h3 { margin: 0 0 14px; color: #0b2341; font-size: 30px; line-height: 1.2; font-weight: 800; }
+    .mission-infographic-carousel__intro { margin: 0 0 26px; color: #303b47; font-size: 17px; line-height: 1.7; max-width: 820px; }
+    .mission-infographic-carousel__frame { position: relative; border: 1px solid rgba(11, 35, 65, 0.1); border-radius: 20px; background: #ffffff; box-shadow: 0 12px 30px rgba(9, 42, 86, 0.08); }
+    .mission-infographic-carousel__viewport { overflow: hidden; border-radius: 20px; touch-action: pan-y; }
+    .mission-infographic-carousel__track { display: flex; transform: translateX(0); transition: transform 320ms ease; will-change: transform; }
+    .mission-infographic-carousel__slide { flex: 0 0 100%; display: flex; align-items: center; justify-content: center; padding: 22px; box-sizing: border-box; }
+    .mission-infographic-carousel__image-link { display: block; width: 100%; max-width: 980px; margin: 0 auto; }
+    .mission-infographic-carousel__image { display: block; width: 100%; height: auto; max-width: 100%; margin: 0 auto; border-radius: 14px; }
+    .mission-infographic-carousel__arrow { position: absolute; top: 50%; z-index: 2; width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(13, 92, 171, 0.24); border-radius: 50%; background: #ffffff; color: #0d5cab; box-shadow: 0 8px 18px rgba(9, 42, 86, 0.16); cursor: pointer; transform: translateY(-50%); transition: background-color 180ms ease, color 180ms ease, box-shadow 180ms ease; }
+    .mission-infographic-carousel__arrow:hover { background: #0d5cab; color: #ffffff; box-shadow: 0 10px 22px rgba(13, 92, 171, 0.25); }
+    .mission-infographic-carousel__arrow:focus-visible, .mission-infographic-carousel__dot:focus-visible, .mission-infographic-carousel__full-link:focus-visible, .mission-infographic-carousel__image-link:focus-visible { outline: 3px solid rgba(13, 92, 171, 0.45); outline-offset: 3px; }
+    .mission-infographic-carousel__arrow svg { width: 22px; height: 22px; fill: currentColor; }
+    .mission-infographic-carousel__arrow--prev { left: -24px; }
+    .mission-infographic-carousel__arrow--next { right: -24px; }
+    .mission-infographic-carousel__footer { display: flex; flex-direction: column; align-items: center; gap: 12px; padding-top: 18px; }
+    .mission-infographic-carousel__full-link { color: #0d5cab; font-size: 16px; line-height: 1.4; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .mission-infographic-carousel__dots { display: flex; justify-content: center; gap: 10px; }
+    .mission-infographic-carousel__dot { width: 12px; height: 12px; padding: 0; border: 0; border-radius: 50%; background: #c8d8ea; cursor: pointer; }
+    .mission-infographic-carousel__dot[aria-current="true"] { background: #0d5cab; }
+    .mission-infographic-carousel__status { color: #415062; font-size: 14px; font-weight: 700; }
+    @media (prefers-reduced-motion: reduce) { .mission-infographic-carousel__track { transition: none; } .mission-infographic-carousel__arrow { transition: none; } }
+    @media (max-width: 900px) { .mission-body { padding: 56px 18px; } .mission-card { padding: 34px 24px; } .section-intro, .content-grid { grid-template-columns: 1fr; } h2 { font-size: 36px; } .content-panel h3, .cta-panel h3 { font-size: 26px; } .profile-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .mission-infographic-carousel { padding: 28px 22px; } .mission-infographic-carousel h3 { font-size: 26px; } .mission-infographic-carousel__arrow--prev { left: 10px; } .mission-infographic-carousel__arrow--next { right: 10px; } .mission-infographic-carousel__slide { padding: 18px; } }
+    @media (max-width: 600px) { h2 { font-size: 30px; } .lead { font-size: 17px; } .content-panel, .cta-panel { padding: 24px 20px 22px; } .profile-grid { grid-template-columns: 1fr; } .profile-card { min-height: 168px; } .mission-infographic-carousel { padding: 24px 14px; border-radius: 18px; } .mission-infographic-carousel__intro { font-size: 16px; } .mission-infographic-carousel__frame, .mission-infographic-carousel__viewport { border-radius: 16px; } .mission-infographic-carousel__slide { padding: 12px; } .mission-infographic-carousel__image { border-radius: 10px; } .mission-infographic-carousel__arrow { width: 44px; height: 44px; } .mission-infographic-carousel__arrow--prev { left: 6px; } .mission-infographic-carousel__arrow--next { right: 6px; } }
   </style>
 <meta property="og:title" content="Our Mission | The Blue Card">
 <meta property="og:description" content="Learn how The Blue Card provides direct financial assistance to Holocaust survivors living in need across the United States.">
@@ -113,11 +137,43 @@
             <p>Dignity was forcibly taken from them during the Holocaust, and now they are vulnerable once again. The Blue Card provides direct financial assistance to ease the financial burdens and ensures that its clients don’t lose their dignity once again, in their last years.</p>
           </section>
 
-          <section class="cta-panel" aria-label="Misconceptions vs Truths infographic placeholder" style="margin-top:28px;">
+          <section class="mission-infographic-carousel" aria-labelledby="mission-infographic-carousel-heading">
             <div class="accent-line"></div>
-            <h3>Misconceptions vs Truths</h3>
-            <p>Infographic content to be added.</p>
-            <!-- Dean to update this section with final Misconceptions vs Truths infographic content. -->
+            <p class="mission-infographic-carousel__eyebrow">OUR MISSION IN FOCUS</p>
+            <h3 id="mission-infographic-carousel-heading">The Blue Card’s Legacy and Impact</h3>
+            <p class="mission-infographic-carousel__intro">Explore how The Blue Card’s history, mission, and direct assistance continue to support Holocaust survivors living in need.</p>
+
+            <div class="mission-infographic-carousel__frame" data-mission-infographic-carousel tabindex="0" aria-label="Mission infographic carousel">
+              <button class="mission-infographic-carousel__arrow mission-infographic-carousel__arrow--prev" type="button" aria-label="Previous infographic">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15.7 5.3a1 1 0 0 1 0 1.4L10.4 12l5.3 5.3a1 1 0 1 1-1.4 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.4 0z"/></svg>
+              </button>
+              <div class="mission-infographic-carousel__viewport">
+                <div class="mission-infographic-carousel__track">
+                  <div class="mission-infographic-carousel__slide">
+                    <a class="mission-infographic-carousel__image-link" href="/bluecard/infographics/Legacy_of_Support_and_Resilience.png" target="_blank" rel="noopener noreferrer">
+                      <img class="mission-infographic-carousel__image" src="/bluecard/infographics/Legacy_of_Support_and_Resilience.png" alt="The Blue Card legacy of support and resilience infographic" loading="lazy" decoding="async" />
+                    </a>
+                  </div>
+                  <div class="mission-infographic-carousel__slide">
+                    <a class="mission-infographic-carousel__image-link" href="/bluecard/infographics/A_Lifeline_for_Holocaust_Survivors.png" target="_blank" rel="noopener noreferrer">
+                      <img class="mission-infographic-carousel__image" src="/bluecard/infographics/A_Lifeline_for_Holocaust_Survivors.png" alt="A lifeline for Holocaust survivors infographic" loading="lazy" decoding="async" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <button class="mission-infographic-carousel__arrow mission-infographic-carousel__arrow--next" type="button" aria-label="Next infographic">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.3 18.7a1 1 0 0 1 0-1.4l5.3-5.3-5.3-5.3a1 1 0 0 1 1.4-1.4l6 6a1 1 0 0 1 0 1.4l-6 6a1 1 0 0 1-1.4 0z"/></svg>
+              </button>
+            </div>
+
+            <div class="mission-infographic-carousel__footer">
+              <a class="mission-infographic-carousel__full-link" href="/bluecard/infographics/Legacy_of_Support_and_Resilience.png" target="_blank" rel="noopener noreferrer">View Full Infographic</a>
+              <div class="mission-infographic-carousel__dots" role="tablist" aria-label="Choose infographic">
+                <button class="mission-infographic-carousel__dot" type="button" aria-label="Show infographic 1" aria-current="true"></button>
+                <button class="mission-infographic-carousel__dot" type="button" aria-label="Show infographic 2" aria-current="false"></button>
+              </div>
+              <div class="mission-infographic-carousel__status" aria-live="polite" aria-atomic="true">1 of 2</div>
+            </div>
           </section>
         </div>
       </div>
@@ -126,6 +182,65 @@
 
   <div class="footer-space"></div>
   <footer id="bc-global-footer" aria-label="Global site footer"></footer>
+
+  <script>
+    (function () {
+      var carousel = document.querySelector('[data-mission-infographic-carousel]');
+      if (!carousel) return;
+
+      var track = carousel.querySelector('.mission-infographic-carousel__track');
+      var slides = Array.prototype.slice.call(carousel.querySelectorAll('.mission-infographic-carousel__slide'));
+      var prevButton = carousel.querySelector('.mission-infographic-carousel__arrow--prev');
+      var nextButton = carousel.querySelector('.mission-infographic-carousel__arrow--next');
+      var dots = Array.prototype.slice.call(document.querySelectorAll('.mission-infographic-carousel__dot'));
+      var status = document.querySelector('.mission-infographic-carousel__status');
+      var fullLink = document.querySelector('.mission-infographic-carousel__full-link');
+      var currentIndex = 0;
+      var startX = 0;
+      var startY = 0;
+      var pointerDown = false;
+
+      function updateCarousel(index) {
+        currentIndex = (index + slides.length) % slides.length;
+        track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+        dots.forEach(function (dot, dotIndex) {
+          dot.setAttribute('aria-current', dotIndex === currentIndex ? 'true' : 'false');
+        });
+        if (status) status.textContent = (currentIndex + 1) + ' of ' + slides.length;
+        if (fullLink) {
+          var activeImageLink = slides[currentIndex].querySelector('.mission-infographic-carousel__image-link');
+          if (activeImageLink) fullLink.href = activeImageLink.href;
+        }
+      }
+
+      prevButton.addEventListener('click', function () { updateCarousel(currentIndex - 1); });
+      nextButton.addEventListener('click', function () { updateCarousel(currentIndex + 1); });
+      dots.forEach(function (dot, dotIndex) {
+        dot.addEventListener('click', function () { updateCarousel(dotIndex); });
+      });
+      carousel.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowLeft') { event.preventDefault(); updateCarousel(currentIndex - 1); }
+        if (event.key === 'ArrowRight') { event.preventDefault(); updateCarousel(currentIndex + 1); }
+      });
+      carousel.addEventListener('pointerdown', function (event) {
+        pointerDown = true;
+        startX = event.clientX;
+        startY = event.clientY;
+      });
+      carousel.addEventListener('pointerup', function (event) {
+        if (!pointerDown) return;
+        pointerDown = false;
+        var deltaX = event.clientX - startX;
+        var deltaY = event.clientY - startY;
+        if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.25) {
+          updateCarousel(deltaX < 0 ? currentIndex + 1 : currentIndex - 1);
+        }
+      });
+      carousel.addEventListener('pointercancel', function () { pointerDown = false; });
+
+      updateCarousel(0);
+    }());
+  </script>
   <script src="/bluecard/global-layout.js"></script>
 </body>
 </html>
