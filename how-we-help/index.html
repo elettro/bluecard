@@ -4,699 +4,119 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>How We Help | The Blue Card</title>
-  <meta name="description" content="Learn more about how we help at The Blue Card, including survivor assistance programs, community resources, and organization updates.">
+  <meta name="description" content="Learn how The Blue Card supports Holocaust survivors through emergency assistance, ongoing support, medication assistance, and health and well-being programs.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://elettro.github.io/bluecard/how-we-help/">
+  <meta property="og:title" content="How We Help | The Blue Card">
+  <meta property="og:description" content="Learn how The Blue Card supports Holocaust survivors through emergency assistance, ongoing support, medication assistance, and health and well-being programs.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elettro.github.io/bluecard/how-we-help/">
+  <meta property="og:site_name" content="The Blue Card">
+  <meta property="og:image" content="https://elettro.github.io/bluecard/images/podcast/1x1-podcast-thebluecard-how-we-helpv1.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How We Help | The Blue Card">
+  <meta name="twitter:description" content="Learn how The Blue Card supports Holocaust survivors through emergency assistance, ongoing support, medication assistance, and health and well-being programs.">
+  <meta name="twitter:image" content="https://elettro.github.io/bluecard/images/podcast/1x1-podcast-thebluecard-how-we-helpv1.png">
+  <link rel="stylesheet" href="/bluecard/global-layout.css">
   <style>
-    :root {
-      --blue: #0c3d74;
-      --blue-dark: #082b52;
-      --blue-soft: #eaf2fb;
-      --gold: #d6a84f;
-      --text: #1d2a36;
-      --muted: #5f6e7c;
-      --border: #dbe4ee;
-      --white: #ffffff;
-      --bg: #f7fafc;
-      --shadow: 0 14px 34px rgba(12, 61, 116, 0.10);
-      --radius: 18px;
-      --max: 1200px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.65;
-    }
-
-    a {
-      color: var(--blue);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .wrap {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .hero {
-      background:
-        linear-gradient(135deg, rgba(8, 43, 82, 0.95), rgba(12, 61, 116, 0.92)),
-        linear-gradient(180deg, #0c3d74, #0a335f);
-      color: var(--white);
-      padding: 84px 0 72px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      color: #d8e7fb;
-      margin-bottom: 16px;
-    }
-
-    .hero h1 {
-      margin: 0 0 18px;
-      font-size: clamp(34px, 5vw, 58px);
-      line-height: 1.05;
-      max-width: 900px;
-    }
-
-    .hero .lead {
-      font-size: 20px;
-      color: #edf4fc;
-      max-width: 920px;
-      margin: 0 0 22px;
-    }
-
-    .hero .sublead {
-      max-width: 980px;
-      color: #d7e6f7;
-      font-size: 18px;
-      margin: 0;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 28px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 50px;
-      padding: 0 22px;
-      border-radius: 999px;
-      font-weight: 700;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-    }
-
-    .btn:hover {
-      text-decoration: none;
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      background: var(--white);
-      color: var(--blue-dark);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--white);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-    }
-
-    .quick-nav {
-      margin-top: -30px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .quick-nav-inner {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .quick-nav-title {
-      font-size: 14px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .quick-nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .quick-nav-links a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 42px;
-      padding: 0 16px;
-      border-radius: 999px;
-      background: var(--blue-soft);
-      color: var(--blue-dark);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .intro-section {
-      padding: 54px 0 26px;
-    }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 0.9fr;
-      gap: 28px;
-      align-items: stretch;
-    }
-
-    .panel {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 30px;
-      box-shadow: 0 8px 24px rgba(18, 46, 77, 0.06);
-    }
-
-    .panel h2 {
-      margin: 0 0 14px;
-      font-size: 30px;
-      line-height: 1.15;
-      color: var(--blue-dark);
-    }
-
-    .panel p {
-      margin: 0 0 16px;
-      color: var(--text);
-      font-size: 17px;
-    }
-
-    .panel p:last-child {
-      margin-bottom: 0;
-    }
-
-    .mission-box {
-      background: linear-gradient(180deg, #f8fbff, #eef5fc);
-    }
-
-    .impact-box {
-      background: linear-gradient(180deg, #0c3d74, #0a335f);
-      color: var(--white);
-      border-color: rgba(255,255,255,0.08);
-    }
-
-    .impact-box h3 {
-      margin: 0 0 14px;
-      font-size: 28px;
-      line-height: 1.15;
-      color: var(--white);
-    }
-
-    .impact-box p {
-      color: #e5eef9;
-      margin: 0 0 16px;
-      font-size: 17px;
-    }
-
-    .impact-box .big {
-      font-size: 42px;
-      line-height: 1;
-      font-weight: 800;
-      margin: 12px 0 10px;
-      color: #ffffff;
-    }
-
-    .impact-box .small {
-      font-size: 15px;
-      color: #d1e2f6;
-      margin: 0;
-    }
-
-    .section-header {
-      padding: 24px 0 8px;
-    }
-
-    .section-header h2 {
-      margin: 0 0 10px;
-      font-size: 36px;
-      line-height: 1.1;
-      color: var(--blue-dark);
-    }
-
-    .section-header p {
-      margin: 0;
-      max-width: 900px;
-      font-size: 18px;
-      color: var(--muted);
-    }
-
-    .programs {
-      padding: 18px 0 34px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: 0 8px 26px rgba(17, 45, 74, 0.06);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-      scroll-margin-top: 100px;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 30px rgba(12, 61, 116, 0.10);
-      border-color: #c7d6e7;
-    }
-
-    .card .kicker {
-      display: inline-block;
-      margin-bottom: 10px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: var(--blue-soft);
-      color: var(--blue-dark);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-    }
-
-    .card h3 {
-      margin: 0 0 14px;
-      font-size: 28px;
-      line-height: 1.15;
-      color: var(--blue-dark);
-    }
-
-    .card p {
-      margin: 0 0 14px;
-      font-size: 16px;
-      color: var(--text);
-    }
-
-    .card ul {
-      margin: 14px 0 0;
-      padding-left: 18px;
-    }
-
-    .card li {
-      margin: 0 0 8px;
-      color: var(--text);
-    }
-
-    .card .read-more {
-      display: inline-flex;
-      align-items: center;
-      margin-top: 20px;
-      font-weight: 700;
-      color: var(--blue);
-    }
-
-    .donation-strip {
-      padding: 24px 0 70px;
-    }
-
-    .donation-panel {
-      background: linear-gradient(135deg, #f4f8fd, #ffffff);
-      border: 1px solid var(--border);
-      border-left: 6px solid var(--gold);
-      border-radius: 22px;
-      padding: 34px;
-      box-shadow: var(--shadow);
-    }
-
-    .donation-panel h2 {
-      margin: 0 0 14px;
-      font-size: 36px;
-      line-height: 1.1;
-      color: var(--blue-dark);
-    }
-
-    .donation-panel p {
-      margin: 0 0 14px;
-      font-size: 18px;
-      color: var(--text);
-      max-width: 980px;
-    }
-
-    .donation-panel p:last-child {
-      margin-bottom: 0;
-    }
-
-    .footer-space {
-      height: 10px;
-    }
-
-    @media (max-width: 980px) {
-      .intro-grid,
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .panel,
-      .card,
-      .donation-panel {
-        padding: 24px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero {
-        padding: 68px 0 58px;
-      }
-
-      .hero .lead,
-      .hero .sublead,
-      .panel p,
-      .impact-box p,
-      .section-header p,
-      .donation-panel p {
-        font-size: 16px;
-      }
-
-      .section-header h2,
-      .donation-panel h2 {
-        font-size: 30px;
-      }
-
-      .card h3 {
-        font-size: 24px;
-      }
-
-      .quick-nav-links a {
-        width: 100%;
-        justify-content: center;
-      }
-    }
+    :root { --how-help-navy:#0b2341; --how-help-blue:#0d5cab; --how-help-blue-2:#2d7fd3; --how-help-soft:#eef5fc; --how-help-soft-2:#f7fafd; --how-help-text:#263544; --how-help-muted:#5f6f80; --how-help-border:#cbdced; --how-help-white:#fff; --how-help-shadow:0 18px 46px rgba(9,42,86,.12); --how-help-radius:22px; --how-help-max:1200px; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { margin:0; font-family: Arial, Helvetica, sans-serif; color:var(--how-help-text); background:#fff; line-height:1.65; overflow-x:hidden; }
+    .how-help-wrap { width:min(var(--how-help-max), calc(100% - 40px)); margin:0 auto; }
+    .how-help-hero { min-height:420px; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff; padding:76px 20px; background: radial-gradient(circle at 18% 10%, rgba(80,157,224,.38), transparent 34%), linear-gradient(135deg, #071d36 0%, #0b3769 48%, #0d5cab 100%); position:relative; overflow:hidden; }
+    .how-help-hero::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,0)); pointer-events:none; }
+    .how-help-hero__content { position:relative; z-index:1; max-width:980px; margin:0 auto; text-shadow:0 8px 22px rgba(0,0,0,.24); }
+    .how-help-hero h1 { margin:0; color:#fff; font-size:clamp(42px, 6vw, 68px); line-height:1.02; font-weight:800; }
+    .how-help-hero p { max-width:900px; margin:20px auto 0; color:#f2f7fd; font-size:clamp(18px, 2.1vw, 23px); line-height:1.55; font-weight:600; }
+    .how-help-section { padding:76px 0; background:linear-gradient(180deg, #f7f9fc 0%, #fff 100%); }
+    .how-help-section--white { background:#fff; }
+    .how-help-intro { text-align:center; max-width:920px; margin:0 auto 38px; }
+    .how-help-eyebrow { display:inline-block; margin-bottom:12px; color:var(--how-help-blue); font-size:13px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
+    .how-help-heading { margin:0; color:var(--how-help-navy); font-size:clamp(30px,4vw,48px); line-height:1.12; font-weight:800; }
+    .how-help-text { margin:18px auto 0; color:var(--how-help-muted); font-size:18px; line-height:1.75; }
+    .how-help-program-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:26px; align-items:stretch; }
+    .how-help-program-card { min-height:100%; display:flex; flex-direction:column; background:#fff; border:1px solid var(--how-help-border); border-radius:var(--how-help-radius); padding:30px; box-shadow:0 12px 30px rgba(9,42,86,.08); transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .how-help-program-card:hover { transform:translateY(-4px); box-shadow:var(--how-help-shadow); border-color:#a9c4df; }
+    .how-help-icon { width:86px; height:86px; border-radius:24px; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#eef7ff,#e3f0fc); border:1px solid rgba(13,92,171,.12); color:var(--how-help-blue); margin-bottom:22px; }
+    .how-help-icon svg { width:58px; height:58px; }
+    .how-help-program-card h3 { margin:0 0 12px; color:var(--how-help-navy); font-size:28px; line-height:1.18; }
+    .how-help-program-card p { margin:0 0 24px; color:#334353; font-size:17px; line-height:1.7; }
+    .how-help-button { margin-top:auto; display:inline-flex; align-items:center; justify-content:center; min-height:50px; align-self:flex-start; padding:0 22px; border-radius:999px; background:var(--how-help-blue); color:#fff; font-weight:800; text-decoration:none; box-shadow:0 10px 24px rgba(13,92,171,.22); transition:transform .18s ease, background .18s ease, box-shadow .18s ease; }
+    .how-help-button:hover { background:#0b4f94; transform:translateY(-1px); text-decoration:none; box-shadow:0 14px 28px rgba(13,92,171,.28); }
+    .how-help-button:focus-visible, .how-help-audio button:focus-visible, .how-help-audio input:focus-visible, .how-help-carousel button:focus-visible, .how-help-carousel a:focus-visible, .how-help-lightbox__close:focus-visible { outline:3px solid rgba(13,92,171,.4); outline-offset:3px; }
+    .how-help-podcast-card { display:grid; grid-template-columns:38% minmax(0,1fr); gap:42px; align-items:center; background:linear-gradient(180deg,#fff,#f7fbff); border:1px solid var(--how-help-border); border-radius:26px; padding:34px; box-shadow:var(--how-help-shadow); }
+    .how-help-podcast__art { width:100%; height:auto; display:block; border-radius:22px; border:1px solid var(--how-help-border); box-shadow:0 16px 34px rgba(9,42,86,.16); }
+    .how-help-audio { margin-top:24px; padding:22px; border-radius:20px; background:#f2f7fd; border:1px solid rgba(13,92,171,.14); }
+    .how-help-audio__native { width:100%; margin-top:16px; }
+    .how-help-audio.is-enhanced .how-help-audio__native { position:absolute; width:1px; height:1px; opacity:.01; pointer-events:none; }
+    .how-help-audio__controls { display:grid; gap:14px; }
+    .how-help-audio__top { display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+    .how-help-audio__button { width:46px; height:46px; border-radius:999px; border:1px solid #b8cee3; background:#fff; color:var(--how-help-blue); display:inline-flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 8px 18px rgba(9,42,86,.08); }
+    .how-help-audio__button svg { width:22px; height:22px; }
+    .how-help-audio__time { font-weight:800; color:var(--how-help-navy); min-width:96px; }
+    .how-help-audio__status { color:var(--how-help-muted); font-size:15px; }
+    .how-help-audio__range { width:100%; accent-color:var(--how-help-blue); cursor:pointer; }
+    .how-help-audio__volume { display:flex; align-items:center; gap:12px; }
+    .how-help-audio__volume input { width:min(190px, 52vw); accent-color:var(--how-help-blue); }
+    .how-help-audio__error { display:none; margin:14px 0 0; color:#8a1f1f; font-weight:700; }
+    .how-help-audio.has-error .how-help-audio__error { display:block; }
+    .how-help-carousel { position:relative; max-width:1080px; margin:36px auto 0; color:var(--how-help-navy); }
+    .how-help-carousel__frame { position:relative; background:#fff; border:1px solid var(--how-help-border); border-radius:22px; box-shadow:var(--how-help-shadow); padding:18px; overflow:visible; }
+    .how-help-carousel__viewport { overflow:hidden; border-radius:16px; touch-action:pan-y; }
+    .how-help-carousel__track { display:flex; transform:translateX(0); transition:transform 520ms ease; }
+    .how-help-carousel__slide { flex:0 0 100%; display:flex; align-items:center; justify-content:center; }
+    .how-help-carousel__image-button { display:block; width:100%; padding:0; border:0; background:transparent; cursor:zoom-in; }
+    .how-help-carousel__image { display:block; width:100%; height:auto; margin:0 auto; border-radius:12px; }
+    .how-help-carousel__arrow { position:absolute; top:50%; z-index:2; width:46px; height:46px; border:1px solid var(--how-help-border); border-radius:999px; background:rgba(255,255,255,.95); color:var(--how-help-blue); box-shadow:0 8px 20px rgba(9,42,86,.16); cursor:pointer; transform:translateY(-50%); }
+    .how-help-carousel__arrow--prev { left:-23px; } .how-help-carousel__arrow--next { right:-23px; }
+    .how-help-carousel__footer { display:flex; flex-direction:column; align-items:center; gap:14px; margin-top:20px; }
+    .how-help-carousel__dots { display:flex; gap:10px; }
+    .how-help-carousel__dot { width:12px; height:12px; padding:0; border:0; border-radius:999px; background:#cbdced; cursor:pointer; }
+    .how-help-carousel__dot[aria-current="true"] { background:var(--how-help-blue); }
+    .how-help-carousel__full-link { color:var(--how-help-blue); font-weight:800; text-decoration:none; }
+    .how-help-carousel__full-link:hover { text-decoration:underline; }
+    .how-help-carousel__status { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+    .how-help-lightbox { position:fixed; inset:0; z-index:9999; display:none; align-items:center; justify-content:center; padding:24px; }
+    .how-help-lightbox.is-open { display:flex; }
+    .how-help-lightbox__backdrop { position:absolute; inset:0; background:rgba(5,18,34,.82); }
+    .how-help-lightbox__dialog { position:relative; z-index:1; max-width:min(94vw,1180px); max-height:92vh; padding:14px; border-radius:18px; background:#fff; box-shadow:0 24px 70px rgba(0,0,0,.4); }
+    .how-help-lightbox__image { display:block; max-width:calc(94vw - 28px); max-height:calc(92vh - 28px); width:auto; height:auto; object-fit:contain; }
+    .how-help-lightbox__close { position:absolute; top:-18px; right:-18px; width:46px; height:46px; border:1px solid var(--how-help-border); border-radius:999px; background:#fff; color:var(--how-help-blue); cursor:pointer; }
+    body.how-help-lightbox-open { overflow:hidden; }
+    @media (max-width:900px) { .how-help-program-grid, .how-help-podcast-card { grid-template-columns:1fr; } .how-help-podcast__media { max-width:460px; margin:0 auto; } .how-help-section { padding:64px 0; } .how-help-carousel__arrow--prev { left:12px; } .how-help-carousel__arrow--next { right:12px; } }
+    @media (max-width:600px) { .how-help-wrap { width:min(100% - 28px, var(--how-help-max)); } .how-help-hero { min-height:380px; padding:64px 14px; } .how-help-program-card, .how-help-podcast-card { padding:24px 20px; border-radius:20px; } .how-help-button { width:100%; } .how-help-carousel__frame { padding:10px; } .how-help-lightbox__close { top:8px; right:8px; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } .how-help-program-card, .how-help-button, .how-help-carousel__track { transition:none; } }
   </style>
-  <link rel="stylesheet" href="../global-layout.css"/>
-<meta property="og:title" content="How We Help | The Blue Card">
-<meta property="og:description" content="Learn more about how we help at The Blue Card, including survivor assistance programs, community resources, and organization updates.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://elettro.github.io/bluecard/how-we-help/">
-<meta property="og:site_name" content="The Blue Card">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="How We Help | The Blue Card">
-<meta name="twitter:description" content="Learn more about how we help at The Blue Card, including survivor assistance programs, community resources, and organization updates.">
-<link rel="canonical" href="https://elettro.github.io/bluecard/how-we-help/">
-<script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": ["Organization", "NGO"], "@id": "https://elettro.github.io/bluecard/#organization", "name": "The Blue Card", "alternateName": "The Blue Card, Inc.", "url": "https://elettro.github.io/bluecard/", "logo": "https://elettro.github.io/bluecard/images/logo/blue-card-logo-fullsize.png"}</script>
-<script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://elettro.github.io/bluecard/#website", "url": "https://elettro.github.io/bluecard/", "name": "The Blue Card", "publisher": {"@id": "https://elettro.github.io/bluecard/#organization"}}</script>
-<script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://elettro.github.io/bluecard/how-we-help/#webpage", "url": "https://elettro.github.io/bluecard/how-we-help/", "name": "How We Help", "description": "Learn more about how we help at The Blue Card, including survivor assistance programs, community resources, and organization updates.", "isPartOf": {"@id": "https://elettro.github.io/bluecard/#website"}, "publisher": {"@id": "https://elettro.github.io/bluecard/#organization"}}</script>
-<script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://elettro.github.io/bluecard/"}, {"@type": "ListItem", "position": 2, "name": "How We Help", "item": "https://elettro.github.io/bluecard/how-we-help/"}]}</script>
+  <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":["Organization","NGO"],"@id":"https://elettro.github.io/bluecard/#organization","name":"The Blue Card","alternateName":"The Blue Card, Inc.","url":"https://elettro.github.io/bluecard/","logo":"https://elettro.github.io/bluecard/images/logo/blue-card-logo-fullsize.png"}</script>
+  <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"WebSite","@id":"https://elettro.github.io/bluecard/#website","url":"https://elettro.github.io/bluecard/","name":"The Blue Card","publisher":{"@id":"https://elettro.github.io/bluecard/#organization"}}</script>
+  <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"WebPage","@id":"https://elettro.github.io/bluecard/how-we-help/#webpage","url":"https://elettro.github.io/bluecard/how-we-help/","name":"How We Help","description":"Learn how The Blue Card supports Holocaust survivors through emergency assistance, ongoing support, medication assistance, and health and well-being programs.","isPartOf":{"@id":"https://elettro.github.io/bluecard/#website"},"publisher":{"@id":"https://elettro.github.io/bluecard/#organization"}}</script>
+  <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://elettro.github.io/bluecard/"},{"@type":"ListItem","position":2,"name":"How We Help","item":"https://elettro.github.io/bluecard/how-we-help/"}]}</script>
+  <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"ItemList","name":"How We Help Programs","itemListElement":[{"@type":"ListItem","position":1,"name":"Emergency Assistance","url":"https://elettro.github.io/bluecard/emergency-assistance/"},{"@type":"ListItem","position":2,"name":"Ongoing Support","url":"https://elettro.github.io/bluecard/ongoing-support/"},{"@type":"ListItem","position":3,"name":"Medication Assistance","url":"https://elettro.github.io/bluecard/medication-assistance/"},{"@type":"ListItem","position":4,"name":"Health & Well-Being","url":"https://elettro.github.io/bluecard/health-well-being/"}]}</script>
+  <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"AudioObject","name":"The Blue Card - How We Help","contentUrl":"https://www.dropbox.com/scl/fi/rdiecg2n9gewpk4w3ttc4/how-we-help-the_blue_card_lifeline_for_holocaust_survivors.m4a?rlkey=6zhh3i73t665aww07i4fh95jq&raw=1","encodingFormat":"audio/mp4"}</script>
 </head>
-<body
->
-<div id="bc-global-nav"></div>
-
-
-  <header class="hero">
-    <div class="wrap">
-      <div class="eyebrow">Direct Financial Assistance for Holocaust Survivors</div>
-      <h1>How The Blue Card Helps Holocaust Survivors Live With Dignity, Safety, and Independence</h1>
-      <p class="lead">
-        The Blue Card receives funding and donations to provide financial assistance to poverty-stricken Holocaust survivors.
-      </p>
-      <p class="sublead">
-        These funds help us achieve our mission to ensure survivors live out their golden years with respect and dignity, safe and independent in their homes, and with the feeling that there are still people who care.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#programs">Explore Our Programs</a>
-        <a class="btn btn-secondary" href="/bluecard/donate/">Donate Now</a>
-      </div>
-    </div>
-  </header>
-
-  <section class="quick-nav">
-    <div class="wrap">
-      <div class="quick-nav-inner">
-        <div class="quick-nav-title">Quick Links</div>
-        <div class="quick-nav-links">
-          <a href="../emergency-cash-assistance/">Emergency Cash Assistance</a>
-          <a href="../the-blue-cards-medication-assistance-grant/">Medication Assistance</a>
-          <a href="../dental-and-medical-assistance/">Dental and Medical Assistance</a>
-          <a href="../telephone-response-system/">TERS</a>
-          <a href="../natural-disaster-relief/">Natural Disaster Relief</a>
-          <a href="../ongoing-assistance/">Monthly Assistance</a>
-          <a href="../siggi-b-wilzig-fighting-cancer-together-program/">Fighting Cancer Together</a>
-          <a href="../health-and-wellbeing/">Health and Wellbeing</a>
-          <a href="#education-outreach">Education and Outreach</a>
-          <a href="../cost-plus-drug-company/">Cost Plus Drug Company</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="intro-section">
-    <div class="wrap">
-      <div class="intro-grid">
-        <div class="panel mission-box">
-          <h2>Why This Support Matters</h2>
-          <p>
-            Many Holocaust survivors carry deep trauma connected to being forced from their homes into ghettos, camps, hiding places, or exile. For many, the fear of losing their home is not an ordinary financial concern. It is a painful reminder of profound loss, displacement, and terror.
-          </p>
-          <p>
-            Many survivors also have no family left. They live with isolation, fragile health, and the painful feeling that they have once again been forgotten in a time of need.
-          </p>
-          <p>
-            Through funding and donations, The Blue Card gives direct financial assistance to Holocaust survivors who need it most. Our work helps survivors remain in their homes, meet urgent needs, maintain their health, and feel supported with care and compassion.
-          </p>
-        </div>
-
-        <div class="panel impact-box">
-          <h3>100% of Your Donation Helps One More Holocaust Survivor Financially</h3>
-          <div class="big">100%</div>
-          <p>
-            Every dollar donated goes directly toward helping Holocaust survivors afford essential needs such as housing, food, dental care, medical care, medication, heat, water, electricity, and more.
-          </p>
-          <p class="small">
-            Your support helps preserve dignity, stability, and peace of mind.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap section-header" id="programs">
-    <h2>Programs of Assistance</h2>
-    <p>
-      The Blue Card’s programs are designed to meet both urgent and ongoing needs. Each one addresses a critical area of survivor wellbeing, from emergency aid and medical support to cancer care, emotional wellbeing, and safety at home.
-    </p>
-  </section>
-
-  <section class="programs">
-    <div class="wrap">
-      <div class="cards">
-
-        <article class="card" id="emergency-cash-assistance">
-          <div class="kicker">Urgent Need</div>
-          <h3>Emergency Cash Assistance</h3>
-          <p>
-            The Blue Card provides one-time grant assistance for urgent and emergency needs to improve the living conditions of Holocaust survivors facing immediate hardship.
-          </p>
-          <p>
-            This program helps stabilize daily life during moments of crisis and protect survivors from situations that threaten their health, safety, or housing.
-          </p>
-          <ul>
-            <li>Late payments to prevent eviction</li>
-            <li>Homelessness prevention</li>
-            <li>Shut-off prevention for utilities</li>
-            <li>Emergency relocation support</li>
-            <li>Home add-ins and repairs, including stair lifts or plumbing</li>
-            <li>Purchase and repair of essential appliances</li>
-            <li>Food purchases</li>
-            <li>Dental care</li>
-            <li>Medical care and medical equipment not covered by insurance</li>
-            <li>Essential clothing and footwear</li>
-            <li>Burial expenses</li>
-          </ul>
-          <a class="read-more" href="https://bluecardfund.org/how-we-help/emergency-cash-assistance/">Visit program page</a>
-        </article>
-
-        <article class="card" id="medication-assistance">
-          <div class="kicker">Prescription Support</div>
-          <h3>The Blue Card’s Medication Assistance Grant</h3>
-          <p>
-            This program provides financial assistance to help Holocaust survivors purchase lifesaving medication and cover prescription co-pays.
-          </p>
-          <p>
-            Survivors living on limited monthly incomes and pensions are too often forced to ration medication because of cost. The support they receive through The Blue Card relieves that burden and helps them access critical treatment without added financial distress.
-          </p>
-          <a class="read-more" href="https://bluecardfund.org/the-blue-cards-medication-assistance-grant/">Visit program page</a>
-        </article>
-
-        <article class="card" id="dental-medical-assistance">
-          <div class="kicker">Health Support</div>
-          <h3>Dental and Medical Assistance</h3>
-          <p>
-            The Blue Card provides one-time financial assistance for urgent dental and medical services to improve the physical health of Holocaust survivors.
-          </p>
-          <p>
-            This support helps fill gaps where essential care is needed but not fully covered.
-          </p>
-          <ul>
-            <li>Hearing aids</li>
-            <li>Dental and denture care</li>
-            <li>Medical expenses not otherwise covered by insurance</li>
-            <li>Medication or medical equipment support</li>
-          </ul>
-          <a class="read-more" href="https://bluecardfund.org/how-we-help/dental-and-medical-assistance/">Visit program page</a>
-        </article>
-
-        <article class="card" id="ters">
-          <div class="kicker">Safety at Home</div>
-          <h3>Telephone Emergency Response System (TERS)</h3>
-          <p>
-            The Blue Card’s goal is to help Holocaust survivors remain in their own homes and stay independent for as long as possible.
-          </p>
-          <p>
-            Because of their Holocaust experience, many survivors suffer severe anxiety at the thought of being forced to leave home and move into a nursing facility. TERS helps relieve that fear with a life-preserving emergency alert system worn around the neck, wrist, or used as a landline unit.
-          </p>
-          <p>
-            With one press of a button, the survivor is instantly connected to a care specialist who can contact help when needed, providing 24/7 support and peace of mind for both survivors and families.
-          </p>
-          <p>
-            The Blue Card provides this system to survivors who do not have the financial resources to cover installation, ongoing service, or maintenance.
-          </p>
-          <a class="read-more" href="https://bluecardfund.org/how-we-help/ters/">Visit program page</a>
-        </article>
-
-        <article class="card" id="natural-disaster-relief">
-          <div class="kicker">Crisis Relief</div>
-          <h3>Natural Disaster Relief</h3>
-          <p>
-            As fires, hurricanes, and extreme weather affect communities across the country, The Blue Card reaches out to Holocaust survivors to ensure their safety and provide emergency support.
-          </p>
-          <p>
-            This fund responds to urgent needs in areas impacted by severe events, including Southern California, Asheville, Tampa Bay, and Southern Georgia.
-          </p>
-          <ul>
-            <li>Food and basic necessities</li>
-            <li>Medical supplies and vital care</li>
-            <li>Caregiver support</li>
-            <li>Financial and emotional assistance during displacement and disaster</li>
-          </ul>
-          <p>
-            The Natural Disasters and Severe Weather Fund delivers life-saving help during moments of extreme instability and loss.
-          </p>
-          <a class="read-more" href="https://bluecardfund.org/natural-disaster-relief/">Visit program page</a>
-        </article>
-
-        <article class="card" id="monthly-assistance">
-          <div class="kicker">Recurring Support</div>
-          <h3>Ongoing Monthly Assistance</h3>
-          <p>
-            For Holocaust survivors who need extra help each month to afford basic necessities and services, The Blue Card provides recurring financial assistance.
-          </p>
-          <ul>
-            <li>Food and household supplies</li>
-            <li>Rent assistance</li>
-          </ul>
-          <p>
-            This monthly support helps reduce ongoing hardship and gives survivors greater day-to-day stability.
-          </p>
-          <a class="read-more" href="https://bluecardfund.org/how-we-help/monthly-assistance/">Visit program page</a>
-        </article>
-
-        <article class="card" id="fighting-cancer-together">
-          <div class="kicker">Cancer Care Support</div>
-          <h3>Siggi B. Wilzig Fighting Cancer Together Program</h3>
-          <p>
-            Holocaust survivors are at significantly greater risk of cancer and often face added financial pressure while undergoing treatment.
-          </p>
-          <p>
-            The Siggi B. Wilzig, OBM, Fighting Cancer Together Program helps survivors battling cancer access the aid they need by assisting with medical co-pays, transportation, and dietary costs associated with treatment.
-          </p>
-          <p>
-            This program is designed specifically to ease the burden on cancer-stricken survivors and help them receive the care they desperately need and deserve.
-          </p>
-          <a class="read-more" href="https://bluecardfund.org/how-we-help/siggi-b-wilzig-fighting-cancer-together-program/">Visit program page</a>
-        </article>
-
-        <article class="card" id="health-wellbeing">
-          <div class="kicker">Emotional and Physical Wellbeing</div>
-          <h3>Health and Wellbeing Programs</h3>
-          <p>
-            The Blue Card provides a range of programs designed to strengthen emotional wellbeing, reduce isolation, and support healthier daily living for Holocaust survivors.
-          </p>
-          <ul>
-            <li>Jewish holiday support for the High Holidays, Hanukkah, and Passover</li>
-            <li>Mazal Tov Birthday cards and birthday gifts</li>
-            <li>Mood Restore Light Box support for light therapy</li>
-            <li>Companion pets that provide comfort and connection</li>
-            <li>Summer Vacation experiences for survivors in NYC</li>
-            <li>Vitamins, minerals, liquid meals, and other nutritional support</li>
-            <li>Bring a Smile support for terminally ill survivors</li>
-          </ul>
-          <p>
-            These programs help survivors feel seen, supported, and cared for in ways that improve quality of life.
-          </p>
-          <a class="read-more" href="https://bluecardfund.org/how-we-help/health-wellbeing/">Visit program page</a>
-        </article>
-
-        <article class="card" id="education-outreach">
-          <div class="kicker">Community Awareness</div>
-          <h3>Education and Outreach</h3>
-          <p>
-            The Blue Card’s work also includes education and outreach that helps preserve Holocaust memory, build awareness, and engage schools, organizations, and communities in meaningful learning.
-          </p>
-          <p>
-            This area of work strengthens public understanding while supporting the broader mission of honoring survivors and ensuring their experiences are not forgotten.
-          </p>
-          <a class="read-more" href="https://bluecardfund.org/how-we-help/education-outreach/">Visit program page</a>
-        </article>
-
-        <article class="card" id="cost-plus-drug-company">
-          <div class="kicker">Affordability Partnership</div>
-          <h3>Cost Plus Drug Company Partnership</h3>
-          <p>
-            Through its partnership with Cost Plus Drug Company, The Blue Card helps Holocaust survivors nationwide access low-cost generic medication shipped directly to their homes.
-          </p>
-          <p>
-            The program also includes educational seminars focused on medication affordability, helping survivors better understand lower-cost options and how to access them.
-          </p>
-          <a class="read-more" href="https://bluecardfund.org/cost-plus-drug-company/">Visit program page</a>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="donation-strip">
-    <div class="wrap">
-      <div class="donation-panel">
-        <h2>Your Support Reaches Survivors Directly</h2>
-        <p>
-          100% of your donations go to helping one more Holocaust survivor financially.
-        </p>
-        <p>
-          Your generosity helps ensure survivors have a roof over their heads, food to eat, access to dental care and healthcare, access to heat, water, electricity, medication, and other essentials required for a safe and dignified life.
-        </p>
-        <p>
-          By giving to The Blue Card, you help remind Holocaust survivors that they are not forgotten.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <div class="footer-space"></div>
-
-
-<div id="bc-global-footer"></div>
-<script src="../global-layout.js"></script>
+<body>
+  <header id="bc-global-nav" aria-label="Global site navigation"></header>
+  <main>
+    <section class="how-help-hero" aria-labelledby="how-help-title"><div class="how-help-hero__content"><h1 id="how-help-title">How We Help</h1><p>Holocaust survivors deserve safety, stability, access to care, and the support to live with dignity. The Blue Card responds through four connected areas of assistance designed to address urgent crises, ongoing needs, medication access, and health and well-being.</p></div></section>
+    <section class="how-help-section" aria-labelledby="how-help-programs-heading"><div class="how-help-wrap"><div class="how-help-intro"><span class="how-help-eyebrow">OUR SUPPORT PROGRAMS</span><h2 class="how-help-heading" id="how-help-programs-heading">Support Designed Around the Needs of Holocaust Survivors</h2><p class="how-help-text">The Blue Card provides focused assistance across four core areas. Each program helps Holocaust survivors address immediate hardship, maintain daily stability, access essential medication and medical care, and strengthen their health, safety, and independence.</p></div><div class="how-help-program-grid">
+      <article class="how-help-program-card"><div class="how-help-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M10 29 32 12l22 17v23a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V29Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M25 56V38h14v18" stroke="currentColor" stroke-width="3"/><path d="M32 24 44 29v8c0 8-5 13-12 16-7-3-12-8-12-16v-8l12-5Z" fill="#fff" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="m27 37 4 4 8-9" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Emergency Assistance</h3><p>One-time assistance helps survivors respond to urgent threats involving housing, utilities, relocation, food, essential home repairs, medical needs, severe weather, and other crisis conditions.</p><a class="how-help-button" href="/bluecard/emergency-assistance/index.html">Explore Emergency Assistance</a></article>
+      <article class="how-help-program-card"><div class="how-help-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><rect x="16" y="10" width="32" height="34" rx="5" fill="#fff" stroke="currentColor" stroke-width="3"/><path d="M16 20h32M25 8v8M39 8v8M24 29h5M35 29h5M24 37h5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M8 44c8-5 15-4 22 1l5 3c3 2 6 2 9 0l12-7c2-1 4 2 2 4l-13 11c-4 3-9 4-14 2l-10-4c-4-2-8-2-13 1" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Ongoing Support</h3><p>Recurring monthly assistance helps survivors living on limited incomes afford basic necessities, maintain stable housing, access food and supplies, and participate in meaningful holiday and quality-of-life programs.</p><a class="how-help-button" href="/bluecard/ongoing-support/index.html">Explore Ongoing Support</a></article>
+      <article class="how-help-program-card"><div class="how-help-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M24 9h16v10H24zM21 19h22v33a6 6 0 0 1-6 6H27a6 6 0 0 1-6-6V19Z" fill="#fff" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M21 31h22M32 37v13M26 43h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M48 16c5 3 8 8 8 14M16 16c-5 3-8 8-8 14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div><h3>Medication Assistance</h3><p>Financial assistance helps survivors afford essential prescriptions, co-pays, medical equipment, dental care, hearing aids, and other health needs that fall outside available insurance coverage.</p><a class="how-help-button" href="/bluecard/medication-assistance/index.html">Explore Medication Assistance</a></article>
+      <article class="how-help-program-card"><div class="how-help-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="24" fill="#fff" stroke="currentColor" stroke-width="3"/><path d="M32 49s-17-10-17-23a9 9 0 0 1 17-4 9 9 0 0 1 17 4c0 13-17 23-17 23Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M10 34h10l4-7 6 14 5-9h19" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Health &amp; Well-Being</h3><p>Programs strengthen safety, independence, emotional wellbeing, and physical health through emergency response systems, cancer support, caregiver resources, and practical quality-of-life assistance.</p><a class="how-help-button" href="/bluecard/health-well-being/index.html">Explore Health &amp; Well-Being</a></article>
+    </div></div></section>
+    <section class="how-help-section how-help-section--white" aria-labelledby="how-help-podcast-heading"><div class="how-help-wrap"><div class="how-help-podcast-card"><div class="how-help-podcast__media"><img class="how-help-podcast__art" src="/bluecard/images/podcast/1x1-podcast-thebluecard-how-we-helpv1.png" alt="The Blue Card - How We Help podcast artwork" width="600" height="600"></div><div><span class="how-help-eyebrow">THE BLUE CARD PODCAST</span><h2 class="how-help-heading" id="how-help-podcast-heading">The Blue Card - How We Help</h2><p class="how-help-text">Listen to an overview of the programs, services, and direct assistance The Blue Card provides to Holocaust survivors living in need.</p><div class="how-help-audio" data-how-help-audio><div class="how-help-audio__controls" aria-label="Custom podcast audio player"><div class="how-help-audio__top"><button class="how-help-audio__button" type="button" data-audio-play aria-label="Play podcast"><svg data-icon-play viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><svg data-icon-pause viewBox="0 0 24 24" fill="currentColor" hidden><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg></button><span class="how-help-audio__time" data-audio-time>0:00 / 0:00</span><span class="how-help-audio__status" data-audio-status>Loading audio metadata</span></div><input class="how-help-audio__range" data-audio-scrubber type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek podcast"><div class="how-help-audio__volume"><button class="how-help-audio__button" type="button" data-audio-mute aria-label="Mute podcast"><svg data-icon-volume viewBox="0 0 24 24" fill="none"><path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor"/><path d="M16 9a5 5 0 0 1 0 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><svg data-icon-muted viewBox="0 0 24 24" fill="none" hidden><path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor"/><path d="m17 9 4 6m0-6-4 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><input data-audio-volume type="range" min="0" max="1" value="1" step="0.01" aria-label="Podcast volume"></div></div><audio class="how-help-audio__native how-help-audio__element" preload="metadata" controls><source src="https://www.dropbox.com/scl/fi/rdiecg2n9gewpk4w3ttc4/how-we-help-the_blue_card_lifeline_for_holocaust_survivors.m4a?rlkey=6zhh3i73t665aww07i4fh95jq&amp;raw=1" type="audio/mp4">Your browser does not support the audio element.</audio><p class="how-help-audio__error" data-audio-error>We could not load the Dropbox audio. Please try again later or use the native audio controls if available.</p></div></div></div></div></section>
+    <section class="how-help-section" aria-labelledby="how-help-carousel-heading"><div class="how-help-wrap"><div class="how-help-intro"><span class="how-help-eyebrow">HOW WE HELP IN FOCUS</span><h2 class="how-help-heading" id="how-help-carousel-heading">The Blue Card’s History and Programs</h2><p class="how-help-text">Explore The Blue Card’s legacy of assistance and the programs that continue to support Holocaust survivors today.</p></div><div class="how-help-carousel" data-how-help-carousel><div class="how-help-carousel__frame"><button class="how-help-carousel__arrow how-help-carousel__arrow--prev" type="button" aria-label="Previous infographic" data-carousel-prev><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 5 8.5 12l7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="how-help-carousel__viewport" data-carousel-viewport><div class="how-help-carousel__track" data-carousel-track><div class="how-help-carousel__slide"><button class="how-help-carousel__image-button" type="button" data-image-button><img class="how-help-carousel__image" src="/bluecard/infographics/how-we-help-jewish_aid_legacy_since_1934.png" alt="The Blue Card Jewish aid legacy since 1934 infographic"></button></div><div class="how-help-carousel__slide"><button class="how-help-carousel__image-button" type="button" data-image-button><img class="how-help-carousel__image" src="/bluecard/infographics/how-we-help-holocaust_survivor_support_programs_history.png" alt="The Blue Card Holocaust survivor support programs history infographic" loading="lazy"></button></div><div class="how-help-carousel__slide"><button class="how-help-carousel__image-button" type="button" data-image-button><img class="how-help-carousel__image" src="/bluecard/infographics/how-we-help-holocaust_survivor_support_program_overview.png" alt="The Blue Card Holocaust survivor support program overview infographic" loading="lazy"></button></div></div></div><button class="how-help-carousel__arrow how-help-carousel__arrow--next" type="button" aria-label="Next infographic" data-carousel-next><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="m8.5 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><div class="how-help-carousel__footer"><div class="how-help-carousel__dots" role="tablist" aria-label="Choose infographic"><button class="how-help-carousel__dot" type="button" aria-label="Show infographic 1" aria-current="true" data-carousel-dot="0"></button><button class="how-help-carousel__dot" type="button" aria-label="Show infographic 2" aria-current="false" data-carousel-dot="1"></button><button class="how-help-carousel__dot" type="button" aria-label="Show infographic 3" aria-current="false" data-carousel-dot="2"></button></div><a class="how-help-carousel__full-link" href="/bluecard/infographics/how-we-help-jewish_aid_legacy_since_1934.png" target="_blank" rel="noopener" data-carousel-full>View Full Infographic</a><div class="how-help-carousel__status" aria-live="polite" data-carousel-status>Showing infographic 1 of 3</div></div></div></div></section>
+  </main>
+  <footer id="bc-global-footer" aria-label="Global site footer"></footer>
+  <div class="how-help-lightbox" data-how-help-lightbox aria-hidden="true"><div class="how-help-lightbox__backdrop" data-lightbox-backdrop></div><div class="how-help-lightbox__dialog" role="dialog" aria-modal="true" aria-label="Infographic preview"><button class="how-help-lightbox__close" type="button" aria-label="Close infographic preview" data-lightbox-close><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></button><img class="how-help-lightbox__image" src="" alt="" data-lightbox-image></div></div>
+  <script>
+    (function(){
+      var audioWrap=document.querySelector('[data-how-help-audio]');
+      if(audioWrap){var audio=audioWrap.querySelector('audio'), play=audioWrap.querySelector('[data-audio-play]'), mute=audioWrap.querySelector('[data-audio-mute]'), scrub=audioWrap.querySelector('[data-audio-scrubber]'), vol=audioWrap.querySelector('[data-audio-volume]'), time=audioWrap.querySelector('[data-audio-time]'), status=audioWrap.querySelector('[data-audio-status]'), playIcon=audioWrap.querySelector('[data-icon-play]'), pauseIcon=audioWrap.querySelector('[data-icon-pause]'), volumeIcon=audioWrap.querySelector('[data-icon-volume]'), mutedIcon=audioWrap.querySelector('[data-icon-muted]'); audioWrap.classList.add('is-enhanced'); var fmt=function(s){if(!isFinite(s)||s<0)s=0; var m=Math.floor(s/60), sec=Math.floor(s%60); return m+':'+String(sec).padStart(2,'0')}; var render=function(){time.textContent=fmt(audio.currentTime)+' / '+fmt(audio.duration); scrub.value=audio.duration?(audio.currentTime/audio.duration)*100:0; playIcon.hidden=!audio.paused; pauseIcon.hidden=audio.paused; volumeIcon.hidden=audio.muted||audio.volume===0; mutedIcon.hidden=!(audio.muted||audio.volume===0);}; play.addEventListener('click',function(){if(audio.paused){audio.play().catch(function(){audioWrap.classList.add('has-error'); status.textContent='Audio could not play';});}else{audio.pause();}}); mute.addEventListener('click',function(){audio.muted=!audio.muted; render();}); vol.addEventListener('input',function(){audio.volume=Number(vol.value); audio.muted=audio.volume===0; render();}); scrub.addEventListener('input',function(){if(audio.duration) audio.currentTime=(Number(scrub.value)/100)*audio.duration;}); audio.addEventListener('loadedmetadata',function(){status.textContent='Ready to play'; render();}); audio.addEventListener('timeupdate',render); audio.addEventListener('play',function(){status.textContent='Playing'; render();}); audio.addEventListener('pause',function(){status.textContent='Paused'; render();}); audio.addEventListener('ended',function(){audio.currentTime=0; status.textContent='Ended'; render();}); audio.addEventListener('waiting',function(){status.textContent='Loading audio';}); audio.addEventListener('error',function(){audioWrap.classList.add('has-error'); status.textContent='Audio loading failed';}); render();}
+      var root=document.querySelector('[data-how-help-carousel]'); if(!root) return; var track=root.querySelector('[data-carousel-track]'), slides=[].slice.call(root.querySelectorAll('.how-help-carousel__slide')), dots=[].slice.call(root.querySelectorAll('[data-carousel-dot]')), full=root.querySelector('[data-carousel-full]'), statusEl=root.querySelector('[data-carousel-status]'), viewport=root.querySelector('[data-carousel-viewport]'), prev=root.querySelector('[data-carousel-prev]'), next=root.querySelector('[data-carousel-next]'), lightbox=document.querySelector('[data-how-help-lightbox]'), lightImg=document.querySelector('[data-lightbox-image]'), reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches; var i=0,timer=null,paused=false,imgs=slides.map(function(s){return s.querySelector('img')}); function go(n,manual){i=(n+slides.length)%slides.length; track.style.transform='translateX('+(-100*i)+'%)'; dots.forEach(function(d,idx){d.setAttribute('aria-current',idx===i?'true':'false')}); full.href=imgs[i].getAttribute('src'); statusEl.textContent='Showing infographic '+(i+1)+' of '+slides.length; if(manual) restart();} function stop(){if(timer) clearInterval(timer); timer=null;} function start(){stop(); if(!reduce&&!paused&&!document.hidden&&!lightbox.classList.contains('is-open')) timer=setInterval(function(){go(i+1,false)},6000);} function restart(){start();} prev.addEventListener('click',function(){go(i-1,true)}); next.addEventListener('click',function(){go(i+1,true)}); dots.forEach(function(d){d.addEventListener('click',function(){go(Number(d.dataset.carouselDot),true)})}); root.addEventListener('mouseenter',function(){paused=true;stop()}); root.addEventListener('mouseleave',function(){paused=false;start()}); root.addEventListener('focusin',function(){paused=true;stop()}); root.addEventListener('focusout',function(){paused=false;start()}); root.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){e.preventDefault();go(i-1,true)} if(e.key==='ArrowRight'){e.preventDefault();go(i+1,true)}}); var sx=0,sy=0; viewport.addEventListener('touchstart',function(e){sx=e.touches[0].clientX; sy=e.touches[0].clientY;},{passive:true}); viewport.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy; if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)){go(i+(dx<0?1:-1),true)}},{passive:true}); function openLight(img){lightImg.src=img.src; lightImg.alt=img.alt; lightbox.classList.add('is-open'); lightbox.setAttribute('aria-hidden','false'); document.body.classList.add('how-help-lightbox-open'); stop();} function closeLight(){lightbox.classList.remove('is-open'); lightbox.setAttribute('aria-hidden','true'); document.body.classList.remove('how-help-lightbox-open'); lightImg.src=''; start();} root.querySelectorAll('[data-image-button]').forEach(function(btn){btn.addEventListener('click',function(){openLight(btn.querySelector('img'))})}); document.querySelector('[data-lightbox-close]').addEventListener('click',closeLight); document.querySelector('[data-lightbox-backdrop]').addEventListener('click',closeLight); document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lightbox.classList.contains('is-open')) closeLight();}); document.addEventListener('visibilitychange',function(){document.hidden?stop():start();}); go(0,false); start();
+    })();
+  </script>
+  <script src="/bluecard/global-layout.js"></script>
 </body>
 </html>
