@@ -45,7 +45,9 @@
     .how-help-button { margin-top:auto; display:inline-flex; align-items:center; justify-content:center; min-height:50px; align-self:flex-start; padding:0 22px; border-radius:999px; background:var(--how-help-blue); color:#fff; font-weight:800; text-decoration:none; box-shadow:0 10px 24px rgba(13,92,171,.22); transition:transform .18s ease, background .18s ease, box-shadow .18s ease; }
     .how-help-button:hover { background:#0b4f94; transform:translateY(-1px); text-decoration:none; box-shadow:0 14px 28px rgba(13,92,171,.28); }
     .how-help-button:focus-visible, .how-help-audio button:focus-visible, .how-help-audio input:focus-visible, .how-help-carousel button:focus-visible, .how-help-carousel a:focus-visible, .how-help-lightbox__close:focus-visible { outline:3px solid rgba(13,92,171,.4); outline-offset:3px; }
-    .how-help-podcast-card { display:grid; grid-template-columns:38% minmax(0,1fr); gap:42px; align-items:center; background:linear-gradient(180deg,#fff,#f7fbff); border:1px solid var(--how-help-border); border-radius:26px; padding:34px; box-shadow:var(--how-help-shadow); }
+    .how-help-podcast-card { display:grid; grid-template-columns:35% minmax(0,1fr); gap:32px; align-items:center; background:linear-gradient(180deg,#fff,#f7fbff); border:1px solid var(--how-help-border); border-radius:26px; padding:34px; box-shadow:var(--how-help-shadow); }
+    #how-help-podcast-heading { font-size:clamp(30px, 2.7vw, 38px); line-height:1.08; letter-spacing:-.025em; white-space:nowrap; text-wrap:nowrap; }
+    #how-help-carousel-heading { font-size:clamp(30px, 3vw, 40px); line-height:1.08; letter-spacing:-.02em; white-space:nowrap; text-wrap:nowrap; }
     .how-help-podcast__art { width:100%; height:auto; display:block; border-radius:22px; border:1px solid var(--how-help-border); box-shadow:0 16px 34px rgba(9,42,86,.16); }
     .how-help-audio { margin-top:24px; padding:22px; border-radius:20px; background:#f2f7fd; border:1px solid rgba(13,92,171,.14); }
     .how-help-audio__native { width:100%; margin-top:16px; }
@@ -85,6 +87,7 @@
     .how-help-lightbox__close { position:absolute; top:-18px; right:-18px; width:46px; height:46px; border:1px solid var(--how-help-border); border-radius:999px; background:#fff; color:var(--how-help-blue); cursor:pointer; }
     body.how-help-lightbox-open { overflow:hidden; }
     @media (max-width:900px) { .how-help-program-grid, .how-help-podcast-card { grid-template-columns:1fr; } .how-help-podcast__media { max-width:460px; margin:0 auto; } .how-help-section { padding:64px 0; } .how-help-carousel__arrow--prev { left:12px; } .how-help-carousel__arrow--next { right:12px; } }
+    @media (max-width:760px) { #how-help-podcast-heading, #how-help-carousel-heading { white-space:normal; text-wrap:balance; font-size:clamp(28px, 8vw, 34px); } }
     @media (max-width:600px) { .how-help-wrap { width:min(100% - 28px, var(--how-help-max)); } .how-help-hero { min-height:380px; padding:64px 14px; } .how-help-program-card, .how-help-podcast-card { padding:24px 20px; border-radius:20px; } .how-help-button { width:100%; } .how-help-carousel__frame { padding:10px; } .how-help-lightbox__close { top:8px; right:8px; } }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } .how-help-program-card, .how-help-button, .how-help-carousel__track { transition:none; } }
   </style>
