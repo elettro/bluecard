@@ -8,18 +8,18 @@
   <link rel="stylesheet" href="/bluecard/global-layout.css" />
   <style>
     body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #1c1c1c; background: #fff; }
-    .health-hero { position: relative; min-height: 360px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: linear-gradient(135deg, #082545 0%, #0d5cab 58%, #2d7fd3 100%); }
+    .health-hero { position: relative; min-height: 320px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: linear-gradient(135deg, #082545 0%, #0d5cab 58%, #2d7fd3 100%); }
     .health-hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 22% 24%, rgba(255,255,255,.18) 0, rgba(255,255,255,.08) 28%, transparent 56%), linear-gradient(90deg, rgba(8,37,69,.82), rgba(13,92,171,.62)); }
-    .health-hero-inner { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; padding: 48px 24px; text-align: center; }
+    .health-hero-inner { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; padding: 64px 24px; text-align: center; }
     .health-hero h1 { margin: 0; color: #fff; font-size: clamp(34px, 5vw, 64px); font-weight: 800; text-align: center; text-shadow: 0 6px 18px rgba(0,0,0,.35); }
-    .health-hero p { max-width: 820px; margin: 18px auto 0; color: rgba(255,255,255,.94); font-size: clamp(18px, 2.2vw, 24px); line-height: 1.55; font-weight: 600; text-shadow: 0 4px 14px rgba(0,0,0,.26); }
-
     .health-page { background: #fff; }
     .health-body { background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%); padding: 72px 24px; color: #1c1c1c; }
     .health-wrap { max-width: 1120px; margin: 0 auto; }
     .health-card { background: #ffffff; border-radius: 22px; padding: 48px 52px; box-shadow: 0 18px 50px rgba(9, 42, 86, 0.08); border: 1px solid rgba(12, 73, 144, 0.08); position: relative; overflow: hidden; }
     .health-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, #0d5cab 0%, #2d7fd3 100%); }
     .health-accent-line { width: 64px; height: 4px; border-radius: 999px; background: #0d5cab; margin-bottom: 20px; }
+    .health-section-intro { width: 100%; box-sizing: border-box; margin: 0 0 28px; padding: 38px 40px; border-radius: 20px; background: linear-gradient(135deg, #ffffff 0%, #eef7ff 100%); border: 1px solid rgba(13, 92, 171, 0.18); box-shadow: 0 16px 38px rgba(9, 42, 86, 0.10); }
+    .health-section-intro__statement { max-width: 900px; margin: 0; color: #0b2341; font-size: clamp(21px, 2.1vw, 24px); line-height: 1.55; font-weight: 700; }
     .health-content-panel, .health-list-panel { border-radius: 18px; box-sizing: border-box; }
     .health-content-panel { width: 100%; padding: 38px 40px 36px; background: linear-gradient(135deg, #ffffff 0%, #f2f8ff 100%); border: 1px solid rgba(13, 92, 171, 0.16); box-shadow: 0 14px 34px rgba(9, 42, 86, 0.08); }
     .health-content-panel h3, .health-list-panel h3 { margin: 0 0 16px; font-size: 30px; line-height: 1.2; color: #0b2341; font-weight: 800; }
@@ -67,8 +67,8 @@
     body.health-media-lightbox-open { overflow: hidden; }
     @media (prefers-reduced-motion: reduce) { .health-media-carousel__track { transition: none; } }
 
-    @media (max-width: 900px) { .health-body { padding: 56px 18px; } .health-card { padding: 34px 24px; } .health-checklist-grid { grid-template-columns: 1fr; } .health-content-panel { padding: 34px 30px 32px; } .health-content-panel h3, .health-list-panel h3, .health-infographics h3 { font-size: 26px; } .health-infographics { padding: 28px 22px; } .health-media-carousel__frame { padding: 18px; } .health-media-carousel__arrow--prev { left: 8px; } .health-media-carousel__arrow--next { right: 8px; } }
-    @media (max-width: 600px) { html, body { max-width: 100%; overflow-x: hidden; } .health-hero { min-height: 320px; } .health-hero-inner { padding: 42px 18px; } .health-content-panel, .health-list-panel { padding: 24px 20px 22px; } .health-content-panel p { font-size: 17px; } .health-infographics { padding: 24px 14px; border-radius: 18px; } .health-media-carousel__frame { border-radius: 18px; padding: 12px; } .health-media-carousel__viewport { border-radius: 14px; } .health-media-carousel__image { border-radius: 10px; } .health-media-carousel__arrow { width: 44px; height: 44px; } .health-media-lightbox { padding: 16px; } .health-media-lightbox__image { max-width: 94vw; max-height: 84vh; } }
+    @media (max-width: 900px) { .health-body { padding: 56px 18px; } .health-card { padding: 34px 24px; } .health-section-intro { padding: 30px 28px; } .health-section-intro__statement { font-size: 20px; } .health-checklist-grid { grid-template-columns: 1fr; } .health-content-panel { padding: 34px 30px 32px; } .health-content-panel h3, .health-list-panel h3, .health-infographics h3 { font-size: 26px; } .health-infographics { padding: 28px 22px; } .health-media-carousel__frame { padding: 18px; } .health-media-carousel__arrow--prev { left: 8px; } .health-media-carousel__arrow--next { right: 8px; } }
+    @media (max-width: 600px) { html, body { max-width: 100%; overflow-x: hidden; } .health-hero { min-height: 260px; } .health-hero-inner { padding: 54px 18px; } .health-section-intro { padding: 24px 22px; border-radius: 18px; } .health-section-intro__statement { font-size: 18px; line-height: 1.6; } .health-content-panel, .health-list-panel { padding: 24px 20px 22px; } .health-content-panel p { font-size: 17px; } .health-infographics { padding: 24px 14px; border-radius: 18px; } .health-media-carousel__frame { border-radius: 18px; padding: 12px; } .health-media-carousel__viewport { border-radius: 14px; } .health-media-carousel__image { border-radius: 10px; } .health-media-carousel__arrow { width: 44px; height: 44px; } .health-media-lightbox { padding: 16px; } .health-media-lightbox__image { max-width: 94vw; max-height: 84vh; } }
   </style>
   <meta property="og:title" content="Health and Well-being | The Blue Card">
   <meta property="og:description" content="The Blue Card’s Health and Wellbeing Programs are designed to improve emotional, mental, and physical wellbeing for Holocaust survivors. These programs help improve quality of life in meaningful ways, both large and small.">
@@ -92,13 +92,17 @@
     <section class="health-hero" aria-label="Health and Well-being header">
       <div class="health-hero-inner">
         <h1>Health and Well-being</h1>
-        <p>The Blue Card’s Health and Wellbeing Programs are designed to improve emotional, mental, and physical wellbeing for Holocaust survivors. These programs help improve quality of life in meaningful ways, both large and small.</p>
       </div>
     </section>
 
     <section class="health-body">
       <div class="health-wrap">
         <div class="health-card">
+          <section class="health-section-intro" aria-label="Health and Well-being program overview">
+            <div class="health-accent-line"></div>
+            <p class="health-section-intro__statement">The Blue Card’s Health and Wellbeing Programs are designed to improve emotional, mental, and physical wellbeing for Holocaust survivors. These programs help improve quality of life in meaningful ways, both large and small.</p>
+          </section>
+
           <div class="health-program-stack">
             <section class="health-content-panel" aria-labelledby="ters-heading">
               <div class="health-accent-line"></div>
