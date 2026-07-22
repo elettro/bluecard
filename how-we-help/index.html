@@ -12,114 +12,274 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://elettro.github.io/bluecard/how-we-help/">
   <meta property="og:site_name" content="The Blue Card">
-  <meta property="og:image" content="https://elettro.github.io/bluecard/images/podcast/1x1-podcast-thebluecard-how-we-helpv1.png">
+  <meta property="og:image" content="https://elettro.github.io/bluecard/images/headers/who-we-are-header.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="How We Help | The Blue Card">
   <meta name="twitter:description" content="Learn how The Blue Card supports Holocaust survivors through emergency assistance, ongoing support, medication assistance, and health and well-being programs.">
-  <meta name="twitter:image" content="https://elettro.github.io/bluecard/images/podcast/1x1-podcast-thebluecard-how-we-helpv1.png">
+  <meta name="twitter:image" content="https://elettro.github.io/bluecard/images/headers/who-we-are-header.jpg">
   <link rel="stylesheet" href="/bluecard/global-layout.css">
   <style>
-    :root { --how-help-navy:#0b2341; --how-help-blue:#0d5cab; --how-help-blue-2:#2d7fd3; --how-help-soft:#eef5fc; --how-help-soft-2:#f7fafd; --how-help-text:#263544; --how-help-muted:#5f6f80; --how-help-border:#cbdced; --how-help-white:#fff; --how-help-shadow:0 18px 46px rgba(9,42,86,.12); --how-help-radius:22px; --how-help-max:1200px; }
+    :root {
+      --how-help-navy: #0b2341;
+      --how-help-blue: #0d5cab;
+      --how-help-soft: #f7fafd;
+      --how-help-text: #263544;
+      --how-help-muted: #5f6f80;
+      --how-help-border: #cbdced;
+      --how-help-white: #fff;
+      --how-help-shadow: 0 12px 30px rgba(9, 42, 86, .08);
+      --how-help-radius: 22px;
+      --how-help-max: 1200px;
+    }
+
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { margin:0; font-family: Arial, Helvetica, sans-serif; color:var(--how-help-text); background:#fff; line-height:1.65; overflow-x:hidden; }
-    .how-help-wrap { width:min(var(--how-help-max), calc(100% - 40px)); margin:0 auto; }
-    .how-help-hero { min-height:420px; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff; padding:76px 20px; background: radial-gradient(circle at 18% 10%, rgba(80,157,224,.38), transparent 34%), linear-gradient(135deg, #071d36 0%, #0b3769 48%, #0d5cab 100%); position:relative; overflow:hidden; }
-    .how-help-hero::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,0)); pointer-events:none; }
-    .how-help-hero__content { position:relative; z-index:1; max-width:980px; margin:0 auto; text-shadow:0 8px 22px rgba(0,0,0,.24); }
-    .how-help-hero h1 { margin:0; color:#fff; font-size:clamp(42px, 6vw, 68px); line-height:1.02; font-weight:800; }
-    .how-help-hero p { max-width:900px; margin:20px auto 0; color:#f2f7fd; font-size:clamp(18px, 2.1vw, 23px); line-height:1.55; font-weight:600; }
-    .how-help-section { padding:76px 0; background:linear-gradient(180deg, #f7f9fc 0%, #fff 100%); }
-    .how-help-section--white { background:#fff; }
-    .how-help-intro { text-align:center; max-width:920px; margin:0 auto 38px; }
-    .how-help-eyebrow { display:inline-block; margin-bottom:12px; color:var(--how-help-blue); font-size:13px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
-    .how-help-heading { margin:0; color:var(--how-help-navy); font-size:clamp(30px,4vw,48px); line-height:1.12; font-weight:800; }
-    .how-help-text { margin:18px auto 0; color:var(--how-help-muted); font-size:18px; line-height:1.75; }
-    .how-help-program-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:26px; align-items:stretch; }
-    .how-help-program-card { min-height:100%; display:flex; flex-direction:column; background:#fff; border:1px solid var(--how-help-border); border-radius:var(--how-help-radius); padding:30px; box-shadow:0 12px 30px rgba(9,42,86,.08); transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
-    .how-help-program-card:hover { transform:translateY(-4px); box-shadow:var(--how-help-shadow); border-color:#a9c4df; }
-    .how-help-icon { width:86px; height:86px; border-radius:24px; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#eef7ff,#e3f0fc); border:1px solid rgba(13,92,171,.12); color:var(--how-help-blue); margin-bottom:22px; }
-    .how-help-icon svg { width:58px; height:58px; }
-    .how-help-program-card h3 { margin:0 0 12px; color:var(--how-help-navy); font-size:28px; line-height:1.18; }
-    .how-help-program-card p { margin:0 0 24px; color:#334353; font-size:17px; line-height:1.7; }
-    .how-help-button { margin-top:auto; display:inline-flex; align-items:center; justify-content:center; min-height:50px; align-self:flex-start; padding:0 22px; border-radius:999px; background:var(--how-help-blue); color:#fff; font-weight:800; text-decoration:none; box-shadow:0 10px 24px rgba(13,92,171,.22); transition:transform .18s ease, background .18s ease, box-shadow .18s ease; }
-    .how-help-button:hover { background:#0b4f94; transform:translateY(-1px); text-decoration:none; box-shadow:0 14px 28px rgba(13,92,171,.28); }
-    .how-help-button:focus-visible, .how-help-audio button:focus-visible, .how-help-audio input:focus-visible, .how-help-carousel button:focus-visible, .how-help-carousel a:focus-visible, .how-help-lightbox__close:focus-visible { outline:3px solid rgba(13,92,171,.4); outline-offset:3px; }
-    .how-help-podcast-card { display:grid; grid-template-columns:35% minmax(0,1fr); gap:32px; align-items:center; background:linear-gradient(180deg,#fff,#f7fbff); border:1px solid var(--how-help-border); border-radius:26px; padding:34px; box-shadow:var(--how-help-shadow); }
-    #how-help-podcast-heading { font-size:clamp(30px, 2.7vw, 38px); line-height:1.08; letter-spacing:-.025em; white-space:nowrap; text-wrap:nowrap; }
-    #how-help-carousel-heading { font-size:clamp(30px, 3vw, 40px); line-height:1.08; letter-spacing:-.02em; white-space:nowrap; text-wrap:nowrap; }
-    .how-help-podcast__art { width:100%; height:auto; display:block; border-radius:22px; border:1px solid var(--how-help-border); box-shadow:0 16px 34px rgba(9,42,86,.16); }
-    .how-help-audio { margin-top:24px; padding:22px; border-radius:20px; background:#f2f7fd; border:1px solid rgba(13,92,171,.14); }
-    .how-help-audio__native { width:100%; margin-top:16px; }
-    .how-help-audio.is-enhanced .how-help-audio__native { position:absolute; width:1px; height:1px; opacity:.01; pointer-events:none; }
-    .how-help-audio__controls { display:grid; gap:14px; }
-    .how-help-audio__top { display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
-    .how-help-audio__button { width:46px; height:46px; border-radius:999px; border:1px solid #b8cee3; background:#fff; color:var(--how-help-blue); display:inline-flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 8px 18px rgba(9,42,86,.08); }
-    .how-help-audio__button svg { width:22px; height:22px; }
-    .how-help-audio__time { font-weight:800; color:var(--how-help-navy); min-width:96px; }
-    .how-help-audio__status { color:var(--how-help-muted); font-size:15px; }
-    .how-help-audio__range { width:100%; accent-color:var(--how-help-blue); cursor:pointer; }
-    .how-help-audio__volume { display:flex; align-items:center; gap:12px; }
-    .how-help-audio__volume input { width:min(190px, 52vw); accent-color:var(--how-help-blue); }
-    .how-help-audio__error { display:none; margin:14px 0 0; color:#8a1f1f; font-weight:700; }
-    .how-help-audio.has-error .how-help-audio__error { display:block; }
-    .how-help-carousel { position:relative; max-width:1080px; margin:36px auto 0; color:var(--how-help-navy); }
-    .how-help-carousel__frame { position:relative; background:#fff; border:1px solid var(--how-help-border); border-radius:22px; box-shadow:var(--how-help-shadow); padding:18px; overflow:visible; }
-    .how-help-carousel__viewport { overflow:hidden; border-radius:16px; touch-action:pan-y; }
-    .how-help-carousel__track { display:flex; transform:translateX(0); transition:transform 520ms ease; }
-    .how-help-carousel__slide { flex:0 0 100%; display:flex; align-items:center; justify-content:center; }
-    .how-help-carousel__image-button { display:block; width:100%; padding:0; border:0; background:transparent; cursor:zoom-in; }
-    .how-help-carousel__image { display:block; width:100%; height:auto; margin:0 auto; border-radius:12px; }
-    .how-help-carousel__arrow { position:absolute; top:50%; z-index:2; width:46px; height:46px; border:1px solid var(--how-help-border); border-radius:999px; background:rgba(255,255,255,.95); color:var(--how-help-blue); box-shadow:0 8px 20px rgba(9,42,86,.16); cursor:pointer; transform:translateY(-50%); }
-    .how-help-carousel__arrow--prev { left:-23px; } .how-help-carousel__arrow--next { right:-23px; }
-    .how-help-carousel__footer { display:flex; flex-direction:column; align-items:center; gap:14px; margin-top:20px; }
-    .how-help-carousel__dots { display:flex; gap:10px; }
-    .how-help-carousel__dot { width:12px; height:12px; padding:0; border:0; border-radius:999px; background:#cbdced; cursor:pointer; }
-    .how-help-carousel__dot[aria-current="true"] { background:var(--how-help-blue); }
-    .how-help-carousel__full-link { color:var(--how-help-blue); font-weight:800; text-decoration:none; }
-    .how-help-carousel__full-link:hover { text-decoration:underline; }
-    .how-help-carousel__status { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
-    .how-help-lightbox { position:fixed; inset:0; z-index:9999; display:none; align-items:center; justify-content:center; padding:24px; }
-    .how-help-lightbox.is-open { display:flex; }
-    .how-help-lightbox__backdrop { position:absolute; inset:0; background:rgba(5,18,34,.82); }
-    .how-help-lightbox__dialog { position:relative; z-index:1; max-width:min(94vw,1180px); max-height:92vh; padding:14px; border-radius:18px; background:#fff; box-shadow:0 24px 70px rgba(0,0,0,.4); }
-    .how-help-lightbox__image { display:block; max-width:calc(94vw - 28px); max-height:calc(92vh - 28px); width:auto; height:auto; object-fit:contain; }
-    .how-help-lightbox__close { position:absolute; top:-18px; right:-18px; width:46px; height:46px; border:1px solid var(--how-help-border); border-radius:999px; background:#fff; color:var(--how-help-blue); cursor:pointer; }
-    body.how-help-lightbox-open { overflow:hidden; }
-    @media (max-width:900px) { .how-help-program-grid, .how-help-podcast-card { grid-template-columns:1fr; } .how-help-podcast__media { max-width:460px; margin:0 auto; } .how-help-section { padding:64px 0; } .how-help-carousel__arrow--prev { left:12px; } .how-help-carousel__arrow--next { right:12px; } }
-    @media (max-width:760px) { #how-help-podcast-heading, #how-help-carousel-heading { white-space:normal; text-wrap:balance; font-size:clamp(28px, 8vw, 34px); } }
-    @media (max-width:600px) { .how-help-wrap { width:min(100% - 28px, var(--how-help-max)); } .how-help-hero { min-height:380px; padding:64px 14px; } .how-help-program-card, .how-help-podcast-card { padding:24px 20px; border-radius:20px; } .how-help-button { width:100%; } .how-help-carousel__frame { padding:10px; } .how-help-lightbox__close { top:8px; right:8px; } }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } .how-help-program-card, .how-help-button, .how-help-carousel__track { transition:none; } }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--how-help-text); background: #fff; line-height: 1.65; overflow-x: hidden; }
+
+    .how-help-wrap { width: min(var(--how-help-max), calc(100% - 40px)); margin: 0 auto; }
+
+    .how-help-hero {
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 76px 20px;
+      overflow: hidden;
+    }
+
+    .how-help-hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .how-help-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(8, 37, 69, 0.56);
+      pointer-events: none;
+    }
+
+    .how-help-hero__content {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+      margin: 0 auto;
+      text-shadow: 0 8px 22px rgba(0, 0, 0, .28);
+    }
+
+    .how-help-hero h1 {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(42px, 6vw, 68px);
+      line-height: 1.02;
+      font-weight: 800;
+    }
+
+    .how-help-section {
+      padding: 76px 0;
+      background: linear-gradient(180deg, #f7f9fc 0%, #fff 100%);
+    }
+
+    .how-help-intro {
+      text-align: center;
+      max-width: 920px;
+      margin: 0 auto 38px;
+    }
+
+    .how-help-heading {
+      margin: 0;
+      color: var(--how-help-navy);
+      font-size: clamp(32px, 4vw, 50px);
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: .06em;
+    }
+
+    .how-help-program-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .how-help-program-card {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1px solid var(--how-help-border);
+      border-radius: var(--how-help-radius);
+      padding: 30px;
+      box-shadow: var(--how-help-shadow);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .how-help-program-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 46px rgba(9, 42, 86, .12);
+      border-color: #a9c4df;
+    }
+
+    .how-help-icon {
+      width: 86px;
+      height: 86px;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, #eef7ff, #e3f0fc);
+      border: 1px solid rgba(13, 92, 171, .12);
+      color: var(--how-help-blue);
+      margin-bottom: 22px;
+    }
+
+    .how-help-icon svg { width: 58px; height: 58px; }
+
+    .how-help-program-card h3 {
+      margin: 0 0 12px;
+      color: var(--how-help-navy);
+      font-size: 28px;
+      line-height: 1.18;
+    }
+
+    .how-help-program-card p {
+      margin: 0 0 24px;
+      color: #334353;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .how-help-button {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      align-self: flex-start;
+      padding: 0 22px;
+      border-radius: 999px;
+      background: var(--how-help-blue);
+      color: #fff;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 10px 24px rgba(13, 92, 171, .22);
+      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+
+    .how-help-button:hover {
+      background: #0b4f94;
+      transform: translateY(-1px);
+      text-decoration: none;
+      box-shadow: 0 14px 28px rgba(13, 92, 171, .28);
+    }
+
+    .how-help-button:focus-visible {
+      outline: 3px solid rgba(13, 92, 171, .4);
+      outline-offset: 3px;
+    }
+
+    .how-help-contact {
+      margin: 40px auto 0;
+      max-width: 820px;
+      text-align: center;
+      padding-top: 34px;
+      border-top: 1px solid rgba(13, 92, 171, .18);
+    }
+
+    .how-help-contact p {
+      margin: 0 0 18px;
+      color: var(--how-help-muted);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .footer-space { height: 24px; }
+
+    @media (max-width: 900px) {
+      .how-help-program-grid { grid-template-columns: 1fr; }
+      .how-help-section { padding: 64px 0; }
+    }
+
+    @media (max-width: 600px) {
+      .how-help-wrap { width: min(100% - 28px, var(--how-help-max)); }
+      .how-help-hero { min-height: 380px; padding: 64px 14px; }
+      .how-help-program-card { padding: 24px 20px; border-radius: 20px; }
+      .how-help-button { width: 100%; }
+      .how-help-heading { letter-spacing: .04em; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .how-help-program-card, .how-help-button { transition: none; }
+    }
   </style>
   <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":["Organization","NGO"],"@id":"https://elettro.github.io/bluecard/#organization","name":"The Blue Card","alternateName":"The Blue Card, Inc.","url":"https://elettro.github.io/bluecard/","logo":"https://elettro.github.io/bluecard/images/logo/blue-card-logo-fullsize.png"}</script>
   <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"WebSite","@id":"https://elettro.github.io/bluecard/#website","url":"https://elettro.github.io/bluecard/","name":"The Blue Card","publisher":{"@id":"https://elettro.github.io/bluecard/#organization"}}</script>
   <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"WebPage","@id":"https://elettro.github.io/bluecard/how-we-help/#webpage","url":"https://elettro.github.io/bluecard/how-we-help/","name":"How We Help","description":"Learn how The Blue Card supports Holocaust survivors through emergency assistance, ongoing support, medication assistance, and health and well-being programs.","isPartOf":{"@id":"https://elettro.github.io/bluecard/#website"},"publisher":{"@id":"https://elettro.github.io/bluecard/#organization"}}</script>
   <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://elettro.github.io/bluecard/"},{"@type":"ListItem","position":2,"name":"How We Help","item":"https://elettro.github.io/bluecard/how-we-help/"}]}</script>
   <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"ItemList","name":"How We Help Programs","itemListElement":[{"@type":"ListItem","position":1,"name":"Emergency Assistance","url":"https://elettro.github.io/bluecard/emergency-assistance/"},{"@type":"ListItem","position":2,"name":"Ongoing Support","url":"https://elettro.github.io/bluecard/ongoing-support/"},{"@type":"ListItem","position":3,"name":"Medication Assistance","url":"https://elettro.github.io/bluecard/medication-assistance/"},{"@type":"ListItem","position":4,"name":"Health & Well-Being","url":"https://elettro.github.io/bluecard/health-well-being/"}]}</script>
-  <script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"AudioObject","name":"The Blue Card - How We Help","contentUrl":"https://www.dropbox.com/scl/fi/rdiecg2n9gewpk4w3ttc4/how-we-help-the_blue_card_lifeline_for_holocaust_survivors.m4a?rlkey=6zhh3i73t665aww07i4fh95jq&raw=1","encodingFormat":"audio/mp4"}</script>
 </head>
 <body>
   <header id="bc-global-nav" aria-label="Global site navigation"></header>
   <main>
-    <section class="how-help-hero" aria-labelledby="how-help-title"><div class="how-help-hero__content"><h1 id="how-help-title">How We Help</h1><p>Holocaust survivors deserve safety, stability, access to care, and the support to live with dignity. The Blue Card responds through four connected areas of assistance designed to address urgent crises, ongoing needs, medication access, and health and well-being.</p></div></section>
-    <section class="how-help-section" aria-labelledby="how-help-programs-heading"><div class="how-help-wrap"><div class="how-help-intro"><span class="how-help-eyebrow">OUR SUPPORT PROGRAMS</span><h2 class="how-help-heading" id="how-help-programs-heading">Support Designed Around the Needs of Holocaust Survivors</h2><p class="how-help-text">The Blue Card provides focused assistance across four core areas. Each program helps Holocaust survivors address immediate hardship, maintain daily stability, access essential medication and medical care, and strengthen their health, safety, and independence.</p></div><div class="how-help-program-grid">
-      <article class="how-help-program-card"><div class="how-help-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M10 29 32 12l22 17v23a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V29Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M25 56V38h14v18" stroke="currentColor" stroke-width="3"/><path d="M32 24 44 29v8c0 8-5 13-12 16-7-3-12-8-12-16v-8l12-5Z" fill="#fff" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="m27 37 4 4 8-9" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Emergency Assistance</h3><p>One-time assistance helps survivors respond to urgent threats involving housing, utilities, relocation, food, essential home repairs, medical needs, severe weather, and other crisis conditions.</p><a class="how-help-button" href="/bluecard/emergency-assistance/index.html">Explore Emergency Assistance</a></article>
-      <article class="how-help-program-card"><div class="how-help-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><rect x="16" y="10" width="32" height="34" rx="5" fill="#fff" stroke="currentColor" stroke-width="3"/><path d="M16 20h32M25 8v8M39 8v8M24 29h5M35 29h5M24 37h5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M8 44c8-5 15-4 22 1l5 3c3 2 6 2 9 0l12-7c2-1 4 2 2 4l-13 11c-4 3-9 4-14 2l-10-4c-4-2-8-2-13 1" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Ongoing Support</h3><p>Recurring monthly assistance helps survivors living on limited incomes afford basic necessities, maintain stable housing, access food and supplies, and participate in meaningful holiday and quality-of-life programs.</p><a class="how-help-button" href="/bluecard/ongoing-support/index.html">Explore Ongoing Support</a></article>
-      <article class="how-help-program-card"><div class="how-help-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M24 9h16v10H24zM21 19h22v33a6 6 0 0 1-6 6H27a6 6 0 0 1-6-6V19Z" fill="#fff" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M21 31h22M32 37v13M26 43h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M48 16c5 3 8 8 8 14M16 16c-5 3-8 8-8 14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div><h3>Medication Assistance</h3><p>Financial assistance helps survivors afford essential prescriptions, co-pays, medical equipment, dental care, hearing aids, and other health needs that fall outside available insurance coverage.</p><a class="how-help-button" href="/bluecard/medication-assistance/index.html">Explore Medication Assistance</a></article>
-      <article class="how-help-program-card"><div class="how-help-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="24" fill="#fff" stroke="currentColor" stroke-width="3"/><path d="M32 49s-17-10-17-23a9 9 0 0 1 17-4 9 9 0 0 1 17 4c0 13-17 23-17 23Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M10 34h10l4-7 6 14 5-9h19" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Health &amp; Well-Being</h3><p>Programs strengthen safety, independence, emotional wellbeing, and physical health through emergency response systems, cancer support, caregiver resources, and practical quality-of-life assistance.</p><a class="how-help-button" href="/bluecard/health-well-being/index.html">Explore Health &amp; Well-Being</a></article>
-    </div></div></section>
-    <section class="how-help-section how-help-section--white" aria-labelledby="how-help-podcast-heading"><div class="how-help-wrap"><div class="how-help-podcast-card"><div class="how-help-podcast__media"><img class="how-help-podcast__art" src="/bluecard/images/podcast/1x1-podcast-thebluecard-how-we-helpv1.png" alt="The Blue Card - How We Help podcast artwork" width="600" height="600"></div><div><span class="how-help-eyebrow">THE BLUE CARD PODCAST</span><h2 class="how-help-heading" id="how-help-podcast-heading">The Blue Card - How We Help</h2><p class="how-help-text">Listen to an overview of the programs, services, and direct assistance The Blue Card provides to Holocaust survivors living in need.</p><div class="how-help-audio" data-how-help-audio><div class="how-help-audio__controls" aria-label="Custom podcast audio player"><div class="how-help-audio__top"><button class="how-help-audio__button" type="button" data-audio-play aria-label="Play podcast"><svg data-icon-play viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><svg data-icon-pause viewBox="0 0 24 24" fill="currentColor" hidden><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg></button><span class="how-help-audio__time" data-audio-time>0:00 / 0:00</span><span class="how-help-audio__status" data-audio-status>Loading audio metadata</span></div><input class="how-help-audio__range" data-audio-scrubber type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek podcast"><div class="how-help-audio__volume"><button class="how-help-audio__button" type="button" data-audio-mute aria-label="Mute podcast"><svg data-icon-volume viewBox="0 0 24 24" fill="none"><path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor"/><path d="M16 9a5 5 0 0 1 0 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><svg data-icon-muted viewBox="0 0 24 24" fill="none" hidden><path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor"/><path d="m17 9 4 6m0-6-4 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><input data-audio-volume type="range" min="0" max="1" value="1" step="0.01" aria-label="Podcast volume"></div></div><audio class="how-help-audio__native how-help-audio__element" preload="metadata" controls><source src="https://www.dropbox.com/scl/fi/rdiecg2n9gewpk4w3ttc4/how-we-help-the_blue_card_lifeline_for_holocaust_survivors.m4a?rlkey=6zhh3i73t665aww07i4fh95jq&amp;raw=1" type="audio/mp4">Your browser does not support the audio element.</audio><p class="how-help-audio__error" data-audio-error>We could not load the Dropbox audio. Please try again later or use the native audio controls if available.</p></div></div></div></div></section>
-    <section class="how-help-section" aria-labelledby="how-help-carousel-heading"><div class="how-help-wrap"><div class="how-help-intro"><span class="how-help-eyebrow">HOW WE HELP IN FOCUS</span><h2 class="how-help-heading" id="how-help-carousel-heading">The Blue Card’s History and Programs</h2><p class="how-help-text">Explore The Blue Card’s legacy of assistance and the programs that continue to support Holocaust survivors today.</p></div><div class="how-help-carousel" data-how-help-carousel><div class="how-help-carousel__frame"><button class="how-help-carousel__arrow how-help-carousel__arrow--prev" type="button" aria-label="Previous infographic" data-carousel-prev><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 5 8.5 12l7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="how-help-carousel__viewport" data-carousel-viewport><div class="how-help-carousel__track" data-carousel-track><div class="how-help-carousel__slide"><button class="how-help-carousel__image-button" type="button" data-image-button><img class="how-help-carousel__image" src="/bluecard/infographics/how-we-help-jewish_aid_legacy_since_1934.png" alt="The Blue Card Jewish aid legacy since 1934 infographic"></button></div><div class="how-help-carousel__slide"><button class="how-help-carousel__image-button" type="button" data-image-button><img class="how-help-carousel__image" src="/bluecard/infographics/how-we-help-holocaust_survivor_support_programs_history.png" alt="The Blue Card Holocaust survivor support programs history infographic" loading="lazy"></button></div><div class="how-help-carousel__slide"><button class="how-help-carousel__image-button" type="button" data-image-button><img class="how-help-carousel__image" src="/bluecard/infographics/how-we-help-holocaust_survivor_support_program_overview.png" alt="The Blue Card Holocaust survivor support program overview infographic" loading="lazy"></button></div></div></div><button class="how-help-carousel__arrow how-help-carousel__arrow--next" type="button" aria-label="Next infographic" data-carousel-next><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="m8.5 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><div class="how-help-carousel__footer"><div class="how-help-carousel__dots" role="tablist" aria-label="Choose infographic"><button class="how-help-carousel__dot" type="button" aria-label="Show infographic 1" aria-current="true" data-carousel-dot="0"></button><button class="how-help-carousel__dot" type="button" aria-label="Show infographic 2" aria-current="false" data-carousel-dot="1"></button><button class="how-help-carousel__dot" type="button" aria-label="Show infographic 3" aria-current="false" data-carousel-dot="2"></button></div><a class="how-help-carousel__full-link" href="/bluecard/infographics/how-we-help-jewish_aid_legacy_since_1934.png" target="_blank" rel="noopener" data-carousel-full>View Full Infographic</a><div class="how-help-carousel__status" aria-live="polite" data-carousel-status>Showing infographic 1 of 3</div></div></div></div></section>
+    <section class="how-help-hero" aria-labelledby="how-help-title">
+      <img src="/bluecard/images/headers/who-we-are-header.jpg" alt="" />
+      <div class="how-help-hero__content">
+        <h1 id="how-help-title">How We Help</h1>
+      </div>
+    </section>
+
+    <section class="how-help-section" aria-labelledby="how-help-programs-heading">
+      <div class="how-help-wrap">
+        <div class="how-help-intro">
+          <h2 class="how-help-heading" id="how-help-programs-heading">OUR SUPPORT PROGRAMS</h2>
+        </div>
+
+        <div class="how-help-program-grid">
+          <article class="how-help-program-card">
+            <div class="how-help-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M10 29 32 12l22 17v23a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V29Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M25 56V38h14v18" stroke="currentColor" stroke-width="3"/><path d="M32 24 44 29v8c0 8-5 13-12 16-7-3-12-8-12-16v-8l12-5Z" fill="#fff" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="m27 37 4 4 8-9" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Emergency Assistance</h3>
+            <p>One-time assistance helps survivors respond to urgent threats involving housing, utilities, relocation, food, essential home repairs, medical needs, severe weather, and other crisis conditions.</p>
+            <a class="how-help-button" href="/bluecard/emergency-assistance/index.html">Explore Emergency Assistance</a>
+          </article>
+
+          <article class="how-help-program-card">
+            <div class="how-help-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><rect x="16" y="10" width="32" height="34" rx="5" fill="#fff" stroke="currentColor" stroke-width="3"/><path d="M16 20h32M25 8v8M39 8v8M24 29h5M35 29h5M24 37h5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M8 44c8-5 15-4 22 1l5 3c3 2 6 2 9 0l12-7c2-1 4 2 2 4l-13 11c-4 3-9 4-14 2l-10-4c-4-2-8-2-13 1" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Ongoing Support</h3>
+            <p>Recurring monthly assistance helps survivors living on limited incomes afford basic necessities, maintain stable housing, access food and supplies, and participate in meaningful holiday and quality-of-life programs.</p>
+            <a class="how-help-button" href="/bluecard/ongoing-support/index.html">Explore Ongoing Support</a>
+          </article>
+
+          <article class="how-help-program-card">
+            <div class="how-help-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M24 9h16v10H24zM21 19h22v33a6 6 0 0 1-6 6H27a6 6 0 0 1-6-6V19Z" fill="#fff" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M21 31h22M32 37v13M26 43h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M48 16c5 3 8 8 8 14M16 16c-5 3-8 8-8 14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
+            <h3>Medication Assistance</h3>
+            <p>Financial assistance helps survivors afford essential prescriptions, co-pays, medical equipment, dental care, hearing aids, and other health needs that fall outside available insurance coverage.</p>
+            <a class="how-help-button" href="/bluecard/medication-assistance/index.html">Explore Medication Assistance</a>
+          </article>
+
+          <article class="how-help-program-card">
+            <div class="how-help-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="24" fill="#fff" stroke="currentColor" stroke-width="3"/><path d="M32 49s-17-10-17-23a9 9 0 0 1 17-4 9 9 0 0 1 17 4c0 13-17 23-17 23Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M10 34h10l4-7 6 14 5-9h19" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Health &amp; Well-Being</h3>
+            <p>Programs strengthen safety, independence, emotional wellbeing, and physical health through emergency response systems, cancer support, caregiver resources, and practical quality-of-life assistance.</p>
+            <a class="how-help-button" href="/bluecard/health-well-being/index.html">Explore Health &amp; Well-Being</a>
+          </article>
+        </div>
+
+        <div class="how-help-contact">
+          <p>For more information about The Blue Card support programs, contact us.</p>
+          <a class="how-help-button" href="/bluecard/contact/">For More Info Contact Us</a>
+        </div>
+      </div>
+    </section>
   </main>
   <footer id="bc-global-footer" aria-label="Global site footer"></footer>
-  <div class="how-help-lightbox" data-how-help-lightbox aria-hidden="true"><div class="how-help-lightbox__backdrop" data-lightbox-backdrop></div><div class="how-help-lightbox__dialog" role="dialog" aria-modal="true" aria-label="Infographic preview"><button class="how-help-lightbox__close" type="button" aria-label="Close infographic preview" data-lightbox-close><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></button><img class="how-help-lightbox__image" src="" alt="" data-lightbox-image></div></div>
-  <script>
-    (function(){
-      var audioWrap=document.querySelector('[data-how-help-audio]');
-      if(audioWrap){var audio=audioWrap.querySelector('audio'), play=audioWrap.querySelector('[data-audio-play]'), mute=audioWrap.querySelector('[data-audio-mute]'), scrub=audioWrap.querySelector('[data-audio-scrubber]'), vol=audioWrap.querySelector('[data-audio-volume]'), time=audioWrap.querySelector('[data-audio-time]'), status=audioWrap.querySelector('[data-audio-status]'), playIcon=audioWrap.querySelector('[data-icon-play]'), pauseIcon=audioWrap.querySelector('[data-icon-pause]'), volumeIcon=audioWrap.querySelector('[data-icon-volume]'), mutedIcon=audioWrap.querySelector('[data-icon-muted]'); audioWrap.classList.add('is-enhanced'); var fmt=function(s){if(!isFinite(s)||s<0)s=0; var m=Math.floor(s/60), sec=Math.floor(s%60); return m+':'+String(sec).padStart(2,'0')}; var render=function(){time.textContent=fmt(audio.currentTime)+' / '+fmt(audio.duration); scrub.value=audio.duration?(audio.currentTime/audio.duration)*100:0; playIcon.hidden=!audio.paused; pauseIcon.hidden=audio.paused; volumeIcon.hidden=audio.muted||audio.volume===0; mutedIcon.hidden=!(audio.muted||audio.volume===0);}; play.addEventListener('click',function(){if(audio.paused){audio.play().catch(function(){audioWrap.classList.add('has-error'); status.textContent='Audio could not play';});}else{audio.pause();}}); mute.addEventListener('click',function(){audio.muted=!audio.muted; render();}); vol.addEventListener('input',function(){audio.volume=Number(vol.value); audio.muted=audio.volume===0; render();}); scrub.addEventListener('input',function(){if(audio.duration) audio.currentTime=(Number(scrub.value)/100)*audio.duration;}); audio.addEventListener('loadedmetadata',function(){status.textContent='Ready to play'; render();}); audio.addEventListener('timeupdate',render); audio.addEventListener('play',function(){status.textContent='Playing'; render();}); audio.addEventListener('pause',function(){status.textContent='Paused'; render();}); audio.addEventListener('ended',function(){audio.currentTime=0; status.textContent='Ended'; render();}); audio.addEventListener('waiting',function(){status.textContent='Loading audio';}); audio.addEventListener('error',function(){audioWrap.classList.add('has-error'); status.textContent='Audio loading failed';}); render();}
-      var root=document.querySelector('[data-how-help-carousel]'); if(!root) return; var track=root.querySelector('[data-carousel-track]'), slides=[].slice.call(root.querySelectorAll('.how-help-carousel__slide')), dots=[].slice.call(root.querySelectorAll('[data-carousel-dot]')), full=root.querySelector('[data-carousel-full]'), statusEl=root.querySelector('[data-carousel-status]'), viewport=root.querySelector('[data-carousel-viewport]'), prev=root.querySelector('[data-carousel-prev]'), next=root.querySelector('[data-carousel-next]'), lightbox=document.querySelector('[data-how-help-lightbox]'), lightImg=document.querySelector('[data-lightbox-image]'), reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches; var i=0,timer=null,paused=false,imgs=slides.map(function(s){return s.querySelector('img')}); function go(n,manual){i=(n+slides.length)%slides.length; track.style.transform='translateX('+(-100*i)+'%)'; dots.forEach(function(d,idx){d.setAttribute('aria-current',idx===i?'true':'false')}); full.href=imgs[i].getAttribute('src'); statusEl.textContent='Showing infographic '+(i+1)+' of '+slides.length; if(manual) restart();} function stop(){if(timer) clearInterval(timer); timer=null;} function start(){stop(); if(!reduce&&!paused&&!document.hidden&&!lightbox.classList.contains('is-open')) timer=setInterval(function(){go(i+1,false)},6000);} function restart(){start();} prev.addEventListener('click',function(){go(i-1,true)}); next.addEventListener('click',function(){go(i+1,true)}); dots.forEach(function(d){d.addEventListener('click',function(){go(Number(d.dataset.carouselDot),true)})}); root.addEventListener('mouseenter',function(){paused=true;stop()}); root.addEventListener('mouseleave',function(){paused=false;start()}); root.addEventListener('focusin',function(){paused=true;stop()}); root.addEventListener('focusout',function(){paused=false;start()}); root.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){e.preventDefault();go(i-1,true)} if(e.key==='ArrowRight'){e.preventDefault();go(i+1,true)}}); var sx=0,sy=0; viewport.addEventListener('touchstart',function(e){sx=e.touches[0].clientX; sy=e.touches[0].clientY;},{passive:true}); viewport.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy; if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)){go(i+(dx<0?1:-1),true)}},{passive:true}); function openLight(img){lightImg.src=img.src; lightImg.alt=img.alt; lightbox.classList.add('is-open'); lightbox.setAttribute('aria-hidden','false'); document.body.classList.add('how-help-lightbox-open'); stop();} function closeLight(){lightbox.classList.remove('is-open'); lightbox.setAttribute('aria-hidden','true'); document.body.classList.remove('how-help-lightbox-open'); lightImg.src=''; start();} root.querySelectorAll('[data-image-button]').forEach(function(btn){btn.addEventListener('click',function(){openLight(btn.querySelector('img'))})}); document.querySelector('[data-lightbox-close]').addEventListener('click',closeLight); document.querySelector('[data-lightbox-backdrop]').addEventListener('click',closeLight); document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lightbox.classList.contains('is-open')) closeLight();}); document.addEventListener('visibilitychange',function(){document.hidden?stop():start();}); go(0,false); start();
-    })();
-  </script>
   <script src="/bluecard/global-layout.js"></script>
 </body>
 </html>
