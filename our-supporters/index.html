@@ -21,9 +21,9 @@
     .supporters-includes { margin: 24px 0; padding: 22px 24px; background: linear-gradient(180deg, #f2f7fd 0%, #eaf2fb 100%); border: 1px solid rgba(13, 92, 171, 0.12); border-radius: 16px; }
     .supporters-includes h2 { margin: 0 0 12px; font-size: 18px; line-height: 1.3; color: #0b2341; font-weight: 700; }
     .supporters-includes ul { margin: 0; padding-left: 22px; color: #303b47; font-size: 17px; line-height: 1.75; }
-    .supporters-actions { display: flex; flex-wrap: wrap; gap: 14px; margin: 28px 0 0; }
-    .supporters-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 30px; border-radius: 999px; background: #d98b00; color: #fff; font-size: 17px; font-weight: 800; text-decoration: none; box-shadow: 0 14px 30px rgba(217, 139, 0, 0.26); transition: transform .18s ease, background .18s ease, box-shadow .18s ease; }
-    .supporters-cta:hover, .supporters-cta:focus { background: #b87300; transform: translateY(-1px); box-shadow: 0 18px 34px rgba(217, 139, 0, 0.3); }
+    .supporters-contact { margin: 30px 0 0; color: #3a4654; font-size: 18px; line-height: 1.7; }
+    .supporters-contact a { color: #0d5cab; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
+    .supporters-contact a:hover, .supporters-contact a:focus { color: #0b2341; }
     .partners-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 30px; }
     .partner-card { min-height: 332px; display: flex; flex-direction: column; overflow: hidden; background: #fff; border: 1px solid rgba(13, 92, 171, 0.16); border-radius: 15px; box-shadow: 0 10px 24px rgba(12, 34, 66, 0.07); }
     .partner-logo-wrap { height: 106px; display: flex; align-items: center; justify-content: center; padding: 16px 18px; background: #fff; border-bottom: 1px solid rgba(11, 35, 65, 0.07); }
@@ -38,7 +38,7 @@
     .partner-link:hover, .partner-link:focus { color: #0b2341; text-decoration: underline; }
     .footer-space { height: 24px; }
     @media (max-width: 980px) { .partners-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .supporters-card { padding: 34px 24px; } }
-    @media (max-width: 640px) { .supporters-body { padding: 56px 18px; } .partners-grid { grid-template-columns: 1fr; } .partner-card { min-height: 0; } .lead, .supporters-transition { font-size: 17px; } .supporters-cta { width: 100%; box-sizing: border-box; } }
+    @media (max-width: 640px) { .supporters-body { padding: 56px 18px; } .partners-grid { grid-template-columns: 1fr; } .partner-card { min-height: 0; } .lead, .supporters-transition { font-size: 17px; } }
   </style>
 </head>
 <body>
@@ -187,9 +187,7 @@
               </div>
             </article>
           </div>
-          <div class="supporters-actions">
-            <a class="supporters-cta" href="/bluecard/donate/">Become a Supporter</a>
-          </div>
+          <p class="supporters-contact">For more information about becoming a supporter, please <a href="/bluecard/contact/">contact us</a>.</p>
         </div>
       </div>
     </section>
