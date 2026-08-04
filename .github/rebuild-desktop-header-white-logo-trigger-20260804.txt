@@ -1,0 +1,1 @@
+Move the white horizontal logo into the desktop blue top strip, enlarge that row, and reduce the navigation row height.
