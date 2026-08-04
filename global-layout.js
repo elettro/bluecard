@@ -99,5 +99,31 @@
       if (firstRealityValue) firstRealityValue.textContent = '78%';
       if (firstRealityDescription) firstRealityDescription.textContent = 'Have difficulty performing daily activities such as dressing, washing, and cooking.';
     }
+
+    var oldSurvivorQuote = Array.from(document.querySelectorAll('main blockquote')).find(function (quote) {
+      return quote.textContent.indexOf("The Blue Card didn't just pay my medical bills") !== -1;
+    });
+    if (oldSurvivorQuote) {
+      var oldSurvivorSection = oldSurvivorQuote.closest('section');
+      if (oldSurvivorSection) oldSurvivorSection.remove();
+    }
+
+    var programsSection = document.getElementById('core-programs');
+    if (programsSection && !document.getElementById('homepage-survivor-cta')) {
+      var survivorCta = document.createElement('section');
+      survivorCta.id = 'homepage-survivor-cta';
+      survivorCta.className = 'py-20 md:py-24 archival-gradient text-on-primary';
+      survivorCta.innerHTML = `
+<div class="max-w-5xl mx-auto px-6 text-center">
+  <blockquote class="text-3xl md:text-5xl font-headline font-semibold leading-snug mb-7 italic">“The Blue Card didn't just pay my medical bills; they saw me. They remembered me when I felt the world had forgotten.”</blockquote>
+  <div class="h-1 w-20 bg-primary-fixed-dim mx-auto mb-6"></div>
+  <cite class="block not-italic font-label uppercase tracking-widest text-primary-fixed text-lg mb-10">— Sarah G., Holocaust Survivor</cite>
+  <a class="donate-rollover inline-flex flex-col items-center justify-center bg-surface-container-lowest text-primary px-10 py-5 rounded-xl text-xl font-bold hover:bg-white active:scale-95 transition-all shadow-xl shadow-black/10" href="/bluecard/donate/" rel="noopener noreferrer" target="_blank">
+    <span>Join us in helping</span>
+    <span>Holocaust Survivors</span>
+  </a>
+</div>`;
+      programsSection.parentNode.insertBefore(survivorCta, programsSection);
+    }
   }
 })();
