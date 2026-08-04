@@ -1,0 +1,24 @@
+name: Force remove mobile dropdown logo
+
+on:
+  push:
+    paths:
+      - '.github/force-remove-mobile-dropdown-logo-trigger-20260804.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  apply-fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply hard mobile dropdown logo fix
+        run: python scripts/force_remove_mobile_dropdown_logo.py
+      - name: Commit update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add interactive-hologram/index.html
+          git commit -m "Force remove logo from open mobile dropdown"
+          git push
