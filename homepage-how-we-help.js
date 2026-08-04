@@ -3,12 +3,12 @@
 
   if (currentPath === '/bluecard/interactive-hologram') {
     var steps = document.querySelector('.bc-history-steps');
-    if (!steps) return;
 
-    if (!document.getElementById('bc-hologram-reference-steps-style')) {
-      var stepStyle = document.createElement('style');
-      stepStyle.id = 'bc-hologram-reference-steps-style';
-      stepStyle.textContent = `
+    if (steps) {
+      if (!document.getElementById('bc-hologram-reference-steps-style')) {
+        var stepStyle = document.createElement('style');
+        stepStyle.id = 'bc-hologram-reference-steps-style';
+        stepStyle.textContent = `
 .bc-history-tech .bc-history-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px;padding:8px clamp(30px,5vw,58px) clamp(40px,5vw,62px)}
 .bc-history-tech .bc-history-step{min-height:0;padding:0;border:0;border-radius:0;background:transparent;text-align:center;box-shadow:none}
 .bc-history-tech .bc-history-step-top{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;color:#294ca4}
@@ -19,10 +19,10 @@
 .bc-history-tech .bc-history-step:hover .bc-history-step-copy{transform:translateY(-2px);box-shadow:0 16px 34px rgba(126,15,22,.24)}
 @media(max-width:820px){.bc-history-tech .bc-history-steps{grid-template-columns:1fr;gap:30px}.bc-history-tech .bc-history-step-copy{min-height:0}.bc-history-tech .bc-history-step-top{margin-bottom:12px}}
 `;
-      document.head.appendChild(stepStyle);
-    }
+        document.head.appendChild(stepStyle);
+      }
 
-    steps.innerHTML = `
+      steps.innerHTML = `
 <article class="bc-history-step">
   <div class="bc-history-step-top">
     <svg class="bc-history-step-icon" viewBox="0 0 64 64" aria-hidden="true">
@@ -58,6 +58,30 @@
   </div>
   <div class="bc-history-step-copy">Discuss lessons on empathy, antisemitism, and standing up to hate.</div>
 </article>`;
+    }
+
+    var goals = document.getElementById('goals');
+    if (goals) {
+      goals.className = 'bc-section bc-section-light bc-student-benefits';
+      goals.innerHTML = `
+<style>
+.bc-student-benefits .bc-section-head{max-width:980px;margin-bottom:42px}.bc-student-benefits .bc-section-head h2{max-width:900px}.bc-student-benefits-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.bc-student-benefit{position:relative;overflow:hidden;min-height:245px;padding:30px;border-radius:24px;background:linear-gradient(180deg,#fff 0%,#f4f8ff 100%);border:1px solid rgba(37,71,155,.16);box-shadow:0 14px 34px rgba(14,32,79,.09)}.bc-student-benefit:before{content:'';position:absolute;inset:0 auto 0 0;width:6px;background:linear-gradient(180deg,#25479b,#9d1f1f)}.bc-student-benefit-icon{width:54px;height:54px;display:grid;place-items:center;margin-bottom:20px;border-radius:17px;background:#e8efff;color:#25479b;font-size:20px;font-weight:900}.bc-student-benefit h3{margin:0 0 12px;color:var(--bc-blue-dark);font-size:22px;line-height:1.16}.bc-student-benefit p{margin:0;color:#52617e;font-size:16px;line-height:1.62}@media(max-width:980px){.bc-student-benefits-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:640px){.bc-student-benefits-grid{grid-template-columns:1fr}.bc-student-benefit{min-height:0}}
+</style>
+<div class="bc-container">
+  <div class="bc-section-head">
+    <div class="bc-section-kicker">Designed for the Classroom</div>
+    <h2>Why this program is ideal for students grades 6 and up</h2>
+  </div>
+  <div class="bc-student-benefits-grid">
+    <article class="bc-student-benefit"><div class="bc-student-benefit-icon" aria-hidden="true">01</div><h3>Enriches existing curricula</h3><p>Complements humanities, ethics, ELA, social studies, and civics programs with a unique, immersive learning tool.</p></article>
+    <article class="bc-student-benefit"><div class="bc-student-benefit-icon" aria-hidden="true">02</div><h3>Interactive survivor testimony</h3><p>Offers students a rare opportunity to connect personally with a Holocaust survivor and Holocaust history.</p></article>
+    <article class="bc-student-benefit"><div class="bc-student-benefit-icon" aria-hidden="true">03</div><h3>Cutting-edge technology</h3><p>We use a non-generative AI model which is the first of its kind to be able to exist in the classroom.</p></article>
+    <article class="bc-student-benefit"><div class="bc-student-benefit-icon" aria-hidden="true">04</div><h3>Flexible integration</h3><p>Sessions can be tailored to fit your school’s schedule and teaching style.</p></article>
+    <article class="bc-student-benefit"><div class="bc-student-benefit-icon" aria-hidden="true">05</div><h3>Free access</h3><p>Provided at no cost, ensuring equitable participation across independent schools.</p></article>
+    <article class="bc-student-benefit"><div class="bc-student-benefit-icon" aria-hidden="true">06</div><h3>Measurable impact</h3><p>Pre- and post-session surveys demonstrate student growth in empathy, understanding, and civic responsibility.</p></article>
+  </div>
+</div>`;
+    }
     return;
   }
 
