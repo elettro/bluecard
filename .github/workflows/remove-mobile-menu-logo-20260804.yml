@@ -1,0 +1,24 @@
+name: Remove redundant mobile menu logo
+
+on:
+  push:
+    paths:
+      - '.github/remove-mobile-menu-logo-trigger-20260804.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  update-mobile-menu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove logo and tighten open mobile menu
+        run: python scripts/remove_mobile_menu_logo.py
+      - name: Commit update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add global-layout.css
+          git commit -m "Remove redundant logo from open mobile menu"
+          git push
