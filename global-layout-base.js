@@ -8,8 +8,8 @@
   if (navTarget) {
     navTarget.innerHTML = `
 <style id="bc-desktop-header-layout">
-@media (min-width:1100px){
-  .bc-top-donate-strip{min-height:112px!important;padding:10px 28px!important;grid-template-columns:minmax(280px,1fr) auto minmax(280px,1fr)!important;column-gap:28px!important}
+@media (min-width:981px){
+  .bc-top-donate-strip{display:grid!important;min-height:112px!important;padding:10px 28px!important;grid-template-columns:minmax(280px,1fr) auto minmax(280px,1fr)!important;column-gap:28px!important}
   .bc-top-brand{grid-column:1!important;justify-self:start!important;display:inline-flex!important;align-items:center!important;text-decoration:none!important}
   .bc-top-brand img{display:block!important;width:auto!important;height:88px!important;max-width:390px!important;object-fit:contain!important}
   .bc-top-donate-btn{grid-column:2!important}

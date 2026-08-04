@@ -20,7 +20,7 @@
   if (isInteractiveHologram) applyInteractiveHologramUpdates();
 
   var baseScript = document.createElement('script');
-  baseScript.src = '/bluecard/global-layout-base.js?v=20260804-12';
+  baseScript.src = '/bluecard/global-layout-base.js?v=20260804-13';
   baseScript.onload = function () {
     if (isHomepage) applyHomepageUpdates();
 
