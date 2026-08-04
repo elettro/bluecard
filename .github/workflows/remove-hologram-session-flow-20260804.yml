@@ -1,0 +1,41 @@
+name: Remove hologram session flow section
+
+on:
+  push:
+    paths:
+      - '.github/remove-hologram-session-flow-trigger-20260804.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  remove-section:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove recommended session flow section
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('interactive-hologram/index.html')
+          text = path.read_text(encoding='utf-8')
+
+          pattern = re.compile(
+              r'\n\s*<section class="bc-section bc-section-dark" id="session-flow">.*?</section>\s*\n',
+              re.S,
+          )
+          updated, count = pattern.subn('\n', text, count=1)
+          if count != 1:
+              raise SystemExit(f'Session flow section matched {count} times')
+
+          path.write_text(updated, encoding='utf-8')
+          PY
+      - name: Commit update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add interactive-hologram/index.html
+          git commit -m "Remove hologram recommended session flow section"
+          git push
