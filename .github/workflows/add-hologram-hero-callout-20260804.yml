@@ -1,0 +1,87 @@
+name: Add hologram hero callout
+
+on:
+  push:
+    paths:
+      - '.github/add-hologram-hero-callout-trigger-20260804.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  update-hologram-hero:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add callout and bolded copy
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('interactive-hologram/index.html')
+          text = path.read_text(encoding='utf-8')
+
+          old_css = '''    .bc-hero p {
+      margin: 0;
+      max-width: 62ch;
+      color: rgba(255, 255, 255, .92);
+      font-size: clamp(17px, 2vw, 21px);
+    }
+'''
+          new_css = '''    .bc-hero p {
+      margin: 0;
+      max-width: 62ch;
+      color: rgba(255, 255, 255, .92);
+      font-size: clamp(17px, 2vw, 21px);
+    }
+
+    .bc-hero-callout {
+      max-width: 650px;
+      margin-top: 22px;
+      padding: 18px 22px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .16);
+      border: 1px solid rgba(255, 255, 255, .32);
+      border-left: 5px solid #ffffff;
+      color: #ffffff;
+      font-size: clamp(17px, 1.8vw, 20px);
+      font-weight: 800;
+      line-height: 1.45;
+      box-shadow: 0 16px 36px rgba(3, 15, 50, .22);
+      backdrop-filter: blur(10px);
+    }
+'''
+          if '.bc-hero-callout {' not in text:
+              if old_css not in text:
+                  raise SystemExit('Hero paragraph CSS block not found')
+              text = text.replace(old_css, new_css, 1)
+
+          old_html = '''          <p>
+            The Blue Card brings Holocaust education to schools, organizations, community centers, and workplaces through a free <strong>non-generative</strong> AI-powered hologram program featuring Holocaust survivor Sonia Warshawski.
+          </p>
+
+          <div class="bc-hero-actions">'''
+          new_html = '''          <p>
+            The Blue Card brings Holocaust education to schools, organizations, community centers, and workplaces through a free <strong>non-generative</strong> AI-powered hologram program featuring <strong>Holocaust survivor</strong> Sonia Warshawski.
+          </p>
+
+          <div class="bc-hero-callout" role="note">
+            It’s an opportunity for students to meet a real survivor, and hear her real voice.
+          </div>
+
+          <div class="bc-hero-actions">'''
+
+          if 'It’s an opportunity for students to meet a real survivor' not in text:
+              if old_html not in text:
+                  raise SystemExit('Hero copy block not found')
+              text = text.replace(old_html, new_html, 1)
+
+          path.write_text(text, encoding='utf-8')
+          PY
+      - name: Commit update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add interactive-hologram/index.html
+          git commit -m "Add hologram hero student callout"
+          git push
