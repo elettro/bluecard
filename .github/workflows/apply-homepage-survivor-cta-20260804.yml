@@ -1,0 +1,85 @@
+name: Apply homepage survivor CTA
+
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-homepage-survivor-cta-20260804.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-homepage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Add survivor quote CTA and remove old quote section
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          cta = '''<!-- Section 4: Survivor Quote CTA -->
+<section class="py-20 md:py-24 archival-gradient text-on-primary">
+<div class="max-w-5xl mx-auto px-6 text-center">
+<blockquote class="text-3xl md:text-5xl font-headline font-semibold leading-snug mb-7 italic">
+“The Blue Card didn't just pay my medical bills; they saw me. They remembered me when I felt the world had forgotten.”
+</blockquote>
+<div class="h-1 w-20 bg-primary-fixed-dim mx-auto mb-6"></div>
+<cite class="block not-italic font-label uppercase tracking-widest text-primary-fixed text-lg mb-10">— Sarah G., Holocaust Survivor</cite>
+<a class="donate-rollover inline-flex flex-col items-center justify-center bg-surface-container-lowest text-primary px-10 py-5 rounded-xl text-xl font-bold hover:bg-white active:scale-95 transition-all shadow-xl shadow-black/10" href="/bluecard/donate/" rel="noopener noreferrer" target="_blank">
+<span>Join us in helping</span>
+<span>Holocaust Survivors</span>
+</a>
+</div>
+</section>
+'''
+
+          anchor = '<!-- Section 6: Programs (Carousel) -->'
+          if '<!-- Section 4: Survivor Quote CTA -->' not in text:
+              if anchor not in text:
+                  raise SystemExit('Programs section anchor not found.')
+              text = text.replace(anchor, cta + anchor, 1)
+
+          old_quote_pattern = re.compile(
+              r'<!-- Section 9: Dignity/Human Story -->\s*<section class="py-20 md:py-24 archival-gradient text-on-primary">.*?</section>\s*',
+              re.S,
+          )
+          text, removed = old_quote_pattern.subn('', text, count=1)
+          if removed not in (0, 1):
+              raise SystemExit(f'Unexpected old quote removal count: {removed}')
+
+          required = [
+              '<!-- Section 4: Survivor Quote CTA -->',
+              'Join us in helping',
+              'Holocaust Survivors',
+              'Sarah G., Holocaust Survivor',
+          ]
+          missing = [item for item in required if item not in text]
+          if missing:
+              raise SystemExit(f'Missing required CTA content: {missing}')
+
+          if text.count("The Blue Card didn't just pay my medical bills") != 1:
+              raise SystemExit('Survivor quote must appear exactly once.')
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Commit homepage survivor CTA
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "No homepage changes required."
+            exit 0
+          fi
+          git commit -m "Add homepage survivor quote donation CTA"
+          git push
