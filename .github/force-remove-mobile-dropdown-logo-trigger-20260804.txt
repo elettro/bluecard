@@ -1,0 +1,1 @@
+Force the open mobile dropdown to hide both navigation logos and move Home to the top.
