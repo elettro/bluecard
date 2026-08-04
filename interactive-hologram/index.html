@@ -1001,6 +1001,36 @@
 <script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://elettro.github.io/bluecard/"}, {"@type": "ListItem", "position": 2, "name": "Interactive Hologram", "item": "https://elettro.github.io/bluecard/interactive-hologram/"}]}</script>
 <script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": "Service", "@id": "https://elettro.github.io/bluecard/interactive-hologram/#service", "name": "Interactive Hologram", "description": "Learn about The Blue Card’s Interactive Hologram and how it helps Holocaust survivors through specific support, assistance, or education.", "provider": {"@id": "https://elettro.github.io/bluecard/#organization"}, "areaServed": "United States", "audience": {"@type": "Audience", "audienceType": "Holocaust survivors and their families"}, "url": "https://elettro.github.io/bluecard/interactive-hologram/"}</script>
 <style data-ai-answer="true">.ai-answer-block{width:min(1120px,calc(100% - 40px));margin:36px auto;padding:28px;background:#fff;border:1px solid rgba(0,94,184,.12);border-radius:20px;box-shadow:0 14px 34px rgba(0,39,84,.07)}.ai-answer-block h2{color:#0055a5;margin:0 0 18px}.ai-answer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.ai-answer-grid article{background:#f7fbff;border-radius:14px;padding:18px}.ai-answer-grid h3{color:#16324f;margin:0 0 8px;font-size:1rem}.ai-answer-grid p{color:#334155;line-height:1.6;margin:0}@media (max-width:760px){.ai-answer-grid{grid-template-columns:1fr}}</style>
+
+<style id="bc-mobile-dropdown-logo-hard-fix">
+@media (max-width: 980px) {
+  #bc-global-nav .bluecard-nav.is-open .bluecard-nav-logo,
+  #bc-global-nav .bluecard-nav.is-open .site-logo {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  #bc-global-nav .bluecard-nav.is-open .bluecard-nav-mobile-bar {
+    min-height: 44px !important;
+    height: 44px !important;
+    padding: 0 8px !important;
+    justify-content: flex-end !important;
+  }
+
+  #bc-global-nav .bluecard-nav.is-open .bluecard-nav-inner,
+  #bc-global-nav .bluecard-nav.is-open .menu {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -1408,5 +1438,72 @@
     })();
   </script>
   <script src="../global-layout.js?v=20260804-10"></script>
+
+<script id="bc-mobile-dropdown-logo-hard-fix-script">
+(function () {
+  function enforceMobileMenuState() {
+    if (!window.matchMedia('(max-width: 980px)').matches) return;
+
+    var nav = document.querySelector('#bc-global-nav .bluecard-nav');
+    if (!nav) return;
+
+    var mobileLogo = nav.querySelector('.bluecard-nav-logo');
+    var desktopLogo = nav.querySelector('.site-logo');
+    var mobileBar = nav.querySelector('.bluecard-nav-mobile-bar');
+    var isOpen = nav.classList.contains('is-open');
+
+    if (desktopLogo) {
+      desktopLogo.style.setProperty('display', 'none', 'important');
+    }
+
+    if (mobileLogo) {
+      if (isOpen) {
+        mobileLogo.style.setProperty('display', 'none', 'important');
+        mobileLogo.style.setProperty('visibility', 'hidden', 'important');
+      } else {
+        mobileLogo.style.removeProperty('display');
+        mobileLogo.style.removeProperty('visibility');
+      }
+    }
+
+    if (mobileBar) {
+      if (isOpen) {
+        mobileBar.style.setProperty('min-height', '44px', 'important');
+        mobileBar.style.setProperty('height', '44px', 'important');
+        mobileBar.style.setProperty('padding', '0 8px', 'important');
+        mobileBar.style.setProperty('justify-content', 'flex-end', 'important');
+      } else {
+        mobileBar.style.removeProperty('min-height');
+        mobileBar.style.removeProperty('height');
+        mobileBar.style.removeProperty('padding');
+        mobileBar.style.removeProperty('justify-content');
+      }
+    }
+  }
+
+  function attachObserver() {
+    var nav = document.querySelector('#bc-global-nav .bluecard-nav');
+    if (!nav) {
+      window.setTimeout(attachObserver, 100);
+      return;
+    }
+
+    enforceMobileMenuState();
+
+    new MutationObserver(enforceMobileMenuState).observe(nav, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    document.addEventListener('click', function () {
+      window.setTimeout(enforceMobileMenuState, 0);
+    });
+
+    window.addEventListener('resize', enforceMobileMenuState);
+  }
+
+  attachObserver();
+})();
+</script>
 </body>
 </html>
