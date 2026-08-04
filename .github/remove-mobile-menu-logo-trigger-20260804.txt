@@ -1,0 +1,1 @@
+Remove the redundant logo from the open mobile dropdown and move the navigation links upward.
