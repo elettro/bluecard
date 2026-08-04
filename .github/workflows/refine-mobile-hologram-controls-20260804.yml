@@ -1,0 +1,76 @@
+name: Refine mobile hologram controls
+
+on:
+  push:
+    paths:
+      - '.github/refine-mobile-hologram-controls-trigger-20260804.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  refine-mobile-controls:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make mobile hero controls compact and add spacing
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('interactive-hologram/index.html')
+          text = path.read_text(encoding='utf-8')
+
+          old = '''      .bc-hero-content {
+        padding: 72px 0 56px;
+      }
+'''
+          new = '''      .bc-hero-content {
+        padding: 92px 0 56px;
+      }
+
+      .bc-sound-wrap {
+        top: 12px;
+        right: 10px;
+        gap: 6px;
+        flex-wrap: nowrap;
+      }
+
+      .bc-sound-wrap .bc-btn {
+        width: auto;
+        min-height: 34px;
+        border-radius: 999px;
+      }
+
+      .bc-sound-toggle {
+        width: 36px;
+        min-width: 36px;
+        height: 34px;
+        padding: 0;
+        font-size: 16px;
+      }
+
+      .bc-hide-text-toggle {
+        min-height: 34px;
+        padding: 0 11px;
+        font-size: 11px;
+        letter-spacing: 0;
+      }
+
+      .bc-eyebrow {
+        margin-top: 8px;
+      }
+'''
+
+          if old not in text:
+              raise SystemExit('Mobile hero content CSS marker not found')
+
+          path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
+      - name: Commit update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add interactive-hologram/index.html
+          git commit -m "Refine mobile hologram hero controls"
+          git push
