@@ -1,0 +1,1 @@
+Remove the complete Recommended Session Flow section from the Interactive Hologram page.
