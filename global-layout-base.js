@@ -8,6 +8,9 @@
   if (navTarget) {
     navTarget.innerHTML = `
 <div class="bc-top-donate-strip" role="region" aria-label="Donate call to action">
+  <a class="bc-top-brand" href="/bluecard/index.html" aria-label="The Blue Card home">
+    <img src="/bluecard/images/logo/TBC-TAGLINE_HORIZ-VECTOR-WHITE-OL-01.png" alt="The Blue Card. Assisting Holocaust Survivors in Need">
+  </a>
   <a class="bc-top-donate-btn" href="/bluecard/donate/" rel="noopener noreferrer" target="_blank">DONATE</a>
   <div class="bc-top-contact" aria-label="The Blue Card contact information">
     <a class="bc-top-contact-link" href="tel:2122392251">
@@ -30,9 +33,6 @@
     </button>
   </div>
   <div class="bluecard-nav-inner">
-    <a class="site-logo" href="/bluecard/index.html" aria-label="The Blue Card home">
-      <img src="/bluecard/images/logo/blue-card-logo-fullsize-.png" alt="The Blue Card">
-    </a>
     <ul class="menu" id="bluecard-main-menu">
     <li><a href="/bluecard/index.html">Home</a></li>
     <li class="menu-item-has-children"><a href="/bluecard/who-we-are/index.html">Who We Are</a><ul class="sub-menu"><li><a href="/bluecard/our-mission/index.html">Our Mission</a></li><li><a href="/bluecard/our-supporters/">Our Supporters</a></li></ul></li>
