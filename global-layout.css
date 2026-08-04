@@ -312,6 +312,15 @@
   .bluecard-nav.is-open .bluecard-nav-toggle span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
   }
+  .bluecard-nav.is-open .bluecard-nav-logo {
+    display: none;
+  }
+  .bluecard-nav.is-open .bluecard-nav-mobile-bar {
+    min-height: 52px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    justify-content: flex-end;
+  }
   .site-logo {
     display: none;
   }
