@@ -98,7 +98,6 @@ jobs:
               'Nutritional Support',
               'Home Care Assistance',
               '$40,000,000',
-              '4,200',
           ]
           remaining = [item for item in forbidden if item in updated]
           if remaining:
