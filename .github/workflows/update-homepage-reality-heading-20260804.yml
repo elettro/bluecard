@@ -1,0 +1,59 @@
+name: Update homepage reality heading
+
+on:
+  push:
+    paths:
+      - '.github/workflows/update-homepage-reality-heading-20260804.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-homepage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update homepage heading and verify cards
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          old_heading = 'What most people don’t know</h2>'
+          new_heading = 'What most people don’t know about Holocaust Survivors</h2>'
+
+          if old_heading not in text and new_heading not in text:
+              raise SystemExit('Homepage reality heading was not found.')
+
+          text = text.replace(old_heading, new_heading, 1)
+
+          required = [
+              '<h3 class="text-4xl font-headline font-bold text-primary mb-4">78%</h3>',
+              'Have difficulty performing daily activities such as dressing, washing, and cooking.',
+              '<h3 class="text-4xl font-headline font-bold text-primary mb-4">Nearly 70%</h3>',
+              '<h3 class="text-4xl font-headline font-bold text-primary mb-4">67%</h3>',
+          ]
+          missing = [item for item in required if item not in text]
+          if missing:
+              raise SystemExit(f'Required card content missing: {missing}')
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Commit homepage update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "No homepage changes required."
+            exit 0
+          fi
+          git commit -m "Expand homepage reality heading"
+          git push
