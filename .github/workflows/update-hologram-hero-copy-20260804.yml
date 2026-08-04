@@ -1,0 +1,34 @@
+name: Update hologram hero copy
+
+on:
+  push:
+    paths:
+      - '.github/update-hologram-hero-copy-trigger-20260804.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  update-copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update hero paragraph
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('interactive-hologram/index.html')
+          text = path.read_text(encoding='utf-8')
+          old = '''The Blue Card brings Holocaust education to schools, organizations, community centers, and workplaces through a free AI-powered hologram program featuring survivor Sonia Warshawski.'''
+          new = '''The Blue Card brings Holocaust education to schools, organizations, community centers, and workplaces through a free <strong>non-generative</strong> AI-powered hologram program featuring Holocaust survivor Sonia Warshawski.'''
+          if old not in text:
+              raise SystemExit('Target copy not found')
+          path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
+      - name: Commit update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add interactive-hologram/index.html
+          git commit -m "Clarify hologram program uses non-generative AI"
+          git push
