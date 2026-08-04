@@ -1,9 +1,9 @@
 (function () {
   var baseScript = document.createElement('script');
-  baseScript.src = './global-layout-base.js?v=20260804-1';
+  baseScript.src = '/bluecard/global-layout-base.js?v=20260804-2';
   baseScript.onload = function () {
     var homepageScript = document.createElement('script');
-    homepageScript.src = './homepage-how-we-help.js?v=20260804-1';
+    homepageScript.src = '/bluecard/homepage-how-we-help.js?v=20260804-2';
     document.body.appendChild(homepageScript);
   };
   document.head.appendChild(baseScript);
