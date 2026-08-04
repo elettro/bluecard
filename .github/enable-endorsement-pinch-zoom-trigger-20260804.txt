@@ -1,0 +1,1 @@
+Enable pinch zoom while viewing endorsement letter modals on mobile.
