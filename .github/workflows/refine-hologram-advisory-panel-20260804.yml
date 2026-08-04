@@ -1,0 +1,111 @@
+name: Refine hologram advisory panel styling
+
+on:
+  push:
+    paths:
+      - '.github/refine-hologram-advisory-panel-trigger-20260804.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  refine-section:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add delicate advisory panel styling
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('global-layout.js')
+          text = path.read_text(encoding='utf-8')
+
+          pattern = re.compile(
+              r"\n    var supportSection = document\.getElementById\('program-support'\);.*?\n    \}\n  \}\n\n  function applyHomepageUpdates",
+              re.S,
+          )
+
+          replacement = r'''
+    var supportSection = document.getElementById('program-support');
+    if (supportSection) {
+      supportSection.className = 'bc-section bc-section-light bc-advisory-panel';
+      supportSection.innerHTML = `
+<style>
+.bc-advisory-panel{position:relative;overflow:hidden;background:linear-gradient(180deg,#fcfdff 0%,#f3f7fd 100%);border-top:1px solid rgba(37,71,155,.09);border-bottom:1px solid rgba(37,71,155,.09)}
+.bc-advisory-panel:before,.bc-advisory-panel:after{content:"";position:absolute;border-radius:50%;pointer-events:none;filter:blur(1px)}
+.bc-advisory-panel:before{width:420px;height:420px;top:-250px;right:-150px;background:radial-gradient(circle,rgba(121,158,220,.16) 0%,rgba(121,158,220,0) 70%)}
+.bc-advisory-panel:after{width:360px;height:360px;bottom:-250px;left:-130px;background:radial-gradient(circle,rgba(157,31,31,.07) 0%,rgba(157,31,31,0) 72%)}
+.bc-advisory-panel .bc-container{position:relative;z-index:1}
+.bc-advisory-panel .bc-section-head{max-width:920px;margin:0 auto 48px;text-align:center}
+.bc-advisory-panel .bc-section-kicker{display:flex;align-items:center;justify-content:center;gap:14px;color:#31589f;letter-spacing:.18em}
+.bc-advisory-panel .bc-section-kicker:before,.bc-advisory-panel .bc-section-kicker:after{content:"";width:48px;height:1px;background:linear-gradient(90deg,transparent,rgba(49,88,159,.45))}
+.bc-advisory-panel .bc-section-kicker:after{background:linear-gradient(90deg,rgba(49,88,159,.45),transparent)}
+.bc-advisory-panel .bc-section-head h2{max-width:820px;margin:10px auto 0;line-height:1.05;letter-spacing:-.025em}
+.bc-advisory-panel-layout{display:grid;grid-template-columns:minmax(280px,.72fr) minmax(0,1.28fr);gap:24px;align-items:stretch}
+.bc-panel-chair-card,.bc-panel-members-card{position:relative;border-radius:28px;box-shadow:0 20px 50px rgba(23,48,111,.10)}
+.bc-panel-chair-card{isolation:isolate;overflow:hidden;display:flex;flex-direction:column;justify-content:center;min-height:350px;padding:48px 38px;text-align:center;background:linear-gradient(145deg,#123a79 0%,#214f9f 55%,#315fae 100%);border:1px solid rgba(255,255,255,.24);color:#fff}
+.bc-panel-chair-card:before{content:"";position:absolute;inset:14px;border:1px solid rgba(255,255,255,.17);border-radius:20px;z-index:-1}
+.bc-panel-chair-card:after{content:"";position:absolute;width:240px;height:240px;right:-105px;top:-110px;border-radius:50%;border:1px solid rgba(255,255,255,.12);box-shadow:0 0 0 28px rgba(255,255,255,.035),0 0 0 56px rgba(255,255,255,.025);z-index:-1}
+.bc-chair-ornament{margin:0 auto 16px;color:#dbe7ff;font-family:Georgia,serif;font-size:23px;line-height:1}
+.bc-panel-label{font-size:12px;font-weight:900;letter-spacing:.19em;text-transform:uppercase}
+.bc-panel-chair-card .bc-panel-label{color:#d7e4ff}
+.bc-panel-chair-rule{width:62px;height:1px;margin:18px auto 22px;background:linear-gradient(90deg,transparent,#d8e5ff,transparent)}
+.bc-panel-chair-name{max-width:290px;margin:0 auto;color:#fff;font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,4vw,52px);font-weight:700;line-height:1.02;letter-spacing:-.025em}
+.bc-panel-members-card{padding:36px;background:rgba(255,255,255,.82);border:1px solid rgba(37,71,155,.15);backdrop-filter:blur(12px)}
+.bc-panel-members-heading{display:flex;align-items:center;gap:14px;margin-bottom:22px;color:#31589f}
+.bc-panel-members-heading:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,rgba(49,88,159,.28),transparent)}
+.bc-panel-members-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.bc-panel-member{display:flex;align-items:center;gap:13px;min-height:72px;padding:15px 17px;border:1px solid rgba(37,71,155,.12);border-radius:17px;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(247,250,255,.96));color:var(--bc-blue-dark);font-size:17px;font-weight:800;box-shadow:0 8px 20px rgba(14,32,79,.055);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.bc-panel-member:hover{transform:translateY(-2px);border-color:rgba(37,71,155,.25);box-shadow:0 13px 26px rgba(14,32,79,.09)}
+.bc-panel-member-mark{width:27px;height:27px;flex:0 0 27px;display:grid;place-items:center;border-radius:50%;background:#eef4ff;color:#31589f;font-size:9px;border:1px solid rgba(49,88,159,.13)}
+.bc-panel-member:last-child{grid-column:1/-1;justify-self:center;width:min(100%,calc(50% - 7px))}
+@media(max-width:820px){.bc-advisory-panel .bc-section-kicker:before,.bc-advisory-panel .bc-section-kicker:after{width:26px}.bc-advisory-panel-layout{grid-template-columns:1fr}.bc-panel-chair-card{min-height:280px}.bc-panel-members-grid{grid-template-columns:1fr}.bc-panel-member:last-child{grid-column:auto;width:100%}}
+</style>
+<div class="bc-container">
+  <div class="bc-section-head">
+    <div class="bc-section-kicker">Education Support</div>
+    <h2>The Blue Card Holocaust Education Advisory Panel</h2>
+  </div>
+  <div class="bc-advisory-panel-layout">
+    <article class="bc-panel-chair-card">
+      <div class="bc-chair-ornament" aria-hidden="true">✦</div>
+      <div class="bc-panel-label">Panel Chair</div>
+      <div class="bc-panel-chair-rule" aria-hidden="true"></div>
+      <h3 class="bc-panel-chair-name">Michael Berenbaum</h3>
+    </article>
+    <div class="bc-panel-members-card">
+      <div class="bc-panel-members-heading">
+        <div class="bc-panel-label">Panel Members</div>
+      </div>
+      <div class="bc-panel-members-grid">
+        <div class="bc-panel-member"><span class="bc-panel-member-mark" aria-hidden="true">◆</span><span>Mehnaz Afridi</span></div>
+        <div class="bc-panel-member"><span class="bc-panel-member-mark" aria-hidden="true">◆</span><span>Dr. Eva Fogelman</span></div>
+        <div class="bc-panel-member"><span class="bc-panel-member-mark" aria-hidden="true">◆</span><span>Sofija Grandakovska</span></div>
+        <div class="bc-panel-member"><span class="bc-panel-member-mark" aria-hidden="true">◆</span><span>Robin Hizme</span></div>
+        <div class="bc-panel-member"><span class="bc-panel-member-mark" aria-hidden="true">◆</span><span>Michael Miller</span></div>
+        <div class="bc-panel-member"><span class="bc-panel-member-mark" aria-hidden="true">◆</span><span>Mitchell Pinsky</span></div>
+        <div class="bc-panel-member"><span class="bc-panel-member-mark" aria-hidden="true">◆</span><span>Joseph Potasnik</span></div>
+      </div>
+    </div>
+  </div>
+</div>`;
+    }
+  }
+
+  function applyHomepageUpdates'''
+
+          updated, count = pattern.subn(replacement, text, count=1)
+          if count != 1:
+              raise SystemExit(f'Expected one advisory panel block, found {count}')
+
+          path.write_text(updated, encoding='utf-8')
+          PY
+      - name: Commit update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add global-layout.js
+          git commit -m "Refine hologram advisory panel styling"
+          git push
