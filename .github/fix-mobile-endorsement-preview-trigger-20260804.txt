@@ -1,0 +1,1 @@
+Shrink full endorsement letter pages on mobile instead of cropping them.
