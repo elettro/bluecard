@@ -1,0 +1,1 @@
+Apply the white-logo desktop header beginning immediately above the mobile breakpoint so tablet and desktop widths remain consistent.
