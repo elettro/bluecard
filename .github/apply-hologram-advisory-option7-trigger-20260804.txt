@@ -1,2 +1,2 @@
 Swap option 7 from the advisory panel concept page into the Interactive Hologram page.
-Retry after workflow registration.
+Run fixed workflow.
