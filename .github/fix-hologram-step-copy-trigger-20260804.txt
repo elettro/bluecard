@@ -1,1 +1,0 @@
-Clean and center the text inside the three red Interactive Hologram step boxes.
