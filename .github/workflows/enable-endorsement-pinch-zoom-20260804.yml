@@ -1,0 +1,38 @@
+name: Enable endorsement pinch zoom
+
+on:
+  push:
+    paths:
+      - '.github/enable-endorsement-pinch-zoom-trigger-20260804.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  enable-pinch-zoom:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enable mobile pinch zoom in endorsement modal
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('homepage-how-we-help.js')
+          text = path.read_text(encoding='utf-8')
+
+          old = ".bc-letter-modal-frame{display:block;width:100%;height:100%;flex:1;border:0;background:#e8ecf3}"
+          new = ".bc-letter-modal-frame{display:block;width:100%;height:100%;flex:1;border:0;background:#e8ecf3;touch-action:pan-x pan-y pinch-zoom;overscroll-behavior:contain}.bc-letter-dialog{touch-action:pan-x pan-y pinch-zoom}"
+
+          if old not in text:
+              raise SystemExit('Endorsement modal frame CSS marker not found')
+
+          path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
+      - name: Commit update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add homepage-how-we-help.js
+          git commit -m "Enable pinch zoom in endorsement modal"
+          git push
