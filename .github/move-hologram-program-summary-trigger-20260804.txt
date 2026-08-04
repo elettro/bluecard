@@ -1,1 +1,0 @@
-Move the Interactive Hologram Program Summary above the global footer.
