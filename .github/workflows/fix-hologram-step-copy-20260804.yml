@@ -1,0 +1,49 @@
+name: Clean hologram step copy
+
+on:
+  push:
+    paths:
+      - '.github/fix-hologram-step-copy-trigger-20260804.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  update-copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Clean red step box text layout
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('homepage-how-we-help.js')
+          text = path.read_text(encoding='utf-8')
+
+          old_css = '.bc-history-tech .bc-history-step-copy em{color:inherit}'
+          new_css = '.bc-history-tech .bc-history-step-copy span{display:block;max-width:30ch;margin:0 auto}.bc-history-tech .bc-history-step-copy em{color:inherit}'
+          if old_css not in text:
+              raise SystemExit('Step copy CSS marker not found')
+          text = text.replace(old_css, new_css, 1)
+
+          replacements = {
+              '<div class="bc-history-step-copy">View <em>Big Sonia</em>, a powerful documentary about survivor Sonia Warshawski.</div>': '<div class="bc-history-step-copy"><span>View <em>Big Sonia</em>, a powerful documentary about survivor Sonia Warshawski.</span></div>',
+              '<div class="bc-history-step-copy">Interact with Sonia’s story through a lifelike hologram experience.</div>': '<div class="bc-history-step-copy"><span>Interact with Sonia’s story through a lifelike hologram experience.</span></div>',
+              '<div class="bc-history-step-copy">Discuss lessons on empathy, antisemitism, and standing up to hate.</div>': '<div class="bc-history-step-copy"><span>Discuss lessons on empathy, antisemitism, and standing up to hate.</span></div>',
+          }
+
+          for old, new in replacements.items():
+              if old not in text:
+                  raise SystemExit(f'Step copy marker not found: {old[:55]}')
+              text = text.replace(old, new, 1)
+
+          path.write_text(text, encoding='utf-8')
+          PY
+      - name: Commit update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add homepage-how-we-help.js
+          git commit -m "Clean hologram red step box text"
+          git push
