@@ -1,6 +1,43 @@
 (function () {
   var currentPath = (window.location.pathname || '/').replace(/\/index\.html$/, '').replace(/\/+$/, '') || '/';
-  if (currentPath === '/bluecard' || currentPath === '/') {
+  var isHomepage = currentPath === '/bluecard' || currentPath === '/';
+
+  if (isHomepage) {
+    var antiFlickerStyle = document.createElement('style');
+    antiFlickerStyle.id = 'homepage-quote-antiflicker';
+    antiFlickerStyle.textContent = '#homepage-survivor-cta{display:none!important;}';
+    document.head.appendChild(antiFlickerStyle);
+
+    Array.from(document.querySelectorAll('main blockquote')).forEach(function (quote) {
+      if (quote.textContent.indexOf("The Blue Card didn't just pay my medical bills") !== -1) {
+        var section = quote.closest('section');
+        if (section) section.remove();
+      }
+    });
+  }
+
+  var baseScript = document.createElement('script');
+  baseScript.src = '/bluecard/global-layout-base.js?v=20260804-7';
+  baseScript.onload = function () {
+    if (isHomepage) applyHomepageUpdates();
+
+    var homepageScript = document.createElement('script');
+    homepageScript.src = '/bluecard/homepage-how-we-help.js?v=20260804-7';
+    document.body.appendChild(homepageScript);
+  };
+  document.head.appendChild(baseScript);
+
+  function applyHomepageUpdates() {
+    var injectedSurvivorCta = document.getElementById('homepage-survivor-cta');
+    if (injectedSurvivorCta) injectedSurvivorCta.remove();
+
+    Array.from(document.querySelectorAll('main blockquote')).forEach(function (quote) {
+      if (quote.textContent.indexOf("The Blue Card didn't just pay my medical bills") !== -1) {
+        var section = quote.closest('section');
+        if (section) section.remove();
+      }
+    });
+
     var podcastHeading = Array.from(document.querySelectorAll('main h2')).find(function (heading) {
       return heading.textContent.trim() === 'The Longevity Paradox of Holocaust Survivors';
     });
@@ -12,6 +49,7 @@
     var helpHeading = Array.from(document.querySelectorAll('main h2')).find(function (heading) {
       return heading.textContent.trim() === 'How You Can Help';
     });
+
     if (helpHeading) {
       var helpSection = helpHeading.closest('section');
       if (helpSection) {
@@ -55,11 +93,13 @@
   </div>
 </div>`;
 
-        if (!document.getElementById('homepage-masha-quote')) {
-          var mashaSection = document.createElement('section');
-          mashaSection.id = 'homepage-masha-quote';
-          mashaSection.className = 'bc-masha-quote-section';
-          mashaSection.innerHTML = `
+        var existingMashaSection = document.getElementById('homepage-masha-quote');
+        if (existingMashaSection) existingMashaSection.remove();
+
+        var mashaSection = document.createElement('section');
+        mashaSection.id = 'homepage-masha-quote';
+        mashaSection.className = 'bc-masha-quote-section';
+        mashaSection.innerHTML = `
 <style>
 .bc-masha-quote-section{background:linear-gradient(135deg,#003f7d 0%,#0b56a4 100%);color:#fff;padding:72px 24px}.bc-masha-quote-wrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:64px;align-items:center}.bc-masha-quote-copy{min-width:0}.bc-masha-quote-mark{display:block;font-family:Georgia,serif;font-size:82px;line-height:.55;color:#a8c8ff;margin-bottom:24px}.bc-masha-quote-text{margin:0;font-family:"Plus Jakarta Sans",sans-serif;font-size:clamp(32px,4.5vw,54px);font-style:italic;font-weight:700;line-height:1.12;letter-spacing:-.025em}.bc-masha-quote-rule{width:72px;height:4px;background:#a8c8ff;margin:34px 0 22px}.bc-masha-quote-name{margin:0;font-family:Inter,sans-serif;font-size:16px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#d6e3ff}.bc-masha-quote-photo{width:300px;height:360px;border-radius:26px;overflow:hidden;border:4px solid rgba(255,255,255,.18);box-shadow:0 24px 54px rgba(0,20,50,.35)}.bc-masha-quote-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}@media(max-width:820px){.bc-masha-quote-section{padding:58px 20px}.bc-masha-quote-wrap{grid-template-columns:1fr;gap:38px;text-align:center}.bc-masha-quote-rule{margin:30px auto 20px}.bc-masha-quote-photo{width:min(100%,300px);height:340px;margin:0 auto;grid-row:1}.bc-masha-quote-mark{margin-bottom:18px}}
 </style>
@@ -74,21 +114,14 @@
     <img src="https://bluecardfund.org/wp-content/uploads/2025/02/111-VGindiphotosm-768x768.jpg" alt="Masha Pearl, Executive Director of The Blue Card">
   </div>
 </div>`;
-          helpSection.insertAdjacentElement('afterend', mashaSection);
-        }
+        helpSection.insertAdjacentElement('afterend', mashaSection);
       }
     }
 
     var supportersSection = document.querySelector('main .homepage-supporters');
     if (supportersSection) supportersSection.remove();
-  }
 
-  var baseScript = document.createElement('script');
-  baseScript.src = '/bluecard/global-layout-base.js?v=20260804-6';
-  baseScript.onload = function () {
-    var homepageScript = document.createElement('script');
-    homepageScript.src = '/bluecard/homepage-how-we-help.js?v=20260804-6';
-    document.body.appendChild(homepageScript);
-  };
-  document.head.appendChild(baseScript);
+    var antiFlickerStyle = document.getElementById('homepage-quote-antiflicker');
+    if (antiFlickerStyle) antiFlickerStyle.remove();
+  }
 })();
