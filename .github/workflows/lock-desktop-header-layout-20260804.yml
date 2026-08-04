@@ -1,0 +1,24 @@
+name: Lock desktop header layout
+
+on:
+  push:
+    paths:
+      - '.github/lock-desktop-header-layout-trigger-20260804.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  lock-layout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply final desktop header overrides
+        run: python scripts/lock_desktop_header_layout.py
+      - name: Commit update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add global-layout-base.js global-layout.js interactive-hologram/index.html
+          git commit -m "Lock desktop header white-logo layout"
+          git push
