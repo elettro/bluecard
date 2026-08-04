@@ -1,5 +1,66 @@
 (function () {
   var currentPath = (window.location.pathname || '/').replace(/\/index\.html$/, '').replace(/\/+$/, '') || '/';
+
+  if (currentPath === '/bluecard/interactive-hologram') {
+    var steps = document.querySelector('.bc-history-steps');
+    if (!steps) return;
+
+    if (!document.getElementById('bc-hologram-reference-steps-style')) {
+      var stepStyle = document.createElement('style');
+      stepStyle.id = 'bc-hologram-reference-steps-style';
+      stepStyle.textContent = `
+.bc-history-tech .bc-history-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px;padding:8px clamp(30px,5vw,58px) clamp(40px,5vw,62px)}
+.bc-history-tech .bc-history-step{min-height:0;padding:0;border:0;border-radius:0;background:transparent;text-align:center;box-shadow:none}
+.bc-history-tech .bc-history-step-top{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;color:#294ca4}
+.bc-history-tech .bc-history-step-icon{width:64px;height:64px;display:block;flex:0 0 auto}
+.bc-history-tech .bc-history-step-label{font-size:clamp(25px,2.6vw,36px);font-weight:900;line-height:1;letter-spacing:-.025em;text-transform:uppercase}
+.bc-history-tech .bc-history-step-copy{min-height:126px;display:flex;align-items:center;justify-content:center;padding:20px 22px;border-radius:15px;background:#a71920;color:#fff;font-size:17px;font-weight:800;line-height:1.38;box-shadow:0 12px 28px rgba(126,15,22,.18);transition:transform .2s ease,box-shadow .2s ease}
+.bc-history-tech .bc-history-step-copy em{color:inherit}
+.bc-history-tech .bc-history-step:hover .bc-history-step-copy{transform:translateY(-2px);box-shadow:0 16px 34px rgba(126,15,22,.24)}
+@media(max-width:820px){.bc-history-tech .bc-history-steps{grid-template-columns:1fr;gap:30px}.bc-history-tech .bc-history-step-copy{min-height:0}.bc-history-tech .bc-history-step-top{margin-bottom:12px}}
+`;
+      document.head.appendChild(stepStyle);
+    }
+
+    steps.innerHTML = `
+<article class="bc-history-step">
+  <div class="bc-history-step-top">
+    <svg class="bc-history-step-icon" viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M4 32s10-16 28-16 28 16 28 16-10 16-28 16S4 32 4 32Z" fill="none" stroke="currentColor" stroke-width="4"/>
+      <circle cx="32" cy="32" r="8" fill="none" stroke="currentColor" stroke-width="4"/>
+      <path d="M15 13l4 6M32 8v7M49 13l-4 6" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <span class="bc-history-step-label">Step 1</span>
+  </div>
+  <div class="bc-history-step-copy">View <em>Big Sonia</em>, a powerful documentary about survivor Sonia Warshawski.</div>
+</article>
+<article class="bc-history-step">
+  <div class="bc-history-step-top">
+    <svg class="bc-history-step-icon" viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M8 14h34a10 10 0 0 1 10 10v10a10 10 0 0 1-10 10H26L15 54V44H8A8 8 0 0 1 0 36V22a8 8 0 0 1 8-8Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="20" cy="29" r="3" fill="currentColor"/>
+      <circle cx="30" cy="29" r="3" fill="currentColor"/>
+      <circle cx="40" cy="29" r="3" fill="currentColor"/>
+    </svg>
+    <span class="bc-history-step-label">Step 2</span>
+  </div>
+  <div class="bc-history-step-copy">Interact with Sonia’s story through a lifelike hologram experience.</div>
+</article>
+<article class="bc-history-step">
+  <div class="bc-history-step-top">
+    <svg class="bc-history-step-icon" viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M28 6c-12 0-21 9-21 21 0 8 4 14 10 18v9h22v-8c6-4 10-11 10-19C49 15 40 6 28 6Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M20 54v5h16v-5M53 10v8M49 14h8M51 29l6 4M45 3l4 6" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="28" cy="27" r="6" fill="none" stroke="currentColor" stroke-width="4"/>
+      <path d="M28 17v4M28 33v4M18 27h4M34 27h4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <span class="bc-history-step-label">Step 3</span>
+  </div>
+  <div class="bc-history-step-copy">Discuss lessons on empathy, antisemitism, and standing up to hate.</div>
+</article>`;
+    return;
+  }
+
   if (currentPath !== '/bluecard' && currentPath !== '/') return;
 
   var oldSection = document.getElementById('core-programs');
