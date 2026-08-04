@@ -15,7 +15,7 @@
 .bc-history-tech .bc-history-step-icon{width:64px;height:64px;display:block;flex:0 0 auto}
 .bc-history-tech .bc-history-step-label{font-size:clamp(25px,2.6vw,36px);font-weight:900;line-height:1;letter-spacing:-.025em;text-transform:uppercase}
 .bc-history-tech .bc-history-step-copy{min-height:126px;display:flex;align-items:center;justify-content:center;padding:20px 22px;border-radius:15px;background:#a71920;color:#fff;font-size:17px;font-weight:800;line-height:1.38;box-shadow:0 12px 28px rgba(126,15,22,.18);transition:transform .2s ease,box-shadow .2s ease}
-.bc-history-tech .bc-history-step-copy em{color:inherit}
+.bc-history-tech .bc-history-step-copy span{display:block;max-width:30ch;margin:0 auto}.bc-history-tech .bc-history-step-copy em{color:inherit}
 .bc-history-tech .bc-history-step:hover .bc-history-step-copy{transform:translateY(-2px);box-shadow:0 16px 34px rgba(126,15,22,.24)}
 @media(max-width:820px){.bc-history-tech .bc-history-steps{grid-template-columns:1fr;gap:30px}.bc-history-tech .bc-history-step-copy{min-height:0}.bc-history-tech .bc-history-step-top{margin-bottom:12px}}
 `;
@@ -32,7 +32,7 @@
     </svg>
     <span class="bc-history-step-label">Step 1</span>
   </div>
-  <div class="bc-history-step-copy">View <em>Big Sonia</em>, a powerful documentary about survivor Sonia Warshawski.</div>
+  <div class="bc-history-step-copy"><span>View <em>Big Sonia</em>, a powerful documentary about survivor Sonia Warshawski.</span></div>
 </article>
 <article class="bc-history-step">
   <div class="bc-history-step-top">
@@ -44,7 +44,7 @@
     </svg>
     <span class="bc-history-step-label">Step 2</span>
   </div>
-  <div class="bc-history-step-copy">Interact with Sonia’s story through a lifelike hologram experience.</div>
+  <div class="bc-history-step-copy"><span>Interact with Sonia’s story through a lifelike hologram experience.</span></div>
 </article>
 <article class="bc-history-step">
   <div class="bc-history-step-top">
@@ -56,7 +56,7 @@
     </svg>
     <span class="bc-history-step-label">Step 3</span>
   </div>
-  <div class="bc-history-step-copy">Discuss lessons on empathy, antisemitism, and standing up to hate.</div>
+  <div class="bc-history-step-copy"><span>Discuss lessons on empathy, antisemitism, and standing up to hate.</span></div>
 </article>`;
     }
 
