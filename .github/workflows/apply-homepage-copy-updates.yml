@@ -1,0 +1,45 @@
+name: Apply homepage copy updates
+
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-homepage-copy-updates.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-homepage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update homepage copy
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          replacements = {
+              'Living survivors still need our help.': 'HOLOCAUST SURVIVORS STILL NEED OUR HELP',
+              '<span class="material-symbols-outlined text-4xl" data-icon="house">house</span>': '<span class="material-symbols-outlined text-4xl" data-icon="accessibility_new">accessibility_new</span>',
+              '<h3 class="text-4xl font-headline font-bold text-primary mb-4">Nearly 3,000</h3>': '<h3 class="text-4xl font-headline font-bold text-primary mb-4">78%</h3>',
+              '<p class="text-on-surface-variant leading-relaxed text-lg">Households served across the United States, providing a lifeline of direct support.</p>': '<p class="text-on-surface-variant leading-relaxed text-lg">Have difficulty performing daily activities such as dressing, washing, and cooking.</p>',
+          }
+
+          for old, new in replacements.items():
+              if old not in text:
+                  raise SystemExit(f'Missing expected text: {old}')
+              text = text.replace(old, new, 1)
+
+          path.write_text(text, encoding='utf-8')
+          Path('.github/workflows/apply-homepage-copy-updates.yml').unlink()
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html .github/workflows/apply-homepage-copy-updates.yml
+          git commit -m "Update homepage survivor messaging and first statistic"
+          git push
