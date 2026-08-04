@@ -1,0 +1,88 @@
+name: Update hologram advisory panel section
+
+on:
+  push:
+    paths:
+      - '.github/update-hologram-advisory-panel-trigger-20260804.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  update-section:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace education support section
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('interactive-hologram/index.html')
+          text = path.read_text(encoding='utf-8')
+
+          pattern = re.compile(
+              r'\n\s*<section class="bc-section bc-section-light" id="program-support">.*?</section>\n\n\s*<section class="bc-endorsement-documents-section">',
+              re.S,
+          )
+
+          replacement = r'''
+
+    <section class="bc-section bc-section-light bc-advisory-panel" id="program-support">
+      <style>
+        .bc-advisory-panel .bc-section-head{max-width:980px;margin-bottom:42px}
+        .bc-advisory-panel-layout{display:grid;grid-template-columns:minmax(280px,.78fr) minmax(0,1.22fr);gap:28px;align-items:stretch}
+        .bc-panel-chair-card,.bc-panel-members-card{border:1px solid var(--bc-line);border-radius:26px;background:linear-gradient(180deg,#fff 0%,#f5f8ff 100%);box-shadow:var(--bc-shadow-soft)}
+        .bc-panel-chair-card{display:flex;flex-direction:column;justify-content:center;min-height:330px;padding:40px;text-align:center;background:linear-gradient(145deg,#17306f 0%,#294fa5 100%);color:#fff}
+        .bc-panel-label{margin-bottom:18px;font-size:13px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#bcd0ff}
+        .bc-panel-chair-name{margin:0;font-size:clamp(30px,4vw,48px);line-height:1.05;font-weight:900;color:#fff}
+        .bc-panel-members-card{padding:34px}
+        .bc-panel-members-card .bc-panel-label{color:var(--bc-blue)}
+        .bc-panel-members-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+        .bc-panel-member{display:flex;align-items:center;min-height:74px;padding:16px 18px;border:1px solid rgba(37,71,155,.13);border-radius:16px;background:#fff;color:var(--bc-blue-dark);font-size:18px;font-weight:800;box-shadow:0 8px 20px rgba(14,32,79,.06)}
+        @media(max-width:820px){.bc-advisory-panel-layout{grid-template-columns:1fr}.bc-panel-chair-card{min-height:250px}.bc-panel-members-grid{grid-template-columns:1fr}}
+      </style>
+      <div class="bc-container">
+        <div class="bc-section-head">
+          <div class="bc-section-kicker">Education Support</div>
+          <h2>The Blue Card Holocaust Education Advisory Panel</h2>
+        </div>
+
+        <div class="bc-advisory-panel-layout">
+          <article class="bc-panel-chair-card">
+            <div class="bc-panel-label">Panel Chair</div>
+            <h3 class="bc-panel-chair-name">Michael Berenbaum</h3>
+          </article>
+
+          <div class="bc-panel-members-card">
+            <div class="bc-panel-label">Panel Members</div>
+            <div class="bc-panel-members-grid">
+              <div class="bc-panel-member">Mehnaz Afridi</div>
+              <div class="bc-panel-member">Dr. Eva Fogelman</div>
+              <div class="bc-panel-member">Sofija Grandakovska</div>
+              <div class="bc-panel-member">Robin Hizme</div>
+              <div class="bc-panel-member">Michael Miller</div>
+              <div class="bc-panel-member">Mitchell Pinsky</div>
+              <div class="bc-panel-member">Joseph Potasnik</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bc-endorsement-documents-section">'''
+
+          updated, count = pattern.subn(replacement, text, count=1)
+          if count != 1:
+              raise SystemExit(f'Expected one program-support section, found {count}')
+
+          path.write_text(updated, encoding='utf-8')
+          PY
+      - name: Commit update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add interactive-hologram/index.html
+          git commit -m "Rebuild hologram education advisory panel section"
+          git push
