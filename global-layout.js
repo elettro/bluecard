@@ -1,6 +1,7 @@
 (function () {
   var currentPath = (window.location.pathname || '/').replace(/\/index\.html$/, '').replace(/\/+$/, '') || '/';
   var isHomepage = currentPath === '/bluecard' || currentPath === '/';
+  var isInteractiveHologram = currentPath === '/bluecard/interactive-hologram';
 
   if (isHomepage) {
     var antiFlickerStyle = document.createElement('style');
@@ -16,6 +17,8 @@
     });
   }
 
+  if (isInteractiveHologram) applyInteractiveHologramUpdates();
+
   var baseScript = document.createElement('script');
   baseScript.src = '/bluecard/global-layout-base.js?v=20260804-7';
   baseScript.onload = function () {
@@ -26,6 +29,57 @@
     document.body.appendChild(homepageScript);
   };
   document.head.appendChild(baseScript);
+
+  function applyInteractiveHologramUpdates() {
+    var overviewSection = document.getElementById('program-overview');
+    if (!overviewSection) return;
+
+    overviewSection.className = 'bc-section bc-section-soft bc-history-tech';
+    overviewSection.innerHTML = `
+<style>
+.bc-history-tech .bc-history-header{max-width:900px;margin:0 auto 38px;text-align:center}.bc-history-tech .bc-history-header h2{margin:0;color:var(--bc-blue-dark);font-size:clamp(38px,5vw,64px);line-height:1.02;letter-spacing:-.035em}.bc-history-tech .bc-history-panel{overflow:hidden;background:#fff;border:1px solid var(--bc-line);border-radius:30px;box-shadow:var(--bc-shadow)}.bc-history-tech .bc-history-copy{padding:clamp(30px,5vw,58px)}.bc-history-tech .bc-history-copy h3{margin:0 0 24px;color:#9d1f1f;font-size:clamp(30px,4vw,48px);line-height:1.05;letter-spacing:-.025em}.bc-history-tech .bc-history-copy p{margin:0 0 18px;color:#394867;font-size:18px;line-height:1.72}.bc-history-tech .bc-history-copy p:last-of-type{margin-bottom:0}.bc-history-tech .bc-history-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding:0 clamp(30px,5vw,58px) clamp(34px,5vw,58px)}.bc-history-tech .bc-history-step{min-height:210px;padding:28px;border-radius:22px;background:linear-gradient(180deg,#f7fbff 0%,#edf3ff 100%);border:1px solid rgba(37,71,155,.15);text-align:center}.bc-history-tech .bc-history-step-number{width:58px;height:58px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;background:var(--bc-blue);color:#fff;font-size:22px;font-weight:900;box-shadow:0 12px 24px rgba(37,71,155,.22)}.bc-history-tech .bc-history-step h4{margin:0 0 10px;color:var(--bc-blue-dark);font-size:22px;line-height:1.1}.bc-history-tech .bc-history-step p{margin:0;color:var(--bc-muted);font-size:16px;line-height:1.55}.bc-history-tech .bc-history-pillars{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:18px;padding:24px 30px;background:linear-gradient(135deg,#25479b 0%,#17306f 100%);color:#fff;font-size:clamp(18px,2.5vw,27px);font-weight:900;letter-spacing:.16em;text-transform:uppercase}.bc-history-tech .bc-history-pillar-star{color:#b8cdfa}@media(max-width:820px){.bc-history-tech .bc-history-steps{grid-template-columns:1fr}.bc-history-tech .bc-history-step{min-height:0}.bc-history-tech .bc-history-pillars{gap:10px;letter-spacing:.1em}}
+</style>
+<div class="bc-container">
+  <div class="bc-history-header">
+    <h2>Where History Meets Technology</h2>
+  </div>
+
+  <div class="bc-history-panel">
+    <div class="bc-history-copy">
+      <h3>Join Us In Making History Matter!</h3>
+      <p>Sonia Warshawski, a Holocaust survivor, shares her powerful story of survival and resilience in the award-winning documentary <em>Big Sonia</em>. This film serves as a catalyst for meaningful discussions around antisemitism, empathy, and the importance of standing up to all forms of hate.</p>
+      <p>Building on this, The Blue Card’s Innovative Holocaust Education Program brings Sonia’s testimony to life through cutting-edge holographic technology. Using an interactive HoloPod system, students and participants of all ages experience a lifelike projection of Sonia recounting her experiences, allowing for a deeply personal and immersive learning experience.</p>
+      <p>This program gives participants the opportunity to hear a firsthand account of the Holocaust, reflect, engage, and better understand why confronting hatred remains so critical today.</p>
+    </div>
+
+    <div class="bc-history-steps" aria-label="Interactive Holocaust education program steps">
+      <article class="bc-history-step">
+        <div class="bc-history-step-number">1</div>
+        <h4>View</h4>
+        <p>Watch <em>Big Sonia</em>, a powerful documentary about survivor Sonia Warshawski.</p>
+      </article>
+      <article class="bc-history-step">
+        <div class="bc-history-step-number">2</div>
+        <h4>Interact</h4>
+        <p>Engage with Sonia’s story through a lifelike hologram experience.</p>
+      </article>
+      <article class="bc-history-step">
+        <div class="bc-history-step-number">3</div>
+        <h4>Discuss</h4>
+        <p>Explore lessons on empathy, antisemitism, and standing up to hate.</p>
+      </article>
+    </div>
+
+    <div class="bc-history-pillars" aria-label="Program pillars">
+      <span>Educate</span>
+      <span class="bc-history-pillar-star" aria-hidden="true">★</span>
+      <span>Reflect</span>
+      <span class="bc-history-pillar-star" aria-hidden="true">★</span>
+      <span>Inspire</span>
+    </div>
+  </div>
+</div>`;
+  }
 
   function applyHomepageUpdates() {
     var injectedSurvivorCta = document.getElementById('homepage-survivor-cta');
