@@ -212,7 +212,7 @@
     <p class="bc-masha-quote-name">— Masha Pearl, Executive Director</p>
   </div>
   <div class="bc-masha-quote-photo">
-    <img src="https://bluecardfund.org/wp-content/uploads/2025/02/111-VGindiphotosm-768x768.jpg" alt="Masha Pearl, Executive Director of The Blue Card">
+    <img src="/bluecard/images/staff/masha_pearl-vertical-photo.jpg" alt="Masha Pearl, Executive Director of The Blue Card">
   </div>
 </div>`;
         helpSection.insertAdjacentElement('afterend', mashaSection);
