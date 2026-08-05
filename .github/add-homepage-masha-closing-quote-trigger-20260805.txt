@@ -1,1 +1,0 @@
-Add a closing quotation mark to the Masha Pearl quote section and refresh the homepage script cache.
