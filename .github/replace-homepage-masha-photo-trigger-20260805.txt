@@ -1,0 +1,1 @@
+Replace the homepage Masha Pearl quote image with images/staff/masha_pearl-vertical-photo.jpg and refresh the homepage script cache.
