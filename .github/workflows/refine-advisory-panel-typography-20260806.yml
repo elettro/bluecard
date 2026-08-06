@@ -1,0 +1,24 @@
+name: Refine advisory panel typography
+
+on:
+  push:
+    paths:
+      - '.github/refine-advisory-panel-typography-trigger-20260806.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  refine-advisory-panel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Refine advisory panel typography
+        run: python scripts/refine_advisory_panel_typography.py
+      - name: Commit update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add global-layout.js interactive-hologram/index.html
+          git commit -m "Balance advisory panel typography"
+          git push
