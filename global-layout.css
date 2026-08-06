@@ -224,7 +224,7 @@
   bottom: 0;
   height: 3px;
   border-radius: 999px;
-  background: #e4202c;
+  background: #0b4f9c;
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 280ms cubic-bezier(.22,.61,.36,1);
