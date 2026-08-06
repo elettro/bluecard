@@ -1,0 +1,1 @@
+Change the global desktop top-level navigation rollover underline from blue to white and refresh cached stylesheet references.
