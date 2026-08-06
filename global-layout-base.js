@@ -20,6 +20,14 @@
   .bluecard-nav .menu>li>a{padding:10px 14px!important}
 }
 </style>
+<style id="bc-nav-hover-underline-animation">
+@media (min-width:981px){
+  #bc-global-nav .bluecard-nav .menu>li>a{position:relative}
+  #bc-global-nav .bluecard-nav .menu>li>a::after{content:"";position:absolute;left:14px;right:14px;bottom:0;height:3px;border-radius:999px;background:#e4202c;transform:scaleX(0);transform-origin:center;transition:transform 280ms cubic-bezier(.22,.61,.36,1);pointer-events:none}
+  #bc-global-nav .bluecard-nav .menu>li:hover>a::after,
+  #bc-global-nav .bluecard-nav .menu>li:focus-within>a::after{transform:scaleX(1)}
+}
+</style>
 <div class="bc-top-donate-strip" role="region" aria-label="Donate call to action">
   <a class="bc-top-brand" href="/bluecard/index.html" aria-label="The Blue Card home">
     <img src="/bluecard/images/logo/TBC-TAGLINE_HORIZ-VECTOR-WHITE-OL-01.png" alt="The Blue Card. Assisting Holocaust Survivors in Need">

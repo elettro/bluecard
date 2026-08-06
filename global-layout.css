@@ -213,20 +213,22 @@
   text-decoration: none;
   font-weight: 600;
 }
-.bluecard-nav > .menu > li > a {
+.bluecard-nav .menu > li > a {
   position: relative;
 }
-.bluecard-nav > .menu > li > a::after {
+.bluecard-nav .menu > li > a::after {
   content: "";
   position: absolute;
-  left: 16px;
-  right: 16px;
-  bottom: 9px;
-  height: 2px;
-  background: currentColor;
+  left: 14px;
+  right: 14px;
+  bottom: 0;
+  height: 3px;
+  border-radius: 999px;
+  background: #e4202c;
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform 260ms ease;
+  transition: transform 280ms cubic-bezier(.22,.61,.36,1);
+  pointer-events: none;
 }
 .bluecard-nav .menu > li:hover > a,
 .bluecard-nav .menu > li:focus-within > a,
@@ -235,8 +237,7 @@
   color: #fff;
 }
 .bluecard-nav .menu > li:hover > a::after,
-.bluecard-nav .menu > li:focus-within > a::after,
-.bluecard-nav .menu > li > a[aria-current="page"]::after {
+.bluecard-nav .menu > li:focus-within > a::after {
   transform: scaleX(1);
 }
 .bluecard-nav .sub-menu {
