@@ -1,1 +1,0 @@
-Add a red animated underline to top-level desktop navigation items on hover and keyboard focus. The line should retract when the pointer or focus leaves.
