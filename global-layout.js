@@ -91,22 +91,20 @@
 .bc-advisory-legacy-head,.bc-advisory-legacy-layout{position:relative;z-index:2}
 .bc-advisory-legacy-eyebrow{font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#b9cdf3}
 .bc-advisory-legacy-title{max-width:920px;margin:14px 0 0;color:#fff;font-size:clamp(38px,5vw,68px);font-weight:900;line-height:1.02;letter-spacing:-.045em}
-.bc-advisory-legacy-subtitle{max-width:760px;margin:15px 0 0;color:#cbd9f3;font-size:17px;line-height:1.6}
-.bc-advisory-legacy-layout{display:grid;grid-template-columns:330px minmax(0,1fr);gap:58px;margin-top:55px}
+.bc-advisory-legacy-layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:52px;margin-top:44px}
 .bc-advisory-legacy-chair{padding:32px 0 32px 28px;border-left:2px solid #adc5ef}
 .bc-advisory-legacy-chair-label{font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#afc7f1}
-.bc-advisory-legacy-chair-name{margin-top:18px;color:#fff;font-family:Georgia,"Times New Roman",serif;font-size:46px;font-weight:700;line-height:1}
+.bc-advisory-legacy-chair-name{margin-top:16px;color:#fff;font-family:inherit;font-size:34px;font-weight:800;line-height:1.08;letter-spacing:-.02em}
 .bc-advisory-legacy-members{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 34px}
-.bc-advisory-legacy-member{padding:15px 0;border-bottom:1px solid rgba(255,255,255,.18);color:#f2f6ff;font-size:17px;font-weight:700}
+.bc-advisory-legacy-member{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.18);color:#f2f6ff;font-family:inherit;font-size:21px;font-weight:700;line-height:1.25}
 @media(max-width:820px){.bc-advisory-legacy-section{padding:66px 0}.bc-advisory-legacy{padding:38px 28px}.bc-advisory-legacy-layout{grid-template-columns:1fr;gap:34px;margin-top:42px}.bc-advisory-legacy-chair{padding:24px 0 24px 22px}.bc-advisory-legacy-members{grid-template-columns:1fr}}
-@media(max-width:520px){.bc-advisory-legacy{padding:30px 20px;border-radius:24px}.bc-advisory-legacy-title{font-size:36px}.bc-advisory-legacy-subtitle{font-size:16px}.bc-advisory-legacy-chair-name{font-size:39px}.bc-advisory-legacy:before{right:-20px;bottom:-22px;font-size:190px}}
+@media(max-width:520px){.bc-advisory-legacy{padding:30px 20px;border-radius:24px}.bc-advisory-legacy-title{font-size:36px}.bc-advisory-legacy-chair-name{font-size:30px}.bc-advisory-legacy-member{font-size:19px}.bc-advisory-legacy:before{right:-20px;bottom:-22px;font-size:190px}}
 </style>
 <div class="bc-container">
   <div class="bc-advisory-legacy">
     <div class="bc-advisory-legacy-head">
       <div class="bc-advisory-legacy-eyebrow">Education Support</div>
       <h2 class="bc-advisory-legacy-title">The Blue Card Holocaust Education Advisory Panel</h2>
-      <p class="bc-advisory-legacy-subtitle">A distinguished group supporting the integrity, relevance, and reach of Holocaust education.</p>
     </div>
     <div class="bc-advisory-legacy-layout">
       <div class="bc-advisory-legacy-chair">
