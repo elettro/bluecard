@@ -1,1 +1,0 @@
-Change the animated desktop navigation underline from red to the same Blue Card blue used by the top strip.
