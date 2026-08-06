@@ -25,7 +25,7 @@
     if (isHomepage) applyHomepageUpdates();
 
     var homepageScript = document.createElement('script');
-    homepageScript.src = '/bluecard/homepage-how-we-help.js?v=20260804-8';
+    homepageScript.src = '/bluecard/homepage-how-we-help.js?v=20260806-1';
     document.body.appendChild(homepageScript);
   };
   document.head.appendChild(baseScript);
