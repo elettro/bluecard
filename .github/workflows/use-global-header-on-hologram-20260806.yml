@@ -1,0 +1,24 @@
+name: Use global header on hologram page
+
+on:
+  push:
+    paths:
+      - '.github/use-global-header-on-hologram-trigger-20260806.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  restore-global-header:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove hologram-specific header overrides
+        run: python scripts/use_global_header_on_hologram.py
+      - name: Commit update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add interactive-hologram/index.html
+          git commit -m "Use global homepage header on hologram page"
+          git push
