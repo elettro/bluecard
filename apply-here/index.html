@@ -11,13 +11,43 @@
     * { box-sizing: border-box; }
     body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--text); background: var(--bg); line-height: 1.65; }
     .hero-strip {
-      background: var(--blue);
-      color: var(--white);
-      padding: 48px 20px;
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      font-size: clamp(34px, 5vw, 56px);
-      font-weight: 700;
-      letter-spacing: .4px;
+      color: #fff;
+      padding: 76px 20px;
+      overflow: hidden;
+    }
+    .hero-strip img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-strip::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(8, 37, 69, 0.56);
+      pointer-events: none;
+    }
+    .hero-strip__content {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+      margin: 0 auto;
+      text-shadow: 0 8px 22px rgba(0, 0, 0, .28);
+    }
+    .hero-strip h1 {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(42px, 6vw, 68px);
+      line-height: 1.02;
+      font-weight: 800;
     }
     .wrap { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
     .content {
@@ -64,6 +94,7 @@
       .video-wrap iframe { min-height: 380px; }
     }
     @media (max-width: 600px) {
+      .hero-strip { min-height: 380px; padding: 64px 14px; }
       .video-wrap iframe { min-height: 240px; }
     }
   </style>
@@ -85,7 +116,12 @@
   <header id="bc-global-nav" aria-label="Global site navigation"></header>
 
   <main>
-    <div class="hero-strip">How To Apply</div>
+    <section class="hero-strip" aria-labelledby="apply-title">
+      <img src="/bluecard/images/headers/who-we-are-header.jpg" alt="" />
+      <div class="hero-strip__content">
+        <h1 id="apply-title">How To Apply</h1>
+      </div>
+    </section>
     <div class="wrap">
       <section class="content">
         <div class="button-row">
