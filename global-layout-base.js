@@ -11,7 +11,7 @@
 @media (min-width:981px){
   .bc-top-donate-strip{display:grid!important;min-height:112px!important;padding:10px 28px!important;grid-template-columns:minmax(280px,1fr) auto minmax(280px,1fr)!important;column-gap:28px!important}
   .bc-top-brand{grid-column:1!important;justify-self:start!important;display:inline-flex!important;align-items:center!important;text-decoration:none!important}
-  .bc-top-brand img{display:block!important;width:auto!important;height:88px!important;max-width:390px!important;object-fit:contain!important}
+  .bc-top-brand img{display:block!important;width:auto!important;height:101px!important;max-width:449px!important;object-fit:contain!important}
   .bc-top-donate-btn{grid-column:2!important}
   .bc-top-contact{grid-column:3!important}
   .bluecard-nav-inner{min-height:58px!important;justify-content:center!important;padding:0 18px!important}

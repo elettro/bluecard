@@ -125,8 +125,8 @@
   }
 
   .bc-top-brand img {
-    height: 88px;
-    max-width: 390px;
+    height: 101px;
+    max-width: 449px;
   }
 
   .bc-top-donate-btn {
@@ -215,20 +215,23 @@
 }
 .bluecard-nav .menu > li > a {
   position: relative;
+  overflow: hidden;
 }
 .bluecard-nav .menu > li > a::after {
   content: "";
   position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 0;
+  left: 10px;
+  right: 10px;
+  bottom: 2px;
   height: 3px;
   border-radius: 999px;
   background: #ffffff;
+  opacity: 0;
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform 280ms cubic-bezier(.22,.61,.36,1);
+  transition: transform 260ms cubic-bezier(.22,.61,.36,1), opacity 160ms ease;
   pointer-events: none;
+  z-index: 2;
 }
 .bluecard-nav .menu > li:hover > a,
 .bluecard-nav .menu > li:focus-within > a,
@@ -238,6 +241,7 @@
 }
 .bluecard-nav .menu > li:hover > a::after,
 .bluecard-nav .menu > li:focus-within > a::after {
+  opacity: 1;
   transform: scaleX(1);
 }
 .bluecard-nav .sub-menu {
