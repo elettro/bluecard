@@ -6,7 +6,8 @@
   <title>Podcast | The Blue Card</title>
   <style>
     :root {
-      --blue: #0d57a8;
+      --blue: #0057a8;
+      --blue-dark: #0b4f9c;
       --ink: #0e1c2f;
       --paper: #f8fafc;
     }
@@ -19,38 +20,110 @@
       line-height: 1.5;
     }
     .hero {
-      background: linear-gradient(135deg, rgba(15, 93, 178, 0.92), rgba(11, 74, 140, 0.9));
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0b4f9c 0%, #0057a8 62%, #164f8f 100%);
       color: #fff;
-      padding: 48px 20px;
+      padding: 70px 20px 76px;
     }
-    .wrap { max-width: 1080px; margin: 0 auto; }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      right: -150px;
+      top: -210px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
+      pointer-events: none;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; }
     .hero-grid {
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: 1fr;
       gap: 24px;
       align-items: center;
     }
-    h1 { font-size: clamp(2rem, 6vw, 4rem); margin: 0 0 12px; letter-spacing: .02em; text-transform: uppercase; font-weight: 800; }
-    .subtitle { font-size: clamp(1.05rem, 2.4vw, 1.6rem); max-width: 680px; }
-    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
-    .cta {
-      display: inline-block;
-      text-decoration: none;
-      font-weight: 700;
-      border-radius: 999px;
-      padding: 12px 20px;
-      color: white;
-      background: #1db954;
-      box-shadow: 0 8px 20px rgba(0,0,0,.25);
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #dcecff;
     }
-    .cta.anchor { background: #7c3aed; }
-    main { padding: 30px 20px 56px; }
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: #ffffff;
+      border-radius: 999px;
+    }
+    h1 {
+      max-width: 940px;
+      margin: 0 0 18px;
+      font-size: clamp(2.5rem, 5.4vw, 4.5rem);
+      line-height: .98;
+      letter-spacing: -.025em;
+      text-transform: none;
+      font-weight: 800;
+    }
+    .subtitle {
+      margin: 0;
+      max-width: 720px;
+      font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+      line-height: 1.45;
+      color: #eef6ff;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 22px;
+      border: 2px solid #fff;
+      border-radius: 8px;
+      color: var(--blue-dark);
+      background: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(0,0,0,.14);
+      transition: transform .2s ease, background-color .2s ease, color .2s ease;
+    }
+    .cta:hover,
+    .cta:focus-visible {
+      transform: translateY(-2px);
+      background: #eef6ff;
+    }
+    .cta.anchor {
+      color: #fff;
+      background: transparent;
+      box-shadow: none;
+    }
+    .cta.anchor:hover,
+    .cta.anchor:focus-visible {
+      color: var(--blue-dark);
+      background: #fff;
+    }
+    main { padding: 36px 20px 56px; }
     .logo-card {
       max-width: 1080px;
       margin: 0 auto 24px;
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,.12);
+      box-shadow: 0 12px 28px rgba(0,0,0,.12);
       background: #fff;
     }
     .logo-card img {
@@ -66,7 +139,12 @@
       box-shadow: 0 8px 18px rgba(13,87,168,.12);
     }
     iframe { width: 100%; max-width: 100%; border: 0; border-radius: 12px; }
-    @media (max-width: 860px){ .hero-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 700px) {
+      .hero { padding: 54px 20px 58px; }
+      h1 { font-size: clamp(2.3rem, 12vw, 3.5rem); }
+      .cta-row { flex-direction: column; align-items: stretch; }
+      .cta { width: 100%; }
+    }
   </style>
   <link rel="stylesheet" href="../global-layout.css?v=20260806-1536"/>
 <meta name="description" content="Learn more about podcast at The Blue Card, including survivor assistance programs, community resources, and organization updates.">
@@ -91,7 +169,7 @@
   <header class="hero">
     <div class="wrap hero-grid">
       <div>
-        <p style="letter-spacing:.18em; text-transform:uppercase; margin:0 0 8px;">Play now</p>
+        <p class="eyebrow">Play now</p>
         <h1>The Blue Card Podcast</h1>
         <p class="subtitle">The Blue Card Stories of the Holocaust: Overcoming Historical Trauma.</p>
         <div class="cta-row">
