@@ -1,1 +1,0 @@
-Remove all page-specific header and navigation overrides from the Interactive Hologram page.
