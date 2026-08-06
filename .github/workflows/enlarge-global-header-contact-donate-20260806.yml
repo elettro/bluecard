@@ -1,0 +1,21 @@
+name: Enlarge global header contact and donate
+on:
+  push:
+    paths:
+      - '.github/enlarge-global-header-contact-donate-trigger-20260806.txt'
+permissions:
+  contents: write
+jobs:
+  apply-update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply header sizing updates
+        run: python scripts/enlarge_global_header_contact_and_donate_20260806.py
+      - name: Commit update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add global-layout.css global-layout-base.js '*.html' '**/*.html'
+          git commit -m "Enlarge global header contact and donate button" || exit 0
+          git push
