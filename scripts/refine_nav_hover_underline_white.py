@@ -1,7 +1,7 @@
 from pathlib import Path
 
-path = Path('global-layout.css')
-text = path.read_text(encoding='utf-8')
+css_path = Path('global-layout.css')
+css = css_path.read_text(encoding='utf-8')
 
 old = '''.bluecard-nav .menu > li > a {
   position: relative;
@@ -57,10 +57,19 @@ new_hover = '''.bluecard-nav .menu > li:hover > a::after,
 }
 '''
 
-if old not in text:
+if old not in css:
     raise SystemExit('Navigation underline block not found')
-if old_hover not in text:
+if old_hover not in css:
     raise SystemExit('Navigation underline hover block not found')
 
-text = text.replace(old, new, 1).replace(old_hover, new_hover, 1)
-path.write_text(text, encoding='utf-8')
+css = css.replace(old, new, 1).replace(old_hover, new_hover, 1)
+css = css.replace('height: 88px;\n    max-width: 390px;', 'height: 101px;\n    max-width: 449px;', 1)
+css_path.write_text(css, encoding='utf-8')
+
+base_path = Path('global-layout-base.js')
+base = base_path.read_text(encoding='utf-8')
+old_logo = '.bc-top-brand img{display:block!important;width:auto!important;height:88px!important;max-width:390px!important;object-fit:contain!important}'
+new_logo = '.bc-top-brand img{display:block!important;width:auto!important;height:101px!important;max-width:449px!important;object-fit:contain!important}'
+if old_logo not in base:
+    raise SystemExit('Injected desktop logo sizing block not found')
+base_path.write_text(base.replace(old_logo, new_logo, 1), encoding='utf-8')
