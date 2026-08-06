@@ -10,7 +10,5 @@ new = '<p class="text-xl md:text-2xl text-on-primary/90 leading-relaxed mb-8 max
 
 if old not in text:
     raise SystemExit('Homepage introduction marker not found')
-if 'Sarah G., Holocaust Survivor' in text:
-    raise SystemExit('Homepage survivor quote already exists')
 
 path.write_text(text.replace(old, new, 1), encoding='utf-8')
