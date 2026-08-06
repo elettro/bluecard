@@ -1,0 +1,24 @@
+name: Refine nav hover and global logo
+
+on:
+  push:
+    paths:
+      - '.github/refine-nav-hover-and-logo-trigger-20260806.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  update-global-header:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Refine white underline animation and enlarge logo
+        run: python scripts/refine_nav_hover_underline_white.py
+      - name: Commit update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add global-layout.css global-layout-base.js
+          git commit -m "Refine white nav underline and enlarge global logo"
+          git push
