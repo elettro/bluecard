@@ -5,50 +5,113 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Team Blue Card | The Blue Card</title>
   <link rel="stylesheet" href="../global-layout.css?v=20260806-1536">
-  <style>/* styles omitted for brevity in command generation */
-    :root{--blue:#123b6d;--blue-dark:#0b2545;--light:#f4f8fd;--text:#1a3550;--muted:#5d6f82;}*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:#fff}.wrap{width:min(1140px,calc(100% - 40px));margin:0 auto}.hero{margin:24px auto 0;border-radius:22px;overflow:hidden;min-height:240px;display:grid;place-items:center;text-align:center;color:#fff;background:linear-gradient(rgba(8,28,54,.55),rgba(8,28,54,.55)),url('../images/team-blue-card/TCS-NYC-marathon-Flyer-2026-v3-1.jpg') center/cover no-repeat}.hero h1{margin:0;padding:24px;font-size:clamp(2rem,5vw,3.6rem);letter-spacing:.02em}main{padding:36px 0 70px}h2.section-title{font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:.03em;margin:32px 0 22px;line-height:1.15;color:var(--blue-dark)}.featured-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}.card{background:var(--light);border:1px solid #dbe7f3;border-radius:16px;padding:18px}.card img{width:100%;border-radius:12px;display:block}.card p{white-space:pre-line;line-height:1.6;color:var(--muted)}.sold-out{margin-top:48px}.sold-out h2{font-size:clamp(2rem,5vw,3.2rem);margin:0 0 18px;color:var(--blue-dark);letter-spacing:.08em}.sold-out-wrap{display:flex;flex-direction:column;gap:22px}.sold-out-wrap p{white-space:pre-line;line-height:1.7;color:var(--muted);margin:0}.about{margin-top:56px;padding:30px;border-radius:16px;background:#f7fbff;border:1px solid #dde9f5}.about h3{font-size:clamp(1.7rem,3vw,2.3rem);margin:0 0 16px;color:var(--blue-dark)}.about p{white-space:pre-line;line-height:1.7;color:var(--muted)}.video-highlight{margin-top:56px;padding:38px 28px 42px;border-radius:20px;background:#fff;border:1px solid #dbe7f3;text-align:center;box-shadow:0 18px 38px rgba(11,37,69,.08)}.video-highlight__badge{display:inline-block;margin-bottom:14px;padding:7px 16px;border-radius:999px;background:#e8f2fc;color:var(--blue);font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}.video-highlight h2{margin:0;color:var(--blue-dark);font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.15}.video-highlight p{max-width:700px;margin:14px auto 28px;color:var(--muted);line-height:1.7}.video-card{width:min(900px,100%);margin:0 auto;padding:10px;border-radius:22px;background:#fff;box-shadow:0 18px 42px rgba(11,37,69,.18);overflow:hidden}.video-container{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#0b2545}.video-container iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.events-cta{margin-top:34px;padding:34px;border-radius:16px;background:#f4f8fd;border:1px solid #dbe7f3;text-align:center}.btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;font-weight:700;font-size:clamp(1.15rem,2.2vw,1.6rem);padding:18px 34px;border-radius:999px}@media (max-width:900px){.featured-grid{grid-template-columns:1fr}.wrap{width:min(1140px,calc(100% - 24px))}h2.section-title{margin:26px 0 18px}}
+  <style>
+    :root{--blue:#123b6d;--blue-dark:#0b2545;--light:#f4f8fd;--text:#1a3550;--muted:#5d6f82;--border:#dbe7f3;--shadow:0 18px 38px rgba(11,37,69,.08)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:#fff}
+    .wrap{width:min(1140px,calc(100% - 40px));margin:0 auto}
+    .hero{margin:24px auto 0;border-radius:22px;overflow:hidden;min-height:240px;display:grid;place-items:center;text-align:center;color:#fff;background:linear-gradient(rgba(8,28,54,.55),rgba(8,28,54,.55)),url('../images/team-blue-card/TCS-NYC-marathon-Flyer-2026-v3-1.jpg') center/cover no-repeat}
+    .hero h1{margin:0;padding:24px;font-size:clamp(2rem,5vw,3.6rem);letter-spacing:.02em}
+    main{padding:36px 0 70px}
+    .intro{margin:0 0 44px;padding:34px;border-radius:20px;background:linear-gradient(135deg,#f7fbff,#eef5fc);border:1px solid var(--border);box-shadow:var(--shadow)}
+    .intro h2{margin:0 0 16px;color:var(--blue-dark);font-size:clamp(1.8rem,3vw,2.5rem);line-height:1.15}
+    .intro p{margin:0;color:var(--muted);font-size:1.08rem;line-height:1.8}
+    .intro a{color:var(--blue);font-weight:700}
+    h2.section-title{font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:.03em;margin:32px 0 22px;line-height:1.15;color:var(--blue-dark)}
+    .featured-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+    .card{background:var(--light);border:1px solid var(--border);border-radius:16px;padding:18px}
+    .card img{width:100%;border-radius:12px;display:block}
+    .card p{white-space:pre-line;line-height:1.6;color:var(--muted)}
+    .sold-out{margin-top:48px}
+    .sold-out h2{font-size:clamp(2rem,5vw,3.2rem);margin:0 0 18px;color:var(--blue-dark);letter-spacing:.08em}
+    .sold-out-wrap{display:flex;flex-direction:column;gap:22px}
+    .sold-out-wrap img{width:100%;border-radius:16px}
+    .sold-out-wrap p{white-space:pre-line;line-height:1.7;color:var(--muted);margin:0}
+    .action-section{margin-top:58px;padding:38px 28px 42px;border-radius:22px;background:#fff;border:1px solid var(--border);box-shadow:var(--shadow)}
+    .action-section>h2{margin:0 0 12px;color:var(--blue-dark);font-size:clamp(1.9rem,3vw,2.7rem);line-height:1.15;text-align:center}
+    .action-section>p{max-width:760px;margin:0 auto 30px;color:var(--muted);line-height:1.7;text-align:center}
+    .action-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:stretch}
+    .video-card{padding:10px;border-radius:22px;background:#fff;box-shadow:0 18px 42px rgba(11,37,69,.18);overflow:hidden}
+    .video-container{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#0b2545}
+    .video-container iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .antarctica-card{display:flex;flex-direction:column;min-height:100%;padding:24px;border-radius:20px;background:linear-gradient(180deg,#edf5fc,#f8fbfe);border:1px solid var(--border)}
+    .antarctica-placeholder{display:grid;place-items:center;min-height:260px;border:2px dashed #abc2d8;border-radius:16px;background:#fff;color:var(--blue);font-weight:700;text-align:center;padding:24px}
+    .antarctica-card h3{margin:22px 0 10px;color:var(--blue-dark);font-size:1.45rem}
+    .antarctica-card p{margin:0;color:var(--muted);line-height:1.7}
+    @media (max-width:900px){.featured-grid,.action-grid{grid-template-columns:1fr}.wrap{width:min(1140px,calc(100% - 24px))}h2.section-title{margin:26px 0 18px}.intro,.action-section{padding:26px 20px}}
   </style>
-<meta name="description" content="Learn more about team blue card at The Blue Card, including survivor assistance programs, community resources, and organization updates.">
-<meta property="og:title" content="Team Blue Card | The Blue Card">
-<meta property="og:description" content="Learn more about team blue card at The Blue Card, including survivor assistance programs, community resources, and organization updates.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://elettro.github.io/bluecard/team-blue-card/">
-<meta property="og:site_name" content="The Blue Card">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Team Blue Card | The Blue Card">
-<meta name="twitter:description" content="Learn more about team blue card at The Blue Card, including survivor assistance programs, community resources, and organization updates.">
-<link rel="canonical" href="https://elettro.github.io/bluecard/team-blue-card/">
-<script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": ["Organization", "NGO"], "@id": "https://elettro.github.io/bluecard/#organization", "name": "The Blue Card", "alternateName": "The Blue Card, Inc.", "url": "https://elettro.github.io/bluecard/", "logo": "https://elettro.github.io/bluecard/images/logo/blue-card-logo-fullsize.png"}</script>
-<script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://elettro.github.io/bluecard/#website", "url": "https://elettro.github.io/bluecard/", "name": "The Blue Card", "publisher": {"@id": "https://elettro.github.io/bluecard/#organization"}}</script>
-<script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://elettro.github.io/bluecard/team-blue-card/#webpage", "url": "https://elettro.github.io/bluecard/team-blue-card/", "name": "Team Blue Card", "description": "Learn more about team blue card at The Blue Card, including survivor assistance programs, community resources, and organization updates.", "isPartOf": {"@id": "https://elettro.github.io/bluecard/#website"}, "publisher": {"@id": "https://elettro.github.io/bluecard/#organization"}}</script>
-<script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://elettro.github.io/bluecard/"}, {"@type": "ListItem", "position": 2, "name": "Team Blue Card", "item": "https://elettro.github.io/bluecard/team-blue-card/"}]}</script>
-<script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": "Service", "@id": "https://elettro.github.io/bluecard/team-blue-card/#service", "name": "Team Blue Card", "description": "Team Blue Card brings supporters together to raise funds and awareness for Holocaust survivors through athletic events and community participation.", "provider": {"@id": "https://elettro.github.io/bluecard/#organization"}, "areaServed": {"@type": "Country", "name": "United States"}, "audience": {"@type": "Audience", "audienceType": "volunteers and supporters"}, "url": "https://elettro.github.io/bluecard/team-blue-card/"}</script>
+  <meta name="description" content="Team Blue Card is The Blue Card’s official endurance fundraising team, raising funds and awareness for Holocaust survivors through races and endurance events worldwide.">
+  <meta property="og:title" content="Team Blue Card | The Blue Card">
+  <meta property="og:description" content="Team Blue Card is The Blue Card’s official endurance fundraising team, raising funds and awareness for Holocaust survivors through races and endurance events worldwide.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elettro.github.io/bluecard/team-blue-card/">
+  <meta property="og:site_name" content="The Blue Card">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Team Blue Card | The Blue Card">
+  <meta name="twitter:description" content="Team Blue Card is The Blue Card’s official endurance fundraising team, raising funds and awareness for Holocaust survivors through races and endurance events worldwide.">
+  <link rel="canonical" href="https://elettro.github.io/bluecard/team-blue-card/">
 </head>
 <body>
   <header id="bc-global-nav"></header>
-  <main><div class="wrap"><section class="hero" aria-label="Team Blue Card banner"><h1>Team Blue Card</h1></section><section><h2 class="section-title">FEATURED RACES</h2><div class="featured-grid"><article class="card"><img src="../images/team-blue-card/TCS-NYC-marathon-Flyer-2026-v3-1.jpg" alt="2026 TCS New York City Marathon flyer" loading="lazy"><p>The Blue Card is an Official Charity partner once again for the 2026 TCS New York City Marathon!
+  <main>
+    <div class="wrap">
+      <section class="hero" aria-label="Team Blue Card banner"><h1>Team Blue Card</h1></section>
+
+      <section class="intro" aria-labelledby="team-blue-card-intro-title">
+        <h2 id="team-blue-card-intro-title">What is Team Blue Card?</h2>
+        <p>Team Blue Card is the official endurance fundraising team of The Blue Card. Through marathons, bike tours, and other endurance events, Team Blue Card members raise critical funds and awareness for Holocaust survivors, all over the world. Every mile helps provide essential financial assistance, empowering survivors to live with greater dignity, security, and hope. If you want to get involved, or if you want more information, please email <a href="mailto:rechan@bluecardfund.org">rechan@bluecardfund.org</a>.</p>
+      </section>
+
+      <section>
+        <h2 class="section-title">FEATURED RACES</h2>
+        <div class="featured-grid">
+          <article class="card">
+            <img src="../images/team-blue-card/TCS-NYC-marathon-Flyer-2026-v3-1.jpg" alt="2026 TCS New York City Marathon flyer" loading="lazy">
+            <p>The Blue Card is an Official Charity partner once again for the 2026 TCS New York City Marathon!
 
 The TCS New York City Marathon is one of the biggest marathons in the world, 26.2 miles that courses through the 5 boroughs of NYC, and hosts runners from over 100 countries.
 
-Team Blue Card has been an Official Charity Partner since 2009. Team runners use their training, platform, and the event to raise much needed funds and awareness to help The Blue Card with our mission of helping Holocaust survivors in need. Join Team Blue Card and make this amazing marathon and experience even more special by dedicating it to helping Holocaust survivors!</p></article><article class="card"><img src="../images/team-blue-card/2026-TD-Five-Boro-Bike-Tour-Flyer-v3-scaled.jpg" alt="2026 TD Five Boro Bike Tour flyer" loading="lazy"><p>The Blue Card is an Official Charity partner for the 2026 TD Five Boro Bike Tour in New York City.
+Team Blue Card has been an Official Charity Partner since 2009. Team runners use their training, platform, and the event to raise much needed funds and awareness to help The Blue Card with our mission of helping Holocaust survivors in need. Join Team Blue Card and make this amazing marathon and experience even more special by dedicating it to helping Holocaust survivors!</p>
+          </article>
+          <article class="card">
+            <img src="../images/team-blue-card/2026-TD-Five-Boro-Bike-Tour-Flyer-v3-scaled.jpg" alt="2026 TD Five Boro Bike Tour flyer" loading="lazy">
+            <p>The Blue Card is an Official Charity partner for the 2026 TD Five Boro Bike Tour in New York City.
 
-Team Blue Card riders use this iconic ride to raise much needed funds and awareness to support Holocaust survivors in need. Join Team Blue Card and make this unforgettable event even more meaningful by dedicating your ride to helping Holocaust survivors.</p></article></div></section><section class="sold-out"><h2>SOLD OUT</h2><div class="sold-out-wrap"><img src="../images/team-blue-card/United-Airlines-Sold-Out-flyer-scaled.png" alt="2026 United Airlines NYC Half Marathon sold out flyer" loading="lazy"><p>The Blue Card is an Official Charity partner for the 2026 United Airlines NYC Half Marathon!
+Team Blue Card riders use this iconic ride to raise much needed funds and awareness to support Holocaust survivors in need. Join Team Blue Card and make this unforgettable event even more meaningful by dedicating your ride to helping Holocaust survivors.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="sold-out">
+        <h2>SOLD OUT</h2>
+        <div class="sold-out-wrap">
+          <img src="../images/team-blue-card/United-Airlines-Sold-Out-flyer-scaled.png" alt="2026 United Airlines NYC Half Marathon sold out flyer" loading="lazy">
+          <p>The Blue Card is an Official Charity partner for the 2026 United Airlines NYC Half Marathon!
 
 Team Blue Card runners use their training, platform, and the marathon to raise much needed funds and awareness to help The Blue Card with our mission of helping Holocaust survivors in need. Join Team Blue Card and make this amazing run and experience even more special by dedicating it to helping Holocaust survivors!
 
-Team Blue Card runners are committing to raising $1,000 for The Blue Card’s mission – $500 by February 15th, 2026, and the remaining $500 by April 15th, 2026. Runners are also financially responsible for the registration fee.</p></div></section><section class="about"><h3>Team Blue Card in Endurance Events worldwide.</h3><p>Thanks to Team Blue Card, The Blue Card has been an Official Charity Partner of the TCS New York City Marathon since 2009, the Miami Half/Full Marathon since 2011, the TD 5 Borough Bike Tour in New York City in 2011, participated at the NYC Panasonic Lifetime Triathlon since 2015, and participated in other marathons nationally and internationally including, Germany, Tel-Aviv and Jerusalem, Israel, and Italy. Our endurance team participants come from around the world, including Argentina, Austria, France, Israel, Italy, Mexico and South Africa. Team Blue Card has used social media crowdfunding, employer gift matching, sponsors, social networks, family and friends, and more ways to fundraise for Holocaust survivors in need. Thanks to their commitment and dedication, the members of Team Blue Card raised over $2,000,000 since 2009.
+Team Blue Card runners are committing to raising $1,000 for The Blue Card’s mission – $500 by February 15th, 2026, and the remaining $500 by April 15th, 2026. Runners are also financially responsible for the registration fee.</p>
+        </div>
+      </section>
 
-As The Blue Card works to better the lives of Holocaust survivors, we encourage everyone to better oneself by eating right, exercising, and taking care of oneself both physically and mentally.
-
-If you are someone who runs and would like to get involved, or you want to get involved and do not know how, please consider running with Team Blue Card in the next local and national Marathons. Take this as the incentive you need to start taking care of yourself, while also spreading awareness and fundraising for Holocaust survivors who do not have the financial means.
-
-If you already run, use this opportunity to make your run more meaningful by running for a cause. Run with Team Blue Card and help us raise the needed funds and awareness for Holocaust survivors living in poverty.</p></section><section class="video-highlight" aria-labelledby="team-blue-card-video-title"><span class="video-highlight__badge">Event Highlight</span><h2 id="team-blue-card-video-title">Team Blue Card in Action</h2><p>See Team Blue Card’s latest event highlight and help us continue supporting Holocaust survivors in need.</p><div class="video-card"><div class="video-container"><iframe
-  src="https://www.youtube.com/embed/tjkvpzYHFjQ"
-  title="Team Blue Card Event Highlight"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  allowfullscreen>
-</iframe></div></div></section><section class="events-cta" aria-label="Past events section"><a class="btn" href="/bluecard/past-events/">Past Events</a></section></div></main>
+      <section class="action-section" aria-labelledby="team-blue-card-action-title">
+        <h2 id="team-blue-card-action-title">Team Blue Card in Action</h2>
+        <p>See how Team Blue Card participants turn endurance events into meaningful support and greater awareness for Holocaust survivors.</p>
+        <div class="action-grid">
+          <div class="video-card">
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/tjkvpzYHFjQ" title="Team Blue Card at the Miami Marathon" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+          </div>
+          <article class="antarctica-card">
+            <div class="antarctica-placeholder">Photo Placeholder<br>Antarctica Marathon Participant</div>
+            <h3>Marathon in Antarctica</h3>
+            <p>Participant information and a photo will be added here to highlight the runner who completed a marathon in Antarctica in support of The Blue Card.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
   <footer id="bc-global-footer"></footer>
   <script src="../global-layout.js?v=20260806-3"></script>
 </body>
