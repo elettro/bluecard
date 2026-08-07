@@ -48,17 +48,17 @@
   justify-self: end;
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 22.5px;
   white-space: nowrap;
 }
 
 .bc-top-contact-link {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7.5px;
   color: #ffffff;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 16.25px;
   font-weight: 700;
   line-height: 1;
 }
@@ -72,8 +72,8 @@
 
 .bc-top-contact-icon {
   flex: 0 0 auto;
-  width: 15px;
-  height: 15px;
+  width: 18.75px;
+  height: 18.75px;
   display: block;
 }
 
