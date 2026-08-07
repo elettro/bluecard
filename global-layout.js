@@ -82,6 +82,155 @@
 
     var supportSection = document.getElementById('program-support');
     if (supportSection) {
+      var existingPostcards = document.getElementById('postcards-to-sonia');
+      if (existingPostcards) existingPostcards.remove();
+
+      var postcardsSection = document.createElement('section');
+      postcardsSection.id = 'postcards-to-sonia';
+      postcardsSection.className = 'bc-postcards-section';
+      postcardsSection.innerHTML = `
+<style>
+.bc-postcards-section{padding:88px 0;background:linear-gradient(180deg,#fff 0%,#f5f8ff 100%);overflow:hidden}.bc-postcards-wrap{width:min(1240px,calc(100% - 32px));margin:0 auto}.bc-postcards-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:30px}.bc-postcards-kicker{color:#25479b;font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}.bc-postcards-title{margin:0;color:#17306f;font-size:clamp(34px,4.5vw,56px);line-height:1.02;letter-spacing:-.035em}.bc-postcards-note{max-width:430px;margin:0;color:#5d6a86;font-size:16px;line-height:1.6}.bc-postcards-shell{position:relative}.bc-postcards-track{display:grid;grid-auto-flow:column;grid-auto-columns:min(74vw,780px);gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-inline:contain;scrollbar-width:none;padding:6px max(0px,calc((100% - min(74vw,780px))/2)) 24px;touch-action:pan-x pan-y;-webkit-overflow-scrolling:touch}.bc-postcards-track::-webkit-scrollbar{display:none}.bc-postcard-slide{scroll-snap-align:center;background:#fff;border:1px solid rgba(37,71,155,.14);border-radius:24px;box-shadow:0 16px 42px rgba(14,32,79,.12);overflow:hidden;cursor:zoom-in;transition:transform .2s ease,box-shadow .2s ease}.bc-postcard-slide:hover{transform:translateY(-3px);box-shadow:0 22px 52px rgba(14,32,79,.16)}.bc-postcard-slide img{display:block;width:100%;height:min(62vw,560px);object-fit:contain;background:#fff}.bc-postcards-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.7);background:rgba(23,48,111,.92);color:#fff;display:grid;place-items:center;font-size:28px;line-height:1;cursor:pointer;box-shadow:0 10px 28px rgba(12,31,75,.22);transition:.2s ease}.bc-postcards-arrow:hover{background:#25479b;transform:translateY(-50%) scale(1.05)}.bc-postcards-prev{left:10px}.bc-postcards-next{right:10px}.bc-postcards-dots{display:flex;justify-content:center;gap:9px;margin-top:2px}.bc-postcards-dot{width:10px;height:10px;border-radius:50%;border:0;padding:0;background:#c4d2ed;cursor:pointer;transition:.2s ease}.bc-postcards-dot.is-active{width:28px;border-radius:999px;background:#25479b}.bc-postcards-modal{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(5,14,38,.92);backdrop-filter:blur(8px)}.bc-postcards-modal.is-open{display:flex}.bc-postcards-modal-image{max-width:96vw;max-height:90vh;width:auto;height:auto;object-fit:contain;box-shadow:0 28px 80px rgba(0,0,0,.48);border-radius:10px;background:#fff}.bc-postcards-modal-close{position:fixed;top:18px;right:20px;width:48px;height:48px;border:1px solid rgba(255,255,255,.45);border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:28px;line-height:1;cursor:pointer;display:grid;place-items:center}.bc-postcards-modal-count{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:14px;font-weight:800}.bc-postcards-modal-nav{position:fixed;top:50%;transform:translateY(-50%);width:48px;height:48px;border:1px solid rgba(255,255,255,.35);border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:26px;cursor:pointer}.bc-postcards-modal-prev{left:18px}.bc-postcards-modal-next{right:18px}@media(max-width:760px){.bc-postcards-section{padding:66px 0}.bc-postcards-wrap{width:min(100% - 20px,1240px)}.bc-postcards-head{display:block;margin-bottom:24px}.bc-postcards-note{margin-top:12px}.bc-postcards-track{grid-auto-columns:88vw;gap:14px;padding-left:calc((100% - 88vw)/2);padding-right:calc((100% - 88vw)/2)}.bc-postcard-slide img{height:76vw;max-height:520px}.bc-postcards-arrow{display:none}.bc-postcards-modal{padding:12px}.bc-postcards-modal-nav{display:none}.bc-postcards-modal-close{top:10px;right:10px}}
+</style>
+<div class="bc-postcards-wrap">
+  <div class="bc-postcards-head">
+    <div>
+      <div class="bc-postcards-kicker">Sonia's Story</div>
+      <h2 class="bc-postcards-title">Postcards to Sonia</h2>
+    </div>
+    <p class="bc-postcards-note">Swipe or use the arrows to explore the postcards. Select any image to view it full size.</p>
+  </div>
+  <div class="bc-postcards-shell">
+    <button class="bc-postcards-arrow bc-postcards-prev" type="button" aria-label="Previous postcard">‹</button>
+    <div class="bc-postcards-track" tabindex="0" aria-label="Postcards to Sonia image carousel">
+      <figure class="bc-postcard-slide" data-index="0"><img src="/bluecard/images/interactive-hologram/postcards/postcards-to-sonia%20(1).jpg" alt="Postcards to Sonia, image 1" loading="lazy"></figure>
+      <figure class="bc-postcard-slide" data-index="1"><img src="/bluecard/images/interactive-hologram/postcards/postcards-to-sonia%20(2).jpg" alt="Postcards to Sonia, image 2" loading="lazy"></figure>
+      <figure class="bc-postcard-slide" data-index="2"><img src="/bluecard/images/interactive-hologram/postcards/postcards-to-sonia%20(3).jpg" alt="Postcards to Sonia, image 3" loading="lazy"></figure>
+      <figure class="bc-postcard-slide" data-index="3"><img src="/bluecard/images/interactive-hologram/postcards/postcards-to-sonia%20(4).jpg" alt="Postcards to Sonia, image 4" loading="lazy"></figure>
+      <figure class="bc-postcard-slide" data-index="4"><img src="/bluecard/images/interactive-hologram/postcards/postcards-to-sonia%20(5).jpg" alt="Postcards to Sonia, image 5" loading="lazy"></figure>
+    </div>
+    <button class="bc-postcards-arrow bc-postcards-next" type="button" aria-label="Next postcard">›</button>
+  </div>
+  <div class="bc-postcards-dots" aria-label="Choose postcard">
+    <button class="bc-postcards-dot is-active" type="button" aria-label="Postcard 1" data-index="0"></button>
+    <button class="bc-postcards-dot" type="button" aria-label="Postcard 2" data-index="1"></button>
+    <button class="bc-postcards-dot" type="button" aria-label="Postcard 3" data-index="2"></button>
+    <button class="bc-postcards-dot" type="button" aria-label="Postcard 4" data-index="3"></button>
+    <button class="bc-postcards-dot" type="button" aria-label="Postcard 5" data-index="4"></button>
+  </div>
+</div>`;
+      supportSection.parentNode.insertBefore(postcardsSection, supportSection);
+
+      var modal = document.createElement('div');
+      modal.className = 'bc-postcards-modal';
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-label', 'Postcard full-size viewer');
+      modal.innerHTML = '<button class="bc-postcards-modal-close" type="button" aria-label="Close full-size image">×</button><button class="bc-postcards-modal-nav bc-postcards-modal-prev" type="button" aria-label="Previous image">‹</button><img class="bc-postcards-modal-image" alt=""><button class="bc-postcards-modal-nav bc-postcards-modal-next" type="button" aria-label="Next image">›</button><div class="bc-postcards-modal-count"></div>';
+      document.body.appendChild(modal);
+
+      var track = postcardsSection.querySelector('.bc-postcards-track');
+      var slides = Array.from(postcardsSection.querySelectorAll('.bc-postcard-slide'));
+      var dots = Array.from(postcardsSection.querySelectorAll('.bc-postcards-dot'));
+      var prevButton = postcardsSection.querySelector('.bc-postcards-prev');
+      var nextButton = postcardsSection.querySelector('.bc-postcards-next');
+      var modalImage = modal.querySelector('.bc-postcards-modal-image');
+      var modalCount = modal.querySelector('.bc-postcards-modal-count');
+      var currentIndex = 0;
+      var autoTimer = null;
+      var resumeTimer = null;
+      var touchStartX = 0;
+
+      function updateDots(index) {
+        dots.forEach(function (dot, dotIndex) {
+          dot.classList.toggle('is-active', dotIndex === index);
+        });
+      }
+
+      function goToSlide(index, behavior) {
+        currentIndex = (index + slides.length) % slides.length;
+        var slide = slides[currentIndex];
+        if (slide && track) {
+          track.scrollTo({ left: slide.offsetLeft - (track.clientWidth - slide.clientWidth) / 2, behavior: behavior || 'smooth' });
+        }
+        updateDots(currentIndex);
+      }
+
+      function startAuto() {
+        window.clearInterval(autoTimer);
+        autoTimer = window.setInterval(function () {
+          goToSlide(currentIndex + 1, 'smooth');
+        }, 6000);
+      }
+
+      function pauseAndResumeAuto() {
+        window.clearInterval(autoTimer);
+        window.clearTimeout(resumeTimer);
+        resumeTimer = window.setTimeout(startAuto, 6000);
+      }
+
+      function openModal(index) {
+        currentIndex = (index + slides.length) % slides.length;
+        var image = slides[currentIndex].querySelector('img');
+        modalImage.src = image.src;
+        modalImage.alt = image.alt;
+        modalCount.textContent = (currentIndex + 1) + ' / ' + slides.length;
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        pauseAndResumeAuto();
+      }
+
+      function closeModal() {
+        modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+        startAuto();
+      }
+
+      slides.forEach(function (slide, index) {
+        slide.addEventListener('click', function () { openModal(index); });
+      });
+
+      dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          goToSlide(Number(dot.getAttribute('data-index')), 'smooth');
+          pauseAndResumeAuto();
+        });
+      });
+
+      if (prevButton) prevButton.addEventListener('click', function () { goToSlide(currentIndex - 1, 'smooth'); pauseAndResumeAuto(); });
+      if (nextButton) nextButton.addEventListener('click', function () { goToSlide(currentIndex + 1, 'smooth'); pauseAndResumeAuto(); });
+
+      if (track) {
+        track.addEventListener('touchstart', function (event) {
+          touchStartX = event.touches[0].clientX;
+          window.clearInterval(autoTimer);
+        }, { passive: true });
+        track.addEventListener('touchend', function (event) {
+          var touchEndX = event.changedTouches[0].clientX;
+          var delta = touchStartX - touchEndX;
+          if (Math.abs(delta) > 35) goToSlide(currentIndex + (delta > 0 ? 1 : -1), 'smooth');
+          pauseAndResumeAuto();
+        }, { passive: true });
+        track.addEventListener('mouseenter', function () { window.clearInterval(autoTimer); });
+        track.addEventListener('mouseleave', startAuto);
+        track.addEventListener('focusin', function () { window.clearInterval(autoTimer); });
+        track.addEventListener('focusout', startAuto);
+      }
+
+      modal.querySelector('.bc-postcards-modal-close').addEventListener('click', closeModal);
+      modal.querySelector('.bc-postcards-modal-prev').addEventListener('click', function () { openModal(currentIndex - 1); });
+      modal.querySelector('.bc-postcards-modal-next').addEventListener('click', function () { openModal(currentIndex + 1); });
+      modal.addEventListener('click', function (event) { if (event.target === modal) closeModal(); });
+      document.addEventListener('keydown', function (event) {
+        if (!modal.classList.contains('is-open')) return;
+        if (event.key === 'Escape') closeModal();
+        if (event.key === 'ArrowLeft') openModal(currentIndex - 1);
+        if (event.key === 'ArrowRight') openModal(currentIndex + 1);
+      });
+
+      goToSlide(0, 'auto');
+      startAuto();
+
       supportSection.className = 'bc-section bc-advisory-legacy-section';
       supportSection.innerHTML = `
 <style>
