@@ -6,39 +6,145 @@
   <title>Volunteering | The Blue Card</title>
   <link rel="stylesheet" href="../global-layout.css?v=20260806-1536" />
   <style>
-    :root{--blue:#0d5ea8;--blue-dark:#0a3f73;--blue-soft:#eaf4fb;--text:#18324a;--muted:#5b7288;--line:#d7e6f3;--white:#ffffff;--bg:#f7fbff;--shadow:0 18px 42px rgba(10,63,115,0.10);--radius-xl:28px;--radius-lg:22px;--radius-md:16px;--max:1240px}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial, Helvetica, sans-serif;color:var(--text);background:radial-gradient(circle at top left, rgba(13,94,168,0.08), transparent 30%),linear-gradient(180deg, #f7fbff 0%, #ffffff 42%, #f6fbff 100%);line-height:1.6}img{max-width:100%;display:block}a{color:inherit}.page{overflow:hidden}.container{width:100%;max-width:var(--max);margin:0 auto;padding-left:22px;padding-right:22px}.hero{padding:70px 0 28px}.hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:30px;align-items:stretch}.hero-card{background:rgba(255,255,255,0.94);border:1px solid rgba(13,94,168,0.12);border-radius:32px;box-shadow:var(--shadow);padding:42px}.eyebrow{display:inline-block;padding:8px 14px;border-radius:999px;background:var(--blue-soft);color:var(--blue-dark);font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:16px}h1,h2,h3{margin:0 0 14px;line-height:1.12;color:var(--blue-dark)}h1{font-size:clamp(2.35rem, 4vw, 4.35rem);letter-spacing:-0.03em}h2{font-size:clamp(1.9rem, 2.6vw, 2.7rem);letter-spacing:-0.02em;text-align:center}h3{font-size:1.24rem}.lead{font-size:1.14rem;color:var(--muted);margin:0 0 24px;max-width:760px}.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:24px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:999px;font-size:16px;font-weight:700;text-decoration:none;transition:transform .2s ease, box-shadow .2s ease, background .2s ease}.btn:hover{transform:translateY(-2px)}.btn-secondary{background:#ffffff;color:var(--blue-dark);border:1px solid var(--line)}.aurora-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:999px;font-size:16px;font-weight:700;text-decoration:none;color:#ffffff !important;overflow:hidden;z-index:1;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.08);transition:transform .3s ease, box-shadow .3s ease;box-shadow:0 14px 32px rgba(13,94,168,0.24)}.aurora-btn::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,#0d5ea8,#00c6ff,#0a3f73,#0d5ea8);background-size:300% 300%;animation:aurora 6s linear infinite;z-index:-2}.aurora-btn::after{content:"";position:absolute;inset:2px;border-radius:999px;background:rgba(13,94,168,0.68);z-index:-1}.aurora-btn:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 12px 28px rgba(13,94,168,0.30)}@keyframes aurora{0%{ background-position:0% 50%; }100%{ background-position:300% 50%; }}.hero-side{background:linear-gradient(180deg, #0d5ea8 0%, #0a3f73 100%);color:#ffffff;border-radius:32px;box-shadow:var(--shadow);padding:34px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center}.hero-side::before,.hero-side::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,0.08)}.hero-side::before{width:250px;height:250px;top:-100px;right:-70px}.hero-side::after{width:180px;height:180px;left:-30px;bottom:-60px}.hero-side>*{position:relative;z-index:2}.hero-side h3{color:#ffffff;margin-bottom:10px}.hero-side p{color:rgba(255,255,255,0.88);margin:0 0 18px}.impact-list{display:grid;gap:14px;margin-top:6px}.impact-item{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(4px)}.impact-number{flex:0 0 42px;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,0.14);font-size:18px;font-weight:700}.impact-copy strong{display:block;margin-bottom:4px;font-size:1rem;color:#ffffff}.impact-copy span{display:block;color:rgba(255,255,255,0.86);font-size:.97rem;line-height:1.5}.audio-wrap{padding:14px 0 10px}.audio-card{background:#ffffff;border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);padding:28px;display:grid;grid-template-columns:1fr;gap:16px}.audio-top{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap}.audio-top p{margin:0;color:var(--muted);max-width:780px}.audio-player{width:100%;border-radius:999px}.audio-player audio{width:100%;display:block}.feature-image-section{padding:12px 0 28px}.feature-image-card{width:100%;background:#ffffff;border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);overflow:hidden}.feature-image{width:100%;height:auto}.section{padding:42px 0}.section-intro{max-width:900px;margin:0 auto 34px;text-align:center}.section-intro p{margin:0;color:var(--muted);font-size:1.08rem}.grid{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:24px}.card{background:#ffffff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 14px 34px rgba(15,74,130,0.08);min-height:100%;display:flex;flex-direction:column}.card-icon{width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg, #d7ebfb 0%, #eef7fe 100%);color:var(--blue-dark);display:grid;place-items:center;font-size:24px;font-weight:700;margin-bottom:18px}.card p{margin:0 0 14px;color:var(--muted)}.card ul{margin:4px 0 0;padding-left:18px}.card li{margin-bottom:8px;color:var(--text)}.highlight-section{padding-top:10px;padding-bottom:12px}.highlight-box{background:linear-gradient(135deg, #f0f8ff 0%, #e2f0fb 100%);border:1px solid var(--line);border-radius:28px;padding:34px;display:grid;grid-template-columns:1.15fr 0.85fr;gap:28px;align-items:center}.highlight-box p{margin:0;color:var(--muted);font-size:1.06rem}.highlight-points{display:grid;gap:12px}.highlight-point{background:rgba(255,255,255,0.84);border:1px solid rgba(13,94,168,0.10);border-radius:16px;padding:14px 16px;color:var(--blue-dark);font-weight:700}.cta-section{padding:34px 0 90px}.cta-box{background:linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);color:#ffffff;border-radius:30px;padding:46px 36px;text-align:center;position:relative;overflow:hidden;box-shadow:0 18px 48px rgba(10,63,115,0.24)}.cta-box::before,.cta-box::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,0.08)}.cta-box::before{width:240px;height:240px;left:-70px;top:-110px}.cta-box::after{width:220px;height:220px;right:-90px;bottom:-100px}.cta-box>*{position:relative;z-index:2}.cta-box h2{color:#ffffff;margin-bottom:14px}.cta-box p{max-width:760px;margin:0 auto 26px;color:rgba(255,255,255,0.90);font-size:1.08rem}@media (max-width:1120px){.hero-grid,.highlight-box{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.grid .card:last-child{grid-column:1 / -1}}@media (max-width:860px){.hero{padding-top:50px}.hero-card,.hero-side,.audio-card,.card,.highlight-box,.cta-box{padding:26px}.grid{grid-template-columns:1fr}.grid .card:last-child{grid-column:auto}.hero-actions{flex-direction:column;align-items:stretch}.btn,.aurora-btn{width:100%}.audio-top{flex-direction:column}}@media (max-width:520px){.container{padding-left:16px;padding-right:16px}h1{font-size:2.2rem}h2{font-size:1.8rem}.lead,.section-intro p,.highlight-box p,.cta-box p,.audio-top p{font-size:1rem}}
+    :root{--blue:#0d5ea8;--blue-dark:#0a3f73;--blue-soft:#eaf4fb;--text:#18324a;--muted:#5b7288;--line:#d7e6f3;--shadow:0 18px 42px rgba(10,63,115,.10);--max:1240px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:linear-gradient(180deg,#f7fbff 0%,#fff 42%,#f6fbff 100%);line-height:1.6}
+    .page{overflow:hidden}
+    .container{width:100%;max-width:var(--max);margin:0 auto;padding:0 22px}
+    .hero{padding:70px 0 30px}
+    .hero-card{max-width:980px;margin:0 auto;background:#fff;border:1px solid rgba(13,94,168,.12);border-radius:32px;box-shadow:var(--shadow);padding:46px;text-align:center}
+    .eyebrow{display:inline-block;padding:8px 14px;border-radius:999px;background:var(--blue-soft);color:var(--blue-dark);font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:16px}
+    h1,h2,h3{margin:0 0 14px;line-height:1.12;color:var(--blue-dark)}
+    h1{font-size:clamp(2.35rem,4vw,4.35rem);letter-spacing:-.03em}
+    h2{font-size:clamp(1.9rem,2.6vw,2.7rem);letter-spacing:-.02em;text-align:center}
+    h3{font-size:1.3rem}
+    .lead{font-size:1.14rem;color:var(--muted);margin:0 auto 26px;max-width:820px}
+    .hero-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:999px;font-size:16px;font-weight:700;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{color:#fff;background:linear-gradient(135deg,var(--blue-dark),var(--blue));box-shadow:0 14px 32px rgba(13,94,168,.24)}
+    .btn-secondary{background:#fff;color:var(--blue-dark);border:1px solid var(--line)}
+    .section{padding:42px 0 84px}
+    .section-intro{max-width:900px;margin:0 auto 34px;text-align:center}
+    .section-intro p{margin:0;color:var(--muted);font-size:1.08rem}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 14px 34px rgba(15,74,130,.08);display:flex;flex-direction:column}
+    .card-icon{width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,#d7ebfb,#eef7fe);color:var(--blue-dark);display:grid;place-items:center;font-size:24px;font-weight:700;margin-bottom:18px}
+    .card p{margin:0 0 14px;color:var(--muted)}
+    .card ul{margin:4px 0 0;padding-left:18px}
+    .card li{margin-bottom:8px;color:var(--text)}
+    .form-link-wrap{text-align:center;margin-top:42px}
+    @media(max-width:960px){.grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:680px){.container{padding:0 16px}.hero{padding-top:50px}.hero-card,.card{padding:26px}.grid{grid-template-columns:1fr}.hero-actions{flex-direction:column}.btn{width:100%}}
   </style>
-<meta name="description" content="Learn more about volunteering at The Blue Card, including survivor assistance programs, community resources, and organization updates.">
-<meta property="og:title" content="Volunteering | The Blue Card">
-<meta property="og:description" content="Learn more about volunteering at The Blue Card, including survivor assistance programs, community resources, and organization updates.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://elettro.github.io/bluecard/volunteering/">
-<meta property="og:site_name" content="The Blue Card">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Volunteering | The Blue Card">
-<meta name="twitter:description" content="Learn more about volunteering at The Blue Card, including survivor assistance programs, community resources, and organization updates.">
-<link rel="canonical" href="https://elettro.github.io/bluecard/volunteering/">
-<script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": ["Organization", "NGO"], "@id": "https://elettro.github.io/bluecard/#organization", "name": "The Blue Card", "alternateName": "The Blue Card, Inc.", "url": "https://elettro.github.io/bluecard/", "logo": "https://elettro.github.io/bluecard/images/logo/blue-card-logo-fullsize.png"}</script>
-<script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://elettro.github.io/bluecard/#website", "url": "https://elettro.github.io/bluecard/", "name": "The Blue Card", "publisher": {"@id": "https://elettro.github.io/bluecard/#organization"}}</script>
-<script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://elettro.github.io/bluecard/volunteering/#webpage", "url": "https://elettro.github.io/bluecard/volunteering/", "name": "Volunteering", "description": "Learn more about volunteering at The Blue Card, including survivor assistance programs, community resources, and organization updates.", "isPartOf": {"@id": "https://elettro.github.io/bluecard/#website"}, "publisher": {"@id": "https://elettro.github.io/bluecard/#organization"}}</script>
-<script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://elettro.github.io/bluecard/"}, {"@type": "ListItem", "position": 2, "name": "Volunteering", "item": "https://elettro.github.io/bluecard/volunteering/"}]}</script>
-<script type="application/ld+json" data-seo-schema="true">{"@context": "https://schema.org", "@type": "Service", "@id": "https://elettro.github.io/bluecard/volunteering/#service", "name": "Volunteering", "description": "The Blue Card welcomes volunteers who support Holocaust survivors through companionship, awareness, and community fundraising.", "provider": {"@id": "https://elettro.github.io/bluecard/#organization"}, "areaServed": {"@type": "Country", "name": "United States"}, "audience": {"@type": "Audience", "audienceType": "volunteers and supporters"}, "url": "https://elettro.github.io/bluecard/volunteering/"}</script>
+  <meta name="description" content="Volunteer with The Blue Card by raising awareness, supporting Holocaust education, connecting with survivors, and helping fund essential assistance." />
+  <meta property="og:title" content="Volunteering | The Blue Card" />
+  <meta property="og:description" content="Volunteer with The Blue Card by raising awareness, supporting Holocaust education, connecting with survivors, and helping fund essential assistance." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://elettro.github.io/bluecard/volunteering/" />
+  <meta property="og:site_name" content="The Blue Card" />
+  <link rel="canonical" href="https://elettro.github.io/bluecard/volunteering/" />
 </head>
 <body>
   <div id="bc-global-nav"></div>
   <div class="page">
-
     <section class="hero">
-      <div class="container"><div class="hero-grid"><div class="hero-card"><span class="eyebrow">Volunteer With The Blue Card</span><h1>Give your time. Show your care. Make a real difference.</h1><p class="lead">The Blue Card welcomes volunteers who want to support Holocaust survivors with compassion, consistency, and purpose. Whether you help raise awareness, offer companionship, create cards, or support fundraising efforts, your involvement matters.</p><div class="hero-actions"><a class="aurora-btn" href="https://www.jotform.com/build/210735448509055" target="_blank" rel="noopener noreferrer">Sign Up to Volunteer</a><a class="btn btn-secondary" href="#ways-to-help">Explore Volunteer Opportunities</a></div></div><div class="hero-side"><h3>How volunteers help</h3><p>Your support helps reduce isolation, strengthen community, and expand awareness of The Blue Card’s mission.</p><div class="impact-list"><div class="impact-item"><div class="impact-number">1</div><div class="impact-copy"><strong>Offer human connection</strong><span>Provide emotional support through calls, visits, and thoughtful outreach.</span></div></div><div class="impact-item"><div class="impact-number">2</div><div class="impact-copy"><strong>Bring others into the mission</strong><span>Host gatherings and help more people understand the needs of Holocaust survivors.</span></div></div><div class="impact-item"><div class="impact-number">3</div><div class="impact-copy"><strong>Turn action into impact</strong><span>Fundraise, participate in events, and help extend direct support where it is needed most.</span></div></div></div></div></div></div>
+      <div class="container">
+        <div class="hero-card">
+          <span class="eyebrow">Volunteer With The Blue Card</span>
+          <h1>Give your time. Show your care. Make a real difference.</h1>
+          <p class="lead">The Blue Card welcomes volunteers who want to support Holocaust survivors with compassion, consistency, and purpose. Whether you help raise awareness, offer companionship, create cards and gift bags, support Holocaust education, or help with fundraising, your involvement matters.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://www.jotform.com/build/210735448509055" target="_blank" rel="noopener noreferrer">Sign Up to Volunteer</a>
+            <a class="btn btn-secondary" href="#ways-to-help">Explore Volunteer Opportunities</a>
+          </div>
+        </div>
+      </div>
     </section>
-    <section class="audio-wrap"><div class="container"><div class="audio-card"><div class="audio-top"><div><span class="eyebrow" style="margin-bottom:12px;">Listen</span><h3 style="font-size:1.5rem; margin-bottom:8px;">Hear why volunteering matters</h3><p>Listen to this message about supporting Holocaust survivors through meaningful volunteer action with The Blue Card.</p></div></div><div class="audio-player"><audio controls preload="none"><source src="https://bluecardfund.org/wp-content/uploads/2026/04/Volunteer_for_survivors_with_The_Blue_Card.mp3" type="audio/mpeg" />Your browser does not support the audio element.</audio></div></div></div></section>
-    <section class="feature-image-section"><div class="container"><div class="feature-image-card"><img class="feature-image" src="https://elettro.github.io/bluecard/infographics/bluecard-volunteering-scaled.png" alt="Volunteers supporting Holocaust survivors through The Blue Card" width="2560" height="1429" /></div></div></section>
-    <section class="section" id="ways-to-help"><div class="container"><div class="section-intro"><h2>Ways You Can Help</h2><p>There are many meaningful ways to get involved. Choose the role that fits your time, strengths, and interests.</p></div><div class="grid"><article class="card"><div class="card-icon">🏠</div><h3>Raise Awareness</h3><p>Open your home to a small gathering and help introduce others to The Blue Card’s mission and the needs of Holocaust survivors.</p><ul><li>Host a parlor meeting in your home</li><li>Invite friends, relatives, and business associates</li><li>Help expand awareness in a personal, meaningful setting</li></ul></article><article class="card"><div class="card-icon">❤</div><h3>Hospital Visitation Program</h3><p>Visit hospitalized Holocaust survivors who need guidance, warmth, and emotional support during difficult moments.</p><ul><li>Offer comfort and companionship</li><li>Help reduce feelings of isolation</li><li>Be a caring presence when it matters most</li></ul></article><article class="card"><div class="card-icon">🏃</div><h3>Join Team Blue Card</h3><p>Use sporting events to raise funds and awareness for Holocaust survivors in need.</p><ul><li>Participate in local, national, or international marathons</li><li>Represent Team Blue Card with pride</li><li>Help drive support through community fundraising</li></ul></article><article class="card"><div class="card-icon">✉</div><h3>Greeting Cards</h3><p>Create holiday or get-well cards for Holocaust survivors and share moments of kindness and encouragement.</p><ul><li>Great for students, teachers, and classrooms</li><li>All cards are reviewed by Blue Card staff before mailing</li><li>Encourage others to send virtual greetings as well</li></ul></article><article class="card"><div class="card-icon">☎</div><h3>Call-Ins</h3><p>A simple phone call can make a major difference. Volunteers speak with survivors once or twice each week to check in and show they care.</p><ul><li>Build trust through regular contact</li><li>Provide conversation and emotional connection</li><li>Help someone feel remembered and supported</li></ul></article><article class="card"><div class="card-icon">➕</div><h3>Make a Personal Contribution</h3><p>Support The Blue Card financially in a way that works for you and your family.</p><ul><li>Make a personal gift</li><li>Arrange planned giving</li><li>Ask your employer about corporate matching</li></ul></article></div></div></section>
-    <section class="section highlight-section"><div class="container"><div class="highlight-box"><div><h3 style="font-size:1.75rem; margin-bottom:12px;">Every form of support counts.</h3><p>Some volunteers give their time. Others open their homes, make calls, write cards, or help raise funds. Each action strengthens The Blue Card’s ability to serve Holocaust survivors with dignity, care, and compassion.</p></div><div class="highlight-points"><div class="highlight-point">Support survivors directly</div><div class="highlight-point">Expand community awareness</div><div class="highlight-point">Help deliver comfort and connection</div></div></div></div></section>
-    <section class="cta-section"><div class="container"><div class="cta-box"><h2>Take the next step.</h2><p>Join a volunteer community committed to honoring Holocaust survivors through action, compassion, and service. Your involvement helps make sure no survivor feels forgotten.</p><a class="aurora-btn" href="https://www.jotform.com/build/210735448509055" target="_blank" rel="noopener noreferrer">Become a Volunteer Today</a></div></div></section>
 
+    <section class="section" id="ways-to-help">
+      <div class="container">
+        <div class="section-intro">
+          <h2>Ways You Can Help</h2>
+          <p>There are many meaningful ways to get involved. Choose the role that fits your time, strengths, and interests.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon">●</div>
+            <h3>Raise Awareness</h3>
+            <p>Open your home to a small gathering and help introduce others to The Blue Card’s mission and the needs of Holocaust survivors.</p>
+            <ul>
+              <li>Host a parlor meeting in your home</li>
+              <li>Invite friends, relatives, and business associates</li>
+              <li>Help expand awareness in a personal, meaningful setting</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">✦</div>
+            <h3>Holocaust Education Partner</h3>
+            <p>Help The Blue Card’s Holocaust education program grow by connecting with interested teachers, schools, administrators, and students.</p>
+            <ul>
+              <li>Increase education about the Holocaust</li>
+              <li>Make sure survivor testimonies are never forgotten</li>
+              <li>Educate future generations</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">★</div>
+            <h3>Join Team Blue Card</h3>
+            <p>Use sporting events to raise funds and awareness for Holocaust survivors in need.</p>
+            <ul>
+              <li>Participate in local, national, or international marathons</li>
+              <li>Represent Team Blue Card with pride</li>
+              <li>Help drive support through community fundraising</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">✉</div>
+            <h3>Greeting Cards and Gift Bags</h3>
+            <p>Create holiday or get-well cards and assemble thoughtful gift bags for Holocaust survivors, sharing moments of kindness and encouragement.</p>
+            <ul>
+              <li>Great for students, teachers, classrooms, and community groups</li>
+              <li>All cards are reviewed by Blue Card staff before mailing</li>
+              <li>Help survivors feel remembered and cared for</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">☎</div>
+            <h3>Call-Ins</h3>
+            <p>A simple phone call can make a major difference. Volunteers speak with survivors once or twice each week to check in and show they care.</p>
+            <ul>
+              <li>Build trust through regular contact</li>
+              <li>Provide conversation and emotional connection</li>
+              <li>Help someone feel remembered and supported</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">＋</div>
+            <h3>Make a Personal Contribution</h3>
+            <p>Support The Blue Card financially in a way that works for you and your family.</p>
+            <ul>
+              <li>Make a personal gift</li>
+              <li>Arrange planned giving</li>
+              <li>Ask your employer about corporate matching</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="form-link-wrap">
+          <a class="btn btn-primary" href="https://www.jotform.com/build/210735448509055" target="_blank" rel="noopener noreferrer">Become a Volunteer Today</a>
+        </div>
+      </div>
+    </section>
   </div>
+
   <div id="bc-global-footer"></div>
   <script src="../global-layout.js?v=20260806-3"></script>
 </body>
