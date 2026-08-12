@@ -46,6 +46,20 @@
     observer.observe(document.documentElement, { childList: true, subtree: true });
   }
 
+  function ensureHomepageHeadingStyles() {
+    if (document.getElementById('bc-homepage-heading-fixes')) return;
+    var style = document.createElement('style');
+    style.id = 'bc-homepage-heading-fixes';
+    style.textContent = [
+      '@media (min-width:1024px){',
+      '.bc-facts-heading-wrap{max-width:none!important;flex:1 1 auto!important;min-width:0!important}',
+      '.bc-facts-heading{white-space:nowrap!important;font-size:clamp(2.35rem,3.25vw,3.25rem)!important;line-height:1.05!important;letter-spacing:-0.035em!important}',
+      '.bc-impact-heading{white-space:nowrap!important;font-size:2.5rem!important;line-height:1.05!important;letter-spacing:-0.025em!important}',
+      '}'
+    ].join('');
+    document.head.appendChild(style);
+  }
+
   function patchHomepage() {
     var path = window.location.pathname.replace(/\/+$/, '');
     if (path !== '/bluecard' && path !== '') return;
@@ -53,42 +67,56 @@
     var main = document.querySelector('main');
     if (!main) return;
 
+    ensureHomepageHeadingStyles();
+
     var sections = Array.from(main.querySelectorAll(':scope > section'));
 
     var factsSection = sections.find(function (section) {
       var heading = section.querySelector('h2');
-      return heading && heading.textContent.trim() === 'What most people don’t know about Holocaust Survivors';
+      if (!heading) return false;
+      var text = heading.textContent.trim();
+      return text === 'What most people don’t know about Holocaust Survivors' || text === 'Facts About Holocaust Survivors We Serve';
     });
 
     if (factsSection) {
       var factsHeading = factsSection.querySelector('h2');
       factsHeading.textContent = 'Facts About Holocaust Survivors We Serve';
+      factsHeading.classList.add('bc-facts-heading');
+      if (factsHeading.parentElement) factsHeading.parentElement.classList.add('bc-facts-heading-wrap');
 
       var factsGrid = factsSection.querySelector('.grid');
       if (factsGrid) {
         factsGrid.className = factsGrid.className.replace('md:grid-cols-3', 'md:grid-cols-2 xl:grid-cols-5');
 
-        var ageCard = document.createElement('div');
-        ageCard.className = 'bg-surface-container-lowest p-10 rounded-xl ghost-border';
-        ageCard.innerHTML = '<div class="mb-6 text-primary"><span class="material-symbols-outlined text-4xl" aria-hidden="true">elderly</span></div><h3 class="text-4xl font-headline font-bold text-primary mb-4">80+</h3><p class="text-on-surface-variant leading-relaxed text-lg">All Holocaust survivors we serve are over the age of 80.</p>';
+        if (!factsGrid.querySelector('[data-bluecard-age-card]')) {
+          var ageCard = document.createElement('div');
+          ageCard.setAttribute('data-bluecard-age-card', 'true');
+          ageCard.className = 'bg-surface-container-lowest p-10 rounded-xl ghost-border';
+          ageCard.innerHTML = '<div class="mb-6 text-primary"><span class="material-symbols-outlined text-4xl" aria-hidden="true">elderly</span></div><h3 class="text-4xl font-headline font-bold text-primary mb-4">80+</h3><p class="text-on-surface-variant leading-relaxed text-lg">All Holocaust survivors we serve are over the age of 80.</p>';
+          factsGrid.appendChild(ageCard);
+        }
 
-        var povertyCard = document.createElement('div');
-        povertyCard.className = 'bg-surface-container-lowest p-10 rounded-xl ghost-border';
-        povertyCard.innerHTML = '<div class="mb-6 text-primary"><span class="material-symbols-outlined text-4xl" aria-hidden="true">account_balance_wallet</span></div><h3 class="text-4xl font-headline font-bold text-primary mb-4">More than half</h3><p class="text-on-surface-variant leading-relaxed text-lg">Fall 200% below the federal poverty line.</p>';
-
-        factsGrid.appendChild(ageCard);
-        factsGrid.appendChild(povertyCard);
+        if (!factsGrid.querySelector('[data-bluecard-poverty-card]')) {
+          var povertyCard = document.createElement('div');
+          povertyCard.setAttribute('data-bluecard-poverty-card', 'true');
+          povertyCard.className = 'bg-surface-container-lowest p-10 rounded-xl ghost-border';
+          povertyCard.innerHTML = '<div class="mb-6 text-primary"><span class="material-symbols-outlined text-4xl" aria-hidden="true">account_balance_wallet</span></div><h3 class="text-4xl font-headline font-bold text-primary mb-4">More than half</h3><p class="text-on-surface-variant leading-relaxed text-lg">Fall 200% below the federal poverty line.</p>';
+          factsGrid.appendChild(povertyCard);
+        }
       }
     }
 
     var impactSection = sections.find(function (section) {
       var heading = section.querySelector('h2');
-      return heading && heading.textContent.trim() === 'Our Impact';
+      if (!heading) return false;
+      var text = heading.textContent.trim();
+      return text === 'Our Impact' || text === 'Our Impact Since 1934';
     });
 
     if (impactSection) {
       var impactHeading = impactSection.querySelector('h2');
       impactHeading.textContent = 'Our Impact Since 1934';
+      impactHeading.classList.add('bc-impact-heading');
 
       var impactPanel = impactHeading.parentElement;
       var impactGrid = impactPanel ? impactPanel.querySelector('.grid') : null;
@@ -102,16 +130,21 @@
           if (description) description.textContent = 'Actively serving 3000+ survivor households.';
         }
 
-        var peopleCard = document.createElement('div');
-        peopleCard.className = 'bg-white/10 border border-white/15 rounded-2xl p-6';
-        peopleCard.innerHTML = '<span class="material-symbols-outlined text-4xl mb-5" aria-hidden="true">diversity_3</span><div class="font-headline text-3xl font-extrabold mb-2">3M</div><p class="text-on-primary/85 leading-relaxed">People served since 1934</p>';
+        if (!impactGrid.querySelector('[data-bluecard-people-card]')) {
+          var peopleCard = document.createElement('div');
+          peopleCard.setAttribute('data-bluecard-people-card', 'true');
+          peopleCard.className = 'bg-white/10 border border-white/15 rounded-2xl p-6';
+          peopleCard.innerHTML = '<span class="material-symbols-outlined text-4xl mb-5" aria-hidden="true">diversity_3</span><div class="font-headline text-3xl font-extrabold mb-2">3M</div><p class="text-on-primary/85 leading-relaxed">People served since 1934</p>';
+          impactGrid.appendChild(peopleCard);
+        }
 
-        var cancerCard = document.createElement('div');
-        cancerCard.className = 'bg-white/10 border border-white/15 rounded-2xl p-6';
-        cancerCard.innerHTML = '<span class="material-symbols-outlined text-4xl mb-5" aria-hidden="true">health_and_safety</span><div class="font-headline text-3xl font-extrabold mb-2">$7M</div><p class="text-on-primary/85 leading-relaxed">In aid to survivors battling cancer</p>';
-
-        impactGrid.appendChild(peopleCard);
-        impactGrid.appendChild(cancerCard);
+        if (!impactGrid.querySelector('[data-bluecard-cancer-card]')) {
+          var cancerCard = document.createElement('div');
+          cancerCard.setAttribute('data-bluecard-cancer-card', 'true');
+          cancerCard.className = 'bg-white/10 border border-white/15 rounded-2xl p-6';
+          cancerCard.innerHTML = '<span class="material-symbols-outlined text-4xl mb-5" aria-hidden="true">health_and_safety</span><div class="font-headline text-3xl font-extrabold mb-2">$7M</div><p class="text-on-primary/85 leading-relaxed">In aid to survivors battling cancer</p>';
+          impactGrid.appendChild(cancerCard);
+        }
       }
     }
 
