@@ -1,0 +1,35 @@
+name: Update Postcards to Sonia copy
+
+on:
+  push:
+    paths:
+      - '.github/workflows/update-postcards-copy.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Update Postcards to Sonia copy
+        shell: python
+        run: |
+          from pathlib import Path
+          path = Path('global-layout-legacy.js')
+          text = path.read_text()
+          old = '<div class="bc-postcards-head"><div><div class="bc-postcards-kicker">Sonia\'s Story</div><h2 class="bc-postcards-title">Postcards to Sonia</h2></div><p class="bc-postcards-note">Swipe or use the arrows to explore the postcards. Select any image to view it full size.</p></div>'
+          new = '<div class="bc-postcards-head"><div><h2 class="bc-postcards-title">Postcards to Sonia</h2></div><p class="bc-postcards-note">We invite students who participate in our program to write a note to Sonia. These notes reflect the impact of the program. Here are some examples.</p></div>'
+          if old not in text:
+              raise SystemExit('Target Postcards copy not found')
+          path.write_text(text.replace(old, new, 1))
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add global-layout-legacy.js
+          git commit -m "Update Postcards to Sonia copy"
+          git push
