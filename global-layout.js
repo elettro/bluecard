@@ -17,12 +17,37 @@
 
     var currentPath = (window.location.pathname || '').replace(/\/index\.html$/, '').replace(/\/+$/, '');
     if (currentPath === '/bluecard/interactive-hologram') {
-      var historySection = document.getElementById('program-overview');
-      var classroomGrid = document.querySelector('.bc-photo-grid');
-      var classroomSection = classroomGrid ? classroomGrid.closest('section') : null;
-      if (historySection && classroomSection && classroomSection !== historySection) {
-        historySection.parentNode.insertBefore(classroomSection, historySection);
-      }
+      var moveClassroomCarousel = function () {
+        var historySection = document.getElementById('program-overview');
+        if (!historySection) return false;
+
+        var classroomHeading = Array.from(document.querySelectorAll('h1,h2,h3')).find(function (heading) {
+          return heading.textContent.trim() === 'Hologram in the Classroom';
+        });
+        var classroomSection = classroomHeading ? classroomHeading.closest('section') : null;
+
+        if (!classroomSection) {
+          var classroomGrid = document.querySelector('.bc-classroom-carousel, .bc-classroom-section, .bc-photo-grid');
+          classroomSection = classroomGrid ? classroomGrid.closest('section') : null;
+        }
+
+        if (classroomSection && classroomSection !== historySection && historySection.previousElementSibling !== classroomSection) {
+          historySection.parentNode.insertBefore(classroomSection, historySection);
+        }
+
+        return !!classroomSection;
+      };
+
+      moveClassroomCarousel();
+      setTimeout(moveClassroomCarousel, 150);
+      setTimeout(moveClassroomCarousel, 500);
+      setTimeout(moveClassroomCarousel, 1200);
+
+      var classroomObserver = new MutationObserver(function () {
+        if (moveClassroomCarousel()) classroomObserver.disconnect();
+      });
+      classroomObserver.observe(document.body, { childList: true, subtree: true });
+      setTimeout(function () { classroomObserver.disconnect(); }, 4000);
     }
 
     var bbbPatch = document.createElement('script');
