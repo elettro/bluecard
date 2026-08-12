@@ -1,0 +1,36 @@
+name: Move NYC proclamation images
+
+on:
+  push:
+    paths:
+      - '.github/workflows/move-nyc-proclamation-images.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  move-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Move proclamation images into dedicated folder
+        shell: bash
+        run: |
+          set -e
+          mkdir -p images/nyc-promclamation
+          shopt -s nullglob
+          files=(images/bluecard-nyc-proclamation---*.png)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No root proclamation images found."
+            exit 0
+          fi
+          for file in "${files[@]}"; do
+            git mv "$file" images/nyc-promclamation/
+          done
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Move NYC proclamation images into dedicated folder"
+          git push
