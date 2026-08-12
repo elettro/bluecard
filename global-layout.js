@@ -3,6 +3,18 @@
   var legacyScript = document.createElement('script');
   legacyScript.src = '/bluecard/global-layout-legacy.js?v=' + cacheBust;
   legacyScript.onload = function () {
+    var educationNav = Array.from(document.querySelectorAll('#bc-global-nav .menu > li > a')).find(function (link) {
+      return link.textContent.trim() === 'Holocaust Education';
+    });
+    if (educationNav) {
+      educationNav.setAttribute('href', '#');
+      educationNav.classList.add('bluecard-nav-parent');
+      educationNav.setAttribute('aria-haspopup', 'true');
+      educationNav.addEventListener('click', function (event) {
+        event.preventDefault();
+      });
+    }
+
     var bbbPatch = document.createElement('script');
     bbbPatch.src = '/bluecard/bbb-footer.js?v=' + cacheBust;
     document.body.appendChild(bbbPatch);
