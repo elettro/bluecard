@@ -1,4 +1,4 @@
-name: Move NYC proclamation images
+name: Finish NYC proclamation relocation
 
 on:
   push:
@@ -9,28 +9,27 @@ permissions:
   contents: write
 
 jobs:
-  move-images:
+  finish-relocation:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Move proclamation images into dedicated folder
+      - name: Repoint Who We Are gallery and remove one-time workflow
         shell: bash
         run: |
           set -e
-          mkdir -p images/nyc-promclamation
-          shopt -s nullglob
-          files=(images/bluecard-nyc-proclamation---*.png)
-          if [ ${#files[@]} -eq 0 ]; then
-            echo "No root proclamation images found."
-            exit 0
-          fi
-          for file in "${files[@]}"; do
-            git mv "$file" images/nyc-promclamation/
-          done
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('who-we-are/index.html')
+          text = path.read_text()
+          text = text.replace('/bluecard/images/bluecard-nyc-proclamation---%20(', '/bluecard/images/nyc-promclamation/bluecard-nyc-proclamation---%20(')
+          path.write_text(text)
+          PY
+          git rm .github/workflows/move-nyc-proclamation-images.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Move NYC proclamation images into dedicated folder"
+          git add who-we-are/index.html
+          git commit -m "Repoint NYC proclamation gallery to dedicated image folder"
           git push
