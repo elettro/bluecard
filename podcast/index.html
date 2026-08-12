@@ -20,40 +20,17 @@
       line-height: 1.5;
     }
     .hero {
-      position: relative;
-      min-height: 420px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      width: 100%;
+      background: #fff;
       overflow: hidden;
-      color: #fff;
-      padding: 76px 20px;
-      background: linear-gradient(135deg, #0b4f9c 0%, #0057a8 62%, #164f8f 100%);
     }
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(8,37,69,.14);
-      pointer-events: none;
+    .hero img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
     }
     .wrap { max-width: 1180px; margin: 0 auto; }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 980px;
-      margin: 0 auto;
-      text-shadow: 0 8px 22px rgba(0,0,0,.28);
-    }
-    h1 {
-      margin: 0;
-      color: #fff;
-      font-size: clamp(42px, 6vw, 68px);
-      line-height: 1.02;
-      font-weight: 800;
-      letter-spacing: 0;
-    }
     main { padding: 42px 20px 56px; }
     .podcast-intro {
       max-width: 1080px;
@@ -107,19 +84,6 @@
       color: #fff;
       background: var(--blue-dark);
     }
-    .logo-card {
-      max-width: 1080px;
-      margin: 0 auto 24px;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 12px 28px rgba(0,0,0,.12);
-      background: #fff;
-    }
-    .logo-card img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
     .episodes { display: grid; gap: 18px; }
     .embed {
       background: var(--paper);
@@ -129,7 +93,7 @@
     }
     iframe { width: 100%; max-width: 100%; border: 0; border-radius: 12px; }
     @media (max-width: 700px) {
-      .hero { min-height: 380px; padding: 64px 14px; }
+      main { padding: 28px 14px 48px; }
       .podcast-intro { padding: 24px 20px; }
       .cta-row { flex-direction: column; align-items: stretch; }
       .cta { width: 100%; }
@@ -155,10 +119,8 @@
 <body>
   <div id="bc-global-nav"></div>
 
-  <header class="hero">
-    <div class="hero-content">
-      <h1>The Blue Card Podcast</h1>
-    </div>
+  <header class="hero" aria-label="The Blue Card Podcast">
+    <img src="/bluecard/images/podcast/podcast-header-custom.jpeg" alt="The Blue Card Podcast" />
   </header>
 
   <main>
@@ -171,9 +133,6 @@
         </div>
       </section>
 
-      <div class="logo-card">
-        <img src="/bluecard/images/podcast/blue-card-podcast-promo-wide-image.png" alt="The Blue Card Podcast artwork" />
-      </div>
       <section class="episodes" aria-label="Podcast episodes">
         <div class="embed"><iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/episode/1cXc2HM35a3BaqwAhsIEIl/video?utm_source=generator" width="624" height="351" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
         <div class="embed"><iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/episode/7ew6mPmDeklHamUpsGWBjj?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
