@@ -55,6 +55,14 @@
     if (impactSection) {
       var impactHeading = impactSection.querySelector('h2');
       impactHeading.textContent = 'Our Impact Since 1934';
+      impactHeading.classList.add('bc-impact-heading');
+
+      if (!document.getElementById('bc-impact-heading-style')) {
+        var impactStyle = document.createElement('style');
+        impactStyle.id = 'bc-impact-heading-style';
+        impactStyle.textContent = '@media (min-width:1024px){.bc-impact-heading{white-space:nowrap!important;font-size:2.5rem!important;line-height:1.05!important;letter-spacing:-0.025em!important}}';
+        document.head.appendChild(impactStyle);
+      }
 
       var impactPanel = impactHeading.parentElement;
       var impactGrid = impactPanel ? impactPanel.querySelector('.grid') : null;
