@@ -15,6 +15,16 @@
       });
     }
 
+    var currentPath = (window.location.pathname || '').replace(/\/index\.html$/, '').replace(/\/+$/, '');
+    if (currentPath === '/bluecard/interactive-hologram') {
+      var historySection = document.getElementById('program-overview');
+      var classroomGrid = document.querySelector('.bc-photo-grid');
+      var classroomSection = classroomGrid ? classroomGrid.closest('section') : null;
+      if (historySection && classroomSection && classroomSection !== historySection) {
+        historySection.parentNode.insertBefore(classroomSection, historySection);
+      }
+    }
+
     var bbbPatch = document.createElement('script');
     bbbPatch.src = '/bluecard/bbb-footer.js?v=' + cacheBust;
     document.body.appendChild(bbbPatch);
