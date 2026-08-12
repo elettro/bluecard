@@ -3,8 +3,8 @@
   if (currentPath !== '/bluecard/interactive-hologram') return;
   if (document.getElementById('hologram-classroom-carousel')) return;
 
-  var watchSection = document.getElementById('watch-video');
-  if (!watchSection || !watchSection.parentNode) return;
+  var historySection = document.getElementById('program-overview');
+  if (!historySection || !historySection.parentNode) return;
 
   var imageBase = '/bluecard/images/interactive-hologram/16x9-classroom/';
   var images = [];
@@ -36,7 +36,7 @@
   <div class="bc-classroom-carousel-meta"><span class="bc-classroom-carousel-count">1 / 20</span><div class="bc-classroom-carousel-progress" aria-hidden="true"><span></span></div></div>
 </div>`;
 
-  watchSection.parentNode.insertBefore(section, watchSection);
+  historySection.parentNode.insertBefore(section, historySection);
 
   var track = section.querySelector('.bc-classroom-carousel-track');
   images.forEach(function (src, index) {
