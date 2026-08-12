@@ -27,6 +27,17 @@
     if (factsSection) {
       var factsHeading = factsSection.querySelector('h2');
       factsHeading.textContent = 'Facts About Holocaust Survivors We Serve';
+      factsHeading.classList.add('bc-facts-heading');
+
+      var factsIntro = factsHeading.parentElement;
+      if (factsIntro) factsIntro.classList.add('bc-facts-heading-wrap');
+
+      if (!document.getElementById('bc-facts-heading-style')) {
+        var factsStyle = document.createElement('style');
+        factsStyle.id = 'bc-facts-heading-style';
+        factsStyle.textContent = '@media (min-width:1024px){.bc-facts-heading-wrap{max-width:none!important;flex:0 1 auto!important}.bc-facts-heading{white-space:nowrap!important;font-size:2.75rem!important;line-height:1.05!important;letter-spacing:-0.025em!important}}';
+        document.head.appendChild(factsStyle);
+      }
 
       var factsGrid = factsSection.querySelector('.grid');
       if (factsGrid) {
