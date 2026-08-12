@@ -23,9 +23,9 @@
   <div class="bc-classroom-carousel-head">
     <div>
       <div class="bc-classroom-carousel-kicker">In the Classroom</div>
-      <h2 class="bc-classroom-carousel-title">Hologram in the Classroom</h2>
+      <h2 class="bc-classroom-carousel-title">In the Classroom</h2>
     </div>
-    <p class="bc-classroom-carousel-note">Explore the program in schools and classrooms. Swipe on mobile or tablet, use the arrows on desktop, and select any image to view it larger.</p>
+    <p class="bc-classroom-carousel-note">See what the program looks like in schools and classrooms. Swipe on mobile or tablet, use the arrows on desktop, and select any image to view it larger.</p>
   </div>
   <div class="bc-classroom-carousel-shell">
     <button class="bc-classroom-carousel-arrow bc-classroom-carousel-prev" type="button" aria-label="Previous classroom images">‹</button>
