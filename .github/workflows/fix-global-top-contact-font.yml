@@ -1,0 +1,34 @@
+name: Fix global top contact font
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-global-top-contact-font.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply global font to top contact strip
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('global-layout.css')
+          s = p.read_text()
+          s = s.replace('  z-index: 999;\n}', '  z-index: 999;\n  font-family: Arial, Helvetica, sans-serif;\n}', 1)
+          s = s.replace('  white-space: nowrap;\n}', '  white-space: nowrap;\n  font-family: Arial, Helvetica, sans-serif;\n}', 1)
+          s = s.replace('  text-decoration: none;\n  font-size: 20.3125px;', '  text-decoration: none;\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 20.3125px;', 1)
+          p.write_text(s)
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add global-layout.css
+          git commit -m "Use global font in top contact strip"
+          git push
