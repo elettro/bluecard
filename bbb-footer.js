@@ -46,6 +46,35 @@
     observer.observe(document.documentElement, { childList: true, subtree: true });
   }
 
+  function ensureFaqNavLink() {
+    var moreParent = Array.from(document.querySelectorAll('#bc-global-nav .menu > li.menu-item-has-children')).find(function (item) {
+      var parentLink = item.querySelector(':scope > a');
+      return parentLink && parentLink.textContent.trim() === 'More';
+    });
+    if (!moreParent) return false;
+
+    var submenu = moreParent.querySelector(':scope > .sub-menu');
+    if (!submenu) return false;
+    if (submenu.querySelector('a[href="/bluecard/faqs/"]')) return true;
+
+    var item = document.createElement('li');
+    item.innerHTML = '<a href="/bluecard/faqs/">FAQs</a>';
+    var contactItem = Array.from(submenu.children).find(function (li) {
+      var a = li.querySelector('a');
+      return a && a.textContent.trim() === 'Contact Us';
+    });
+    if (contactItem) submenu.insertBefore(item, contactItem);
+    else submenu.appendChild(item);
+    return true;
+  }
+
+  if (!ensureFaqNavLink()) {
+    var navObserver = new MutationObserver(function () {
+      if (ensureFaqNavLink()) navObserver.disconnect();
+    });
+    navObserver.observe(document.documentElement, { childList: true, subtree: true });
+  }
+
   function ensureHomepageHeadingStyles() {
     if (document.getElementById('bc-homepage-heading-fixes')) return;
     var style = document.createElement('style');
@@ -66,6 +95,10 @@
 
     var main = document.querySelector('main');
     if (!main) return;
+
+    Array.from(main.querySelectorAll('#faq, .bc-faq')).forEach(function (faqSection) {
+      faqSection.remove();
+    });
 
     ensureHomepageHeadingStyles();
 
