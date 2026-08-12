@@ -1,0 +1,33 @@
+name: Update Speakers Bureau copy
+
+on:
+  push:
+    paths:
+      - '.github/workflows/update-speakers-bureau-copy.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Update Speakers Bureau intro
+        shell: python
+        run: |
+          from pathlib import Path
+          path = Path('speakers-bureau/index.html')
+          text = path.read_text()
+          text = text.replace('      <p class="sb-subtitle">The Blue Card’s inaugural speakers</p>\n', '', 1)
+          text = text.replace('Speakers are available for interviews, school programs, events, panels, and media appearances. Speaker fees are available and travel expenses are fully covered when required.', 'Speakers are available for interviews, school programs, events, panels, and media appearances.', 1)
+          path.write_text(text)
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add speakers-bureau/index.html
+          git commit -m "Update Speakers Bureau intro copy"
+          git push
