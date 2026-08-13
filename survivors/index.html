@@ -7,394 +7,46 @@
   <meta name="description" content="A photo gallery featuring Holocaust survivors and The Blue Card community." />
   <link rel="stylesheet" href="/bluecard/global-layout.css?v=20260806-1536" />
   <link rel="canonical" href="https://elettro.github.io/bluecard/survivors/" />
-  <meta property="og:title" content="Survivor Photo Gallery | The Blue Card" />
-  <meta property="og:description" content="A photo gallery featuring Holocaust survivors and The Blue Card community." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://elettro.github.io/bluecard/survivors/" />
-  <meta property="og:site_name" content="The Blue Card" />
-  <meta name="twitter:card" content="summary_large_image" />
   <style>
-    :root {
-      --blue: #0d5cab;
-      --deep-blue: #0b2341;
-      --soft-blue: #eef5fb;
-      --line: rgba(13, 92, 171, 0.16);
-      --text: #25384b;
-    }
-
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--text); background: #fff; }
-
-    .gallery-hero {
-      padding: 74px 24px 54px;
-      background: linear-gradient(135deg, #0b2341 0%, #0d5cab 100%);
-      color: #fff;
-      text-align: center;
-    }
-    .gallery-hero-inner { max-width: 980px; margin: 0 auto; }
-    .gallery-kicker {
-      display: inline-block;
-      margin: 0 0 12px;
-      font-size: 13px;
-      line-height: 1.4;
-      font-weight: 800;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.8);
-    }
-    .gallery-hero h1 {
-      margin: 0;
-      font-size: clamp(38px, 6vw, 68px);
-      line-height: 1.02;
-      letter-spacing: -.035em;
-      font-weight: 800;
-    }
-    .gallery-hero p {
-      max-width: 760px;
-      margin: 20px auto 0;
-      color: rgba(255,255,255,.9);
-      font-size: clamp(17px, 2vw, 21px);
-      line-height: 1.65;
-    }
-
-    .gallery-section {
-      padding: 54px 22px 84px;
-      background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%);
-    }
-    .gallery-wrap { max-width: 1480px; margin: 0 auto; }
-    .gallery-meta {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: end;
-      margin-bottom: 26px;
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--line);
-    }
-    .gallery-meta h2 {
-      margin: 0;
-      color: var(--deep-blue);
-      font-size: clamp(25px, 3vw, 34px);
-      line-height: 1.15;
-    }
-    .gallery-count {
-      margin: 0;
-      color: #637385;
-      font-size: 14px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-    }
-    .photo-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 14px;
-      background: #fff;
-      box-shadow: 0 12px 30px rgba(11, 35, 65, .11);
-      border: 1px solid rgba(11, 35, 65, .08);
-      cursor: zoom-in;
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-    .photo-card:hover,
-    .photo-card:focus-within {
-      transform: translateY(-3px);
-      box-shadow: 0 18px 38px rgba(11, 35, 65, .16);
-    }
-    .photo-button {
-      display: block;
-      width: 100%;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      cursor: zoom-in;
-      text-align: left;
-    }
-    .photo-frame {
-      position: relative;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      background: #e9eef4;
-    }
-    .photo-frame img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .35s ease;
-    }
-    .photo-card:hover img { transform: scale(1.02); }
-    .photo-number {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      z-index: 2;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 42px;
-      height: 34px;
-      padding: 0 10px;
-      border-radius: 999px;
-      color: #fff;
-      background: rgba(11, 35, 65, .84);
-      backdrop-filter: blur(8px);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: .04em;
-    }
-    .photo-label {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 52px;
-      padding: 14px 16px;
-      color: var(--deep-blue);
-      font-size: 15px;
-      font-weight: 800;
-    }
-    .photo-label span:last-child {
-      color: #7b8b9c;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-    .image-fallback {
-      display: none;
-      position: absolute;
-      inset: 0;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      color: #66788a;
-      background: #eef2f6;
-      text-align: center;
-      font-size: 14px;
-      font-weight: 700;
-    }
-    .photo-frame.is-broken .image-fallback { display: flex; }
-    .photo-frame.is-broken img { display: none; }
-
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 10000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 28px;
-      background: rgba(4, 14, 28, .94);
-    }
-    .lightbox.is-open { display: flex; }
-    .lightbox-inner {
-      position: relative;
-      width: min(1400px, 94vw);
-      max-height: 92vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-    }
-    .lightbox img {
-      max-width: 100%;
-      max-height: 82vh;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 24px 70px rgba(0,0,0,.5);
-    }
-    .lightbox-caption {
-      color: #fff;
-      font-size: 15px;
-      font-weight: 700;
-      text-align: center;
-    }
-    .lightbox-close,
-    .lightbox-nav {
-      position: fixed;
-      border: 0;
-      color: #fff;
-      background: rgba(255,255,255,.13);
-      backdrop-filter: blur(10px);
-      cursor: pointer;
-      transition: background .18s ease;
-    }
-    .lightbox-close:hover,
-    .lightbox-nav:hover { background: rgba(255,255,255,.22); }
-    .lightbox-close {
-      top: 18px;
-      right: 18px;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      font-size: 28px;
-      line-height: 1;
-    }
-    .lightbox-nav {
-      top: 50%;
-      transform: translateY(-50%);
-      width: 48px;
-      height: 72px;
-      border-radius: 10px;
-      font-size: 34px;
-      line-height: 1;
-    }
-    .lightbox-prev { left: 16px; }
-    .lightbox-next { right: 16px; }
-
-    @media (max-width: 980px) {
-      .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-    }
-    @media (max-width: 620px) {
-      .gallery-hero { padding: 58px 18px 42px; }
-      .gallery-section { padding: 36px 14px 60px; }
-      .gallery-meta { align-items: flex-start; flex-direction: column; gap: 8px; }
-      .photo-grid { grid-template-columns: 1fr; gap: 16px; }
-      .lightbox { padding: 14px; }
-      .lightbox-nav { width: 42px; height: 58px; font-size: 28px; }
-      .lightbox-prev { left: 8px; }
-      .lightbox-next { right: 8px; }
-    }
+    :root{--blue:#0d5cab;--deep:#0b2341;--line:rgba(13,92,171,.16);--text:#25384b}
+    *{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:#fff}
+    .gallery-hero{padding:74px 24px 54px;background:linear-gradient(135deg,#0b2341 0%,#0d5cab 100%);color:#fff;text-align:center}
+    .gallery-hero-inner{max-width:980px;margin:0 auto}.gallery-kicker{display:inline-block;margin:0 0 12px;font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+    .gallery-hero h1{margin:0;font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-.035em;font-weight:800}.gallery-hero p{max-width:760px;margin:20px auto 0;color:rgba(255,255,255,.9);font-size:clamp(17px,2vw,21px);line-height:1.65}
+    .gallery-section{padding:54px 22px 84px;background:linear-gradient(180deg,#f7f9fc 0%,#fff 100%)}.gallery-wrap{max-width:1480px;margin:0 auto}
+    .gallery-meta{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:26px;padding-bottom:18px;border-bottom:1px solid var(--line)}.gallery-meta h2{margin:0;color:var(--deep);font-size:clamp(25px,3vw,34px)}.gallery-count{margin:0;color:#637385;font-size:14px;font-weight:700}
+    .photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.photo-card{overflow:hidden;border-radius:14px;background:#fff;box-shadow:0 12px 30px rgba(11,35,65,.11);border:1px solid rgba(11,35,65,.08)}
+    .photo-button{display:block;width:100%;padding:0;border:0;background:transparent;cursor:zoom-in;text-align:left}.photo-frame{position:relative;aspect-ratio:16/9;overflow:hidden;background:#e9eef4}.photo-frame img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}.photo-card:hover img{transform:scale(1.02)}
+    .photo-number{position:absolute;top:12px;left:12px;z-index:2;display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:34px;padding:0 10px;border-radius:999px;color:#fff;background:rgba(11,35,65,.84);font-size:13px;font-weight:800}.photo-label{display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:14px 16px;color:var(--deep);font-size:15px;font-weight:800}.photo-label span:last-child{color:#7b8b9c;font-size:12px;text-transform:uppercase}
+    .lightbox{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;padding:28px;background:rgba(4,14,28,.94)}.lightbox.is-open{display:flex}.lightbox-inner{width:min(1400px,94vw);max-height:92vh;display:flex;flex-direction:column;align-items:center;gap:14px}.lightbox img{max-width:100%;max-height:82vh;object-fit:contain;border-radius:8px}.lightbox-caption{color:#fff;font-size:15px;font-weight:700}.lightbox-close,.lightbox-nav{position:fixed;border:0;color:#fff;background:rgba(255,255,255,.13);cursor:pointer}.lightbox-close{top:18px;right:18px;width:44px;height:44px;border-radius:50%;font-size:28px}.lightbox-nav{top:50%;transform:translateY(-50%);width:48px;height:72px;border-radius:10px;font-size:34px}.lightbox-prev{left:16px}.lightbox-next{right:16px}
+    @media(max-width:980px){.photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:620px){.gallery-hero{padding:58px 18px 42px}.gallery-section{padding:36px 14px 60px}.gallery-meta{align-items:flex-start;flex-direction:column}.photo-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <header id="bc-global-nav" aria-label="Global site navigation"></header>
-
   <main>
-    <section class="gallery-hero">
-      <div class="gallery-hero-inner">
-        <span class="gallery-kicker">The Blue Card</span>
-        <h1>Survivor Photo Gallery</h1>
-        <p>A visual collection from The Blue Card community, preserving moments of connection, care, dignity, and support.</p>
-      </div>
-    </section>
-
-    <section class="gallery-section" aria-labelledby="gallery-heading">
-      <div class="gallery-wrap">
-        <div class="gallery-meta">
-          <h2 id="gallery-heading">Gallery</h2>
-          <p class="gallery-count">37 images</p>
-        </div>
-        <div class="photo-grid" id="photo-grid"></div>
-      </div>
-    </section>
+    <section class="gallery-hero"><div class="gallery-hero-inner"><span class="gallery-kicker">The Blue Card</span><h1>Survivor Photo Gallery</h1><p>A visual collection from The Blue Card community, preserving moments of connection, care, dignity, and support.</p></div></section>
+    <section class="gallery-section"><div class="gallery-wrap"><div class="gallery-meta"><h2>Gallery</h2><p class="gallery-count">36 images</p></div><div class="photo-grid" id="photo-grid"></div></div></section>
   </main>
-
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
-    <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close photo viewer">×</button>
-    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" type="button" aria-label="Previous image">‹</button>
-    <div class="lightbox-inner">
-      <img id="lightbox-image" src="" alt="" />
-      <div class="lightbox-caption" id="lightbox-caption"></div>
-    </div>
-    <button class="lightbox-nav lightbox-next" id="lightbox-next" type="button" aria-label="Next image">›</button>
-  </div>
-
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer"><button class="lightbox-close" id="lightbox-close" type="button">×</button><button class="lightbox-nav lightbox-prev" id="lightbox-prev" type="button">‹</button><div class="lightbox-inner"><img id="lightbox-image" src="" alt="" /><div class="lightbox-caption" id="lightbox-caption"></div></div><button class="lightbox-nav lightbox-next" id="lightbox-next" type="button">›</button></div>
   <footer id="bc-global-footer" aria-label="Global site footer"></footer>
-
   <script>
-    (function () {
-      const totalImages = 37;
-      const grid = document.getElementById('photo-grid');
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImage = document.getElementById('lightbox-image');
-      const lightboxCaption = document.getElementById('lightbox-caption');
-      const closeButton = document.getElementById('lightbox-close');
-      const prevButton = document.getElementById('lightbox-prev');
-      const nextButton = document.getElementById('lightbox-next');
-      let currentIndex = 1;
-
-      function imagePath(index) {
-        return `/bluecard/images/survivors/the-blue-card-survivor-images-16x9---- (${index}).png`;
-      }
-
-      function padded(index) {
-        return String(index).padStart(2, '0');
-      }
-
-      function openLightbox(index) {
-        currentIndex = index;
-        lightboxImage.src = imagePath(index);
-        lightboxImage.alt = `The Blue Card survivor gallery image ${index}`;
-        lightboxCaption.textContent = `Image ${padded(index)} of ${totalImages}`;
-        lightbox.classList.add('is-open');
-        document.body.style.overflow = 'hidden';
-        closeButton.focus();
-      }
-
-      function closeLightbox() {
-        lightbox.classList.remove('is-open');
-        document.body.style.overflow = '';
-      }
-
-      function moveLightbox(direction) {
-        currentIndex += direction;
-        if (currentIndex < 1) currentIndex = totalImages;
-        if (currentIndex > totalImages) currentIndex = 1;
-        lightboxImage.src = imagePath(currentIndex);
-        lightboxImage.alt = `The Blue Card survivor gallery image ${currentIndex}`;
-        lightboxCaption.textContent = `Image ${padded(currentIndex)} of ${totalImages}`;
-      }
-
-      for (let i = 1; i <= totalImages; i += 1) {
-        const card = document.createElement('article');
-        card.className = 'photo-card';
-
-        const button = document.createElement('button');
-        button.className = 'photo-button';
-        button.type = 'button';
-        button.setAttribute('aria-label', `Open survivor gallery image ${i}`);
-        button.addEventListener('click', function () { openLightbox(i); });
-
-        const frame = document.createElement('div');
-        frame.className = 'photo-frame';
-
-        const number = document.createElement('span');
-        number.className = 'photo-number';
-        number.textContent = padded(i);
-
-        const img = document.createElement('img');
-        img.src = imagePath(i);
-        img.alt = `The Blue Card survivor gallery image ${i}`;
-        img.loading = i <= 6 ? 'eager' : 'lazy';
-        img.decoding = 'async';
-        img.addEventListener('error', function () { frame.classList.add('is-broken'); });
-
-        const fallback = document.createElement('div');
-        fallback.className = 'image-fallback';
-        fallback.textContent = `Image ${padded(i)} is currently unavailable.`;
-
-        const label = document.createElement('div');
-        label.className = 'photo-label';
-        label.innerHTML = `<span>Image ${padded(i)}</span><span>View</span>`;
-
-        frame.appendChild(img);
-        frame.appendChild(number);
-        frame.appendChild(fallback);
-        button.appendChild(frame);
-        button.appendChild(label);
-        card.appendChild(button);
-        grid.appendChild(card);
-      }
-
-      closeButton.addEventListener('click', closeLightbox);
-      prevButton.addEventListener('click', function () { moveLightbox(-1); });
-      nextButton.addEventListener('click', function () { moveLightbox(1); });
-
-      lightbox.addEventListener('click', function (event) {
-        if (event.target === lightbox) closeLightbox();
-      });
-
-      document.addEventListener('keydown', function (event) {
-        if (!lightbox.classList.contains('is-open')) return;
-        if (event.key === 'Escape') closeLightbox();
-        if (event.key === 'ArrowLeft') moveLightbox(-1);
-        if (event.key === 'ArrowRight') moveLightbox(1);
-      });
+    (function(){
+      const images=Array.from({length:36},(_,i)=>i+2);
+      const grid=document.getElementById('photo-grid');
+      const lightbox=document.getElementById('lightbox');
+      const lbImg=document.getElementById('lightbox-image');
+      const lbCap=document.getElementById('lightbox-caption');
+      let pos=0;
+      const path=i=>`/bluecard/images/survivors/the-blue-card-survivor-images-16x9---- (${i}).png`;
+      const pad=i=>String(i).padStart(2,'0');
+      function openAt(p){pos=p;const i=images[pos];lbImg.src=path(i);lbImg.alt=`The Blue Card survivor gallery image ${i}`;lbCap.textContent=`Image ${pad(i)} of 37`;lightbox.classList.add('is-open');document.body.style.overflow='hidden'}
+      function move(d){pos=(pos+d+images.length)%images.length;openAt(pos)}
+      images.forEach((i,p)=>{const card=document.createElement('article');card.className='photo-card';const b=document.createElement('button');b.className='photo-button';b.type='button';b.onclick=()=>openAt(p);b.innerHTML=`<div class="photo-frame"><img src="${path(i)}" alt="The Blue Card survivor gallery image ${i}" loading="${p<6?'eager':'lazy'}" decoding="async"><span class="photo-number">${pad(i)}</span></div><div class="photo-label"><span>Image ${pad(i)}</span><span>View</span></div>`;card.appendChild(b);grid.appendChild(card)});
+      document.getElementById('lightbox-close').onclick=()=>{lightbox.classList.remove('is-open');document.body.style.overflow=''};
+      document.getElementById('lightbox-prev').onclick=()=>move(-1);document.getElementById('lightbox-next').onclick=()=>move(1);
+      lightbox.onclick=e=>{if(e.target===lightbox)document.getElementById('lightbox-close').click()};
+      document.addEventListener('keydown',e=>{if(!lightbox.classList.contains('is-open'))return;if(e.key==='Escape')document.getElementById('lightbox-close').click();if(e.key==='ArrowLeft')move(-1);if(e.key==='ArrowRight')move(1)});
     })();
   </script>
   <script src="/bluecard/global-layout.js?v=20260806-3"></script>
