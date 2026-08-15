@@ -88,15 +88,25 @@
 
       var factsGrid = factsSection.querySelector('.grid');
       if (factsGrid) {
+        // Keep a three-column desktop grid so the first row has three cards
+        // and the second row has two cards at the exact same width.
         factsGrid.className = factsGrid.className
-          .replace('md:grid-cols-3', 'md:grid-cols-2 xl:grid-cols-5');
+          .replace('md:grid-cols-2 xl:grid-cols-5', 'md:grid-cols-3')
+          .replace('xl:grid-cols-5', '');
+
+        // Prevent the two supplemental cards from being duplicated if this patch runs more than once.
+        factsGrid.querySelectorAll('[data-bc-fact-extra]').forEach(function (card) {
+          card.remove();
+        });
 
         var ageCard = document.createElement('div');
         ageCard.className = 'bg-surface-container-lowest p-10 rounded-xl ghost-border';
+        ageCard.setAttribute('data-bc-fact-extra', 'age');
         ageCard.innerHTML = '<div class="mb-6 text-primary"><span class="material-symbols-outlined text-4xl" aria-hidden="true">elderly</span></div><h3 class="text-4xl font-headline font-bold text-primary mb-4">80+</h3><p class="text-on-surface-variant leading-relaxed text-lg">All Holocaust survivors we serve are over the age of 80.</p>';
 
         var povertyCard = document.createElement('div');
         povertyCard.className = 'bg-surface-container-lowest p-10 rounded-xl ghost-border';
+        povertyCard.setAttribute('data-bc-fact-extra', 'poverty');
         povertyCard.innerHTML = '<div class="mb-6 text-primary"><span class="material-symbols-outlined text-4xl" aria-hidden="true">account_balance_wallet</span></div><h3 class="text-4xl font-headline font-bold text-primary mb-4">More than half</h3><p class="text-on-surface-variant leading-relaxed text-lg">Fall 200% below the federal poverty line.</p>';
 
         factsGrid.appendChild(ageCard);
