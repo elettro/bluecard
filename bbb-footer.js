@@ -119,7 +119,11 @@
 
       var factsGrid = factsSection.querySelector('.grid');
       if (factsGrid) {
-        factsGrid.className = factsGrid.className.replace('md:grid-cols-3', 'md:grid-cols-2 xl:grid-cols-5');
+        factsGrid.className = 'grid grid-cols-1 md:grid-cols-3 gap-8';
+
+        factsGrid.querySelectorAll('[data-bc-fact-extra]').forEach(function (card) {
+          card.remove();
+        });
 
         if (!factsGrid.querySelector('[data-bluecard-age-card]')) {
           var ageCard = document.createElement('div');
