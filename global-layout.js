@@ -157,6 +157,20 @@
       }
     }
 
+    // Use survivor image 17 as the card-topper image for ongoing/monthly support.
+    var ongoingSupportHeading = Array.from(main.querySelectorAll('#core-programs .card h3')).find(function (heading) {
+      var text = heading.textContent.trim();
+      return text === 'Monthly Assistance' || text === 'Ongoing Support';
+    });
+    if (ongoingSupportHeading) {
+      var ongoingSupportCard = ongoingSupportHeading.closest('.card');
+      var ongoingSupportImage = ongoingSupportCard ? ongoingSupportCard.querySelector('.card-media img') : null;
+      if (ongoingSupportImage) {
+        ongoingSupportImage.src = '/bluecard/images/survivors/the-blue-card-survivor-images-16x9----%20(17).png';
+        ongoingSupportImage.alt = 'Holocaust survivors supported by The Blue Card';
+      }
+    }
+
     // Survivor video before How We Help
     var programsSection = document.getElementById('core-programs');
     if (programsSection && !document.getElementById('survivor-story-video')) {
