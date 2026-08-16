@@ -33,11 +33,17 @@
     .team-carousel{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:2px 2px 16px}
     .team-carousel::-webkit-scrollbar{display:none}
     .team-slide{flex:0 0 calc((100% - 36px)/3);scroll-snap-align:start;border-radius:18px;overflow:hidden;background:#eef4fa;box-shadow:0 10px 26px rgba(11,37,69,.12)}
-    .team-slide img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+    .team-slide img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;cursor:zoom-in}
     .team-carousel-btn{position:absolute;top:50%;transform:translateY(-58%);z-index:2;width:46px;height:46px;border:0;border-radius:50%;background:#fff;color:var(--blue-dark);font-size:28px;line-height:1;cursor:pointer;box-shadow:0 8px 22px rgba(11,37,69,.22)}
     .team-carousel-btn:hover,.team-carousel-btn:focus{background:#f2f7fc}
     .team-carousel-btn.prev{left:-22px}
     .team-carousel-btn.next{right:-22px}
+
+    .team-image-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:32px;background:rgba(2,12,24,.88);backdrop-filter:blur(5px)}
+    .team-image-modal.is-open{display:flex}
+    .team-image-modal__image{display:block;max-width:min(94vw,1500px);max-height:88vh;width:auto;height:auto;object-fit:contain;border-radius:12px;box-shadow:0 24px 70px rgba(0,0,0,.45)}
+    .team-image-modal__close{position:fixed;top:20px;right:24px;width:52px;height:52px;border:0;border-radius:50%;background:#fff;color:var(--blue-dark);font-size:34px;line-height:1;cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,.3)}
+    .team-image-modal__close:hover,.team-image-modal__close:focus{background:#eef5fc}
 
     .sold-out{margin-top:48px}
     .sold-out h2{font-size:clamp(2rem,5vw,3.2rem);margin:0 0 18px;color:var(--blue-dark);letter-spacing:.08em}
@@ -56,7 +62,7 @@
     .antarctica-card h3{margin:22px 0 10px;color:var(--blue-dark);font-size:1.45rem}
     .antarctica-card p{margin:0;color:var(--muted);line-height:1.7}
     @media (max-width:900px){.featured-grid,.action-grid{grid-template-columns:1fr}.wrap{width:min(1140px,calc(100% - 24px))}h2.section-title{margin:26px 0 18px}.intro,.action-section{padding:26px 20px}.sold-out-wrap img{width:80%;max-width:448px}.team-slide{flex-basis:calc((100% - 18px)/2)}.team-carousel-btn.prev{left:8px}.team-carousel-btn.next{right:8px}}
-    @media (max-width:600px){.team-gallery{margin:42px 0 34px}.team-gallery-head{align-items:flex-start;flex-direction:column;gap:6px}.team-slide{flex-basis:88%}.team-carousel-btn{width:42px;height:42px;font-size:24px}}
+    @media (max-width:600px){.team-gallery{margin:42px 0 34px}.team-gallery-head{align-items:flex-start;flex-direction:column;gap:6px}.team-slide{flex-basis:88%}.team-carousel-btn{width:42px;height:42px;font-size:24px}.team-image-modal{padding:14px}.team-image-modal__close{top:12px;right:12px;width:46px;height:46px;font-size:30px}.team-image-modal__image{max-width:96vw;max-height:84vh}}
   </style>
   <meta name="description" content="Team Blue Card is The Blue Card’s official endurance fundraising team, raising funds and awareness for Holocaust survivors through races and endurance events worldwide.">
   <meta property="og:title" content="Team Blue Card | The Blue Card">
@@ -134,6 +140,12 @@
       </section>
     </div>
   </main>
+
+  <div class="team-image-modal" id="team-image-modal" role="dialog" aria-modal="true" aria-label="Expanded Team Blue Card photo" aria-hidden="true">
+    <button class="team-image-modal__close" type="button" aria-label="Close expanded photo">×</button>
+    <img class="team-image-modal__image" id="team-image-modal-image" src="" alt="Expanded Team Blue Card participant photo">
+  </div>
+
   <footer id="bc-global-footer"></footer>
   <script src="../global-layout.js?v=20260806-3"></script>
   <script>
@@ -144,7 +156,30 @@
         var tmp=imageNumbers[i];imageNumbers[i]=imageNumbers[j];imageNumbers[j]=tmp;
       }
       var carousel=document.getElementById('team-blue-card-carousel');
+      var modal=document.getElementById('team-image-modal');
+      var modalImage=document.getElementById('team-image-modal-image');
+      var modalClose=document.querySelector('.team-image-modal__close');
       if(!carousel)return;
+
+      function openModal(src,alt){
+        modalImage.src=src;
+        modalImage.alt=alt||'Expanded Team Blue Card participant photo';
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
+        clearInterval(auto);
+        modalClose.focus();
+      }
+
+      function closeModal(){
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden','true');
+        modalImage.src='';
+        document.body.style.overflow='';
+        clearInterval(auto);
+        auto=setInterval(function(){step(1)},4500);
+      }
+
       imageNumbers.forEach(function(n){
         var slide=document.createElement('div');
         slide.className='team-slide';
@@ -152,9 +187,15 @@
         img.src='../images/team-blue-card/team-blue-card-images-16x9-----%20('+n+').png';
         img.alt='Team Blue Card participant photo';
         img.loading='lazy';
+        img.tabIndex=0;
+        img.setAttribute('role','button');
+        img.setAttribute('aria-label','Open full-size Team Blue Card photo');
+        img.addEventListener('click',function(){openModal(img.src,img.alt)});
+        img.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openModal(img.src,img.alt)}});
         slide.appendChild(img);
         carousel.appendChild(slide);
       });
+
       function step(direction){
         var first=carousel.querySelector('.team-slide');
         if(!first)return;
@@ -164,12 +205,17 @@
         if(direction<0&&carousel.scrollLeft<=amount/2){carousel.scrollTo({left:max,behavior:'smooth'});return;}
         carousel.scrollBy({left:direction*amount,behavior:'smooth'});
       }
+
       document.querySelector('.team-carousel-btn.prev').addEventListener('click',function(){step(-1)});
       document.querySelector('.team-carousel-btn.next').addEventListener('click',function(){step(1)});
       var auto=setInterval(function(){step(1)},4500);
       var shell=document.querySelector('.team-carousel-shell');
       shell.addEventListener('mouseenter',function(){clearInterval(auto)});
-      shell.addEventListener('mouseleave',function(){clearInterval(auto);auto=setInterval(function(){step(1)},4500)});
+      shell.addEventListener('mouseleave',function(){if(!modal.classList.contains('is-open')){clearInterval(auto);auto=setInterval(function(){step(1)},4500)}});
+
+      modalClose.addEventListener('click',closeModal);
+      modal.addEventListener('click',function(e){if(e.target===modal){closeModal()}});
+      document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('is-open')){closeModal()}});
     })();
   </script>
 </body>
