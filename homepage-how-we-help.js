@@ -12,9 +12,41 @@
     document.body.appendChild(classroomScript);
   }
 
+  function patchHomepageHelpImages() {
+    if (currentPath !== '/bluecard' && currentPath !== '/') return;
+
+    var imageMap = {
+      'Ongoing Support': {
+        src: '/bluecard/images/survivors/the-blue-card-survivor-images-16x9----%20(17).png',
+        alt: 'Holocaust survivors supported by The Blue Card'
+      },
+      'Health and Well-being': {
+        src: '/bluecard/images/survivors/the-blue-card-survivor-images-16x9----%20(27).png',
+        alt: 'Holocaust survivors participating in a Blue Card wellbeing program'
+      },
+      'Medication Assistance': {
+        src: '/bluecard/images/homepage/11x7-pharmacy-getting-prescriptions-v1.png',
+        alt: 'Older adult receiving prescription medication from a pharmacist'
+      }
+    };
+
+    Array.from(document.querySelectorAll('.bc-help-card')).forEach(function (card) {
+      var heading = card.querySelector('h3');
+      var image = card.querySelector('.bc-help-image img');
+      if (!heading || !image) return;
+      var replacement = imageMap[heading.textContent.trim()];
+      if (!replacement) return;
+      image.src = replacement.src;
+      image.alt = replacement.alt;
+    });
+  }
+
   function afterLegacy() {
     if (legacyLoaded) return;
     legacyLoaded = true;
+    patchHomepageHelpImages();
+    setTimeout(patchHomepageHelpImages, 100);
+    setTimeout(patchHomepageHelpImages, 500);
     loadClassroomCarousel();
   }
 
