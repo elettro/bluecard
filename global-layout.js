@@ -65,7 +65,7 @@
   document.head.appendChild(legacyScript);
 
   function patchHomepage() {
-    var path = window.location.pathname.replace(/\/+$/, '');
+    var path = (window.location.pathname || '').replace(/\/index\.html$/, '').replace(/\/+$/, '');
     if (path !== '/bluecard' && path !== '') return;
 
     var main = document.querySelector('main');
@@ -96,13 +96,10 @@
 
       var factsGrid = factsSection.querySelector('.grid');
       if (factsGrid) {
-        // Keep a three-column desktop grid so the first row has three cards
-        // and the second row has two cards at the exact same width.
         factsGrid.className = factsGrid.className
           .replace('md:grid-cols-2 xl:grid-cols-5', 'md:grid-cols-3')
           .replace('xl:grid-cols-5', '');
 
-        // Prevent the two supplemental cards from being duplicated if this patch runs more than once.
         factsGrid.querySelectorAll('[data-bc-fact-extra]').forEach(function (card) {
           card.remove();
         });
@@ -204,6 +201,20 @@
       if (medicationImage) {
         medicationImage.src = '/bluecard/images/homepage/11x7-pharmacy-getting-prescriptions-v1.png';
         medicationImage.alt = 'Older adult receiving prescription medication from a pharmacist';
+      }
+    }
+
+    // Use Sonia hologram classroom image for education / combating hate.
+    var educationHeading = Array.from(main.querySelectorAll('#core-programs .card h3')).find(function (heading) {
+      var text = heading.textContent.trim();
+      return text === 'Education & Outreach' || text === 'Education and Combating Hate' || text === 'Education & Combating Hate';
+    });
+    if (educationHeading) {
+      var educationCard = educationHeading.closest('.card');
+      var educationImage = educationCard ? educationCard.querySelector('.card-media img') : null;
+      if (educationImage) {
+        educationImage.src = '/bluecard/images/homepage/11x7-hologram-sonia-being-watched-in-classroom.png';
+        educationImage.alt = 'Students viewing Holocaust survivor Sonia in an interactive hologram classroom experience';
       }
     }
 
