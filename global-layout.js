@@ -50,6 +50,14 @@
       setTimeout(function () { classroomObserver.disconnect(); }, 4000);
     }
 
+    if (currentPath === '/bluecard/how-we-help') {
+      var howHelpHeroImage = document.querySelector('.how-help-hero img');
+      if (howHelpHeroImage) {
+        howHelpHeroImage.src = '/bluecard/images/headers/the-blue-card-survivor-tattoo-number-11x7.png';
+        howHelpHeroImage.alt = 'Close-up of a Holocaust survivor\'s tattooed identification number';
+      }
+    }
+
     var bbbPatch = document.createElement('script');
     bbbPatch.src = '/bluecard/bbb-footer.js?v=' + cacheBust;
     document.body.appendChild(bbbPatch);
@@ -168,6 +176,34 @@
       if (ongoingSupportImage) {
         ongoingSupportImage.src = '/bluecard/images/survivors/the-blue-card-survivor-images-16x9----%20(17).png';
         ongoingSupportImage.alt = 'Holocaust survivors supported by The Blue Card';
+      }
+    }
+
+    // Use survivor image 27 for the Health & Wellbeing card.
+    var healthHeading = Array.from(main.querySelectorAll('#core-programs .card h3')).find(function (heading) {
+      var text = heading.textContent.trim();
+      return text === 'Health & Wellbeing' || text === 'Health & Well-Being';
+    });
+    if (healthHeading) {
+      var healthCard = healthHeading.closest('.card');
+      var healthImage = healthCard ? healthCard.querySelector('.card-media img') : null;
+      if (healthImage) {
+        healthImage.src = '/bluecard/images/survivors/the-blue-card-survivor-images-16x9----%20(27).png';
+        healthImage.alt = 'Holocaust survivors participating in a Blue Card wellbeing activity';
+      }
+    }
+
+    // Use the new pharmacy image for medication / medical assistance.
+    var medicationHeading = Array.from(main.querySelectorAll('#core-programs .card h3')).find(function (heading) {
+      var text = heading.textContent.trim();
+      return text === 'Medication Assistance' || text === 'Dental & Medical Assistance';
+    });
+    if (medicationHeading) {
+      var medicationCard = medicationHeading.closest('.card');
+      var medicationImage = medicationCard ? medicationCard.querySelector('.card-media img') : null;
+      if (medicationImage) {
+        medicationImage.src = '/bluecard/images/homepage/11x7-pharmacy-getting-prescriptions-v1.png';
+        medicationImage.alt = 'Older adult receiving prescription medication from a pharmacist';
       }
     }
 
