@@ -24,6 +24,21 @@
     .card{background:var(--light);border:1px solid var(--border);border-radius:16px;padding:18px}
     .card img{width:100%;border-radius:12px;display:block}
     .card p{white-space:pre-line;line-height:1.6;color:var(--muted)}
+
+    .team-gallery{margin:54px 0 46px}
+    .team-gallery-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:18px}
+    .team-gallery-head h2{margin:0;color:var(--blue-dark);font-size:clamp(1.8rem,3vw,2.5rem);line-height:1.1}
+    .team-gallery-head p{margin:0;color:var(--muted);font-size:.98rem}
+    .team-carousel-shell{position:relative}
+    .team-carousel{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:2px 2px 16px}
+    .team-carousel::-webkit-scrollbar{display:none}
+    .team-slide{flex:0 0 calc((100% - 36px)/3);scroll-snap-align:start;border-radius:18px;overflow:hidden;background:#eef4fa;box-shadow:0 10px 26px rgba(11,37,69,.12)}
+    .team-slide img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+    .team-carousel-btn{position:absolute;top:50%;transform:translateY(-58%);z-index:2;width:46px;height:46px;border:0;border-radius:50%;background:#fff;color:var(--blue-dark);font-size:28px;line-height:1;cursor:pointer;box-shadow:0 8px 22px rgba(11,37,69,.22)}
+    .team-carousel-btn:hover,.team-carousel-btn:focus{background:#f2f7fc}
+    .team-carousel-btn.prev{left:-22px}
+    .team-carousel-btn.next{right:-22px}
+
     .sold-out{margin-top:48px}
     .sold-out h2{font-size:clamp(2rem,5vw,3.2rem);margin:0 0 18px;color:var(--blue-dark);letter-spacing:.08em}
     .sold-out-wrap{display:flex;flex-direction:column;gap:22px}
@@ -40,7 +55,8 @@
     .antarctica-placeholder{display:grid;place-items:center;min-height:260px;border:2px dashed #abc2d8;border-radius:16px;background:#fff;color:var(--blue);font-weight:700;text-align:center;padding:24px}
     .antarctica-card h3{margin:22px 0 10px;color:var(--blue-dark);font-size:1.45rem}
     .antarctica-card p{margin:0;color:var(--muted);line-height:1.7}
-    @media (max-width:900px){.featured-grid,.action-grid{grid-template-columns:1fr}.wrap{width:min(1140px,calc(100% - 24px))}h2.section-title{margin:26px 0 18px}.intro,.action-section{padding:26px 20px}.sold-out-wrap img{width:80%;max-width:448px}}
+    @media (max-width:900px){.featured-grid,.action-grid{grid-template-columns:1fr}.wrap{width:min(1140px,calc(100% - 24px))}h2.section-title{margin:26px 0 18px}.intro,.action-section{padding:26px 20px}.sold-out-wrap img{width:80%;max-width:448px}.team-slide{flex-basis:calc((100% - 18px)/2)}.team-carousel-btn.prev{left:8px}.team-carousel-btn.next{right:8px}}
+    @media (max-width:600px){.team-gallery{margin:42px 0 34px}.team-gallery-head{align-items:flex-start;flex-direction:column;gap:6px}.team-slide{flex-basis:88%}.team-carousel-btn{width:42px;height:42px;font-size:24px}}
   </style>
   <meta name="description" content="Team Blue Card is The Blue Card’s official endurance fundraising team, raising funds and awareness for Holocaust survivors through races and endurance events worldwide.">
   <meta property="og:title" content="Team Blue Card | The Blue Card">
@@ -80,6 +96,18 @@
         </div>
       </section>
 
+      <section class="team-gallery" aria-labelledby="team-gallery-title">
+        <div class="team-gallery-head">
+          <h2 id="team-gallery-title">Team Blue Card in Motion</h2>
+          <p>Images reshuffle every time the page loads.</p>
+        </div>
+        <div class="team-carousel-shell">
+          <button class="team-carousel-btn prev" type="button" aria-label="Previous Team Blue Card photos">‹</button>
+          <div class="team-carousel" id="team-blue-card-carousel" aria-label="Team Blue Card photo carousel"></div>
+          <button class="team-carousel-btn next" type="button" aria-label="Next Team Blue Card photos">›</button>
+        </div>
+      </section>
+
       <section class="sold-out">
         <h2>SOLD OUT</h2>
         <div class="sold-out-wrap">
@@ -108,5 +136,41 @@
   </main>
   <footer id="bc-global-footer"></footer>
   <script src="../global-layout.js?v=20260806-3"></script>
+  <script>
+    (function(){
+      var imageNumbers=[1,6,7,8,9,10,11,12,13,14,15,16,17,18];
+      for(var i=imageNumbers.length-1;i>0;i--){
+        var j=Math.floor(Math.random()*(i+1));
+        var tmp=imageNumbers[i];imageNumbers[i]=imageNumbers[j];imageNumbers[j]=tmp;
+      }
+      var carousel=document.getElementById('team-blue-card-carousel');
+      if(!carousel)return;
+      imageNumbers.forEach(function(n){
+        var slide=document.createElement('div');
+        slide.className='team-slide';
+        var img=document.createElement('img');
+        img.src='../images/team-blue-card/team-blue-card-images-16x9-----%20('+n+').png';
+        img.alt='Team Blue Card participant photo';
+        img.loading='lazy';
+        slide.appendChild(img);
+        carousel.appendChild(slide);
+      });
+      function step(direction){
+        var first=carousel.querySelector('.team-slide');
+        if(!first)return;
+        var amount=first.getBoundingClientRect().width+18;
+        var max=carousel.scrollWidth-carousel.clientWidth;
+        if(direction>0&&carousel.scrollLeft>=max-amount/2){carousel.scrollTo({left:0,behavior:'smooth'});return;}
+        if(direction<0&&carousel.scrollLeft<=amount/2){carousel.scrollTo({left:max,behavior:'smooth'});return;}
+        carousel.scrollBy({left:direction*amount,behavior:'smooth'});
+      }
+      document.querySelector('.team-carousel-btn.prev').addEventListener('click',function(){step(-1)});
+      document.querySelector('.team-carousel-btn.next').addEventListener('click',function(){step(1)});
+      var auto=setInterval(function(){step(1)},4500);
+      var shell=document.querySelector('.team-carousel-shell');
+      shell.addEventListener('mouseenter',function(){clearInterval(auto)});
+      shell.addEventListener('mouseleave',function(){clearInterval(auto);auto=setInterval(function(){step(1)},4500)});
+    })();
+  </script>
 </body>
 </html>
