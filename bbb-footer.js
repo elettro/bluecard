@@ -185,6 +185,19 @@
       }
     }
 
+    var educationHeading = Array.from(main.querySelectorAll('#core-programs .card h3')).find(function (heading) {
+      var text = heading.textContent.trim();
+      return text === 'Education & Outreach' || text === 'Education and Combating Hate' || text === 'Education & Combating Hate' || text === 'Interactive Holocaust Hologram Experience';
+    });
+    if (educationHeading) {
+      var educationCard = educationHeading.closest('.card');
+      var educationImage = educationCard ? educationCard.querySelector('.card-media img') : null;
+      if (educationImage) {
+        educationImage.src = '/bluecard/images/homepage/11x7-hologram-sonia-being-watched-in-classroom.png';
+        educationImage.alt = 'Students viewing Holocaust survivor Sonia in an interactive classroom hologram experience';
+      }
+    }
+
     var programsSection = document.getElementById('core-programs');
     if (programsSection && !document.getElementById('survivor-story-video')) {
       var videoSection = document.createElement('section');
