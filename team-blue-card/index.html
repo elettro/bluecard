@@ -58,11 +58,21 @@
     .video-container{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#0b2545}
     .video-container iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
     .antarctica-card{display:flex;flex-direction:column;min-height:100%;padding:24px;border-radius:20px;background:linear-gradient(180deg,#edf5fc,#f8fbfe);border:1px solid var(--border)}
-    .antarctica-placeholder{display:grid;place-items:center;min-height:260px;border:2px dashed #abc2d8;border-radius:16px;background:#fff;color:var(--blue);font-weight:700;text-align:center;padding:24px}
+    .antarctica-carousel-shell{position:relative;border-radius:16px;overflow:hidden;background:#dfeaf5;box-shadow:0 10px 24px rgba(11,37,69,.12)}
+    .antarctica-carousel{display:flex;width:100%;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;touch-action:pan-y pinch-zoom;-webkit-overflow-scrolling:touch}
+    .antarctica-carousel::-webkit-scrollbar{display:none}
+    .antarctica-slide{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;min-width:100%}
+    .antarctica-slide img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;cursor:zoom-in}
+    .antarctica-carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;border:0;border-radius:50%;background:rgba(255,255,255,.94);color:var(--blue-dark);font-size:26px;line-height:1;cursor:pointer;box-shadow:0 8px 20px rgba(11,37,69,.22)}
+    .antarctica-carousel-btn.prev{left:10px}
+    .antarctica-carousel-btn.next{right:10px}
+    .antarctica-carousel-dots{display:flex;justify-content:center;gap:7px;margin-top:10px}
+    .antarctica-carousel-dot{width:8px;height:8px;border:0;border-radius:50%;padding:0;background:#a8bdd2}
+    .antarctica-carousel-dot.is-active{background:var(--blue)}
     .antarctica-card h3{margin:22px 0 10px;color:var(--blue-dark);font-size:1.45rem}
     .antarctica-card p{margin:0;color:var(--muted);line-height:1.7}
-    @media (max-width:900px){.featured-grid,.action-grid{grid-template-columns:1fr}.wrap{width:min(1140px,calc(100% - 24px))}h2.section-title{margin:26px 0 18px}.intro,.action-section{padding:26px 20px}.sold-out-wrap img{width:80%;max-width:448px}.team-slide{flex-basis:calc((100% - 18px)/2)}.team-carousel-btn.prev{left:8px}.team-carousel-btn.next{right:8px}}
-    @media (max-width:600px){.team-gallery{margin:42px 0 34px}.team-gallery-head{align-items:flex-start;flex-direction:column;gap:6px}.team-slide{flex-basis:88%}.team-carousel-btn{width:42px;height:42px;font-size:24px}.team-image-modal{padding:14px}.team-image-modal__close{top:12px;right:12px;width:46px;height:46px;font-size:30px}.team-image-modal__image{max-width:96vw;max-height:84vh}}
+    @media (max-width:900px){.featured-grid,.action-grid{grid-template-columns:1fr}.wrap{width:min(1140px,calc(100% - 24px))}h2.section-title{margin:26px 0 18px}.intro,.action-section{padding:26px 20px}.sold-out-wrap img{width:80%;max-width:448px}.team-slide{flex-basis:calc((100% - 18px)/2)}.team-carousel-btn.prev{left:8px}.team-carousel-btn.next{right:8px}.antarctica-carousel-btn{width:44px;height:44px}}
+    @media (max-width:600px){.team-gallery{margin:42px 0 34px}.team-gallery-head{align-items:flex-start;flex-direction:column;gap:6px}.team-slide{flex-basis:88%}.team-carousel-btn{width:42px;height:42px;font-size:24px}.team-image-modal{padding:14px}.team-image-modal__close{top:12px;right:12px;width:46px;height:46px;font-size:30px}.team-image-modal__image{max-width:96vw;max-height:84vh}.antarctica-card{padding:18px}.antarctica-carousel-btn{width:40px;height:40px;font-size:24px}}
   </style>
   <meta name="description" content="Team Blue Card is The Blue Card’s official endurance fundraising team, raising funds and awareness for Holocaust survivors through races and endurance events worldwide.">
   <meta property="og:title" content="Team Blue Card | The Blue Card">
@@ -132,7 +142,20 @@
             </div>
           </div>
           <article class="antarctica-card">
-            <div class="antarctica-placeholder">Photo Placeholder<br>Antarctica Marathon Participant</div>
+            <div class="antarctica-carousel-shell" aria-label="Isador Lieberman 2025 Antarctic Marathon photo carousel">
+              <button class="antarctica-carousel-btn prev" type="button" aria-label="Previous Antarctica photo">‹</button>
+              <div class="antarctica-carousel" id="antarctica-carousel">
+                <div class="antarctica-slide"><img src="../images/team-blue-card/Isador%20Lieberman%20-%202025%20Antarctic%20Marathon%202025%20(1).jpeg" alt="Isador Lieberman at the 2025 Antarctic Marathon" loading="lazy"></div>
+                <div class="antarctica-slide"><img src="../images/team-blue-card/Isador%20Lieberman%20-%202025%20Antarctic%20Marathon%202025%20(2).JPG" alt="Isador Lieberman at the 2025 Antarctic Marathon" loading="lazy"></div>
+                <div class="antarctica-slide"><img src="../images/team-blue-card/Isador%20Lieberman%20-%202025%20Antarctic%20Marathon%202025%20(3).JPG" alt="Isador Lieberman at the 2025 Antarctic Marathon" loading="lazy"></div>
+              </div>
+              <button class="antarctica-carousel-btn next" type="button" aria-label="Next Antarctica photo">›</button>
+            </div>
+            <div class="antarctica-carousel-dots" aria-hidden="true">
+              <button class="antarctica-carousel-dot is-active" type="button" tabindex="-1"></button>
+              <button class="antarctica-carousel-dot" type="button" tabindex="-1"></button>
+              <button class="antarctica-carousel-dot" type="button" tabindex="-1"></button>
+            </div>
             <h3>Marathon in Antarctica</h3>
             <p>Participant information and a photo will be added here to highlight the runner who completed a marathon in Antarctica in support of The Blue Card.</p>
           </article>
@@ -156,9 +179,11 @@
         var tmp=imageNumbers[i];imageNumbers[i]=imageNumbers[j];imageNumbers[j]=tmp;
       }
       var carousel=document.getElementById('team-blue-card-carousel');
+      var antarcticaCarousel=document.getElementById('antarctica-carousel');
       var modal=document.getElementById('team-image-modal');
       var modalImage=document.getElementById('team-image-modal-image');
       var modalClose=document.querySelector('.team-image-modal__close');
+      var auto;
       if(!carousel)return;
 
       function openModal(src,alt){
@@ -180,6 +205,14 @@
         auto=setInterval(function(){step(1)},4500);
       }
 
+      function makeImageModalReady(img,label){
+        img.tabIndex=0;
+        img.setAttribute('role','button');
+        img.setAttribute('aria-label',label||'Open full-size photo');
+        img.addEventListener('click',function(){openModal(img.src,img.alt)});
+        img.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openModal(img.src,img.alt)}});
+      }
+
       imageNumbers.forEach(function(n){
         var slide=document.createElement('div');
         slide.className='team-slide';
@@ -187,11 +220,7 @@
         img.src='../images/team-blue-card/team-blue-card-images-16x9-----%20('+n+').png';
         img.alt='Team Blue Card participant photo';
         img.loading='lazy';
-        img.tabIndex=0;
-        img.setAttribute('role','button');
-        img.setAttribute('aria-label','Open full-size Team Blue Card photo');
-        img.addEventListener('click',function(){openModal(img.src,img.alt)});
-        img.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openModal(img.src,img.alt)}});
+        makeImageModalReady(img,'Open full-size Team Blue Card photo');
         slide.appendChild(img);
         carousel.appendChild(slide);
       });
@@ -208,10 +237,36 @@
 
       document.querySelector('.team-carousel-btn.prev').addEventListener('click',function(){step(-1)});
       document.querySelector('.team-carousel-btn.next').addEventListener('click',function(){step(1)});
-      var auto=setInterval(function(){step(1)},4500);
+      auto=setInterval(function(){step(1)},4500);
       var shell=document.querySelector('.team-carousel-shell');
       shell.addEventListener('mouseenter',function(){clearInterval(auto)});
       shell.addEventListener('mouseleave',function(){if(!modal.classList.contains('is-open')){clearInterval(auto);auto=setInterval(function(){step(1)},4500)}});
+
+      if(antarcticaCarousel){
+        var antarcticaSlides=Array.prototype.slice.call(antarcticaCarousel.querySelectorAll('.antarctica-slide'));
+        var antarcticaDots=Array.prototype.slice.call(document.querySelectorAll('.antarctica-carousel-dot'));
+        antarcticaSlides.forEach(function(slide){
+          var img=slide.querySelector('img');
+          if(img)makeImageModalReady(img,'Open full-size Antarctica Marathon photo');
+        });
+        function updateAntarcticaDots(){
+          var width=antarcticaCarousel.clientWidth||1;
+          var index=Math.round(antarcticaCarousel.scrollLeft/width);
+          antarcticaDots.forEach(function(dot,i){dot.classList.toggle('is-active',i===index)});
+        }
+        function stepAntarctica(direction){
+          var width=antarcticaCarousel.clientWidth;
+          var max=antarcticaCarousel.scrollWidth-width;
+          var target=antarcticaCarousel.scrollLeft+(direction*width);
+          if(target>max+5)target=0;
+          if(target<0)target=max;
+          antarcticaCarousel.scrollTo({left:target,behavior:'smooth'});
+        }
+        document.querySelector('.antarctica-carousel-btn.prev').addEventListener('click',function(){stepAntarctica(-1)});
+        document.querySelector('.antarctica-carousel-btn.next').addEventListener('click',function(){stepAntarctica(1)});
+        antarcticaCarousel.addEventListener('scroll',function(){window.requestAnimationFrame(updateAntarcticaDots)},{passive:true});
+        updateAntarcticaDots();
+      }
 
       modalClose.addEventListener('click',closeModal);
       modal.addEventListener('click',function(e){if(e.target===modal){closeModal()}});
