@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="/bluecard/global-layout.css?v=20260806-1536" />
   <style>
     body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #1c1c1c; background: #fff; }
-    .hero { position: relative; min-height: 360px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: linear-gradient(135deg, #082545 0%, #0d5cab 58%, #2d7fd3 100%); }
-    .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 22% 24%, rgba(255,255,255,.18) 0, rgba(255,255,255,.08) 28%, transparent 56%), linear-gradient(90deg, rgba(8,37,69,.82), rgba(13,92,171,.62)); }
+    .hero { position: relative; min-height: 360px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #0b315a url('/bluecard/images/headers/16x9-survivors-supplies-zoomed-out.png') center 45% / cover no-repeat; }
+    .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,28,54,.72), rgba(5,40,78,.48) 48%, rgba(5,28,54,.58)); }
     .hero-inner { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; padding: 48px 24px; text-align: center; }
-    .hero h1 { margin: 0; color: #fff; font-size: clamp(34px, 5vw, 64px); font-weight: 800; text-align: center; text-shadow: 0 6px 18px rgba(0,0,0,.35); }
-    .hero p { max-width: 820px; margin: 18px auto 0; color: rgba(255,255,255,.94); font-size: clamp(18px, 2.2vw, 24px); line-height: 1.55; font-weight: 600; text-shadow: 0 4px 14px rgba(0,0,0,.26); }
+    .hero h1 { margin: 0; color: #fff; font-size: clamp(34px, 5vw, 64px); font-weight: 800; text-align: center; text-shadow: 0 6px 18px rgba(0,0,0,.55); }
+    .hero p { max-width: 820px; margin: 18px auto 0; color: rgba(255,255,255,.98); font-size: clamp(18px, 2.2vw, 24px); line-height: 1.55; font-weight: 600; text-shadow: 0 4px 14px rgba(0,0,0,.48); }
 
     .support-page { background: #fff; }
     .support-body { background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%); padding: 72px 24px; color: #1c1c1c; }
@@ -47,7 +47,7 @@
     }
     @media (max-width: 600px) {
       html, body { max-width: 100%; overflow-x: hidden; }
-      .hero { min-height: 320px; }
+      .hero { min-height: 320px; background-position: center center; }
       .hero-inner { padding: 42px 18px; }
       .content-panel, .support-list-panel { padding: 24px 20px 22px; }
       .content-panel p, .support-cta p { font-size: 17px; }
