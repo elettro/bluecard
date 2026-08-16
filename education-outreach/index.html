@@ -44,6 +44,13 @@
   </script>
   <style>
     .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .caretaker-hero{position:relative;min-height:420px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:76px 20px;text-align:center;color:#fff;background:url('../images/education-outreach/4x3-health.png') center 44%/cover no-repeat}
+    .caretaker-hero::after{content:"";position:absolute;inset:0;background:rgba(8,37,69,.58)}
+    .caretaker-hero__content{position:relative;z-index:1;max-width:980px;margin:0 auto;text-shadow:0 8px 22px rgba(0,0,0,.28)}
+    .caretaker-hero h1{margin:0;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:clamp(42px,6vw,68px);line-height:1.02;font-weight:800}
+    .legacy-intro{max-width:980px}
+    .legacy-intro h2{margin:0 0 22px;color:#003f7d;font-family:"Plus Jakarta Sans",sans-serif;font-size:clamp(40px,5vw,64px);line-height:1.08;font-weight:800;letter-spacing:-.025em}
+    .legacy-intro p{margin:0;max-width:900px;color:#424751;font-size:clamp(20px,2.2vw,26px);line-height:1.6;font-weight:300}
     .ai-answer-block{width:min(1120px,calc(100% - 40px));margin:36px auto;padding:28px;background:#fff;border:1px solid rgba(0,94,184,.12);border-radius:20px;box-shadow:0 14px 34px rgba(0,39,84,.07)}
     .ai-answer-block h2{color:#0055a5;margin:0 0 18px;font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:2rem}
     .ai-answer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
@@ -54,7 +61,7 @@
     .cta-panel{position:relative;overflow:hidden;border-radius:2rem;padding:42px;min-height:100%;display:flex;flex-direction:column;justify-content:space-between}
     .cta-button{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;min-height:52px;padding:0 24px;border-radius:999px;font-weight:800;text-decoration:none;transition:transform .18s ease,box-shadow .18s ease}
     .cta-button:hover{transform:translateY(-2px)}
-    @media (max-width:760px){.ai-answer-grid,.cta-grid{grid-template-columns:1fr}.cta-panel{padding:30px}}
+    @media (max-width:760px){.caretaker-hero{min-height:320px;padding:54px 18px}.legacy-intro h2{font-size:38px}.legacy-intro p{font-size:19px}.ai-answer-grid,.cta-grid{grid-template-columns:1fr}.cta-panel{padding:30px}}
   </style>
   <meta name="description" content="Resources for caretakers supporting Holocaust survivors, including trauma-informed care and nutrition guidance from The Blue Card.">
   <meta property="og:title" content="Resources for Caretakers | The Blue Card">
@@ -70,11 +77,14 @@
 <body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container">
   <header id="bc-global-nav" aria-label="Global site navigation"></header>
 
+  <section class="caretaker-hero" aria-label="Resources for Caretakers header">
+    <div class="caretaker-hero__content"><h1>Resources for Caretakers</h1></div>
+  </section>
+
   <main class="max-w-7xl mx-auto px-6 lg:px-12 py-16 md:py-24 space-y-24">
-    <section class="max-w-5xl">
-      <span class="font-label text-primary font-semibold tracking-[0.2em] uppercase text-xs mb-6 block">Legacy of Compassion</span>
-      <h1 class="font-headline text-5xl md:text-7xl font-extrabold text-primary leading-[1.1] tracking-tight mb-8">Resources for Caretakers</h1>
-      <p class="text-xl md:text-2xl text-on-surface-variant leading-relaxed max-w-4xl font-light">The Blue Card is deeply committed to advancing public understanding of survivors' unique needs, bridging the gap between historical trauma and modern clinical excellence.</p>
+    <section class="legacy-intro">
+      <h2>Legacy of Compassion</h2>
+      <p>The Blue Card is deeply committed to advancing public understanding of survivors' unique needs, bridging the gap between historical trauma and modern clinical excellence.</p>
     </section>
 
     <section class="space-y-12">
