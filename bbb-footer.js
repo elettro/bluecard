@@ -89,6 +89,128 @@
     document.head.appendChild(style);
   }
 
+  function patchSpeakersBureau() {
+    var path = (window.location.pathname || '').replace(/\/index\.html$/, '').replace(/\/+$/, '');
+    if (path !== '/bluecard/speakers-bureau') return;
+
+    var page = document.querySelector('.sb-page');
+    var hero = page ? page.querySelector('.sb-hero') : null;
+    if (!page || !hero || document.getElementById('sb-intro-carousel')) return;
+
+    var style = document.createElement('style');
+    style.id = 'sb-intro-carousel-styles';
+    style.textContent = [
+      '.sb-page{max-width:1280px!important;padding-top:48px!important;padding-bottom:26px!important}',
+      '.sb-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(380px,.9fr);gap:48px;align-items:center}',
+      '.sb-hero{max-width:none!important}',
+      '.sb-intro{max-width:680px!important}',
+      '.sb-carousel-shell{position:relative;width:100%;min-width:0}',
+      '.sb-carousel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch;touch-action:pan-y pinch-zoom;border-radius:22px;background:#eef4fa;box-shadow:0 16px 38px rgba(0,63,125,.14)}',
+      '.sb-carousel::-webkit-scrollbar{display:none}',
+      '.sb-carousel-slide{flex:0 0 100%;min-width:100%;scroll-snap-align:start;scroll-snap-stop:always}',
+      '.sb-carousel-slide img{display:block;width:100%;height:360px;object-fit:cover;object-position:center 40%}',
+      '.sb-carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:34px;height:34px;border:0;border-radius:50%;background:rgba(255,255,255,.94);color:#003f7d;font-size:23px;line-height:1;display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.18)}',
+      '.sb-carousel-btn:hover,.sb-carousel-btn:focus{background:#fff;outline:2px solid rgba(0,85,165,.18)}',
+      '.sb-carousel-btn.prev{left:12px}',
+      '.sb-carousel-btn.next{right:12px}',
+      '.sb-carousel-dots{display:flex;justify-content:center;gap:7px;margin-top:12px}',
+      '.sb-carousel-dot{width:7px;height:7px;border-radius:50%;background:#b6c9dc;transition:transform .2s ease,background .2s ease}',
+      '.sb-carousel-dot.is-active{background:#0b56a4;transform:scale(1.3)}',
+      '@media (max-width:900px){.sb-hero-grid{grid-template-columns:1fr;gap:28px}.sb-carousel-slide img{height:auto;aspect-ratio:3/4;max-height:620px;object-fit:cover}.sb-carousel-shell{max-width:540px;margin:0 auto}}',
+      '@media (max-width:560px){.sb-page{padding-top:34px!important}.sb-hero-grid{gap:24px}.sb-carousel-btn{width:32px;height:32px;font-size:21px}.sb-carousel-slide img{max-height:none}}'
+    ].join('');
+    document.head.appendChild(style);
+
+    var grid = document.createElement('div');
+    grid.className = 'sb-hero-grid';
+    hero.parentNode.insertBefore(grid, hero);
+    grid.appendChild(hero);
+
+    var shell = document.createElement('div');
+    shell.className = 'sb-carousel-shell';
+    shell.id = 'sb-intro-carousel';
+    shell.setAttribute('aria-label', 'Speakers Bureau photo carousel');
+
+    var prev = document.createElement('button');
+    prev.className = 'sb-carousel-btn prev';
+    prev.type = 'button';
+    prev.setAttribute('aria-label', 'Previous Speakers Bureau photo');
+    prev.innerHTML = '&#8249;';
+
+    var carousel = document.createElement('div');
+    carousel.className = 'sb-carousel';
+
+    for (var i = 1; i <= 11; i += 1) {
+      var slide = document.createElement('div');
+      slide.className = 'sb-carousel-slide';
+      var img = document.createElement('img');
+      img.src = '/bluecard/images/speakers-bureau/3x4-speaker-bureau-gallery---%20(' + i + ').png';
+      img.alt = 'The Blue Card Speakers Bureau educational event photo';
+      img.loading = i === 1 ? 'eager' : 'lazy';
+      slide.appendChild(img);
+      carousel.appendChild(slide);
+    }
+
+    var next = document.createElement('button');
+    next.className = 'sb-carousel-btn next';
+    next.type = 'button';
+    next.setAttribute('aria-label', 'Next Speakers Bureau photo');
+    next.innerHTML = '&#8250;';
+
+    var dots = document.createElement('div');
+    dots.className = 'sb-carousel-dots';
+    dots.setAttribute('aria-hidden', 'true');
+    for (var d = 0; d < 11; d += 1) {
+      var dot = document.createElement('span');
+      dot.className = 'sb-carousel-dot' + (d === 0 ? ' is-active' : '');
+      dots.appendChild(dot);
+    }
+
+    shell.appendChild(prev);
+    shell.appendChild(carousel);
+    shell.appendChild(next);
+    shell.appendChild(dots);
+    grid.appendChild(shell);
+
+    var dotEls = Array.from(dots.children);
+    var auto;
+
+    function currentIndex() {
+      var width = carousel.clientWidth || 1;
+      return Math.max(0, Math.min(10, Math.round(carousel.scrollLeft / width)));
+    }
+
+    function updateDots() {
+      var idx = currentIndex();
+      dotEls.forEach(function (dot, index) {
+        dot.classList.toggle('is-active', index === idx);
+      });
+    }
+
+    function step(direction) {
+      var width = carousel.clientWidth || 1;
+      var idx = currentIndex() + direction;
+      if (idx > 10) idx = 0;
+      if (idx < 0) idx = 10;
+      carousel.scrollTo({ left: idx * width, behavior: 'smooth' });
+    }
+
+    function restartAuto() {
+      clearInterval(auto);
+      auto = setInterval(function () { step(1); }, 4200);
+    }
+
+    prev.addEventListener('click', function () { step(-1); restartAuto(); });
+    next.addEventListener('click', function () { step(1); restartAuto(); });
+    carousel.addEventListener('scroll', function () { window.requestAnimationFrame(updateDots); }, { passive: true });
+    shell.addEventListener('mouseenter', function () { clearInterval(auto); });
+    shell.addEventListener('mouseleave', restartAuto);
+    carousel.addEventListener('touchstart', function () { clearInterval(auto); }, { passive: true });
+    carousel.addEventListener('touchend', restartAuto, { passive: true });
+    window.addEventListener('resize', updateDots);
+    restartAuto();
+  }
+
   function patchHomepage() {
     var path = (window.location.pathname || '').replace(/\/index\.html$/, '').replace(/\/+$/, '');
     if (path !== '/bluecard' && path !== '') return;
@@ -208,5 +330,6 @@
     }
   }
 
+  patchSpeakersBureau();
   patchHomepage();
 })();
