@@ -50,14 +50,6 @@
       setTimeout(function () { classroomObserver.disconnect(); }, 4000);
     }
 
-    if (currentPath === '/bluecard/how-we-help') {
-      var howHelpHeroImage = document.querySelector('.how-help-hero img');
-      if (howHelpHeroImage) {
-        howHelpHeroImage.src = '/bluecard/images/headers/the-blue-card-survivor-tattoo-number-11x7.png';
-        howHelpHeroImage.alt = 'Close-up of a Holocaust survivor\'s tattooed identification number';
-      }
-    }
-
     var bbbPatch = document.createElement('script');
     bbbPatch.src = '/bluecard/bbb-footer.js?v=' + cacheBust;
     document.body.appendChild(bbbPatch);
