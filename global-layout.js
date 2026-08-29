@@ -196,7 +196,7 @@
       }
     }
 
-    // Use Sonia hologram classroom image for education / combating hate.
+    // Use classroom hologram image for education / combating hate.
     var educationHeading = Array.from(main.querySelectorAll('#core-programs .card h3')).find(function (heading) {
       var text = heading.textContent.trim();
       return text === 'Education & Outreach' || text === 'Education and Combating Hate' || text === 'Education & Combating Hate';
@@ -205,8 +205,8 @@
       var educationCard = educationHeading.closest('.card');
       var educationImage = educationCard ? educationCard.querySelector('.card-media img') : null;
       if (educationImage) {
-        educationImage.src = '/bluecard/images/homepage/11x7-hologram-sonia-being-watched-in-classroom.png';
-        educationImage.alt = 'Students viewing Holocaust survivor Sonia in an interactive hologram classroom experience';
+        educationImage.src = '/bluecard/images/homepage/education-combating-hate-classroom-1200x800.jpg';
+        educationImage.alt = 'Students gathered around an interactive Holocaust survivor hologram classroom presentation';
       }
     }
 
