@@ -27,12 +27,35 @@
       'Medication Assistance': {
         src: '/bluecard/images/homepage/11x7-pharmacy-getting-prescriptions-v1.png',
         alt: 'Older adult receiving prescription medication from a pharmacist'
+      },
+      'Education and Combating Hate': {
+        src: '/bluecard/images/homepage/education-combating-hate-classroom-1200x800.jpg?v=20260829-1',
+        alt: 'Students gathered around an interactive Holocaust survivor hologram classroom presentation'
+      },
+      'Education & Combating Hate': {
+        src: '/bluecard/images/homepage/education-combating-hate-classroom-1200x800.jpg?v=20260829-1',
+        alt: 'Students gathered around an interactive Holocaust survivor hologram classroom presentation'
+      },
+      'Education & Outreach': {
+        src: '/bluecard/images/homepage/education-combating-hate-classroom-1200x800.jpg?v=20260829-1',
+        alt: 'Students gathered around an interactive Holocaust survivor hologram classroom presentation'
       }
     };
 
     Array.from(document.querySelectorAll('.bc-help-card')).forEach(function (card) {
       var heading = card.querySelector('h3');
       var image = card.querySelector('.bc-help-image img');
+      if (!heading || !image) return;
+      var replacement = imageMap[heading.textContent.trim()];
+      if (!replacement) return;
+      image.src = replacement.src;
+      image.alt = replacement.alt;
+    });
+
+    // Also patch the older carousel markup if it is still present.
+    Array.from(document.querySelectorAll('#core-programs .card')).forEach(function (card) {
+      var heading = card.querySelector('h3');
+      var image = card.querySelector('.card-media img');
       if (!heading || !image) return;
       var replacement = imageMap[heading.textContent.trim()];
       if (!replacement) return;
@@ -47,6 +70,7 @@
     patchHomepageHelpImages();
     setTimeout(patchHomepageHelpImages, 100);
     setTimeout(patchHomepageHelpImages, 500);
+    setTimeout(patchHomepageHelpImages, 1200);
     loadClassroomCarousel();
   }
 
