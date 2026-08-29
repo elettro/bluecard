@@ -29,15 +29,15 @@
         alt: 'Older adult receiving prescription medication from a pharmacist'
       },
       'Education and Combating Hate': {
-        src: '/bluecard/images/homepage/education-combating-hate-classroom-1200x800.jpg?v=20260829-1',
+        src: '/bluecard/images/homepage/education-combating-hate-classroom-1536x1024.png?v=20260829-2',
         alt: 'Students gathered around an interactive Holocaust survivor hologram classroom presentation'
       },
       'Education & Combating Hate': {
-        src: '/bluecard/images/homepage/education-combating-hate-classroom-1200x800.jpg?v=20260829-1',
+        src: '/bluecard/images/homepage/education-combating-hate-classroom-1536x1024.png?v=20260829-2',
         alt: 'Students gathered around an interactive Holocaust survivor hologram classroom presentation'
       },
       'Education & Outreach': {
-        src: '/bluecard/images/homepage/education-combating-hate-classroom-1200x800.jpg?v=20260829-1',
+        src: '/bluecard/images/homepage/education-combating-hate-classroom-1536x1024.png?v=20260829-2',
         alt: 'Students gathered around an interactive Holocaust survivor hologram classroom presentation'
       }
     };
@@ -52,7 +52,6 @@
       image.alt = replacement.alt;
     });
 
-    // Also patch the older carousel markup if it is still present.
     Array.from(document.querySelectorAll('#core-programs .card')).forEach(function (card) {
       var heading = card.querySelector('h3');
       var image = card.querySelector('.card-media img');
