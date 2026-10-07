@@ -7,12 +7,9 @@
       return link.textContent.trim() === 'Holocaust Education';
     });
     if (educationNav) {
-      educationNav.setAttribute('href', '#');
+      educationNav.setAttribute('href', '/bluecard/interactive-hologram/');
       educationNav.classList.add('bluecard-nav-parent');
       educationNav.setAttribute('aria-haspopup', 'true');
-      educationNav.addEventListener('click', function (event) {
-        event.preventDefault();
-      });
     }
 
     var currentPath = (window.location.pathname || '').replace(/\/index\.html$/, '').replace(/\/+$/, '');
