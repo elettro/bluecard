@@ -42,7 +42,11 @@
     .donation-cta { margin-top: 28px; padding: 38px 34px; text-align: center; background: linear-gradient(135deg, #ffffff 0%, #eef6ff 100%); border: 1px solid rgba(13, 92, 171, 0.18); border-radius: 20px; box-shadow: 0 14px 34px rgba(9, 42, 86, 0.08); }
     .donation-cta .accent-line { margin-left: auto; margin-right: auto; }
     .donation-cta p { max-width: 760px; margin-left: auto; margin-right: auto; }
-    .button-row { margin-top: 24px; }
+    .button-row { margin-top: 24px; display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
+    .assistance-cta { margin-top:28px; padding:34px; text-align:center; background:#0b2341; color:#fff; border-radius:20px; box-shadow:0 14px 34px rgba(9,42,86,.12); }
+    .assistance-cta h3 { margin:0 0 12px; font-size:30px; line-height:1.2; color:#fff; font-weight:800; }
+    .assistance-cta p { margin:0 auto 10px; max-width:760px; font-size:17px; line-height:1.7; color:#e7eef7; }
+    .assistance-cta a.contact-link { color:#fff; text-decoration:underline; font-weight:700; }
     .blue-card-button { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 34px; border-radius: 999px; background: #d98b00; color: #fff; font-size: 18px; font-weight: 800; text-decoration: none; box-shadow: 0 14px 30px rgba(217, 139, 0, 0.26); transition: transform .18s ease, background .18s ease, box-shadow .18s ease; }
     .blue-card-button:hover, .blue-card-button:focus { background: #b87300; transform: translateY(-1px); box-shadow: 0 18px 34px rgba(217, 139, 0, 0.3); }
     .footer-space { height: 24px; }
@@ -95,6 +99,13 @@
             <h3 id="cost-plus-heading">Cost Plus Drug Company Partnership</h3>
             <p>This partnership helps Holocaust survivors nationwide access low-cost generic medication delivered directly to their homes, expanding access to affordable medication.</p>
             <p>All Holocaust survivors can benefit from this program. It helps create another pathway to lower-cost medication and clearer information around access. The Blue Card also offers educational seminars on medication affordability to help survivors understand available options more clearly.</p>
+          </section>
+          <section class="assistance-cta" aria-labelledby="medication-apply-heading">
+            <h3 id="medication-apply-heading">Need Medication or Medical Assistance?</h3>
+            <p>Holocaust survivors, family members, caregivers, and referring professionals can begin by visiting The Blue Card’s application page.</p>
+            <div class="button-row"><a class="blue-card-button" href="/bluecard/apply-here/">Apply for Assistance</a></div>
+            <p style="margin-top:18px;">Questions? Contact The Blue Card at <a class="contact-link" href="tel:+12122392251">212-239-2251</a> or <a class="contact-link" href="mailto:Info@bluecardfund.org">Info@bluecardfund.org</a>.</p>
+            <p>The Blue Card · 171 Madison Avenue, Suite 1405 · New York, NY 10016</p>
           </section>
           <section class="donation-cta" aria-labelledby="medication-donate-heading">
             <div class="accent-line"></div>
