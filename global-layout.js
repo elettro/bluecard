@@ -111,7 +111,7 @@
     // Impact section
     var impactSection = sections.find(function (section) {
       var heading = section.querySelector('h2');
-      return heading && heading.textContent.trim() === 'Our Impact';
+      return heading && (heading.textContent.trim() === 'Our Impact' || heading.textContent.trim() === 'Our Impact Since 1934');
     });
 
     if (impactSection) {
@@ -129,6 +129,14 @@
       var impactPanel = impactHeading.parentElement;
       var impactGrid = impactPanel ? impactPanel.querySelector('.grid') : null;
       if (impactGrid) {
+        // Rebuild these two cards once, even if the homepage patch runs again.
+        Array.from(impactGrid.children).forEach(function (card) {
+          var description = card.querySelector('p');
+          var text = description ? description.textContent.trim().toLowerCase() : '';
+          if (text === 'people served since 1934' || text === 'in aid to survivors battling cancer') {
+            card.remove();
+          }
+        });
         var existingCards = impactGrid.children;
         if (existingCards.length > 0) {
           var firstCard = existingCards[0];
