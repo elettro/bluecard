@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, follow">
+<title>Page Not Found | The Blue Card</title>
+<base id="site-base" href="/">
+<script>
+if (window.location.hostname === 'elettro.github.io') {
+  document.getElementById('site-base').setAttribute('href', '/bluecard/');
+}
+</script>
+<style>
+:root{font-family:Arial,Helvetica,sans-serif;color:#17306f;background:#f4f7fc;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit}a:focus-visible{outline:3px solid #dfab37;outline-offset:5px}
+header{background:#fff;border-bottom:1px solid #dce4f1}
+.bar{width:min(1120px,calc(100% - 40px));margin:auto;min-height:116px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:block;width:min(285px,55vw);height:auto}.contact{font-size:15px;text-decoration:none}
+main{flex:1;display:grid;place-items:center;padding:64px 24px}
+.panel{width:min(760px,100%);background:#fff;border:1px solid #dce4f1;border-radius:24px;padding:clamp(30px,6vw,64px);box-shadow:0 18px 54px rgba(23,48,111,.07);text-align:center}
+.code{margin:0 0 12px;color:#25479b;font-weight:800;font-size:clamp(76px,15vw,116px);line-height:1;letter-spacing:-.05em}
+h1{margin:0 0 18px;font-size:clamp(28px,5vw,42px);letter-spacing:-.025em}
+.message{max-width:510px;margin:0 auto;color:#53627b;font-size:18px;line-height:1.65}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:490px;margin:32px auto 0}
+.button{display:flex;align-items:center;justify-content:center;min-height:54px;padding:14px 18px;border:1px solid #cdd8ea;border-radius:12px;text-decoration:none;font-weight:700;background:#f7f9fd;transition:background .15s}
+.button:hover{background:#eaf0fc}.primary{background:#25479b;border-color:#25479b;color:#fff}.primary:hover{background:#17306f}
+.help{margin:28px 0 0;font-size:15px;color:#53627b;line-height:1.7}.help a{font-weight:700}
+footer{background:#17306f;color:#fff;text-align:center;padding:25px 24px;font-size:14px;line-height:1.7}
+footer p{margin:0}footer .mission{font-weight:700;margin-bottom:4px}
+@media(max-width:520px){.bar{min-height:100px;flex-direction:column;justify-content:center;gap:12px;padding:18px 0}.logo{width:240px;max-width:80vw}.contact{font-size:14px}main{padding:32px 16px}.actions{grid-template-columns:1fr}.message{font-size:16px}}
+</style>
+</head>
+<body>
+<header><div class="bar">
+<a href="./" aria-label="The Blue Card home"><img class="logo" src="images/logo/blue-card-logo-fullsize-.png" alt="The Blue Card"></a>
+<a class="contact" href="mailto:info@bluecardfund.org">info@bluecardfund.org</a>
+</div></header>
+<main id="main"><section class="panel" aria-labelledby="page-title">
+<p class="code" aria-label="Error 404">404</p>
+<h1 id="page-title">We couldn’t find this page.</h1>
+<p class="message">The link might be outdated, or the address might contain a typo. Please choose a destination below to continue.</p>
+<nav class="actions" aria-label="Helpful pages">
+<a class="button primary" href="./">Return to Home</a>
+<a class="button" href="apply-here/">Apply for Assistance</a>
+<a class="button" href="donate/">Make a Donation</a>
+<a class="button" href="contact/">Contact Us</a>
+</nav>
+<p class="help">Need help finding something?<br><a href="mailto:info@bluecardfund.org">info@bluecardfund.org</a> · <a href="tel:2122392251">212.239.2251</a></p>
+</section></main>
+<footer><p class="mission">Assisting Holocaust Survivors in Need</p><p>The Blue Card is a 501(c)(3) organization. Tax ID: 13-1623910.</p></footer>
+</body>
+</html>
