@@ -38,9 +38,9 @@
       <svg class="bc-top-contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6.6 10.8c1.7 3.4 4.2 5.9 7.6 7.6l2.5-2.5c.3-.3.8-.4 1.2-.3 1.3.4 2.6.6 4 .6.6 0 1 .4 1 1V21c0 .6-.4 1-1 1C10.9 22 2 13.1 2 2c0-.6.4-1 1-1h3.8c.6 0 1 .4 1 1 0 1.4.2 2.7.6 4 .1.4 0 .9-.3 1.2l-2.5 2.6Z"></path></svg>
       <span>212.239.2251</span>
     </a>
-    <a class="bc-top-contact-link" href="mailto:info@bluecard.org">
+    <a class="bc-top-contact-link" href="mailto:info@bluecardfund.org">
       <svg class="bc-top-contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 5h18c.6 0 1 .4 1 1v12c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1V6c0-.6.4-1 1-1Zm9 7.2L4.7 7H4v.8l8 5.7 8-5.7V7h-.7L12 12.2Z"></path></svg>
-      <span>info@bluecard.org</span>
+      <span>info@bluecardfund.org</span>
     </a>
   </div>
 </div>
