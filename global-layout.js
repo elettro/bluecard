@@ -147,10 +147,12 @@
         }
 
         var peopleCard = document.createElement('div');
+        peopleCard.setAttribute('data-bluecard-people-card', 'true');
         peopleCard.className = 'bg-white/10 border border-white/15 rounded-2xl p-6';
         peopleCard.innerHTML = '<span class="material-symbols-outlined text-4xl mb-5" aria-hidden="true">diversity_3</span><div class="font-headline text-3xl font-extrabold mb-2">3M</div><p class="text-on-primary/85 leading-relaxed">People served since 1934</p>';
 
         var cancerCard = document.createElement('div');
+        cancerCard.setAttribute('data-bluecard-cancer-card', 'true');
         cancerCard.className = 'bg-white/10 border border-white/15 rounded-2xl p-6';
         cancerCard.innerHTML = '<span class="material-symbols-outlined text-4xl mb-5" aria-hidden="true">health_and_safety</span><div class="font-headline text-3xl font-extrabold mb-2">$7M</div><p class="text-on-primary/85 leading-relaxed">In aid to survivors battling cancer</p>';
 
