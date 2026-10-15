@@ -20,9 +20,9 @@
         src: '/bluecard/images/survivors/the-blue-card-survivor-images-16x9----%20(17).png',
         alt: 'Holocaust survivors supported by The Blue Card'
       },
-      'Health and Well-being': {
+      'Health & Well-Being': {
         src: '/bluecard/images/survivors/the-blue-card-survivor-images-16x9----%20(27).png',
-        alt: 'Holocaust survivors participating in a Blue Card wellbeing program'
+        alt: 'Holocaust survivors participating in a Blue Card well-being program'
       },
       'Medication Assistance': {
         src: '/bluecard/images/homepage/11x7-pharmacy-getting-prescriptions-v1.png',

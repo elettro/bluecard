@@ -175,17 +175,17 @@
       }
     }
 
-    // Use survivor image 27 for the Health & Wellbeing card.
+    // Use survivor image 27 for the Health & Well-Being card.
     var healthHeading = Array.from(main.querySelectorAll('#core-programs .card h3')).find(function (heading) {
       var text = heading.textContent.trim();
-      return text === 'Health & Wellbeing' || text === 'Health & Well-Being';
+      return text === 'Health & Well-Being';
     });
     if (healthHeading) {
       var healthCard = healthHeading.closest('.card');
       var healthImage = healthCard ? healthCard.querySelector('.card-media img') : null;
       if (healthImage) {
         healthImage.src = '/bluecard/images/survivors/the-blue-card-survivor-images-16x9----%20(27).png';
-        healthImage.alt = 'Holocaust survivors participating in a Blue Card wellbeing activity';
+        healthImage.alt = 'Holocaust survivors participating in a Blue Card well-being activity';
       }
     }
 
