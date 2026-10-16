@@ -51,3 +51,5 @@ jobs:
             qa-bluecard-results.json
             bluecard-qa-summary.txt
           retention-days: 30
+
+# Recheck after October 16 accessibility and sitemap fixes.
