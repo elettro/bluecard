@@ -549,6 +549,11 @@ const data = [
         "alternate_url": "https://www.jccpmb.org/"
       },
       {
+        "city": "Edison",
+        "name": "JCC of Middlesex County",
+        "url": "https://jccmc.org/"
+      },
+      {
         "city": "Fairfield",
         "name": "NJY Camps",
         "url": "https://jcca.org/find-a-jcc/njy-camps/",
@@ -564,6 +569,16 @@ const data = [
         "city": "Monmouth",
         "name": "JFCS Monmouth",
         "url": "https://www.jfcsmonmouth.org/"
+      },
+      {
+        "city": "Oakhurst",
+        "name": "Deal Sephardic Network",
+        "url": "https://dealdsn.com/"
+      },
+      {
+        "city": "Ocean County",
+        "name": "Jewish Federation of Ocean County",
+        "url": "https://www.jewishoceancounty.org/"
       },
       {
         "city": "Paramus",
@@ -593,16 +608,6 @@ const data = [
         "name": "JCC Metrowest",
         "url": "https://jcca.org/find-a-jcc/jcc-metrowest/",
         "alternate_url": "https://jccmetrowest.org/"
-      },
-      {
-        "city": "Edison",
-        "name": "JCC of Middlesex County",
-        "url": "https://jccmc.org/"
-      },
-      {
-        "city": "Oakhurst",
-        "name": "Deal Sephardic Network",
-        "url": "https://dealdsn.com/"
       }
     ]
   },
@@ -631,13 +636,13 @@ const data = [
       },
       {
         "city": "Bronx",
-        "name": "Mosholu Montefiore Community Center",
-        "url": "https://www.mmcc.org/"
+        "name": "Bronx House",
+        "url": "https://bronxhouse.org/"
       },
       {
         "city": "Bronx",
-        "name": "Bronx House",
-        "url": "https://bronxhouse.org/"
+        "name": "Mosholu Montefiore Community Center",
+        "url": "https://www.mmcc.org/"
       },
       {
         "city": "Bronx",
@@ -651,18 +656,8 @@ const data = [
       },
       {
         "city": "Brooklyn",
-        "name": "Shorefront YM-YWHA of Brighton Manhattan Beach",
-        "url": "https://www.shorefronty.org/"
-      },
-      {
-        "city": "Brooklyn",
         "name": "Edith & Carl Marks JCH of Bensonhurst",
         "url": "https://www.jchb.org/"
-      },
-      {
-        "city": "Brooklyn",
-        "name": "The Center",
-        "url": "https://www.scclive.org/"
       },
       {
         "city": "Brooklyn",
@@ -673,6 +668,16 @@ const data = [
         "city": "Brooklyn",
         "name": "Kings Bay YM-YWHA INC",
         "url": "https://www.kingsbayy.org/"
+      },
+      {
+        "city": "Brooklyn",
+        "name": "Shorefront YM-YWHA of Brighton Manhattan Beach",
+        "url": "https://www.shorefronty.org/"
+      },
+      {
+        "city": "Brooklyn",
+        "name": "The Center",
+        "url": "https://www.scclive.org/"
       },
       {
         "city": "Cedarhurst",
@@ -715,54 +720,34 @@ const data = [
         "url": "https://www.commonpointqueens.org/"
       },
       {
-        "city": "New York",
-        "name": "Marlene Meyerson JCC Manhattan",
-        "url": "https://mmjccm.org/"
-      },
-      {
         "city": "New York City",
-        "name": "Riverdale YM-YWHA",
-        "url": "https://jcca.org/find-a-jcc/riverdale-ym-ywha/"
-      },
-      {
-        "city": "New York City",
-        "name": "Shorefront YM-YWHA of Brighton Manhattan Beach",
-        "url": "https://jcca.org/find-a-jcc/shorefront-ym-ywha-of-brighton-manhattan-beach/"
-      },
-      {
-        "city": "New York City",
-        "name": "Edith & Carl Marks JCH of Bensonhurst",
-        "url": "https://jcca.org/find-a-jcc/edith-carl-marks-jch-of-bensonhurst/"
-      },
-      {
-        "city": "New York City",
-        "name": "Commonpoint Queens – Samuel Field Y",
-        "url": "https://jcca.org/find-a-jcc/commonpoint-queens/"
-      },
-      {
-        "city": "New York City",
-        "name": "Kings Bay YM-YWHA INC.",
-        "url": "https://jcca.org/find-a-jcc/kingsbay-ym-ywha/"
-      },
-      {
-        "city": "New York City",
-        "name": "YM & YWHA of Washington Heights & Inwood",
-        "url": "https://www.ywhi.org/"
-      },
-      {
-        "city": "New York",
-        "name": "The Educational Alliance",
-        "url": "https://edalliance.org/"
-      },
-      {
-        "city": "New York",
         "name": "92nd Street Y",
         "url": "https://www.92ny.org/"
       },
       {
         "city": "New York City",
+        "name": "Marlene Meyerson JCC Manhattan",
+        "url": "https://mmjccm.org/"
+      },
+      {
+        "city": "New York City",
         "name": "Moise Safra Center",
         "url": "https://moisesafracenter.org/"
+      },
+      {
+        "city": "New York City",
+        "name": "Selfhelp Community Services",
+        "url": "https://selfhelp.net/"
+      },
+      {
+        "city": "New York City",
+        "name": "The Educational Alliance",
+        "url": "https://edalliance.org/"
+      },
+      {
+        "city": "New York City",
+        "name": "YM & YWHA of Washington Heights & Inwood",
+        "url": "https://www.ywhi.org/"
       },
       {
         "city": "Newburgh",
@@ -776,13 +761,13 @@ const data = [
       },
       {
         "city": "Oceanside",
-        "name": "Sunrise Association (Sunrise Day Camps Association, Inc.)",
-        "url": "https://www.sunriseassociation.org/"
+        "name": "Barry & Florence Friedberg JCC",
+        "url": "https://friedbergjcc.org/"
       },
       {
         "city": "Oceanside",
-        "name": "Barry & Florence Friedberg JCC",
-        "url": "https://friedbergjcc.org/"
+        "name": "Sunrise Association (Sunrise Day Camps Association, Inc.)",
+        "url": "https://www.sunriseassociation.org/"
       },
       {
         "city": "Plainview",
