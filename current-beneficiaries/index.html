@@ -29,6 +29,11 @@
     }
     p { margin: 0 0 18px; font-size: 18px; }
     ul { margin: 0 0 18px 20px; font-size: 18px; }
+    .content h2 { margin: 0 0 16px; color: var(--blue); font-size: clamp(23px, 3vw, 29px); line-height: 1.25; }
+    .program-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; row-gap: 9px; margin: 0 0 6px 22px; padding: 0; font-size: 17px; }
+    .program-list li { padding-right: 8px; }
+    .recertification-section { border-top: 1px solid var(--border); margin-top: 32px; padding-top: 30px; }
+    @media (max-width: 650px) { .program-list { grid-template-columns: 1fr; } .content { padding: 22px 18px; } }
     .cta-buttons { display: grid; gap: 12px; margin-top: 26px; }
     .cta-buttons a {
       display: inline-flex;
@@ -67,6 +72,32 @@
     <div class="hero-strip">Current Beneficiaries</div>
     <div class="wrap">
       <section class="content">
+        <h2 id="survivor-assistance-programs">Survivor Assistance Programs</h2>
+        <p>The Blue Card offers the following assistance programs and resources for Holocaust survivors. This is a general program overview. Annual recertification requirements appear in the separate section below.</p>
+        <ul class="program-list">
+          <li>Emergency Cash Assistance</li>
+          <li>Monthly Stipend/Ongoing Monthly Assistance</li>
+          <li>Dental and Medical Assistance</li>
+          <li>Medication Assistance Grant</li>
+          <li>Telephone Emergency Response System (TERS)</li>
+          <li>Natural Disaster Relief</li>
+          <li>Siggi B. Wilzig Fighting Cancer Together Program</li>
+          <li>Jewish Holiday Program</li>
+          <li>Mazel Tov Birthday Program</li>
+          <li>Summer Vacation Program</li>
+          <li>Vitamins and Nutritional Supplements</li>
+          <li>Sonia and Max Lonstein Bring a Smile Program</li>
+          <li>Nutrition Guidance</li>
+          <li>Blue Card-Lissner Hospital Visitation Program</li>
+          <li>Mark Cuban Cost Plus Drug Company Partnership</li>
+          <li>Mood Restore Light Box</li>
+          <li>Companion Pets</li>
+          <li>FreeStyle Libre Glucose Monitoring</li>
+          <li>Uniper Cares Combating Social Isolation Program</li>
+        </ul>
+
+        <div class="recertification-section">
+          <h2 id="annual-recertification">Annual Recertification Requirements</h2>
         <p>All Blue Card recipients receiving ongoing assistance must annually submit a recertification form and documentation by the end of June via their social workers.</p>
 
         <p>Any ongoing recipients who do not submit a recertification form and documentation by the deadline will be inactivated and financial assistance will cease.</p>
@@ -94,6 +125,7 @@
           <a href="https://form.jotform.com/210695035535152" target="_blank" rel="noopener noreferrer">Recertification Form - Online</a>
           <a href="../pdfs/2025-Blue-Card-Recertification-Application-250910.pdf">Recertification Form - PDF</a>
           <a href="../pdfs/2026-Blue-Card-TERS-Application-March-2026.pdf">Telephone Emergency Response System (TERS) Application</a>
+        </div>
         </div>
       </section>
     </div>
