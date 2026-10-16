@@ -1,0 +1,12 @@
+source_path,target_path,status_code,note
+"/hologram/","/interactive-hologram/",301,"Existing HTML redirect stub"
+"/how-we-help/dental-and-medical-assistance/","/dental-and-medical-assistance/",301,"Existing HTML redirect stub"
+"/how-we-help/education-outreach/","/education-outreach/",301,"Existing HTML redirect stub"
+"/how-we-help/emergency-cash-assistance/","/emergency-cash-assistance/",301,"Existing HTML redirect stub"
+"/how-we-help/health-wellbeing/","/health-well-being/",301,"Existing HTML redirect stub"
+"/how-we-help/monthly-assistance/","/ongoing-support/",301,"Existing HTML redirect stub"
+"/how-we-help/siggi-b-wilzig-fighting-cancer-together-program/","/siggi-b-wilzig-fighting-cancer-together-program/",301,"Existing HTML redirect stub"
+"/how-we-help/ters/","/telephone-response-system/",301,"Existing HTML redirect stub"
+"/ongoing-assistance/","/ongoing-support/",301,"Superseded content; preserve until production 301"
+"/health-and-wellbeing/","/health-well-being/",301,"Superseded content; preserve until production 301"
+"/the-blue-cards-medication-assistance-grant/","/medication-assistance-grant/",301,"Superseded content; preserve until production 301"
