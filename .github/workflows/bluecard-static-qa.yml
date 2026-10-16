@@ -1,0 +1,53 @@
+name: Blue Card prelaunch static QA
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bluecard-static-qa.yml'
+permissions:
+  contents: read
+jobs:
+  static-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check HTML links, images, accessibility indicators and sitemap
+        shell: bash
+        run: |
+          set -o pipefail
+          python3 scripts/bluecard_site_qa.py | tee bluecard-qa-summary.txt
+      - name: Syntax-check all website JavaScript
+        shell: bash
+        run: |
+          set +e
+          errors=0
+          while IFS= read -r -d '' file; do
+            echo "CHECK $file"
+            node --check "$file" || errors=$((errors + 1))
+          done < <(find . -name '*.js' -not -path './node_modules/*' -not -path './.git/*' -print0)
+          echo "JS_SYNTAX_ERRORS: $errors"
+          test "$errors" -eq 0
+      - name: Live staging HTTP smoke test (read-only)
+        shell: bash
+        continue-on-error: true
+        run: |
+          python3 - <<'PY'
+          from urllib.request import Request, urlopen
+          paths = ['/','/apply-here/','/volunteering/','/contact/','/sitemap/','/sitemap.xml','/robots.txt','/pdfs/2026-Blue-Card-Referral-Application-Official.pdf','/pdfs/2026-Blue-Card-Recertification-Application-Official.pdf']
+          for path in paths:
+              url='https://elettro.github.io/bluecard'+path
+              try:
+                  with urlopen(Request(url,headers={'User-Agent':'BlueCardSiteQA/1.0'}),timeout=15) as r:
+                      print(r.status,r.headers.get('Content-Type','unknown'),url)
+              except Exception as e:
+                  print('UNVERIFIED',url,type(e).__name__,str(e)[:160])
+          PY
+      - name: Archive detailed static QA report
+        uses: actions/upload-artifact@v4
+        with:
+          name: bluecard-static-qa-results
+          path: |
+            qa-bluecard-results.json
+            bluecard-qa-summary.txt
+          retention-days: 30
