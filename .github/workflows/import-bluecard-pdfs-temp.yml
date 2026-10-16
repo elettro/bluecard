@@ -1,0 +1,33 @@
+name: Import approved Blue Card 2026 PDFs
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/import-bluecard-pdfs-temp.yml']
+permissions:
+  contents: write
+jobs:
+  import-pdfs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Transfer and verify two original PDFs
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p pdfs
+          curl --fail --location --silent --show-error --retry 2 'https://ucda38d45488b74386f9208ff9ab.dl.dropboxusercontent.com/cd/0/get/DKGpCf6FRBEm5vUtuoO1Mui1W9dj-H3GVyWTZ9exxfHoZG6jpD7Vqo1vSjBWPGSpPatAsHh5hDs1fjRe2xdO0J445FX43zt0T1GxUw9k37B8_XHZnI52dsK_B18Eyi2UDR94_Y6vH5TmKziYsA3YYs6YbedrJb1sUpxNaMbyot7e7g/file?c_luid=8e589466' -o pdfs/2026-Blue-Card-Recertification-Application-Official.pdf
+          curl --fail --location --silent --show-error --retry 2 'https://uc0063feb84a6476045b90c17c79.dl.dropboxusercontent.com/cd/0/get/DKFQcpAp83dykhtIYQWLkTknsEjaJvGUSG42hLc2M5KcndQLgvbiT4htcZkCsJ1uK0cFFPb5wrNhijtYVszj4Dn_oD7665upVSEgyWct2WczpmsqIR3o2M_PzwP5VRAKMTnRa80rFfXqHcWh8oKb94nL5tN0BFfM1oMbAtqOf20YyA/file?c_luid=8e589466' -o pdfs/2026-Blue-Card-Referral-Application-Official.pdf
+          printf '%s  %s\n' \
+            'cc3744c456d610eca8358680340183c676ab237334bc00986cbe39692ee05dba' 'pdfs/2026-Blue-Card-Recertification-Application-Official.pdf' \
+            '9641e57543fe50409381940991405c634b8f4e9f395b36532a2344cf38253901' 'pdfs/2026-Blue-Card-Referral-Application-Official.pdf' | sha256sum --check
+      - name: Save PDFs into GitHub repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add pdfs/2026-Blue-Card-Recertification-Application-Official.pdf pdfs/2026-Blue-Card-Referral-Application-Official.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m 'Host approved 2026 Blue Card PDF forms locally'
+            git push
+          fi
