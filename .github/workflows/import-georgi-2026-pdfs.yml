@@ -48,3 +48,5 @@ jobs:
             git commit -m 'Blue Card: host original 2026 application PDFs'
             git push
           fi
+
+# One-time verified import. Updates only on workflow file changes.
