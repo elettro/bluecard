@@ -5,6 +5,10 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/bluecard-static-qa.yml'
+      - '**/*.html'
+      - 'sitemap.xml'
+      - 'robots.txt'
+      - 'scripts/bluecard_site_qa.py'
 permissions:
   contents: read
 jobs:
