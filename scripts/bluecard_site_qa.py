@@ -81,12 +81,12 @@ def check():
         t = Tags()
         try: t.feed(html)
         except Exception as exc: add('HTML_PARSE_ERROR',relative,exc)
-        is_redirect = bool(re.search(r'http-equiv=["\\\']refresh',html,re.I))
+        is_redirect = bool(re.search(r"""http-equiv=["']refresh""",html,re.I))
         is_dev = '/dev/' in ('/'+relative.as_posix()) or relative.as_posix().startswith(('dev/','nav/dev/'))
         counts['HTML_PAGES_SCANNED'] += 1
         if not is_redirect and not is_dev:
             if not re.search(r'<title>[^<]+</title>',html,re.I): add('MISSING_TITLE',relative,'No title')
-            if not re.search(r'<meta\\s+name=["\\\']description',html,re.I): add('MISSING_DESCRIPTION',relative,'No meta description')
+            if not re.search(r"""<meta\s+name=["']description""",html,re.I): add('MISSING_DESCRIPTION',relative,'No meta description')
             if t.headings.count('h1') == 0: add('MISSING_H1',relative,'No H1')
             if t.headings.count('h1') > 1: add('MULTIPLE_H1',relative,t.headings.count('h1'))
         for name,n in Counter(t.ids).items():
@@ -106,7 +106,7 @@ def check():
             if file and not (ROOT / file).is_file():
                 add('MISSING_INTERNAL_LINK',relative,href+' => '+file)
             blank=a.get('target') == '_blank'
-            isdoc=bool(re.search(r'\\.(pdf|docx|xlsx)([?#]|$)',href,re.I))
+            isdoc=bool(re.search(r'\.(pdf|docx|xlsx)([?#]|$)',href,re.I))
             isinternal=href.startswith(('/bluecard/','../','./')) or href.startswith('https://elettro.github.io/bluecard/')
             if blank and isinternal and not isdoc: add('INTERNAL_NEW_TAB',relative,href)
             if blank and 'noopener' not in a.get('rel','').split(): add('BLANK_NO_NOOPENER',relative,href)
@@ -118,7 +118,7 @@ def check():
             file=path_for(src,relative)
             if file and not (ROOT / file).is_file(): add('MISSING_STATIC_ASSET',relative,src)
         # Inline JSON-LD validation
-        for m in re.finditer(r'<script[^>]*type=["\\\']application/ld\\+json["\\\'][^>]*>([\\s\\S]*?)</script>',html,re.I):
+        for m in re.finditer(r"""<script[^>]*type=["']application/ld\+json["'][^>]*>([\s\S]*?)</script>""",html,re.I):
             try:json.loads(m.group(1).strip())
             except Exception as exc:add('INVALID_JSON_LD',relative,str(exc))
 
@@ -143,7 +143,7 @@ def check():
                 if not page.exists():add('MISSING_SITEMAP_PAGE','sitemap.xml',loc)
                 elif '<link rel="canonical"' in page.read_text(encoding='utf8',errors='replace'):
                     text=page.read_text(encoding='utf8',errors='replace')
-                    m=re.search(r'<link\\s+rel=["\\\']canonical["\\\']\\s+href=["\\\']([^"\\\']+)',text,re.I)
+                    m=re.search(r"""<link\s+rel=["']canonical["']\s+href=["']([^"']+)""",text,re.I)
                     if m and m.group(1).rstrip('/')!=loc.rstrip('/'):
                         add('SITEMAP_CANONICAL_MISMATCH',file,loc+' vs '+m.group(1))
         except Exception as exc:add('INVALID_SITEMAP','sitemap.xml',str(exc))
