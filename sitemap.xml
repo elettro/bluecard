@@ -20,12 +20,9 @@
   <url><loc>https://bluecardfund.org/emergency-cash-assistance/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://bluecardfund.org/dental-and-medical-assistance/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://bluecardfund.org/telephone-response-system/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://bluecardfund.org/ongoing-assistance/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bluecardfund.org/the-blue-cards-medication-assistance-grant/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://bluecardfund.org/medication-assistance-grant/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://bluecardfund.org/cost-plus-drug-company/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://bluecardfund.org/siggi-b-wilzig-fighting-cancer-together-program/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://bluecardfund.org/health-and-wellbeing/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://bluecardfund.org/natural-disaster-relief/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://bluecardfund.org/education-outreach/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://bluecardfund.org/interactive-hologram/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -80,4 +77,10 @@
   <url><loc>https://bluecardfund.org/terms-and-conditions/</loc></url>
   <url><loc>https://bluecardfund.org/sms-opt-in-policy/</loc></url>
   <url><loc>https://bluecardfund.org/faqs/</loc></url>
+  <url><loc>https://bluecardfund.org/archive/</loc></url>
+  <url><loc>https://bluecardfund.org/emergency-assistance/</loc></url>
+  <url><loc>https://bluecardfund.org/infographics/</loc></url>
+  <url><loc>https://bluecardfund.org/sitemap/</loc></url>
+  <url><loc>https://bluecardfund.org/survivors/</loc></url>
+  <url><loc>https://bluecardfund.org/who-we-are/our-partners/</loc></url>
 </urlset>
