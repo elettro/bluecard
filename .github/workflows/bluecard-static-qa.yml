@@ -38,7 +38,7 @@ jobs:
         run: |
           python3 - <<'PY'
           from urllib.request import Request, urlopen
-          paths = ['/','/apply-here/','/volunteering/','/contact/','/sitemap/','/sitemap.xml','/robots.txt','/pdfs/2026-Blue-Card-Referral-Application-Official.pdf','/pdfs/2026-Blue-Card-Recertification-Application-Official.pdf']
+          paths = ['/','/apply-here/','/volunteering/','/contact/','/sitemap/','/sitemap.xml','/robots.txt','/pdfs/2026-Blue-Card-Referral-Application-Official.pdf','/pdfs/2026-Blue-Card-Recertification-Application-Official.pdf','/990-financials/','/pdfs/Blue-Card-2024-Audited-Financial-Statements.pdf','/pdfs/Blue-Card-2024-CHAR500.pdf','/pdfs/260716-the-blue-card-inc-2024-amended-990-copy-for-charity-navigator.pdf']
           for path in paths:
               url='https://elettro.github.io/bluecard'+path
               try:
