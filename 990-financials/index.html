@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>990 Financials | The Blue Card</title>
+  <title>990 &amp; Financials | The Blue Card</title>
   <link rel="stylesheet" href="../global-layout.css?v=20260806-1536" />
   <style>
     body {
@@ -141,8 +141,19 @@
       color: #374151;
       font-size: 0.95rem;
     }
+      .filing-grid { display: grid; gap: 1.1rem; margin-top: 1.5rem; }
+    .filing-card { border: 1px solid #d6dde6; border-radius: 10px; padding: clamp(16px, 2vw, 24px); background: #fff; }
+    .filing-card h2 { margin: 0 0 .55rem; color: #0f2f5f; font-size: clamp(1.2rem,2.3vw,1.5rem); }
+    .filing-card p { margin: 0 0 1rem; }
+    .filing-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; }
+    .filing-link { color: #0b56a4; font-weight: 700; }
+    .filing-pages { margin-left: auto; font-size: .92rem; color: #4b5563; }
+    .filing-preview { margin-top: 1.2rem; }
+    .filing-preview summary { cursor: pointer; font-weight: 700; color: #0f2f5f; padding: .25rem 0; }
+    .filing-preview iframe { display: block; margin-top: .7rem; min-height: 480px; }
+    .filing-note { margin: 1.5rem 0 0; }
   </style>
-<meta name="description" content="Learn more about 990 financials at The Blue Card, including survivor assistance programs, community resources, and organization updates.">
+<meta name="description" content="Download The Blue Card’s 2024 Audited Financial Statements, Amended Form 990, and CHAR500 filing.">
 <meta property="og:title" content="990 Financials | The Blue Card">
 <meta property="og:description" content="Learn more about 990 financials at The Blue Card, including survivor assistance programs, community resources, and organization updates.">
 <meta property="og:type" content="website">
@@ -162,42 +173,50 @@
   <header id="bc-global-nav" aria-label="Global site navigation"></header>
 
   <main class="page-wrap">
-    <h1>Form 990</h1>
-    <p>View or download The Blue Card Audit, 990, and Char500 filing.</p>
-
-    <div class="actions">
-      <a class="download-btn" href="../pdfs/260716-the-blue-card-inc-2024-amended-990-copy-for-charity-navigator.pdf" download target="_blank" rel="noopener noreferrer">
-        Download the PDF
-      </a>
+    <h1>990 &amp; Financials</h1>
+    <p>View The Blue Card's 2024 financial statements, amended federal Form 990, and New York State CHAR500. Each filing is available as a separate PDF.</p>
+    <div class="filing-grid">
+      <article class="filing-card">
+        <h2>2024 Audited Financial Statements</h2>
+        <p>Independent auditor’s report and audited financial statements for the year ended December 31, 2024.</p>
+        <div class="filing-actions">
+          <a class="download-btn" href="../pdfs/Blue-Card-2024-Audited-Financial-Statements.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open 2024 Audited Financial Statements PDF in a new tab">Open PDF</a>
+          <a class="filing-link" href="../pdfs/Blue-Card-2024-Audited-Financial-Statements.pdf" download aria-label="Download 2024 Audited Financial Statements PDF">Download PDF</a>
+          <span class="filing-pages">14 pages</span>
+        </div>
+        <details class="filing-preview">
+          <summary>Preview 2024 Audited Financial Statements</summary>
+          <iframe class="pdf-viewer" loading="lazy" title="2024 Audited Financial Statements PDF preview" src="../pdfs/Blue-Card-2024-Audited-Financial-Statements.pdf#view=FitH"></iframe>
+        </details>
+      </article>
+      <article class="filing-card">
+        <h2>2024 Amended Form 990</h2>
+        <p>The Blue Card, Inc. amended federal nonprofit information return for tax year 2024.</p>
+        <div class="filing-actions">
+          <a class="download-btn" href="../pdfs/260716-the-blue-card-inc-2024-amended-990-copy-for-charity-navigator.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open 2024 Amended Form 990 PDF in a new tab">Open PDF</a>
+          <a class="filing-link" href="../pdfs/260716-the-blue-card-inc-2024-amended-990-copy-for-charity-navigator.pdf" download aria-label="Download 2024 Amended Form 990 PDF">Download PDF</a>
+          <span class="filing-pages">30 pages</span>
+        </div>
+        <details class="filing-preview">
+          <summary>Preview 2024 Amended Form 990</summary>
+          <iframe class="pdf-viewer" loading="lazy" title="2024 Amended Form 990 PDF preview" src="../pdfs/260716-the-blue-card-inc-2024-amended-990-copy-for-charity-navigator.pdf#view=FitH"></iframe>
+        </details>
+      </article>
+      <article class="filing-card">
+        <h2>2024 CHAR500</h2>
+        <p>The Blue Card, Inc. annual filing with the New York State Attorney General's Charities Bureau for filing year 2024.</p>
+        <div class="filing-actions">
+          <a class="download-btn" href="../pdfs/Blue-Card-2024-CHAR500.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open 2024 CHAR500 PDF in a new tab">Open PDF</a>
+          <a class="filing-link" href="../pdfs/Blue-Card-2024-CHAR500.pdf" download aria-label="Download 2024 CHAR500 PDF">Download PDF</a>
+          <span class="filing-pages">5 pages</span>
+        </div>
+        <details class="filing-preview">
+          <summary>Preview 2024 CHAR500</summary>
+          <iframe class="pdf-viewer" loading="lazy" title="2024 CHAR500 PDF preview" src="../pdfs/Blue-Card-2024-CHAR500.pdf#view=FitH"></iframe>
+        </details>
+      </article>
     </div>
-
-    <iframe
-      class="pdf-viewer"
-      src="../pdfs/260716-the-blue-card-inc-2024-amended-990-copy-for-charity-navigator.pdf"
-      title="The Blue Card 2024 Amended Form 990"
-    ></iframe>
-
-    <section class="annual-report-wrap financials-report-community">
-      <div class="annual-report-card">
-        <div class="annual-report-header">
-          <h2 class="annual-report-title">Report to the Community</h2>
-          <a class="report-btn" href="https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf" download target="_blank" rel="noopener noreferrer">Download PDF</a>
-        </div>
-
-        <div class="report-viewer">
-          <iframe
-            title="The Blue Card Report to the Community PDF"
-            src="https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf#view=FitH"
-          ></iframe>
-        </div>
-
-        <p class="fallback-note">
-          If the PDF does not display in your browser, you can
-          <a href="https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf" target="_blank" rel="noopener noreferrer">open it in a new tab</a>
-          or use the download button above.
-        </p>
-      </div>
-    </section>
+    <p class="filing-note">For program information and our community brochure, visit <a href="../report-to-the-community/">Report to the Community</a>.</p>
   </main>
 
   <footer id="bc-global-footer" aria-label="Global site footer"></footer>
