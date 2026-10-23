@@ -211,6 +211,24 @@
 <script src="../global-layout.js?v=20260806-3" defer></script>
 <script>
   (function () {
+    // Switch to Georgi's approved file as soon as it exists in the staging repo.
+    // Until then, retain the existing working document rather than a broken link.
+    const fallbackPdf = 'https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf';
+    const approvedPdf = '/bluecard/pdfs/The_Blue_Card_Report_to_the_Community.pdf';
+    window.blueCardReportPdf = fallbackPdf;
+    fetch(approvedPdf, { method: 'HEAD', cache: 'no-store' })
+      .then((response) => {
+        if (!response.ok || !(response.headers.get('content-type') || '').includes('application/pdf')) return;
+        window.blueCardReportPdf = approvedPdf;
+        document.querySelectorAll('a[href], iframe[src]').forEach((element) => {
+          const attribute = element.hasAttribute('href') ? 'href' : 'src';
+          const url = element.getAttribute(attribute) || '';
+          if (url.startsWith(fallbackPdf)) {
+            element.setAttribute(attribute, approvedPdf + url.slice(fallbackPdf.length));
+          }
+        });
+      })
+      .catch(() => { /* Existing working brochure remains available. */ });
     const tabs = Array.from(document.querySelectorAll('.mode-tab'));
     const panels = Array.from(document.querySelectorAll('.mode-panel'));
 
@@ -241,10 +259,10 @@
       fullscreenBtn.addEventListener('click', () => {
         if (fullscreenTarget && fullscreenTarget.requestFullscreen) {
           fullscreenTarget.requestFullscreen().catch(() => {
-            window.open('https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf', '_blank', 'noopener');
+            window.open(window.blueCardReportPdf, '_blank', 'noopener');
           });
         } else {
-          window.open('https://bluecardfund.org/wp-content/uploads/2026/04/thebluecard-trifold2026-updates-v2-larger-file-8meg-compressed.pdf', '_blank', 'noopener');
+          window.open(window.blueCardReportPdf, '_blank', 'noopener');
         }
       });
     }
