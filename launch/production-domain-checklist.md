@@ -31,3 +31,4 @@ After DNS cutover, each source returns **301**, with a `Location` header pointin
 - `/ongoing-assistance/` → `/ongoing-support/` (Superseded content; preserve until production 301)
 - `/health-and-wellbeing/` → `/health-well-being/` (Superseded content; preserve until production 301)
 - `/the-blue-cards-medication-assistance-grant/` → `/medication-assistance-grant/` (Superseded content; preserve until production 301)
+- `/annual-report/` → `/report-to-the-community/` (duplicate removed per Georgi)
