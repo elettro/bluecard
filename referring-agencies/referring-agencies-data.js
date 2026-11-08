@@ -233,14 +233,14 @@ const data = [
     "region": "Delaware",
     "agencies": [
       {
+        "city": "Statewide",
+        "name": "JFS Delaware",
+        "url": "https://www.jfsdelaware.org/"
+      },
+      {
         "city": "Wilmington",
         "name": "Bernard and Ruth Siegel Jewish Community Center",
         "url": "https://www.siegeljcc.org/"
-      },
-      {
-        "city": "Wilmington / Sussex / Newark / Dover",
-        "name": "JFS Delaware",
-        "url": "https://www.jfsdelaware.org/"
       }
     ]
   },
@@ -248,12 +248,12 @@ const data = [
     "region": "District of Columbia",
     "agencies": [
       {
-        "city": "Washington",
+        "city": "Washington DC",
         "name": "Edlavitch JCC of Washington, DC",
         "url": "https://www.edcjcc.org/"
       },
       {
-        "city": "Washington DC / Rockville / Fairfax",
+        "city": "Washington DC",
         "name": "JSSA",
         "url": "https://www.jssa.org/"
       }
@@ -278,17 +278,12 @@ const data = [
         "url": "https://www.jewishfederationlcc.org/"
       },
       {
-        "city": "Greater Tampa",
-        "name": "Gulf Coast JFCS",
-        "url": "https://gulfcoastjfcs.org/"
-      },
-      {
         "city": "Jacksonville",
         "name": "Jewish Community Alliance of Jacksonville",
         "url": "https://jcajax.org/"
       },
       {
-        "city": "Jacksonville / Northeast Florida",
+        "city": "Jacksonville",
         "name": "The LJD Jewish Family & Community Services",
         "url": "https://jfcsjax.org/"
       },
@@ -308,11 +303,6 @@ const data = [
         "url": "https://mbjcc.org/"
       },
       {
-        "city": "Miami-Dade / Monroe County",
-        "name": "Jewish Community Services of South Florida",
-        "url": "https://jcsfl.org/"
-      },
-      {
         "city": "North Miami Beach",
         "name": "Michael-Ann Russell JCC",
         "url": "https://marjcc.org/"
@@ -326,6 +316,11 @@ const data = [
         "city": "Palm Beach County",
         "name": "Alpert Jewish Family Service",
         "url": "https://www.alpertjfs.org/"
+      },
+      {
+        "city": "Palm Beach County",
+        "name": "Ruth & Norman Rales Jewish Family Services",
+        "url": "https://ralesjfs.org/"
       },
       {
         "city": "Palm Beach Gardens",
@@ -343,9 +338,14 @@ const data = [
         "url": "https://jfedsrq.org/"
       },
       {
-        "city": "South Palm Beach County",
-        "name": "Ruth & Norman Rales Jewish Family Services",
-        "url": "https://ralesjfs.org/"
+        "city": "South Florida",
+        "name": "Jewish Community Services of South Florida",
+        "url": "https://jcsfl.org/"
+      },
+      {
+        "city": "Tampa",
+        "name": "Gulf Coast JFCS",
+        "url": "https://gulfcoastjfcs.org/"
       },
       {
         "city": "Tampa",
@@ -370,7 +370,7 @@ const data = [
       {
         "city": "Evans",
         "name": "Augusta Jewish Community Center",
-        "url": "https://www.augustajcc.org/"
+        "url": "https://www.jewishaugusta.org/"
       },
       {
         "city": "Savannah",
@@ -500,11 +500,6 @@ const data = [
       {
         "city": "Baltimore",
         "name": "JCS Baltimore",
-        "url": "https://jcsbalt.org/"
-      },
-      {
-        "city": "Baltimore",
-        "name": "JCS of Greater Baltimore",
         "url": "https://jcsbalt.org/"
       },
       {
@@ -675,8 +670,7 @@ const data = [
       {
         "city": "East Windsor",
         "name": "JCC Princeton Mercer Bucks & Abrams Camps",
-        "url": "https://www.jccabramscamps.org/jcc",
-        "alternate_url": "https://www.jccpmb.org/"
+        "url": "https://www.jccabramscamps.org/jcc"
       },
       {
         "city": "Edison",
@@ -686,8 +680,7 @@ const data = [
       {
         "city": "Margate City",
         "name": "Marjorie & Lewis Katz JCC",
-        "url": "https://jcca.org/find-a-jcc/milton-betty-katz-jcc/",
-        "alternate_url": "https://www.jccatlantic.org/"
+        "url": "https://jcca.org/find-a-jcc/milton-betty-katz-jcc/"
       },
       {
         "city": "MetroWest",
@@ -727,8 +720,7 @@ const data = [
       {
         "city": "Scotch Plains",
         "name": "JCC of Central NJ",
-        "url": "https://jcca.org/find-a-jcc/jcc-of-central-nj/",
-        "alternate_url": "https://www.jccnj.org/"
+        "url": "https://jcca.org/find-a-jcc/jcc-of-central-nj/"
       },
       {
         "city": "Somerset / Hunterdon / Warren",
@@ -738,25 +730,22 @@ const data = [
       {
         "city": "Tenafly",
         "name": "Kaplen JCC on the Palisades",
-        "url": "https://www.jccotp.org/",
-        "alternate_url": "https://www.jccotp.org/"
+        "url": "https://www.jccotp.org/"
       },
       {
         "city": "Union",
         "name": "YM -YWHA of Union County",
-        "url": "https://jcca.org/find-a-jcc/ym-ywha-of-union-county/",
-        "alternate_url": "http://www.uniony.org/"
+        "url": "https://jcca.org/find-a-jcc/ym-ywha-of-union-county/"
       },
       {
-        "city": "Union County / Somerset County",
+        "city": "Union County",
         "name": "Jewish Family Service of Central New Jersey",
         "url": "https://jfscentralnj.org/"
       },
       {
         "city": "West Orange",
         "name": "JCC Metrowest",
-        "url": "https://jccmetrowest.org/",
-        "alternate_url": "https://jccmetrowest.org/"
+        "url": "https://jccmetrowest.org/"
       }
     ]
   },
@@ -1325,11 +1314,6 @@ const data = [
     "agencies": [
       {
         "city": "Austin",
-        "name": "Jewish Community Center of Austin",
-        "url": "https://jcca.org/find-a-jcc/jewish-community-center-of-austin/"
-      },
-      {
-        "city": "Austin",
         "name": "Shalom Austin JCC",
         "url": "https://shalomaustin.org/"
       },
@@ -1395,6 +1379,11 @@ const data = [
     "agencies": [
       {
         "city": "Fairfax",
+        "name": "JSSA",
+        "url": "https://www.jssa.org/"
+      },
+      {
+        "city": "Fairfax",
         "name": "The Pozez Jewish Community Center of Northern Virginia",
         "url": "https://www.thej.org/"
       },
@@ -1456,6 +1445,7 @@ const data = [
     ]
   }
 ];
+
 
 
 
