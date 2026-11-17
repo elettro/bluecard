@@ -1,6 +1,6 @@
 (function () {
   var BBB_URL = 'https://give.org/charity-reviews/elderly/the-blue-card-in-new-york-ny-9999-16357';
-  var BBB_IMAGE = '/bluecard/images/footer/bbb-accredited-charity-white.png';
+  var BBB_IMAGE = '/images/footer/bbb-accredited-charity-white.png';
 
   function addBbbBadge() {
     var badges = document.querySelector('.bc-badges');
@@ -55,10 +55,10 @@
 
     var submenu = moreParent.querySelector(':scope > .sub-menu');
     if (!submenu) return false;
-    if (submenu.querySelector('a[href="/bluecard/faqs/"]')) return true;
+    if (submenu.querySelector('a[href="/faqs/"]')) return true;
 
     var item = document.createElement('li');
-    item.innerHTML = '<a href="/bluecard/faqs/">FAQs</a>';
+    item.innerHTML = '<a href="/faqs/">FAQs</a>';
     var contactItem = Array.from(submenu.children).find(function (li) {
       var a = li.querySelector('a');
       return a && a.textContent.trim() === 'Contact Us';
@@ -91,7 +91,7 @@
 
   function patchSpeakersBureau() {
     var path = (window.location.pathname || '').replace(/\/index\.html$/, '').replace(/\/+$/, '');
-    if (path !== '/bluecard/speakers-bureau') return;
+    if (path !== '/speakers-bureau') return;
 
     var page = document.querySelector('.sb-page');
     var hero = page ? page.querySelector('.sb-hero') : null;
@@ -144,7 +144,7 @@
       var slide = document.createElement('div');
       slide.className = 'sb-carousel-slide';
       var img = document.createElement('img');
-      img.src = '/bluecard/images/speakers-bureau/3x4-speaker-bureau-gallery---%20(' + i + ').png';
+      img.src = '/images/speakers-bureau/3x4-speaker-bureau-gallery---%20(' + i + ').png';
       img.alt = 'The Blue Card Speakers Bureau educational event photo';
       img.loading = i === 1 ? 'eager' : 'lazy';
       slide.appendChild(img);
@@ -213,7 +213,7 @@
 
   function patchHomepage() {
     var path = (window.location.pathname || '').replace(/\/index\.html$/, '').replace(/\/+$/, '');
-    if (path !== '/bluecard' && path !== '') return;
+    if (path !== '/' && path !== '') return;
 
     var main = document.querySelector('main');
     if (!main) return;
@@ -315,7 +315,7 @@
       var educationCard = educationHeading.closest('.card');
       var educationImage = educationCard ? educationCard.querySelector('.card-media img') : null;
       if (educationImage) {
-        educationImage.src = '/bluecard/images/homepage/11x7-hologram-sonia-being-watched-in-classroom.png?v=20260816';
+        educationImage.src = '/images/homepage/11x7-hologram-sonia-being-watched-in-classroom.png?v=20260816';
         educationImage.alt = 'Students viewing Holocaust survivor Sonia in an interactive classroom hologram experience';
       }
     }

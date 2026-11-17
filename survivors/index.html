@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Survivor Photo Gallery | The Blue Card</title>
   <meta name="description" content="A photo gallery featuring Holocaust survivors and The Blue Card community." />
-  <link rel="stylesheet" href="/bluecard/global-layout.css?v=20260806-1536" />
-  <link rel="canonical" href="https://bluecardfund.org/survivors/" />
+  <link rel="stylesheet" href="/global-layout.css?v=20260806-1536" />
+  <link rel="canonical" href="https://bluecard.org/survivors/" />
   <style>
     :root{--blue:#0d5cab;--deep:#0b2341;--line:rgba(13,92,171,.16);--text:#25384b}
     *{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:#fff}
@@ -21,7 +21,7 @@
     .lightbox{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;padding:28px;background:rgba(4,14,28,.94)}.lightbox.is-open{display:flex}.lightbox-inner{width:min(1400px,94vw);max-height:92vh;display:flex;flex-direction:column;align-items:center;gap:14px}.lightbox img{max-width:100%;max-height:82vh;object-fit:contain;border-radius:8px}.lightbox-caption{color:#fff;font-size:15px;font-weight:700}.lightbox-close,.lightbox-nav{position:fixed;border:0;color:#fff;background:rgba(255,255,255,.13);cursor:pointer}.lightbox-close{top:18px;right:18px;width:44px;height:44px;border-radius:50%;font-size:28px}.lightbox-nav{top:50%;transform:translateY(-50%);width:48px;height:72px;border-radius:10px;font-size:34px}.lightbox-prev{left:16px}.lightbox-next{right:16px}
     @media(max-width:980px){.photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:620px){.gallery-hero{padding:58px 18px 42px}.gallery-section{padding:36px 14px 60px}.gallery-meta{align-items:flex-start;flex-direction:column}.photo-grid{grid-template-columns:1fr}}
   </style>
-<meta property="og:url" content="https://bluecardfund.org/survivors/">
+<meta property="og:url" content="https://bluecard.org/survivors/">
 </head>
 <body>
   <header id="bc-global-nav" aria-label="Global site navigation"></header>
@@ -39,7 +39,7 @@
       const lbImg=document.getElementById('lightbox-image');
       const lbCap=document.getElementById('lightbox-caption');
       let pos=0;
-      const path=i=>`/bluecard/images/survivors/the-blue-card-survivor-images-16x9---- (${i}).png`;
+      const path=i=>`/images/survivors/the-blue-card-survivor-images-16x9---- (${i}).png`;
       const pad=i=>String(i).padStart(2,'0');
       function openAt(p){pos=p;const i=images[pos];lbImg.src=path(i);lbImg.alt=`The Blue Card survivor gallery image ${i}`;lbCap.textContent=`Image ${pad(i)} of 37`;lightbox.classList.add('is-open');document.body.style.overflow='hidden'}
       function move(d){pos=(pos+d+images.length)%images.length;openAt(pos)}
@@ -50,6 +50,6 @@
       document.addEventListener('keydown',e=>{if(!lightbox.classList.contains('is-open'))return;if(e.key==='Escape')document.getElementById('lightbox-close').click();if(e.key==='ArrowLeft')move(-1);if(e.key==='ArrowRight')move(1)});
     })();
   </script>
-  <script src="/bluecard/global-layout.js?v=20260806-3"></script>
+  <script src="/global-layout.js?v=20260806-3"></script>
 </body>
 </html>

@@ -1,19 +1,19 @@
 (function () {
   var cacheBust = Date.now();
   var legacyScript = document.createElement('script');
-  legacyScript.src = '/bluecard/global-layout-legacy.js?v=' + cacheBust;
+  legacyScript.src = '/global-layout-legacy.js?v=' + cacheBust;
   legacyScript.onload = function () {
     var educationNav = Array.from(document.querySelectorAll('#bc-global-nav .menu > li > a')).find(function (link) {
       return link.textContent.trim() === 'Holocaust Education';
     });
     if (educationNav) {
-      educationNav.setAttribute('href', '/bluecard/interactive-hologram/');
+      educationNav.setAttribute('href', '/interactive-hologram/');
       educationNav.classList.add('bluecard-nav-parent');
       educationNav.setAttribute('aria-haspopup', 'true');
     }
 
     var currentPath = (window.location.pathname || '').replace(/\/index\.html$/, '').replace(/\/+$/, '');
-    if (currentPath === '/bluecard/interactive-hologram') {
+    if (currentPath === '/interactive-hologram') {
       var moveClassroomCarousel = function () {
         var historySection = document.getElementById('program-overview');
         if (!historySection) return false;
@@ -48,14 +48,14 @@
     }
 
     var bbbPatch = document.createElement('script');
-    bbbPatch.src = '/bluecard/bbb-footer.js?v=' + cacheBust;
+    bbbPatch.src = '/bbb-footer.js?v=' + cacheBust;
     document.body.appendChild(bbbPatch);
   };
   document.head.appendChild(legacyScript);
 
   function patchHomepage() {
     var path = (window.location.pathname || '').replace(/\/index\.html$/, '').replace(/\/+$/, '');
-    if (path !== '/bluecard' && path !== '') return;
+    if (path !== '/' && path !== '') return;
 
     var main = document.querySelector('main');
     if (!main) return;
@@ -170,7 +170,7 @@
       var ongoingSupportCard = ongoingSupportHeading.closest('.card');
       var ongoingSupportImage = ongoingSupportCard ? ongoingSupportCard.querySelector('.card-media img') : null;
       if (ongoingSupportImage) {
-        ongoingSupportImage.src = '/bluecard/images/survivors/the-blue-card-survivor-images-16x9----%20(17).png';
+        ongoingSupportImage.src = '/images/survivors/the-blue-card-survivor-images-16x9----%20(17).png';
         ongoingSupportImage.alt = 'Holocaust survivors supported by The Blue Card';
       }
     }
@@ -184,7 +184,7 @@
       var healthCard = healthHeading.closest('.card');
       var healthImage = healthCard ? healthCard.querySelector('.card-media img') : null;
       if (healthImage) {
-        healthImage.src = '/bluecard/images/survivors/the-blue-card-survivor-images-16x9----%20(27).png';
+        healthImage.src = '/images/survivors/the-blue-card-survivor-images-16x9----%20(27).png';
         healthImage.alt = 'Holocaust survivors participating in a Blue Card well-being activity';
       }
     }
@@ -198,7 +198,7 @@
       var medicationCard = medicationHeading.closest('.card');
       var medicationImage = medicationCard ? medicationCard.querySelector('.card-media img') : null;
       if (medicationImage) {
-        medicationImage.src = '/bluecard/images/homepage/11x7-pharmacy-getting-prescriptions-v1.png';
+        medicationImage.src = '/images/homepage/11x7-pharmacy-getting-prescriptions-v1.png';
         medicationImage.alt = 'Older adult receiving prescription medication from a pharmacist';
       }
     }
@@ -212,7 +212,7 @@
       var educationCard = educationHeading.closest('.card');
       var educationImage = educationCard ? educationCard.querySelector('.card-media img') : null;
       if (educationImage) {
-        educationImage.src = '/bluecard/images/homepage/education-combating-hate-classroom-1200x800.jpg';
+        educationImage.src = '/images/homepage/education-combating-hate-classroom-1200x800.jpg';
         educationImage.alt = 'Students gathered around an interactive Holocaust survivor hologram classroom presentation';
       }
     }

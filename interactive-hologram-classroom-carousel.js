@@ -1,12 +1,12 @@
 (function () {
   var currentPath = (window.location.pathname || '/').replace(/\/index\.html$/, '').replace(/\/+$/, '') || '/';
-  if (currentPath !== '/bluecard/interactive-hologram') return;
+  if (currentPath !== '/interactive-hologram') return;
   if (document.getElementById('hologram-classroom-carousel')) return;
 
   var historySection = document.getElementById('program-overview');
   if (!historySection || !historySection.parentNode) return;
 
-  var imageBase = '/bluecard/images/interactive-hologram/16x9-classroom/';
+  var imageBase = '/images/interactive-hologram/16x9-classroom/';
   var images = [];
   for (var i = 1; i <= 20; i += 1) {
     images.push(imageBase + '16x9-images-20-set-classrooms---%20(' + i + ').png');
