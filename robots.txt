@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bluecardfund.org/sitemap.xml
+Sitemap: https://bluecard.org/sitemap.xml

@@ -56,17 +56,16 @@ def path_for(url, page):
         return None
     u = urlparse(url)
     if u.scheme in ('http','https'):
-        if u.netloc.lower() in ('elettro.github.io','www.elettro.github.io') and u.path.startswith('/bluecard/'):
-            path = u.path[len('/bluecard/'):]
+        if u.netloc.lower() in ('bluecard.org','www.bluecard.org'):
+            path = u.path
         elif u.netloc.lower() in ('bluecardfund.org','www.bluecardfund.org'):
-            # Legacy WordPress content is not necessarily in this GitHub repository;
-            # treat external absolute production URLs as a separate migration task.
+            # Old WordPress domain: these URLs are covered by the bluecardfund.org -> bluecard.org redirect map.
             return None
         else: return None
     else:
         path = u.path
-        if path.startswith('/bluecard/'): path = path[len('/bluecard/'):]
-        elif path.startswith('/'): return None
+        if path.startswith('//'): return None
+        elif path.startswith('/'): pass
         else: path = posixpath.join(page.parent.as_posix(),path)
     path = unquote(path)
     path = posixpath.normpath(path).lstrip('/')
@@ -106,8 +105,8 @@ def check():
             if file and not (ROOT / file).is_file():
                 add('MISSING_INTERNAL_LINK',relative,href+' => '+file)
             blank=a.get('target') == '_blank'
-            isdoc=bool(re.search(r'\.(pdf|docx|xlsx)([?#]|$)',href,re.I))
-            isinternal=href.startswith(('/bluecard/','../','./')) or href.startswith('https://elettro.github.io/bluecard/')
+            isdoc=bool(re.search(r'\.(pdf|docx|xlsx|jpe?g|png|mp3|mp4)([?#]|$)',href,re.I))
+            isinternal=(href.startswith(('/','../','./')) and not href.startswith('//')) or href.startswith('https://bluecard.org/')
             if blank and isinternal and not isdoc: add('INTERNAL_NEW_TAB',relative,href)
             if blank and 'noopener' not in a.get('rel','').split(): add('BLANK_NO_NOOPENER',relative,href)
         for img in t.images:
@@ -133,7 +132,7 @@ def check():
                 if n>1:add('DUPLICATE_SITEMAP_LOC','sitemap.xml',url)
             for loc in locs:
                 u=urlparse(loc)
-                if u.netloc not in ('bluecardfund.org','www.bluecardfund.org'):
+                if u.netloc not in ('bluecard.org',):
                     add('SITEMAP_BAD_HOST','sitemap.xml',loc)
                     continue
                 path=u.path.lstrip('/')

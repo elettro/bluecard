@@ -3,41 +3,41 @@
   var legacyLoaded = false;
 
   function loadClassroomCarousel() {
-    if (currentPath !== '/bluecard/interactive-hologram') return;
+    if (currentPath !== '/interactive-hologram') return;
     if (document.querySelector('script[data-bc-classroom-carousel]')) return;
     var classroomScript = document.createElement('script');
-    classroomScript.src = '/bluecard/interactive-hologram-classroom-carousel.js?v=20260807-1';
+    classroomScript.src = '/interactive-hologram-classroom-carousel.js?v=20260807-1';
     classroomScript.defer = true;
     classroomScript.setAttribute('data-bc-classroom-carousel', 'true');
     document.body.appendChild(classroomScript);
   }
 
   function patchHomepageHelpImages() {
-    if (currentPath !== '/bluecard' && currentPath !== '/') return;
+    if (currentPath !== '/' && currentPath !== '/') return;
 
     var imageMap = {
       'Ongoing Support': {
-        src: '/bluecard/images/survivors/the-blue-card-survivor-images-16x9----%20(17).png',
+        src: '/images/survivors/the-blue-card-survivor-images-16x9----%20(17).png',
         alt: 'Holocaust survivors supported by The Blue Card'
       },
       'Health & Well-Being': {
-        src: '/bluecard/images/survivors/the-blue-card-survivor-images-16x9----%20(27).png',
+        src: '/images/survivors/the-blue-card-survivor-images-16x9----%20(27).png',
         alt: 'Holocaust survivors participating in a Blue Card well-being program'
       },
       'Medication Assistance': {
-        src: '/bluecard/images/homepage/11x7-pharmacy-getting-prescriptions-v1.png',
+        src: '/images/homepage/11x7-pharmacy-getting-prescriptions-v1.png',
         alt: 'Older adult receiving prescription medication from a pharmacist'
       },
       'Education and Combating Hate': {
-        src: '/bluecard/images/homepage/education-combating-hate-classroom-1536x1024.png?v=20260829-2',
+        src: '/images/homepage/education-combating-hate-classroom-1536x1024.png?v=20260829-2',
         alt: 'Students gathered around an interactive Holocaust survivor hologram classroom presentation'
       },
       'Education & Combating Hate': {
-        src: '/bluecard/images/homepage/education-combating-hate-classroom-1536x1024.png?v=20260829-2',
+        src: '/images/homepage/education-combating-hate-classroom-1536x1024.png?v=20260829-2',
         alt: 'Students gathered around an interactive Holocaust survivor hologram classroom presentation'
       },
       'Education & Outreach': {
-        src: '/bluecard/images/homepage/education-combating-hate-classroom-1536x1024.png?v=20260829-2',
+        src: '/images/homepage/education-combating-hate-classroom-1536x1024.png?v=20260829-2',
         alt: 'Students gathered around an interactive Holocaust survivor hologram classroom presentation'
       }
     };
@@ -74,7 +74,7 @@
   }
 
   var legacyScript = document.createElement('script');
-  legacyScript.src = 'https://cdn.jsdelivr.net/gh/elettro/bluecard@5b458752db375679004be2cf3f99a25db9dd17e6/homepage-how-we-help.js';
+  legacyScript.src = '/homepage-how-we-help-legacy.js';
   legacyScript.onload = afterLegacy;
   legacyScript.onerror = afterLegacy;
   document.body.appendChild(legacyScript);
