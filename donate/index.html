@@ -20,6 +20,10 @@
     .contact-shell{padding:36px;border-radius:32px;background:linear-gradient(180deg,#fff,#f8fbff);border:1px solid rgba(17,34,53,.08)}.contact-grid{display:grid;grid-template-columns:1fr;gap:0}.contact-list{display:grid;gap:12px;margin-top:18px;color:var(--blue-900);font-weight:700}.mini-btn{min-height:52px;padding:0 20px;border-radius:15px;background:#fff;color:var(--blue-900);border:1px solid var(--line);font-family:"Plus Jakarta Sans",sans-serif;font-weight:800}
     #ways-to-donate{padding-bottom:40px}.why-section{padding-top:16px;padding-bottom:40px}.legacy-section{padding-top:16px;padding-bottom:40px}.alternative-section{padding-top:16px;padding-bottom:38px}.questions-section{padding-top:16px;padding-bottom:56px}
     @media(max-width:1100px){.hero-grid,.reassurance,.split-grid,.donate-grid{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-photo{inset:0}}@media(max-width:760px){.wrap{width:min(var(--max),calc(100% - 24px))}.section{padding:44px 0}.hero-grid{min-height:auto;padding:40px 0 48px}.qr-shell,.steps{grid-template-columns:1fr}.hero-card{min-height:420px}.trust-row{gap:9px}.trust-pill{font-size:13px}.questions-section{padding-bottom:44px}}
+    .ap-form{display:grid;gap:16px;margin-top:6px}.ap-amounts{border:0;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.ap-amounts legend{font-weight:700;color:var(--blue-900);margin-bottom:10px;padding:0}.ap-chip{position:relative;cursor:pointer}.ap-chip input{position:absolute;opacity:0;inset:0;cursor:pointer}.ap-chip span{display:flex;align-items:center;justify-content:center;min-height:52px;padding:0 8px;border-radius:14px;border:1px solid var(--line);background:var(--blue-050);font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;color:var(--blue-900);text-align:center;font-size:15px}.ap-chip input:checked+span{background:var(--blue-700);border-color:var(--blue-700);color:#fff}.ap-chip input:focus-visible+span{outline:3px solid var(--blue-500);outline-offset:2px}
+    .ap-other label{display:block;font-weight:700;color:var(--blue-900);margin-bottom:8px}.ap-money{display:flex;align-items:center;gap:8px;padding:0 16px;min-height:52px;border-radius:14px;border:1px solid var(--line);background:#fff}.ap-money span{font-weight:800;color:var(--blue-900)}.ap-money input{flex:1;border:0;outline:0;font:inherit;font-size:17px;min-width:0;background:transparent}
+    .ap-monthly{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--ink);cursor:pointer}.ap-monthly input{width:20px;height:20px;accent-color:var(--blue-700)}.ap-error{margin:0;padding:12px 14px;border-radius:12px;background:#fff1f1;color:#a11616;font-weight:600}.ap-note{margin:0;font-size:13px;color:var(--muted)}.ap-submit{border:0;cursor:pointer;font:inherit;font-weight:800}.ap-submit[disabled]{opacity:.65;cursor:progress}
+    @media(max-width:520px){.ap-amounts{grid-template-columns:repeat(2,minmax(0,1fr))}}
   </style>
   <link rel="canonical" href="https://bluecard.org/donate/">
 <meta property="og:url" content="https://bluecard.org/donate/">
@@ -54,7 +58,21 @@
       <div class="method-card featured"><div class="method-top"><div class="logo-badge">Credit Card / Bank</div><div class="method-tag">Most direct</div></div><h3>Donate by Credit Card or Bank Account</h3><p class="body">Make your donation securely online through The Blue Card’s direct giving form.</p><div class="method-actions"><a class="method-btn" href="https://form-renderer-app.donorperfect.io/give/the-blue-card-inc/donation-form" target="_blank" rel="noopener noreferrer">Donate Securely</a></div></div>
       <div class="method-card"><div class="method-top"><div class="logo-badge">PayPal</div><div class="method-tag">Trusted online</div></div><h3>Donate with PayPal</h3><p class="body">Use PayPal for a fast and trusted online donation.</p><div class="method-actions"><a class="method-btn" href="https://www.paypal.com/us/fundraiser/charity/1474016" target="_blank" rel="noopener noreferrer">Donate with PayPal</a></div></div>
       <div class="method-card"><div class="method-top"><div class="logo-badge">venmo</div><div class="method-tag">Mobile giving</div></div><h3>Donate with Venmo</h3><p class="body">Scan the QR code or use the button below to open The Blue Card’s Venmo donation destination directly.</p><div class="qr-shell"><div class="qr-card"><img src="/images/donate/venmo-blue-card-qr.webp" alt="Donate with Venmo QR Code for The Blue Card"></div><div><p class="body">Scan the QR code with your phone or select the button below to open The Blue Card’s Venmo profile.</p><div class="method-actions venmo-mobile-action"><a class="method-btn" href="https://www.venmo.com/u/BlueCardFund" target="_blank" rel="noopener noreferrer">Open Venmo Donation</a></div></div></div></div>
-      <div class="method-card"><div class="method-top"><div class="logo-badge">Donate with Apple Pay</div><div class="method-tag">Fast checkout</div></div><h3>Donate with Apple Pay</h3><p class="body">Donate quickly using Apple Pay.</p><div class="method-actions"><a class="method-btn" href="https://bluecardfund.org/donation-apple/" target="_blank" rel="noopener noreferrer">Donate with Apple Pay</a></div></div>
+      <div class="method-card" id="apple-pay"><div class="method-top"><div class="logo-badge">Apple Pay · Google Pay</div><div class="method-tag">Fast checkout</div></div><h3>Donate with Apple Pay</h3><p class="body">Choose an amount, then complete your gift with Apple Pay, Google Pay or card on Stripe&rsquo;s secure checkout.</p>
+        <form class="ap-form" id="ap-form" data-api="https://bluecard-donate-checkout.rechan.workers.dev" data-fallback="https://bluecardfund.org/donation-apple/" novalidate>
+          <fieldset class="ap-amounts"><legend>Donation amount</legend>
+            <label class="ap-chip"><input type="radio" name="ap-amount" value="25" checked><span>$25</span></label>
+            <label class="ap-chip"><input type="radio" name="ap-amount" value="50"><span>$50</span></label>
+            <label class="ap-chip"><input type="radio" name="ap-amount" value="150"><span>$150</span></label>
+            <label class="ap-chip"><input type="radio" name="ap-amount" value="other"><span>Your choice</span></label>
+          </fieldset>
+          <div class="ap-other" id="ap-other" hidden><label for="ap-custom">Custom amount (USD)</label><div class="ap-money"><span aria-hidden="true">$</span><input id="ap-custom" name="ap-custom" type="number" inputmode="decimal" min="1" max="25000" step="0.01" placeholder="18"></div></div>
+          <label class="ap-monthly" for="ap-monthly"><input type="checkbox" id="ap-monthly"> <span>Make this a monthly donation</span></label>
+          <p class="ap-error" id="ap-error" role="alert" hidden></p>
+          <div class="method-actions"><button type="submit" class="method-btn ap-submit" id="ap-submit">Donate with Apple Pay</button></div>
+          <p class="ap-note">Secure checkout by Stripe. Apple Pay and Google Pay appear automatically on supported devices.</p>
+        </form>
+      </div>
     </div>
   </div>
 </section>
@@ -71,6 +89,26 @@
 <script src="../global-layout.js?v=20260806-3"></script>
 <script>
 function copyAddress(){const text=`The Blue Card\n171 Madison Avenue, Suite #1405\nNew York, NY 10016`;navigator.clipboard.writeText(text).then(()=>{alert("Mailing address copied.");});}
+</script>
+<script>
+(function(){
+  var form=document.getElementById('ap-form'); if(!form) return;
+  var other=document.getElementById('ap-other'), custom=document.getElementById('ap-custom'), monthly=document.getElementById('ap-monthly'), err=document.getElementById('ap-error'), btn=document.getElementById('ap-submit');
+  form.addEventListener('change',function(e){ if(e.target.name==='ap-amount'){ var isOther=e.target.value==='other'; other.hidden=!isOther; if(isOther) custom.focus(); } });
+  function fail(msg){ err.textContent=msg; err.hidden=false; btn.disabled=false; btn.textContent='Donate with Apple Pay'; }
+  form.addEventListener('submit',function(e){
+    e.preventDefault(); err.hidden=true;
+    var pick=form.querySelector('input[name="ap-amount"]:checked'); var amount=pick&&pick.value==='other'?parseFloat(custom.value):parseFloat(pick&&pick.value);
+    if(!(amount>=1&&amount<=25000)){ fail('Please enter an amount between $1 and $25,000.'); return; }
+    var api=form.getAttribute('data-api');
+    if(!api){ window.location.href=form.getAttribute('data-fallback'); return; }
+    btn.disabled=true; btn.textContent='Opening secure checkout…';
+    fetch(api,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({amount:Math.round(amount*100)/100,monthly:monthly.checked})})
+      .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
+      .then(function(x){ if(x.ok&&x.d.url){ window.location.href=x.d.url; } else { fail((x.d&&x.d.error)||'We could not start checkout. Please try again.'); } })
+      .catch(function(){ fail('We could not reach secure checkout. Please try again, or use another giving option above.'); });
+  });
+})();
 </script>
 </body>
 </html>
