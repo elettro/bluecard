@@ -1,6 +1,8 @@
 name = "bluecard-donate-checkout"
 main = "worker.js"
 compatibility_date = "2024-06-20"
+account_id = "34b22e9eb94213413a604be0c0b2cbbe"
+workers_dev = true
 
 [vars]
 ALLOWED_ORIGINS = "https://bluecard.org,https://www.bluecard.org"
