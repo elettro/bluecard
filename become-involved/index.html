@@ -23,7 +23,7 @@
     .cta-btn:hover{background:#eef6ff}
     .preheader{font-weight:700;margin-top:6px}
     .support-title{margin-top:8px;margin-bottom:22px}
-    .shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .shop-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;max-width:620px}
     .shop-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
     .shop-logo{max-height:95px;object-fit:contain;margin:0 auto 14px}
     details{border-top:1px solid var(--line);padding-top:12px}
@@ -77,24 +77,10 @@
         <a class="cta-btn" href="https://bluecard.org/volunteering/">Volunteering</a>
       </div>
 
-      <p class="preheader">Love to online shop? The Blue Card is an approved charitable organization of Amazon Smile, eBay Giving Works, and PayPal. Donate to help Holocaust survivors when shopping:</p>
-      <h2 class="support-title">Support The Blue Card with Amazon Smile and eBay Giving Works</h2>
+      <p class="preheader">Love to online shop? The Blue Card is an approved charitable organization of eBay Giving Works and PayPal. Donate to help Holocaust survivors when shopping:</p>
+      <h2 class="support-title">Support The Blue Card with eBay Giving Works</h2>
 
       <div class="shop-grid">
-        <article class="shop-card">
-          <img class="shop-logo" src="../images/donate/amazon-smile.jpg" alt="Amazon Smile" />
-          <details>
-            <summary>See Instructions</summary>
-            <div class="instructions">
-              <ol>
-                <li>Next time you are looking to make a purchase with Amazon, go to smile.amazon.com and log on with your regular Amazon or Amazon Prime account.</li>
-                <li>Once you have logged on, search for The Blue Card in the search bar under “select your own charitable organization”. Make sure to select the first choice, “Blue Card, Inc.”</li>
-                <li>Once you have done that, Amazon will donate 0.5% of your eligible purchases to The Blue Card!</li>
-              </ol>
-              <img class="instruction-image" src="../images/donate/amazon-choices-instructions.jpg" alt="Amazon Smile setup instructions" />
-            </div>
-          </details>
-        </article>
 
         <article class="shop-card">
           <img class="shop-logo" src="../images/donate/ebay-.jpg" alt="eBay Giving Works" />
