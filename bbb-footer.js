@@ -315,7 +315,7 @@
       var educationCard = educationHeading.closest('.card');
       var educationImage = educationCard ? educationCard.querySelector('.card-media img') : null;
       if (educationImage) {
-        educationImage.src = '/images/homepage/11x7-hologram-sonia-being-watched-in-classroom.png?v=20260816';
+        educationImage.src = '/images/homepage/11x7-hologram-sonia-being-watched-in-classroom.webp?v=20260816';
         educationImage.alt = 'Students viewing Holocaust survivor Sonia in an interactive classroom hologram experience';
       }
     }

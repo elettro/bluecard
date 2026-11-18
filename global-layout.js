@@ -198,7 +198,7 @@
       var medicationCard = medicationHeading.closest('.card');
       var medicationImage = medicationCard ? medicationCard.querySelector('.card-media img') : null;
       if (medicationImage) {
-        medicationImage.src = '/images/homepage/11x7-pharmacy-getting-prescriptions-v1.png';
+        medicationImage.src = '/images/homepage/11x7-pharmacy-getting-prescriptions-v1.webp';
         medicationImage.alt = 'Older adult receiving prescription medication from a pharmacist';
       }
     }

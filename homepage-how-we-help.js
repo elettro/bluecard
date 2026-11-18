@@ -25,19 +25,19 @@
         alt: 'Holocaust survivors participating in a Blue Card well-being program'
       },
       'Medication Assistance': {
-        src: '/images/homepage/11x7-pharmacy-getting-prescriptions-v1.png',
+        src: '/images/homepage/11x7-pharmacy-getting-prescriptions-v1.webp',
         alt: 'Older adult receiving prescription medication from a pharmacist'
       },
       'Education and Combating Hate': {
-        src: '/images/homepage/education-combating-hate-classroom-1536x1024.png?v=20260829-2',
+        src: '/images/homepage/education-combating-hate-classroom-1536x1024.webp?v=20260829-2',
         alt: 'Students gathered around an interactive Holocaust survivor hologram classroom presentation'
       },
       'Education & Combating Hate': {
-        src: '/images/homepage/education-combating-hate-classroom-1536x1024.png?v=20260829-2',
+        src: '/images/homepage/education-combating-hate-classroom-1536x1024.webp?v=20260829-2',
         alt: 'Students gathered around an interactive Holocaust survivor hologram classroom presentation'
       },
       'Education & Outreach': {
-        src: '/images/homepage/education-combating-hate-classroom-1536x1024.png?v=20260829-2',
+        src: '/images/homepage/education-combating-hate-classroom-1536x1024.webp?v=20260829-2',
         alt: 'Students gathered around an interactive Holocaust survivor hologram classroom presentation'
       }
     };
