@@ -71,6 +71,7 @@
     var navLinks = navTarget.querySelectorAll('.menu a');
     navLinks.forEach(function (link) {
       if (link.getAttribute('href') === '#') return;
+      if (new URL(link.href, window.location.origin).origin !== window.location.origin) return;
       var linkPath = new URL(link.href, window.location.origin).pathname.replace(/\/index\.html$/, '').replace(/\/+$/, '') || '/';
       if (linkPath === currentPath.replace(/\/index\.html$/, '')) {
         link.setAttribute('aria-current', 'page');
