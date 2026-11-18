@@ -1,21 +1,25 @@
-app = "bluecardfund-redirects"
-primary_region = "iad"
+# fly.toml app configuration file generated for bluecardfund-redirects on 2026-11-18T17:06:34Z
+#
+# See https://docs.fly.io/reference/configuration for information about how to use this file.
+#
+
+app = 'bluecardfund-redirects'
+primary_region = 'iad'
 
 [build]
-
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = "off"
+  auto_stop_machines = 'off'
   auto_start_machines = true
   min_machines_running = 1
 
-[[http_service.checks]]
-  method = "GET"
-  path = "/__health"
-  interval = "30s"
-  timeout = "5s"
+  [[http_service.checks]]
+    interval = '30s'
+    timeout = '5s'
+    method = 'GET'
+    path = '/__health'
 
 [[vm]]
-  size = "shared-cpu-1x"
-  memory = "256mb"
+  size = 'shared-cpu-1x'
+  memory = '256mb'
