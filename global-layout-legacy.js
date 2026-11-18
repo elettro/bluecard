@@ -20,7 +20,7 @@
   if (isInteractiveHologram) applyInteractiveHologramUpdates();
 
   var baseScript = document.createElement('script');
-  baseScript.src = '/global-layout-base.js?v=20261118-2';
+  baseScript.src = '/global-layout-base.js?v=20261118-3';
   baseScript.onload = function () {
     if (isHomepage) applyHomepageUpdates();
 
