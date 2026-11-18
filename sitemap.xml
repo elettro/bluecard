@@ -16,6 +16,7 @@
   <url><loc>https://bluecard.org/current-beneficiaries/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://bluecard.org/referring-agencies/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://bluecard.org/resources/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://bluecard.org/new-york/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://bluecard.org/how-we-help/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://bluecard.org/emergency-cash-assistance/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://bluecard.org/dental-and-medical-assistance/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
