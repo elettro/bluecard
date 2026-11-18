@@ -1,0 +1,11 @@
+name = "bluecardfund-redirects"
+main = "worker.js"
+compatibility_date = "2024-06-20"
+account_id = "34b22e9eb94213413a604be0c0b2cbbe"
+workers_dev = false
+
+# Attach once the bluecardfund.org zone is in this Cloudflare account (proxied A/AAAA on apex + www):
+# routes = [
+#   { pattern = "bluecardfund.org/*", zone_name = "bluecardfund.org" },
+#   { pattern = "www.bluecardfund.org/*", zone_name = "bluecardfund.org" },
+# ]
