@@ -272,7 +272,7 @@
 .bc-footer-top { display: grid; grid-template-columns: 220px repeat(4, 1fr); gap: 36px; align-items: start; }
 .bc-footer-brand { text-align: center; }
 .bc-footer-logo-link { display: inline-block; }
-.bc-footer-brand img.bc-footer-logo { width: 150px; max-width: 100%; display: block; margin: 0 auto 10px; }
+.bc-footer-brand img.bc-footer-logo { width: 150px; max-width: 100%; height: auto; display: block; margin: 0 auto 10px; }
 .bc-footer-brand img { margin-left: auto; margin-right: auto; }
 .bc-footer-brand img.bc-security { display: block; margin: 16px auto 0; max-width: 170px; height: auto; }
 .bc-footer-col h4 { margin: 0 0 20px; color: #fff; font-size: 20px; line-height: 1.2; }
@@ -504,3 +504,8 @@ line-height: 1.55;
 .section.assistance-content-placeholder { padding: 48px 0 72px; }
 .content-card { background: #fff; border: 1px solid #dbe3f0; border-radius: 12px; padding: 28px; box-shadow: 0 8px 22px rgba(0, 63, 125, 0.08); }
 .content-card p { margin: 0; color: #424751; font-size: 1.06rem; line-height: 1.7; }
+
+/* Reserve the header height so the page does not jump when the nav script fills it in (CLS) */
+#bc-global-nav { min-height: 180px; }
+@media (max-width: 1099px) { #bc-global-nav { min-height: 151px; } }
+@media (max-width: 767px) { #bc-global-nav { min-height: 146px; } }
