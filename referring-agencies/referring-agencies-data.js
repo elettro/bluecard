@@ -138,6 +138,11 @@ const data = [
         "url": "https://shalominstitute.com/"
       },
       {
+        "city": "Orange County",
+        "name": "Jewish Federation Orange County",
+        "url": "https://www.jewishorangecounty.org/"
+      },
+      {
         "city": "Palm Springs",
         "name": "Jewish Family Service of the Desert",
         "url": "https://jfsdesert.org/"
@@ -876,6 +881,11 @@ const data = [
         "city": "Getzville",
         "name": "The JCC of Greater Buffalo – Benderson Family Building",
         "url": "https://www.jccbuffalo.org/"
+      },
+      {
+        "city": "Hudson Valley",
+        "name": "JFS of Orange County",
+        "url": "https://www.jfsorange.org/"
       },
       {
         "city": "Little Neck",
