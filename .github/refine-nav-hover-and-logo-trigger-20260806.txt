@@ -1,1 +1,0 @@
-Apply the animated white top-level navigation underline and increase the upper-left global logo size by 15 percent.

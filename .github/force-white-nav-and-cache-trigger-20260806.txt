@@ -1,1 +1,0 @@
-Apply the white animated top-level navigation underline and refresh cached global CSS references.

@@ -1,1 +1,0 @@
-Trigger a fresh GitHub Pages deployment for the raised white navigation underline update.

@@ -1,1 +1,0 @@
-Refresh the Interactive Hologram page navigation CSS and JavaScript so the mobile menu logo removal loads immediately.
