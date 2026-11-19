@@ -1,1 +1,0 @@
-Apply final desktop-only header overrides after the global stylesheet so the white logo top row and compact navigation row render reliably.

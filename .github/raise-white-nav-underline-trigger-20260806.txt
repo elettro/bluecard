@@ -1,1 +1,0 @@
-Raise the white animated navigation underline a few pixels above the bottom edge.

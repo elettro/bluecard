@@ -1,2 +1,0 @@
-Make the mobile volume and hide-text controls smaller and add space before the education-program pill.
-Run fixed workflow.
