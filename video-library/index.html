@@ -297,7 +297,7 @@
         type: 'youtube',
         id,
         thumbnail: `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
-        embed: `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`,
+        embed: `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`,
         allow: 'autoplay; encrypted-media'
       };
     }
@@ -369,7 +369,7 @@
 
         button.innerHTML = `
           <span class="thumb-wrap">
-            <img src="${videoData.thumbnail}" alt="${accessibleTitle}" loading="lazy" />
+            <img src="${videoData.thumbnail}" alt="" loading="lazy" />
             <span class="play-icon" aria-hidden="true"></span>
           </span>
           <span class="video-title">${accessibleTitle}</span>
@@ -391,7 +391,7 @@
 
               const image = button.querySelector('img');
               if (image) {
-                image.alt = fetchedTitle;
+                image.alt = '';
               }
             })
             .catch(() => {
