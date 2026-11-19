@@ -43,7 +43,7 @@
       const lbImg=document.getElementById('lightbox-image');
       const lbCap=document.getElementById('lightbox-caption');
       let pos=0;
-      const path=i=>`/images/survivors/the-blue-card-survivor-images-16x9---- (${i}).png`;
+      const path=i=>`/images/survivors/the-blue-card-survivor-images-16x9---- (${i}).webp`;
       const pad=i=>String(i).padStart(2,'0');
       function openAt(p){pos=p;const i=images[pos];lbImg.src=path(i);lbImg.alt=`The Blue Card survivor gallery image ${i}`;lbCap.textContent=`Image ${pad(i)} of 37`;lightbox.classList.add('is-open');document.body.style.overflow='hidden'}
       function move(d){pos=(pos+d+images.length)%images.length;openAt(pos)}

@@ -17,11 +17,11 @@
 
     var imageMap = {
       'Ongoing Support': {
-        src: '/images/survivors/the-blue-card-survivor-images-16x9----%20(17).png',
+        src: '/images/survivors/the-blue-card-survivor-images-16x9----%20(17).webp',
         alt: 'Holocaust survivors supported by The Blue Card'
       },
       'Health & Well-Being': {
-        src: '/images/survivors/the-blue-card-survivor-images-16x9----%20(27).png',
+        src: '/images/survivors/the-blue-card-survivor-images-16x9----%20(27).webp',
         alt: 'Holocaust survivors participating in a Blue Card well-being program'
       },
       'Medication Assistance': {
