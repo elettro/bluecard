@@ -4,6 +4,25 @@ import MAP from './redirects.json';
 
 const NEW = 'https://bluecard.org';
 
+// Pre-WordPress legacy *.html pages (Search Console 404s) -> closest page on the new site.
+const LEGACY_HTML = {
+  '/home.html': '/', '/index.html': '/',
+  '/howyoucanhelp.html': '/how-we-help/', '/how-we-help.html': '/how-we-help/',
+  '/how-we-help-hildegard-lash-foundation.html': '/how-we-help/',
+  '/about-us.html': '/who-we-are/', '/contact-us.html': '/contact/',
+  '/bluecard-newsletters.html': '/newsletters/', '/bluecard-board-members.html': '/board-members/',
+  '/bluecard-tribute.html': '/special-tribute/', '/young-leadership.html': '/young-leadership/',
+  '/bluecard-events-partners.html': '/our-supporters/', '/bluecard-giving-grid.html': '/donate/',
+  '/how-to-apply.html': '/apply-here/',
+};
+function legacyHtml(p) {
+  const k = p.toLowerCase();
+  if (LEGACY_HTML[k]) return LEGACY_HTML[k];
+  if (/^\/bluecard-events-.*\.html$/.test(k)) return '/past-events/';
+  if (/^\/(bluecard|how-we-help|how-to|about|contact)[^/]*\.html$/.test(k)) return '/';
+  return null;
+}
+
 function norm(p) {
   let s = p.toLowerCase();
   if (!s.startsWith('/wp-content/')) { if (!s.endsWith('/')) s += '/'; }
@@ -24,7 +43,8 @@ export default {
     }
     if (!target) {
       const p = path;
-      if (p === '/robots.txt') target = '/robots.txt';
+      if (legacyHtml(p)) target = legacyHtml(p);
+      else if (p === '/robots.txt') target = '/robots.txt';
       else if (/^\/(sitemap.*\.xml|wp-sitemap.*\.xml)$/i.test(p)) target = '/sitemap.xml';
       else if (/^\/(wp-|feed|comments|author|category|tag|page|xmlrpc|\?s=)/i.test(p)) target = '/';
       else target = p; // same path on the new site (its 404 page handles strays)
