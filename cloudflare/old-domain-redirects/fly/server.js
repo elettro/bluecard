@@ -16,6 +16,10 @@ const LEGACY_HTML = {
 };
 function legacyHtml(p) {
   const k = p.toLowerCase();
+  const m = k.match(/^\/how-we-help\/([^/]+)\/?$/);
+  if (m && ['cost-plus-drug-company','natural-disaster-relief','emergency-assistance','medication-assistance','medication-assistance-grant','ongoing-assistance','health-and-wellbeing'].includes(m[1])) return '/' + m[1] + '/';
+  if (/^\/(product|products|shop|store)(\/|$)/.test(k)) return '/donate/';
+  if (/[-"]$/.test(k)) return k.replace(/[^/]*$/, '') || '/';
   if (LEGACY_HTML[k]) return LEGACY_HTML[k];
   if (/^\/bluecard-events-.*\.html$/.test(k)) return '/past-events/';
   if (/^\/(bluecard|how-we-help|how-to|about|contact)[^/]*\.html$/.test(k)) return '/';
@@ -27,6 +31,7 @@ for (const k of Object.keys(MAP)) LOWER[k.toLowerCase()] = MAP[k];
 function resolve(rawPath, search) {
   let path = rawPath;
   try { path = decodeURIComponent(path); } catch (e) {}
+  path = path.replace(/\/(comments\/)?feed\/?$/i, '/'); // WordPress per-post RSS -> the post itself
   const key = path.toLowerCase().startsWith('/wp-content/') ? path.toLowerCase() : (path.toLowerCase().endsWith('/') ? path.toLowerCase() : path.toLowerCase() + '/');
   let target = MAP[path] || MAP[key] || LOWER[key] || LOWER[path.toLowerCase()];
   let qs = '';
