@@ -40,6 +40,10 @@
     .speaker-card-body{display:flex;flex-direction:column;flex:1;padding:16px}.speaker-card h2{min-height:28px;margin:0 0 10px;color:#0055a5;font-size:1.05rem;line-height:1.25}
     .speaker-card p,.speaker-card-excerpt{min-height:88px;max-height:88px;overflow:hidden;margin:0 0 16px;color:#4b5563;font-size:.95rem;line-height:1.45}
     .speaker-card button,.speaker-card-button{margin-top:auto;width:100%;background:#005eb8;color:#fff;border:0;border-radius:7px;padding:10px 14px;font-weight:700;cursor:pointer}
+    a.speaker-card-button{display:block;text-align:center;text-decoration:none;box-sizing:border-box;font-size:.9rem;line-height:1.3}
+    a.speaker-card-button:hover,a.speaker-card-button:focus-visible{background:#004a94}
+    .speaker-card h2 a{color:inherit;text-decoration:none}.speaker-card h2 a:hover{text-decoration:underline}
+    .speaker-index{max-width:1180px;margin:0 auto 60px;padding:0 24px;color:#4b5563;font-size:.95rem;line-height:1.9}.speaker-index h2{margin:0 0 6px;font-size:1.1rem;color:#003f7d}.speaker-index a{color:#0b56a4;font-weight:600;text-decoration:none;white-space:nowrap}.speaker-index a:hover{text-decoration:underline}.speaker-index a+a:before{content:"·";margin:0 10px;color:#8aa0b8;font-weight:400}
     .speaker-modal{position:fixed;inset:0;z-index:9999;display:none}.speaker-modal[aria-hidden="false"]{display:block}
     .speaker-modal-backdrop{position:absolute;inset:0;background:rgba(0,28,60,.72)}
     .speaker-modal-panel{position:relative;width:min(920px,calc(100% - 32px));max-height:calc(100vh - 48px);margin:24px auto;overflow-y:auto;background:#fff;border-radius:18px;box-shadow:0 24px 80px rgba(0,0,0,.35)}
@@ -79,6 +83,7 @@
 <link href="/favicon-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
 <link rel="stylesheet" href="/tw/speakers-bureau.css">
+<script type="application/ld+json" data-seo-schema="true">{"@context":"https://schema.org","@type":"ItemList","name":"Speakers Bureau members","itemListElement":[{"@type":"ListItem","position":1,"url":"https://bluecard.org/speakers-bureau/inge-auerbacher/","name":"Inge Auerbacher"},{"@type":"ListItem","position":2,"url":"https://bluecard.org/speakers-bureau/dr-william-freund/","name":"Dr. William Freund"},{"@type":"ListItem","position":3,"url":"https://bluecard.org/speakers-bureau/olga-spiegel/","name":"Olga Spiegel"},{"@type":"ListItem","position":4,"url":"https://bluecard.org/speakers-bureau/tom-jacobson/","name":"Tom Jacobson"},{"@type":"ListItem","position":5,"url":"https://bluecard.org/speakers-bureau/robert-brajer/","name":"Robert Brajer"},{"@type":"ListItem","position":6,"url":"https://bluecard.org/speakers-bureau/goldie-jacoby/","name":"Goldie Jacoby"},{"@type":"ListItem","position":7,"url":"https://bluecard.org/speakers-bureau/sami-steigmann/","name":"Sami Steigmann"},{"@type":"ListItem","position":8,"url":"https://bluecard.org/speakers-bureau/fred-schoenfeld/","name":"Fred Schoenfeld"},{"@type":"ListItem","position":9,"url":"https://bluecard.org/speakers-bureau/lillian-feintuch/","name":"Lillian Feintuch"},{"@type":"ListItem","position":10,"url":"https://bluecard.org/speakers-bureau/dolly-rabinovich/","name":"Dolly Rabinovich"},{"@type":"ListItem","position":11,"url":"https://bluecard.org/speakers-bureau/sonia-warshawski/","name":"Sonia Warshawski"}]}</script>
 </head>
 <body class="bg-background text-on-surface font-body">
 <header id="bc-global-nav" aria-label="Global site navigation"></header>
@@ -95,6 +100,7 @@
     </div>
   </section>
   <section class="speakers-directory" id="speakers-directory"><div class="speakers-grid" id="speakersGrid" aria-live="polite"></div></section>
+  <nav class="speaker-index" aria-label="All Speakers Bureau profiles"><h2>All Speakers Bureau profiles</h2><div><a href="/speakers-bureau/inge-auerbacher/">Inge Auerbacher</a><a href="/speakers-bureau/dr-william-freund/">Dr. William Freund</a><a href="/speakers-bureau/olga-spiegel/">Olga Spiegel</a><a href="/speakers-bureau/tom-jacobson/">Tom Jacobson</a><a href="/speakers-bureau/robert-brajer/">Robert Brajer</a><a href="/speakers-bureau/goldie-jacoby/">Goldie Jacoby</a><a href="/speakers-bureau/sami-steigmann/">Sami Steigmann</a><a href="/speakers-bureau/fred-schoenfeld/">Fred Schoenfeld</a><a href="/speakers-bureau/lillian-feintuch/">Lillian Feintuch</a><a href="/speakers-bureau/dolly-rabinovich/">Dolly Rabinovich</a><a href="/speakers-bureau/sonia-warshawski/">Sonia Warshawski</a></div></nav>
 </main>
 <div class="speaker-modal" id="speakerModal" aria-hidden="true"><div class="speaker-modal-backdrop" data-close-modal></div><article class="speaker-modal-panel" role="dialog" aria-modal="true" aria-labelledby="speakerModalTitle"><button class="speaker-modal-close" type="button" aria-label="Close speaker profile" data-close-modal>×</button><div class="speaker-modal-content" id="speakerModalContent"></div></article></div>
 <footer id="bc-global-footer" aria-label="Global site footer"></footer>
@@ -253,20 +259,17 @@
     card.className = 'speaker-card';
     card.dataset.slug = speaker.slug;
     card.tabIndex = 0;
-    const preview = String(getSpeakerBody(speaker)).replace(/\s+/g, ' ').trim().split(' ').slice(0, 22).join(' ');
-    card.innerHTML = `${speaker.image1 ? `<img class="speaker-card-image" src="${cardThumb(speaker.image1)}" width="640" height="640" ${grid.children.length < 1 ? 'fetchpriority="high"' : 'loading="lazy" decoding="async"'} alt="${speaker.name}">` : ''}<div class="speaker-card-body"><h2>${speaker.name || 'Speaker'}</h2>${speaker.title ? `<p>${speaker.title}</p>` : ''}${preview ? `<p class="speaker-card-excerpt">${preview}${preview.split(' ').length >= 22 ? '…' : ''}</p>` : ''}<button class="speaker-card-button" type="button">View Profile</button></div>`;
-    card.addEventListener('click', () => openModal(speaker.slug, true));
+    const fallbackPreview = { 'dolly-rabinovich': 'Glimpses of my childhood, the danger of Holocaust and survival of faith. My name is Dolly (Shandy) Rabinovich.', 'sonia-warshawski': 'Holocaust survivor whose testimony is at the heart of The Blue Card’s Innovative Holocaust Education Program and its AI-powered hologram.' };
+    const preview = (String(getSpeakerBody(speaker)).replace(/\s+/g, ' ').trim() || fallbackPreview[speaker.slug] || '').split(' ').slice(0, 22).join(' ');
+    card.innerHTML = `${speaker.image1 ? `<img class="speaker-card-image" src="${cardThumb(speaker.image1)}" width="640" height="640" ${grid.children.length < 1 ? 'fetchpriority="high"' : 'loading="lazy" decoding="async"'} alt="${speaker.name}">` : ''}<div class="speaker-card-body"><h2><a href="/speakers-bureau/${speaker.slug}/">${speaker.name || 'Speaker'}</a></h2>${speaker.title ? `<p>${speaker.title}</p>` : ''}${preview ? `<p class="speaker-card-excerpt">${preview}${preview.split(' ').length >= 22 ? '…' : ''}</p>` : ''}<a class="speaker-card-button" href="/speakers-bureau/${speaker.slug}/" aria-label="View Profile: ${String(speaker.name).replace(/"/g, '&quot;')}">View Profile</a></div>`;
+    const profileUrl = '/speakers-bureau/' + speaker.slug + '/';
+    card.addEventListener('click', (event) => { if (event.target.closest('a')) return; window.location.href = profileUrl; });
     card.addEventListener('keydown', (event) => {
+      if (event.target !== card) return;
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
-        openModal(speaker.slug, true);
+        window.location.href = profileUrl;
       }
-    });
-    const profileButton = card.querySelector('.speaker-card-button');
-    profileButton.addEventListener('click', (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-      openModal(speaker.slug, true);
     });
     return card;
   };
