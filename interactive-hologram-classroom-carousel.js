@@ -9,7 +9,7 @@
   var imageBase = '/images/interactive-hologram/16x9-classroom/';
   var images = [];
   for (var i = 1; i <= 20; i += 1) {
-    images.push(imageBase + '16x9-images-20-set-classrooms---%20(' + i + ').png');
+    images.push(imageBase + '16x9-images-20-set-classrooms---%20(' + i + ').webp');
   }
 
   var section = document.createElement('section');

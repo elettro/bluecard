@@ -170,7 +170,7 @@
       var ongoingSupportCard = ongoingSupportHeading.closest('.card');
       var ongoingSupportImage = ongoingSupportCard ? ongoingSupportCard.querySelector('.card-media img') : null;
       if (ongoingSupportImage) {
-        ongoingSupportImage.src = '/images/survivors/the-blue-card-survivor-images-16x9----%20(17).png';
+        ongoingSupportImage.src = '/images/survivors/the-blue-card-survivor-images-16x9----%20(17).webp';
         ongoingSupportImage.alt = 'Holocaust survivors supported by The Blue Card';
       }
     }
@@ -184,7 +184,7 @@
       var healthCard = healthHeading.closest('.card');
       var healthImage = healthCard ? healthCard.querySelector('.card-media img') : null;
       if (healthImage) {
-        healthImage.src = '/images/survivors/the-blue-card-survivor-images-16x9----%20(27).png';
+        healthImage.src = '/images/survivors/the-blue-card-survivor-images-16x9----%20(27).webp';
         healthImage.alt = 'Holocaust survivors participating in a Blue Card well-being activity';
       }
     }

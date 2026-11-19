@@ -144,7 +144,7 @@
       var slide = document.createElement('div');
       slide.className = 'sb-carousel-slide';
       var img = document.createElement('img');
-      img.src = '/images/speakers-bureau/3x4-speaker-bureau-gallery---%20(' + i + ').png';
+      img.src = '/images/speakers-bureau/3x4-speaker-bureau-gallery---%20(' + i + ').webp';
       img.alt = 'The Blue Card Speakers Bureau educational event photo';
       img.loading = i === 1 ? 'eager' : 'lazy';
       slide.appendChild(img);

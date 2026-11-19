@@ -86,12 +86,12 @@
   <div class="bc-postcards-shell">
     <button class="bc-postcards-arrow bc-postcards-prev" type="button" aria-label="Previous postcard">‹</button>
     <div class="bc-postcards-track" tabindex="0" aria-label="Postcards to Sonia image carousel">
-      <figure class="bc-postcard-slide" data-index="0"><img src="/images/interactive-hologram/postcards/Postcards-to-sonia-16x9-----%20(1).png" alt="Postcards to Sonia, image 1" loading="lazy"></figure>
-      <figure class="bc-postcard-slide" data-index="1"><img src="/images/interactive-hologram/postcards/Postcards-to-sonia-16x9-----%20(2).png" alt="Postcards to Sonia, image 2" loading="lazy"></figure>
-      <figure class="bc-postcard-slide" data-index="2"><img src="/images/interactive-hologram/postcards/Postcards-to-sonia-16x9-----%20(3).png" alt="Postcards to Sonia, image 3" loading="lazy"></figure>
-      <figure class="bc-postcard-slide" data-index="3"><img src="/images/interactive-hologram/postcards/Postcards-to-sonia-16x9-----%20(4).png" alt="Postcards to Sonia, image 4" loading="lazy"></figure>
+      <figure class="bc-postcard-slide" data-index="0"><img src="/images/interactive-hologram/postcards/Postcards-to-sonia-16x9-----%20(1).webp" alt="Postcards to Sonia, image 1" loading="lazy"></figure>
+      <figure class="bc-postcard-slide" data-index="1"><img src="/images/interactive-hologram/postcards/Postcards-to-sonia-16x9-----%20(2).webp" alt="Postcards to Sonia, image 2" loading="lazy"></figure>
+      <figure class="bc-postcard-slide" data-index="2"><img src="/images/interactive-hologram/postcards/Postcards-to-sonia-16x9-----%20(3).webp" alt="Postcards to Sonia, image 3" loading="lazy"></figure>
+      <figure class="bc-postcard-slide" data-index="3"><img src="/images/interactive-hologram/postcards/Postcards-to-sonia-16x9-----%20(4).webp" alt="Postcards to Sonia, image 4" loading="lazy"></figure>
       <figure class="bc-postcard-slide" data-index="4"><img src="/images/interactive-hologram/postcards/postcard-to-sonia-6.png" alt="Postcards to Sonia, image 5" loading="lazy"></figure>
-      <figure class="bc-postcard-slide" data-index="5"><img src="/images/interactive-hologram/postcards/postcards-to-sonia%20(4).jpg" alt="Postcards to Sonia, image 6" loading="lazy"></figure>
+      <figure class="bc-postcard-slide" data-index="5"><img src="/images/interactive-hologram/postcards/postcards-to-sonia%20(4).webp" alt="Postcards to Sonia, image 6" loading="lazy"></figure>
       <figure class="bc-postcard-slide" data-index="6"><img src="/images/interactive-hologram/postcards/postcards-to-sonia-10.png" alt="Postcards to Sonia, image 7" loading="lazy"></figure>
       <figure class="bc-postcard-slide" data-index="7"><img src="/images/interactive-hologram/postcards/postcards-to-sonia-11.png" alt="Postcards to Sonia, image 8" loading="lazy"></figure>
       <figure class="bc-postcard-slide" data-index="8"><img src="/images/interactive-hologram/postcards/postcards-to-sonia-12.png" alt="Postcards to Sonia, image 9" loading="lazy"></figure>
