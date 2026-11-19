@@ -261,7 +261,7 @@
           var ageCard = document.createElement('div');
           ageCard.setAttribute('data-bluecard-age-card', 'true');
           ageCard.className = 'bg-surface-container-lowest p-10 rounded-xl ghost-border';
-          ageCard.innerHTML = '<div class="mb-6 text-primary"><span class="material-symbols-outlined text-4xl" aria-hidden="true">elderly</span></div><h3 class="text-4xl font-headline font-bold text-primary mb-4">80+</h3><p class="text-on-surface-variant leading-relaxed text-lg">All Holocaust survivors we serve are over the age of 80.</p>';
+          ageCard.innerHTML = '<div class="mb-6 text-primary"><span class="material-symbols-outlined text-4xl" aria-hidden="true">elderly</span></div><h3 class="text-4xl font-headline font-bold text-primary mb-4">79–105</h3><p class="text-on-surface-variant leading-relaxed text-lg">The Holocaust survivors we serve range in age from 79 to 105.</p>';
           factsGrid.appendChild(ageCard);
         }
 
