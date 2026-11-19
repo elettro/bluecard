@@ -95,7 +95,9 @@
 
     var page = document.querySelector('.sb-page');
     var hero = page ? page.querySelector('.sb-hero') : null;
-    if (!page || !hero || document.getElementById('sb-intro-carousel')) return;
+    if (!page || !hero) return;
+    var pre = document.getElementById('sb-intro-carousel');
+    if (pre) { wireSbCarousel(pre); return; }
 
     var style = document.createElement('style');
     style.id = 'sb-intro-carousel-styles';
@@ -172,6 +174,14 @@
     shell.appendChild(dots);
     grid.appendChild(shell);
 
+    wireSbCarousel(shell);
+  }
+
+  function wireSbCarousel(shell) {
+    var carousel = shell.querySelector('.sb-carousel');
+    var prev = shell.querySelector('.sb-carousel-btn.prev');
+    var next = shell.querySelector('.sb-carousel-btn.next');
+    var dots = shell.querySelector('.sb-carousel-dots');
     var dotEls = Array.from(dots.children);
     var auto;
 
