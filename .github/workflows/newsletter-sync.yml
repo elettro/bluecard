@@ -1,0 +1,51 @@
+name: Publish [web] newsletters
+
+# Once a day, publish any sent Constant Contact email whose internal name contains [web].
+on:
+  schedule:
+    - cron: "15 11 * * *"   # 11:15 UTC (about 6-7am Eastern)
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "List what would be published without changing anything"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: newsletter-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Find and build new [web] newsletters
+        env:
+          CC_CLIENT_ID: ${{ secrets.CC_CLIENT_ID }}
+          CC_CLIENT_SECRET: ${{ secrets.CC_CLIENT_SECRET }}
+          CC_REFRESH_TOKEN: ${{ secrets.CC_REFRESH_TOKEN }}
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python scripts/newsletters/newsletter_sync.py --dry-run
+          else
+            python scripts/newsletters/newsletter_sync.py
+          fi
+      - name: Commit and push
+        if: ${{ !inputs.dry_run }}
+        run: |
+          rm -rf scripts/newsletters/work scripts/newsletters/__pycache__
+          git add -A newsletters sitemap.xml llms.txt scripts/newsletters/cards.json scripts/newsletters/published-ids.json
+          if git diff --cached --quiet; then echo "Nothing new to publish."; exit 0; fi
+          git config user.name "bluecard-newsletter-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git commit -m "Publish new [web] newsletter(s) from Constant Contact"
+          git push origin main
