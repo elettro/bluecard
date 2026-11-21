@@ -10,10 +10,10 @@
 <style>
 :root{--blue:#0758a9;--deep:#073d78;--navy:#052a57;--cyan:#56baf5;--ink:#152d4a;--light:#f3f7fd}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#edf3f9;color:var(--ink);font-family:Inter,Arial,sans-serif}a{color:inherit}.reviewbar{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;background:#fff;padding:13px clamp(18px,4vw,65px);box-shadow:0 3px 18px #052c5420}.reviewbar strong{font-size:17px}.reviewbar small{display:block;color:#65768a;font-size:11px;margin-top:2px}.reviewbar nav{display:flex;gap:5px;flex-wrap:wrap}.reviewbar nav a{display:grid;place-items:center;text-decoration:none;border-radius:5px;background:#edf3fb;color:#06447d;width:30px;height:31px;font-weight:800;font-size:12px}.reviewbar nav a:hover,.reviewbar nav a:focus-visible{background:#0b66c3;color:white}.intro{max-width:1280px;margin:auto;padding:55px 24px 36px}.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:#1865a2}.intro h1{font-size:clamp(27px,4vw,49px);letter-spacing:-.04em;line-height:1.1;margin:12px 0}.intro p{max-width:790px;font-size:16px;line-height:1.6;color:#566980;margin:0}.concept{max-width:1420px;padding:0 24px;margin:0 auto 70px;scroll-margin-top:80px}.concept-label{display:flex;align-items:baseline;gap:14px;margin-bottom:14px}.concept-label .number{background:#0860ad;color:white;border-radius:8px;padding:7px 10px;font-weight:900}.concept-label h2{font-size:22px;margin:0}.concept-label p{margin:0 0 0 auto;color:#6d7e90;font-size:12px}.hero{--hero-bg:linear-gradient(120deg,#0e72cf 0%,#0755a4 55%,#063973 100%);position:relative;isolation:isolate;background:var(--hero-bg);color:#fff;min-height:680px;overflow:hidden;border-radius:14px;box-shadow:0 14px 36px #153a6a16}.hero::before{content:"";position:absolute;inset:0;background:url('/images/homepage/hero-hands-bg.webp') center/cover;opacity:.075;mix-blend-mode:screen;pointer-events:none}.hero-inner{position:relative;z-index:2;width:100%;min-height:680px;max-width:1400px;margin:auto;padding:clamp(25px,5vw,74px) clamp(24px,5vw,76px);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:clamp(22px,4vw,65px)}.copy{min-width:0}.copy h3{font-family:"Plus Jakarta Sans",Inter,Arial,sans-serif;font-size:clamp(35px,4.05vw,66px);font-weight:850;line-height:1.075;letter-spacing:-.048em;margin:0 0 24px;max-width:700px}.description{font-size:clamp(16px,1.35vw,20px);line-height:1.5;font-weight:600;margin:0 0 25px;max-width:640px}.quote{border-left:3px solid #e5f5ff;margin:0 0 29px;padding:0 0 0 19px;max-width:640px}.quote blockquote{font-style:italic;font-weight:750;font-size:clamp(16px,1.38vw,20px);line-height:1.46;margin:0 0 13px}.quote figcaption{font-size:12px;letter-spacing:.075em;text-transform:uppercase;font-weight:850;color:#c7dfff}.actions{display:flex;flex-wrap:wrap;gap:12px}.actions a{padding:16px 23px;border:1px solid #ffffff6a;border-radius:7px;text-decoration:none;font-weight:750;font-size:14px}.actions a:first-child{background:#fff;color:#064782}.actions a:last-child:hover{background:#ffffff25}.visual{width:100%;height:520px;position:relative;min-width:0}.photo{display:block;position:absolute;width:100%;height:100%;object-fit:cover;object-position:center;border-radius:inherit}.visual img{max-width:100%}.visual .frame{position:absolute;overflow:hidden;background:#144b82;box-shadow:0 18px 48px #001e4c44}.visual .frame img{width:100%;height:100%;object-fit:cover;display:block}.visual .frame:after{content:"";position:absolute;inset:0;border:1px solid #ffffff25;border-radius:inherit;pointer-events:none}.note{color:#7b8898;margin:10px 2px 0;font-size:12px}.visual .frame img{transition:transform .6s ease}.visual .frame:hover img{transform:scale(1.055)}
-/* 01 editorial single portrait */
-.v1 .frame{inset:2% 10% 2% 7%;border-radius:14px}.v1 .frame:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,#00234e70,transparent 40%)}.v1 .accent{position:absolute;inset:8% 3% 8% 14%;border:2px solid #8acffa66;border-radius:17px}
-/* 02 three vertical portraits */
-.v2{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:center}.v2 .frame{position:relative;height:82%;border-radius:140px 140px 14px 14px}.v2 .frame:nth-child(2){height:100%;border-radius:14px 14px 140px 140px}.v2 .frame:nth-child(3){height:88%}
+/* 01 cinematic panorama with inset photo ribbon */
+.v1 .frame{inset:0;border-radius:0}.v1 .frame img{object-position:52% 42%}.v1 .frame:before{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(90deg,#0757a544,transparent 55%),linear-gradient(0deg,#04264f9e,transparent 45%)}.v1 .ribbon{position:absolute;z-index:3;bottom:22px;left:22px;right:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.v1 .ribbon img{width:100%;height:104px;object-fit:cover;border:2px solid #fff9;border-radius:4px;box-shadow:0 6px 20px #001b3a88}.v1{border-radius:14px;overflow:hidden}
+/* 02 diagonal editorial photo tiles */
+.v2 .frame{border-radius:9px;transform:skewY(-6deg)}.v2 .frame img{transform:scale(1.16) skewY(6deg)}.v2 .frame:hover img{transform:scale(1.23) skewY(6deg)}.v2 .frame:nth-child(1){left:0;top:14%;width:48%;height:69%}.v2 .frame:nth-child(2){left:52%;top:2%;width:48%;height:45%}.v2 .frame:nth-child(3){left:52%;top:51%;width:48%;height:45%}
 /* 03 masonry */
 .v3 .frame{border-radius:10px}.v3 .frame:nth-child(1){left:0;top:4%;width:58%;height:58%}.v3 .frame:nth-child(2){right:0;top:4%;width:39%;height:38%}.v3 .frame:nth-child(3){right:0;bottom:3%;width:39%;height:53%}.v3 .frame:nth-child(4){left:0;bottom:3%;width:58%;height:31%}
 /* 04 image on edge */
@@ -22,8 +22,8 @@
 .v5 .frame{width:62%;height:65%;border:9px solid #eaf7ff;border-bottom-width:27px;border-radius:3px}.v5 .frame:nth-child(1){top:2%;left:0;transform:rotate(-9deg)}.v5 .frame:nth-child(2){right:0;top:14%;transform:rotate(7deg)}.v5 .frame:nth-child(3){bottom:0;left:18%;height:53%;transform:rotate(-3deg)}
 /* 06 carousel */
 .v6{display:grid;place-items:center}.v6 .carousel-shell{width:100%;height:100%;position:relative;overflow:hidden;border-radius:14px;box-shadow:0 20px 50px #001c493d}.v6 .carousel-shell img{height:100%;width:100%;object-fit:cover;display:block;transition:opacity .25s ease}.v6 .slide-controls{position:absolute;left:0;bottom:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:16px;background:linear-gradient(transparent,#031c46bb)}.v6 button,.v10 button{border:1px solid #ffffff90;background:#ffffff30;color:white;cursor:pointer;border-radius:50%;width:42px;height:42px;font-size:22px}.v6 button:hover,.v10 button:hover{background:#ffffff60}.dots{display:flex;gap:8px}.dots span{height:7px;width:7px;border-radius:50%;background:#fff7}.dots span.active{width:20px;border-radius:8px;background:#fff}
-/* 07 circular story portraits */
-.v7 .frame{border-radius:50%;border:7px solid #ffffff30}.v7 .frame:nth-child(1){width:67%;height:67%;left:18%;top:0}.v7 .frame:nth-child(2){width:42%;height:42%;left:0;bottom:0}.v7 .frame:nth-child(3){width:46%;height:46%;right:0;bottom:2%}.v7:after{content:"";position:absolute;left:5%;top:12%;width:86%;height:72%;border:1px solid #ffffff50;border-radius:50%;pointer-events:none}
+/* 07 wide central portrait with split side stories */
+.v7 .frame{border-radius:7px}.v7 .frame:nth-child(1){left:0;top:0;width:27%;height:100%}.v7 .frame:nth-child(2){left:29%;top:0;width:42%;height:100%;border:4px solid #ffffffa8}.v7 .frame:nth-child(3){right:0;top:0;width:27%;height:49%}.v7 .frame:nth-child(4){right:0;bottom:0;width:27%;height:49%}.v7:after{content:"";position:absolute;z-index:2;inset:0;background:linear-gradient(0deg,#002f6355,transparent 35%);pointer-events:none}
 /* 08 gallery strip */
 .v8{display:flex;gap:8px;align-items:stretch;height:500px}.v8 .frame{position:relative;flex:1 1 0;min-width:0;border-radius:8px;transition:flex .4s ease}.v8 .frame:nth-child(2){flex:2 1 0}.v8 .frame:hover,.v8 .frame:focus-within{flex:2.7 1 0}
 /* 09 photo grid with translucent wash */
@@ -48,22 +48,22 @@
 const base='/images/survivors/the-blue-card-survivor-images-16x9----%20(';
 const image=n=>base+n+').webp';
 const variants=[
-['Editorial Portrait','One large survivor image, quiet and direct.'],
-['Three Generations','A structured trio of portraits with varied framing.'],
+['Cinematic Photo Ribbon','Wide survivor portrait with a three-photo ribbon along the lower edge.'],
+['Diagonal Editorial Tiles','Three angular image panels with a modern editorial arrangement.'],
 ['Asymmetric Mosaic','An editorial four-image montage with balanced scale.'],
 ['Edge-to-Edge Portrait','Photo bleeds to the right edge with soft blue transition.'],
 ['Photo Memory Stack','Layered photo prints suggesting personal memories.'],
 ['Single-Image Carousel','A rotating portrait on the right, with manual controls.'],
-['Circle Portrait Cluster','Three soft circular crops, overlapping and connected.'],
+['Split Story Wall','A dominant center portrait framed by supporting survivor images.'],
 ['Expanding Portrait Strip','A dynamic vertical photo strip that expands on hover.'],
 ['Nine-Image Community Wall','A collective mosaic of survivor portraits.'],
 ['Filmstrip Selector','Large featured photo with five selectable thumbnails.']
 ];
-const sets=[[2],[3,7,11],[13,15,17,19],[21],[23,25,27],[4,8,12,16,20],[22,26,30],[6,10,14,18],[2,4,6,8,10,12,14,16,18],[24,28,30,32,34]];
+const sets=[[2,5,9,13],[3,7,11],[13,15,17,19],[21],[23,25,27],[4,8,12,16,20],[22,26,30,34],[6,10,14,18],[2,4,6,8,10,12,14,16,18],[24,28,30,32,34]];
 function photo(n,loading='lazy'){return '<img src="'+image(n)+'" alt="Portrait from The Blue Card survivor image collection" loading="'+loading+'" decoding="async">'}
 function frame(n){return '<div class="frame">'+photo(n)+'</div>'}
 function visual(i){const s=sets[i],k=i+1;switch(k){
-case 1:return '<div class="visual v1"><div class="accent"></div>'+frame(s[0])+'</div>';
+case 1:return '<div class="visual v1">'+frame(s[0])+'<div class="ribbon">'+s.slice(1).map(photo).join('')+'</div></div>';
 case 2:return '<div class="visual v2">'+s.map(frame).join('')+'</div>';
 case 3:return '<div class="visual v3">'+s.map(frame).join('')+'</div>';
 case 4:return '<div class="visual v4">'+frame(s[0])+'</div>';
