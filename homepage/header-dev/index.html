@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Homepage Header Concepts | The Blue Card</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+:root{--blue:#0758a9;--deep:#073d78;--navy:#052a57;--cyan:#56baf5;--ink:#152d4a;--light:#f3f7fd}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#edf3f9;color:var(--ink);font-family:Inter,Arial,sans-serif}a{color:inherit}.reviewbar{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;background:#fff;padding:13px clamp(18px,4vw,65px);box-shadow:0 3px 18px #052c5420}.reviewbar strong{font-size:17px}.reviewbar small{display:block;color:#65768a;font-size:11px;margin-top:2px}.reviewbar nav{display:flex;gap:5px;flex-wrap:wrap}.reviewbar nav a{display:grid;place-items:center;text-decoration:none;border-radius:5px;background:#edf3fb;color:#06447d;width:30px;height:31px;font-weight:800;font-size:12px}.reviewbar nav a:hover,.reviewbar nav a:focus-visible{background:#0b66c3;color:white}.intro{max-width:1280px;margin:auto;padding:55px 24px 36px}.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:#1865a2}.intro h1{font-size:clamp(27px,4vw,49px);letter-spacing:-.04em;line-height:1.1;margin:12px 0}.intro p{max-width:790px;font-size:16px;line-height:1.6;color:#566980;margin:0}.concept{max-width:1420px;padding:0 24px;margin:0 auto 70px;scroll-margin-top:80px}.concept-label{display:flex;align-items:baseline;gap:14px;margin-bottom:14px}.concept-label .number{background:#0860ad;color:white;border-radius:8px;padding:7px 10px;font-weight:900}.concept-label h2{font-size:22px;margin:0}.concept-label p{margin:0 0 0 auto;color:#6d7e90;font-size:12px}.hero{--hero-bg:linear-gradient(120deg,#0e72cf 0%,#0755a4 55%,#063973 100%);position:relative;isolation:isolate;background:var(--hero-bg);color:#fff;min-height:680px;overflow:hidden;border-radius:14px;box-shadow:0 14px 36px #153a6a16}.hero::before{content:"";position:absolute;inset:0;background:url('/images/homepage/hero-hands-bg.webp') center/cover;opacity:.075;mix-blend-mode:screen;pointer-events:none}.hero-inner{position:relative;z-index:2;width:100%;min-height:680px;max-width:1400px;margin:auto;padding:clamp(25px,5vw,74px) clamp(24px,5vw,76px);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:clamp(22px,4vw,65px)}.copy{min-width:0}.copy h3{font-family:"Plus Jakarta Sans",Inter,Arial,sans-serif;font-size:clamp(35px,4.05vw,66px);font-weight:850;line-height:1.075;letter-spacing:-.048em;margin:0 0 24px;max-width:700px}.description{font-size:clamp(16px,1.35vw,20px);line-height:1.5;font-weight:600;margin:0 0 25px;max-width:640px}.quote{border-left:3px solid #e5f5ff;margin:0 0 29px;padding:0 0 0 19px;max-width:640px}.quote blockquote{font-style:italic;font-weight:750;font-size:clamp(16px,1.38vw,20px);line-height:1.46;margin:0 0 13px}.quote figcaption{font-size:12px;letter-spacing:.075em;text-transform:uppercase;font-weight:850;color:#c7dfff}.actions{display:flex;flex-wrap:wrap;gap:12px}.actions a{padding:16px 23px;border:1px solid #ffffff6a;border-radius:7px;text-decoration:none;font-weight:750;font-size:14px}.actions a:first-child{background:#fff;color:#064782}.actions a:last-child:hover{background:#ffffff25}.visual{width:100%;height:520px;position:relative;min-width:0}.photo{display:block;position:absolute;width:100%;height:100%;object-fit:cover;object-position:center;border-radius:inherit}.visual img{max-width:100%}.visual .frame{position:absolute;overflow:hidden;background:#144b82;box-shadow:0 18px 48px #001e4c44}.visual .frame img{width:100%;height:100%;object-fit:cover;display:block}.visual .frame:after{content:"";position:absolute;inset:0;border:1px solid #ffffff25;border-radius:inherit;pointer-events:none}.note{color:#7b8898;margin:10px 2px 0;font-size:12px}.visual .frame img{transition:transform .6s ease}.visual .frame:hover img{transform:scale(1.055)}
+/* 01 editorial single portrait */
+.v1 .frame{inset:2% 10% 2% 7%;border-radius:14px}.v1 .frame:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,#00234e70,transparent 40%)}.v1 .accent{position:absolute;inset:8% 3% 8% 14%;border:2px solid #8acffa66;border-radius:17px}
+/* 02 three vertical portraits */
+.v2{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:center}.v2 .frame{position:relative;height:82%;border-radius:140px 140px 14px 14px}.v2 .frame:nth-child(2){height:100%;border-radius:14px 14px 140px 140px}.v2 .frame:nth-child(3){height:88%}
+/* 03 masonry */
+.v3 .frame{border-radius:10px}.v3 .frame:nth-child(1){left:0;top:4%;width:58%;height:58%}.v3 .frame:nth-child(2){right:0;top:4%;width:39%;height:38%}.v3 .frame:nth-child(3){right:0;bottom:3%;width:39%;height:53%}.v3 .frame:nth-child(4){left:0;bottom:3%;width:58%;height:31%}
+/* 04 image on edge */
+.hero4 .hero-inner{grid-template-columns:1.1fr .9fr;padding-right:0;gap:22px}.v4{height:100%;min-height:680px}.v4 .frame{inset:0;border-radius:0}.v4 .frame:after{border:0}.v4:before{content:"";position:absolute;z-index:2;inset:0;background:linear-gradient(90deg,#0754a5 0%,transparent 37%);pointer-events:none}
+/* 05 stacked polaroids */
+.v5 .frame{width:62%;height:65%;border:9px solid #eaf7ff;border-bottom-width:27px;border-radius:3px}.v5 .frame:nth-child(1){top:2%;left:0;transform:rotate(-9deg)}.v5 .frame:nth-child(2){right:0;top:14%;transform:rotate(7deg)}.v5 .frame:nth-child(3){bottom:0;left:18%;height:53%;transform:rotate(-3deg)}
+/* 06 carousel */
+.v6{display:grid;place-items:center}.v6 .carousel-shell{width:100%;height:100%;position:relative;overflow:hidden;border-radius:14px;box-shadow:0 20px 50px #001c493d}.v6 .carousel-shell img{height:100%;width:100%;object-fit:cover;display:block;transition:opacity .25s ease}.v6 .slide-controls{position:absolute;left:0;bottom:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:16px;background:linear-gradient(transparent,#031c46bb)}.v6 button,.v10 button{border:1px solid #ffffff90;background:#ffffff30;color:white;cursor:pointer;border-radius:50%;width:42px;height:42px;font-size:22px}.v6 button:hover,.v10 button:hover{background:#ffffff60}.dots{display:flex;gap:8px}.dots span{height:7px;width:7px;border-radius:50%;background:#fff7}.dots span.active{width:20px;border-radius:8px;background:#fff}
+/* 07 circular story portraits */
+.v7 .frame{border-radius:50%;border:7px solid #ffffff30}.v7 .frame:nth-child(1){width:67%;height:67%;left:18%;top:0}.v7 .frame:nth-child(2){width:42%;height:42%;left:0;bottom:0}.v7 .frame:nth-child(3){width:46%;height:46%;right:0;bottom:2%}.v7:after{content:"";position:absolute;left:5%;top:12%;width:86%;height:72%;border:1px solid #ffffff50;border-radius:50%;pointer-events:none}
+/* 08 gallery strip */
+.v8{display:flex;gap:8px;align-items:stretch;height:500px}.v8 .frame{position:relative;flex:1 1 0;min-width:0;border-radius:8px;transition:flex .4s ease}.v8 .frame:nth-child(2){flex:2 1 0}.v8 .frame:hover,.v8 .frame:focus-within{flex:2.7 1 0}
+/* 09 photo grid with translucent wash */
+.hero9{--hero-bg:linear-gradient(120deg,#06457f,#07315d)}.v9{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:7px}.v9 .frame{position:relative;inset:auto;border-radius:5px}.v9:after{content:"";inset:0;position:absolute;background:linear-gradient(135deg,#0875d225,#001e4760);pointer-events:none}
+/* 10 main image + filmstrip switcher */
+.v10 .frame{inset:0 0 94px 0;border-radius:12px}.v10 .filmstrip{position:absolute;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;height:80px}.v10 .filmstrip button{width:100%;height:80px;border-radius:7px;padding:0;overflow:hidden;border:2px solid #ffffff55;display:block;opacity:.72}.v10 .filmstrip button.active{border-color:#fff;opacity:1}.v10 .filmstrip img{width:100%;height:100%;object-fit:cover;display:block}
+.hero3{--hero-bg:linear-gradient(125deg,#005bab 0%,#0b70bf 100%)}.hero5{--hero-bg:linear-gradient(120deg,#0c4b94,#092f68)}.hero7{--hero-bg:linear-gradient(110deg,#187ed6,#073d81)}
+.footer{padding:30px;text-align:center;color:#6c788c;background:#fff}
+@media(min-width:1500px){.copy h3{font-size:63px}}
+@media(max-width:990px){.hero-inner{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:40px 30px;gap:22px}.copy h3{font-size:clamp(31px,4vw,47px)}.description,.quote blockquote{font-size:16px}.visual{height:430px}.hero,.hero-inner{min-height:570px}.v4{min-height:570px}.v8{height:430px}.hero4 .hero-inner{padding-right:0}}
+@media(max-width:700px){.reviewbar{position:relative}.reviewbar nav a{width:27px;height:27px}.concept{padding:0 12px;margin-bottom:45px}.concept-label{flex-wrap:wrap;gap:6px}.concept-label h2{font-size:18px}.concept-label p{width:100%;margin:0}.hero{border-radius:10px}.hero,.hero-inner{min-height:0}.hero-inner,.hero4 .hero-inner{display:flex;flex-direction:column;align-items:stretch;padding:35px 22px;gap:26px}.copy h3{font-size:clamp(33px,8vw,49px);margin-bottom:20px}.description{margin-bottom:20px}.quote{margin-bottom:20px}.visual{height:340px;flex:0 0 340px}.v4{min-height:0;height:340px}.hero4 .hero-inner{padding-right:22px}.v4:before{background:linear-gradient(0deg,#0754a5,transparent 30%)}.v8{height:310px}.v9{height:340px}.intro{padding:35px 18px 28px}.actions a{padding:14px 18px}.v10 .frame{bottom:79px}.v10 .filmstrip{height:67px}.v10 .filmstrip button{height:67px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="reviewbar"><div><strong>The Blue Card <span style="color:#1473be">/ Header Dev</span></strong><small>Design review only. The production homepage is unchanged.</small></div><nav aria-label="Jump to design"><a href="#option-1">1</a><a href="#option-2">2</a><a href="#option-3">3</a><a href="#option-4">4</a><a href="#option-5">5</a><a href="#option-6">6</a><a href="#option-7">7</a><a href="#option-8">8</a><a href="#option-9">9</a><a href="#option-10">10</a></nav></div>
+<div class="intro"><span class="eyebrow">Visual direction study / 10 alternatives</span><h1>Homepage hero with survivor imagery</h1><p>Ten numbered, responsive approaches using the existing <code>/images/survivors/</code> photography. The headline, assistance copy, survivor quotation, attribution and two existing CTAs stay unchanged in every option. Review on desktop and mobile before selecting a direction.</p></div>
+<main id="concepts"></main>
+<div class="footer">Design study only. No production homepage content has been changed.</div>
+<script>
+(()=>{'use strict';
+const base='/images/survivors/the-blue-card-survivor-images-16x9----%20(';
+const image=n=>base+n+').webp';
+const variants=[
+['Editorial Portrait','One large survivor image, quiet and direct.'],
+['Three Generations','A structured trio of portraits with varied framing.'],
+['Asymmetric Mosaic','An editorial four-image montage with balanced scale.'],
+['Edge-to-Edge Portrait','Photo bleeds to the right edge with soft blue transition.'],
+['Photo Memory Stack','Layered photo prints suggesting personal memories.'],
+['Single-Image Carousel','A rotating portrait on the right, with manual controls.'],
+['Circle Portrait Cluster','Three soft circular crops, overlapping and connected.'],
+['Expanding Portrait Strip','A dynamic vertical photo strip that expands on hover.'],
+['Nine-Image Community Wall','A collective mosaic of survivor portraits.'],
+['Filmstrip Selector','Large featured photo with five selectable thumbnails.']
+];
+const sets=[[2],[3,7,11],[13,15,17,19],[21],[23,25,27],[4,8,12,16,20],[22,26,30],[6,10,14,18],[2,4,6,8,10,12,14,16,18],[24,28,30,32,34]];
+function photo(n,loading='lazy'){return '<img src="'+image(n)+'" alt="Portrait from The Blue Card survivor image collection" loading="'+loading+'" decoding="async">'}
+function frame(n){return '<div class="frame">'+photo(n)+'</div>'}
+function visual(i){const s=sets[i],k=i+1;switch(k){
+case 1:return '<div class="visual v1"><div class="accent"></div>'+frame(s[0])+'</div>';
+case 2:return '<div class="visual v2">'+s.map(frame).join('')+'</div>';
+case 3:return '<div class="visual v3">'+s.map(frame).join('')+'</div>';
+case 4:return '<div class="visual v4">'+frame(s[0])+'</div>';
+case 5:return '<div class="visual v5">'+s.map(frame).join('')+'</div>';
+case 6:return '<div class="visual v6" data-carousel="6"><div class="carousel-shell">'+photo(s[0])+'<div class="slide-controls"><button type="button" data-prev aria-label="Previous survivor image">&#8249;</button><div class="dots" aria-label="Slide position">'+s.map((_,j)=>'<span class="'+(j===0?'active':'')+'"></span>').join('')+'</div><button type="button" data-next aria-label="Next survivor image">&#8250;</button></div></div></div>';
+case 7:return '<div class="visual v7">'+s.map(frame).join('')+'</div>';
+case 8:return '<div class="visual v8">'+s.map(frame).join('')+'</div>';
+case 9:return '<div class="visual v9">'+s.map(frame).join('')+'</div>';
+default:return '<div class="visual v10" data-carousel="10"><div class="frame">'+photo(s[0])+'</div><div class="filmstrip">'+s.map((n,j)=>'<button type="button" data-index="'+j+'" class="'+(j===0?'active':'')+'" aria-label="Show survivor image '+(j+1)+'" aria-pressed="'+(j===0)+'">'+photo(n)+'</button>').join('')+'</div></div>';
+}}
+const copy='<div class="copy"><h3>HOLOCAUST SURVIVORS STILL NEED OUR HELP</h3><p class="description">The Blue Card provides direct financial assistance to Holocaust survivors in need, helping them afford essentials like food, healthcare, and daily living support.</p><figure class="quote"><blockquote>“The Blue Card didn’t just pay my medical bills; they saw me. They remembered me when I felt the world had forgotten.”</blockquote><figcaption>— Sarah G., Holocaust Survivor</figcaption></figure><div class="actions"><a href="/donate/">Donate Now</a><a href="/#core-programs">Learn How We Help</a></div></div>';
+const root=document.getElementById('concepts');
+root.innerHTML=variants.map(([name,detail],i)=>'<section class="concept" id="option-'+(i+1)+'"><div class="concept-label"><span class="number">'+String(i+1).padStart(2,'0')+'</span><h2>'+name+'</h2><p>'+detail+'</p></div><div class="hero hero'+(i+1)+'"><div class="hero-inner">'+copy+visual(i)+'</div></div></section>').join('');
+const carousel=document.querySelector('[data-carousel="6"]'),slides=sets[5];let position=0;const mainImage=carousel.querySelector('img');const dots=[...carousel.querySelectorAll('.dots span')];function show(n){position=(n+slides.length)%slides.length;mainImage.src=image(slides[position]);dots.forEach((d,i)=>d.classList.toggle('active',i===position))}carousel.querySelector('[data-prev]').addEventListener('click',()=>show(position-1));carousel.querySelector('[data-next]').addEventListener('click',()=>show(position+1));
+const film=document.querySelector('[data-carousel="10"]'),filmSlides=sets[9];film.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{const n=Number(btn.dataset.index);film.querySelector('.frame img').src=image(filmSlides[n]);film.querySelectorAll('button').forEach((b,j)=>{b.classList.toggle('active',j===n);b.setAttribute('aria-pressed',String(j===n))})}));
+})();
+</script>
+</body></html>
